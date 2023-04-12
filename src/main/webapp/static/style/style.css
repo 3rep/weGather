@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* Global */
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-orange: #FDA238;
+    --color-yellow: #FEF7DD;
+    --color-blue: #162888;
+    --color-light-blue: #448FE4;
+    --color-board-blue: #F3F5FA; /*게시판 배경 등 기본 바탕색*/
+    --color-pink: #ed9392;
+    --color-light-gray: #d9d9d9;
+    --color-gray: #D9D9D9;
+    --color-dark-gray: #484848;
+    --color-black: #000000;
+    --color-red: #ED4646;
+    --color-admin-black: #2D2D2D;
+    --color-admin-gray: #E9E9E9;
+    --color-admin-dark-blue: #5F6D7E;
+    --color-manager-dark-green: #1B5A1D;
+    --color-manager-middle-green: #319F52;
+    --color-manager-light-green: #28BD54;
+    --color-bronze: #AD5600;
+    --color-sliver: #C9C4C4;
+    --color-gold: #EC9A00;
+    --color-platinum: #27E2A4;
+    --color-diamond: #00B4FC;
+  
+    /* Font size */
+    --font-large: 54px;
+    --font-medium: 40px;
+    --font-regular: 26px;
+    --font-small: 20px;
+    --font-micro: 18px;
+  
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-medium: 500;
+    --weight-regular: 400;
+    --weight-light: 300;
+  
+    /* Size */
+    --size-border-radius: 4px;
+  }
+  
+  /* Universal tags */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    cursor: default;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    outline: none;
+    color: var(--color-black);
+  }
+  
+  ul, ol {
+    padding-left: 0;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  /* Typography */
+  h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    margin: 16px 0;
+  }
+  
+  h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-medium);
+    margin: 8px 0;
+  }
+  
+  p {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    margin: 4px 0;
+  }
+  
+  }

@@ -31,12 +31,12 @@
 	</servlet-mapping>
 	
 	<!-- include -->
-	<!--
+	<!-- 
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/*</url-pattern>
-			<include-prelude>/resources/header.jspf</include-prelude>
-			<include-coda>/resources/footer.jspf</include-coda>
+			<include-prelude>/WEB-INF/views/inc/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/inc/footer.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 	 -->
