@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
-<link href="static/style/style.css" rel="stylesheet" type="text/css" />
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>MyPage</title>	
+<link href="static/style/style.css" rel="stylesheet" type="text/css" />
+	
 </head>
 <body>
-<h1>
-	Hello world!
-</h1>
-	<a href="mypageMain">마이페이지로 이동</a>
+<body>
+	
 </body>
 </html>
