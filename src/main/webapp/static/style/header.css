@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/*header*/
+header {
+	text-align: center;
+}
+
+.navbar-expand-md { /* 반응형 내비게이션 bar */
+	padding: 0;
+}
+
+.container-fluid { /* 내비게이션 공통 스타일 */
+	margin: 0 auto;
+	width: 1200px;
+	height: 100%;
+}
+
+#mainNav { /* 주메뉴를 포함한 메인 내비게이션 스타일 */
+	background: #2185D5;
+	padding: 0 10px;
+	font-size: var(--font-regular);
+	font-weight: var(--weight-bold);
+}
+
+#subNav { /* 보조메뉴를 포함한 서브 내비게이션 스타일 */
+	background: #2185D5;
+	font-size: var(--font-micro);
+	font-weight: var(--weight-regular);
+}
+
+.navbar-brand {
+	padding : 5px;
+}
+
+#mainNav a.nav-link { /* 내비게이션들의 a태그 색상 (텍스트) */
+	color: #303841;
+}
+
+#subNav a.nav-link { /* 내비게이션들의 a태그 색상 (텍스트) */
+	color: #303030;
+}
+
+a.nav-link:hover, a.nav-link:focus{ /* 마우스 오버, 포커싱되었을 때 색상 */
+	color: var(--color-light-blue);
+}
+
+.dropdown-item{
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+}
+
+.navbar-brand{
+	margin: 16px;
+}
