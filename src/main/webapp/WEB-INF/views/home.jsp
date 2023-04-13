@@ -39,7 +39,7 @@
 		margin : 10px;
 		width: 30%;
 		padding : 10px;
-		background: #F6F6F6;
+		background: #F3F5FA;
 		border-radius: 40px;
 		
 	}
@@ -53,7 +53,7 @@
 		width: 47%;
 		margin : 10px;
 		padding : 10px;
-		background: #F6F6F6;
+		background: #F3F5FA;
 		border-radius: 40px;
 		
 	}
@@ -131,7 +131,7 @@
 						<div >
 							Contend for Victory
 							<br/>
-							<img src="static/img/colorpen.jpg" >
+							<img src="static/img/darts.jpg" >
 						</div> 
 					</li>
 					<li > 
