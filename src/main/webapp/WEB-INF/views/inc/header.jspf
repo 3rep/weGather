@@ -21,9 +21,9 @@
 <header>
 	
 	<!-- sub Nav : 주메뉴 위에 출력되는 얇은 서브 메뉴바 -->
-	<nav class="navbar navbar-expand-md">
+	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid justify-content-end" id="subNav">
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       			<span class="navbar-toggler-icon"></span>
     		</button>
 	    	<div class="collapse navbar-collapse justify-content-end">
@@ -49,10 +49,10 @@
 	</nav>
 	
 	<!-- main Nav : 주메뉴와 로고가 포함되는 메인 메뉴바-->
-	<nav class="navbar navbar-expand-md">
+	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid" id="mainNav">
 			<a class="navbar-brand" href="#">
-     			 <img src="static/img/logo 6.png" alt="Logo" id="logo" style="width:230px;">
+     			 <img src="static/img/logo 4.png" alt="Logo" id="logo" style="width:250px;">
     		</a>
 	    	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	    		<ul class="navbar-nav">
