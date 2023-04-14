@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="static/style/header.css" type="text/css"/>
+<link rel="stylesheet" href="static/style/footer.css" type="text/css"/>
 
 </head>
 
@@ -52,7 +53,7 @@
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid" id="mainNav">
 			<a class="navbar-brand" href="#">
-     			 <img src="static/img/logo/logo 4.png" alt="Logo" id="logo" style="width:250px;">
+     			 <img src="static/img/logo/logo 4.png" alt="Logo" id="nav-logo" style="width:250px;">
     		</a>
 	    	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	    		<ul class="navbar-nav">
