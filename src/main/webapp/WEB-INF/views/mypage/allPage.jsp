@@ -20,7 +20,7 @@
 			-->
 			<li class=img>
 				<img src="${path}/static/img/mypage/manicon.png"/><br/>
-				''토르''
+				[[${username}]]
 			</li> 
 			
 			

@@ -17,9 +17,14 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/main") //post로 가져오는게 맞지않나?
+	@GetMapping("/mypage/main") //post로 가져오는게 맞지않나? -> {userid} 포함하니까
 	public ModelAndView applyList() {
 		ModelAndView mav = new ModelAndView();
+
+		/// 
+		String username = service.getUsername("scott");
+		
+		mav.addObject("username", username);
 		mav.setViewName("mypage/main");
 		return mav;
 	}
