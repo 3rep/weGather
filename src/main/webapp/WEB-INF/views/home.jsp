@@ -12,6 +12,7 @@
 <style>
 	#demo{
 		height: 600px;
+		width:100%;
 		margin-bottom:70px;
 		border : 5px solid blue;
 		
@@ -28,16 +29,17 @@
 		width:100%;
 		height: 1000px;
 		border: 1px solid red;
-		font-size: 35px;
+		font-size: 30px;
 		text-align: center;
-		line-height: center;
+		/* line-height: center; */
 		
 	}
 	
 	#bottomContentMain li{
 		float: left;
 		margin : 10px;
-		width: 30%;
+		width: 31%;
+		height:370px;
 		padding : 10px;
 		background: #F3F5FA;
 		border-radius: 40px;
@@ -45,12 +47,13 @@
 	}
 	#bottomContentMain img{
 		width:100%; 
-		height:300px
+		height:250px
 	}
 	
 	#bottomContentSub li{
 		float : left;
 		width: 47%;
+		height: 250px;
 		margin : 10px;
 		padding : 10px;
 		background: #F3F5FA;
@@ -59,7 +62,7 @@
 	}
 	#bottomContentSub img{
 		width:100%; 
-		height:200px
+		height:150px
 	}
 	
 </style>
@@ -70,8 +73,6 @@
 </head>
 <body>
 
-	<container class="backView" style="height:900px; width:1200px; background:#ddd;">
-		
 		<!-- Carousel -->
 		<div id="demo" class="carousel slide" data-bs-ride="carousel">
 		
@@ -85,7 +86,7 @@
 			<!-- The slideshow/carousel -->
 			<div class="carousel-inner" >
 				<div class="carousel-item active">
-					<img src="static/img/fancy.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
+					<img src="static/img/imgMain/fancy.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
 					<div class="carousel-caption" style="left:60%; top: 50px; width:400px; ">
 					    <h2>스포츠</h2>
 					    <p style="font-size:1.2em">
@@ -94,7 +95,7 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="static/img/together.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
+					<img src="static/img/imgMain/together.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
 					<div class="carousel-caption" style="left:60%; top: 50px; width:400px">
 						<h2>자유모임</h2>
 						<p style="font-size:1.2em">
@@ -103,7 +104,7 @@
 					</div> 
 				</div>
 				<div class="carousel-item">
-					<img src="static/img/together2.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
+					<img src="static/img/imgMain/together2.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
 					<div class="carousel-caption" style="left:60%; bottom: 80px; width:400px">
 						<h2>취미추천</h2>
 						<p style="font-size:1.2em">
@@ -123,55 +124,57 @@
 			
 		</div>
 	
-		<!-- 슬라이드 아래쪽 내용 -->
-		<div class="container-fluid mt-3" id="bottomBox">
-			<div id="bottomContentMain" style="background:yellow; height:400px; margin-bottom:100px;" >
-				<ul >
-					<li>
-						<div >
-							Contend for Victory
-							<br/>
-							<img src="static/img/darts.jpg" >
-						</div> 
-					</li>
-					<li > 
-						<div >
-							Get Together
-							<br/>
-							<img src="static/img/handss.jpg" >
-						</div>
-					</li>
-					<li > 
-						<div >
-							Let's Find Your Hobby 
-							<br/>
-							<img src="static/img/handss.jpg" >
-						</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div id="bottomContentSub" style="background:green; height:400px">
-				<ul >
-					<li>
-						<div >
-							Check the Rank 
-							<br/>
-							<img src="static/img/handss.jpg" >
-						</div>
-					</li>
-					<li>
-						<div >
-							Community 
-							<br/>
-							<img src="static/img/handss.jpg" >
-						</div>
-					</li>
-								
-				</ul>
+		<div class="container" style="height:900px; width:1200px; background:#ddd;">
+			<!-- 슬라이드 아래쪽 내용 -->
+			<div class="container-fluid mt-3" id="bottomBox">
+				<div id="bottomContentMain" style="background:yellow; height:400px; margin-bottom:100px;" >
+					<ul >
+						<li>
+							<div >
+								Contend for Victory
+								<br/>
+								<img src="static/img/imgMain/darts.jpg" >
+							</div> 
+						</li>
+						<li > 
+							<div >
+								Get Together
+								<br/>
+								<img src="static/img/imgMain/handss.jpg" >
+							</div>
+						</li>
+						<li > 
+							<div >
+								Find Your Hobby 
+								<br/>
+								<img src="static/img/imgMain/handss.jpg" >
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<div id="bottomContentSub" style="background:green; height:400px">
+					<ul >
+						<li>
+							<div >
+								Check the Rank 
+								<br/>
+								<img src="static/img/imgMain/handss.jpg" >
+							</div>
+						</li>
+						<li>
+							<div >
+								Community 
+								<br/>
+								<img src="static/img/imgMain/handss.jpg" >
+							</div>
+						</li>
+									
+					</ul>
+				</div>
 			</div>
 		</div>
 		
-	</div>
+	
 </body>
 </html>
