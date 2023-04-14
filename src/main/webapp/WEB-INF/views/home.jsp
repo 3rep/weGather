@@ -19,6 +19,6 @@
 <h1>
 	Hello world!
 </h1>
-	<a href="mypage/applyList" >마이페이지로 이동</a>
+	<a href="mypage/main" >마이페이지로 이동</a>
 </body>
 </html>
