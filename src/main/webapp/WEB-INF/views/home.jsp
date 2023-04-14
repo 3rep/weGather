@@ -131,6 +131,7 @@
 					<ul >
 						<li>
 							<div >
+								<a href="/sport/sportlist">스포츠연결링크</a>
 								Contend for Victory
 								<br/>
 								<img src="static/img/imgMain/darts.jpg" >
@@ -138,6 +139,7 @@
 						</li>
 						<li > 
 							<div >
+								<a href="">자유모임연결링크</a>
 								Get Together
 								<br/>
 								<img src="static/img/imgMain/handss.jpg" >
@@ -145,6 +147,7 @@
 						</li>
 						<li > 
 							<div >
+								<a href="">취미추천연결링크</a>
 								Find Your Hobby 
 								<br/>
 								<img src="static/img/imgMain/handss.jpg" >
@@ -157,6 +160,7 @@
 					<ul >
 						<li>
 							<div >
+								<a href="">랭크보드연결링크</a>
 								Check the Rank 
 								<br/>
 								<img src="static/img/imgMain/handss.jpg" >
@@ -164,6 +168,7 @@
 						</li>
 						<li>
 							<div >
+								<a href="">커뮤니티연결링크</a>
 								Community 
 								<br/>
 								<img src="static/img/imgMain/handss.jpg" >
