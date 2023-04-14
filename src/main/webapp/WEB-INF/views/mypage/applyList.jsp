@@ -23,7 +23,7 @@
 			<li><a href="">신청목록</a></li>
 			<li><a href="">나의 랭크</a></li>
 			<li><a href="">결제내역</a></li>
-			<li><a href="">내정보수정</a></li>
+			<li><a href="mypage/info">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
 		</ul>
 		<!-- 오른쪽 내용칸 -->
 		<div id="content"> 
