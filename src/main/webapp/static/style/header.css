@@ -16,14 +16,15 @@ header {
 }
 
 #mainNav { /* 주메뉴를 포함한 메인 내비게이션 스타일 */
-	background: #2185D5;
+	background: var(--color-yellow);
 	padding: 0 10px;
 	font-size: var(--font-regular);
 	font-weight: var(--weight-bold);
+	height: 150px;
 }
 
 #subNav { /* 보조메뉴를 포함한 서브 내비게이션 스타일 */
-	background: #2185D5;
+	background: var(--color-yellow);
 	font-size: var(--font-micro);
 	font-weight: var(--weight-regular);
 }
@@ -32,16 +33,24 @@ header {
 	padding : 5px;
 }
 
-#mainNav a.nav-link { /* 내비게이션들의 a태그 색상 (텍스트) */
-	color: #303841;
+#mainNav li {
+	margin: 10px;
 }
 
-#subNav a.nav-link { /* 내비게이션들의 a태그 색상 (텍스트) */
-	color: #303030;
+#mainNav a.nav-link:link, #mainNav a.nav-link:visited {
+	color: var(--color-black);
 }
 
-a.nav-link:hover, a.nav-link:focus{ /* 마우스 오버, 포커싱되었을 때 색상 */
-	color: var(--color-light-blue);
+#mainNav a.nav-link:hover, #mainNav a.nav-link:focus {
+	color: var(--color-orange);
+}
+
+#subNav a.nav-link:link, #subNav a.nav-link:visted {
+	color: var(--color-gray);
+}
+
+#subNav a.nav-link:hover, #subNav a.nav-link:focus {
+	color: var(--color-orange);
 }
 
 .dropdown-item{
