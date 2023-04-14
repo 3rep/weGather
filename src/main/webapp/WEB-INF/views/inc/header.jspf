@@ -20,7 +20,8 @@
 <body>
 <header>
 	
-	<!-- sub Nav : 주메뉴 위에 출력되는 얇은 서브 메뉴바 -->
+<!-- sub Nav : 주메뉴 위에 출력되는 얇은 서브 메뉴바 -->
+<div class="nav-container1">
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid justify-content-end" id="subNav">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -35,10 +36,7 @@
 	          			<a class="nav-link" href="#">회원가입</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="#">나의 랭크</a>
-	        		</li>
-	        		<li class="nav-item">
-	          			<a class="nav-link" href="#">신청현황</a>
+	          			<a class="nav-link" href="#">랭크자리</a>
 	        		</li>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="#">마이페이지</a>
@@ -47,8 +45,10 @@
 	    	</div>
 	  	</div>
 	</nav>
+</div>
 	
-	<!-- main Nav : 주메뉴와 로고가 포함되는 메인 메뉴바-->
+<!-- main Nav : 주메뉴와 로고가 포함되는 메인 메뉴바-->
+<div class="nav-container2">
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid" id="mainNav">
 			<a class="navbar-brand" href="#">
@@ -84,5 +84,5 @@
 	    	</div>
 	  	</div>
 	</nav>
-	
+</div>
 </header>

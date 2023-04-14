@@ -6,6 +6,7 @@
     --color-white: #ffffff;
     --color-orange: #FDA238;
     --color-yellow: #FEF7DD;
+    --color-dark-yellow: #FCF0C1;
     --color-blue: #162888;
     --color-light-blue: #448FE4;
     --color-board-blue: #F3F5FA; /*게시판 배경 등 기본 바탕색*/
@@ -31,7 +32,7 @@
     --font-large: 54px;
     --font-medium: 40px;
     --font-regular: 26px;
-    --font-small: 20px;
+    --font-small: 22px;
     --font-micro: 18px;
   
     /* Font weight */
