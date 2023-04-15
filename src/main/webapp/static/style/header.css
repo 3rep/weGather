@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/*header*/
+header {
+	text-align: center;
+}
+
+.nav-container1{
+	width:100%;
+	background: var(--color-dark-yellow);
+}
+
+.nav-container2{
+	width:100%;
+	background: var(--color-yellow);
+}
+
+.navbar-expand-lg { /* 반응형 내비게이션 bar */
+	padding: 0;
+}
+
+.container-fluid { /* 내비게이션 공통 스타일 */
+	margin: 0 auto;
+	width: 1200px;
+	height: 100%;
+}
+
+#mainNav { /* 주메뉴를 포함한 메인 내비게이션 스타일 */
+	background: var(--color-yellow);
+	padding: 0 10px;
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+	height: 100%;
+}
+
+#subNav { /* 보조메뉴를 포함한 서브 내비게이션 스타일 */
+	background: var(--color-dark-yellow);
+	font-size: var(--font-micro);
+	font-weight: var(--weight-regular);
+}
+
+.navbar-brand { /* 로고 margin */
+	margin: 20px 10px 30px;
+}
+
+#mainNav li {
+	margin: 10px 16px;
+}
+
+#subNav li {
+	margin: 0 5px;
+}
+
+#subNav li:nth-child(4) {
+	margin: 0 20px 0 0;
+}
+
+#subNav a.nav-link {
+	padding-bottom: 10px;
+}
+
+/* 메인 메뉴 텍스트 색상 */
+#mainNav a.nav-link:link, #mainNav a.nav-link:visited {
+	color: var(--color-black);
+}
+
+#mainNav a.nav-link:hover, #mainNav a.nav-link:focus {
+	color: var(--color-orange);
+}
+
+/* 서브 메뉴 텍스트 색상 */
+#subNav a.nav-link:link, #subNav a.nav-link:visited {
+	color: var(--color-dark-gray);
+}
+
+#subNav a.nav-link:hover, #subNav a.nav-link:focus {
+	color: var(--color-orange);
+}
+
+.navbar-toggler {
+	margin: 10px;
+}
+
+.dropdown-item{
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+}
