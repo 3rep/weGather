@@ -31,6 +31,7 @@
 	</servlet-mapping>
 	
 	<!-- include -->
+	<!-- 
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/*</url-pattern>
@@ -38,6 +39,15 @@
 			<include-coda>/WEB-INF/views/inc/footer.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
+	-->
+	
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/admin/*</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/adminNav.jspf</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
+	
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
 	<filter>
