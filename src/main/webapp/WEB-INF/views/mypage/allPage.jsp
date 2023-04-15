@@ -15,14 +15,20 @@
 		<!-- 왼쪽 메뉴바 -->
 		<ul id="leftMenu">
 			<li class=h>마이페이지</li>
-			<!-- 여자, 남자에 따라 다른 사진 들어가게 
-			<li><img src="${path}/static/img/mypage/womanicon.png"/></li> 
-			-->
-			<li class=img>
-				<img src="${path}/static/img/mypage/manicon.png"/><br/>
-				[[${username}]]
-			</li> 
+			<!-- 여자, 남자에 따라 다른 사진 들어가게 -->
 			
+			<c:if test="${logGender=='여' }">
+				<li class=img>
+					<img src="${path}/static/img/mypage/womanicon.png"/><br/> 
+					[[[[${logName}]]]]
+				</li>	
+			</c:if>
+			<c:if test="${logGender!='여' }">
+				<li class=img>
+					<img src="${path}/static/img/mypage/manicon.png"/><br/>
+					[[[[${logName}]]]]
+				</li> 
+			</c:if>
 			
 			<li><a href="main">신청목록</a></li>
 			<li><a href="rank">나의 랭크</a></li>

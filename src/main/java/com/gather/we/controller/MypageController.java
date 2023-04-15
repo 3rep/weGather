@@ -17,21 +17,41 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/main") //post로 가져오는게 맞지않나? -> {userid} 포함하니까
-	public ModelAndView applyList() {
+	@GetMapping("/login")
+	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-
-		/// 
-		String username = service.getUsername("scott");
 		
-		mav.addObject("username", username);
-		mav.setViewName("mypage/main");
+		MypageDTO dto = service.getUserinfo((String)session.getAttribute("logId")); 
+		System.out.println(dto.toString());
+		
+		//session에 logName -> username으로 설정한다.
+		session.setAttribute("logName", dto.getUsername());
+		session.setAttribute("logGender", dto.getGender());
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("redirect:/");
 		return mav;
 	}
+	
+	@GetMapping("/mypage/main") //post로 가져오는게 맞지않나? -> {userid} 포함하니까
+	public ModelAndView applyList(MypageDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		//로그인 확인 : userid 가 logId 랑 같냐 확인
+		// 신청목록을 화면에 뿌린다.
+		
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
 	
 	@GetMapping("/mypage/rank")
 	public ModelAndView rank() {
 		ModelAndView mav = new ModelAndView();
+		
 		mav.setViewName("mypage/rank");
 		return mav;
 	}
