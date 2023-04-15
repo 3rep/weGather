@@ -1,0 +1,22 @@
+@charset "EUC-KR";
+
+/* 추천 결과 페이지 CSS */
+
+main {
+  margin: 50px auto;
+  max-width: 800px;
+  width: 90%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+p {
+  margin: 20px 0;
+}

@@ -25,4 +25,7 @@
 	
 	<context:component-scan base-package="com.gather.we" />
 	
+	<!-- 새로추가한 코드 
+	<context:annotation-config />
+	-->
 </beans:beans>
