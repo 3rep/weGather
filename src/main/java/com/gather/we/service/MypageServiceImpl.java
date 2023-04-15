@@ -14,9 +14,16 @@ public class MypageServiceImpl implements MypageService {
 	MypageDAO dao;
 
 	@Override
+	public MypageDTO getUserinfo(String userid) {
+	return dao.getUserinfo(userid);
+	}
+	
+	@Override
 	public String getUsername(String userid) {
 		return dao.getUsername(userid);
 	}
+
+	
 
 	
 }
