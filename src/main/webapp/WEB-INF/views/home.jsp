@@ -1,77 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>MainScreen</title>	
-<link href="static/style/style.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-	#demo{
-		height: 600px;
-		width:100%;
-		margin-bottom:70px;
-		border : 5px solid blue;
-		
-	}}
-	.carousel-caption p{
-		/* position: absolute; */
-		/* right: 500px;
-		top: 500px; */
-		/* font-size : 12px; */
-	}
-	
-	/*슬라이드 아래쪽 스타일*/
-	#bottomBox{ 
-		width:100%;
-		height: 1000px;
-		border: 1px solid red;
-		font-size: 30px;
-		text-align: center;
-		/* line-height: center; */
-		
-	}
-	
-	#bottomContentMain li{
-		float: left;
-		margin : 10px;
-		width: 31%;
-		height:370px;
-		padding : 10px;
-		background: #F3F5FA;
-		border-radius: 40px;
-		
-	}
-	#bottomContentMain img{
-		width:100%; 
-		height:250px
-	}
-	
-	#bottomContentSub li{
-		float : left;
-		width: 47%;
-		height: 250px;
-		margin : 10px;
-		padding : 10px;
-		background: #F3F5FA;
-		border-radius: 40px;
-		
-	}
-	#bottomContentSub img{
-		width:100%; 
-		height:150px
-	}
-	
-</style>
-<script>
-	//스크롤 내리며 아래 내용 나오게 할거야
-	
-</script>
-</head>
-<body>
 
 		<!-- Carousel -->
 		<div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -179,6 +107,3 @@
 				</div>
 			</div>
 		</div>
-</body>
-</html>
-

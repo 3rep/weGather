@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="static/style/header.css" type="text/css"/>
 <link rel="stylesheet" href="static/style/footer.css" type="text/css"/>
+<link rel="stylesheet" href="static/style/mainscreen.css" type="text/css"/>
 
 </head>
 
