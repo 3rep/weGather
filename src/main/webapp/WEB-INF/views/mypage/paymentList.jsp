@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="/WEB-INF/views/mypage/allPage.jsp" %>
 
 <!-- 오른쪽 내용칸 -->
 		<div id="content"> 
-			<h1>결제내역</h1>
+			<h2>결제내역</h2>
 			<hr/>
 			<p>
 			예시본문<br/>
