@@ -14,6 +14,7 @@ body {
 	align-items: center;
 	background-color: var(--color-admin-black);
 	position: relative;
+	padding: 0 16px;
 }
 
 #admin-nav #logo{
@@ -51,7 +52,7 @@ body {
 	margin-right: 8px;
 }
 
-.menu-title.active { /* 페이지 활성화시 적용되는 스타일 */
+.menu-title.active { /* 메뉴 활성화 시 적용되는 스타일 */
 	font-weight: var(--weight-bold);
 }
 
@@ -60,7 +61,7 @@ body {
 	display: none;
 }
 
-.chevron_down_icon.active { /* 페이지 활성화시 적용되는 스타일 */
+.chevron_down_icon.active { /* 메뉴 활성화 시 적용되는 스타일 */
 	display: block;
 }
 
@@ -69,7 +70,7 @@ body {
 	display: none;
 }
 
-.sub-menu-container.active { /* 페이지 활성화시 적용되는 스타일 */
+.sub-menu-container.active { /* 서브메뉴 활성화 시 적용되는 스타일 */
 	display: block;
 }
 
@@ -93,7 +94,7 @@ body {
 	color: var(--color-dark-gray);
 }
 
-.page-link.active { /* 서브 페이지 활성화시 적용되는 스타일 */
+.page-link.active { /* 페이지 활성화 시 적용되는 스타일 */
 	color: var(--color-black);
 	font-weight: var(--weight-bold);
 }
@@ -134,5 +135,6 @@ body {
 }
 
 .container {
-
+	width: 100%;
+	margin: 30px 50px;
 }
