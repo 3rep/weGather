@@ -27,6 +27,16 @@ public class RecommendController {
     	mav.addObject("rl", rl);
     	mav.setViewName("/hobby/recommend");
     	return mav;
+    	
     }
+    @GetMapping("/hobby/manager10")
+    public ModelAndView manager10Hobby() {
+    	ModelAndView = new ModelAndView();
+    	List<Manager10DTO> ml = service.getAllManager10();
+    	mav.addObject("ml", ml);
+    	mav.setViewName("/hobby/manager10");
+    	return mav;
+    }
+    
 }
     
