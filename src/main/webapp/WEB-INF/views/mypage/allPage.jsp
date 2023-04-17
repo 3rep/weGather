@@ -19,20 +19,26 @@
 			
 			<c:if test="${logGender=='여' }">
 				<li class=img>
-					<img src="${path}/static/img/mypage/womanicon.png"/><br/> 
+					<img src="${path}/static/img/mypage/female.png"/><br/> 
 					[[[[${logName}]]]]
 				</li>	
 			</c:if>
 			<c:if test="${logGender!='여' }">
 				<li class=img>
-					<img src="${path}/static/img/mypage/manicon.png"/><br/>
+					<img src="${path}/static/img/mypage/male.png"/><br/>
 					[[[[${logName}]]]]
 				</li> 
 			</c:if>
-			
-			<li><a href="main">신청목록</a></li>
-			<li><a href="rank">나의 랭크</a></li>
-			<li><a href="paymentList">결제내역</a></li>
-			<li><a href="info">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
+			<div class="menuList">
+ 				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+ 				<li><a href="main"><span>신청목록</span></a>
+ 				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+				<li><a href="rank">나의 랭크</a></li>
+				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+				<li><a href="paymentList">결제내역</a></li>
+				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+				<li><a href="info">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
+				
+			</div>
 		</ul>
 		

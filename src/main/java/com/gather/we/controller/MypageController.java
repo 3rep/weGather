@@ -20,15 +20,21 @@ public class MypageController {
 	@GetMapping("/login")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		
+		/*
 		MypageDTO dto = service.getUserinfo((String)session.getAttribute("logId")); 
 		System.out.println(dto.toString());
 		
 		//session에 logName -> username으로 설정한다.
-		session.setAttribute("logName", dto.getUsername());
-		session.setAttribute("logGender", dto.getGender());
+		//session.setAttribute("logName", dto.getUsername());
+		//session.setAttribute("logGender", dto.getGender());
+		*/
 		
-		mav.addObject("dto", dto);
+		//지금 DB수정하고 있어서 DB에 데이터가 없으니까 그냥 내가 만들어서 넣을게
+		session.setAttribute("logName", "아이언맨");
+		session.setAttribute("logGender", "남");
+		
+		mav.addObject("logName", session.getAttribute("logName"));
+		mav.addObject("logGender",session.getAttribute("logGender"));
 		mav.setViewName("redirect:/");
 		return mav;
 	}
