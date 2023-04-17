@@ -29,14 +29,23 @@
 					[[[[${logName}]]]]
 				</li> 
 			</c:if>
-			<div class="menuList">
- 				<li><img src="${path}/static/img/mypage/grid.png"/></li>
- 				<li><a href="main"><span>신청목록</span></a>
- 				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+			<div class="menuList" >
+ 				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
+ 				<li><a href="main">신청목록</a></li>
+ 				
+ 				<!--    -->
+ 				<li><img src="${path}/static/img/mypage/corner.png"/></li>
+ 				<li><a href="main">랭킹전</a></li>
+ 				<li><img src="${path}/static/img/mypage/corner.png"/></li>
+ 				<li><a href="main">일반전</a></li>
+ 				 				
+ 				<!--    -->
+ 				
+ 				<li><img src="${path}/static/img/mypage/prize.png"/></li>
 				<li><a href="rank">나의 랭크</a></li>
-				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+				<li><img src="${path}/static/img/mypage/align.png"/></li>
 				<li><a href="paymentList">결제내역</a></li>
-				<li><img src="${path}/static/img/mypage/grid.png"/></li>
+				<li><img src="${path}/static/img/mypage/info.png"/></li>
 				<li><a href="info">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
 				
 			</div>

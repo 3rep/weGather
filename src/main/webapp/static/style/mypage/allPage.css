@@ -17,20 +17,21 @@
 	overflow: auto;
 	position: fixed;
 	text-align: center;
+	font-size: var(--font-micro);
 		
 }
-/* leftMenu에서 스크롤바 없애기*/
+/*---leftMenu에서 스크롤바 없애기---*/
 #leftMenu{ /*IE, Edge*/ 
    -ms-overflow-style: none;
 }
 #leftMenu::-webkit-scrollbar{ /* Chrome, Safari, Opera */
   display:none;
 }
+/*-------------------------------*/
 .img img{
-	width: 60%;
-	height: 60%;
-	margin: 0;
-	/* margin-bottom: 25px; */
+	width: 50%;
+	height: 50%;
+	margin-bottom: 5px;
 	padding: 20px;
 	background: green;
 	border-radius: 25px;
@@ -39,41 +40,42 @@
 	margin-bottom: 50px;
 }
 /*==========================*/
-.menuList li:nth-child(2n+1){
+.menuList>li:nth-child(2n+1){
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background: red; */
 	width: 20%;
 	float: left;
 	margin:0;
 	margin-left:20px;
-	padding-top: 6px;
-	height: 45px;
-	
+	padding-top: 4px;
+	height: 44px;
+	/* background: red; */
 	
 }
 .menuList img{
 	height: 20px;
 	line-height: 20px;
 }
-.menuList li:nth-child(2n){
+.menuList>li:nth-child(2n){
 	display: flex;
-	/* background: blue; */
 	justify-content: left;
 	align-items: center;
-	width: 60%;
+	width: 63%;
 	float: left;
 	margin: 0;
 	padding: 0;
+	/* background: blue; */
 	
 }
-/* span{
-	padding-bottom: 5px; 
-	background: skyblue;
-} */
-/*==========================*/
+.menuList>li:nth-child(2n):hover{
+	background: #ddd;
+}
+.menuList>li{
+	border-bottom: 1px solid black;
+}
 
+/*==========================*/
 
 
 /*==========================*/
@@ -83,21 +85,16 @@ li a {
 	padding: 10px;
 }
 
-li a:hover{
-	background-color: #ddd;
-	
-}
-
 .h{
-	font-size: var(--font-medium-two);
-	margin-bottom: 50px;
+	font-size: var(--font-regular);
+	/* margin-bottom: 50px; */
 	padding: 20px; 
-}
-li{
-	font-size: var(--font-small);
-	margin: 10px;
+	margin: 10px 0 20px 0;
+	font-weight: var(--weight-bold);
 }
 
+
+/* 오른쪽 본문 칸 */
 #content{
 	background: #ddd;
 	margin-left: 300px;
