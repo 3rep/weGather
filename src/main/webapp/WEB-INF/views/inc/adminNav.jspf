@@ -10,6 +10,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/adminNav.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/adminCommon.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/sport.css" rel="stylesheet" type="text/css" />
 </head>
 <script>
 	$(function(){
@@ -83,15 +85,15 @@
 				</li>
 			</ul>
 		</li>
-		<!-- 스포츠 종목관리 메뉴 -->
+		<!-- 종목관리 메뉴 -->
 		<li class="menu">
 			<div class="menu-info">		
 				<img src="${path}/static/img/admin/hexagon_icon.png" alt="hexagon icon" class="hexagon_icon"/>
-				<span class="menu-title">스포츠 종목관리</span>
+				<span class="menu-title">종목관리</span>
 			</div>
 			<img src="${path}/static/img/admin/chevron_down_icon.png" alt="chevron down icon" class="chevron_down_icon"/>
 		</li>
-		<!-- 스포츠 종목관리 서브메뉴 -->
+		<!-- 종목관리 서브메뉴 -->
 		<li class="sub-menu-container">
 			<ul class="sub-menu">
 				<li class="page">
