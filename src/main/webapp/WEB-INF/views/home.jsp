@@ -14,5 +14,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 <a href="/hobby/recommend">취미추천</a> <!-- url넣어서 페이지 띄우기 위함 -->
 <a href="/hobby/manager10">매니저신청현황</a>
+<a href="/hobby/managerPast">매니저이전내역</a>
+<a href="/hobby/entry">참가자 명단 확인</a>
 </body>
 </html>
