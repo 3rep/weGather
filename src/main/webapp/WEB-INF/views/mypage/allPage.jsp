@@ -29,17 +29,19 @@
 					[[[[${logName}]]]]
 				</li> 
 			</c:if>
-			<div class="menuList" >
- 				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
- 				<li><a href="main">신청목록</a></li>
- 				
+			<div id="menuList" >
+				<ul >
+	 				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
+	 				<li><a href="main">신청목록</a></li>
+	 				
+	 				<!--    -->
+	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
+	 				<li ><a href="main"><span>랭킹전</span></a></li>
+	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
+	 				<li ><a href="main"><span>일반전</span></a></li>
+ 				</ul> 				
  				<!--    -->
- 				<li><img src="${path}/static/img/mypage/corner.png"/></li>
- 				<li><a href="main">랭킹전</a></li>
- 				<li><img src="${path}/static/img/mypage/corner.png"/></li>
- 				<li><a href="main">일반전</a></li>
- 				 				
- 				<!--    -->
+ 			
  				
  				<li><img src="${path}/static/img/mypage/prize.png"/></li>
 				<li><a href="rank">나의 랭크</a></li>

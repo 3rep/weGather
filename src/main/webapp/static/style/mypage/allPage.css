@@ -7,18 +7,19 @@
 }
 
 #leftMenu{
+	display: flex;
+	flex-direction: column;
 	list-style-type: none;
 	padding:0px;
 	margin:0px;
 	background: #FEF7DD;
 	border: 2px solid red; 	/*나중에 없애야*/
 	width: 250px;
-	height: 100%;
+	height: 100%; 
 	overflow: auto;
 	position: fixed;
 	text-align: center;
-	font-size: var(--font-micro);
-		
+	font-size: var(--font-micro);		
 }
 /*---leftMenu에서 스크롤바 없애기---*/
 #leftMenu{ /*IE, Edge*/ 
@@ -29,56 +30,66 @@
 }
 /*-------------------------------*/
 .img img{
-	width: 50%;
-	height: 50%;
+	width: 45%;
 	margin-bottom: 5px;
-	padding: 20px;
-	background: green;
+	padding: 25px;
+	background: green; /*색상 변경해야*/
 	border-radius: 25px;
 }
 .img{
 	margin-bottom: 50px;
 }
-/*==========================*/
-.menuList>li:nth-child(2n+1){
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 20%;
+/*===== menuList 스타일넣기=====*/
+#menuList li{
 	float: left;
-	margin:0;
-	margin-left:20px;
-	padding-top: 4px;
-	height: 44px;
-	/* background: red; */
+	margin-left:10px;
 	
 }
-.menuList img{
-	height: 20px;
-	line-height: 20px;
+#menuList li{
+	height: 40px;
+	margin-bottom: 3px;
 }
-.menuList>li:nth-child(2n){
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	width: 63%;
-	float: left;
-	margin: 0;
-	padding: 0;
-	/* background: blue; */
-	
+#menuList li:nth-child(2n+1){
+	width: 60%;
+	/* background: pink; */
 }
-.menuList>li:nth-child(2n):hover{
+#menuList li:nth-child(2n+1):hover{
 	background: #ddd;
 }
-.menuList>li{
-	border-bottom: 1px solid black;
+
+#menuList img{
+	height: 20px;
+	width: 20px;
+	margin : 12px;
+}
+
+#menuList>ul>li:nth-child(2n+1){
+	width: 18%;
+	/* background: white; */
+	/* margin-left: 10px; */
+	
+}
+#menuList>ul>li{
+	width: 60%;
+	margin-bottom: 0px;
+	/* background: yellowgreen; */
+	
+}
+#menuList>ul>li:hover{
+	background: #ddd;
+}
+.open{
+	padding-left: 25px;
+	/* text-align: left; */
+}
+span{
+	font-size : 16px;
+	color : gray;
+	
 }
 
 /*==========================*/
 
-
-/*==========================*/
 
 li a {
 	display: block;
