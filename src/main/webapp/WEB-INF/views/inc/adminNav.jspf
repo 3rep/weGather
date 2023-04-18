@@ -12,6 +12,7 @@
 <link href="${path}/static/style/admin/adminNav.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/adminCommon.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/sport.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/game.css" rel="stylesheet" type="text/css" />
 </head>
 <script>
 	$(function(){
@@ -116,9 +117,9 @@
 		<li class="sub-menu-container">
 			<ul class="sub-menu">
 				<li class="page">
-					<a href="/admin/game/gamelist" class="page-link">		
+					<a href="/admin/rankgame/rankgamelist" class="page-link">		
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
-						<span class="menu-title">경기목록</span>
+						<span class="menu-title">랭크경기목록</span>
 					</a>
 				</li>
 			</ul>

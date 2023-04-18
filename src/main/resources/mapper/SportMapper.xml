@@ -4,10 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.SportDAO">
 	<insert id="sportInsert" parameterType="com.gather.we.dto.SportDTO">
- 		insert into sport(no, sportname, sportdesc, filename)
+ 		insert into sport(s_no, sportname, sportdesc, filename)
  		values(sport_sq.nextval, #{sportname}, #{sportdesc}, #{filename})
  	</insert>
  	<delete id="sportDelete">
  		delete from sport where no=${param1}
  	</delete>
+ 	<select id="sportAllSelect" resultType="com.gather.we.dto.SportDTO">
+		select s_no, sportname, sportdesc, filename from sport
+	</select>
 </mapper>

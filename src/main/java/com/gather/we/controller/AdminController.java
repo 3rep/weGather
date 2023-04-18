@@ -1,6 +1,7 @@
 package com.gather.we.controller;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,20 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
+import com.gather.we.dto.StadiumInfoDTO;
+import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
+import com.gather.we.service.StadiumInfoService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
-	SportService service;
+	SportService sportService;
+	@Autowired
+	StadiumInfoService stadiumInfoService;
+	@Autowired
+	RankGameService rankGameService;
 	
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
@@ -97,7 +105,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			// 작성된 글 내용을 DB에 저장
-			int result = service.sportInsert(dto);
+			int result = sportService.sportInsert(dto);
 
 			// 정상처리되면 종목 목록 페이지로 이동
 			mav.setViewName("redirect:sportlist");
@@ -110,7 +118,7 @@ public class AdminController {
 			fileDelete(path, dto.getFilename());
 			
 			// DB에 저장된 레코드 삭제
-			service.sportDelete(dto.getNo());
+			sportService.sportDelete(dto.getS_no());
 			
 			mav.addObject("msg", "종목 등록 실패하였습니다.");
 			mav.setViewName("admin/dataResult");
@@ -124,5 +132,52 @@ public class AdminController {
 		File f = new File(path, filename);
 		f.delete();
 	}
+	
+	// 랭크경기 목록
+	@GetMapping("/rankgame/rankgamelist")
+	public ModelAndView rankGameList() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("admin/rankGame/rankGameList");
+		
+		return mav;
+	}
+	
+	// 랭크경기 등록
+	@GetMapping("/rankgame/new")
+	public ModelAndView rankGameNew() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<SportDTO> sportList = sportService.sportAllSelect();
+		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
+		
+		mav.addObject("sportList", sportList);
+		mav.addObject("stadiumInfoList", stadiumInfoList);
+		mav.setViewName("admin/rankGame/rankGameNew");
+		
+		return mav;
+	}
+	
+	// 랭크경기 등록(DB)
+	@PostMapping("/rankgame/newOk")
+	public ModelAndView rankgameNewOk(RankGameDTO dto){
+		ModelAndView mav = new ModelAndView();
+		try {
+			// 작성된 랭크경기 내용을 DB에 저장
+			int result = rankGameService.rankGameInsert(dto);
+
+			// 정상처리되면 랭크경기 목록 페이지로 이동
+			mav.setViewName("redirect:rankgamelist");
+			
+		}catch(Exception e) {
+			// 레코드 추가 에러
+			e.printStackTrace();
+			
+			mav.addObject("msg", "랭크경기 등록 실패하였습니다.");
+			mav.setViewName("admin/dataResult");
+		}
+		
+		return mav;
+	}   
 
 }
