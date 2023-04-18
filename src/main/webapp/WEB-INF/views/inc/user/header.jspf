@@ -13,9 +13,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="static/style/style.css" type="text/css"/>
-<link rel="stylesheet" href="static/style/header.css" type="text/css"/>
-<link rel="stylesheet" href="static/style/footer.css" type="text/css"/>
-<link rel="stylesheet" href="static/style/mainscreen.css" type="text/css"/>
+<link rel="stylesheet" href="static/style/user/header.css" type="text/css"/>
+<link rel="stylesheet" href="static/style/user/footer.css" type="text/css"/>
+<link rel="stylesheet" href="static/style/user/mainscreen.css" type="text/css"/>
 
 </head>
 
