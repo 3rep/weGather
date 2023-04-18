@@ -179,5 +179,14 @@ public class AdminController {
 		
 		return mav;
 	}   
-
+	
+	// 매니저 승인
+	@GetMapping("/manager/approve")
+	public ModelAndView managerApprove() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("admin/allManager/managerApprove");
+		
+		return mav;
+	}
 }

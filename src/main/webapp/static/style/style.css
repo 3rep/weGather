@@ -87,8 +87,14 @@
   
   h2 {
     font-size: var(--font-medium);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-bold);
     margin: 8px 0;
+  }
+  
+  h3 {
+  	font-size: var(--font-semi-medium);
+  	font-weight: var(--weight-bold);
+  	margin: 8px 0;
   }
   
   p {
