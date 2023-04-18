@@ -1,6 +1,6 @@
 package com.gather.we.dto;
 
-public class MypageDTO {
+public class MypageUserDTO {
 	private String userid;
 	private String type;
 	private String username;
@@ -11,17 +11,13 @@ public class MypageDTO {
 	private String gender;
 	private String mbti;
 	private int rank;
-	private int temperature;
-	private int active;
 	private String signupdate;
-	
 	
 	@Override
 	public String toString() {
-		return "MypageDTO [userid=" + userid + ", type=" + type + ", username=" + username + ", password=" + password
-				+ ", email=" + email + ", tel=" + tel + ", address=" + address + ", gender=" + gender + ", mbti=" + mbti
-				+ ", rank=" + rank + ", temperature=" + temperature + ", active=" + active + ", signupdate="
-				+ signupdate + "]";
+		return "MypageUserDTO [userid=" + userid + ", type=" + type + ", username=" + username + ", password="
+				+ password + ", email=" + email + ", tel=" + tel + ", address=" + address + ", gender=" + gender
+				+ ", mbti=" + mbti + ", rank=" + rank + ", signupdate=" + signupdate + "]";
 	}
 
 	public String getUserid() {
@@ -104,22 +100,6 @@ public class MypageDTO {
 		this.rank = rank;
 	}
 
-	public int getTemperature() {
-		return temperature;
-	}
-
-	public void setTemperature(int temperature) {
-		this.temperature = temperature;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
-	}
-
 	public String getSignupdate() {
 		return signupdate;
 	}
@@ -127,7 +107,6 @@ public class MypageDTO {
 	public void setSignupdate(String signupdate) {
 		this.signupdate = signupdate;
 	}
-	
 	
 	
 }
