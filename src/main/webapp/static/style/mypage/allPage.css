@@ -13,7 +13,7 @@
 	padding:0px;
 	margin:0px;
 	background: #FEF7DD;
-	border: 2px solid red; 	/*나중에 없애야*/
+	/* border: 2px solid red; */ 	/*나중에 없애야*/
 	width: 250px;
 	height: 100%; 
 	overflow: auto;
@@ -21,20 +21,20 @@
 	text-align: center;
 	font-size: var(--font-micro);		
 }
-/*---leftMenu에서 스크롤바 없애기---*/
+/*---leftMenu에서 스크롤바 없애기-----------------*/
 #leftMenu{ /*IE, Edge*/ 
    -ms-overflow-style: none;
 }
 #leftMenu::-webkit-scrollbar{ /* Chrome, Safari, Opera */
   display:none;
 }
-/*-------------------------------*/
+/*----------------------------------------------*/
 .img img{
 	width: 45%;
 	margin-bottom: 5px;
 	padding: 25px;
-	background: green; /*색상 변경해야*/
-	border-radius: 25px;
+	background: #FFFDF8; 
+	border-radius: 30px;
 }
 .img{
 	margin-bottom: 50px;
@@ -54,7 +54,7 @@
 	/* background: pink; */
 }
 #menuList li:nth-child(2n+1):hover{
-	background: #ddd;
+	background: #F5E6B1;
 }
 
 #menuList img{
@@ -76,7 +76,7 @@
 	
 }
 #menuList>ul>li:hover{
-	background: #ddd;
+	background: #F5E6B1;
 }
 .open{
 	padding-left: 25px;
@@ -84,18 +84,13 @@
 }
 span{
 	font-size : 16px;
-	color : gray;
-	
+	color : #45443F;
 }
-
 /*==========================*/
-
-
 li a {
 	display: block;
 	padding: 10px;
 }
-
 .h{
 	font-size: var(--font-regular);
 	/* margin-bottom: 50px; */
