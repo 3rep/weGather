@@ -69,8 +69,8 @@ header {
 }
 
 /* 서브 메뉴 텍스트 색상 */
-#subNav a.nav-link:link, #subNav a.nav-link:visted {
-	color: var(--color-gray);
+#subNav a.nav-link:link, #subNav a.nav-link:visited {
+	color: var(--color-dark-gray);
 }
 
 #subNav a.nav-link:hover, #subNav a.nav-link:focus {

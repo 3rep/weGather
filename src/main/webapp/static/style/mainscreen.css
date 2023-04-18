@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#demo {
+	height: 600px;
+	width: 100%;
+	margin-bottom: 70px;
+	border: 5px solid blue;
+	}
+
+/*슬라이드 아래쪽 스타일*/
+#bottomBox {
+	width: 100%;
+	height: 1000px;
+	border: 1px solid red;
+	font-size: 30px;
+	text-align: center;
+	/* line-height: center; */
+}
+
+#bottomContentMain li {
+	float: left;
+	margin: 10px;
+	width: 31%;
+	height: 370px;
+	padding: 10px;
+	background: #F3F5FA;
+	border-radius: 40px;
+}
+
+#bottomContentMain img {
+	width: 100%;
+	height: 250px
+}
+
+#bottomContentSub li {
+	float: left;
+	width: 47%;
+	height: 250px;
+	margin: 10px;
+	padding: 10px;
+	background: #F3F5FA;
+	border-radius: 40px;
+}
+
+#bottomContentSub img {
+	width: 100%;
+	height: 150px
+}
