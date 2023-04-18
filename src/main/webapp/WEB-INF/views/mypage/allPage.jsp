@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>MyPage</title>	
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/mypage/allPage.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/style/mypage/applyList.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <body>
@@ -30,21 +32,18 @@
 				</li> 
 			</c:if>
 			<div id="menuList" >
-				<ul >
+				<ul>
 	 				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
-	 				<li><a href="main">신청목록</a></li>
+	 				<li><a href="applyList">My 경기</a></li>
 	 				
-	 				<!--    -->
 	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
-	 				<li ><a href="main"><span>랭킹전</span></a></li>
+	 				<li ><a href="applyList"><span>랭킹전</span></a></li>
 	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
-	 				<li ><a href="main"><span>일반전</span></a></li>
+	 				<li ><a href="applyList"><span>일반전</span></a></li>
  				</ul> 				
- 				<!--    -->
  			
- 				
  				<li><img src="${path}/static/img/mypage/prize.png"/></li>
-				<li><a href="rank">나의 랭크</a></li>
+				<li><a href="rank">My 랭크</a></li>
 				<li><img src="${path}/static/img/mypage/align.png"/></li>
 				<li><a href="paymentList">결제내역</a></li>
 				<li><img src="${path}/static/img/mypage/info.png"/></li>

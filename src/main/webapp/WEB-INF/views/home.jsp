@@ -20,7 +20,7 @@
 	Hello world!
 </h1>
 	<a href="/login" >로그인 했다 치고</a>
-	<a href="mypage/main" >마이페이지로 이동</a>
+	<a href="mypage/applyList" >마이페이지로 이동</a>
 	
 	<hr/>
 	
@@ -28,7 +28,7 @@
 	<br/>
 	<div>
 		session 세팅하기 : userid -> scott
-		<%session.setAttribute("logId", "scott");	%>
+		<%session.setAttribute("logId", "man1");	%>
 		<br/>
 		세팅확인 :<br/>
 		userid -> [[ <%= session.getAttribute("logId") %> ]]<br/>

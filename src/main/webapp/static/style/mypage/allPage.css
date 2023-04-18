@@ -53,7 +53,7 @@
 	width: 60%;
 	/* background: pink; */
 }
-#menuList li:nth-child(2n+1):hover{
+#menuList>li:nth-child(2n+1):hover{
 	background: #F5E6B1;
 }
 
@@ -75,7 +75,7 @@
 	/* background: yellowgreen; */
 	
 }
-#menuList>ul>li:hover{
+#menuList>ul>li:nth-child(2n):hover{
 	background: #F5E6B1;
 }
 .open{
@@ -107,7 +107,5 @@ li a {
 	margin-top: 50px;
 	margin-right: 5px;
 	margin-bottom: 50px;
-	font-size: var(--font-regular);
-	
 	
 }
