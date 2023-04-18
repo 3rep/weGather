@@ -26,7 +26,7 @@
 		    <div class="flex-item align-self-center" id="foot-box2">
 				<ul id="foot-content2">
 					<li>
-	          			<img src="static/img/logo/logo 4.png" alt="Logo" id="foot-logo" style="width:250px;">
+	          			<img src="${path}/static/img/logo/logo 4.png" alt="Logo" id="foot-logo" style="width:250px;">
 	        		</li>
 	        		<li>
 	          			Copyright © 2023 WeGather. All rights reserved.
