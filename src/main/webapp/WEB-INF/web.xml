@@ -33,7 +33,7 @@
 	<!-- include -->
 	<jsp-config>
 		<jsp-property-group>
-			<url-pattern>/WEB-INF/views/*</url-pattern>
+			<url-pattern>/WEB-INF/views/user/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/header.jspf</include-prelude>
 			<include-coda>/WEB-INF/views/inc/footer.jspf</include-coda>
 		</jsp-property-group>

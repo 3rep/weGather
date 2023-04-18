@@ -51,7 +51,7 @@ header {
 	margin: 0 5px;
 }
 
-#subNav li:nth-child(4) {
+#subNav li:nth-child(5) {
 	margin: 0 20px 0 0;
 }
 
@@ -81,7 +81,30 @@ header {
 	margin: 10px;
 }
 
-.dropdown-item{
+/* 드랍다운 메뉴 스타일 */
+#mainNav .dropdown-menu {
+	left: -28px;
+}
+
+#mainNav .dropdown-item {
 	font-size: var(--font-small);
 	font-weight: var(--weight-bold);
+}
+
+#mainNav .dropdown-item:hover {
+	background: var(--color-dark-yellow);
+}
+
+@media(max-width: 991px) { /* 창을 줄였을 때 반응형 스타일 */
+	#mainNav .dropdown-menu {
+		margin: 2px auto 0;
+		width: 75%;
+		background: var(--color-dark-yellow);
+		text-align: center;
+		left: 0;
+	}
+	
+	#mainNav .dropdown-item:hover {
+		background: var(--color-yellow);
+	}
 }
