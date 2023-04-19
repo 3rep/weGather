@@ -1,93 +1,104 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>활동한 신청내역</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			display: flex;
-			flex-direction: column;
-			height: 150vh;
-			font-family: Arial, sans-serif;
-			align-items: center; /* 수직 중앙 정렬 */
-			justify-content: center; /* 수평 중앙 정렬 */
-		}
-		.container {
-			display: flex;
-			flex-direction: column;
-			align-items: center; /* 세로로 중앙 정렬 */
-			justify-content: center; /* 가로로 중앙 정렬 */
-		}
-		.box {
-			background-color: #D1D9E2;
-			color: #FFFF;
-			padding: 10px;
-			margin: 5px;
-			text-align: left;
-			
-			flex-basis: 20%; /* 크기 조절 */
-			flex-grow: 1; /* 네개의 박스를 동일한 높이로 설정 */
-			width: 500px;
-			 height: 100px;
-		}
-		.box-info {
-			display: flex;
-			justify-content: space-between;
-			 flex-direction: column;
-				
-  margin-bottom: 10px;
+  <meta charset="UTF-8">
+  <title>My Page</title>
+  <style>
+    .container {
+     position: absolute;
+     top:200px;
+     left:400px;
+      width: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+    }
 
-		}
-		.box-info-item {
-			background-color: #48CD5D;
-			color: #fff;
-			padding: 5px;
-			margin: 5px;
-			text-align: center;
+    .half-container {
+      flex-basis: 50%;
+      height: 100%;
+      border: 1px solid black; /* 테두리 추가 */
+      box-sizing: border-box; /* 테두리 두께를 요소의 크기에 포함 */
+    }
 
-			height: 20px;
-			width: 150px;
-align-self: flex-end;
-		}
-	</style>
+    .image-container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-container img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+
+    .box-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .box {
+ position: relative;
+      width: 90%;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+    }
+ .sub-box {
+ width: 100px; 
+
+
+     position: relative;
+      width: 50px;
+      height: 25px;
+     
+      margin-left: auto;
+}
+ .sub-box button.green {
+  background-color: green;
+  height: 20px;
+  width: 80px;
+}
+.sub-box button.red {
+  background-color: red;
+  height: 20px;
+  width: 80px;
+}
+ 
+  </style>
+  
 </head>
 <body>
-	<div class="container"></div>
-		<div class="box">
-			<div class="box-info">
-				<h2>축구(용산 축구장)</h2>
-				<div class="box-info-item">승인대기</div>
-				<div class="box-info-item">취소하기</div>
-			</div>
-			<p>영등포 sky 축구장</p>
-		</div>
-		<div class="box">
-			<div class="box-info">
-				<h2>축구</h2>
-				<div class="box-info-item">승인완료</div>
-				<div class="box-info-item">Small box 2</div>
-			</div>
-			<p>마포구 대동동</p>
-		</div>
-		<div class="box">
-			<div class="box-info">
-				<h2>풋살</h2>
-				<div class="box-info-item">승인완료</div>
-				<div class="box-info-item">취소하기</div>
-			</div>
-			<p>북구 체육센터</p>
-		</div>
-		<div class="box">
-			<div class="box-info">
-				<h2>축구</h2>
-				<div class="box-info-item">승인완료</div>
-				<div class="box-info-item">취소하기</div>
-			</div>
-			<p>남구 체육시설</p>
-		</div>
+  <div class="container">
+    <div class="half-container image-container">
+      <img src="soccer.jpg">
+    </div>
+    <div class="half-container box-container">
+      <% for (int i = 0; i < dataList.size(); i++) { %>  
+        <div class="box">
+          <!-- 동적으로 생성되는 상자 -->
+          <%= dataList.get(i) %> 
+          <div class="sub-box">
+            <button style="background-color: green; height: 20px; width: 80px;">위 버튼</button>
+            <button onclick="cancel()" style="background-color:red; height: 20px;  width: 80px;">아래 버튼</button>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <script>
+    function cancel() {
+      var isCancelled = confirm("취소하였습니다.");
+      if (isCancelled) {
+        // 취소되었다는 팝업창을 띄우는 코드
+        alert("취소되었습니다.");
+      }
+    }
+  </script>
 </body>
 </html>

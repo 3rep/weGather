@@ -1,8 +1,5 @@
 package com.gather.we.dto;
 
-import java.util.List;
-
-import com.gather.we.dao.RecommendDAO;
 
 
 public class RecommendDTO  {
@@ -14,8 +11,7 @@ public class RecommendDTO  {
 	    private String game;
 	    
 	    
-	    
-	    
+	       
 	    
 	    
 		@Override

@@ -2,7 +2,7 @@ package com.gather.we.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
+
 
 import com.gather.we.dto.RecommendDTO;
 
