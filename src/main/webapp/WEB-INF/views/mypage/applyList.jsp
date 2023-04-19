@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!-- 오른쪽 내용칸 -->
 	<div id="content"> 
@@ -23,13 +24,17 @@
 		    </tr>
 		    </thead>
 		    <tbody>
-		    <tr>
-		        <td>100</td>
-		        <td>수영</td>
-		        <td>2023-04-17</td>
-		        <td><a href="">부산시</a></td>
-		        <td>신청완료 신청취소</td>
-		    </tr>
+		    <!-- 서버에서 넘어온 list에 담긴 DTO를 gametime 최신순으로 정렬 -->
+		    <c:forEach var="list" items="${list }">
+			    <tr>
+			        <td>100</td>
+			        <td>${list.sportname }</td>
+			        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
+			        <td><a href="">${list.stadium }</a></td>
+			        <td>신청완료 신청취소</td>
+			    </tr>
+		    </c:forEach>
+		    
 		    <tr>
 		        <td>99</td>
 		        <td>달리기</td>

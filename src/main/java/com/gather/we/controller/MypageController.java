@@ -1,5 +1,8 @@
 package com.gather.we.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +49,7 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/applyList") //post로 가져오는게 맞지않나? -> {userid} 포함하니까
-	public ModelAndView applyListMap(HttpSession session) {
+	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -55,48 +58,27 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		//랭크전+일반전의 지난+현재 신청목록을 화면에 뿌린다. : 종목명, 경기날짜, 경기구장, 경기상태
-		// gametime 최신순으로 정렬해둔 상태
+		// 최신순으로 정렬해서 뷰에 뿌린다.
+		List<MypageApplyListDTO> list = service.allgameList(logId);
 		
-		//	종목명
-		List<MypageApplyListDTO> sName = service.getSportName(logId);
-		System.out.println("sName->"+sName);
-		//	경기날짜, 랭크경기상태
-		List<MypageApplyListDTO> rgInfo= service.getRankgameInfo(logId);
-		System.out.println("rgInfo=>"+rgInfo);
-		//경기구장명
-		List<MypageApplyListDTO> stadium = service.getStadium(logId);
-		System.out.println("stadium=>"+stadium);
+		System.out.println("list->"+list);
 		
-		//map에 담아서 뷰로 보낸다
-		HashMap map = new HashMap();
-		Iterator iterator = sName.iterator();		
+		//List<MypageApplyListDTO> rlist = service.rankgameList(logId);		
+		//List<MypageApplyListDTO> nlist = service.normgameList(logId);
+	
+		//새로운 list객체 만들어서 rlist의 DTO와 nlist의 DTO를 모두 담는다.
+		//List<MypageApplyListDTO> sumlist = new ArrayList<MypageApplyListDTO>();
+		//sumlist.addAll(rlist);
+		//sumlist.addAll(nlist);
+	
+		//System.out.println("sumlist->"+sumlist);
+	
 		
-		try {
-			if(iterator.hasNext()){//list안에 dto가 있으면 반복
-				int i=0;
-				while(i <= sName.size()) { //list에 다음 DTO객체가 없을때까지 map에 담는다
-					// key, value
-					map.put("sN"+i, sName.get(i).getSportname()); // sN : sportName
-					map.put("gT"+i, rgInfo.get(i).getGametime()); //gT : gametime
-					map.put("stN"+i, stadium.get(i).getStadium()); //stN : stadiumName
-					map.put("gS"+i, rgInfo.get(i).getG_status()); //gS: g_status
-					//System.out.println("최신"+i+"->"+map.get("sN"+i));
-					
-					i++;
-				}
-				//map을 뷰로 보내야해
-				mav.addObject("map", map);
-				mav.setViewName("mypage/applyList");
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-		}
-		
+		mav.addObject("list", list);
+		mav.setViewName("mypage/applyList");		
 		return mav;
+		
 	}
-	
-	
 	
 	@GetMapping("/mypage/rank")
 	public ModelAndView rank() {

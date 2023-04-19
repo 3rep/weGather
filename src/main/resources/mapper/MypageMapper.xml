@@ -9,20 +9,45 @@
 	<select id="getUsername" resultType="String">
 		select username from users where userid=#{param1}
 	</select>
-	<select id="getSportName" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select s.sportname, z.gametime, z.userid from sport s 
-		join (select * from rank_game rg join r_participate rp on rg.no = rp.no where userid=#{param1}) z
-		on z.s_no = s.s_no
-		order by z.gametime desc
+	
+	<select id="allgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
+		select game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium
+		from (select no, s_no, st_no, gametime, g_status from rank_game rg
+		      union
+		      select no, s_no, st_no, gametime, g_status from norm_game ng) game
+		join 
+		    (select no, userid from r_participate rp
+		    union
+		    select no, userid from n_participate np) participate
+		on game.no = participate.no and participate.userid = #{param1}
+		join sport s
+		on s.s_no = game.s_no
+		join stadium_info si
+		on si.st_no = game.st_no
+		order by game.gametime desc
 	</select>
-	<select id="getRankgameInfo" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select userid, gametime, rp.no, g_status from rank_game rg join r_participate rp 
-		on rg.no = rp.no where userid=#{param1} order by gametime desc 
+	
+	<select id="rankgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
+		select rp.userid, rg.no, s.sportname, rg.gametime, si.stadium, rg.g_status from r_participate rp
+		join rank_game rg
+		on rp.no = rg.no and rp.userid=#{param1}
+		join stadium_info si
+		on rg.st_no = si.st_no
+		join sport s
+		on rg.s_no = s.s_no
+		order by rg.gametime desc
 	</select>
-	<select id="getStadium" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select si.stadium, z.gametime, z.userid from stadium_info si
-		join (select * from rank_game rg join r_participate rp on rg.no=rp.no where userid=#{param1}) z
-		on z.st_no = si.st_no 
-		order by z.gametime desc
+	<select id="normgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
+		select np.userid, ng.no, s.sportname, ng.gametime, si.stadium, ng.g_status from norm_game ng
+		join n_participate np
+		on np.no = ng.no and np.userid=#{param1}
+		join stadium_info si
+		on si.st_no = ng.st_no
+		join sport s
+		on s.s_no = ng.s_no
+		order by ng.gametime desc
 	</select>
+	
+	
+	
 </mapper>

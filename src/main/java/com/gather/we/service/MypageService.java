@@ -16,12 +16,13 @@ public interface MypageService {
 	public String getUsername(String userid); 
 	
 	//////applyList에 필요한 정보 가져오기
-	//종목명 가져오기
-	public List<MypageApplyListDTO> getSportName(String userid);
-	//경기날짜, 랭크경기상태
-	public List<MypageApplyListDTO> getRankgameInfo(String userid);
-	//경기구장명
-	public List<MypageApplyListDTO> getStadium(String userid);
+	//모든 경기(랭크+일반)
+	public List<MypageApplyListDTO> allgameList(String userid);
+	//랭크전
+	public List<MypageApplyListDTO> rankgameList(String userid); 
+	//일반전
+	public List<MypageApplyListDTO> normgameList(String userid);
+
 
 
 

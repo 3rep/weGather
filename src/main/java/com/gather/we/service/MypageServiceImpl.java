@@ -25,24 +25,26 @@ public class MypageServiceImpl implements MypageService {
 	public String getUsername(String userid) {
 		return dao.getUsername(userid);
 	}
-
+	
 	@Override
-	public List<MypageApplyListDTO> getSportName(String userid) {
-		return dao.getSportName(userid);
+	public List<MypageApplyListDTO> allgameList(String userid) {
+		return dao.allgameList(userid);
+	}
+	
+	@Override
+	public List<MypageApplyListDTO> rankgameList(String userid) {
+		return dao.rankgameList(userid);
 	}
 
 	@Override
-	public List<MypageApplyListDTO> getRankgameInfo(String userid) {
-		return dao.getRankgameInfo(userid);
-	}
-
-	@Override
-	public List<MypageApplyListDTO> getStadium(String userid) {
-		return dao.getStadium(userid);
+	public List<MypageApplyListDTO> normgameList(String userid) {
+		return dao.normgameList(userid);
 	}
 
 	
+
 	
+
 
 	
 }
