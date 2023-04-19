@@ -50,6 +50,17 @@
 		
 		<!-- --------------------------------------------------------- -->
 		
+		
+		<div>
+		map 데이터 넘어오기 테스트중
+		${map }
+			<c:forEach var="testmap" items="${map }">
+				<li>${testMap.key} : ${testMap.value }</li>
+				
+				
+			</c:forEach>
+		</div>
+		
 		</div>
 	</div>
 </body>
