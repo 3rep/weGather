@@ -4,7 +4,7 @@ public class PagingVO {
 	//private static final int onePageNumCount = 0;
 		//페이징에 필요한 변수들
 		private int nowPage = 1;//현재페이지
-		private int onePageRecord = 10; //한 페이지에 표시할 레코드 수
+		private int onePageRecord = 4; //한 페이지에 표시할 레코드 수
 		private int totalRecord;//총 레코드 수
 		private int totalPage;//총 페이지 수
 		//마지막 페이지에 남아 있는 레코드 수. 

@@ -14,4 +14,6 @@ public interface Manager10DAO {
 	 public List<Manager10DTO> pageSelect(PagingVO vo);
 	 
 	 public int totalRecord(PagingVO vo);
+	 
+	
 	}
