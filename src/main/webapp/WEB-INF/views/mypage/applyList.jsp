@@ -6,10 +6,11 @@
 	<div id="content"> 
 		<h3>신청경기</h3><br/>
 		<hr/>
-		<!-- <select name="listFilter">
-			<option value="latest">최신순</option>
-			<option value="ordest">오래된순</option>
-		</select> -->
+		<select name="filter">
+			<option value="all">전체</option>
+			<option value="rank">랭킹전</option>
+			<option value="norm">일반전</option>
+		</select> 
 		
 		<!-- 테이블 -------------------------------------------------------->
 		<table>

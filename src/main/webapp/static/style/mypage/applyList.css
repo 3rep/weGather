@@ -12,10 +12,25 @@
 }
 
 select{
-	font-size: 18px;
+	/* font-size: 18px;
 	margin-bottom : 20px;
 	float: right;
 	width: 120px;
+	height: 30px; */
+	box-sizing: border-box;
+	width: 100px;
+	padding: 5px;
+	font-size: 16px;
+	border-radius: 6px;
+	margin-bottom: 5px;
+	float: right;
+}
+
+option {
+  padding: 5px;
+  font-size: 16px;
+  color: #fff;
+  background: #272822;
 }
 
 table {
@@ -37,7 +52,7 @@ th {
 thead {
   font-weight: bold;
   color: #fff;
-  background: #73685d;	/*색상 변경하기*/
+  background: #485260;	/*색상 변경하기   #7D726F*/
 }
   
  td, th {
