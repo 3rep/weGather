@@ -88,15 +88,30 @@ height:60px;
       width: 80px;
       pointer-events: none; /* 클릭 이벤트 제거 */
     }
+     .pagingDiv {
+    position: relative;
+  }
+    .pagingDiv li{
+    	position:absolute;
+    	
+		
+		padding:10px 20px;
+		bottom: 0;
+	}
+	
   </style>
 </head>
 
  <body>
+ 
     <div class="container">
       <div class="half-container image-container">
         <img src="/static/img/soccer.jpg">
       </div>
       <div class="half-container box-container">
+      
+      
+    
         <c:forEach items="${managerList}" var="manager">
           <div class="box">
             <!-- 동적으로 생성되는 상자 -->
@@ -116,10 +131,13 @@ height:60px;
             </div>
           </div>
         </c:forEach>
+        
+        
+        
       </div>
-    
     <div>총 레코드 수: ${vo.totalRecord }</div>
     <div>${vo.totalPage }/${vo.nowPage }</div>
+    
     <!-- 페이징 처리  -->
     <div class="pagingDiv">
       <ul>
@@ -127,9 +145,10 @@ height:60px;
           <li>prev</li>
         </c:if>
         <c:if test="${vo.nowPage>1}">
-          <li><a href="hobbyManager10?nowPage=${vo.nowPage-1 }<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey}&searchWord=${vo.searchWord}</c:if>">prev</a></li>
+          <li><a href="/hobby/manager10?nowPage=${vo.nowPage-1 }<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey}&searchWord=${vo.searchWord}</c:if>">prev</a></li>
         </c:if>
-        <c:forEach var="p" begin="${vo.startPageNum}" end="${vo.startPageNum+vo.onePageNumCount }"> <!-- -1뺐음. -->
+         
+        <c:forEach var="p" begin="${vo.startPageNum}" end="${vo.startPageNum+vo.onePageNumCount }"> <!-- -1생략 -->
           <c:if test="${ p<=vo.totalPage}"> <!-- 표시할 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  
             <!-- 현재 페이지 표시하기 -->
             <c:if test="${p==vo.nowPage }">
@@ -139,7 +158,7 @@ height:60px;
             </c:if>
             <c:if test="${p!=vo.nowPage }">
               <li>
-                <a href="hobbyManager10?nowPage=${p}<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey }&searchWord=${vo.searchWord}</c:if>">${p}</a>
+                <a href="/hobby/manager10?nowPage=${p}<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey }&searchWord=${vo.searchWord}</c:if>">${p}</a>
               </li>
             </c:if>
           </c:if>
@@ -147,7 +166,7 @@ height:60px;
 			 
 			<!-- 다음 페이지 -->
 		<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
-  			<li><a href="/hobby/HobbyManager10?nowPage=${vo.nowPage + 1 }<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey}&searchWord=${vo.searchWord}</c:if>">next</a></li>
+  			<li><a href="/hobby/manager10?nowPage=${vo.nowPage + 1 }<c:if test="${vo.searchWord!=null }">&searchKey=${vo.searchKey}&searchWord=${vo.searchWord}</c:if>">next</a></li>
 		</c:if>
 		<c:if test="${vo.nowPage==vo.totalPage }">
  			 <li>next</li>
@@ -156,6 +175,8 @@ height:60px;
 		
 	</div>
  </div>
+ 
+    
 </body>
 <script>
 

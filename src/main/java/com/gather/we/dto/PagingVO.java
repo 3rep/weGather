@@ -4,7 +4,7 @@ public class PagingVO {
 	//private static final int onePageNumCount = 0;
 		//페이징에 필요한 변수들
 		private int nowPage = 1;//현재페이지
-		private int onePageRecord = 4; //한 페이지에 표시할 레코드 수
+		private int onePageRecord = 5; //한 페이지에 표시할 레코드 수
 		private int totalRecord;//총 레코드 수
 		private int totalPage;//총 페이지 수
 		//마지막 페이지에 남아 있는 레코드 수. 
@@ -13,32 +13,21 @@ public class PagingVO {
 		private int startPageNum = 1;
 		private int onePageNumCount=5;
 		
-		//
-		//검색에 필요한 변수들
-		private String searchKey;
-		private String searchWord;
-		
+						
 		
 		
 		
 		@Override
 		public String toString() {
 			return "PagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord=" + totalRecord
-					+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", startPageNum=" + startPageNum
-					+ ", onePageNumCount=" + onePageNumCount + ", searchKey=" + searchKey + ", searchWord=" + searchWord
-					+ "]";
+					+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", startPageNum="
+					+ startPageNum + ", onePageNumCount=" + onePageNumCount + "]";
 		}
 		public int getNowPage() {
 			return nowPage;
-			
-
-			//출력할 페이지 시작 번호. 
-			
 		}
 		public void setNowPage(int nowPage) {
 			this.nowPage = nowPage;
-		
-			startPageNum= ((nowPage-1)/onePageNumCount)*onePageNumCount+1;
 		}
 		public int getOnePageRecord() {
 			return onePageRecord;
@@ -51,29 +40,12 @@ public class PagingVO {
 		}
 		public void setTotalRecord(int totalRecord) {
 			this.totalRecord = totalRecord;
-			
-			//총레코드 수를 이용하여 총페이지 수를 구하기 
-			
-			totalPage = (int)Math.ceil((double)totalRecord/onePageRecord);
-			
-			//마지막 페이지에 남아 있는 레코드 수
-			
-			lastPageRecord = onePageRecord;
-			if(nowPage==totalPage) {
-				if(totalRecord%onePageRecord==0){//나머지가 0인 경우는 lastPageRecord<- onePageRecord
-					lastPageRecord = onePageRecord;
-				}else{//나머지가 있을 경우 남아 있는 레코드수를 lastpageRecord
-					lastPageRecord = totalRecord % onePageRecord;
-				}
-			}
 		}
 		public int getTotalPage() {
 			return totalPage;
 		}
 		public void setTotalPage(int totalPage) {
-			this.totalPage = totalPage;	
-			
-			
+			this.totalPage = totalPage;
 		}
 		public int getLastPageRecord() {
 			return lastPageRecord;
@@ -81,40 +53,27 @@ public class PagingVO {
 		public void setLastPageRecord(int lastPageRecord) {
 			this.lastPageRecord = lastPageRecord;
 		}
-
 		public int getStartPageNum() {
 			return startPageNum;
 		}
-
 		public void setStartPageNum(int startPageNum) {
 			this.startPageNum = startPageNum;
 		}
-
 		public int getOnePageNumCount() {
 			return onePageNumCount;
 		}
-
 		public void setOnePageNumCount(int onePageNumCount) {
 			this.onePageNumCount = onePageNumCount;
 		}
-
-		public String getSearchKey() {
-			return searchKey;
-		}
-
-		public void setSearchKey(String searchKey) {
-			this.searchKey = searchKey;
-		}
-
-		public String getSearchWord() {
-			return searchWord;
-		}
-
-		public void setSearchWord(String searchWord) {
-			this.searchWord = searchWord;
-		}
+		
+		//
 		//검색에 필요한 변수들
-		
-		
-		
-	}
+
+
+
+}
+
+
+
+
+

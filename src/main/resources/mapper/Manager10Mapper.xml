@@ -8,4 +8,11 @@
 	FROM rank_game  
 	JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 	</select>
+	<select id="selectManagerList" parameterType="map" resultType="com.gather.we.dto.PagingVO">
+  	SELECT s.stadium, s.location, rg.gametime, rg.g_status
+  	FROM rank_game JOIN stadium_info s ON rg.st_no = s.st_no
+  	ORDER BY rg.no DESC
+ 	 LIMIT #{nowPage, jdbcType=INTEGER, mode=IN}, #{onePageRecord, jdbcType=INTEGER, mode=IN}
+</select>
+ 	
  </mapper> 
