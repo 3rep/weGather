@@ -6,5 +6,5 @@ import com.gather.we.dto.Manager10DTO;
 
 public interface Manager10Service {
 
-	public List<Manager10DTO> getAllManager10();
+	 public List<Manager10DTO> getAllManager10();
 }

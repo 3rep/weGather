@@ -17,11 +17,11 @@ public class Manager10Controller {
     Manager10Service service;
 	
 	 @GetMapping("/hobby/manager10")
-	    public ModelAndView manager10Hobby() {
-	    	ModelAndView mav = new ModelAndView();
-	    	List<Manager10DTO> ml = service.getAllManager10();
-	    	mav.addObject("ml", ml);
-	    	mav.setViewName("/hobby/manager10");
-	    	return mav;
-	    }
+	 public ModelAndView manager10Hobby() {
+		    ModelAndView mav = new ModelAndView();
+		    List<Manager10DTO> managerList = service.getAllManager10();
+		    mav.addObject("managerList", managerList);
+		    mav.setViewName("/hobby/manager10");
+		    return mav;
+		}
 }
