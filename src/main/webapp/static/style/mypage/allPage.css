@@ -54,7 +54,7 @@
 	/* background: pink; */
 }
 #menuList>li:nth-child(2n+1):hover{
-	background: #F5E6B1;
+	background: #FDEDB4;
 }
 
 #menuList img{
@@ -76,7 +76,7 @@
 	
 }
 #menuList>ul>li:nth-child(2n):hover{
-	background: #F5E6B1;
+	background: #FDEDB4;
 }
 .open{
 	padding-left: 25px;

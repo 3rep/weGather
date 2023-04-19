@@ -26,7 +26,7 @@ table {
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 th {
@@ -54,15 +54,70 @@ td {
   text-overflow: ellipsis;	
 }
 td:nth-child(5n+4){
-	width: 40%;
+	/* width: 40%; */
 	overflow: hidden;
 	white-space: inherit;
 	text-overflow: ellipsis;
 }
-
+th:nth-child(5n){
+	width: 10%
+}
 
 a {
   color: #73685d; /*색상 변경하기*/
+}
+
+.rg{
+	background: #FFE0D9;
+	
+}
+.ng{
+	background: #D4E5FF;
+}
+
+
+
+ @media all and (max-width: 768px) {
+    
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  th {
+    text-align: right;
+  }
+  
+  table {
+    position: relative; 
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+  }
+  
+  thead {
+    float: left;
+    white-space: nowrap;
+  }
+  
+  tbody {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  th {
+    border-bottom: 1px solid #a39485;
+  }
+  
+  td {
+    border-bottom: 1px solid #e5e5e5;
+  }
 }
   
  
