@@ -74,9 +74,19 @@ height:60px;
   height: 20px;
   width: 100%;
 }
- 
+ .sub-box button.grey {
+      background-color: grey;
+      height: 20px;
+      width: 80px;
+      pointer-events: none; /* 클릭 이벤트 제거 */
+    }
+    .sub-box button.blue {
+      background-color: blue;
+      height: 20px;
+      width: 80px;
+      pointer-events: none; /* 클릭 이벤트 제거 */
+    }
   </style>
-  
 </head>
 <body>
   <div class="container">
@@ -92,9 +102,14 @@ height:60px;
           ${manager.gametime}
           ${manager.g_status}
           <div class="sub-box">
-            <button style="background-color: green; height: 20px; width: 80px;">승인 대기</button>
-            <button onclick="cancel()" style="background-color:red; height: 20px;  width: 80px;">취소 신청</button>
-            <button id="grey-btn" style="background-color:grey; height: 20px;  width: 80px; display:none;" disabled>버튼</button>
+            <c:if test="${manager.g_status == 0}">
+              <button class="green" style="width: 80px;">승인 대기</button>
+              <button onclick="cancel()" class="red" style="width: 80px;">취소 신청</button>
+            </c:if>
+            <c:if test="${manager.g_status == 1}">
+              <button class="grey">확정</button>
+              <button onclick="location.href='/participant-list'" class="blue" style="width: 80px;">참가명단 확인</button>
+            </c:if>
           </div>
         </div>
       </c:forEach>
@@ -107,26 +122,6 @@ height:60px;
         // 취소되었다는 팝업창을 띄우는 코드
         alert("취소되었습니다.");
       }
-    }
-    
-    var gameStatus = 0; // 게임 상태를 0으로 초기화
-    if (gameStatus === 0) {
-      // 버튼을 조작하는 코드
-      var greenBtn = document.querySelector('.sub-box button:first-of-type');
-      var redBtn = document.querySelector('.sub-box button:last-of-type');
-      var greyBtn = document.getElementById('grey-btn');
-      greenBtn.style.display = "inline-block";
-      redBtn.style.display = "inline-block";
-      greyBtn.style.display = "none";
-    } else if (gameStatus === 1) {
-      // 버튼을 조작하는 코드
-      var greenBtn = document.querySelector('.sub-box button:first-of-type');
-      var redBtn = document.querySelector('.sub-box button:last-of-type');
-      var greyBtn = document.getElementById('grey-btn');
-      greenBtn.style.display = "none";
-      redBtn.style.display = "none";
-      greyBtn.style.display = "inline-block";
-      greyBtn.disabled = true;
     }
   </script>
 </body>
