@@ -49,7 +49,7 @@
 						</c:if>
 						
 				        <td>${list.sportname }</td>
-				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
+				        <td id="gt">${list.gametime }</td>
 				        <td><a href="">${list.stadium }</a></td>
 				        <td>${list.g_status }</td>
 				        
@@ -80,10 +80,19 @@
 		
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+
 <script>
 	//날짜 구하기
 	//현재날짜
+	
 	var now = new Date();
 	console.log("현재: "+ now);
+	var gt = $("#gt").text();
+	console.log("gt:" +gt);
+	
+	
+
+	마지막에 데이터타입으 
 </script>
 </html>

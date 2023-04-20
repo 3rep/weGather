@@ -2,8 +2,10 @@ package com.gather.we.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -64,7 +66,75 @@ public class MypageController {
 		
 		System.out.println("list->"+list);
 		
+		for(int i=0; i<list.size(); i++) {
+			try {
+				System.out.println("orgDate: "+ list.get(i).getGametime());
+				
+				//gametime 날짜형식 바꾸기
+					MypageApplyListDTO dto = new MypageApplyListDTO();
+				
+				SimpleDateFormat sdf = new SimpleDateFormat();
+				sdf.applyPattern("yyyy-MM-dd HH:mm");
+				String newDate = sdf.format(list.get(i).getGametime());
+				System.out.println("newDate: "+ newDate);
+				
+				//dto안에 있는 기존gametime을 newDate로 바꿔야해	
+				//기존gametime은 date타입이고, newDate는 string이야
+				// string을 date로 바꿔서 setGametime하면?
+				
+					Date finaldate = sdf.parse(newDate);
+					list.get(i).setGametime(finaldate);
+					System.out.println("newlist: "+ list );
+					
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			gametime date 타입 이틀전
+			뷰에 넘기는건 ok
+			
+			뷰에서 이틀전 계산이 어렵다
+			
+			DB에서 date로 받아서
+			컨트롤러에서 형식을 안바꾸고
+			뷰로 넘겨서 -2를 하고
+			마지막에 형식 바꾼다
+			> ajax
+			그 다음에 형식을 바꾼다
+			
+			컨트롤러에서 형식을 바꾸고 -> string
+			
+			뷰에서는 데이트로 받아
+			
+			DB에서 스트링으로 받아서
+			컨트롤러에서 date + 형식을 맞춘다.
+			
+			
+			
+			
+		}
+		
+		
+		
 		//날짜형식 바꾸기 
+		
+		//Date now = new Date();
+		//System.out.println("now: "+ now);
+				
+		//Calendar cal = Calendar.getInstance();
+		//cal.setTime(now);
+		//cal.add(Calendar.DATE, -2);
+		//System.out.println("cal: "+ cal.getTime());
+				
+		//SimpleDateFormat sdt = new SimpleDateFormat();
+		//sdt.applyPattern("yyyy-MM-dd hh:mm:ss");
+		//String newDate = sdt.format(cal.getTime());
+		//System.out.println("newDate: "+ newDate);
+
+
+
+
 		// 원하는 날짜 형식 
 		//SimpleDateFormat formatdate = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		//String strdate = formatdate.format(list.get(3));
