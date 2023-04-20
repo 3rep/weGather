@@ -6,14 +6,15 @@
 	<div id="content"> 
 		<h3>신청경기</h3><br/>
 		<hr/>
-		<select name="filter">
+		<select id="filter" name="filter">
 			<option value="all">전체</option>
 			<option value="rank">랭킹전</option>
 			<option value="norm">일반전</option>
 		</select> 
+		<input type="hidden" name="selectValue" id="selectValue" value=""/>
 		
 		<!-- 테이블 -------------------------------------------------------->
-		<table>
+		<table id="table">
 			<colgroup>
 	        	<col width="8%" />
 	        	<col width="8%" />
@@ -49,16 +50,28 @@
 						</c:if>
 						
 				        <td>${list.sportname }</td>
-				        <td id="gt">${list.gametime }</td>
+				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td><a href="">${list.stadium }</a></td>
-				        <td>${list.g_status }</td>
+				       
+				       <!--g_status : 2(취소)/1(확정)/0(대기) 
+						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
+						신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
+						경기확정 : g_status=1
+						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우    -->
+				        <c:if test="${list.g_status==2}">	
+				        	<td>경기취소</td>
+				        </c:if>
+				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+				        	<td>신청완료/신청취소</td>
+				        </c:if>
 				        
-				        <!-- g_status : 2(취소)/1(확정)/0(대기) -->
-					    <!-- 경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 -->
-					    <!-- 신청완료, 신청취소 : gametime 이틀전까지 + g_status=1 -->
-					    <!-- 경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 -->  
-					 
-					    
+				        <c:if test="${list.g_status==1 && list.gametime<now }">	
+				        	<td>경기종료</td>
+				        </c:if>
+				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+				        	<td>경기확정</td>
+				        </c:if>
+				         
 					  
 						    
 				    </tr>
@@ -71,7 +84,9 @@
 		
 		
 		
-		
+	<div>
+	테스트용
+	${now }	
 		
 	</div>
 	
@@ -81,18 +96,21 @@
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-
 <script>
-	//날짜 구하기
-	//현재날짜
-	
-	var now = new Date();
-	console.log("현재: "+ now);
-	var gt = $("#gt").text();
-	console.log("gt:" +gt);
-	
-	
+	//select박스로 필터기능 구현
+	// option값을 누르면 아래 내용 변경 -> ajax
+	// select박스에 보이는 화면은 누른값으로 보이게
+	$(function(){
+		$("#filter").change(function(){
+			alert("onchange함수실행")
+			$("#selectValue").val
+			
+			
+			
+			
+		});
+	});
 
-	마지막에 데이터타입으 
+
 </script>
 </html>

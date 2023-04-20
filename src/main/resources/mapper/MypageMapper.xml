@@ -11,10 +11,10 @@
 	</select>
 	
 	<select id="allgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select participate.userid, game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium
-		from (select no, s_no, st_no, gametime, g_status from rank_game rg
+		select participate.userid, game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium, gt2ago
+		from (select no, s_no, st_no, gametime, g_status, gametime-2 gt2ago from rank_game rg
 		      union
-		      select no, s_no, st_no, gametime, g_status from norm_game ng) game
+		      select no, s_no, st_no, gametime, g_status, gametime-2 gt2ago from norm_game ng) game
 		join 
 		    (select no, userid from r_participate rp
 		    union
