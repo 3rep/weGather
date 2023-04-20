@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="allgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium
+		select participate.userid, game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium
 		from (select no, s_no, st_no, gametime, g_status from rank_game rg
 		      union
 		      select no, s_no, st_no, gametime, g_status from norm_game ng) game

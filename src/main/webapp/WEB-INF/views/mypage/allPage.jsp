@@ -11,7 +11,7 @@
 <link href="${path}/static/style/mypage/allPage.css" rel="stylesheet" type="text/css">
 <link href="${path}/static/style/mypage/applyList.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+
 <body>
 	<div class="container" >
 		<!-- 왼쪽 메뉴바 -->

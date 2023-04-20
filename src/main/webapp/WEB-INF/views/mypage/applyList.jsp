@@ -48,31 +48,18 @@
 							</td>
 						</c:if>
 						
-						
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td><a href="">${list.stadium }</a></td>
+				        <td>${list.g_status }</td>
 				        
 				        <!-- g_status : 2(취소)/1(확정)/0(대기) -->
 					    <!-- 경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 -->
 					    <!-- 신청완료, 신청취소 : gametime 이틀전까지 + g_status=1 -->
 					    <!-- 경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 -->  
 					 
-					    <!-- 현재시간 구하기 -->
-			 		 	<c:set var="today" value="<%=new java.util.Date()%>" />
-			  		  	<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd hh:mm" /></c:set> 
+					    
 					  
-					    <td>
-						    <c:if test="${list.g_status==2 }">
-						    	경기취소
-						    </c:if>
-						     <c:if test="${list.g_status==1}"> <!-- 이틀전까지 어떻게 나타내지!!! -->
-						    	신청완료 / 신청취소
-						    </c:if>
-						    <c:if test="${list.g_status==1 && list.gametime<date}"> <!-- 얘도 이상한데? -->
-						    	경기종료
-						    </c:if>
-						</td>
 						    
 				    </tr>
 			    </c:forEach>
@@ -83,13 +70,20 @@
 		<!-- --------------------------------------------------------- -->
 		
 		
-		<div>
-		<%-- map 데이터 넘어오기 테스트중
-		<c:set var="gametime" value="${ list.gametime}"/>
-		[[[   ${gametime } ]]]] --%>
-		</div>
 		
-		</div>
+		
+		
 	</div>
+	
+		
+		
+		
+</div>
 </body>
+<script>
+	//날짜 구하기
+	//현재날짜
+	var now = new Date();
+	console.log("현재: "+ now);
+</script>
 </html>

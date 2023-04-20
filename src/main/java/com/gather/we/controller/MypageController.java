@@ -1,5 +1,6 @@
 package com.gather.we.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,6 +64,14 @@ public class MypageController {
 		
 		System.out.println("list->"+list);
 		
+		//날짜형식 바꾸기 
+		// 원하는 날짜 형식 
+		//SimpleDateFormat formatdate = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		//String strdate = formatdate.format(list.get(3));
+		//System.out.println("strdate->"+strdate);
+		//System.out.println("datelist->"+list);
+		
+		
 		//List<MypageApplyListDTO> rlist = service.rankgameList(logId);		
 		//List<MypageApplyListDTO> nlist = service.normgameList(logId);
 	
@@ -79,6 +88,11 @@ public class MypageController {
 		return mav;
 		
 	}
+	
+	
+	
+	
+	
 	
 	@GetMapping("/mypage/rank")
 	public ModelAndView rank() {
