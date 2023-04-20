@@ -20,7 +20,7 @@ a.button {
 }
 			/*색 바꾸기 하자 */
 .btnBlueGreen {
-  background: #00AE68;
+  background: #2A3883;
 }
 .btnLightBlue {
   background: #5DC8CD;
@@ -29,11 +29,11 @@ a.button {
   background: #FFAA40;
 }
 .btnBlueGreen.btnBorder {
-  box-shadow: 0px 0px 0px 0px #21825B;
+  box-shadow: 0px 0px 0px 0px #93A4FF;
 }
 
 .btnBlueGreen.btnBorder:hover {
-  box-shadow: 0px 0px 0px 5px #21825B;
+  box-shadow: 0px 0px 0px 5px #93A4FF;
 }
 
 .btnLightBlue.btnBorder {
@@ -117,7 +117,7 @@ th:nth-child(5n){
 a {
   color: #343230; /*색상 변경하기*/
   font-size: 15px;
-  font-wight: 500;
+  font-weight: 500;
 }
 
 .rg{

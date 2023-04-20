@@ -28,7 +28,7 @@
 	<br/>
 	<div>
 		session 세팅하기 : userid -> scott
-		<%session.setAttribute("logId", "man1");	%>
+		<%session.setAttribute("logId", "man2");	%>
 		<br/>
 		세팅확인 :<br/>
 		userid -> [[ <%= session.getAttribute("logId") %> ]]<br/>

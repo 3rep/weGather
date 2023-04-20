@@ -67,6 +67,7 @@ span{
 }
 #menuList>li:nth-child(2n):hover{
 	background: #FDEDB4;
+	/* font-weight: bold;  왜 안먹지...*/ 
 }
 .open{
 	padding-left: 25px;
