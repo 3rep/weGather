@@ -17,38 +17,31 @@
 		<!-- 왼쪽 메뉴바 -->
 		<ul id="leftMenu">
 			<li class=h>마이페이지</li>
-			<!-- 여자, 남자에 따라 다른 사진 들어가게 -->
 			
-			<c:if test="${logGender=='여' }">
+			<!-- 여자, 남자에 따라 다른 사진 들어가게 -->
+			<c:if test="${logGender=='여성' }">
 				<li class=img>
 					<img src="${path}/static/img/mypage/female.png"/><br/> 
-					[[[[${logName}]]]]
+					${logName}<span>님</span>
 				</li>	
 			</c:if>
-			<c:if test="${logGender!='여' }">
+			<c:if test="${logGender!='여성' }">
 				<li class=img>
 					<img src="${path}/static/img/mypage/male.png"/><br/>
-					[[[[${logName}]]]]
+					${logName}<span>님</span>
 				</li> 
 			</c:if>
+			<div class="line"></div>
+			
 			<div id="menuList" >
-				<ul>
-	 				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
-	 				<li><a href="applyList">My 경기</a></li>
-	 				
-	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
-	 				<li ><a href="applyList"><span>랭킹전</span></a></li>
-	 				<li class="open"><img src="${path}/static/img/mypage/rightarrow.png"/></li>
-	 				<li ><a href="applyList"><span>일반전</span></a></li>
- 				</ul> 				
- 			
+				<li><img src="${path}/static/img/mypage/calendar.png"/></li>
+	 			<li><a href="applyList">My 경기</a></li>
  				<li><img src="${path}/static/img/mypage/prize.png"/></li>
 				<li><a href="rank">My 랭크</a></li>
 				<li><img src="${path}/static/img/mypage/align.png"/></li>
 				<li><a href="paymentList">결제내역</a></li>
 				<li><img src="${path}/static/img/mypage/info.png"/></li>
 				<li><a href="info">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
-				
 			</div>
 		</ul>
 		
