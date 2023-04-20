@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="rankgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select rp.userid, rg.no, s.sportname, rg.gametime, si.stadium, rg.g_status from r_participate rp
+		select rp.userid, rg.no, s.sportname, rg.gametime, si.stadium, rg.g_status, rg.gametime-2 gt2ago from r_participate rp
 		join rank_game rg
 		on rp.no = rg.no and rp.userid=#{param1}
 		join stadium_info si
@@ -38,7 +38,7 @@
 		order by rg.gametime desc
 	</select>
 	<select id="normgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
-		select np.userid, ng.no, s.sportname, ng.gametime, si.stadium, ng.g_status from norm_game ng
+		select np.userid, ng.no, s.sportname, ng.gametime, si.stadium, ng.g_status, ng.gametime-2 gt2ago from norm_game ng
 		join n_participate np
 		on np.no = ng.no and np.userid=#{param1}
 		join stadium_info si

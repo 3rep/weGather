@@ -1,4 +1,62 @@
 @charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+
+/*ㅡㅡㅡㅡㅡ버튼 스타일ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+a.button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 90px;
+  padding: 0;
+  margin: 10px 10px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 40px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+ 
+}
+			/*색 바꾸기 하자 */
+.btnBlueGreen {
+  background: #00AE68;
+}
+.btnLightBlue {
+  background: #5DC8CD;
+}
+.btnOrange {
+  background: #FFAA40;
+}
+.btnBlueGreen.btnBorder {
+  box-shadow: 0px 0px 0px 0px #21825B;
+}
+
+.btnBlueGreen.btnBorder:hover {
+  box-shadow: 0px 0px 0px 5px #21825B;
+}
+
+.btnLightBlue.btnBorder {
+  box-shadow: 0px 0px 0px 0px #01939A;
+}
+
+.btnLightBlue.btnBorder:hover {
+  box-shadow: 0px 0px 0px 5px #01939A;
+}
+
+.btnOrange.btnBorder {
+  box-shadow: 0px 0px 0px 0px #A66615;
+}
+
+.btnOrange.btnBorder:hover {
+  box-shadow: 0px 0px 0px 5px #A66615;
+}
+}
+/*ㅡㅡㅡㅡㅡ버튼 스타일ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+
+
 
 #content{
 	/*
@@ -9,28 +67,6 @@
 	margin-bottom: 50px;
 	*/
 	font-size: var(--font-small);
-}
-
-select{
-	/* font-size: 18px;
-	margin-bottom : 20px;
-	float: right;
-	width: 120px;
-	height: 30px; */
-	box-sizing: border-box;
-	width: 110px;
-	padding: 5px;
-	font-size: 16px;
-	border-radius: 6px;
-	margin-bottom: 5px;
-	float: right;
-}
-
-option {
-  padding: 5px;
-  font-size: 16px;
-  color: #fff;
-  background: #272822;
 }
 
 table {
@@ -79,15 +115,23 @@ th:nth-child(5n){
 }
 
 a {
-  color: #73685d; /*색상 변경하기*/
+  color: #343230; /*색상 변경하기*/
+  font-size: 15px;
+  font-wight: 500;
 }
 
 .rg{
-	background: #FFE0D9;
+	background: #FFDDC9;
+	font-weight: 600 ;
+	font-size: 15px;
+	color: #525150;
 	
 }
 .ng{
 	background: #D4E5FF;
+	font-weight: 600;
+	font-size: 15px;
+	color: #525150;
 }
 
 

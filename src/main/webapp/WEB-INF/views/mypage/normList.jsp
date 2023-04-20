@@ -28,24 +28,14 @@
 		        <th>날짜</th>
 		        <th>경기명(구장명)</th>
 		        <th>상태</th>
+		
 		    </tr>
 		    </thead>
 		    <tbody>
-		    
+
 			    <c:forEach var="list" items="${list }">
 				    <tr>
-				    	<!-- 경기유형: 랭크->4자리수 / 일반-> 3자리수 -->
-				    	<c:if test="${list.no>1000 }">
-					    	<td class="rg" >
-								랭킹
-							</td>
-						</c:if>
-						<c:if test="${list.no<1000 }">
-							<td class="ng">
-								일반
-							</td>
-						</c:if>
-						
+				    	<td class="ng">일반</td>
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td><a href="">${list.stadium }</a></td>
@@ -68,9 +58,9 @@
 				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
 				        	<td>경기확정</td>
 				        </c:if>
+				         
 				    </tr>
 			    </c:forEach>
-		    
 		    </tbody>
 		</table>
 		
@@ -78,9 +68,4 @@
 		
 </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-<script>
-
-
-</script>
 </html>

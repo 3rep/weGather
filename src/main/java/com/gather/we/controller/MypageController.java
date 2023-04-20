@@ -68,13 +68,42 @@ public class MypageController {
 		
 		Date now = new Date();
 		System.out.println(now);
+		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
 		mav.setViewName("mypage/applyList");		
 		return mav;
-		
 	}
 	
+	@GetMapping("/mypage/rankList")
+	public ModelAndView rankList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		String logId = (String)session.getAttribute("logId");
+		
+		List<MypageApplyListDTO> list = service.rankgameList(logId);
+		Date now = new Date();
+
+		mav.addObject("list", list);
+		mav.addObject("now", now);
+		mav.setViewName("mypage/rankList");
+		return mav;
+	}
+	
+	@GetMapping("/mypage/normList")
+	public ModelAndView normList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		String logId = (String)session.getAttribute("logId");
+		
+		List<MypageApplyListDTO> list = service.normgameList(logId);
+		Date now = new Date();
+
+		mav.addObject("list", list);
+		mav.addObject("now", now);
+		mav.setViewName("mypage/normList");
+		return mav;
+	}
 	
 	
 	
