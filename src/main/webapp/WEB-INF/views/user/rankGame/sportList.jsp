@@ -12,7 +12,7 @@
 				<span class="sport_tag">${sportDTO.sportname}</span>
 				<img src="${pageContext.request.contextPath}/uploadfile/sport/${sportDTO.filename}" alt="스포츠종목" />
 				<div class="sport_desc_container">
-					<a href="rankgamelist?sportid=${sportDTO.s_no}">
+					<a href="rankgamelist?s_no=${sportDTO.s_no}">
 						<span class="sport_name">${sportDTO.sportname}</span>
 						<span>${sportDTO.sportdesc}</span>
 					</a>

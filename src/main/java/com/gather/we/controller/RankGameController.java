@@ -1,14 +1,21 @@
 package com.gather.we.controller;
 
+import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.RankGameDTO;
+import com.gather.we.dto.RankGameListDTO;
 import com.gather.we.dto.SportDTO;
+import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 
 @RestController
@@ -16,6 +23,8 @@ import com.gather.we.service.SportService;
 public class RankGameController {
 	@Autowired
 	SportService sportService;
+	@Autowired
+	RankGameService rankGameService;
 	
 	// 종목 목록
 	@GetMapping("/sportlist")
@@ -26,6 +35,28 @@ public class RankGameController {
 		
 		mav.addObject("sportList", sportList);
 		mav.setViewName("user/rankGame/sportList");
+		
+		return mav;
+	}
+	
+	// 랭크경기 목록
+	@GetMapping("/rankgamelist")
+	public ModelAndView rankGameList(RankGameListDTO dto) { 
+		ModelAndView mav = new ModelAndView();
+		
+		// 지역 필터링 시 DB에서 해당 지역의 경기만 선택하여 가져오기 위해 지역 카테고리를 세부 지역으로 나누어 리스트에 담는다.
+		String region = dto.getRegion();// '대전/세종/충청'
+		if(region!=null) {
+			List<String> regionList = Arrays.asList(region.split("/"));// ['대전', '세종', '충청']
+			dto.setRegionList(regionList);
+		}
+		
+		// DB에서 랭크경기 목록 받아오기
+		List<RankGameDTO> rankGameList = rankGameService.rankGameListSelect(dto);
+
+		mav.addObject("s_no", dto.getS_no());
+		mav.addObject("rankGameList", rankGameList);
+		mav.setViewName("user/rankGame/rankGameList");
 		
 		return mav;
 	}
