@@ -63,11 +63,10 @@ public class MypageController {
 		//랭크전+일반전의 지난+현재 신청목록을 화면에 뿌린다. : 종목명, 경기날짜, 경기구장, 경기상태
 		// 최신순으로 정렬해서 뷰에 뿌린다.
 		List<MypageApplyListDTO> list = service.allgameList(logId);
-		
-		System.out.println("list->"+list);
+		//System.out.println("list->"+list);
 		
 		Date now = new Date();
-		System.out.println(now);
+		//System.out.println(now);
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
@@ -104,8 +103,6 @@ public class MypageController {
 		mav.setViewName("mypage/normList");
 		return mav;
 	}
-	
-	
 	
 	
 	
