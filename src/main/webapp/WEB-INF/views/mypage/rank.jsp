@@ -7,8 +7,8 @@
 			<hr/>
 			예시본문<br/>
 		
-			<form>
-				<select id="sportname" name="sportname" required onchange="changeFn()" >
+			<form id="chartView">
+				<select id="sportname" name="sportname" required" >
 					<option value="">--종목선택--</option>
 					<option value="풋살">풋살</option>
 					<option value="야구">야구</option>
@@ -44,24 +44,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script>
-		/* $(function(){
-			$("#chartBtn3").click(function(){
-			alert("경고");
-			console.log("value: "+value);
-			return false;
-			});
-		}); */
-			
-		function changeFn(){
-			var city  = document.getElementById("chartBtn3");
-			var value = (sportname.options[sportname.selectedIndex].value);
-			alert("value = "+value);
-			
-			/* 		
-			var selectedindex = city.selectedIndex;
-			alert("value = "+value+" , selectedindex = "+selectedindex); 
-			*/
-		};
+		
 		
 		$(function(){
 			//차트 그리기에서 필요한 데이터 ---------------
@@ -91,15 +74,13 @@
 			}
 			
 			//버튼누르면 ajax 실행
-			$("#chartBtn").click(function(){ 
+			$("#chartBtn3").click(function(){ 
 				event.preventDefault();
+				var value = (sportname.options[sportname.selectedIndex].value);
+				var data = {sportname: value }
 				
 				$.ajax({
-					data : {
-						f : '풋살',
-						bs : '야구',
-						bk : '농구'
-					},
+					data : data,
 					type : "post",
 					url : "rankMain",
 					success : function(result){
@@ -107,19 +88,6 @@
 					$("#re").append(result);
 					
 					var jsonData = JSON.parse(result);
-					//console.log(jsonData);
-					//console.log(jsonData[0].gametime);
-					
-					
-					/* jsonData.map(function(newtime,i){
-						gametime[i] = newtime.gametime;
-						var timestamp = gametime[i];
-						var date = new Date(timestamp);
-						console.log(date.getTime());
-						console.log(date);
-						
-					}); */
-					
 					
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜

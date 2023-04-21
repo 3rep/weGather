@@ -113,13 +113,11 @@ public class MypageController {
 	}
 	
 	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
-	public String rankMain(HttpSession session, String f, String bs, String bk) {
+	public String rankMain(HttpSession session, String sportname) {
 	  
-		System.out.println("f: "+f+", bs: "+bs+", bk: "+bk);
-		
 		String logId = (String)session.getAttribute("logId");
 			  
-		List<MypageRankDTO> list = service.rank(logId,f);
+		List<MypageRankDTO> list = service.rank(logId,sportname);
 		//System.out.println("list-> "+list );
 		//System.out.println("»Æ¿Œ::::"+list.get(0));
 		
