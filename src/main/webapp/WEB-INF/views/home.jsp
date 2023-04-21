@@ -16,5 +16,6 @@
 <a href="/hobby/manager10">매니저신청현황</a>
 <a href="/hobby/managerPast">매니저이전내역</a>
 <a href="/hobby/entry">참가자 명단 확인</a>
+<a href="/hobby/managerInput">사용자 랭크 입력</a>
 </body>
 </html>

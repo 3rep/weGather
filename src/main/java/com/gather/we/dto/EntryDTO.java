@@ -5,7 +5,7 @@ package com.gather.we.dto;
 public class EntryDTO {
 	
 	 private int id;
-	    private String name;
+	    private String username;
 	    private String gender;
 	    private int rank;
 	    private int s_no;
@@ -18,7 +18,7 @@ public class EntryDTO {
 		
 		@Override
 		public String toString() {
-			return "EntryDTO [id=" + id + ", name=" + name + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
+			return "EntryDTO [id=" + id + ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
 					+ ", userid=" + userid + ", tel=" + tel + "]";
 		}
 
@@ -28,11 +28,11 @@ public class EntryDTO {
 		public void setId(int id) {
 			this.id = id;
 		}
-		public String getName() {
-			return name;
+		public String getUsername() {
+			return username;
 		}
-		public void setName(String name) {
-			this.name = name;
+		public void setUsername(String username) {
+			this.username = username;
 		}
 		public String getGender() {
 			return gender;
