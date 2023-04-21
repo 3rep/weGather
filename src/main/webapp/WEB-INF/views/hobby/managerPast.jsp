@@ -14,7 +14,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 70vh;
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
@@ -24,20 +24,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%; /* 컨테이너 높이를 60%로 설정 */
+  height: 30%; /* 컨테이너 높이를 60%로 설정 */
 }
 
 .box {
   background-color: #D1D9E2;
   color: #FFFF;
-  padding: 10px;
+  padding: 3px;
   margin: 5px;
   text-align: left;
   flex-basis: 20%;
-  flex-grow: 1;
-   font-size: 14px;
+
+   font-size: 12px;
   width: 500px;
   height: 50px; /* 박스 높이를 50px로 조절 */
+    position: relative; /* 박스에 position을 추가 */
+    top:150px;
 }
 
 .box-info {
@@ -48,18 +50,22 @@
   width: 100%;
 }
 
-.box-info-item {
-  background-color: #48CD5D;
-  color: #fff;
-  padding: 5px;
-  margin: 5px;
-  text-align: center;
-  height: 20px;
-  width: 150px;
-   font-size: 14px;
-  align-self: flex-end;
-}
 
+.box button {
+    //background-color: #48CD5D;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    height: 30px;
+    width: 150px;
+    font-size: 14px;
+    align-self: flex-end;
+    position: absolute; /* 버튼 위치를 absolute로 지정 */
+    right: 0; /* 오른쪽에 위치하도록 지정 */
+    bottom: 0; /* 하단에 위치하도록 지정 */
+    
+  }
   
   .btn-green {
     background-color: #48CD5D;
@@ -73,9 +79,16 @@
     align-self: flex-end;
   }
 
-  .btn-gray {
-    background-color: gray;
-  }
+ .btn-gray {
+  background-color: gray !important;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  height: 20px;
+  width: 150px;
+  align-self: flex-end;
+}
 </style>
 
 <body>
@@ -83,8 +96,9 @@
   <div class="container">
     <c:forEach items="${managerList}" var="manager">
       <div class="box">
+      <div class="sub-container-left" style="width: 70%;">
         <div class="box-info">
-          <h2>${manager.stadium}</h2>
+          <h2 style="font-size: 25px;">${manager.stadium}</h2>
           <div class="box-info-item">
             <c:choose>
               <c:when test="${empty manager.g_status}">
@@ -94,11 +108,15 @@
             </c:choose>
           </div>
         </div>
-        <p>${manager.location} ${manager.gametime}</p>
+        <p style="font-size: 20px;">${manager.location} ${manager.gametime}</p>
+          
+         <div class="sub-container-right" style="width: 30%;">
         <button class="btn-green">랭크 입력</button>
+     </div>
       </div>
-    </c:forEach>
-  </div>
+    </div>
+  </c:forEach>
+</div>
 </body>
 
 <script>
