@@ -18,4 +18,5 @@ public class MypageRankDTO {
 	private String sportname;
 	private int avg_sn;
 	private int avg_all;
+	private int rn;
 }

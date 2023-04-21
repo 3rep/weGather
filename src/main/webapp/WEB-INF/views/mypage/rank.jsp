@@ -6,6 +6,20 @@
 			<h3>나의 랭크</h3>
 			<hr/>
 			예시본문<br/>
+		
+			<form>
+				<select id="sportname" name="sportname" required onchange="changeFn()" >
+					<option value="">--종목선택--</option>
+					<option value="풋살">풋살</option>
+					<option value="야구">야구</option>
+					<option value="농구">농구</option>
+				</select>
+				<button id="chartBtn3" >그래프 보기</button>
+			</form>
+			
+			
+			
+			
 			
 			<!-- BarChart넣기 -->
 			<div class="container" style="width:100%">
@@ -30,6 +44,24 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script>
+		/* $(function(){
+			$("#chartBtn3").click(function(){
+			alert("경고");
+			console.log("value: "+value);
+			return false;
+			});
+		}); */
+			
+		function changeFn(){
+			var city  = document.getElementById("chartBtn3");
+			var value = (sportname.options[sportname.selectedIndex].value);
+			alert("value = "+value);
+			
+			/* 		
+			var selectedindex = city.selectedIndex;
+			alert("value = "+value+" , selectedindex = "+selectedindex); 
+			*/
+		};
 		
 		$(function(){
 			//차트 그리기에서 필요한 데이터 ---------------
@@ -63,6 +95,11 @@
 				event.preventDefault();
 				
 				$.ajax({
+					data : {
+						f : '풋살',
+						bs : '야구',
+						bk : '농구'
+					},
 					type : "post",
 					url : "rankMain",
 					success : function(result){
@@ -71,11 +108,26 @@
 					
 					var jsonData = JSON.parse(result);
 					//console.log(jsonData);
+					//console.log(jsonData[0].gametime);
 					
-					console.log(jsonData[0].gametime);
+					
+					/* jsonData.map(function(newtime,i){
+						gametime[i] = newtime.gametime;
+						var timestamp = gametime[i];
+						var date = new Date(timestamp);
+						console.log(date.getTime());
+						console.log(date);
+						
+					}); */
+					
 					
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
+						var timestamp = gametime[i];
+						var date = new Date(timestamp);
+						console.log(date);
+						console.log(date.getTime());
+						
 						rankData[i]=obj.rank; //데이터(y축)
 					});
 					
@@ -88,7 +140,7 @@
 					}
 				});
 			});
-				 
+			
 		});	
 			
 			

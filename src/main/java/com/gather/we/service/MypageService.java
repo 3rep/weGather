@@ -25,7 +25,7 @@ public interface MypageService {
 	public List<MypageApplyListDTO> normgameList(String userid);
 	
 	//rank 정보 가져오기
-	public List<MypageRankDTO> rank(String userid);
+	public List<MypageRankDTO> rank(String userid, String sportname);
 
 
 

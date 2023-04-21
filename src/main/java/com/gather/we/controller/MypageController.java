@@ -1,13 +1,16 @@
 package com.gather.we.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -109,41 +112,38 @@ public class MypageController {
 		return mav;
 	}
 	
-	 @PostMapping("mypage/rankMain") 
-	 public String rankMain(HttpSession session) {
+	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
+	public String rankMain(HttpSession session, String f, String bs, String bk) {
 	  
-		 String logId = (String)session.getAttribute("logId");
-		  
-		 List<MypageRankDTO> list = service.rank(logId);
-		 System.out.println("list:: "+list);
-	
-		 ObjectMapper mapper = new ObjectMapper(); 
-		 String json ="";
-	
-		 try { 
-			 json = mapper.writeValueAsString(list); 
-		 }catch(Exception e) {
-			 e.printStackTrace(); 
-		 } 
-		 return json;
-	 }
+		System.out.println("f: "+f+", bs: "+bs+", bk: "+bk);
+		
+		String logId = (String)session.getAttribute("logId");
+			  
+		List<MypageRankDTO> list = service.rank(logId,f);
+		//System.out.println("list-> "+list );
+		//System.out.println("확인::::"+list.get(0));
+		
+		//최근 5경기만 뷰로 보낸다.
+		List<MypageRankDTO> newList = new ArrayList<MypageRankDTO>();
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getRn() >=1 && list.get(i).getRn()<=5) {
+				newList.add(list.get(i));
+			}
+		}
+		//System.out.println("newList:: "+newList);
+		
+		ObjectMapper mapper = new ObjectMapper(); 
+		String json ="";
+		
+		try { 
+			json = mapper.writeValueAsString(newList); 
+		}catch(Exception e) {
+			e.printStackTrace(); 
+		} 
+		return json;
+	}
 	 
-	
-	/*
-	 * @PostMapping("mypage/rankMain") public List<MypageRankDTO>
-	 * rankMain(HttpSession session) {
-	 * 
-	 * String logId = (String)session.getAttribute("logId");
-	 * 
-	 * List<MypageRankDTO> list = service.rank(logId);
-	 * System.out.println("list:: "+list);
-	 * 
-	 * return list;
-	 * 
-	 * }
-	 */
-	
-	
 	
 	
 	@GetMapping("mypage/paymentList")

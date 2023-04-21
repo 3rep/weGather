@@ -43,8 +43,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<MypageRankDTO> rank(String userid) {
-		return dao.rank(userid);
+	public List<MypageRankDTO> rank(String userid, String sportname) {
+		return dao.rank(userid, sportname);
 	}
 
 	
