@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 import com.gather.we.service.MypageService;
 
@@ -116,10 +117,14 @@ public class MypageController {
 	}
 	
 	@PostMapping("mypage/rankMain")
-	public ModelAndView rankMain() {
-		ModelAndView mav = new ModelAndView();
+	public List<MypageRankDTO> rankMain(HttpSession session) {
+
+		String logId = (String)session.getAttribute("logId");
 		
-		return mav;
+		List<MypageRankDTO> list = service.rank(logId);
+		System.out.println(list);
+
+		return list;
 	}
 	
 	

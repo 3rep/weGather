@@ -48,10 +48,10 @@
 		order by ng.gametime desc
 	</select>
 	<select id="rank" resultType="com.gather.we.dto.MypageRankDTO">
-		select rp.userid, rg.no, rg.g_status, rg.gametime, rp.rank, s.sportname, floor(avg(rp.rank) over(partition by s.sportname)) avg_sn, floor(avg(rp.rank) over(partition by rp.userid)) avg_all  from rank_game rg
-		join r_participate rp on rp.no=rg.no and userid=#{param1}
+		select rp.userid, rg.no, rg.g_status, rg.gametime, rp.rank, s.sportname, floor(avg(rp.rank) over(partition by s.sportname)) avg_sn, floor(avg(rp.rank) over(partition by rp.userid)) avg_all from rank_game rg
+		join r_participate rp on rp.no = rg.no and rp.userid=#{param1}
 		join sport s on s.s_no = rg.s_no
-		order by rg.gametime desc;
+		order by rg.gametime desc
 	</select>
 	
 	
