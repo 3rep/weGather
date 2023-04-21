@@ -1,15 +1,7 @@
 package com.gather.we.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
@@ -65,7 +58,7 @@ public class MypageController {
 		//랭크전+일반전의 지난+현재 신청목록을 화면에 뿌린다. : 종목명, 경기날짜, 경기구장, 경기상태
 		// 최신순으로 정렬해서 뷰에 뿌린다.
 		List<MypageApplyListDTO> list = service.allgameList(logId);
-		System.out.println("list->"+list);
+		//System.out.println("list->"+list);
 		
 		Date now = new Date();
 		//System.out.println(now);
@@ -116,17 +109,39 @@ public class MypageController {
 		return mav;
 	}
 	
-	@PostMapping("mypage/rankMain")
-	public List<MypageRankDTO> rankMain(HttpSession session) {
-
-		String logId = (String)session.getAttribute("logId");
-		
-		List<MypageRankDTO> list = service.rank(logId);
-		System.out.println(list);
-
-		return list;
-	}
+	 @PostMapping("mypage/rankMain") 
+	 public String rankMain(HttpSession session) {
+	  
+		 String logId = (String)session.getAttribute("logId");
+		  
+		 List<MypageRankDTO> list = service.rank(logId);
+		 System.out.println("list:: "+list);
 	
+		 ObjectMapper mapper = new ObjectMapper(); 
+		 String json ="";
+	
+		 try { 
+			 json = mapper.writeValueAsString(list); 
+		 }catch(Exception e) {
+			 e.printStackTrace(); 
+		 } 
+		 return json;
+	 }
+	 
+	
+	/*
+	 * @PostMapping("mypage/rankMain") public List<MypageRankDTO>
+	 * rankMain(HttpSession session) {
+	 * 
+	 * String logId = (String)session.getAttribute("logId");
+	 * 
+	 * List<MypageRankDTO> list = service.rank(logId);
+	 * System.out.println("list:: "+list);
+	 * 
+	 * return list;
+	 * 
+	 * }
+	 */
 	
 	
 	
