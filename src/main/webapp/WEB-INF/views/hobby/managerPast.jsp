@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>활동한 신청내역</title>
-	
+	<meta charset="UTF-8">
+	<title>매니저페이지</title>
+	<link rel="stylesheet" href="static/style/managerNav">
+	</head>
 	<style>
 			body {
 			margin: 0;
@@ -51,7 +53,7 @@
 			align-self: flex-end;
 		}
 	</style>
-</head>
+
 <body>
 	<div class="container">
 		<div class="box">

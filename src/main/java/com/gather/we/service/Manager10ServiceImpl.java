@@ -19,6 +19,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 		
 		return dao.getAllManager10();
 	}
+	
+	
+	
 	@Override
 	public List<Manager10DTO> pageSelect(PagingVO vo) {
 		
