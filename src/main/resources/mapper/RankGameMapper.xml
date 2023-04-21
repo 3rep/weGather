@@ -24,5 +24,6 @@
 		<if test="req_rank!=null and req_rank!=0">
 			and r.req_rank=${req_rank}
 		</if>
+		order by r.gametime
 	</select>
 </mapper>
