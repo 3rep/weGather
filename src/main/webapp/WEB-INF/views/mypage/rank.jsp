@@ -11,7 +11,9 @@
 			<div class="container" style="width:100%">
 				<canvas id="line_chart"></canvas>
 			</div>
-			<textarea id="result"></textarea>
+			<!-- 내용넘어오나 확인용 ---------------------->
+			<textarea id="result" style="width:80%; height:100px;"></textarea>
+			
 			
 			<!-- 차트 그리기 script -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -44,6 +46,36 @@
 				});
 			
 			
+				//ajax 실행
+				//데이터 준비
+				$.ajax({
+					type : "post",
+					url : "rankMain",
+					success : function(result){
+						//데이터 넘어오나 확인
+						$("#result").val(result);
+						
+						/////////////////////////////////////////
+						//Chart 그리기
+						/* var jsonData = JSON.parse(result);
+						//console.log(jsonData);
+						
+						title = jsonData.results[0].title;
+						jsonData.results[0].data.map(function(obj, i){
+							labels[i]=obj.period; //라벨(x축) : 기준날짜
+							dataTrend[i]=obj.ratio; //데이터(y축)
+						});
+						
+						//차트 그리기
+						line_chart();
+						 */
+					}, error : function(e){
+						console.log(e.responseText);
+					}
+					
+				
+				
+				
 			</script>
 			
 		</div> <!-- 오른쪽 내용칸 div -->

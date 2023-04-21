@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.MypageDAO;
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
 @Service
@@ -39,6 +40,11 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public List<MypageApplyListDTO> normgameList(String userid) {
 		return dao.normgameList(userid);
+	}
+
+	@Override
+	public List<MypageRankDTO> rank(String userid) {
+		return dao.rank(userid);
 	}
 
 	
