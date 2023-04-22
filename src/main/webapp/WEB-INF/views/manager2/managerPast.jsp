@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>활동내역</title>
-	<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/static/style/manager/style.css" rel="stylesheet" type="text/css" />
 	</head>
 	<style>
 .body {

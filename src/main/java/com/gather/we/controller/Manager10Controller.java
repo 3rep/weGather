@@ -19,12 +19,12 @@ public class Manager10Controller {
 	@Autowired
     Manager10Service service;
 	
-	 @GetMapping("/hobby/manager10")
-	 public ModelAndView manager10Hobby() {
+	 @GetMapping("/manager2/manager10")
+	 public ModelAndView manager10Manager2() {
 		    ModelAndView mav = new ModelAndView();
 		    List<Manager10DTO> managerList = service.getAllManager10();
 		    mav.addObject("managerList", managerList);
-		    mav.setViewName("/hobby/manager10");
+		    mav.setViewName("/manager2/manager10");
 		    return mav;
 		}
 	 
@@ -36,7 +36,7 @@ public class Manager10Controller {
 	 
 	 
 	 
-	 @GetMapping("hobby/manager10/list")
+	 @GetMapping("manager2/manager10/list")
 		public ModelAndView manager10List(PagingVO vo) {
 			
 			ModelAndView mav = new ModelAndView();
@@ -50,7 +50,7 @@ public class Manager10Controller {
 			mav.addObject("list" , service.pageSelect(vo));
 			System.out.println(2222);
 			mav.addObject("vo", vo);
-			mav.setViewName("hobby/manager10");
+			mav.setViewName("manager2/manager10");
 			return mav;
 		}
 	 

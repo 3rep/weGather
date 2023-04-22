@@ -16,12 +16,12 @@ public class ManagerPastController {
 	@Autowired
     ManagerPastService service;
 	
-	 @GetMapping("/hobby/managerPast")
-	 public ModelAndView managerPastHobby() {
+	 @GetMapping("/manager2/managerPast")
+	 public ModelAndView managerPastManager2() {
 		    ModelAndView mav = new ModelAndView();
 		    List<ManagerPastDTO> managerList = service.getAllManagerPast();
 		    mav.addObject("managerList", managerList);
-		    mav.setViewName("/hobby/managerPast");
+		    mav.setViewName("/manager2/managerPast");
 		    return mav;
 		}
 	 

@@ -17,12 +17,12 @@ public class EntryController {
 	@Autowired
     EntryService service;
 	
-	 @GetMapping("/hobby/entry")
-	 public ModelAndView EntryHobby() {
+	 @GetMapping("/manager2/entry")
+	 public ModelAndView EntryManager2() {
 		    ModelAndView mav = new ModelAndView();
 		    List<EntryDTO> entryList = service.getAllEntry();
 		    mav.addObject("entryList", entryList);
-		    mav.setViewName("/hobby/entry");
+		    mav.setViewName("/manager2/entry");
 		    return mav;
 		}
 }

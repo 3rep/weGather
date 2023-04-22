@@ -18,12 +18,12 @@ public class RecommendController {
     @Autowired
     RecommendService service;
     
-    @GetMapping("/hobby/recommend")
+    @GetMapping("/manager2/recommend")
     public ModelAndView recommendHobby() {
     	ModelAndView mav = new ModelAndView();
     	List<RecommendDTO> rl = service.getAllRecommend();
     	mav.addObject("rl", rl);
-    	mav.setViewName("/hobby/recommend");
+    	mav.setViewName("/manager/recommend");
     	return mav;
     	
     }

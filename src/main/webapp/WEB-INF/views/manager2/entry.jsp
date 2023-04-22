@@ -7,7 +7,7 @@
   <title>참가명단확인</title>
    <meta charset="UTF-8">
 	
-	<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/static/style/manager/style.css" rel="stylesheet" type="text/css" />
 
 	</head>
 	<style>

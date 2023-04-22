@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 	<title>매니저페이지</title>
-	<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
+	<link href="${path}/static/style/manager/style.css" rel="stylesheet" type="text/css" />
 	
 
 </head>

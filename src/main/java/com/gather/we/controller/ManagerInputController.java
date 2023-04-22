@@ -20,8 +20,8 @@ public class ManagerInputController {
     ManagerInputService service;
 		
 
-@GetMapping("/hobby/managerInput")
-public ModelAndView managerInputHobby(@RequestParam(value = "rank", required = false) String rank) {
+@GetMapping("/manager2/managerInput")
+public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank) {
     ModelAndView mav = new ModelAndView();
     List<ManagerInputDTO> managerInputList;
     if (rank != null) {
@@ -30,7 +30,7 @@ public ModelAndView managerInputHobby(@RequestParam(value = "rank", required = f
         managerInputList = service.getAllManagerInput();
     }
     mav.addObject("managerInputList", managerInputList);
-    mav.setViewName("/hobby/managerInput");
+    mav.setViewName("/manager2/managerInput");
     return mav;
 }
 

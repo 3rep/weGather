@@ -42,7 +42,7 @@
 	 --> 
 	 <jsp-config> 
 	 <jsp-property-group>
-            <url-pattern>/WEB-INF/views/hobby/*</url-pattern>
+            <url-pattern>/WEB-INF/views/manager2/*</url-pattern>
             <include-prelude>/WEB-INF/views/inc/managerNav.jspf</include-prelude>
         </jsp-property-group>
     </jsp-config> 
