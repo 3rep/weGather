@@ -1,6 +1,8 @@
 package com.gather.we.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,14 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.ManagerDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
+import com.gather.we.service.AdminManagerService;
 import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
@@ -30,6 +35,8 @@ public class AdminController {
 	StadiumInfoService stadiumInfoService;
 	@Autowired
 	RankGameService rankGameService;
+	@Autowired
+	AdminManagerService adminManagerService;
 	
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
@@ -180,12 +187,83 @@ public class AdminController {
 		return mav;
 	}   
 	
-	// 매니저 승인
-	@GetMapping("/manager/approve")
-	public ModelAndView managerApprove() {
+	// 매니저 승인 요청 목록
+	@GetMapping("/manager/approvelist")
+	public ModelAndView managerApproveList() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("admin/allManager/managerApprove");
+		// 매니저 계정 승인 요청 목록을 DB에서 조회
+		mav.addObject("list", adminManagerService.approveList());
+		
+		mav.setViewName("admin/allManager/managerApproveList");
+		
+		return mav;
+	}
+	
+	// 매니저 승인 요청 상세
+	@GetMapping("/manager/approvedetail")
+	public ModelAndView managerApproveDetail(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto", adminManagerService.approveDetail(managerid));
+		
+		mav.setViewName("admin/allManager/managerApproveDetail");
+		
+		return mav;
+	}
+	
+	// 매니저 요청 승인 (매니저 계정 활성화)
+	@PostMapping("/manager/approveOk")
+	public ModelAndView managerApproveOk(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		adminManagerService.approveOk(managerid);
+		
+		mav.setViewName("redirect:approvelist");
+		
+		return mav;
+	}
+	
+	// 매니저 요청 거부 (요청 계정 DB에서 삭제)
+	@PostMapping("/manager/refuseOk")
+	public ModelAndView managerRefuseOk(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		adminManagerService.refuseOk(managerid);
+		
+		
+		mav.setViewName("redirect:approvelist");
+		
+		return mav;
+	}
+	
+	// 매니저 목록 조회
+	@GetMapping("/manager/managerlist")
+	public ModelAndView managerList() {
+		ModelAndView mav = new ModelAndView();
+		List<ManagerDTO> olist = adminManagerService.managerList();
+		List<ManagerDTO> nlist = new ArrayList<ManagerDTO>();
+		
+		try {
+			Iterator<ManagerDTO> ir = olist.iterator();
+			
+			while(ir.hasNext()) {
+				ManagerDTO dto = ir.next();
+				String managerid = dto.getManagerid();
+				
+				List<RankGameDTO> rank = adminManagerService.managerRecent(managerid);
+				
+				if(!rank.isEmpty()) dto.setRankgameList(rank);
+				
+				nlist.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.addObject("list", nlist);
+		
+		mav.setViewName("admin/allManager/managerList");
 		
 		return mav;
 	}
