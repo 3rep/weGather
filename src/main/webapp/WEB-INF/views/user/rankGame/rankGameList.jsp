@@ -9,6 +9,8 @@
 </div>
 <div class="game_nav">종목선택 > <b>경기목록</b> > 경기상세정보</div>
 <div class="game_container">
+	<h4 class="game_notice">※ 경기 참여 신청 마감일은 경기 일정의 2일 전 0시입니다.</h4>
+	<div class="game_notice_ex">e.g. 2023-04-25 17:00 경기의 참여 신청 마감일은 2023-04-23 00:00</div>
 	<!-- 필터 -->
 	<form method="get" action="rankgamelist" id="filterForm">
 		<input type="hidden" name="s_no" value="${s_no}"/>
