@@ -41,6 +41,7 @@
 		var title;//차트제목
 		var gametime = new Array();//라벨(x축)
 		var newgt = new Array();
+		var isoDates = new Array();
 		var rankData = new Array(); //데이터(y축)
 		var backgroundColor = 'rgba(255, 99, 132, 0.2)';
 		var borderColor = 'rgb(255, 99, 132)';
@@ -48,7 +49,7 @@
 		//차트 그리기
 		function chart(){
 			var data = {
-				labels: newgt,
+				labels: isoDates,
 				datasets: [{
 					label: '최근 5경기 랭크',
 				    data: rankData,
@@ -105,12 +106,15 @@
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
 						console.log("gametime[i]->"+gametime[i]);
 						newgt[i] = new Date(gametime[i]);
-						 
 						console.log("newgt->"+newgt);
 						
 						rankData[i]=obj.rank; //데이터(y축)
 						console.log("rankData[i]->"+rankData[i]);
 					}) 
+					
+					isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
+					console.log(isoDates);
+					
 					
 					
 					
@@ -118,6 +122,7 @@
 					chart();
 					
 					//시간형식 변환해야하는데...
+					
 					
 					///차트가 겹쳐져서 그려진다.... 최근 5경기를 반드시 만드는수밖에...
 					//	야구가 경기가 없는데, 야구 직전에 풋살 5경기 그래프를 봤다면
