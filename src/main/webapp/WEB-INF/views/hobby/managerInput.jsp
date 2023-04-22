@@ -59,6 +59,20 @@
   tr:nth-child(even) td {
     background-color: #f2f2f2;
   }
+  .submit-button {
+  position: absolute;
+  top: 105%;
+  right: 90px;
+ background-color: #28BD54;
+ color: #FFFFFF;
+}
+  .modify-button {
+  position: absolute;
+  top: 105%;
+  right: 45px;
+ background-color: #448FE4;
+ color: #FFFFFF;
+}
 .back-button {
   position: absolute;
   top: 105%;
@@ -75,7 +89,7 @@
     <table>
       <thead>
         <tr>
-          <th colspan="3">참가명단</th>
+          <th colspan="3">랭크 입력 대상</th>
         </tr>
         <tr>
           <th>아이디</th>
@@ -102,7 +116,9 @@
         </c:forEach>
       </tbody>
     </table>
-    <button class="back-button">뒤로가기</button>
+    <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>
+	<button class="modify-button">수정</button>
+    <button class="back-button">취소</button>
   </div>
 
 </body>

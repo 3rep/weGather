@@ -7,4 +7,9 @@
 		SELECT username AS username, rank, userid
 	FROM users
 	</select>
+	<update id="updateUserRankByUserId">
+  UPDATE users
+  SET rank = #{rank}
+  WHERE userid = #{userId}
+</update>
 	</mapper>

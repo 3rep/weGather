@@ -19,6 +19,11 @@ public class ManagerInputServiceImpl implements ManagerInputService {
 		
 		return dao.getAllManagerInput();
 	}
+	@Override
+	public List<ManagerInputDTO> getAllManagerInputByRank(String rank) {
+		
+		return dao.getAllManagerInputByRank(rank);
+	}
 
 	
 }

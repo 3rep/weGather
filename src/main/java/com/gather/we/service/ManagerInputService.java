@@ -8,4 +8,5 @@ public interface ManagerInputService {
 
 	
 	public List<ManagerInputDTO> getAllManagerInput();
+	List<ManagerInputDTO> getAllManagerInputByRank(String rank);
 }
