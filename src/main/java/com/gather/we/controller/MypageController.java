@@ -1,6 +1,8 @@
 package com.gather.we.controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -120,24 +122,20 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 			  
 		List<MypageRankDTO> list = service.rank(logId,sportname);
-		System.out.println("list-> "+list );
+		System.out.println("list111-> "+list );
 		//System.out.println("확인::::"+list.get(0));
 		
-		//최근 5경기만 뷰로 보낸다.
-		List<MypageRankDTO> newList = new ArrayList<MypageRankDTO>();
 		
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getRn() >=1 && list.get(i).getRn()<=5) {
-				newList.add(list.get(i));
-			}
-		}
-		System.out.println("newList:: "+newList);
+		Collections.reverse(list);
+		System.out.println("list222:: "+list);
+		
+		
 		
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
 		try { 
-			json = mapper.writeValueAsString(newList); 
+			json = mapper.writeValueAsString(list); 
 		}catch(Exception e) {
 			e.printStackTrace(); } 
 		

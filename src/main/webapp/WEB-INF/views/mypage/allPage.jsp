@@ -11,6 +11,7 @@
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/mypage/allPage.css" rel="stylesheet" type="text/css">
 <link href="${path}/static/style/mypage/applyList.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/style/mypage/rank.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

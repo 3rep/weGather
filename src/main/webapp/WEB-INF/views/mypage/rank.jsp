@@ -13,16 +13,13 @@
 					<option value="야구">야구</option>
 					<option value="농구">농구</option>
 				</select>
-				<button id="chartBtn" >그래프 보기</button>
+				<button id="chartBtn" title="Button border blue/green" class="button btnBorder btnBlueGreen" >그래프 보기</button>
 			</form>
 			
 			<!-- BarChart넣기 -->
-			<div class="container" style="width:100%">
+			<div class="chart" style="width:100%">
 				<canvas id="line_chart"></canvas>
 			</div>
-			
-			<!-- 내용넘어오나 확인용 ---------------------->
-			<div id="re" style="border:2px solid gray; width:100%; height:100px;"></div>
 			
 		</div> <!-- 오른쪽 내용칸 div -->
 		
@@ -38,7 +35,7 @@
 
 	$(function(){
 		//차트 그리기에서 필요한 데이터 ---------------
-		var title;//차트제목
+		var label; //차트제목
 		var gametime = new Array();//라벨(x축)
 		var newgt = new Array();
 		var isoDates = new Array();
@@ -51,19 +48,41 @@
 			var data = {
 				labels: isoDates,
 				datasets: [{
-					label: '최근 5경기 랭크',
+					label: label,
 				    data: rankData,
 				    fill: false,
 				    borderColor: 'rgb(75, 192, 192)',
-				    tension: 0.1
+				    tension: 0.1,
+				    pointRadius: 7, // 포인트 크기
+				    pointStyle: 'rect', // 직사각형, triangle : 삼각형, default : circle (원형)
+	                pointBackgroundColor: 'Color'
 		 		 }]
 			};
+			
 			var chart = new Chart(document.getElementById("line_chart"), {
 			    type: 'line',
 			    data: data,
-			    option: {},
+			    options: { 
+			    	scales: { 
+			    		xAxes: [{ ticks: { display: false } }], //x축 없애기
+			    		yAxes: [{	//y축설정
+			                ticks: {
+			                    max: 5,
+			                    min: 0,
+			                    stepSize: 1
+			                }
+			            }]
+			    	},
+			    	tooltips: {
+		                titleFontSize: 15,
+		                bodyFontSize: 15
+		            }
+			    
+			    }
+			
 			});
 		}
+		
 		
 		//버튼누르면 ajax 실행
 		$("#chartBtn").click(function(){ 
@@ -72,6 +91,8 @@
 			var value = (sportname.options[sportname.selectedIndex].value);
 			var data = {sportname: value }
 			console.log(data);
+			console.log("value---->"+value);
+			label = value;
 			
 			if(value==""){
 				alert("종목을 선택하세요");
@@ -85,22 +106,13 @@
 				url : "rankMain",
 				success : function(result){
 				
-					console.log("result->"+result);
-					$("#re").html(result);
+					//console.log("result->"+result);
+					//$("#re").html(result);
+					
+					
 					
 					var jsonData = JSON.parse(result);
-					console.log("jsonData->"+jsonData);
-					
-					/* jsonData.map(function(obj, i){
-						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
-						console.log("gametime[i]->"+gametime[i]);
-						var date = new Date(gametime[i]);
-						 
-						console.log("date->"+date);
-						
-						rankData[i]=obj.rank; //데이터(y축)
-						console.log("rankData[i]->"+rankData[i]);
-					}); */
+					//console.log("jsonData->"+jsonData);
 					
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
@@ -115,9 +127,11 @@
 					isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
 					console.log(isoDates);
 					
-					
-					
-					
+					//이전에 있는 차트 먼저 지우기
+					/* if(window.chart!=undefined){
+						window.chart.destroy();
+					} */
+						
 					//차트그리기
 					chart();
 					
