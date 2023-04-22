@@ -56,7 +56,7 @@
   .box {
   position: relative;
   width: 90%;
-height:800px;
+height:90%;
   margin: 10px;
   padding: 10px;
   border: 1px solid black;
@@ -105,6 +105,7 @@ height:800px;
 		bottom: 0;
 	}
 	
+	
   </style>
 <h1 style="font-size: 30px;">신청한 경기 내역</h1>
 
@@ -131,8 +132,12 @@ height:800px;
                 <button onclick="deleteManager()" class="red" style="width: 90px;">취소신청</button>
               </c:if>
               <c:if test="${manager.g_status == 1}">
-                <button class="grey">확정</button>
-                <button onclick="location.href='/participant-list'" class="blue" style="width: 90px;">참가명단확인</button>
+            <a href="entry" class="page-link" style="display: flex; flex-direction: column;">
+  <button class="grey" style="padding: 10px; height:60%;">확정</button>
+  <button class="blue" style="padding: 10px;">명단확인</button>
+</a>
+
+             
               </c:if>
             </div>
           </div>
@@ -147,6 +152,11 @@ height:800px;
     
 </body>
 <script>
-
+  function deleteManager() {
+    if (confirm("취소하시겠습니까?")) {
+      alert("취소되었습니다.");
+      // 여기에 취소 처리를 위한 로직을 추가할 수 있습니다.
+    }
+  }
 </script>
 </html>

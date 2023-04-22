@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.ManagerPastDAO">
 	<select id="getAllManagerPast" resultType="com.gather.we.dto.ManagerPastDTO">
-		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
+		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.gametime > sysdate

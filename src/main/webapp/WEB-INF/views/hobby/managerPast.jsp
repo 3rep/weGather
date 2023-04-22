@@ -113,24 +113,29 @@
           
          <div class="sub-container-right" style="width: 30%;">
          <a href="managerInput" class="page-link">	
-        <button class="btn-green">랭크 입력</button></a>
+       <button class="btn-green" data-no="${manager.managerid}">랭크 입력</button></a>
      </div>
       </div>
     </div>
   </c:forEach>
 </div>
 </body>
-
 <script>
 const buttons = document.querySelectorAll('.btn-green');
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    const id = button.getAttribute('data-id');
+    const no = button.getAttribute('data-no');
     // 여기서 서버로 매니저의 랭크 입력 정보를 보내고, 성공적으로 처리되면 아래 코드 실행
-    const targetButton = document.querySelector(`[data-id="${id}"]`);
+    const targetButton = document.querySelector(`[data-no="${no}"]`);
     targetButton.classList.remove('btn-green');
     targetButton.classList.add('btn-gray');
     targetButton.innerText = '완료';
+    
+    // 버튼 상태를 저장
+    buttonStates[no] = {
+      clicked: true,
+      completed: false
+    };
   });
 });
 </script>

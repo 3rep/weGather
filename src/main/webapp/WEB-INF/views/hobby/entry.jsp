@@ -102,7 +102,8 @@
   </c:forEach>
 </tbody>
     </table>
-    <button class="back-button">뒤로가기</button>
+     <a href="manager10" class="page-link">	
+    <button class="back-button">뒤로가기</button></a>
   </div>
 </body>
 

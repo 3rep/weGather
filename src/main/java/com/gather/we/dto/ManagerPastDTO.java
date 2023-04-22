@@ -8,17 +8,19 @@ public class ManagerPastDTO {
 	    private String location;
 	    private String gametime;
 	    private int g_status;
+	    private String managerid;
 	    
 	    
 	    
 	    
 	    
 	    
-	    
+		
+		
 		@Override
 		public String toString() {
 			return "ManagerPastDTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
-					+ ", g_status=" + g_status + "]";
+					+ ", g_status=" + g_status + ", managerid=" + managerid + "]";
 		}
 		public String getStadium() {
 			return stadium;
@@ -44,6 +46,13 @@ public class ManagerPastDTO {
 		public void setG_status(int g_status) {
 			this.g_status = g_status;
 		}
+		public String getManagerid() {
+			return managerid;
+		}
+		public void setManagerid(String managerid) {
+			this.managerid = managerid;
+		}
+		
 	    
 	    
 	    
