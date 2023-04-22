@@ -20,8 +20,8 @@ public class ManagerInputController {
 	 @GetMapping("/hobby/managerInput")
 	 public ModelAndView managerInputHobby() {
 		    ModelAndView mav = new ModelAndView();
-		    List<ManagerInputDTO> managerList = service.getAllManagerInput();
-		    mav.addObject("managerList", managerList);
+		    List<ManagerInputDTO> managerInputList = service.getAllManagerInput();
+		    mav.addObject("managerInputList", managerInputList);
 		    mav.setViewName("/hobby/managerInput");
 		    return mav;
 		}

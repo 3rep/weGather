@@ -9,53 +9,102 @@
 	<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 </head>
 <style>
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.table {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.table-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 50px;
-  border: 1px solid black;
-}
-
-.username {
-  font-size: 18px;
+  /* CSS 스타일링 */
+  #container {
+    margin: 0 auto; /* 가운데 정렬 */
+    width: 700px; /* 너비 줄이기 */
+    position:absolute;
+    top:300px;
+    left:400px;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: 100%;
+    table-layout: fixed;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  td, th {
+    border: 1px solid black;
+    border-color: rgba(0, 0, 0, 0.3); 
+    padding: 5px;
+    text-align: left; 
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  td:first-child, th:first-child {
+    border-left: none;
+  }
+  td:last-child, th:last-child {
+    border-right: none;
+  }
+  tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+  }
+  tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+  }
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  tr:last-child td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* 마지막 행 경계선 색상 */
+  }
+  tr:nth-child(even) td {
+    background-color: #f2f2f2;
+  }
+.back-button {
+  position: absolute;
+  top: 105%;
+  right: 0;
+ background-color: #2E3646;
+ color: #FFFFFF;
 }
 </style>
 
 <body>
-  <h1 style="font-size: 30px;">사용자 랭크 입력</h1>
-  <div class="container">
-    <div class="table">
-      <c:forEach items="${managerList}" var="manager" varStatus="status">
-        <div class="cell">
-          <div class="username"><c:out value="${manager.getUsername()}" /></div>
-        </div>
-        <c:if test="${status.index % 3 == 2}">
-          </div><div class="table-row">
-        </c:if>
-        <c:if test="${status.index % 3 == 0 && status.index != 0}">
-          </div>
-        </c:if>
-      </c:forEach>
-    </div>
+  <h1 style="font-size: 30px;">사용자 랭크입력</h1>
+  <div id="container">
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3">참가명단</th>
+        </tr>
+        <tr>
+          <th>아이디</th>
+          <th>이름</th>
+          <th>랭크</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach items="${managerInputList}" var="managerInput">
+          <tr>
+            <td><c:out value="${managerInput.getUserid()}" /></td>
+            <td><c:out value="${managerInput.getUsername()}" /></td>
+            <td>
+              <select class="rank-filter">
+                <option value="">전체</option>
+                <option value="1" ${managerInput.getRank() == 1 ? 'selected' : ''}>브론즈</option>
+                <option value="2" ${managerInput.getRank() == 2 ? 'selected' : ''}>실버</option>
+                <option value="3" ${managerInput.getRank() == 3 ? 'selected' : ''}>골드</option>
+                <option value="4" ${managerInput.getRank() == 4 ? 'selected' : ''}>플래티넘</option>
+                <option value="5" ${managerInput.getRank() == 5 ? 'selected' : ''}>다이아</option>
+              </select>
+            </td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
+    <button class="back-button">뒤로가기</button>
   </div>
+
 </body>
+
 </html>

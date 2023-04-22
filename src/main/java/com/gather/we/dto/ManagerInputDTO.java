@@ -4,6 +4,8 @@ public class ManagerInputDTO {
 
 	private String username;
 	private String rank;
+	private String userid;
+	private String rankFilter;
 	
 	
 	
@@ -12,7 +14,8 @@ public class ManagerInputDTO {
 	
 	@Override
 	public String toString() {
-		return "ManagerInputDTO [username=" + username + ", rank=" + rank + "]";
+		return "ManagerInputDTO [username=" + username + ", rank=" + rank + ", userid=" + userid + ", rankFilter="
+				+ rankFilter + "]";
 	}
 	public String getUsername() {
 		return username;
@@ -25,6 +28,18 @@ public class ManagerInputDTO {
 	}
 	public void setRank(String rank) {
 		this.rank = rank;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getRankFilter() {
+		return rankFilter;
+	}
+	public void setRankFilter(String rankFilter) {
+		this.rankFilter = rankFilter;
 	}
 	 
 	
