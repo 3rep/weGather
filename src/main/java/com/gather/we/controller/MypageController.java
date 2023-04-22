@@ -114,11 +114,13 @@ public class MypageController {
 	
 	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
-	  
+		
+		System.out.println(sportname);
+		
 		String logId = (String)session.getAttribute("logId");
 			  
 		List<MypageRankDTO> list = service.rank(logId,sportname);
-		//System.out.println("list-> "+list );
+		System.out.println("list-> "+list );
 		//System.out.println("확인::::"+list.get(0));
 		
 		//최근 5경기만 뷰로 보낸다.
@@ -129,7 +131,7 @@ public class MypageController {
 				newList.add(list.get(i));
 			}
 		}
-		//System.out.println("newList:: "+newList);
+		System.out.println("newList:: "+newList);
 		
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
@@ -137,9 +139,11 @@ public class MypageController {
 		try { 
 			json = mapper.writeValueAsString(newList); 
 		}catch(Exception e) {
-			e.printStackTrace(); 
-		} 
+			e.printStackTrace(); } 
+		
 		return json;
+		
+		
 	}
 	 
 	
