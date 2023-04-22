@@ -9,6 +9,8 @@
 </div>
 <div class="game_nav">종목선택 > <b>경기목록</b> > 경기상세정보</div>
 <div class="game_container">
+	<h4 class="game_notice">※ 경기 참여 신청 마감일은 경기 일정의 2일 전 0시입니다.</h4>
+	<div class="game_notice_ex">e.g. 2023-04-25 17:00 경기의 참여 신청 마감일은 2023-04-23 00:00</div>
 	<!-- 필터 -->
 	<form method="get" action="rankgamelist" id="filterForm">
 		<input type="hidden" name="s_no" value="${s_no}"/>
@@ -108,10 +110,9 @@
 					</div>
 				</div>
 				
-				<!-- 경기 상태 -->
 				<c:set var="gametime" value="${RankGameDTO.gametime}"/>
 				<%
-					// 마감 임박 경기인지 확인하는 로직
+					// 마감 또는 마감 임박 경기인지 확인하는 로직
 					// 1. Calendar 객체 생성
 					Calendar nowCalendar = Calendar.getInstance();
 					Calendar closeCalendar = Calendar.getInstance();
@@ -121,15 +122,15 @@
 					Date now = new Date();
 					nowCalendar.setTime(now);
 					
-					// 3. 경기일 구하기
+					// 3. 경기일정 구하기
 					Date gametime = (Date)pageContext.getAttribute("gametime");
 					
-					// 4. 경기 신청 마감일 구하기: 경기일의 2일 전
+					// 4. 경기 신청 마감일 구하기: 경기일정의 2일 전 0시
 					closeCalendar.setTime(gametime);
 					closeCalendar.add(closeCalendar.DATE, -2); // gametime-2
 					closeCalendar.set(closeCalendar.HOUR_OF_DAY, 0); // 24시간 기준 0시로 설정
 					
-					// 5. 경기 신청 마감임박 시작일 구하기: 경기신청 마감일의 2일 전(즉, 경기일의 4일 전)
+					// 5. 경기 신청 마감임박 시작일 구하기: 경기신청 마감일의 2일 전 0시 (즉, 경기일정의 4일 전)
 					closeImminentCalendar.setTime(gametime);
 					closeImminentCalendar.add(closeImminentCalendar.DATE, -4); // gametime-4
 					closeImminentCalendar.set(closeImminentCalendar.HOUR_OF_DAY, 0); // 24시간 기준 0시로 설정
@@ -138,12 +139,17 @@
 					// closeImminentCalendar < nowCalendar < closeCalendar 이면 true, 아니면 false
 					Boolean isImminent = nowCalendar.after(closeImminentCalendar) && nowCalendar.before(closeCalendar);
 					pageContext.setAttribute("isImminent", isImminent);
+					
+					// 7. 신청마감 경기인지 확인
+					// closeCalendar < nowCalendar 이면 true, 아니면 false
+					Boolean isClose = nowCalendar.after(closeCalendar);
+					pageContext.setAttribute("isClose", isClose);
 				%>
 				
-				<!-- 최대인원이 충족되었을 경우 마감으로 표시 -->
+				<!-- 경기 신청 가능 상태 -->
 				<c:choose>
-					<c:when test="${RankGameDTO.curr_people == RankGameDTO.max_people}">
-		            	<div class="game-status close">마감</div>
+					<c:when test="${isClose}">
+		            	<div class="game-status close">신청마감</div>
 		         	</c:when>
 		         	<c:when test="${isImminent}">
 		            	<div class="game-status imminent">마감임박</div>

@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+.game_notice {
+	text-align: center;
+	margin-bottom: 10px;
+	font-weight: var(--weight-bold);
+}
+
+.game_notice_ex {
+	text-align: center;
+	margin-bottom: 40px;
+	font-weight: var(--weight-bold);
+	font-size: var(--font-micro);
+}
+
 #filterForm {
 	width: 1000px;
 	margin: 0 auto;
