@@ -11,7 +11,7 @@
  	<select id="rankGameListSelect" resultType="com.gather.we.dto.RankGameListDTO">
 		select r.no, s.stadium, s.region, r.gametime, r.min_people, r.max_people, r.curr_people, r.gendertype, r.req_rank 
 		from rank_game r join stadium_info s on r.st_no=s.st_no 
-		where s_no=${s_no} and r.managerid is not null and (<![CDATA[gametime-9 <= sysdate and sysdate < gametime-2]]>)
+		where s_no=${s_no} and r.managerid is not null and (<![CDATA[gametime-9 <= sysdate and sysdate < gametime]]>)
 		<if test="regionList!=null and regionList[0]!='all'">
 			and s.region in
 			<foreach item="region" index="index" collection="regionList" open="(" separator="," close=")">
@@ -25,5 +25,11 @@
 			and r.req_rank=${req_rank}
 		</if>
 		order by r.gametime
+	</select>
+	
+	<select id="rankGameDetailSelect" resultType="com.gather.we.dto.RankGameDetailDTO">
+		select r.no, r.s_no, r.st_no ,r.gametime, r.min_people, r.max_people, r.curr_people, r.gendertype, r.req_rank, r.payment, s.filename, st.stadium, st.location, m.m_name
+		from rank_game r, sport s, stadium_info st, manager m
+		where r.no=${no} and r.s_no = s.s_no and r.st_no = st.st_no and r.managerid = m.managerid
 	</select>
 </mapper>
