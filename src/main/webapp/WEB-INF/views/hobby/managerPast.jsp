@@ -64,7 +64,8 @@
     position: absolute; /* 버튼 위치를 absolute로 지정 */
     right: 0; /* 오른쪽에 위치하도록 지정 */
     bottom: 0; /* 하단에 위치하도록 지정 */
-    
+   
+     
   }
   
   .btn-green {
@@ -111,7 +112,8 @@
         <p style="font-size: 20px;">${manager.location} ${manager.gametime}</p>
           
          <div class="sub-container-right" style="width: 30%;">
-        <button class="btn-green">랭크 입력</button>
+         <a href="managerInput" class="page-link">	
+        <button class="btn-green">랭크 입력</button></a>
      </div>
       </div>
     </div>
@@ -120,13 +122,16 @@
 </body>
 
 <script>
-  const buttons = document.querySelectorAll('.btn-green');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      button.classList.remove('btn-green');
-      button.classList.add('btn-gray');
-      button.innerText = '완료';
-    });
+const buttons = document.querySelectorAll('.btn-green');
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const id = button.getAttribute('data-id');
+    // 여기서 서버로 매니저의 랭크 입력 정보를 보내고, 성공적으로 처리되면 아래 코드 실행
+    const targetButton = document.querySelector(`[data-id="${id}"]`);
+    targetButton.classList.remove('btn-green');
+    targetButton.classList.add('btn-gray');
+    targetButton.innerText = '완료';
   });
+});
 </script>
 </html>
