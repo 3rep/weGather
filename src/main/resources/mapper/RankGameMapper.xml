@@ -7,4 +7,23 @@
  		insert into rank_game(no, s_no, st_no, gametime, min_people, max_people, gendertype, req_rank, payment, managerfee) 
  		values(rank_sq.nextval, ${s_no}, ${st_no}, #{gametime}, ${min_people}, ${max_people}, #{gendertype}, ${req_rank}, ${payment}, ${managerfee})
  	</insert>
+ 	
+ 	<select id="rankGameListSelect" resultType="com.gather.we.dto.RankGameListDTO">
+		select r.no, s.stadium, s.region, r.gametime, r.min_people, r.max_people, r.curr_people, r.gendertype, r.req_rank 
+		from rank_game r join stadium_info s on r.st_no=s.st_no 
+		where s_no=${s_no} and r.managerid is not null and (<![CDATA[gametime-9 <= sysdate and sysdate < gametime-2]]>)
+		<if test="regionList!=null and regionList[0]!='all'">
+			and s.region in
+			<foreach item="region" index="index" collection="regionList" open="(" separator="," close=")">
+				#{region}
+			</foreach>
+		</if>
+		<if test="gendertype!=null and gendertype!='all'">
+			and r.gendertype=#{gendertype}
+		</if>
+		<if test="req_rank!=null and req_rank!=0">
+			and r.req_rank=${req_rank}
+		</if>
+		order by r.gametime
+	</select>
 </mapper>

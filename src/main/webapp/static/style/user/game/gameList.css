@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+#filterForm {
+	width: 1000px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.filter {
+	margin-right: 4px;
+}
+
+.btn-filter {
+	outline: none;
+	background-color: var(--color-light-gray);
+	border: 1px solid var(--color-dark-gray);
+	border-radius: 2px;
+}
+
+.game_list {
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.game_item {
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+.game_region {
+	height: 100%;
+	flex-basis: 10%;
+	line-height: 90px;
+	background-color: var(--color-light-gray);
+	font-weight: var(--weight-bold);
+	border: 1px solid var(--color-gray);
+}
+
+.game_info_container {
+	height: 100%;
+	flex-basis: 75%;
+	display: flex;
+	align-items: center;
+	background-color: var(--color-light-gray);
+	border: 1px solid var(--color-gray);
+	margin: 0 16px;
+}
+
+.game_time {
+	width: 220px;
+	padding: 0 24px;
+	font-weight: var(--weight-bold);
+	margin-right: 8px;
+}
+
+.game_stadium {
+	text-decoration: none;
+    outline: none;
+    color: var(--color-black);
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+}
+
+.game_stadium:hover {
+	color: var(--color-black);
+}
+
+.game_conditions {
+	margin-top: 6px;
+}
+
+.game_condition {
+	background-color: var(--color-gray);
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-weight: var(--weight-bold);
+	margin-right: 4px;
+}
+
+.game-status {
+	height: 100%;
+	line-height: 90px;
+	flex-basis: 15%;
+}
+
+.game-status.close { /* 경기 상태 - 마감 */
+	font-weight: var(--weight-bold);
+	border: 1px solid var(--color-dark-gray);
+	color: var(--color-dark-gray);
+}
+
+.game-status.imminent { /* 경기 상태 - 마감임박 */
+	background-color: var(--color-red);
+	color: var(--color-white);
+	font-weight: var(--weight-bold);
+}
+
+.game-status.open { /* 경기 상태 - 신청가능 */
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	font-weight: var(--weight-bold);
+}
