@@ -3,16 +3,15 @@ package com.gather.we.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.RankGameDTO;
+import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.service.RankGameService;
@@ -25,6 +24,9 @@ public class RankGameController {
 	SportService sportService;
 	@Autowired
 	RankGameService rankGameService;
+	
+	@Value("${google-map-key}")
+	private String goole_map_key;
 	
 	// 종목 목록
 	@GetMapping("/sportlist")
@@ -57,6 +59,21 @@ public class RankGameController {
 		mav.addObject("s_no", dto.getS_no());
 		mav.addObject("rankGameList", rankGameList);
 		mav.setViewName("user/rankGame/rankGameList");
+		
+		return mav;
+	}
+	
+	// 랭크경기 세부정보
+	@GetMapping("/detail")
+	public ModelAndView rankGameDetail(int no) {
+		ModelAndView mav = new ModelAndView();
+		
+		// DB에서 랭크경기 세부정보 받아오기
+		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
+
+		mav.addObject("goole_map_key", goole_map_key);
+		mav.addObject("rankGameDetail", rankGameDetail);
+		mav.setViewName("user/rankGame/rankGameDetail");
 		
 		return mav;
 	}
