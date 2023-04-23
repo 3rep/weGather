@@ -118,19 +118,16 @@ public class MypageController {
 	public String rankMain(HttpSession session, String sportname) {
 		
 		System.out.println(sportname);
-		
 		String logId = (String)session.getAttribute("logId");
-			  
+
 		List<MypageRankDTO> list = service.rank(logId,sportname);
-		System.out.println("list111-> "+list );
+		//System.out.println("list111-> "+list );
 		//System.out.println("확인::::"+list.get(0));
-		
 		
 		Collections.reverse(list);
 		System.out.println("list222:: "+list);
 		
-		
-		
+		//json문자열로 뷰로 보낸다.
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
@@ -140,8 +137,6 @@ public class MypageController {
 			e.printStackTrace(); } 
 		
 		return json;
-		
-		
 	}
 	 
 	

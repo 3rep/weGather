@@ -13,13 +13,17 @@
 					<option value="야구">야구</option>
 					<option value="농구">농구</option>
 				</select>
-				<button id="chartBtn" title="Button border blue/green" class="button btnBorder btnBlueGreen" >그래프 보기</button>
+				<button id="chartBtn" >그래프 보기</button>
 			</form>
 			
 			<!-- BarChart넣기 -->
-			<div class="chart" style="width:100%">
+			<div id="chart" class="chart" style="width:100%">
 				<canvas id="line_chart"></canvas>
 			</div>
+			
+			<div id="result" style="width:100%; height:100px; border:1px solid gray">ㅇㅇ</div> <!-- 내용들어오나 확인하는 칸 -->
+			
+			
 			
 		</div> <!-- 오른쪽 내용칸 div -->
 		
@@ -30,41 +34,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <script>
 
-
 	$(function(){
+	
 		//차트 그리기에서 필요한 데이터 ---------------
-		var label; //차트제목
+		var label; //차트내용의 제목
 		var gametime = new Array();//라벨(x축)
-		var newgt = new Array();
-		var isoDates = new Array();
-		var rankData = new Array(); //데이터(y축)
+		var newgt = new Array(); //유닉스 타임스탬프를 자바형식으로 변경
+		var isoDates = new Array(); // 2023-01-01 형태로 변경
+
+		var rank = new Array(); //데이터(y축)
 		var backgroundColor = 'rgba(255, 99, 132, 0.2)';
 		var borderColor = 'rgb(255, 99, 132)';
-		//------------------------------------- 
+		var newgt = new Array();
+		
+		//----------------------------------------
 		//차트 그리기
 		function chart(){
+			//차트data
 			var data = {
-				labels: isoDates,
+				labels: isoDates, //x축
 				datasets: [{
-					label: label,
-				    data: rankData,
+					label: label, //차트제목
+				    data: rank, //y축
 				    fill: false,
-				    borderColor: 'rgb(75, 192, 192)',
-				    tension: 0.1,
-				    pointRadius: 7, // 포인트 크기
-				    pointStyle: 'rect', // 직사각형, triangle : 삼각형, default : circle (원형)
-	                pointBackgroundColor: 'Color'
+				    borderColor: borderColor,
+				    tension: 0.1
+				    
 		 		 }]
 			};
-			
+			//차트생성
 			var chart = new Chart(document.getElementById("line_chart"), {
 			    type: 'line',
 			    data: data,
 			    options: { 
-			    	scales: { 
-			    		xAxes: [{ ticks: { display: false } }], //x축 없애기
+			    	 scales: { 
+			    		/*xAxes: [{ ticks: { display: false } }], //x축 없애기*/
 			    		yAxes: [{	//y축설정
 			                ticks: {
 			                    max: 5,
@@ -73,22 +80,52 @@
 			                }
 			            }]
 			    	},
-			    	tooltips: {
+			    	tooltips: { //툴팁 사이즈 키우기(기본 12)
 		                titleFontSize: 15,
 		                bodyFontSize: 15
-		            }
+		            } 
 			    
 			    }
-			
 			});
 		}
+		//차트 지우기
+		/* function removeChart(){
+			alert("경고");
+			$("#line_chart").html("랭크결과가 없습니다.");
+			$('#line_chart').append("append success!");
+		} */
 		
+		//랭크명 생성
+		/*function updateArray(myArray, oldValue, newValue) {	}
+		function updateArray(myArray, oldValue, newValue) {
+			  if (!myArray instanceof Array) return;
+
+			  const index = myArray.indexOf(oldValue);
+			  if (index !== -1) {
+			    myArray[index] = newValue;
+			  }
+		} */
+		function replaceArrayValues(arr1) {
+			const [a, b, c, d, e] = [1, 2, 3, 4, 5];
+			const mapObj = {
+			  1: a,
+			  2: b,
+			  3: c,
+			  4: d,
+			  5: e,
+			};
+			
+			const arr2 = arr1.map((num) => mapObj[num] || num);
+			return arr2;
+		}
+
+			
 		
 		//버튼누르면 ajax 실행
 		$("#chartBtn").click(function(){ 
 			event.preventDefault();
 			
-			var value = (sportname.options[sportname.selectedIndex].value);
+			var value = (sportname.options[sportname.selectedIndex].value); //옵션의 value값 구하기
 			var data = {sportname: value }
 			console.log(data);
 			console.log("value---->"+value);
@@ -99,49 +136,54 @@
 				return false;	
 			}
 			
-			
 			$.ajax({
 				data : data,
-				type : "post",
+				type : 'POST',
 				url : "rankMain",
 				success : function(result){
-				
-					//console.log("result->"+result);
-					//$("#re").html(result);
-					
-					
+					console.log("result->"+result);
+					//$("#result").html(result);
 					
 					var jsonData = JSON.parse(result);
-					//console.log("jsonData->"+jsonData);
+					//$("#result").html(jsonData); > 안나오네
+					console.log(jsonData);
 					
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
 						console.log("gametime[i]->"+gametime[i]);
 						newgt[i] = new Date(gametime[i]);
 						console.log("newgt->"+newgt);
+
+						rank[i]=obj.rank; //데이터(y축)
+						console.log("rank[i]->"+rank[i]);
+
+						}) 
+
+						isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
+						console.log(isoDates);
 						
-						rankData[i]=obj.rank; //데이터(y축)
-						console.log("rankData[i]->"+rankData[i]);
-					}) 
-					
-					isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
-					console.log(isoDates);
-					
-					//이전에 있는 차트 먼저 지우기
-					/* if(window.chart!=undefined){
-						window.chart.destroy();
-					} */
+						//rank 숫자값을 랭크명으로 변경
+						console.log(rank);
 						
-					//차트그리기
+						/* updateArray(rank, 1, "브론즈");
+						updateArray(rank, 2, "실버");
+						updateArray(rank, 3, "골드");
+						updateArray(rank, 4, "플래티넘");
+						updateArray(rank, 5, "다이아"); */
+						
+						const arr1 = rank;
+						const arr2 = replaceArrayValues(arr1);
+
+						console.log("arr2222"+arr2); // [a, b, b, c, c, d, e, e]
+						//console.log(rank);
+
+					//기존 차트 지우기
+					//chart.destroy();
+					//removeChart();
+					
+					//차트 그리기
 					chart();
-					
-					//시간형식 변환해야하는데...
-					
-					
-					///차트가 겹쳐져서 그려진다.... 최근 5경기를 반드시 만드는수밖에...
-					//	야구가 경기가 없는데, 야구 직전에 풋살 5경기 그래프를 봤다면
-					//	야구를 눌러도 풋살 5경기 그래프가 뜬다..ㅎ
-					
+
 				 
 				}, error : function(e){
 					console.log(e.responseText);
