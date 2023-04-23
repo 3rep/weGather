@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.RankGameDAO;
 import com.gather.we.dto.RankGameDTO;
+import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
 
 @Service
@@ -23,5 +24,10 @@ public class RankGameServiceImpl implements RankGameService {
 	@Override
 	public List<RankGameDTO> rankGameListSelect(RankGameListDTO dto) {
 		return dao.rankGameListSelect(dto);
+	}
+
+	@Override
+	public RankGameDetailDTO rankGameDetailSelect(int no) {
+		return dao.rankGameDetailSelect(no);
 	}
 }
