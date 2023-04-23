@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30%; /* 컨테이너 높이를 60%로 설정 */
+}
+
+.box {
+  background-color: #D1D9E2;
+  color: #FFFF;
+  padding: 3px;
+  margin: 5px;
+  text-align: left;
+  flex-basis: 20%;
+
+   font-size: 12px;
+  width: 500px;
+  height: 50px; /* 박스 높이를 50px로 조절 */
+    position: relative; /* 박스에 position을 추가 */
+    top:150px;
+}
+
+.box-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+
+.box button {
+    //background-color: #48CD5D;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    height: 30px;
+    width: 150px;
+    font-size: 14px;
+    align-self: flex-end;
+    position: absolute; /* 버튼 위치를 absolute로 지정 */
+    right: 0; /* 오른쪽에 위치하도록 지정 */
+    bottom: 0; /* 하단에 위치하도록 지정 */
+   
+     
+  }
+  
+  .btn-green {
+    background-color: #48CD5D;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    height: 20px;
+    width: 150px;
+    font-size: 14px;
+    align-self: flex-end;
+  }
+
+ .btn-gray {
+  background-color: gray !important;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  height: 20px;
+  width: 150px;
+  align-self: flex-end;
+}

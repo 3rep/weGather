@@ -6,107 +6,14 @@
 <head>
 <meta charset="UTF-8">
 	<title>매니저페이지</title>
-	<link href="${path}/static/style/manager/style.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/manager/manager10.css" rel="stylesheet" type="text/css" />
 	
 
 </head>
-  <style>
-    .container {
-     position: absolute;
-     top:200px;
-     left:400px;
-	
-      width: 800px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  
+	<style>
+	</style>
 
-    .half-container {
-      flex-basis: 50%;
-      height: 100%;
-    /*  border: 1px solid black; /* 테두리 추가 */ */
-      box-sizing: border-box; /* 테두리 두께를 요소의 크기에 포함 */
-    }
-
-    .image-container {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .image-container img {
-      max-height: 100%;
-      max-width: 100%;
-      height: 70%;
-      position:absolute;
-      top:0px;
-    }
-
-    .box-container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-  .box {
-  position: relative;
-  width: 90%;
-height:90%;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid black;
-  background: #D1D9E2;
-}
-
-.sub-box {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100px;
-  height: 60px;
-}
-
-.sub-box button.green {
-  background-color: #28BD54;
-  height: 30px;
-  width: 90px;
-}
-
-.sub-box button.red {
-  background-color: #CD3838;
-  height: 30px;
-  width: 90px;
-}
- .sub-box button.grey {
-      background-color: #448FE4;
-      height: 30px;
-      width: 90px;
-      pointer-events: none; /* 클릭 이벤트 제거 */
-    }
-    .sub-box button.blue {
-      background-color: #395A7F;
-      height: 30px;
-      width: 90px;
-      pointer-events: none; /* 클릭 이벤트 제거 */
-    }
-     .pagingDiv {
-    position: relative;
-  }
-    .pagingDiv li{
-    	position:absolute;
-    	
-		
-		padding:10px 20px;
-		bottom: 0;
-	}
-	
-	
-  </style>
 <h1 style="font-size: 30px;">신청한 경기 내역</h1>
 
   <body>
