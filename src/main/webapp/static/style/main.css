@@ -1,0 +1,47 @@
+@charset "EUC-KR";
+
+/* 전체 배경이미지 위에서 움직이는 container*/
+.container{
+	background: #ddd;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+		align-items: stretch;
+	
+	margin : 0;
+	padding: 0;
+}
+.item{
+	flex-basis: 650px; /*flex item 높이*/
+	text-align : center;
+	
+}
+/* 첫번째div : 로그인, 회원가입창 */
+#item1{
+	background: #E0EFCC;
+	postion: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.login{
+	background: pink;
+	position: absolute;
+}
+span{
+	font-size: var(--font-large);
+	font-style: italic;
+}
+/* 두번째div : 소개글 */
+#item2{
+	background: #DCF4F9;
+	postion: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.info{
+	background: pink;
+	position: absolute;
+}
