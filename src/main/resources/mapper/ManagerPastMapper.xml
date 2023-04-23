@@ -8,5 +8,13 @@
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.gametime > sysdate
+		<if test="nowPage != null and onePageRecord != null">
+			ORDER BY rank_game.gametime DESC
+			OFFSET #{offset} ROWS FETCH NEXT #{onePageRecord} ROWS ONLY
+		</if>
 	</select>
+	
+	
+		
+	
 </mapper>

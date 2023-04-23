@@ -14,48 +14,29 @@
 	
 	
 	<select id="totalRecord" resultType="int">
- 		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
-	FROM rank_game  
-	JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
- 		<if test="searchWord!=null">
- 			and ${searchKey} like '%${searchWord}%'
- 		</if>
- 	</select>
- 	<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
- 		select * from 
- 			(select * from 
- 				(
- 					SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
-	FROM rank_game  
-	JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
- 					<if test="searchWord!=null"><!-- 검색어가 있을 경우 -->
- 					 and #{searchKey} like '%${searchWord}%'
- 					</if>
- 					
- 				
- 				
- 					order by b.no desc
- 					
- 			)
- 		
- 		 		
- 		
- 				 <![CDATA[
- 				 where rownum<=${onePageRecord*nowPage} order by no asc 
- 				 ]]>
- 				 )
- 		<choose>
-		  <when test="nowPage!=totalPage"> 		
- 	   		 	<![CDATA[
- 			 	where rownum<=${onePageRecord} order by no desc
- 			 	]]>
- 		 
- 		  </when>
- 		  <when test="nowPage==totalPage">	
- 			   <![CDATA[
- 		 		where rownum<=${onePageRecord} order by no desc
- 		 		]]>
- 	  	  </when>
- 		</choose> 
- 	</select>
+  SELECT COUNT(*) FROM (
+    SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
+    FROM rank_game  
+    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+    <if test="searchWord!=null">
+      AND ${searchKey} LIKE '%${searchWord}%'
+    </if>
+  ) total
+</select>
+
+<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
+  SELECT * FROM (
+    SELECT ROW_NUMBER() OVER(ORDER BY b.no DESC) AS rnum, 
+           stadium_info.stadium, 
+           stadium_info.location, 
+           rank_game.gametime, 
+           rank_game.g_status
+    FROM rank_game  
+    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+    <if test="searchWord!=null">
+      AND ${searchKey} LIKE '%${searchWord}%'
+    </if>
+  ) paging
+  WHERE rnum BETWEEN #{startRecord} AND #{endRecord}
+</select>
  </mapper> 

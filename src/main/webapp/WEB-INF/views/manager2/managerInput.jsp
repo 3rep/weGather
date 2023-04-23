@@ -74,5 +74,8 @@
       // 창 닫기
       window.close();
     });
-  </script>
+    </script>
+    
+   
+ 
 </html>

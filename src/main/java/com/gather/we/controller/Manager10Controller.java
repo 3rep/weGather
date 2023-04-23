@@ -30,7 +30,7 @@ public class Manager10Controller {
 	 
 	 @GetMapping("/static/style/managerNav")
 	 public String getManagerNav() {
-	     return "/static/style/managerNav";
+	     return "/static/style/manager/managerNav";
 	 }
 	 
 	 

@@ -59,4 +59,29 @@ buttons.forEach(button => {
   });
 });
 </script>
+
+<div>총레코드 수: ${vo.totalRecord }</div>
+<div>${vo.totalPage }/${vo.nowPage }</div>
+<div class="pagingDiv">
+	<ul>
+		<c:if test="${vo.nowPage==1}">
+			<li>prev</li>
+		</c:if>
+		<c:if test="${vo.nowPage>1}">
+			<li><a href="managerPast?nowPage=${vo.nowPage-1 }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">prev</a></li>
+		</c:if>
+		<c:forEach var="p" begin="${vo.startPageNum}" end="${vo.endPageNum }">
+			<li><c:if test="${p==vo.nowPage }"><span>${p}</span></c:if>
+				<c:if test="${p!=vo.nowPage }"><a href="managerPast?nowPage=${p }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">${p}</a></c:if>
+			</li>
+		</c:forEach>
+		<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
+			<li><a href="managerPast?nowPage=${vo.nowPage + 1 }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">next</a></li>
+		</c:if>
+		<c:if test="${vo.nowPage==vo.totalPage }">
+			<li>next</li>
+		</c:if>
+	</ul>
+</div>
+
 </html>

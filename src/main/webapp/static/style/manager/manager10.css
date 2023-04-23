@@ -94,4 +94,10 @@ height:90%;
 		padding:10px 20px;
 		bottom: 0;
 	}
+	.pagingDiv li{
+		float:left;
+		padding:10px 20px;
+		
+	}
+	.pagingDiv a:link, .pagingDiv a:hover, .pagingDiv a:visited,
 	

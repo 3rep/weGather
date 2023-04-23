@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,4 +67,28 @@
     }
   }
 </script>
+ 
+<div>총레코드 수: ${vo.totalRecord }</div>
+<div>${vo.totalPage }/${vo.nowPage }</div>
+<div class="pagingDiv">
+	<ul>
+		<c:if test="${vo.nowPage==1}">
+			<li>prev</li>
+		</c:if>
+		<c:if test="${vo.nowPage>1}">
+			<li><a href="manager10?nowPage=${vo.nowPage-1 }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">prev</a></li>
+		</c:if>
+		<c:forEach var="p" begin="${vo.startPageNum}" end="${vo.endPageNum }">
+			<li><c:if test="${p==vo.nowPage }"><span>${p}</span></c:if>
+				<c:if test="${p!=vo.nowPage }"><a href="manager10?nowPage=${p }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">${p}</a></c:if>
+			</li>
+		</c:forEach>
+		<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
+			<li><a href="manager10?nowPage=${vo.nowPage + 1 }<c:if test="${not empty vo.searchWord}">&amp;searchKey=${vo.searchKey}&amp;searchWord=${vo.searchWord}</c:if>">next</a></li>
+		</c:if>
+		<c:if test="${vo.nowPage==vo.totalPage }">
+			<li>next</li>
+		</c:if>
+	</ul>
+</div>
 </html>
