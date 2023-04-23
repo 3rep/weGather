@@ -10,23 +10,27 @@
 
 	<!-- 배경에 이미지 깔고 
 	그 위에 
-		1. 1. 로고 + 회원가입, 로그인 버튼?  있는 화면 : 백그라운드 연하게
+		1. 로고 + 회원가입, 로그인 버튼?  있는 화면 : 백그라운드 연하게
+			> 불투명 백그라운드(A) + 내용들어있는 div(B)
 		2. 회원가입화면 바로 밑에 붙여서 소개 div
 	
 		1,2 는 하나의 container에 넣어서 flex 적용시킨다.
 	-->
 	
 	<div class="container">
-		<div class="item" id="item1">
-			<div class="login"> 
-				<span>We gather, together !</span>
-				<button>로그인</button >
-				<button>회원가입</button>
+		<div class="img">맨뒤에 배경이 되는 이미지 자리</div>
+		<div class="item" id="cloudy"> <!-- A -->
+			<div class="login"> <!-- B -->
+				<span>We gather,</span><br/>
+				<span>together !</span><br/>
+				<span class="featSpan">feat. sport</span><br/>
+				<button class="button button--ujarak button--border-medium button--round-s button--text-upper">로그인</button>
+          		<button class="button button--ujarak button--border-medium button--round-s button--text-upper">회원가입</button>
 			</div>
 		</div>
-		<div class="item" id="item2">
-			<div class="info">
-				소개메세지
+		<div class="item" id="info">
+			<div class="infoTxt">
+				사이트 소개글
 			</div>
 		</div>
 	</div>
