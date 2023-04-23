@@ -15,10 +15,9 @@
 <link rel="stylesheet" href="static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="static/style/header.css" type="text/css"/>
 <link rel="stylesheet" href="static/style/footer.css" type="text/css"/>
+
 <!-- 부트스트랩 있으니까 main.css가 안먹는다 -->
-<style type="text/css">
-@import url(static/style/main.css);
-</style>
+<link rel="stylesheet" href="static/style/main.css" type="text/css"/>
 
 </head>
 
