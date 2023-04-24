@@ -22,8 +22,8 @@
 				<span>&emsp; together !</span><br/>
 				<span class="featSpan">feat. sport</span><br/>
 				<br/>
-				<button class="button button--ujarak button--border-medium button--round-s button--text-upper">로그인</button>
-          		<button class="button button--ujarak button--border-medium button--round-s button--text-upper">회원가입</button>
+				환영합니다. ***님<br/> 
+				or 취미추천링크 or 랭크보드?
 			</div>
 		</div>
 		<div class="item" id="info">
