@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#logManFrm input{margin-bottom:50px 0; width:90%;}
+
+#logManFrm li:nth-child(2n){
+	padding-bottom:30px;
+	margin : 0 auto;
+}
+
+img{float:left;}
+	
+form{
+display:inline-block;}
+
