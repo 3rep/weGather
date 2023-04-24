@@ -1,184 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>MainScreen</title>	
-<link href="static/style/style.css" rel="stylesheet" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-	#demo{
-		height: 600px;
-		width:100%;
-		margin-bottom:70px;
-		border : 5px solid blue;
-		
-	}}
-	.carousel-caption p{
-		/* position: absolute; */
-		/* right: 500px;
-		top: 500px; */
-		/* font-size : 12px; */
-	}
-	
-	/*슬라이드 아래쪽 스타일*/
-	#bottomBox{ 
-		width:100%;
-		height: 1000px;
-		border: 1px solid red;
-		font-size: 30px;
-		text-align: center;
-		/* line-height: center; */
-		
-	}
-	
-	#bottomContentMain li{
-		float: left;
-		margin : 10px;
-		width: 31%;
-		height:370px;
-		padding : 10px;
-		background: #F3F5FA;
-		border-radius: 40px;
-		
-	}
-	#bottomContentMain img{
-		width:100%; 
-		height:250px
-	}
-	
-	#bottomContentSub li{
-		float : left;
-		width: 47%;
-		height: 250px;
-		margin : 10px;
-		padding : 10px;
-		background: #F3F5FA;
-		border-radius: 40px;
-		
-	}
-	#bottomContentSub img{
-		width:100%; 
-		height:150px
-	}
-	
-</style>
-<script>
-	//스크롤 내리며 아래 내용 나오게 할거야
-	
-</script>
-</head>
-<body>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
-		<!-- Carousel -->
-		<div id="demo" class="carousel slide" data-bs-ride="carousel">
-		
-			<!-- Indicators/dots -->
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-				<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-			</div>
-				
-			<!-- The slideshow/carousel -->
-			<div class="carousel-inner" >
-				<div class="carousel-item active">
-					<img src="static/img/imgMain/fancy.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
-					<div class="carousel-caption" style="left:60%; top: 50px; width:400px; ">
-					    <h2>스포츠</h2>
-					    <p style="font-size:1.2em">
-					    	모든 경기가 준비되어 있습니다.<br/>
-					    	원하는 경기에 참여해보세요</p>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img src="static/img/imgMain/together.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
-					<div class="carousel-caption" style="left:60%; top: 50px; width:400px">
-						<h2>자유모임</h2>
-						<p style="font-size:1.2em">
-							자유롭게 모임을 개설하고 참여합니다.<br/>
-							좋아하는 취미를 함께 할 친구를 찾아보아요 </p>
-					</div> 
-				</div>
-				<div class="carousel-item">
-					<img src="static/img/imgMain/together2.jpg" alt="" class="d-block" style="height: 600px; width:100%" >
-					<div class="carousel-caption" style="left:60%; bottom: 80px; width:400px">
-						<h2>취미추천</h2>
-						<p style="font-size:1.2em">
-							아직도 취미를 못 정하신 당신을 위해!<br/>
-							당신께 맞는 취미를 추천해드립니다.</p>
-					</div>  
-				</div>
-			</div>
- 		
-			<!-- Left and right controls/icons -->
-			<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-			  <span class="carousel-control-prev-icon"></span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-			  <span class="carousel-control-next-icon"></span>
-			</button>
-			
-		</div>
+<!-- 스타일태그를 인라인으로 넣어서 외부에서 가져오는 css보다 먼저 적용되도록 해야하나?
+	헤더, 푸터가 include되어서 head태그에 link태그를 걸수가 없음 -->
+<!-- <style type="text/css"> @import url(static/style/main.css); </style> -->
+<link rel="stylesheet" href="/static/style/main.css" type="text/css"/>
+<!-- </head> -->
+
+
+	<!-- 배경에 이미지(A) 깔고 
+	그 위에 
+		1. 로고 + 회원가입, 로그인 버튼?  있는 화면 : 백그라운드 연하게
+			> 불투명 백그라운드(B) + 내용들어있는 div(C)
+		2. 회원가입화면 바로 밑에 붙여서 소개 div(D)
 	
-		<div class="container" style="height:900px; width:1200px; background:#ddd;">
-			<!-- 슬라이드 아래쪽 내용 -->
-			<div class="container-fluid mt-3" id="bottomBox">
-				<div id="bottomContentMain" style="background:yellow; height:400px; margin-bottom:100px;" >
-					<ul >
-						<li>
-							<div >
-								<a href="/sport/sportlist">스포츠연결링크</a>
-								Contend for Victory
-								<br/>
-								<img src="static/img/imgMain/darts.jpg" >
-							</div> 
-						</li>
-						<li > 
-							<div >
-								<a href="">자유모임연결링크</a>
-								Get Together
-								<br/>
-								<img src="static/img/imgMain/handss.jpg" >
-							</div>
-						</li>
-						<li > 
-							<div >
-								<a href="">취미추천연결링크</a>
-								Find Your Hobby 
-								<br/>
-								<img src="static/img/imgMain/handss.jpg" >
-							</div>
-						</li>
-					</ul>
-				</div>
-				
-				<div id="bottomContentSub" style="background:green; height:400px">
-					<ul >
-						<li>
-							<div >
-								<a href="">랭크보드연결링크</a>
-								Check the Rank 
-								<br/>
-								<img src="static/img/imgMain/handss.jpg" >
-							</div>
-						</li>
-						<li>
-							<div >
-								<a href="">커뮤니티연결링크</a>
-								Community 
-								<br/>
-								<img src="static/img/imgMain/handss.jpg" >
-							</div>
-						</li>
-									
-					</ul>
-				</div>
+		하나의 container에 넣어서 flex 적용시킨다.
+		
+		맨 뒤 바탕사진(A)은 스크롤할때 1씩 간다면,
+		그 위에 1,2div는 5씩 이동해야함
+	-->
+	
+	<div id="container"> <!-- css우선순위: id가 css보다 우선적용 -->
+		<img class="img" src="static/img/imgMain/tennis.jpg" alt="volley"/>
+		<div class="item" id="cloudy"> <!-- A -->
+			<div class="login"> <!-- B -->
+				<span>We gather,&emsp;</span><br/>
+				<span>&emsp; together !</span><br/>
+				<span class="featSpan">feat. sport</span><br/>
+				<br/>
+				<button class="button button--ujarak button--border-medium button--round-s button--text-upper">로그인</button>
+          		<button class="button button--ujarak button--border-medium button--round-s button--text-upper">회원가입</button>
 			</div>
 		</div>
-</body>
-</html>
-
+		<div class="item" id="info">
+			<div class="infoTxt">
+				사이트 소개글
+			</div>
+		</div>
+	</div>
