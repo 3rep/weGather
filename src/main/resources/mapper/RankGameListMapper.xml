@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gather.we.dao.RankGameListDAO">
+ 	<select id="rankGameListAllSelect" resultType="com.gather.we.dto.RankGameListDTO">
+		SELECT r.no,r.managerid,s.stadium,s.region, s.location, sp.sportname,r.gametime,r.curr_people,r.max_people,r.payment,r.managerfee,r.g_status
+		FROM rank_game r
+			INNER join stadium_info s on r.st_no = s.st_no
+			INNER join sport sp on r.s_no = sp.s_no 
+		WHERE r.gametime-16 &lt; sysdate and sysdate &lt; r.gametime-9
+			AND r.managerid is null
+		ORDER BY r.gametime
+	</select>
+	
+	<update id="updateApply">
+		UPDATE rank_game 
+		set managerid = #{managerid}
+		WHERE 1=1
+		AND no = #{no} 
+	</update>
+
+ 	<select id="getListWithPaging" resultType="com.gather.we.dto.RankGameListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+		  SELECT rownum rnum, t.*
+		  FROM (
+		  SELECT r.no, r.managerid, s.stadium, s.region, s.location, sp.sportname, r.gametime, r.curr_people, r.max_people, r.payment, r.managerfee, r.g_status
+		  FROM rank_game r
+		  	INNER JOIN stadium_info s ON r.st_no = s.st_no
+		    INNER JOIN sport sp ON r.s_no = sp.s_no 
+		  WHERE r.gametime - 16 < sysdate AND sysdate < r.gametime - 9
+		    AND r.managerid IS NULL
+		  ORDER BY r.gametime
+		  ) t
+		  WHERE rownum <= ${pageNum * amount}
+		)
+		WHERE rnum > ${(pageNum - 1) * amount }
+		]]>
+	</select>	
+	
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+		SELECT count(*)
+		FROM rank_game r
+			INNER JOIN stadium_info s ON r.st_no = s.st_no
+			INNER JOIN sport sp ON r.s_no = sp.s_no 
+		WHERE r.gametime-16 < sysdate AND sysdate < r.gametime-9
+		AND r.managerid IS NULL
+		]]>
+	</select>
+</mapper>
