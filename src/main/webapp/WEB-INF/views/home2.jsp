@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<!-- 스타일태그를 인라인으로 넣어서 외부에서 가져오는 css보다 먼저 적용되도록 한다.
+
+<!-- 스타일태그를 인라인으로 넣어서 외부에서 가져오는 css보다 먼저 적용되도록 해야하나?
 	헤더, 푸터가 include되어서 head태그에 link태그를 걸수가 없음 -->
-<!-- <style type="text/css">
-@import url(static/style/main.css);
-</style> -->
+<!-- <style type="text/css"> @import url(static/style/main.css); </style> -->
+<link rel="stylesheet" href="/static/style/main.css" type="text/css"/>
+<!-- </head> -->
 
 
 	<!-- 배경에 이미지 깔고 
@@ -17,7 +18,7 @@
 		1,2 는 하나의 container에 넣어서 flex 적용시킨다.
 	-->
 	
-	<div class="container">
+	<div id="container"> <!-- css우선순위: id가 css보다 우선적용 -->
 		<div class="img">맨뒤에 배경이 되는 이미지 자리</div>
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
@@ -34,4 +35,3 @@
 			</div>
 		</div>
 	</div>
-		

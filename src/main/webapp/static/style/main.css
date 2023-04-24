@@ -1,5 +1,6 @@
 @charset "EUC-KR";
-/* 버튼 스타일 링크*/
+
+/* 버튼 스타일 링크----------------*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
 @font-face {
   font-weight: normal;
@@ -8,8 +9,6 @@
   src: url("../fonts/codropsicons/codropsicons.eot");
   src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
 }
-
-
 /*버튼 스타일---------------------*/
 .button {
   float: left;
@@ -97,11 +96,11 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/*버튼 스타일-----------------------*/
+/*버튼 스타일 end-----------------------*/
 
 
 /* 전체 배경이미지 위에서 움직이는 container*/
-.container{
+#container{
 	background: #ddd;
 	display: flex;
 	flex-direction: column;
