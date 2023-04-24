@@ -6,17 +6,19 @@
     --color-white: #ffffff;
     --color-orange: #FDA238;
     --color-yellow: #FEF7DD;
+    --color-dark-yellow: #FCF0C1;
     --color-blue: #162888;
     --color-light-blue: #448FE4;
     --color-board-blue: #F3F5FA; /*게시판 배경 등 기본 바탕색*/
     --color-pink: #ed9392;
-    --color-light-gray: #d9d9d9;
-    --color-gray: #D9D9D9;
+    --color-light-gray: #EAE9E9;
+    --color-gray: #D2D1D1;
     --color-dark-gray: #484848;
     --color-black: #000000;
-    --color-red: #ED4646;
+    --color-red: #CB1E1E;
     --color-admin-black: #2D2D2D;
-    --color-admin-gray: #E9E9E9;
+    --color-admin-gray: #E6E9EC;
+    --color-admin-blue-gray: #D1D9E2;
     --color-admin-dark-blue: #5F6D7E;
     --color-manager-dark-green: #1B5A1D;
     --color-manager-middle-green: #319F52;
@@ -30,8 +32,9 @@
     /* Font size */
     --font-large: 54px;
     --font-medium: 40px;
+    --font-semi-medium: 30px;
     --font-regular: 26px;
-    --font-small: 20px;
+    --font-small: 22px;
     --font-micro: 18px;
   
     /* Font weight */
@@ -58,7 +61,6 @@
   a {
     text-decoration: none;
     outline: none;
-    color: var(--color-black);
   }
   
   ul, ol {
@@ -95,4 +97,3 @@
     margin: 4px 0;
   }
   
-  }
