@@ -37,13 +37,13 @@
   border-color: #ECEFF1;
 }
 .button--size-s {
-  font-size: 14px;
+  font-size: 13px;
 }
 .button--text-upper {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 10px;
 }
 .button--round-s {
   border-radius: 5px;
@@ -138,9 +138,13 @@
 	align-items: center;
 }
 .login{
-	background: pink;
+	/* background: pink; */
+	background-color: rgba(255, 255, 255, 20%);/*까만색(0,0,0) 30% 불투명도*/
+	background-radius: 30px;
+	padding: 10px 50px 10px 50px;
 	position: absolute;
 	z-index: 3;
+	color: antiquewhite;
 }
 span{
 	font-size: var(--font-large);

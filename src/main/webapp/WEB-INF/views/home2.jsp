@@ -25,9 +25,10 @@
 		<img class="img" src="static/img/imgMain/tennis.jpg" alt="volley"/>
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
-				<span>We gather,</span><br/>
-				<span>together !</span><br/>
+				<span>We gather,&emsp;</span><br/>
+				<span>&emsp; together !</span><br/>
 				<span class="featSpan">feat. sport</span><br/>
+				<br/>
 				<button class="button button--ujarak button--border-medium button--round-s button--text-upper">로그인</button>
           		<button class="button button--ujarak button--border-medium button--round-s button--text-upper">회원가입</button>
 			</div>
