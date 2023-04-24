@@ -251,9 +251,9 @@ public class AdminController {
 				ManagerDTO dto = ir.next();
 				String managerid = dto.getManagerid();
 				
-				List<RankGameDTO> rank = adminManagerService.managerRecent(managerid);
+				List<RankGameDTO> recent = adminManagerService.managerRecent(managerid);
 				
-				if(!rank.isEmpty()) dto.setRankgameList(rank);
+				if(!recent.isEmpty()) dto.setRankgameList(recent);
 				
 				nlist.add(dto);
 			}
@@ -276,6 +276,55 @@ public class AdminController {
 		mav.addObject("dto", adminManagerService.managerDetail(managerid));
 		
 		mav.setViewName("admin/allManager/managerDetail");
+		
+		return mav;
+	}
+	
+	// 매니저 제명
+	@PostMapping("/manager/dismissOk")
+	public ModelAndView managerDismiss(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		adminManagerService.refuseOk(managerid);
+		
+		mav.setViewName("redirect:managerlist");
+		
+		return mav;
+	}
+	
+	// 매니저 활동 내역
+	@PostMapping("/manager/recentOk")
+	public ModelAndView managerRecent(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		List<StadiumInfoDTO> stadium = new ArrayList<StadiumInfoDTO>();
+		
+		ManagerDTO dto = adminManagerService.managerDetail(managerid);
+		
+		List<RankGameDTO> recent = adminManagerService.managerRecent(managerid);
+		
+		if(recent.isEmpty()) {
+			
+			recent = null;
+			
+		}else {
+		
+			Iterator<RankGameDTO> ir = recent.iterator();
+			
+			while(ir.hasNext()) {
+				RankGameDTO rdto = ir.next();
+				StadiumInfoDTO sdto = stadiumInfoService.stadiumInfoOneSelect(rdto.getSt_no());
+				stadium.add(sdto);
+			}
+		}
+		
+		mav.addObject("dto", dto);
+		
+		mav.addObject("recent", recent);
+		
+		mav.addObject("stadium", stadium);
+		
+		mav.setViewName("admin/allManager/managerRecent");
 		
 		return mav;
 	}

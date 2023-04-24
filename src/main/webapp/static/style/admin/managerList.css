@@ -94,11 +94,14 @@
 }
 
 #container-allManager2 #dismiss {
-	font-size: var(--font-small);
+	font-size: var(--font-regular);
+	font-weight: var(--weight-bold);
 	padding: 0 10px;
 	border: none;
 	background: transparent;
 	color: var(--admin-black);
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
 
 #container-allManager2 #dismiss:hover {

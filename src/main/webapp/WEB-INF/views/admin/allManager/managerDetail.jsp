@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="container" id="container-oneManager2">
+	<!-- 서버에서 넘어온 데이터 -->
 	<c:set var="mDTO" value="${dto}"/>
 	<h2>매니저 정보</h2>
 	<div class="content_box">
@@ -36,13 +37,37 @@
 					<li>${mDTO.sportname}</li>
 					<li>&nbsp;</li>
 					<li id="last_point">
-						<input type="button" value="매니저 제명"/>
-						<input type="button" value="매니저 활동내역"/>
+						<input type="button" value="매니저 제명" id="dismiss"/>
+						<input type="button" value="매니저 활동내역" id="recent"/>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	<div class="manager_footer">
+		<a href="managerlist" id="back_to_list">목록보기</a>
+	</div>
 </div>
+<form method="post" id="submit_manager">
+	<input type="hidden" name="managerid" value="${mDTO.managerid}"/>
+</form>
+
+<script>
+	$(function(){
+		$("#dismiss").click(function(){ /*매니저 제명을 클릭했을 때*/
+			if(confirm("${mDTO.m_name} 매니저를 제명하시겠습니까?")) {
+				$("#submit_manager").attr("action", "dismissOk");
+				$("#submit_manager").submit();
+			}
+			return false;
+		});
+		
+		$("#recent").click(function(){ /*매니저 활동내역을 클릭했을 때*/
+			$("#submit_manager").attr("action", "recentOk");
+			$("#submit_manager").submit();
+		});
+	});
+</script>
+
 </body>
 </html>

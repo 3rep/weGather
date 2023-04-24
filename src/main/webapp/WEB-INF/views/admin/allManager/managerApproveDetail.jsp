@@ -44,6 +44,9 @@
 			<input type="button" value="보류" id="postpone"/>
 			<input type="button" value="거절" id="refuse"/>
 		</div>
+		<div class="manager_footer">
+			<a href="approvelist">목록보기</a>
+		</div>
 </div>
 
 <script>

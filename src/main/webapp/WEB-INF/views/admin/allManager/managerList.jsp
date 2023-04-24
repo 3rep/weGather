@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script>
-
-</script>
 <div class="container" id="container-allManager2">
 	<h2>매니저 목록</h2>
 	<form method="post" id="">
@@ -21,7 +18,7 @@
 		
 		
 		<c:set var="no" value="${1}" />
-		<c:forEach var="mDTO" items="${list}">
+		<c:forEach var="mDTO" items="${list}" varStatus="status">
 			<li><input type="checkbox" name="managerid" value="${mDTO.managerid}" /></li>
 			<li>${no}</li>
 			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.m_name}</a></li>
