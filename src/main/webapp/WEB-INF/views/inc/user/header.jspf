@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="${path}/static/style/user/game/sportList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameDetail.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/main.css" type="text/css"/>
 
 </head>
 

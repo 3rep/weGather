@@ -23,10 +23,6 @@
 		<property name="mapperLocations" value="classpath:/mapper/*Mapper.xml"></property>
 	</bean>
 
-	 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    	<property name="locations" value="classpath:/key.properties" />
-	</bean>
-
 	 
 	<!-- 트랜잭션 처리를 하는 mybatis 객체를 생성--> 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
