@@ -9,34 +9,32 @@
     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 </select>
 	
-		
+		<select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
+	SELECT username AS username, userid, rank, gender, tel
+	FROM users
+  </select>
 	
 	
+	<select id="getAllManagerInput" resultType="com.gather.we.dto.Manager10DTO">
+		SELECT username AS username, rank, userid
+	FROM users
+	</select>
+	<update id="updateUserRankByUserId">
+  UPDATE users
+  SET rank = #{rank}
+  WHERE userid = #{userId}
+</update>
 	
-	<select id="totalRecord" resultType="int">
-  SELECT COUNT(*) FROM (
-    SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
-    FROM rank_game  
-    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
-    <if test="searchWord!=null">
-      AND ${searchKey} LIKE '%${searchWord}%'
-    </if>
-  ) total
-</select>
-
-<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
-  SELECT * FROM (
-    SELECT ROW_NUMBER() OVER(ORDER BY b.no DESC) AS rnum, 
-           stadium_info.stadium, 
-           stadium_info.location, 
-           rank_game.gametime, 
-           rank_game.g_status
-    FROM rank_game  
-    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
-    <if test="searchWord!=null">
-      AND ${searchKey} LIKE '%${searchWord}%'
-    </if>
-  ) paging
-  WHERE rnum BETWEEN #{startRecord} AND #{endRecord}
-</select>
+	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
+		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
+		FROM rank_game  
+		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+		WHERE rank_game.gametime > sysdate
+		<if test="nowPage != null and onePageRecord != null">
+			ORDER BY rank_game.gametime DESC
+			OFFSET #{offset} ROWS FETCH NEXT #{onePageRecord} ROWS ONLY
+		</if>
+	</select>
+	
+	
  </mapper> 

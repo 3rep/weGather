@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.gather.we.service.Manager10Service;
 import com.gather.we.dto.Criteria;
@@ -31,7 +32,7 @@ public class Manager10Controller {
 		    mav.setViewName("/manager2/manager10");
 		    return mav;
 		}
-	 
+	 //占싣아억옙
 	 @GetMapping("/manager2/manager10/{managerid}")
 	 public ModelAndView getManagerPastByManagerId(@PathVariable("managerid") String managerid) {
 	     ModelAndView mav = new ModelAndView();
@@ -57,21 +58,53 @@ public class Manager10Controller {
 		 model.addAttribute("list", service.getList(cri));
 		 model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	 }
+	 @GetMapping("/manager2/managerInput")
+	 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank) {
+	     ModelAndView mav = new ModelAndView();
+	     List<Manager10DTO> managerInputList;
+	     if (rank != null) {
+	         managerInputList = service.getAllManagerInputByRank(rank);
+	     } else {
+	         managerInputList = service.getAllManagerInput();
+	     }
+	     mav.addObject("managerInputList", managerInputList);
+	     mav.setViewName("/manager2/managerInput");
+	     return mav;
+	 }
 	 
-	 /*
-			ModelAndView mav = new ModelAndView();
-			System.out.println(1111);
-			//총레코드 수를 구하기
-			dto.setTotalRecord(service.totalRecord(dto));
-			
-			System.out.println("-"+dto.toString());
-			//DB조회
-			//해당 페이지 레코드 선택하기 
-			mav.addObject("list" , service.pageSelect(dto));
-			System.out.println(2222);
-			mav.addObject("dto", dto);
-			mav.setViewName("manager2/manager10");
-			return mav;
+	 @GetMapping("/manager2/managerPast")
+	 public ModelAndView managerPastManager2() {
+		    ModelAndView mav = new ModelAndView();
+		    List<Manager10DTO> managerList = service.getAllManagerPast();
+		    mav.addObject("managerList", managerList);
+		    mav.setViewName("/manager2/managerPast");
+		    return mav;
 		}
-	 */
+	 @GetMapping("/manager2/managerPast/{managerid}")
+	 public ModelAndView getManagerPastByManagerid(@PathVariable("managerid") String managerid) {
+	     ModelAndView mav = new ModelAndView();
+	     List<Manager10DTO> managerList = service.selectManagerPastByManagerid(managerid);
+	     mav.addObject("managerList", managerList);
+	     mav.setViewName("/manager2/managerPast");
+	     return mav;
+	 }
+	 
+	 @GetMapping("manager2/managerPast/list")
+		public void managerPastList(Criteria cri, Model model) {
+		 Logger log = LoggerFactory.getLogger(getClass());
+		 log.info("list: " +cri);
+		 model.addAttribute("list", service.getList(cri));
+		 model.addAttribute("pageMaker", new PageDTO(cri, 123));
+	 
+		}
+	 
+	 @GetMapping("/manager2/entry")
+	 public ModelAndView EntryManager2() {
+		    ModelAndView mav = new ModelAndView();
+		    List<Manager10DTO> entryList = service.getAllEntry();
+		    mav.addObject("entryList", entryList);
+		    mav.setViewName("/manager2/entry");
+		    return mav;
+		}
+	 
 }

@@ -50,4 +50,44 @@ public class Manager10ServiceImpl implements Manager10Service {
 		return dao.getList(dto);
 	}
 
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerInputByRank(String rank) {
+		
+		return dao.getAllManagerInputByRank(rank);
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> selectManagerPastByManagerid(String managerid) {
+		
+		return dao.selectManager10ByManagerid(managerid);
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerPast() {
+		// TODO Auto-generated method stub
+		return dao.getAllManagerPast();
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerInput() {
+		// TODO Auto-generated method stub
+		return dao.getAllManagerInput();
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> getAllEntry() {
+		// TODO Auto-generated method stub
+		return dao.getAllEntry();
+	}
+
 }

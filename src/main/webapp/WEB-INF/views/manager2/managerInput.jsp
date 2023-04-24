@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-	<title>활동내역</title>
+	<title>활동 내역</title>
 	<link href="${path}/static/style/manager/managerInput.css" rel="stylesheet" type="text/css" />
 </head>
 <style>
@@ -58,7 +58,7 @@
     const submitButton = document.querySelector('.submit-button');
     
     modifyButton.addEventListener('click', () => {
-      // 랭크 정보 수정 API 호출
+      // 랭크 정보 수정 API 호  출
       alert('랭크 정보를 수정했습니다.');
     });
     
