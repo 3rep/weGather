@@ -6,6 +6,7 @@ import com.gather.we.dto.SportDTO;
 
 public interface SportDAO {
 
+
 	public List<SportDTO> dataSelect();
 
 	// 醫낅ぉ �벑濡�
@@ -16,3 +17,4 @@ public interface SportDAO {
 	public List<SportDTO> sportAllSelect();
 
 }
+
