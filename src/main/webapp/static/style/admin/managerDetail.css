@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+#container-oneManager2 {
+	background: var(--color-admin-gray);
+	border-radius: 20px;
+	padding: 0 20px;
+	display: flex;
+}

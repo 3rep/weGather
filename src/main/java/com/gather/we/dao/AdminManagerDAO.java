@@ -18,4 +18,6 @@ public interface AdminManagerDAO {
 	public List<ManagerDTO> managerList();
 	// 매니저 최근 활동 불러오기
 	public List<RankGameDTO> managerRecent(String managerid);
+	// 매니저 상세 페이지
+	public ManagerDTO managerDetail(String managerid);
 }

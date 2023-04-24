@@ -200,7 +200,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	// 매니저 승인 요청 상세
+	// 매니저 승인 요청 상세 페이지
 	@GetMapping("/manager/approvedetail")
 	public ModelAndView managerApproveDetail(String managerid) {
 		ModelAndView mav = new ModelAndView();
@@ -264,6 +264,18 @@ public class AdminController {
 		mav.addObject("list", nlist);
 		
 		mav.setViewName("admin/allManager/managerList");
+		
+		return mav;
+	}
+	
+	// 매니저 상세 페이지
+	@GetMapping("/manager/mangerdetail")
+	public ModelAndView managerDetail(String managerid) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto", adminManagerService.managerDetail(managerid));
+		
+		mav.setViewName("admin/allManager/managerDetail");
 		
 		return mav;
 	}

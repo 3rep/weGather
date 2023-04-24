@@ -145,6 +145,15 @@
 	color: var(--color-white);
 }
 
+
+#container-oneManager #postpone:hover {
+	background: green;
+}
+
+#container-oneManager #postpone:focus {
+	background: green;
+}
+
 #container-oneManager #refuse {
 	font-size: var(--font-medium);
 	padding: 0 30px;
@@ -153,4 +162,12 @@
 	border: 1px solid black;
 	background: var(--color-red);
 	color: var(--color-white);
+}
+
+#container-oneManager #refuse:hover {
+	background: red;
+}
+
+#container-oneManager #refuse:focus {
+	background: red;
 }

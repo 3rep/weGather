@@ -44,4 +44,9 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	public List<RankGameDTO> managerRecent(String managerid) {
 		return dao.managerRecent(managerid);
 	}
+
+	@Override
+	public ManagerDTO managerDetail(String managerid) {
+		return dao.managerDetail(managerid);
+	}
 }

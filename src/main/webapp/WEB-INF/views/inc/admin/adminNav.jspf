@@ -16,6 +16,7 @@
 <link href="${path}/static/style/admin/managerApproveList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerApproveDetail.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerList.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/managerDetail.css" rel="stylesheet" type="text/css" />
 </head>
 <script>
 	$(function(){

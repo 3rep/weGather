@@ -33,4 +33,10 @@
 		select no, s_no, managerid, st_no, gametime, managerfee, g_status, manager
 		from rank_game where managerid=#{managerid} and g_status=1 and manager=1 order by gametime desc
 	</select>
+	
+	<select id="managerDetail" resultType="com.gather.we.dto.ManagerDTO">
+		select m.managerid managerid, m.s_no s_no, s.sportname sportname, m.m_name m_name, m.email email, m.tel tel, m.address address, m.gender gender,
+		m.active active, to_char(m.signupdate, 'YYYY-MM-DD') signupdate, m.m_account m_account from manager m
+		join sport s on m.s_no=s.s_no and m.active=1 and m.managerid=#{managerid}
+	</select>
 </mapper>
