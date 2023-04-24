@@ -14,7 +14,7 @@
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- Google api 키 넣어야됨 -->
     <link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" /> 
-	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=="></script>
+	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
     <!-- //Google api -->
 </head>
 <body>

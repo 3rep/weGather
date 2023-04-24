@@ -34,7 +34,9 @@
         /* 지도 모달 */
         #rank-map-dim {position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(45, 45, 45, 0.3);}
         #rank-map-dim .rank-map-popup {position:absolute;transform:translate(-50%,-50%);left:50%;top:50%;text-align:center;border:1px solid #000;background-color:#F8F9FB;}
+         #rank-map-dim .rank-map-popup {width: 50%;height: 70%;}
         
+        /* 페이지네이션 */ 
         ul.pagination {list-style:none;display:flex;justify-content:center;align-items: center;}
 		ul.pagination li {margin:0 5px; border:1px solid #ccc;padding:5px 10px;}
 		ul.pagination li.active {background-color:black;border-color:#F8F9FB;}
