@@ -4,14 +4,14 @@ import java.util.List;
 
 import com.gather.we.dto.RegisterDTO;
 public interface RegisterService {
-	//Ãß»ó¸Ş¼Òµå
+	//ì¶”ìƒë©”ì†Œë“œ
 	public RegisterDTO loginOk(String userid, String password);
 	public int registerInsert(RegisterDTO dto);
-	//¾ÆÀÌµğ Áßº¹°Ë»ç - ¾ÆÀÌµğÀÇ °¹¼ö¸¦ ±¸ÇÑ´Ù.
+	//ì•„ì´ë”” ì¤‘ë³µê²€ì‚¬ - ì•„ì´ë””ì˜ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤.
 	public int idCheckCount(String userid);
 	public List<RegisterDTO> dataAllSelect();
-	//È¸¿øÁ¤º¸ ¼öÁ¤ Æû
+	//íšŒì›ì •ë³´ ìˆ˜ì • í¼
 	public RegisterDTO registerEdit(String userid);
-	//È¸¿øÁ¤º¸ ¼öÁ¤ DB update
+	//íšŒì›ì •ë³´ ìˆ˜ì • DB update
 	public int registerEditOk(RegisterDTO dto);
 }

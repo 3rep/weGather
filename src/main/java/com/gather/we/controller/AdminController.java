@@ -49,10 +49,8 @@ public class AdminController {
 	RankGameService rankGameService;
 	@Autowired
 	AdminManagerService adminManagerService;
-	
 	@Autowired
 	AdminService service;
-	
 	@Autowired
 	RegisterService regservice;
 
