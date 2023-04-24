@@ -36,12 +36,12 @@ public class MypageController {
 		MypageUserDTO dto = service.getUserinfo((String)session.getAttribute("logId")); 
 		System.out.println(dto.toString());
 		
-		//session¿¡ logName -> usernameÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		//sessionï¿½ï¿½ logName -> usernameï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		//session.setAttribute("logName", dto.getUsername());
 		//session.setAttribute("logGender", dto.getGender());
 		
 		
-		//Áö±İ DB¼öÁ¤ÇÏ°í ÀÖ¾î¼­ DB¿¡ µ¥ÀÌÅÍ°¡ ¾øÀ¸´Ï±î ±×³É ³»°¡ ¸¸µé¾î¼­ ³ÖÀ»°Ô
+		//ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ö¾î¼­ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		session.setAttribute("logName", dto.getUsername());
 		session.setAttribute("logGender", dto.getGender());
 		
@@ -51,17 +51,16 @@ public class MypageController {
 		return mav;
 	}
 	
-	@GetMapping("/mypage/applyList") //post·Î °¡Á®¿À´Â°Ô ¸ÂÁö¾Ê³ª? -> {userid} Æ÷ÇÔÇÏ´Ï±î
+	@GetMapping("/mypage/applyList") //postï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê³ï¿½? -> {userid} ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Ï±ï¿½
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//·Î±×ÀÎ È®ÀÎ : userid °¡ logId ¶û °°³Ä È®ÀÎ  >> ÀÏ´Ü À§¿¡¼­ ÇÑ°É·Î test¿Ï·á.
-		
+		//useridê°€ logIdì¸ì§€ í™•ì¸
 		String logId = (String)session.getAttribute("logId");
 		
-		//·©Å©Àü+ÀÏ¹İÀüÀÇ Áö³­+ÇöÀç ½ÅÃ»¸ñ·ÏÀ» È­¸é¿¡ »Ñ¸°´Ù. : Á¾¸ñ¸í, °æ±â³¯Â¥, °æ±â±¸Àå, °æ±â»óÅÂ
-		// ÃÖ½Å¼øÀ¸·Î Á¤·ÄÇØ¼­ ºä¿¡ »Ñ¸°´Ù.
+		//ï¿½ï¿½Å©ï¿½ï¿½+ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½Ñ¸ï¿½ï¿½ï¿½. : ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½â³¯Â¥, ï¿½ï¿½â±¸ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½Ö½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ä¿¡ ï¿½Ñ¸ï¿½ï¿½ï¿½.
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		//System.out.println("list->"+list);
 		
@@ -103,7 +102,7 @@ public class MypageController {
 		mav.setViewName("mypage/normList");
 		return mav;
 	}
-	//ÁÖ¼® ¿Ö ±úÁ®
+	
 	@GetMapping("/mypage/rank")
 	public ModelAndView rank() {
 		ModelAndView mav = new ModelAndView();
@@ -120,7 +119,7 @@ public class MypageController {
 
 		List<MypageRankDTO> list = service.rank(logId,sportname);
 		//System.out.println("list111-> "+list );
-		//System.out.println("È®ÀÎ::::"+list.get(0));
+		//System.out.println("È®ï¿½ï¿½::::"+list.get(0));
 		
 		Collections.reverse(list);
 		System.out.println("list222:: "+list);
@@ -128,7 +127,7 @@ public class MypageController {
 		int n = list.size();
 		System.out.println("n->"+n);
 		
-		//json¹®ÀÚ¿­·Î ºä·Î º¸³½´Ù.
+		//jsonï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		

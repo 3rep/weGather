@@ -21,7 +21,10 @@
 				<canvas id="line_chart"></canvas>
 			</div>
 			
-			<div>전체랭킹+풋살랭킹</div>
+			<div id="rankTotal">
+				<div>풋살랭크: </div>
+				<div>종합랭크: </div>
+			</div>
 			
 			<div id="result" style="width:100%; height:100px; border:1px solid gray">ㅇㅇ</div> <!-- 내용들어오나 확인하는 칸 -->
 			

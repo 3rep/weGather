@@ -89,7 +89,7 @@ li a {
 
 /*  오른쪽 본문 칸 */
 #content{
-	background: #ddd;
+	/* background: #ddd; */
 	margin-left: 300px;
 	margin-top: 50px;
 	margin-right: 5px;
