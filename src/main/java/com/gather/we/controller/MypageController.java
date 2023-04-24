@@ -127,6 +127,9 @@ public class MypageController {
 		Collections.reverse(list);
 		System.out.println("list222:: "+list);
 		
+		int n = list.size();
+		System.out.println("n->"+n);
+		
 		//json문자열로 뷰로 보낸다.
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";

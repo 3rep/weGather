@@ -41,11 +41,14 @@
 	
 		//차트 그리기에서 필요한 데이터 ---------------
 		var label; //차트내용의 제목
+		
 		var gametime = new Array();//라벨(x축)
 		var newgt = new Array(); //유닉스 타임스탬프를 자바형식으로 변경
 		var isoDates = new Array(); // 2023-01-01 형태로 변경
 
 		var rank = new Array(); //데이터(y축)
+		var rankName = new Array(); //랭크변환 : 12345 > "브실골프다" 로 바꾸기
+		
 		var backgroundColor = 'rgba(255, 99, 132, 0.2)';
 		var borderColor = 'rgb(255, 99, 132)';
 		var newgt = new Array();
@@ -71,20 +74,32 @@
 			    data: data,
 			    options: { 
 			    	 scales: { 
-			    		/*xAxes: [{ ticks: { display: false } }], //x축 없애기*/
+			    		xAxes: [{ ticks: { display: false } }],  //x축 없애기*/
 			    		yAxes: [{	//y축설정
 			                ticks: {
 			                    max: 5,
 			                    min: 0,
-			                    stepSize: 1
+			                    stepSize: 1,
+			                    callback: function(value, index, values) {
+			                        // y축 눈금 값을 브실골플다 로 변경
+			                        var labels = ['', '브론즈', '실버', '골드', '플래티넘', '다이아'];
+			                        return labels[value];
+			                      }
 			                }
 			            }]
 			    	},
 			    	tooltips: { //툴팁 사이즈 키우기(기본 12)
 		                titleFontSize: 15,
-		                bodyFontSize: 15
-		            } 
+		                bodyFontSize: 15,
+		                callbacks: {
+		                    label: function(tooltipItem, data) {
+		                      			//툴팁했을땐 날짜(x축)만 나오게
+		                      			var label = data.labels[tooltipItem.dataIndex];
+      								    return label;
+		                  	}
+		          		} 
 			    
+			    	}
 			    }
 			});
 		}
@@ -105,7 +120,7 @@
 			    myArray[index] = newValue;
 			  }
 		} */
-		function replaceArrayValues(arr1) {
+		/* function replaceArrayValues(arr1) { 
 			const [a, b, c, d, e] = [1, 2, 3, 4, 5];
 			const mapObj = {
 			  1: a,
@@ -117,7 +132,7 @@
 			
 			const arr2 = arr1.map((num) => mapObj[num] || num);
 			return arr2;
-		}
+		} */
 
 			
 		
@@ -141,8 +156,8 @@
 				type : 'POST',
 				url : "rankMain",
 				success : function(result){
-					console.log("result->"+result);
-					//$("#result").html(result);
+					//console.log("result->"+result);
+					$("#result").html(result);
 					
 					var jsonData = JSON.parse(result);
 					//$("#result").html(jsonData); > 안나오네
@@ -150,32 +165,42 @@
 					
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
-						console.log("gametime[i]->"+gametime[i]);
+						console.log("gametime["+i+"]:: "+gametime[i]);
+						
 						newgt[i] = new Date(gametime[i]);
-						console.log("newgt->"+newgt);
+						console.log("newgt["+i+"]:: "+newgt); 
+						//	newgt[]에 gametime[]를 담으니까 gametime[]에 들어가있는 애들이 다 나오는구나
 
 						rank[i]=obj.rank; //데이터(y축)
-						console.log("rank[i]->"+rank[i]);
+						console.log("rank["+i+"]:: "+rank[i]);
 
-						}) 
+					}) 
 
-						isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
-						console.log(isoDates);
+					isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
+					console.log(isoDates);
+					
+					//////////////////////////////////
+					//rank 숫자값을 랭크명으로 변경
+					console.log(rank);
+					console.log(rank.length);
+					
+					// 새로운 배열 생성 및 값 할당
+					for(var i=0; i<rank.length; i++) {
+					    if(rank[i] == 1 ){
+					    	rankName[i] = "브론즈"
+					    } else if(rank[i] == 2){
+					    	rankName[i] = "실버"
+					    } else if(rank[i] == 3) {
+					        rankName[i] = "골드";
+					    } else if(rank[i] == 4) {
+					        rankName[i] = "플래티넘";
+					    } else if(rank[i] == 5) {
+					        rankName[i] = "다이아";
+					    }
+					}
+					console.log(rankName);
+					
 						
-						//rank 숫자값을 랭크명으로 변경
-						console.log(rank);
-						
-						/* updateArray(rank, 1, "브론즈");
-						updateArray(rank, 2, "실버");
-						updateArray(rank, 3, "골드");
-						updateArray(rank, 4, "플래티넘");
-						updateArray(rank, 5, "다이아"); */
-						
-						const arr1 = rank;
-						const arr2 = replaceArrayValues(arr1);
-
-						console.log("arr2222"+arr2); // [a, b, b, c, c, d, e, e]
-						//console.log(rank);
 
 					//기존 차트 지우기
 					//chart.destroy();
@@ -195,4 +220,3 @@
 	
 	
 </script>
-</html>
