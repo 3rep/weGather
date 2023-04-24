@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+/* 경기페이지 공통 스타일*/
+
+/* 경기페이지 내용 컨테이너 */
+.game_container {
+	width: 1200px;
+	margin: 60px auto;
+}

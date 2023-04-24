@@ -1,8 +1,7 @@
 package com.gather.we.dto;
 
-import java.util.List;
-
 import lombok.Data;
+import java.util.List;
 
 @Data
 public class ManagerDTO {
@@ -21,5 +20,5 @@ public class ManagerDTO {
 	private String signupdate;
 	private String m_account;
 	private List<RankGameDTO> rankgameList;
-	
+
 }
