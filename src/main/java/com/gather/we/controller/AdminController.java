@@ -269,7 +269,7 @@ public class AdminController {
 	}
 	
 	// 매니저 상세 페이지
-	@GetMapping("/manager/mangerdetail")
+	@GetMapping("/manager/managerdetail")
 	public ModelAndView managerDetail(String managerid) {
 		ModelAndView mav = new ModelAndView();
 		

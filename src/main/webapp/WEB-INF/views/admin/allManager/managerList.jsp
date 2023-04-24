@@ -24,19 +24,19 @@
 		<c:forEach var="mDTO" items="${list}">
 			<li><input type="checkbox" name="managerid" value="${mDTO.managerid}" /></li>
 			<li>${no}</li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.m_name}</a></li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.managerid}</a></li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.email}</a></li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.tel}</a></li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.m_account}</a></li>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.gender}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.m_name}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.managerid}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.email}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.tel}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.m_account}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.gender}</a></li>
 			<c:if test="${mDTO.rankgameList != null}">
-				<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}"><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${mDTO.rankgameList[0].gametime}" /></a></li>
+				<li><a href="managerdetail?managerid=${mDTO.managerid}"><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${mDTO.rankgameList[0].gametime}" /></a></li>
 			</c:if>
 			<c:if test="${mDTO.rankgameList == null}">
-				<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">&nbsp;-&nbsp;</a></li>
+				<li><a href="managerdetail?managerid=${mDTO.managerid}">&nbsp;-&nbsp;</a></li>
 			</c:if>
-			<li><a href="admin/manager/managerdetail?managerid=${mDTO.managerid}">${mDTO.sportname}</a></li>
+			<li><a href="managerdetail?managerid=${mDTO.managerid}">${mDTO.sportname}</a></li>
 			<c:set var="no" value="${no+1}" />
 		</c:forEach>
 	</ul>

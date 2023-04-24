@@ -5,4 +5,84 @@
 	border-radius: 20px;
 	padding: 0 20px;
 	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#container-oneManager2 h2 {
+	margin: 10px 20px 20px;
+}
+
+#container-oneManager2 .content_box {
+	background: var(--color-white);
+	border: 1px solid #DADADA;
+	display: flex;
+	width: 95%;
+	height: 80%;
+	flex-direction: column;
+	align-self: center;
+}
+
+#container-oneManager2 .manager_header {
+	padding: 20px 20px 10px;
+	font-size: var(--font-semi-medium);
+	font-weight: var(--weight-bold);
+	display: flex;
+	line-height: 75px; /*이미지 크기랑 동일하게 맞출 것 (텍스트 세로 중앙 정렬)*/
+	border-bottom: 1px solid #DADADA;
+}
+
+#container-oneManager2 #manager_icon {
+	border-radius: 100px;
+	border: 1px solid #DADADA;
+	width: 75px;
+	margin-right: 15px; 
+}
+
+#container-oneManager2 .manager_body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#container-oneManager2 .manager_body ul {
+	margin-bottom: 0;
+}
+
+#container-oneManager2 .manager_content:first-child {
+	padding: 0 40px 0 80px;
+	display: flex;
+	width: 50%;
+	font-size: var(--font-regular);
+}
+
+#container-oneManager2 .manager_content:last-child {
+	padding: 0 80px 0 40px;
+	display: flex;
+	width: 50%;
+	font-size: var(--font-regular);
+}
+
+#container-oneManager2 .manager_content li{
+	float: left;
+	width: 100%;
+	padding: 7px 15px;
+}
+
+#container-oneManager2 .manager_content li:nth-child(2n) {
+	margin-bottom: 10px;
+	background: #DADADA;
+}
+
+#container-oneManager2 .manager_content #last_point {
+	margin-bottom: 10px;
+	background: none;
+	padding: 7px 0;
+	text-align: right;
+}
+
+#container-oneManager2 input[type='button'] {
+	font-size: var(--font-regular);
+	margin-right: 30px;
+	border-radius: 15px;
 }

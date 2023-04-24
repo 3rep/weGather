@@ -13,7 +13,7 @@
 	white-space:nowrap;
 }
 
-#container-allManager2 a:link, #container-allManager a:focus, #container-allManager a:visited, #container-allManager a:hover {
+#container-allManager2 a:link, #container-allManager2 a:focus, #container-allManager2 a:visited, #container-allManager2 a:hover {
 	color: var(--color-black);
 }
 
