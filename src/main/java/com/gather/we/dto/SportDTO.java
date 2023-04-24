@@ -1,5 +1,6 @@
 package com.gather.we.dto;
 
+
 import lombok.Data;
 
 @Data
@@ -8,4 +9,5 @@ public class SportDTO {
 	private String sportname;
 	private String sportdesc;
 	private String filename;
+
 }
