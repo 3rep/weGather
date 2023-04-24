@@ -7,8 +7,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.Manager10DAO;
+import com.gather.we.dto.Criteria;
 import com.gather.we.dto.Manager10DTO;
-import com.gather.we.dto.PagingVO;
+
 
 @Service
 public class Manager10ServiceImpl implements Manager10Service {
@@ -23,14 +24,30 @@ public class Manager10ServiceImpl implements Manager10Service {
 	
 	
 	@Override
-	public List<Manager10DTO> pageSelect(PagingVO vo) {
+	public List<Manager10DTO> pageSelect(Criteria dto) {
 		
-		return dao.pageSelect(vo);
+		return dao.pageSelect(dto);
 	}
 	@Override
-	public int totalRecord(PagingVO vo) {
+	public int totalRecord(Criteria dto) {
 		
-		return dao.totalRecord(vo);
+		return dao.totalRecord(dto);
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> selectManager10ByManagerid(String managerid) {
+		
+		return dao.selectManager10ByManagerid(managerid);
+	}
+
+
+
+	@Override
+	public List<Manager10DTO> getList(Criteria dto) {
+		
+		return dao.getList(dto);
 	}
 
 }

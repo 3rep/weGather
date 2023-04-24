@@ -66,6 +66,7 @@
       // 랭크 정보 입력 API 호출
       
       // managerPast 페이지에서 해당 버튼을 회색으로 변경
+      const no = '${manager.managerid}';
       const button = window.opener.document.querySelector(`[data-no="${no}"]`);
       button.classList.remove('btn-green');
       button.classList.add('btn-gray');

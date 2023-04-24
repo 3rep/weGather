@@ -4,10 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.Manager10DAO">
 	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
-		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status
-	FROM rank_game  
-	JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
-	</select>
+    SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+    FROM rank_game  
+    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+</select>
 	
 		
 	

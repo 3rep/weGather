@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.ManagerPastDAO">
 	<select id="getAllManagerPast" resultType="com.gather.we.dto.ManagerPastDTO">
-		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	
+		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.gametime > sysdate
@@ -14,7 +14,26 @@
 		</if>
 	</select>
 	
-	
-		
-	
+	<select id="getPageManagerPast" resultType="com.gather.we.dto.ManagerPastDTO">
+		SELECT *
+		FROM (
+			SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid,
+				row_number() over(order by rank_game.gametime desc) as rnum
+			FROM rank_game  
+			JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+			WHERE rank_game.gametime > sysdate
+		) temp
+		ORDER BY rnum
+		<choose>
+			<when test="nowPage != totalPage">
+				WHERE rnum &gt;= ${(nowPage - 1) * onePageRecord + 1} AND rnum &lt;= ${nowPage * onePageRecord}
+			</when>
+			<when test="nowPage == totalPage">
+				WHERE rnum &gt;= ${(nowPage - 1) * onePageRecord + 1} AND rnum &lt;= ${totalCount}
+			</when>
+		</choose>
+	</select>
 </mapper>
+
+
+

@@ -7,9 +7,10 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.ManagerPastDAO;
-import com.gather.we.dto.Manager10DTO;
+import com.gather.we.dto.Criteria;
 import com.gather.we.dto.ManagerPastDTO;
-import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.PageDTO;
+
 
 
 @Service
@@ -21,15 +22,27 @@ public class ManagerPastServiceImpl implements ManagerPastService {
 		return dao.getAllManagerPast();
 	}
 	@Override
-	public List<Manager10DTO> pageSelect(PagingVO vo) {
+	public List<ManagerPastDTO> pageSelect(Criteria dto) {
 		
-		return dao.pageSelect(vo);
+		return dao.pageSelect(dto);
 	}
 	@Override
-	public int totalRecord(PagingVO vo) {
+	public int totalRecord(Criteria dto) {
 		
-		return dao.totalRecord(vo);
+		return dao.totalRecord(dto);
 	}
+	@Override
+	public List<ManagerPastDTO> selectManagerPastByManagerid(String managerid) {
+		
+		return dao.selectManagerPastByManagerid(managerid);
+	}///////
+	
+	@Override
+	public List<ManagerPastDTO> getList(Criteria dto) {
+		// TODO Auto-generated method stub
+		return dao.getList(dto);
+	}
+	
 
 	
 }
