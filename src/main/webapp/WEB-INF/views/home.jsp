@@ -1,7 +1,7 @@
+<%@ include file="/WEB-INF/views/inc/user/header.jspf" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 
+	<!-- 메인화면 contents부분 -->
 	<!-- 배경에 이미지(A) 깔고 
 	그 위에 
 		1. 로고 + 회원가입, 로그인 버튼?  있는 화면 : 백그라운드 연하게
@@ -32,3 +32,5 @@
 			</div>
 		</div>
 	</div>
+<%@ include file="/WEB-INF/views/inc/user/footer.jspf" %>
+	
