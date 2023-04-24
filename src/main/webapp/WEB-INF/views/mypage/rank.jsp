@@ -13,13 +13,15 @@
 					<option value="야구">야구</option>
 					<option value="농구">농구</option>
 				</select>
-				<button id="chartBtn" >그래프 보기</button>
+				<button id="chartBtn" class="button btnBorder btnBlueGreen" >그래프 보기</button>
 			</form>
 			
 			<!-- BarChart넣기 -->
 			<div id="chart" class="chart" style="width:100%">
 				<canvas id="line_chart"></canvas>
 			</div>
+			
+			<div>전체랭킹+풋살랭킹</div>
 			
 			<div id="result" style="width:100%; height:100px; border:1px solid gray">ㅇㅇ</div> <!-- 내용들어오나 확인하는 칸 -->
 			
@@ -51,7 +53,6 @@
 		
 		var backgroundColor = 'rgba(255, 99, 132, 0.2)';
 		var borderColor = 'rgb(255, 99, 132)';
-		var newgt = new Array();
 		
 		//----------------------------------------
 		//차트 그리기
@@ -74,7 +75,7 @@
 			    data: data,
 			    options: { 
 			    	 scales: { 
-			    		xAxes: [{ ticks: { display: false } }],  //x축 없애기*/
+			    		xAxes: [{ ticks: { display: false } }], //x축 없애기 -> 오른쪽 끝이 잘린다??*/
 			    		yAxes: [{	//y축설정
 			                ticks: {
 			                    max: 5,
@@ -109,32 +110,6 @@
 			$("#line_chart").html("랭크결과가 없습니다.");
 			$('#line_chart').append("append success!");
 		} */
-		
-		//랭크명 생성
-		/*function updateArray(myArray, oldValue, newValue) {	}
-		function updateArray(myArray, oldValue, newValue) {
-			  if (!myArray instanceof Array) return;
-
-			  const index = myArray.indexOf(oldValue);
-			  if (index !== -1) {
-			    myArray[index] = newValue;
-			  }
-		} */
-		/* function replaceArrayValues(arr1) { 
-			const [a, b, c, d, e] = [1, 2, 3, 4, 5];
-			const mapObj = {
-			  1: a,
-			  2: b,
-			  3: c,
-			  4: d,
-			  5: e,
-			};
-			
-			const arr2 = arr1.map((num) => mapObj[num] || num);
-			return arr2;
-		} */
-
-			
 		
 		//버튼누르면 ajax 실행
 		$("#chartBtn").click(function(){ 
@@ -199,8 +174,6 @@
 					    }
 					}
 					console.log(rankName);
-					
-						
 
 					//기존 차트 지우기
 					//chart.destroy();

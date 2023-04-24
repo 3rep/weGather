@@ -103,9 +103,7 @@ public class MypageController {
 		mav.setViewName("mypage/normList");
 		return mav;
 	}
-	
-	
-	
+	//주석 왜 깨져
 	@GetMapping("/mypage/rank")
 	public ModelAndView rank() {
 		ModelAndView mav = new ModelAndView();
