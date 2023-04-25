@@ -14,7 +14,7 @@
 		그 위에 1,2div는 5씩 이동해야함
 	-->
 	
-	<div id="container"> <!-- css우선순위: id가 css보다 우선적용 -->
+	<div class="container" id="container-main"> <!-- css우선순위: id가 css보다 우선적용 -->
 		<img class="img" src="static/img/imgMain/tennis.jpg" alt="volley"/>
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
