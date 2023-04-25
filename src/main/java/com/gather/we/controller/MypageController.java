@@ -36,7 +36,6 @@ public class MypageController {
 		MypageUserDTO dto = service.getUserinfo((String)session.getAttribute("logId")); 
 		System.out.println(dto.toString());
 		
-		//session�� logName -> username���� �����Ѵ�.
 		//session.setAttribute("logName", dto.getUsername());
 		//session.setAttribute("logGender", dto.getGender());
 		session.setAttribute("logName", dto.getUsername());
@@ -55,7 +54,6 @@ public class MypageController {
 		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-		// �ֽż����� �����ؼ� �信 �Ѹ���.
 
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		//System.out.println("list->"+list);
@@ -111,7 +109,6 @@ public class MypageController {
 			
 		//System.out.println("list--->: "+ list);
 		//System.out.println("alll: "+dto.getAvg_all());
-		
 		mav.addObject("list", list);
 		mav.addObject("dto", dto);
 		mav.setViewName("mypage/rank");
@@ -144,7 +141,6 @@ public class MypageController {
 		
 		return json;
 	}
-	 
 	
 	
 	@GetMapping("mypage/paymentList")

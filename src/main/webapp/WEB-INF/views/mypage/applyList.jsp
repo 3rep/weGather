@@ -6,7 +6,10 @@
 	<div id="applyListContent"> 
 		<h3>신청경기</h3><br/>
 		<hr/>
-		<div class="buttons">
+		<div class="applyListBtn">
+			<button class="custom-btn btn-3"><span>Read More</span></button>	        <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="Create New"><span>랭킹전</span></button>
+			
+			onclick="location.href='joinUs.jsp' "
 			<a href="applyList" id="all">전체</a>
     		<a href="rankList" id="rank">랭킹전</a>
 			<a href="normList" id="norm">일반전</a>
