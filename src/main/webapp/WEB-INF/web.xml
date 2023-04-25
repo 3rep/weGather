@@ -50,10 +50,10 @@
 			<include-prelude>/WEB-INF/views/inc/admin/adminNav.jspf</include-prelude>
 		</jsp-property-group>
 		
-		<jsp-property-group>
+		<!-- <jsp-property-group>
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/manager/adminNav.jspf</include-prelude>
-		</jsp-property-group>
+		</jsp-property-group> -->
 	</jsp-config>
 	
 	 
