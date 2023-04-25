@@ -81,11 +81,12 @@
 			<li class="item">
 				<label for="req_rank">요구랭크</label>
 				<select name="req_rank" id="req_rank">
-					<option value="5">DIAMOND</option>
-					<option value="4">PLATINUM</option>
-					<option value="3">GOLD</option>
-					<option value="2">SILVER</option>
+					<option value="0">모든랭크</option>
 					<option value="1">BRONZE</option>
+					<option value="2">SILVER</option>
+					<option value="3">GOLD</option>
+					<option value="4">PLATINUM</option>
+					<option value="5">DIAMOND</option>
 				</select>
 			</li>
 			<li class="item">
