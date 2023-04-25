@@ -3,6 +3,10 @@
 <script>
 	// 유효성검사
 	$(function(){
+		$("#stadium").change(function(){
+			console.log($("#stadium").val());
+		})
+		
 		$("#rankgameForm").submit(function(){
 			if($("#gametime").val()==""){
 				alert("날짜/시간을 입력하세요.");
@@ -55,8 +59,8 @@
 				<input type="datetime-local" name="gametime" id="gametime"/>
 			</li>
 			<li class="item">
-				<label for="stadium">구장</label>
-				<select name="stadium" id="stadium">
+				<label for="st_no">구장</label>
+				<select name="st_no" id="stadium">
 					<c:forEach var="StadiumInfoDTO" items="${stadiumInfoList}">
 						<option value="${StadiumInfoDTO.st_no}">${StadiumInfoDTO.stadium}, ${StadiumInfoDTO.location}</option>
 					</c:forEach>
@@ -73,9 +77,9 @@
 			<li class="item">
 				<label for="gendertype">성별유형</label>
 				<select name="gendertype" id="gendertype">
-					<option value="all">남녀모두</option>
-					<option value="man">남자만</option>
-					<option value="woman">여자만</option>
+					<option value="남녀모두">남녀모두</option>
+					<option value="남자만">남자만</option>
+					<option value="여자만">여자만</option>
 				</select>
 			</li>
 			<li class="item">

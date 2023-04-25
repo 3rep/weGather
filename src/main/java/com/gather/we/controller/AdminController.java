@@ -181,6 +181,7 @@ public class AdminController {
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
 			// 랭크경기 등록 실패
+			e.printStackTrace();
 			String body = "<script>";
 			body += "alert('랭크경기 등록을 실패하였습니다.');";
 			body += "history.go(-1);";
@@ -189,5 +190,4 @@ public class AdminController {
 		}
 		return entity;
 	}   
-
 }
