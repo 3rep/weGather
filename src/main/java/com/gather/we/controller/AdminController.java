@@ -1,12 +1,20 @@
 package com.gather.we.controller;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -160,24 +168,26 @@ public class AdminController {
 	
 	// 랭크경기 등록(DB)
 	@PostMapping("/rankgame/newOk")
-	public ModelAndView rankgameNewOk(RankGameDTO dto){
-		ModelAndView mav = new ModelAndView();
+	public ResponseEntity<String> rankgameNewOk(RankGameDTO dto, HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=utf-8");
 		try {
 			// 작성된 랭크경기 내용을 DB에 저장
-			int result = rankGameService.rankGameInsert(dto);
-
-			// 정상처리되면 랭크경기 목록 페이지로 이동
-			mav.setViewName("redirect:rankgamelist");
+			rankGameService.rankGameInsert(dto);
 			
+			// 랭크경기 목록으로 이동
+			String body = "<script> location.href='/admin/rankgame/rankgamelist';</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
-			// 레코드 추가 에러
-			e.printStackTrace();
-			
-			mav.addObject("msg", "랭크경기 등록 실패하였습니다.");
-			mav.setViewName("admin/dataResult");
+			// 랭크경기 등록 실패
+			String body = "<script>";
+			body += "alert('랭크경기 등록을 실패하였습니다.');";
+			body += "history.go(-1);";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
 		}
-		
-		return mav;
+		return entity;
 	}   
 
 }
