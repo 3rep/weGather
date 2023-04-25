@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-.container{
+.container-mypage-all{
 	margin: 0 auto;
 	width: 1200px;
 }
 
-#leftMenu{
+.container-mypage-all #leftMenu{
 	display: flex;
 	flex-direction: column;
 	list-style-type: none;
@@ -18,67 +18,67 @@
 	overflow: auto;
 	position: fixed;
 	text-align: center;
-	font-size: var(--font-micro);		
+	/* font-size: var(--font-micro); */		
 }
 /*---leftMenu에서 스크롤바 없애기-----------------*/
-#leftMenu{ /*IE, Edge*/ 
+.container-mypage-all #leftMenu{ /*IE, Edge*/ 
    -ms-overflow-style: none;
 }
-#leftMenu::-webkit-scrollbar{ /* Chrome, Safari, Opera */
+.container-mypage-all #leftMenu::-webkit-scrollbar{ /* Chrome, Safari, Opera */
   display:none;
 }
 /*----------------------------------------------*/
-.img img{
+.container-mypage-all .img img{
 	width: 45%;
 	margin-bottom: 5px;
 	padding: 25px;
 	background: #FFFDF8; 
 	border-radius: 30px;
 }
-.img{
+.container-mypage-all .img{
 	margin-bottom: 65px;
 }
-span{
+.container-mypage-all span{
 	font-size: 14px;
 }
 
 /*===== menuList 스타일넣기=====*/
-#menuList li{
+.container-mypage-all #menuList li{
 	float: left;
 }
-#menuList li{
+.container-mypage-all #menuList li{
 	height: 40px;
 	margin-bottom: 3px;
 }
-#menuList img{
+.container-mypage-all #menuList img{
 	height: 20px;
 	width: 20px;
 	margin : 12px;
 }
-#menuList li:nth-child(2n+1){
+.container-mypage-all #menuList li:nth-child(2n+1){
 	width: 20%;
 	margin-left: 30px;
 	/* background: pink; */
 }
-#menuList>li:nth-child(2n){
+.container-mypage-all #menuList>li:nth-child(2n){
 	width: 55%;
 	/* background: yellowgreen; */
 }
-#menuList>li:nth-child(2n):hover{
+.container-mypage-all #menuList>li:nth-child(2n):hover{
 	background: #FDEDB4;
 	/* font-weight: bold;  왜 안먹지...*/ 
 }
-.open{
+.container-mypage-all .open{
 	padding-left: 25px;
 	/* text-align: left; */
 }
 
 /*==========================*/
-li a {
+.container-mypage-all li a {
 	display: block;
 	padding: 10px;
 }
-.h{
+.container-mypage-all .h{
 	font-size: var(--font-regular);
 	/* margin-bottom: 50px; */
 	padding: 20px; 
@@ -86,13 +86,3 @@ li a {
 	font-weight: var(--weight-bold);
 }
 
-
-/*  오른쪽 본문 칸 */
-#content{
-	/* background: #ddd; */
-	margin-left: 300px;
-	margin-top: 50px;
-	margin-right: 5px;
-	margin-bottom: 50px;
-	
-} 

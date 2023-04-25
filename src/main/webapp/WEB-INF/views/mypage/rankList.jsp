@@ -3,14 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!-- 오른쪽 내용칸 -->
-	<div id="content"> 
+	<div id="applyListContent"> 
 		<h3>신청경기</h3><br/>
 		<hr/>
-		
-		<a href="applyList" title="Button border blue/green" class="button btnBorder btnBlueGreen" id="all">전체</a>
-    	<a href="rankList" title="Button border orange" class="button btnBorder btnOrange" id="rank">랭킹전</a>
-		<a href="normList" title="Button border lightblue" class="button btnBorder btnLightBlue" id="norm">일반전</a>
-		
+		<div class="buttons">
+			<a href="applyList" id="all">전체</a>
+    		<a href="rankList" id="rank">랭킹전</a>
+			<a href="normList" id="norm">일반전</a>
+		</div>
 		
 		<!-- 테이블 -------------------------------------------------------->
 		<table id="table">

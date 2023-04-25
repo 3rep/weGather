@@ -3,54 +3,7 @@
 
 
 /*ㅡㅡㅡㅡㅡ버튼 스타일ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-a.button {
-  display: block;
-  position: relative;
-  float: left;
-  width: 90px;
-  padding: 0;
-  margin: 10px 10px 10px 0;
-  font-weight: 600;
-  text-align: center;
-  line-height: 40px;
-  color: #FFF;
-  border-radius: 5px;
-  transition: all 0.2s ;
- 
-}
-			/*색 바꾸기 하자 */
-.btnBlueGreen {
-  background: #00AE68;
-}
-.btnLightBlue {
-  background: #5DC8CD;
-}
-.btnOrange {
-  background: #FFAA40;
-}
-.btnBlueGreen.btnBorder {
-  box-shadow: 0px 0px 0px 0px #21825B;
-}
 
-.btnBlueGreen.btnBorder:hover {
-  box-shadow: 0px 0px 0px 5px #21825B;
-}
-
-.btnLightBlue.btnBorder {
-  box-shadow: 0px 0px 0px 0px #01939A;
-}
-
-.btnLightBlue.btnBorder:hover {
-  box-shadow: 0px 0px 0px 5px #01939A;
-}
-
-.btnOrange.btnBorder {
-  box-shadow: 0px 0px 0px 0px #A66615;
-}
-
-.btnOrange.btnBorder:hover {
-  box-shadow: 0px 0px 0px 5px #A66615;
-}
 
 /*ㅡㅡㅡㅡㅡ버튼 스타일ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
@@ -58,18 +11,20 @@ a.button {
 
 
 
-#content{
+.container-mypage-all #applyListContent{
 	/*
-	background: #ddd;
+	
 	margin-left: 300px;
 	margin-top: 50px;
 	margin-right: 5px;
 	margin-bottom: 50px;
 	*/
-	font-size: var(--font-small);
+	/* background: #ddd; */
+	font-size: 18px;
+	margin-left: 285px;
 }
 
-table {
+#applyListContent table {
   border: 1px #a39485 solid;  	
   font-size: .9em;
   box-shadow: 0 2px 5px rgba(0,0,0,.25);
@@ -80,54 +35,54 @@ table {
   /* display: inline-block; */
 }
 
-th {
+#applyListContent th {
   text-align: center;
 }
 
   
-thead {
+#applyListContent thead {
   font-weight: bold;
   color: #fff;
   background: #485260;	/*색상 변경하기   #7D726F*/
 }
   
- td, th {
+#applyListContent td, th {
   padding: 1em .5em;
   vertical-align: middle;
   text-align: center;
 }
   
-td {
+#applyListContent td {
   border-bottom: 1px solid rgba(0,0,0,.1);
   background: #fff;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;	
 }
-td:nth-child(5n+4){
+#applyListContent td:nth-child(5n+4){
 	/* width: 40%; */
 	overflow: hidden;
 	white-space: inherit;
 	text-overflow: ellipsis;
 }
-th:nth-child(5n){
+#applyListContent th:nth-child(5n){
 	width: 10%
 }
 
-a {
+#applyListContent a {
   color: #343230; /*색상 변경하기*/
   font-size: 15px;
   font-weight: 500;
 }
 
-.rg{
+#applyListContent .rg{
 	background: #FFDDC9;
 	font-weight: 600 ;
 	font-size: 15px;
 	color: #525150;
 	
 }
-.ng{
+#applyListContent .ng{
 	background: #D4E5FF;
 	font-weight: 600;
 	font-size: 15px;
@@ -135,48 +90,5 @@ a {
 }
 
 
-
- @media all and (max-width: 768px) {
-    
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-  
-  th {
-    text-align: right;
-  }
-  
-  table {
-    position: relative; 
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-  }
-  
-  thead {
-    float: left;
-    white-space: nowrap;
-  }
-  
-  tbody {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  tr {
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  th {
-    border-bottom: 1px solid #a39485;
-  }
-  
-  td {
-    border-bottom: 1px solid #e5e5e5;
-  }
-}
   
  

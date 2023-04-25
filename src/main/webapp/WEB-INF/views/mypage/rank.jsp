@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- 오른쪽 내용칸 -->
-		<div id="content"> 
+		<div id="rankContent"> 
 			<h3>나의 랭크</h3>
 			<hr/>
 		
@@ -21,12 +21,18 @@
 				<canvas id="line_chart"></canvas>
 			</div>
 			
-			<div id="rankTotal">
-				<div>풋살랭크: </div>
-				<div>종합랭크: </div>
+			<!-- 종목랭크, 종합랭크 보여주기 -->
+			<div class="rankTotal">
+				<div>풋살랭크: <span id="avg_sn"></span></div> <!-- selected한 경기명 뷰에서가져오기 -->
+				<div>종합랭크: <span id="avg_all"></span></div>
 			</div>
+			<%
 			
-			<div id="result" style="width:100%; height:100px; border:1px solid gray">ㅇㅇ</div> <!-- 내용들어오나 확인하는 칸 -->
+			%>
+			
+			
+			<!-- 내용들어오나 확인하는 칸======> 나중에 없앤다-->
+			<div id="result" style="width:100%; height:100px; border:1px solid gray">ㅇㅇ</div> 
 			
 			
 			
@@ -78,8 +84,8 @@
 			    data: data,
 			    options: { 
 			    	 scales: { 
-			    		xAxes: [{ ticks: { display: false } }], //x축 없애기 -> 오른쪽 끝이 잘린다??*/
-			    		yAxes: [{	//y축설정
+			    		/* xAxes: [{ ticks: { display: false } }], */ //x축 없애기 -> 오른쪽 끝이 잘린다??*/
+			    		yAxes: [{	//y축설정/*  */
 			                ticks: {
 			                    max: 5,
 			                    min: 0,
@@ -102,17 +108,12 @@
       								    return label;
 		                  	}
 		          		} 
-			    
 			    	}
 			    }
 			});
 		}
 		//차트 지우기
-		/* function removeChart(){
-			alert("경고");
-			$("#line_chart").html("랭크결과가 없습니다.");
-			$('#line_chart').append("append success!");
-		} */
+		
 		
 		//버튼누르면 ajax 실행
 		$("#chartBtn").click(function(){ 
@@ -134,13 +135,43 @@
 				type : 'POST',
 				url : "rankMain",
 				success : function(result){
-					//console.log("result->"+result);
-					$("#result").html(result);
+					console.log(result);
+					//$("#result").html(result);
 					
 					var jsonData = JSON.parse(result);
 					//$("#result").html(jsonData); > 안나오네
 					console.log(jsonData);
 					
+					/////////////////////////
+					
+					
+					
+					//종목랭크, 종합랭크 뷰로 보내기 
+					//console.log("AVGSN::"+jsonData[0].avg_sn);
+					
+					if(jsonData[0]!=null){
+						if(jsonData[0].avg_sn==2){
+							console.log(jsonData[0].avg_sn);
+							$("#avg_sn").html("실버");
+							
+							$("#avg_all").html(jsonData[0].avg_all);
+							
+							
+							
+							
+							
+						}
+						
+					}else{
+						$("#avg_sn").html("등록된 랭크가 없습니다.");
+						$("#avg_all").html("등록된 랭크가 없습니다.");
+					}
+					
+					
+					///
+					
+					
+					///
 					jsonData.map(function(obj, i){
 						gametime[i]=obj.gametime; //라벨(x축) : 기준날짜
 						console.log("gametime["+i+"]:: "+gametime[i]);
@@ -157,12 +188,8 @@
 					isoDates = newgt.map(date=>date.toISOString().split('T')[0]);
 					console.log(isoDates);
 					
-					//////////////////////////////////
 					//rank 숫자값을 랭크명으로 변경
-					console.log(rank);
-					console.log(rank.length);
-					
-					// 새로운 배열 생성 및 값 할당
+					//	새로운 배열 생성 및 값 할당
 					for(var i=0; i<rank.length; i++) {
 					    if(rank[i] == 1 ){
 					    	rankName[i] = "브론즈"
@@ -177,6 +204,19 @@
 					    }
 					}
 					console.log(rankName);
+					
+					/* //종목랭크, 종합랭크 뷰로 보내기 
+					//console.log("AVGSN::"+jsonData[0].avg_sn);
+					if(jsonData[0]!=null){
+						$("#avg_sn").html(jsonData[0].avg_sn);
+						$("#avg_all").html(jsonData[0].avg_all);
+					}else{
+						$("#avg_sn").html("등록된 랭크가 없습니다.");
+						$("#avg_all").html("등록된 랭크가 없습니다.");
+					}
+					 */
+					
+					
 
 					//기존 차트 지우기
 					//chart.destroy();

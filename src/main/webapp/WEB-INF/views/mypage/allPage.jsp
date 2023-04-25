@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<div class="container" >
+	<div class="container-mypage-all" >
 		<!-- 왼쪽 메뉴바 -->
 		<ul id="leftMenu">
 			<li class=h>마이페이지</li>
