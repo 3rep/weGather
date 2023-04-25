@@ -35,4 +35,8 @@
 		inner join manager m on r.managerid = m.managerid
 		where r.no=${no}
 	</select>
+	
+	<update id="currPeopleCount">
+		update rank_game set curr_people=curr_people+1 where no=${no}
+	</update>
 </mapper>

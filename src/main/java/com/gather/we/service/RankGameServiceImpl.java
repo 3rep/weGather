@@ -30,4 +30,9 @@ public class RankGameServiceImpl implements RankGameService {
 	public RankGameDetailDTO rankGameDetailSelect(int no) {
 		return dao.rankGameDetailSelect(no);
 	}
+
+	@Override
+	public int currPeopleCount(int no) {
+		return dao.currPeopleCount(no);
+	}
 }

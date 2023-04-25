@@ -13,4 +13,6 @@ public interface RankGameDAO {
 	public List<RankGameDTO> rankGameListSelect(RankGameListDTO dto);
 	// 랭크경기 세부정보 선택
 	public RankGameDetailDTO rankGameDetailSelect(int no);
+	// 랭크경기 현재인원수 업데이트
+	public int currPeopleCount(int no);
 }

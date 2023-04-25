@@ -25,9 +25,6 @@ public class RankGameController {
 	@Autowired
 	RankGameService rankGameService;
 	
-	@Value("${google-map-key}")
-	private String goole_map_key;
-	
 	// 종목 목록
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
@@ -71,7 +68,6 @@ public class RankGameController {
 		// DB에서 랭크경기 세부정보 받아오기
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
 
-		mav.addObject("goole_map_key", goole_map_key);
 		mav.addObject("rankGameDetail", rankGameDetail);
 		mav.setViewName("user/rankGame/rankGameDetail");
 		
