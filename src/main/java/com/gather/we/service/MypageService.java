@@ -11,23 +11,24 @@ import com.gather.we.dto.MypageUserDTO;
 
 @Service
 public interface MypageService {
-	//db¿¡ µî·ÏµÈ »ç¿ëÀÚ 1ÀÎÀÇ Á¤º¸ °¡Á®¿À±â --test¿ë
+	//dbì— ë“±ë¡ëœ ì‚¬ìš©ì 1ì¸ì˜ ì •ë³´ ê°€ì ¸ì˜¤ê¸° --testìš©
 	public MypageUserDTO getUserinfo(String userid);
-	
+	//username í”„ë¡œí•„ì•„ë˜ì— ë„£ê¸°
 	public String getUsername(String userid); 
 	
-	//////applyList¿¡ ÇÊ¿äÇÑ Á¤º¸ °¡Á®¿À±â
-	//¸ğµç °æ±â(·©Å©+ÀÏ¹İ)
+	//applyList í˜ì´ì§€ì— í•„ìš”í•œ ë©”ì†Œë“œ
+	//ëª¨ë“  ê²½ê¸°(ë­í¬+ì¼ë°˜)
 	public List<MypageApplyListDTO> allgameList(String userid);
-	//·©Å©Àü
+	//ë­í¬ì „
 	public List<MypageApplyListDTO> rankgameList(String userid); 
-	//ÀÏ¹İÀü
+	//ì¼ë°˜ì „
 	public List<MypageApplyListDTO> normgameList(String userid);
 	
-	//rank Á¤º¸ °¡Á®¿À±â
+	//rank ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public List<MypageRankDTO> rank(String userid, String sportname);
-
-
+	
+	//rank ê²°ê³¼ìš”ì•½ ê°€ì ¸ì˜¤ê¸°
+	public List<MypageRankDTO> rankResult(String userid);
 
 
 }

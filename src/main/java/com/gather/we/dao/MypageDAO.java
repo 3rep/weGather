@@ -7,20 +7,26 @@ import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
 public interface MypageDAO {
-	//db¿¡ µî·ÏµÈ »ç¿ëÀÚ 1ÀÎÀÇ Á¤º¸ °¡Á®¿À±â --test¿ë
+	//dbì— ë“±ë¡ëœ ì‚¬ìš©ì 1ì¸ì˜ ì •ë³´ ê°€ì ¸ì˜¤ê¸° --testìš©
 	public MypageUserDTO getUserinfo(String userid);
-	//username ÇÁ·ÎÇÊ¾Æ·¡¿¡ ³Ö±â
+	//username í”„ë¡œí•„ì•„ë˜ì— ë„£ê¸°
 	public String getUsername(String userid);
 	
-	//applyList ÆäÀÌÁö¿¡ ÇÊ¿äÇÑ ¸Ş¼Òµå
-	//¸ğµç °æ±â(·©Å©+ÀÏ¹İ)
+	//ëª¨ë“  ê²½ê¸°(ë­í¬+ì¼ë°˜)
 	public List<MypageApplyListDTO> allgameList(String userid);
-	//·©Å©Àü
+	//ë­í‚¹ì „
 	public List<MypageApplyListDTO> rankgameList(String userid); 
-	//ÀÏ¹İÀü
+	//ì¼ë°˜ì „
 	public List<MypageApplyListDTO> normgameList(String userid);
 	
-	//rank Á¤º¸ °¡Á®¿À±â
+	
+	//
+	//rank ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public List<MypageRankDTO> rank(String userid, String sportname);
 
+	
+	
+	
+	//rank ê²°ê³¼ìš”ì•½ ê°€ì ¸ì˜¤ê¸°
+	public List<MypageRankDTO> rankResult(String userid);
 }

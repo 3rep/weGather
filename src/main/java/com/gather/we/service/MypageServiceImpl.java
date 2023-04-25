@@ -47,6 +47,13 @@ public class MypageServiceImpl implements MypageService {
 		return dao.rank(userid, sportname);
 	}
 
+	@Override
+	public List<MypageRankDTO> rankResult(String userid) {
+		return dao.rankResult(userid);
+	}
+
+	
+
 	
 
 	

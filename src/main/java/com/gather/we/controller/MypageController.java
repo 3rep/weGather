@@ -39,9 +39,6 @@ public class MypageController {
 		//session�� logName -> username���� �����Ѵ�.
 		//session.setAttribute("logName", dto.getUsername());
 		//session.setAttribute("logGender", dto.getGender());
-		
-		
-		//���� DB�����ϰ� �־ DB�� �����Ͱ� �����ϱ� �׳� ���� ���� ������
 		session.setAttribute("logName", dto.getUsername());
 		session.setAttribute("logGender", dto.getGender());
 		
@@ -58,9 +55,8 @@ public class MypageController {
 		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-		
-		//��ũ��+�Ϲ����� ����+���� ��û����� ȭ�鿡 �Ѹ���. : �����, ��⳯¥, ��ⱸ��, ������
 		// �ֽż����� �����ؼ� �信 �Ѹ���.
+
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		//System.out.println("list->"+list);
 		
@@ -104,9 +100,20 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/rank")
-	public ModelAndView rank() {
+	public ModelAndView rank(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String logId = (String)session.getAttribute("logId");
 		
+		List<MypageRankDTO> list = service.rankResult(logId);
+		
+		MypageRankDTO dto = new MypageRankDTO();
+		dto.setAvg_all(list.get(0).getAvg_all());
+			
+		//System.out.println("list--->: "+ list);
+		//System.out.println("alll: "+dto.getAvg_all());
+		
+		mav.addObject("list", list);
+		mav.addObject("dto", dto);
 		mav.setViewName("mypage/rank");
 		return mav;
 	}
@@ -117,9 +124,8 @@ public class MypageController {
 		System.out.println(sportname);
 		String logId = (String)session.getAttribute("logId");
 
-		List<MypageRankDTO> list = service.rank(logId,sportname);
+		List<MypageRankDTO> list = service.rank(logId, sportname);
 		//System.out.println("list111-> "+list );
-		//System.out.println("Ȯ��::::"+list.get(0));
 		
 		Collections.reverse(list);
 		System.out.println("list222:: "+list);
@@ -127,7 +133,7 @@ public class MypageController {
 		int n = list.size();
 		System.out.println("n->"+n);
 		
-		//json���ڿ��� ��� ������.
+		//json타입으로 변환
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
