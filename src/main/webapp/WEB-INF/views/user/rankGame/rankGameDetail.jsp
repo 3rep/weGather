@@ -154,6 +154,7 @@
 	            	<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply">참가신청</button>
 	         	</c:otherwise>
 	      	</c:choose>
+	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
 		</div>
 	</div>
 </div>
