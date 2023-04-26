@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
-
+.h1{
+	position: relative;
+	top:50px;
+	left:100px;
+}
     .container {
    	 	 position: absolute;
    		 top:200px;
@@ -47,13 +51,14 @@
     }
 
   .box {
-     /* position: relative; */
+ /*    position: relative; */ 
      width: 100%;
      height:12%;
      margin: 10px;
      padding: 10px;
      border: 1px solid black;
-     background: #D1D9E2;
+     background: #F8F9FB;
+     
 }
 
 	.sub-box {
@@ -64,8 +69,8 @@
  	 	 width: 100px;
  		 height: 60px;
  		 justify-content: center;
- 		 left:37px;
- 		 top: 15px;
+ 		 left:40px;
+ 		 top: 22px;
 }
 
 	.sub-box button.green {
@@ -80,16 +85,20 @@
   width: 90px;
 }
  .sub-box button.grey {
+  	  position: relative;
+	  right:5px;
       background-color: #448FE4;
-      height: 30px;
+      height: 40px;
       width: 90px;
       pointer-events: none; /* 클릭 이벤트 제거 */
     }
     .sub-box button.blue {
+      position: relative;
+ 	  right:5px;
       background-color: #395A7F;
-      height: 30px;
+      height: 40px;
       width: 90px;
-      pointer-events: none; /* 클릭 이벤트 제거 */
+   /*   pointer-events: none;  클릭 이벤트 제거 */
     }
     
     .pagingDiv {

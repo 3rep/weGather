@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -29,10 +30,14 @@
                    
                     <div class="box" >
                         <div>
-	                       <div>${manager.stadium}</div>
-	                       <div> ${manager.location}</div>
-	                       <div> ${manager.gametime}</div>
-	                       <div> ${manager.g_status}</div>
+	                       <div><b>${manager.stadium}</b></div>
+	                       <div>--------------------</div>
+	                       <div>${manager.location}</div>
+	                      <div>
+  								<fmt:parseDate var="gametime" value="${manager.gametime}" pattern="yyyy-MM-dd HH:mm:ss" />
+ 							    <fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${gametime}" />
+						  </div>
+	                      
                         </div>
                         <div class="sub-box"> 
                             <c:if test="${manager.g_status == 0}">
@@ -41,8 +46,8 @@
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
                                 <a href="${path}/manager2/entry" class="page-link" style="display: flex; flex-direction: column;">
-                                    <button class="grey" style="padding: 10px; height:60%;">확정</button>
-                                    <button class="blue" style="padding: 10px;">명단확인</button>
+                                    <button class="grey" style="height:100%;">확정</button>
+                                    <button class="blue" style="height:100%;">명단확인</button>
                                 </a>
                             </c:if>
                         </div>

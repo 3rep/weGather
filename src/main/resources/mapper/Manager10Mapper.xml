@@ -28,7 +28,7 @@
  			(select * from 
  				(
  				 					      
-     select rank_game.no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+     select rank_game.s_no, rank_game.no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
     from rank_game
     join stadium_info on stadium_info.st_no = rank_game.st_no order by rank_game.no desc
    
