@@ -38,4 +38,16 @@ public class SportServiceImpl implements SportService {
 	public List<SportDTO> sportAllSelect() {
 		return dao.sportAllSelect();
 	}
+	
+	@Override
+	public SportDTO sportOneSelect(int s_no) {
+		return dao.sportOneSelect(s_no);
+	}
+
+	@Override
+	public int sportUpdate(SportDTO dto) {
+		return dao.sportUpdate(dto);
+	}
+
+	
 }
