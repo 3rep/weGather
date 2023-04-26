@@ -21,10 +21,10 @@
 			<div class="login"> <!-- B -->
 				<span>We gather,&emsp;</span><br/>
 				<span>&emsp; together !</span><br/>
-				<span class="featSpan">feat. sport</span><br/>
+				<span id="featSpan">feat. sport</span><br/>
 				<br/>
-				<button class="button button--ujarak button--border-medium button--round-s button--text-upper">로그인</button>
-          		<button class="button button--ujarak button--border-medium button--round-s button--text-upper">회원가입</button>
+				<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='login'">회원</button>
+          		<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='loginMan'">매니저</button>
 			</div>
 		</div>
 		<div class="item" id="info">

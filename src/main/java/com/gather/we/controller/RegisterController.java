@@ -51,12 +51,21 @@ public class RegisterController {
 				session.setAttribute("logId", dto.getUserid());
 				session.setAttribute("logName", dto.getUsername());
 				session.setAttribute("logStatus", "Y");
-				mav.setViewName("redirect:/");
+				mav.setViewName("redirect:/userHome");
 			}else{//로그인 실패
-				mav.setViewName("redirect:login");	
+				mav.setViewName("redirect:/login");	
 			}
 			return mav;
 		}
+	//로그인한 경우 화면
+	@GetMapping("/userHome")
+	public ModelAndView userHome(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String logName = (String)session.getAttribute("logName");
+		mav.addObject(logName);
+		mav.setViewName("user/userHome");
+		return mav;
+	}
 	
 	//회원가입 선택 창
 	@GetMapping("/registerChoose")
