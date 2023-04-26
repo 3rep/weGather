@@ -46,7 +46,7 @@
   </c:forEach>
 </tbody>
     </table>
-     <a href="manager10" class="page-link">	
+     <a href="${path}/manager2/manager10" class="page-link">	
     <button class="back-button">뒤로가기</button></a>
   </div>
 </body>

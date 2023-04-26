@@ -6,10 +6,10 @@ public class Manager10DTO {
 	    private String location;
 	    private String gametime;
 	    private int g_status;
-	    private String managerId;
+	    private String managerid;
 	    private int manager;
 	    
-	    private int id;
+	    private String id;
 	    private String username;
 	    private String gender;
 	    private int rank;
@@ -19,7 +19,7 @@ public class Manager10DTO {
 	    
 	   
 		private String rankFilter;
-	    private String managerid;
+	   
 	    
 	    
 	    
@@ -30,7 +30,7 @@ public class Manager10DTO {
 		@Override
 		public String toString() {
 			return "Manager10DTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
-					+ ", g_status=" + g_status + ", managerId=" + managerId + ", manager=" + manager + ", id=" + id
+					+ ", g_status=" + g_status + ", manager=" + manager + ", id=" + id
 					+ ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
 					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", managerid=" + managerid
 					+ "]";
@@ -59,22 +59,17 @@ public class Manager10DTO {
 		public void setG_status(int g_status) {
 			this.g_status = g_status;
 		}
-		public String getManagerId() {
-			return managerId;
-		}
-		public void setManagerId(String managerId) {
-			this.managerId = managerId;
-		}
+		
 		public int getManager() {
 			return manager;
 		}
 		public void setManager(int manager) {
 			this.manager = manager;
 		}
-		public int getId() {
+		public String getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getUsername() {

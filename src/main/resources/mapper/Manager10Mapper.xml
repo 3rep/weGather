@@ -4,10 +4,58 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.Manager10DAO">
 	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
+  
     SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
     FROM rank_game  
     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+   
 </select>
+
+
+ 
+  <select id="totalRecord" resultType="int">
+     SELECT COUNT(no) totalRecord 
+     FROM rank_game 
+     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
+   <!--   WHERE rank_game.managerid (parameterType="string" 붙여야함.) -->
+</select>
+
+
+
+ 	<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
+   
+       select * from 
+ 			(select * from 
+ 				(
+ 				 					      
+     select rank_game.no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+    from rank_game
+    join stadium_info on stadium_info.st_no = rank_game.st_no order by rank_game.no desc
+   
+ 					
+ 			)
+ 			 <![CDATA[
+ 				 where rownum<=${onePageRecord*nowPage} order by no asc 
+ 				 ]]>
+ 				 )
+ 		<choose>
+		  <when test="nowPage!=totalPage"> 		
+ 	   		 	<![CDATA[
+ 			 	where rownum<=${onePageRecord} order by no desc
+ 			 	]]>
+ 		 
+ 		  </when>
+ 		  <when test="nowPage==totalPage">	
+ 			   <![CDATA[
+ 		 		where rownum<=${onePageRecord} order by no desc
+ 		 		]]>
+ 	  	  </when>
+ 		</choose> 
+</select>
+
+
+
+
 	
 		<select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
 	SELECT username AS username, userid, rank, gender, tel
@@ -26,14 +74,12 @@
 </update>
 	
 	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
+	 
 		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.gametime > sysdate
-		<if test="nowPage != null and onePageRecord != null">
-			ORDER BY rank_game.gametime DESC
-			OFFSET #{offset} ROWS FETCH NEXT #{onePageRecord} ROWS ONLY
-		</if>
+				
 	</select>
 	
 	

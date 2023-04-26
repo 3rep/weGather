@@ -7,8 +7,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.Manager10DAO;
-import com.gather.we.dto.Criteria;
+
 import com.gather.we.dto.Manager10DTO;
+import com.gather.we.dto.PagingVO;
 
 
 @Service
@@ -23,32 +24,22 @@ public class Manager10ServiceImpl implements Manager10Service {
 	
 	
 	
-	@Override
-	public List<Manager10DTO> pageSelect(Criteria dto) {
-		
-		return dao.pageSelect(dto);
-	}
-	@Override
-	public int totalRecord(Criteria dto) {
-		
-		return dao.totalRecord(dto);
-	}
-
 
 
 	@Override
-	public List<Manager10DTO> selectManager10ByManagerid(String managerid) {
+	public List<Manager10DTO> getAllManager10By(String managerid) {
 		
-		return dao.selectManager10ByManagerid(managerid);
+		return dao.getAllManager10(managerid);
 	}
-
 
 
 	@Override
-	public List<Manager10DTO> getList(Criteria dto) {
+	public List<Manager10DTO> getAllManagerPast(String managerid) {
 		
-		return dao.getList(dto);
+		return dao.getAllManagerPast(managerid);
 	}
+
+	
 
 
 
@@ -60,12 +51,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 
-	@Override
-	public List<Manager10DTO> selectManagerPastByManagerid(String managerid) {
-		
-		return dao.selectManager10ByManagerid(managerid);
-	}
-
+	
 
 
 	@Override
@@ -88,6 +74,26 @@ public class Manager10ServiceImpl implements Manager10Service {
 	public List<Manager10DTO> getAllEntry() {
 		// TODO Auto-generated method stub
 		return dao.getAllEntry();
+	}
+
+
+
+
+
+	@Override
+	public int totalRecord(PagingVO vo) {
+		
+		return dao.totalRecord(vo);
+	}
+
+
+
+
+
+	@Override
+	public List<Manager10DTO> pageSelect(PagingVO vo) {
+		
+		return dao.pageSelect(vo);
 	}
 
 }

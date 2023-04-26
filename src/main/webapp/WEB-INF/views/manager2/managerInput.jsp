@@ -46,7 +46,7 @@
         </c:forEach>
       </tbody>
     </table>
-    <a href="managerPast" class="page-link">	
+    <a href="${path}/manager2/managerPast" class="page-link">	
     <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button></a>
 	<button class="modify-button">수정</button>
     <button class="back-button">취소</button>

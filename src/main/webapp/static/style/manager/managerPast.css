@@ -3,34 +3,47 @@
 .body {
   margin: 0;
   padding: 0;
-  display: flex;
+
   flex-direction: column;
-  height: 70vh;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+ /* justify-content: center;
+  align-items: center; */
   font-family: Arial, sans-serif;
+  position: relative;
+  right: 100px;
+  width:2000px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+ /* display: flex;
+  flex-wrap: wrap; 
   align-items: center;
-  height: 30%; /* 컨테이너 높이를 60%로 설정 */
+  justify-content: center; */
+  height: 100%; /* 컨테이너 높이를 60%로 설정 */
+  max-width: 2000px; /* 컨테이너 너비를 최대 1200px까지 제한 */
+  position: relative;
+  top:130px;
+  right: 150px;
+  width: 2000px;
 }
+.sub-container-left {
+ 	position: relative;
+ 	width:70%;
+ 	
+}
+
 
 .box {
   background-color: #D1D9E2;
-  color: #FFFF;
+  color: #000000;
   padding: 3px;
   margin: 5px;
-  text-align: left;
-  flex-basis: 20%;
-
-   font-size: 12px;
-  width: 500px;
-  height: 50px; /* 박스 높이를 50px로 조절 */
-    position: relative; /* 박스에 position을 추가 */
-    top:150px;
+  
+  flex-basis: calc(25% - 10px); /* 한 줄에 4개의 박스가 나오도록 flex-basis값을 설정 */
+  max-width: 500px; /* 각 박스의 최대 너비를 300px로 제한 */
+  height: 120px; /* 박스 높이를 120px로 조절 */
+  width:2000px;
+   background:#D9D9D9;
 }
 
 .box-info {
@@ -41,37 +54,40 @@
   width: 100%;
 }
 
-
-.box button {
-    //background-color: #48CD5D;
-    color: #fff;
-    padding: 5px;
-    margin: 5px;
-    text-align: center;
-    height: 30px;
-    width: 150px;
-    font-size: 14px;
-    align-self: flex-end;
-    position: absolute; /* 버튼 위치를 absolute로 지정 */
-    right: 0; /* 오른쪽에 위치하도록 지정 */
-    bottom: 0; /* 하단에 위치하도록 지정 */
-   
-     
-  }
+.sub-container-right {
   
-  .btn-green {
-    background-color: #48CD5D;
-    color: #fff;
-    padding: 5px;
-    margin: 5px;
-    text-align: center;
-    height: 20px;
-    width: 150px;
-    font-size: 14px;
-    align-self: flex-end;
-  }
+  color: #fff;
+  padding: 0 auto;
+  margin: 5px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  
+  position: relative; /* 버튼 위치를 absolute로 지정 */
+  left: 400px; /* 오른쪽에 위치하도록 지정 */
+  bottom: 70px; /* 하단에 위치하도록 지정 */
+   
+}
 
- .btn-gray {
+.btn-green {
+  position: absolute;
+  background-color: #48CD5D;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  height: 30px;
+  width: 100%;
+  font-size: 14px;
+  align-self: flex-end;
+  display:inline-block;
+  top: -5px;
+  right:10px;
+  
+}
+
+.btn-gray {
   background-color: gray !important;
   color: #fff;
   padding: 5px;
@@ -81,7 +97,6 @@
   width: 150px;
   align-self: flex-end;
 }
-
 .pagingDiv {
   display: flex;
   justify-content: center;
@@ -109,7 +124,7 @@
   color: #333;
   background-color: #fff;
   border: 1px solid #ccc;
-  text-decoration: none;
+  text-decoration: #ccc;
 }
 
 .pagingDiv ul li a:hover {
@@ -118,7 +133,7 @@
 
 .pagingDiv ul li span {
   background-color: #ccc;
-  pointer-events: none;
+  pointer-events: #ccc;
 }
 
 .pagingDiv ul li:first-child a,
