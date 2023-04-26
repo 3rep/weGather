@@ -29,7 +29,6 @@
 		    </tr>
 		    </thead>
 		    <tbody>
-		    
 			    <c:forEach var="list" items="${list }">
 				    <tr>
 				    	<!-- 경기유형: 랭크->4자리수 / 일반-> 3자리수 -->
@@ -46,7 +45,7 @@
 						
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
-				        <td><a href="">${list.stadium }</a></td>
+				        <td><a href="">${list.stadium } 이동링크걸어야해</a></td> <!-- 경기상세정보로 페이지 이동!! -->
 				       
 				       <!--g_status : 2(취소)/1(확정)/0(대기) 
 						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 

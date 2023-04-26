@@ -151,13 +151,10 @@ public class MypageController {
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
 		System.out.println("list: "+ list);
-		
 		mav.addObject("list", list);
 		mav.setViewName("mypage/paymentList");
 		return mav;
 	}
-	
-	
 	
 	
 	

@@ -14,24 +14,22 @@
 			    	<th>경기일</th>
 			        <th>결제금액</th>
 			        <th>결제시각</th>
-			        <th>결제상태</th>
-			    </tr>
+			        <th>상태</th>
+			    </tr> 
 		    </thead>
 		    <tbody>
-			    <tr>
-			    	<td>wegather_123456777</td>
-			    	<td>2023-04-12</td>
-			    	<td>10000원</td>
-			    	<td>2023-04-10 18:00</td>
-			    	<td>완료</td>
-			    </tr>
-			    <tr>
-			    	<td>2023-03-31</td>
-			    	<td>종합운동장</td>
-			    	<td>10000원</td>
-			    	<td>2023-03-30 18:00</td>
-			    	<td>완료</td>
-			    </tr>
+		    	<c:forEach var="list" items="${list }">
+			    	<tr>
+				    	<td>${list.payment_no }</td>
+				    	<td>${list.gametime }</td>
+				    	<td>${list.paid_amount }</td>
+				    	<td>${list.paid_at }</td>
+				    	<c:if test="${list.success == 's'}">
+				    		<td>결제완료</td>
+				    	</c:if>
+				    </tr>
+		    	</c:forEach>
+			    
 		    </tbody>
 		</table>
 		

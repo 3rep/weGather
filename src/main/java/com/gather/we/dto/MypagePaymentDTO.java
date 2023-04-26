@@ -14,8 +14,8 @@ public class MypagePaymentDTO {
 	private String gametime;
 	private String payment_no;
 	private int paid_amount;
-	private int paid_at;
-	private String seccess;
+	private long paid_at;
+	private String success;
 	
 	
 }
