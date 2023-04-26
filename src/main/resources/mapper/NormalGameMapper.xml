@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gather.we.dao.NormalGameDAO">
+	<select id="normGameListSelect" resultType="com.gather.we.dto.NormGameListDTO">
+		select n.no, s.stadium, s.region, n.gametime, n.min_people, n.max_people, n.curr_people, n.gendertype
+		from norm_game n join stadium_info s on n.st_no=s.st_no 
+		where s_no=${s_no} and (<![CDATA[gametime-2 <= sysdate and sysdate <= gametime]]>)
+		<if test="regionList!=null and regionList[0]!='all'">
+			and s.region in
+			<foreach item="region" index="index" collection="regionList" open="(" separator="," close=")">
+				#{region}
+			</foreach>
+		</if>
+		<if test="gendertype!=null and gendertype!='all'">
+			and n.gendertype=#{gendertype}
+		</if>
+		order by n.gametime
+	</select>
+	
+	<select id="normGameDetailSelect" resultType="com.gather.we.dto.NormGameDetailDTO">
+		select n.no, n.s_no, n.st_no, n.gametime, n.min_people, n.max_people, n.curr_people, n.gendertype, n.payment, s.sportname, s.filename, st.stadium, st.location
+		from norm_game n, sport s, stadium_info st
+		where n.no=${no} and n.s_no = s.s_no and n.st_no = st.st_no
+	</select>
+</mapper>

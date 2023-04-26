@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.container1{
+	width:1200px;
+	margin:0 auto;
+	text-align:center;
+}
+.container2{
+	width:1200px;
+	margin:0 auto;
+}
+/*초기화*/
+body, ul, li{
+	padding:0;
+	margin:0; 
+	list-style-type:none;
+}
+	
+.box1{
+	width:300px;
+	height:300px;
+	border-radius:5%;
+	float:left;
+	background-color:#660066;
+	margin : 50;
+}	
+.box2{
+	width:300px;
+	height:300px;
+	border-radius:5%;
+	float:left;
+	background-color:#ddd;
+	margin : 50;
+	
+}	
+.box3{
+	width:300px;
+	height:300px;
+	border-radius:5%;
+	float:left;
+	background-color:#000080;
+	margin: 50;
+}	
+form{
+	display:inline-block;}
+	
+	img{float:left;}
+	
+#logFrm input{margin-bottom:50px 0; width:90%;}
+	#logFrm li:nth-child(2n){
+		padding-bottom:30px;
+		margin : 0 auto;
+	}
