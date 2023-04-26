@@ -120,7 +120,9 @@ public class AdminController {
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
+		List<SportDTO> sportList = sportService.sportAllSelect();
 		
+		mav.addObject("sportList", sportList);
 		mav.setViewName("admin/sport/sportList");
 		
 		return mav;

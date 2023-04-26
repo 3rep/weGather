@@ -21,12 +21,10 @@ public class SportServiceImpl implements SportService {
 
 	@Override
 	public List<SportDTO> dataSelect() {
-		// TODO Auto-generated method stub
 		return dao.dataSelect();
 	}
 	
-
-
+	@Override
 	public int sportInsert(SportDTO dto) {
 		return dao.sportInsert(dto);
 	}
@@ -40,5 +38,4 @@ public class SportServiceImpl implements SportService {
 	public List<SportDTO> sportAllSelect() {
 		return dao.sportAllSelect();
 	}
-
 }
