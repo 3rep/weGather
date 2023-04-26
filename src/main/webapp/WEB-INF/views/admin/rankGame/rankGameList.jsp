@@ -16,7 +16,7 @@
 			<tr>
 				<td>${rankGame.no}</td>
 				<td>${rankGame.sportname}</td>
-				<td><a href="edit/no=${rankGame.no}" class="stadium">${rankGame.stadium}</a></td>
+				<td><a href="edit?no=${rankGame.no}" class="stadium">${rankGame.stadium}</a></td>
 				<td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${rankGame.gametime}" /></td>
 				<td>${rankGame.managerid}</td>
 				<td>

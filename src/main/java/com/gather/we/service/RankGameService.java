@@ -10,4 +10,8 @@ public interface RankGameService {
 	public int rankGameInsert(RankGameDTO dto);
 	// 관리자 랭크게임 목록 전체선택
 	public List<AdminRankGameDTO> adminRankGameAllSelect();
+	// 랭크게임 한 개 선택
+	public RankGameDTO rankGameOneSelect(int no);
+	// 랭크게임 수정
+	public int rankGameUpdate(RankGameDTO dto);
 }

@@ -25,5 +25,15 @@ public class RankGameServiceImpl implements RankGameService {
 		return dao.adminRankGameAllSelect();
 	}
 
+	@Override
+	public RankGameDTO rankGameOneSelect(int no) {
+		return dao.rankGameOneSelect(no);
+	}
+
+	@Override
+	public int rankGameUpdate(RankGameDTO dto) {
+		return dao.rankGameUpdate(dto);
+	}
+
 
 }
