@@ -1,6 +1,7 @@
 package com.gather.we.controller;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -151,6 +152,7 @@ public class MypageController {
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
 		System.out.println("list: "+ list);
+		
 		mav.addObject("list", list);
 		mav.setViewName("mypage/paymentList");
 		return mav;

@@ -67,7 +67,6 @@
 				        </c:if>
 				    </tr>
 			    </c:forEach>
-		    
 		    </tbody>
 		</table>
 		
