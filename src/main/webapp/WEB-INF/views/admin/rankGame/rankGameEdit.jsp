@@ -36,6 +36,7 @@
 <div class="container" id="rank_new_container">
 	<h2 id="page-title">경기 수정</h2>
 	<form method="post" action="editOk" id="rankgameForm">
+		<input type="hidden" name="no" value="${rankgameInfo.no}" />
 		<ul>
 			<li class="item">
 				<label>경기유형</label>
