@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.RankGameDAO;
+import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
@@ -22,6 +23,16 @@ public class RankGameServiceImpl implements RankGameService {
 	}
 
 	@Override
+	public RankGameDTO rankGameOneSelect(int no) {
+		return dao.rankGameOneSelect(no);
+	}
+
+	@Override
+	public int rankGameUpdate(RankGameDTO dto) {
+		return dao.rankGameUpdate(dto);
+	}
+	
+	@Override
 	public List<RankGameDTO> rankGameListSelect(RankGameListDTO dto) {
 		return dao.rankGameListSelect(dto);
 	}
@@ -34,5 +45,10 @@ public class RankGameServiceImpl implements RankGameService {
 	@Override
 	public int currPeopleCount(int no) {
 		return dao.currPeopleCount(no);
+	}
+	
+	@Override
+	public List<AdminRankGameDTO> adminRankGameAllSelect() {
+		return dao.adminRankGameAllSelect();
 	}
 }
