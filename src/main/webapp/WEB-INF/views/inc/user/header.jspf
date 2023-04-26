@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="${path}/static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/header.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/footer.css" type="text/css"/>
-<link rel="stylesheet" href="${path}/static/style/user/mainscreen.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/static/style/user/main.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/game/gameCommon.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameHeader.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/sportList.css" type="text/css" />
