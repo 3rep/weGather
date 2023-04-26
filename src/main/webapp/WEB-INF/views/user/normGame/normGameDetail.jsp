@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <!-- 구글맵api : =이하에 api키 넣으면 됨 -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6MCfWC6EB6u8KU4V0hGt3xhuebQFKlE&callback=initMap"></script>
+
+
 
 <script>
 	let map;
@@ -21,7 +22,7 @@
 	}
 	
 	function codeAddress() {
-		let address = "${rankGameDetail.location}";
+		let address = "${normGameDetail.location}";
 		geoCoder.geocode({'address': address}, function(results, status) {
 			if(status == 'OK'){
 				map.setCenter(results[0].geometry.location); // 구장위치로 map의 center를 변경
@@ -36,8 +37,8 @@
 	}
 </script>
 
-<div class="game_header rank_game_header">
-	<span class="game_header_title">랭크경기</span>
+<div class="game_header norm_game_header">
+	<span class="game_header_title">일반경기</span>
 </div>
 <div class="game_nav">종목선택 > 경기목록 > <b>경기상세정보</b></div>
 
@@ -47,46 +48,17 @@
 		<!-- game_detail_wrap (left) -->
 		<div class="game_detail_wrap left">
 			<!-- 종목 이미지 -->
-			<img src="${path}/uploadfile/sport/${rankGameDetail.filename}" class="sport_img"/>
+			<img src="${path}/uploadfile/sport/${normGameDetail.filename}" class="sport_img"/>
 			<ul>
-				<!-- 경기 조건 -->
-				<li class="game_condition">
-					<img src="${path}/static/img/game/rank.png" />
-					<!-- 요구랭크 -->
-					<span>
-						<c:set var="rank" value="${rankGameDetail.req_rank}"/>
-						<c:choose>
-							<c:when test="${rank==1}">
-				            	브론즈이상
-							</c:when>
-				         	<c:when test="${rank==2}">
-				            	실버이상
-				         	</c:when>
-				         	<c:when test="${rank==3}">
-				            	골드이상
-							</c:when>
-				         	<c:when test="${rank==4}">
-				            	플래티넘이상
-				         	</c:when>
-				         	<c:when test="${rank==5}">
-				            	다이아이상
-							</c:when>
-				         	<c:otherwise>
-				            	모든랭크
-				         	</c:otherwise>
-				      	</c:choose>
-					</span>
-				</li>
-				
 				<!-- 성별 유형 -->
 				<li class="game_condition">
 					<img src="${path}/static/img/game/gender.png" />
-					<span>${rankGameDetail.gendertype}</span>
+					<span>${normGameDetail.gendertype}</span>
 				</li>
 				
 				<!-- 몇 대 몇 -->
 				<!-- 한 팀당 인원수를 구하기 위해 min_people을 2로 나누고 정수로 변환한다. -->
-				<fmt:parseNumber var="oneTeamNumber" integerOnly="true" value="${rankGameDetail.min_people/2}" />
+				<fmt:parseNumber var="oneTeamNumber" integerOnly="true" value="${normGameDetail.min_people/2}" />
 				<li class="game_condition">
 					<img src="${path}/static/img/game/vs.png" />
 					<span>${oneTeamNumber} vs ${oneTeamNumber}</span>
@@ -94,7 +66,7 @@
 				
 				<!-- 몇 파전 -->
 				<!-- 팀의 수를 구하기 위해 max_people을 한 팀당 인원수로 나누고 정수로 변환한다. -->
-				<fmt:parseNumber var="teamCount" integerOnly="true" value="${rankGameDetail.max_people/oneTeamNumber}" />
+				<fmt:parseNumber var="teamCount" integerOnly="true" value="${normGameDetail.max_people/oneTeamNumber}" />
 				<li class="game_condition">
 					<img src="${path}/static/img/game/running.png" />
 					<span>${teamCount}파전</span>
@@ -104,54 +76,50 @@
 		<!-- game_detail_wrap (right) -->
 		<div class="game_detail_wrap right">
 			<!-- 경기 유형 -->
-			<div class="game_type">랭크경기</div>
+			<div class="game_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
 			<ul class="game_detail">
 				<li class="game_detail_main">
-					<div><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${rankGameDetail.gametime}" /></div>
-					<div>${rankGameDetail.stadium}</div>
+					<div><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${normGameDetail.gametime}" /></div>
+					<div>${normGameDetail.stadium}</div>
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">종목 |</span>
-					<span class="game_detail_value">${rankGameDetail.sportname}</span>				
-				</li>
-				<li class="game_detail_sub">
-					<span class="game_detail_label">매니저 |</span>
-					<span>${rankGameDetail.m_name}</span>				
+					<span class="game_detail_value">${normGameDetail.sportname}</span>				
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">최소 충족인원 |</span>
-					<span>${rankGameDetail.min_people}</span>명			
+					<span>${normGameDetail.min_people}</span>명			
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">최대 인원 |</span>
-					<span>${rankGameDetail.max_people}</span>명			
+					<span>${normGameDetail.max_people}</span>명			
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">현재 신청인원 |</span>
-					<span>${rankGameDetail.curr_people}</span>명
+					<span>${normGameDetail.curr_people}</span>명
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">참가비 |</span>
-					<span>${rankGameDetail.payment}</span>원	
+					<span>${normGameDetail.payment}</span>원	
 				</li>
 				
 				<!-- 위치정보 -->
 				<li class="game_detail_sub">
 					<div class="location_info">위치정보</div>
-					<span class="location">${rankGameDetail.location}</span>				
+					<span class="location">${normGameDetail.location}</span>				
 					<div id="map"></div>
 				</li>
 			</ul>
 			
 			<!-- 참가신청 -->
 			<c:choose>
-				<c:when test="${rankGameDetail.curr_people==rankGameDetail.max_people}">
+				<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
 	            	<button class="btn_apply close">인원마감</button>
 				</c:when>
 	         	<c:otherwise>
-	            	<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply">참가신청</button>
+	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply">참가신청</button>
 	         	</c:otherwise>
 	      	</c:choose>
 		</div>

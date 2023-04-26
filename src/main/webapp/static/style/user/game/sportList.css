@@ -32,6 +32,10 @@
 	font-size: var(--font-micro);
 }
 
+.norm_game_tag {
+	background-color: var(--color-manager-middle-green);
+}
+
 .sport_desc_container { /* 종목 설명 - opacity를 0으로 설정하여 화면에 보이지 않게 함 */
 	position: absolute;
 	top: 0;
