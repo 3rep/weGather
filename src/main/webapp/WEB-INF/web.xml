@@ -54,17 +54,15 @@
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/manager/adminNav.jspf</include-prelude>
 		</jsp-property-group> -->
-	</jsp-config>
 	
-	 
-	 <!-- include -->
-	 
-	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
 			<include-prelude>/WEB-INF/views/mypage/allPage.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+	
+	 
+	 <!-- include -->
 	 
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
