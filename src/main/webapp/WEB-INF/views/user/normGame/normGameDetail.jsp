@@ -40,7 +40,7 @@
 <div class="game_header norm_game_header">
 	<span class="game_header_title">일반경기</span>
 </div>
-<div class="game_nav">종목선택 > 경기목록 > <b>경기상세정보</b></div>
+<div class="game_nav norm_game_nav">종목선택 > 경기목록 > <b>경기상세정보</b></div>
 
 <div class="game_container">
 	<div class="game_detail_container">
@@ -116,12 +116,13 @@
 			<!-- 참가신청 -->
 			<c:choose>
 				<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
-	            	<button class="btn_apply close">인원마감</button>
+	            	<button class="btn_norm_apply close">인원마감</button>
 				</c:when>
 	         	<c:otherwise>
-	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply">참가신청</button>
+	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_norm_apply">참가신청</button>
 	         	</c:otherwise>
 	      	</c:choose>
+	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
 		</div>
 	</div>
 </div>
