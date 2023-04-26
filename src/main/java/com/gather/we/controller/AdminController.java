@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
@@ -146,6 +147,9 @@ public class AdminController {
 	public ModelAndView rankGameList() {
 		ModelAndView mav = new ModelAndView();
 		
+		List<AdminRankGameDTO> rankGameList = rankGameService.adminRankGameAllSelect();
+		
+		mav.addObject("rankGameList", rankGameList);
 		mav.setViewName("admin/rankGame/rankGameList");
 		
 		return mav;
@@ -189,5 +193,5 @@ public class AdminController {
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-	}   
+	}
 }

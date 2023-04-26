@@ -7,4 +7,11 @@
  		insert into rank_game(no, s_no, st_no, gametime, min_people, max_people, gendertype, req_rank, payment, managerfee) 
  		values(rank_sq.nextval, ${s_no}, ${st_no}, #{gametime}, ${min_people}, ${max_people}, #{gendertype}, ${req_rank}, ${payment}, ${managerfee})
  	</insert>
+ 	<select id="adminRankGameAllSelect" resultType="com.gather.we.dto.AdminRankGameDTO">
+		select s.sportname, st.stadium, r.gametime, r.no, r.g_status, r.managerid
+		from rank_game r
+		inner join sport s on r.s_no = s.s_no
+		inner join stadium_info st on r.st_no = st.st_no
+		order by no desc
+	</select>
 </mapper>

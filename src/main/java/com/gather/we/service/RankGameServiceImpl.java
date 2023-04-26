@@ -1,10 +1,13 @@
 package com.gather.we.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.RankGameDAO;
+import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.RankGameDTO;
 
 @Service
@@ -16,4 +19,11 @@ public class RankGameServiceImpl implements RankGameService {
 	public int rankGameInsert(RankGameDTO dto) {
 		return dao.rankGameInsert(dto);
 	}
+
+	@Override
+	public List<AdminRankGameDTO> adminRankGameAllSelect() {
+		return dao.adminRankGameAllSelect();
+	}
+
+
 }
