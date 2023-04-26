@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +41,7 @@ public class RankGameController {
 	@GetMapping("/rankgamelist")
 	public ModelAndView rankGameList(RankGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
-		
+
 		// 지역 필터링 시 DB에서 해당 지역의 경기만 선택하여 가져오기 위해 지역 카테고리를 세부 지역으로 나누어 리스트에 담는다.
 		String region = dto.getRegion();// '대전/세종/충청'
 		if(region!=null) {

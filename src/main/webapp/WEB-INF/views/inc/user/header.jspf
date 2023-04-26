@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="${path}/static/style/user/game/sportList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameDetail.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/payment/payment.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/payment/paymentDone.css" type="text/css" />
+
 
 </head>
 
@@ -77,23 +80,21 @@
 			<c:if test="${logStatus=='Y' }">
 				<a class="navbar-brand" href="userHome">
 	     			 <img src="${path}/static/img/logo/logo 4.png" alt="Logo" id="nav-logo" style="width:250px;">
-	    		</a>
-    		</c:if>
-    		<c:if test="${logStatus!='Y' }">
+	    	</a>
+    	</c:if>
+    	<c:if test="${logStatus!='Y' }">
 				<a class="navbar-brand" href="/">
 	     			 <img src="${path}/static/img/logo/logo 4.png" alt="Logo" id="nav-logo" style="width:250px;">
-	    		</a>
-    		</c:if>
-    		
-    		
-    		
+	    	</a>
+    	</c:if>
+    	
 	    	<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 	    		<ul class="navbar-nav">
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="/rankgame/sportlist">스포츠</a>
+	          			<a class="nav-link" href="${path}/rankgame/sportlist">랭크경기</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="#">자유모임</a>
+	          			<a class="nav-link" href="${path}/normgame/sportlist">일반경기</a>
 	        		</li>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="#">랭크보드</a>

@@ -1,5 +1,11 @@
 package com.gather.we.controller;
 
+
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -8,7 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,16 +30,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.AdminDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
 import com.gather.we.service.RegisterService;
 
-
-import java.io.File;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 
 import com.gather.we.dto.ManagerDTO;
 import com.gather.we.dto.RankGameDTO;
@@ -84,27 +95,27 @@ public class AdminController {
 		return mav;
 	}
 			
-			//(愿�由ъ옄 �럹�씠吏�)�쉶�썝 由ъ뒪�듃
-			@GetMapping("admin/userList")
-			public ModelAndView loginList() {
-				ModelAndView mav = new ModelAndView();
-				
-				List<RegisterDTO> list = regservice.dataAllSelect();
-				
-				mav.addObject("list", list);
-				mav.setViewName("admin/userList");
-				
-				return mav;
-			}
-			//(愿�由ъ옄 �럹�씠吏�)�쉶�썝�젙蹂� �닔�젙�뤌
-			@GetMapping("admin/userEdit/{userid}")
-			public ModelAndView loginEdit(@PathVariable("userid") String userid) {
-				RegisterDTO dto = regservice.registerEdit(userid);
-				ModelAndView mav = new ModelAndView();
-				mav.addObject("dto", dto);
-				mav.setViewName("admin/userEdit");
-				return mav;
-			}
+	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝 由ъ뒪�듃
+	@GetMapping("admin/userList")
+	public ModelAndView loginList() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<RegisterDTO> list = regservice.dataAllSelect();
+		
+		mav.addObject("list", list);
+		mav.setViewName("admin/userList");
+		
+		return mav;
+	}
+	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝�젙蹂� �닔�젙�뤌
+	@GetMapping("admin/userEdit/{userid}")
+	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
+		RegisterDTO dto = regservice.registerEdit(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("admin/userEdit");
+		return mav;
+	}
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
@@ -212,6 +223,9 @@ public class AdminController {
 	public ModelAndView rankGameList() {
 		ModelAndView mav = new ModelAndView();
 		
+		List<AdminRankGameDTO> rankGameList = rankGameService.adminRankGameAllSelect();
+		
+		mav.addObject("rankGameList", rankGameList);
 		mav.setViewName("admin/rankGame/rankGameList");
 		
 		return mav;
@@ -234,25 +248,75 @@ public class AdminController {
 	
 	// 랭크경기 등록(DB)
 	@PostMapping("/rankgame/newOk")
-	public ModelAndView rankgameNewOk(RankGameDTO dto){
-		ModelAndView mav = new ModelAndView();
+	public ResponseEntity<String> rankgameNewOk(RankGameDTO dto, HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=utf-8");
 		try {
 			// 작성된 랭크경기 내용을 DB에 저장
-			int result = rankGameService.rankGameInsert(dto);
-
-			// 정상처리되면 랭크경기 목록 페이지로 이동
-			mav.setViewName("redirect:rankgamelist");
+			rankGameService.rankGameInsert(dto);
 			
+			// 랭크경기 목록으로 이동
+			String body = "<script> location.href='/admin/rankgame/rankgamelist';</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
-			// 레코드 추가 에러
+			// 랭크경기 등록 실패
 			e.printStackTrace();
-			
-			mav.addObject("msg", "占쎌삻占쎄쾿野껋럡由� 占쎈쾻嚥∽옙 占쎈뼄占쎈솭占쎈릭占쏙옙占쎈뮸占쎈빍占쎈뼄.");
-			mav.setViewName("admin/dataResult");
+			String body = "<script>";
+			body += "alert('랭크경기 등록을 실패하였습니다.');";
+			body += "history.go(-1);";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
 		}
+		return entity;
+	}
+	
+	// 랭크경기 수정
+	@GetMapping("/rankgame/edit")
+	public ModelAndView rankGameList(int no) {
+		ModelAndView mav = new ModelAndView();
+		
+		List<SportDTO> sportList = sportService.sportAllSelect();
+		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
+		RankGameDTO rankgameInfo = rankGameService.rankGameOneSelect(no);
+		
+		// gametime의 데이터 타입을 Date -> String으로 변환
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		String gametimeStr = df.format(rankgameInfo.getGametime());
+		
+		mav.addObject("gametimeStr", gametimeStr);
+		mav.addObject("sportList", sportList);
+		mav.addObject("stadiumInfoList", stadiumInfoList);		
+		mav.addObject("rankgameInfo", rankgameInfo);
+		mav.setViewName("admin/rankGame/rankGameEdit");
 		
 		return mav;
-	}   
+	}
+	
+	// 랭크경기 수정(DB)
+	@PostMapping("/rankgame/editOk")
+	public ResponseEntity<String> rankgameEditOk(RankGameDTO dto, HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		try {
+			// 수정된 내용을 DB에 업데이트
+			rankGameService.rankGameUpdate(dto);
+			
+			// 랭크경기 목록으로 이동
+			String body = "<script> location.href='/admin/rankgame/rankgamelist';</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			// 랭크경기 수정 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('랭크경기 수정을 실패하였습니다.');";
+			body += "history.go(-1);";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 	
 	// 매니저 승인 요청 목록
 	@GetMapping("/manager/approvelist")

@@ -33,9 +33,9 @@
 		});
 	});
 </script>
-<div class="container">
+<div class="container" id="rank_new_container">
 	<h2 id="page-title">경기 등록</h2>
-	<form method="post" action="newOk" id="rankgameForm" enctype="multipart/form-data">
+	<form method="post" action="newOk" id="rankgameForm">
 		<ul>
 			<li class="item">
 				<label>경기유형</label>
@@ -55,8 +55,8 @@
 				<input type="datetime-local" name="gametime" id="gametime"/>
 			</li>
 			<li class="item">
-				<label for="stadium">구장</label>
-				<select name="stadium" id="stadium">
+				<label for="st_no">구장</label>
+				<select name="st_no" id="stadium">
 					<c:forEach var="StadiumInfoDTO" items="${stadiumInfoList}">
 						<option value="${StadiumInfoDTO.st_no}">${StadiumInfoDTO.stadium}, ${StadiumInfoDTO.location}</option>
 					</c:forEach>
@@ -73,19 +73,20 @@
 			<li class="item">
 				<label for="gendertype">성별유형</label>
 				<select name="gendertype" id="gendertype">
-					<option value="all">남녀모두</option>
-					<option value="man">남자만</option>
-					<option value="woman">여자만</option>
+					<option value="남녀모두">남녀모두</option>
+					<option value="남자만">남자만</option>
+					<option value="여자만">여자만</option>
 				</select>
 			</li>
 			<li class="item">
 				<label for="req_rank">요구랭크</label>
 				<select name="req_rank" id="req_rank">
-					<option value="5">DIAMOND</option>
-					<option value="4">PLATINUM</option>
-					<option value="3">GOLD</option>
-					<option value="2">SILVER</option>
+					<option value="0">모든랭크</option>
 					<option value="1">BRONZE</option>
+					<option value="2">SILVER</option>
+					<option value="3">GOLD</option>
+					<option value="4">PLATINUM</option>
+					<option value="5">DIAMOND</option>
 				</select>
 			</li>
 			<li class="item">

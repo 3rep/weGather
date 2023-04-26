@@ -26,7 +26,6 @@ public class GameScheduler {
 		
 		for(GameSchedulerDTO dto: list) {
 			if(dto.getG_status() == 0) {
-				System.out.println("hi");
 				if(dto.getCurr_people() >= dto.getMin_people()) { // 경기 확정
 					dto.setG_status(1);
 				} else { // 인원 미충족으로 인한 경기 취소

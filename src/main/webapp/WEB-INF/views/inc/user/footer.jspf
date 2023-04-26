@@ -10,13 +10,13 @@
         				<div class="foot-table-cell">
 								<ul id="foot-content1">
 									<li>
-										<a class="foot-link" href="#">Home</a>
+										<a class="foot-link" href="${path}/">Home</a>
 									</li>
 									<li>
-										<a class="foot-link" href="#">스포츠</a>
+										<a class="foot-link" href="${path}/rankgame/sportlist">랭크경기</a>
 									</li>
 									<li>
-										<a class="foot-link" href="#">자유모임</a>
+										<a class="foot-link" href="${path}/normgame/sportlist">일반경기</a>
 									</li>
 								</ul>
 						</div>

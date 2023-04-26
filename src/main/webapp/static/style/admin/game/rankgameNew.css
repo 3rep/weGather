@@ -1,7 +1,14 @@
 @charset "UTF-8";
 
+/* 랭크경기 등록 */
+
 #rankgameForm {
-	height: 450px;
+	display: flex;
+	flex-direction: column;
+}
+
+#rankgameForm ul{
+	height: 440px;
 	overflow-y: scroll;
 }
 
@@ -39,9 +46,8 @@
 }
 
 #rankgameForm .btns {
-	position: absolute;
-	right: 0;
-	bottom: 10px;
+	align-self: end;
+	margin-top: 20px;
 }
 
 #rankgameForm .btn-cancel {
