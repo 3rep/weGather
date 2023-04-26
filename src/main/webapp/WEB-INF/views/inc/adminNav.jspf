@@ -12,7 +12,8 @@
 <link href="${path}/static/style/admin/adminNav.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/adminCommon.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/sport.css" rel="stylesheet" type="text/css" />
-<link href="${path}/static/style/admin/game.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/game/rankgameList.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/game/rankgameNew.css" rel="stylesheet" type="text/css" />
 </head>
 <script>
 	$(function(){

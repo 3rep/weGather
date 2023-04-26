@@ -37,7 +37,7 @@
 		});
 	});
 </script>
-<div class="container">
+<div class="container" id="rank_new_container">
 	<h2 id="page-title">경기 등록</h2>
 	<form method="post" action="newOk" id="rankgameForm" enctype="multipart/form-data">
 		<ul>
@@ -102,11 +102,11 @@
 				<input type="text" name="managerfee" id="managerfee" maxlength="8" />원
 			</li>
 		</ul>
-		<div class="btns">
-			<a class="btn-gray btn-cancel prev">취소</a>
-			<input type="submit" value="등록" class="btn-black" />
-		</div>
 	</form>
+	<div class="btns">
+		<a class="btn-gray btn-cancel prev">취소</a>
+		<input type="submit" value="등록" class="btn-black" />
+	</div>
 </div>
 </body>
 </html>

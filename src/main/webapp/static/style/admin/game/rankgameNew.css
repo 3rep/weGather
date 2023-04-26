@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/* 랭크경기 등록 */
+
+#rank_new_container {
+	display: flex;
+	flex-direction: column;
+}
+
+#rankgameForm {
+	height: 450px;
+	overflow-y: scroll;
+}
+
+#rankgameForm label {
+	display: inline-block;
+	width: 150px;
+	height: 60px;
+	line-height: 60px;
+	border-right: 1px solid var(--color-admin-blue-gray);
+	padding: 0 16px;
+	margin-right: 24px;
+}
+
+#rankgameForm .item {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	border-bottom: 1px solid var(--color-admin-blue-gray);
+}
+
+#rankgameForm .item:first-of-type {
+	border-top: 1px solid var(--color-admin-blue-gray);
+}
+
+#rankgameForm #gametype {
+	width: 80px;
+}
+
+#rankgameForm #min_people,
+#rankgameForm #max_people,
+#rankgameForm #payment,
+#rankgameForm #managerfee {
+	width: 80px;
+	margin-right:4px
+}
+
+#rank_new_container .btns {
+	align-self: end;
+	margin-top: 40px;
+}
+
+#rank_new_container .btn-cancel {
+	margin-right: 16px;
+}
