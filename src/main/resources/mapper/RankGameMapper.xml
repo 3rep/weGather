@@ -29,7 +29,14 @@
 	
 	<select id="rankGameDetailSelect" resultType="com.gather.we.dto.RankGameDetailDTO">
 		select r.no, r.s_no, r.st_no ,r.gametime, r.min_people, r.max_people, r.curr_people, r.gendertype, r.req_rank, r.payment, s.sportname, s.filename, st.stadium, st.location, m.m_name
-		from rank_game r, sport s, stadium_info st, manager m
-		where r.no=${no} and r.s_no = s.s_no and r.st_no = st.st_no and r.managerid = m.managerid
+		from rank_game r
+		inner join sport s on r.s_no = s.s_no
+		inner join stadium_info st on r.st_no = st.st_no
+		inner join manager m on r.managerid = m.managerid
+		where r.no=${no}
 	</select>
+	
+	<update id="currPeopleCount">
+		update rank_game set curr_people=curr_people+1 where no=${no}
+	</update>
 </mapper>
