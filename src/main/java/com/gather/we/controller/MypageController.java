@@ -31,24 +31,6 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	/*
-	 * @GetMapping("/login") public ModelAndView main(HttpSession session) {
-	 * ModelAndView mav = new ModelAndView();
-	 * 
-	 * MypageUserDTO dto =
-	 * service.getUserinfo((String)session.getAttribute("logId"));
-	 * System.out.println(dto.toString());
-	 * 
-	 * //session.setAttribute("logName", dto.getUsername());
-	 * //session.setAttribute("logGender", dto.getGender());
-	 * session.setAttribute("logName", dto.getUsername());
-	 * session.setAttribute("logGender", dto.getGender());
-	 * 
-	 * mav.addObject("logName", session.getAttribute("logName"));
-	 * mav.addObject("logGender",session.getAttribute("logGender"));
-	 * mav.setViewName("redirect:/"); return mav; }
-	 */
-	
 	@GetMapping("/mypage/applyList") //post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
 	public ModelAndView applyList(HttpSession session) {
 		
@@ -157,8 +139,6 @@ public class MypageController {
 		mav.setViewName("mypage/paymentList");
 		return mav;
 	}
-	
-	
 	
 	@GetMapping("mypage/info")
 	public ModelAndView info() {
