@@ -155,6 +155,11 @@ public class AdminController {
 		String path = request.getSession().getServletContext().getRealPath("/uploadfile/sport");
 		System.out.println("path->" + path);
 		
+		// 경로에 폴더가 존재하지 않으면 폴더 생성
+		if (!new File(path).exists()) {
+			new File(path).mkdirs();
+        }
+		
 		if(file!=null) {//업로드 파일이 있을 경우			
 			String orgFilename = file.getOriginalFilename();// 사용자가 업로드한 파일명
 			if(orgFilename != null && !orgFilename.equals("")) {
@@ -249,12 +254,12 @@ public class AdminController {
 		
 		// mr에서 MultipartFile객체를 얻어오기
 		MultipartFile file = mr.getFile("filename"); //form에 있는 name
-		
+
 		// 파일을 서버에 업로드할 위치의 절대주소
 		String path = request.getSession().getServletContext().getRealPath("/uploadfile/sport");
 		System.out.println("path->" + path);
 		
-		if(file!=null) {//업로드 파일이 있을 경우			
+		if(file!=null) {//업로드 파일이 있을 경우
 			String orgFilename = file.getOriginalFilename();// 사용자가 업로드한 파일명
 			if(orgFilename != null && !orgFilename.equals("")) {
 				// 같은 파일명이 이미 존재하면 rename 수행
