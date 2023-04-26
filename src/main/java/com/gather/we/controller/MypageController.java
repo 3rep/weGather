@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 import com.gather.we.service.MypageService;
@@ -128,7 +129,7 @@ public class MypageController {
 		System.out.println("list222:: "+list);
 		
 		int n = list.size();
-		System.out.println("n->"+n);
+		//System.out.println("n->"+n);
 		
 		//json타입으로 변환
 		ObjectMapper mapper = new ObjectMapper(); 
@@ -142,13 +143,24 @@ public class MypageController {
 		return json;
 	}
 	
-	
 	@GetMapping("mypage/paymentList")
-	public ModelAndView paymentList() {
+	public ModelAndView paymentList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String logName = (String)session.getAttribute("logName");
+		System.out.println(logName);
+		
+		List<MypagePaymentDTO> list = service.paymentList(logName);
+		System.out.println("list: "+ list);
+		
+		mav.addObject("list", list);
 		mav.setViewName("mypage/paymentList");
 		return mav;
 	}
+	
+	
+	
+	
+	
 	@GetMapping("mypage/info")
 	public ModelAndView info() {
 		ModelAndView mav = new ModelAndView();

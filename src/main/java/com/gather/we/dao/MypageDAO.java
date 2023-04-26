@@ -3,6 +3,7 @@ package com.gather.we.dao;
 import java.util.List;
 
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
@@ -19,14 +20,13 @@ public interface MypageDAO {
 	//일반전
 	public List<MypageApplyListDTO> normgameList(String userid);
 	
-	
-	//
 	//rank 정보 가져오기
 	public List<MypageRankDTO> rank(String userid, String sportname);
-
-	
-	
-	
 	//rank 결과요약 가져오기
 	public List<MypageRankDTO> rankResult(String userid);
+
+	//결제list
+	public List<MypagePaymentDTO> paymentList(String username);
+
+
 }

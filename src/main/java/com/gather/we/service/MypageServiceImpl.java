@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.MypageDAO;
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
@@ -50,6 +51,11 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public List<MypageRankDTO> rankResult(String userid) {
 		return dao.rankResult(userid);
+	}
+
+	@Override
+	public List<MypagePaymentDTO> paymentList(String username) {
+		return dao.paymentList(username);
 	}
 
 	

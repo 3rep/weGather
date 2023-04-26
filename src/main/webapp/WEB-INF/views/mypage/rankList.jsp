@@ -6,11 +6,9 @@
 	<div id="applyListContent"> 
 		<h3>신청경기</h3><br/>
 		<hr/>
-		<div class="buttons">
-			<a href="applyList" id="all">전체</a>
-    		<a href="rankList" id="rank">랭킹전</a>
-			<a href="normList" id="norm">일반전</a>
-		</div>
+		<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
+		<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
+		<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
 		
 		<!-- 테이블 -------------------------------------------------------->
 		<table id="table">

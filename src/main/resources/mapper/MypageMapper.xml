@@ -68,6 +68,20 @@
 		join sport s 
 		on s.s_no = rg.s_no
 	</select>
-	
+	<select id="paymentList" resultType="com.gather.we.dto.MypagePaymentDTO">
+		select parti.no, parti.userid, u.username, to_char(game.gametime, 'yyyy-MM-dd HH:MI') gametime, up.payment_no, up.paid_at, up.paid_amount, up.success
+		from user_pay up
+		join 
+		    (select no, userid, payment_no from r_participate rp
+		    union
+		    select no, userid, payment_no from n_participate np) parti
+		on up.payment_no = parti.payment_no 
+		join users u on u.userid=parti.userid and u.username=#{param1}
+		join (select no, gametime from rank_game rg
+		      union
+		      select no, gametime from norm_game ng) game
+		on game.no=parti.no
+		order by game.gametime desc
+	</select>
 	
 </mapper>

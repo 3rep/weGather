@@ -12,7 +12,7 @@
 <link href="${path}/static/style/mypage/allPage.css" rel="stylesheet" type="text/css">
 <link href="${path}/static/style/mypage/applyList.css" rel="stylesheet" type="text/css">
 <link href="${path}/static/style/mypage/rank.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="${path}/static/style/mypage/paymentList.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

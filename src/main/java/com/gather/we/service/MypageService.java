@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.MypageDAO;
 import com.gather.we.dto.MypageApplyListDTO;
+import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
@@ -26,9 +27,11 @@ public interface MypageService {
 	
 	//rank 정보 가져오기
 	public List<MypageRankDTO> rank(String userid, String sportname);
-	
 	//rank 결과요약 가져오기
 	public List<MypageRankDTO> rankResult(String userid);
+	
+	//결제list
+	public List<MypagePaymentDTO> paymentList(String username);
 
 
 }
