@@ -2,9 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!-- 오른쪽 내용칸 -->
+	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
-		<h3>신청경기</h3><br/>
+		<span style="font-size:25px">신청경기</span><br/>
+		<input type="date"/>
 		<hr/>
 		<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
 		<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
@@ -69,11 +70,5 @@
 			    </c:forEach>
 		    </tbody>
 		</table>
-		
-		<!-- --------------------------------------------------------- -->
 	</div>	
-	
 </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-</html>

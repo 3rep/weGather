@@ -31,23 +31,22 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/applyList") //post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
+	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
-		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-
-		List<MypageApplyListDTO> list = service.allgameList(logId);
-		//System.out.println("list->"+list);
+		//System.out.println(logId);
+		MypageUserDTO dto = service.getUserinfo(logId);
 		
+		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
-		//System.out.println(now);
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/applyList");		
+		mav.setViewName("user/mypage/applyList");		
+			
 		return mav;
 	}
 	
@@ -62,7 +61,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/rankList");
+		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
@@ -77,7 +76,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/normList");
+		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
 	
@@ -95,7 +94,7 @@ public class MypageController {
 		//System.out.println("alll: "+dto.getAvg_all());
 		mav.addObject("list", list);
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/rank");
+		mav.setViewName("user/mypage/rank");
 		return mav;
 	}
 	
@@ -136,14 +135,14 @@ public class MypageController {
 		System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
-		mav.setViewName("mypage/paymentList");
+		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
 	
 	@GetMapping("mypage/info")
 	public ModelAndView info() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/info");
+		mav.setViewName("user/mypage/info");
 		return mav;
 	}
 }	

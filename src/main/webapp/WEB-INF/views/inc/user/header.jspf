@@ -21,6 +21,10 @@
 <link rel="stylesheet" href="${path}/static/style/register/login.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/register/register.css" type="text/css" />
 
+<link rel="stylesheet" href="${path}/static/style/user/mypage/allPage.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/applyList.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/rank.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/paymentList.css" type="text/css">
 
 <link rel="stylesheet" href="${path}/static/style/user/game/gameCommon.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameHeader.css" type="text/css" />
@@ -61,7 +65,7 @@
 		          			<a class="nav-link" href="#">랭크자리</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">마이페이지</a>
+		          			<a class="nav-link" href="mypage/applyList">마이페이지</a>
 		        		</li>
 		        		<li>
 		        			<a class="nav-link" href="logout">로그아웃</a>
@@ -102,9 +106,9 @@
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="#">취미추천</a>
 	        		</li>
-	        		<li class="nav-item">
+	        		<!-- <li class="nav-item">
 	          			<a class="nav-link" href="#">마이페이지</a>
-	        		</li>
+	        		</li> -->
 	        		<li class="nav-item dropdown">
 		          		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">커뮤니티</a>
 			          		<ul class="dropdown-menu">

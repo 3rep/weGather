@@ -15,7 +15,7 @@
 	width: 250px;
 	height: 100%; 
 	overflow: auto;
-	position: fixed;
+	position: absolute;
 	text-align: center;
 	/* font-size: var(--font-micro); */		
 }
@@ -80,7 +80,7 @@
 .container-mypage-all .h{
 	font-size: var(--font-regular);
 	/* margin-bottom: 50px; */
-	padding: 20px; 
+	padding: 50px 20px 20px 20px; 
 	margin: 10px 0 20px 0;
 	font-weight: var(--weight-bold);
 }
