@@ -138,19 +138,18 @@
 	align-items: center;
 }
 .main-container .login{
-	/* background: pink; */
-	background-color: rgba(255, 255, 255, 20%);/*까만색(0,0,0) 30% 불투명도*/
-	background-radius: 30px;
-	padding: 10px 50px 10px 50px;
+	background-color: rgba(255, 255, 255, 10%);/*까만색(0,0,0) 30% 불투명도*/
+	border-radius: 60px;
+	padding: 0px 55px 20px 55px;
 	position: absolute;
 	z-index: 3;
-	color: antiquewhite;
+	color: floralwhite;
 }
-.main-container .login span{
+.login span{
 	font-size: var(--font-large);
 	font-style: italic;
 }
-.main-container .featSpan{
+#featSpan{
 	font-size: var(--font-regular);
 }
 

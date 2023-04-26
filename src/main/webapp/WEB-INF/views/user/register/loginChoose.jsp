@@ -5,8 +5,6 @@
 <link href="${path}/static/style/register/register.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 
-
-
 <div class="container1">
 <h1>로그인 선택</h1>
 <div class="box1">
