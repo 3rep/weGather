@@ -2,13 +2,13 @@
 
 /* 랭크경기 등록 */
 
-#rank_new_container {
+#rankgameForm {
 	display: flex;
 	flex-direction: column;
 }
 
-#rankgameForm {
-	height: 450px;
+#rankgameForm ul{
+	height: 440px;
 	overflow-y: scroll;
 }
 
@@ -45,11 +45,11 @@
 	margin-right:4px
 }
 
-#rank_new_container .btns {
+#rankgameForm .btns {
 	align-self: end;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
-#rank_new_container .btn-cancel {
+#rankgameForm .btn-cancel {
 	margin-right: 16px;
 }

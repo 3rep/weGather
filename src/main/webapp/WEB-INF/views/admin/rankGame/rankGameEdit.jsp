@@ -100,11 +100,11 @@
 				<input type="text" name="managerfee" id="managerfee" maxlength="8" value="${rankgameInfo.managerfee}" />원
 			</li>
 		</ul>
+		<div class="btns">
+			<a class="btn-gray btn-cancel prev">취소</a>
+			<input type="submit" value="수정" class="btn-black" />
+		</div>
 	</form>
-	<div class="btns">
-		<a class="btn-gray btn-cancel prev">취소</a>
-		<input type="submit" value="수정" class="btn-black" />
-	</div>
 </div>
 </body>
 </html>
