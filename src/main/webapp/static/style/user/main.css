@@ -1,6 +1,6 @@
 @charset "EUC-KR";
 
-/* ¹öÆ° ½ºÅ¸ÀÏ ¸µÅ©----------------*/
+/* ë²„íŠ¼ ìŠ¤íƒ€ì¼ ë§í¬----------------*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
 @font-face {
   font-weight: normal;
@@ -9,7 +9,7 @@
   src: url("../fonts/codropsicons/codropsicons.eot");
   src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
 }
-/*¹öÆ° ½ºÅ¸ÀÏ---------------------*/
+/*ë²„íŠ¼ ìŠ¤íƒ€ì¼---------------------*/
 .main-container .button {
   float: left;
   min-width: 150px;
@@ -96,10 +96,10 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/*¹öÆ° ½ºÅ¸ÀÏ end-----------------------*/
+/*ë²„íŠ¼ ìŠ¤íƒ€ì¼ end-----------------------*/
 
 
-/* ÀüÃ¼ ¹è°æÀÌ¹ÌÁö À§¿¡¼­ ¿òÁ÷ÀÌ´Â container*/
+/* ì „ì²´ ë°°ê²½ì´ë¯¸ì§€ ìœ„ì—ì„œ ì›€ì§ì´ëŠ” container*/
 .main-container{
 	background: #ddd;
 	display: flex;
@@ -114,7 +114,7 @@
 
 .main-container .img{
 	position:absolute;
-	/* background: #DFD5F5; */ /*º¸¶ó»ö*/
+	/* background: #DFD5F5; */ /*ë³´ë¼ìƒ‰*/
 	width: 100%;
 	height: 700px;
 	top:0;
@@ -122,16 +122,16 @@
 }
 
 .main-container .item{
-	flex-basis: 650px; /*flex item ³ôÀÌ*/
+	flex-basis: 650px; /*flex item ë†’ì´*/
 	text-align : center;
 	
 }
 
-/* Ã¹¹øÂ°div : ·Î±×ÀÎ, È¸¿ø°¡ÀÔÃ¢ */
+/* ì²«ë²ˆì§¸div : ë¡œê·¸ì¸, íšŒì›ê°€ì…ì°½ */
 
 .main-container #cloudy{
-	/* background: #E0EFCC; */ /*¿¬µÎ»ö*/
-	background-color:rgba(0, 0, 0, 30%);/*±î¸¸»ö(0,0,0) 30% ºÒÅõ¸íµµ*/
+	/* background: #E0EFCC; */ /*ì—°ë‘ìƒ‰*/
+	background-color:rgba(0, 0, 0, 30%);/*ê¹Œë§Œìƒ‰(0,0,0) 30% ë¶ˆíˆ¬ëª…ë„*/
 	z-index: 2;
 	
 	position: relative;
@@ -141,26 +141,25 @@
 }
 
 .main-container .login{
-	/* background: pink; */
-	background-color: rgba(255, 255, 255, 20%);/*±î¸¸»ö(0,0,0) 30% ºÒÅõ¸íµµ*/
-	background-radius: 30px;
-	padding: 10px 50px 10px 50px;
+	background-color: rgba(255, 255, 255, 10%);/*ê¹Œë§Œìƒ‰(0,0,0) 30% ë¶ˆíˆ¬ëª…ë„*/
+	border-radius: 60px;
+	padding: 0px 55px 20px 55px;
 	position: absolute;
 	z-index: 3;
-	color: antiquewhite;
+	color: floralwhite;
 }
 
 .main-container .login span{
 	font-size: var(--font-large);
 	font-style: italic;
 }
-.main-container .featSpan{
+#featSpan{
 	font-size: var(--font-regular);
 }
 
-/* µÎ¹øÂ°div : ¼Ò°³±Û */
+/* ë‘ë²ˆì§¸div : ì†Œê°œê¸€ */
 .main-container #info{
-	background: #DCF4F9; /*ÇÏ´Ã»ö*/
+	background: #DCF4F9; /*í•˜ëŠ˜ìƒ‰*/
 	postion: relative;
 	display: flex;
 	justify-content: center;

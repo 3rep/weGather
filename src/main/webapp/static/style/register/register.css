@@ -41,13 +41,7 @@ body, ul, li{
 	background-color:#000080;
 	margin: 50;
 }	
-form{
-	display:inline-block;}
+.register-form{display:inline-block;}
 	
-	img{float:left;}
+.register-img{float:left;}
 	
-#logFrm input{margin-bottom:50px 0; width:90%;}
-	#logFrm li:nth-child(2n){
-		padding-bottom:30px;
-		margin : 0 auto;
-	}

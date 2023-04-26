@@ -31,7 +31,7 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/applyList") // post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
+	@GetMapping("/mypage/applyList") //post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
