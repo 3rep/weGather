@@ -25,11 +25,11 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<!--  
 	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     	<beans:property name="locations" value="classpath:/key.properties" />
 	</beans:bean>
-	
+	-->
 	<!-- 스케줄러 -->
 	<task:scheduler id="jobScheduler" pool-size="10" />
 	<task:annotation-driven scheduler="jobScheduler" />

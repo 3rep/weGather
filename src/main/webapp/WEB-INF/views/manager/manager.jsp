@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="${path}/static/style/register/register.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
-<link href="${path}/static/style/manager/manager.css" rel="stylesheet" type="text/css" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${path}/static/style/manager/registermanager.css" rel="stylesheet" type="text/css" />
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -14,7 +12,13 @@
 	
 	$(function(){
 		//아이디 중복검사
-		
+		$("input[value=아이디중복검사]").click(function(){
+			if($("#managerid").val()!=""){
+				window.open("manidCheck?managerid="+$("#managerid").val(), "chk","width=450,height=300");
+			}else{
+				alert("아이디를 입력 후 중복검사하세요.");
+			}
+		});
 		
 		$("#managerForm").submit(function(){
 			//form태그의 action속성 설정하기
@@ -26,9 +30,9 @@
 	});
 
 </script>
-<div class="container2">
-	<br/>
-	<h1 style="color:#162888">회원가입</h1>
+<div class="manager_container">
+	<br/><br/><br/><br/>
+	<h1>&nbsp;&nbsp;매니저 회원가입</h1>
 	<br/>
 	<form method="post" id="managerForm" enctype="multipart/form-data" action="managerOk">
 		
@@ -36,63 +40,63 @@
 		
 			<li>구분</li>
 			<li>
-				<input type="radio" name="type" value="user"/> 사용자
-				<input type="radio" name="type" value="manager"/> 매니저
+				<input type="radio" name="type" value="manager" checked/> 매니저
 			</li>
 			<li>아이디</li>
 			<li>
-				<input type="text" placeholder="아이디를 입력하세요..."name="managerid" id="managerid" minlength="4" maxlength="15" style="width:370px; height:40px;"/>
-				<input type="button" value="아이디중복검사" style="height:40px"/>
+				<input type="text" placeholder="아이디를 입력하세요..."name="managerid" id="managerid" minlength="4" maxlength="15" />
+				<input type="button" value="아이디중복검사" id="idCheck"/>
 				<input type="hidden" id="idStatus" value="N"/>
 			</li>
 			<li>비밀번호</li>
-		<li><input type="password" placeholder="비밀번호를 입력하세요..." name="password" id="password" minlength="4" maxlength="15" style="width:500px; height:40px;"/></li>
+		<li><input type="password" placeholder="비밀번호를 입력하세요..." name="password" id="password" minlength="4" maxlength="15"/></li>
 		<li>성별</li>
 			<li>
 				<input type="radio" name="gender" value="남성"/> 남성
 				<input type="radio" name="gender" value="여성"/> 여성
 			</li>
-		<li><input type="text" placeholder="이름을 입력하세요..."name="m_name" id="m_name" minlength="2" maxlength="10" style="width:500px; height:40px;"/></li>
+		<li><input type="text" placeholder="이름을 입력하세요..."name="m_name" id="m_name" minlength="2" maxlength="10"/></li>
 		<li>연락처</li>
 		<li>
-			<select name="tel1" id="tel1"style="width:50px; height:40px;">
+			<select name="tel1" id="tel1">
 				<option value="010">010</option>
 				<option value="02">02</option>
 				<option value="031">031</option>
 				<option value="041">041</option>
 				<option value="051">051</option>
 			</select>
-			<input type="text" name="tel2" id="tel2" maxlength="4" style="width:220px; height:40px;"/>
-			<input type="text" name="tel3" id="tel3" maxlength="4" style="width:220px; height:40px;"/>
+			<input type="text" name="tel2" id="tel2" maxlength="4"/>
+			<input type="text" name="tel3" id="tel3" maxlength="4"/>
 		</li>
 		<li>이메일</li>
-		<li><input type="text" name="email" id="email" style="width:500px; height:40px;"/></li>
+		<li><input type="text" name="email" id="email"/></li>
 		<li>주소</li>
-		<li><input type="text" name="address" id="address"style="width:500px; height:40px;"/></li>
+		<li><input type="text" name="address" id="address"/></li>
 		<li>종목 선택</li>
-		<li><select name="s_no" id="s_no" style="width:100px; height:40px;">
+		<li><select name="s_no" id="s_no"> 
 				<c:forEach var="SportDTO" items="${sportList}">
 					<option value="${SportDTO.s_no}">${SportDTO.sportname}</option>
 				</c:forEach>
 			</select>
 		</li>
 		<li>계좌번호</li>
-		<li><input type="text" name="m_account" id="m_account" style="width:500px; height:40px;"></li>
+		<li><input type="text" name="m_account" id="m_account"></li>
 		
 		
 		<li>인증서류첨부</li>
 		<li><input type="file" name="prooffile" id="prooffile"></li>
-		
+		<br/>
 		<li>
-			<input type="submit" value="회원가입"style="width:500px; height:40px;"/>
+			<input type="submit" value="회원가입" id="submit"/>
 		</li>
 		</ul>	
 		
 	</form>
-	<!-- 
-	<form>
-	<img src="static/img/manager.jpg" width= "500px" height= "600px">
+	
+	<form >
+		<br/>
+		<img src="static/img/manager.jpg" id="manager_img" >
 	</form>
-	 -->
+	 
 </div>
 

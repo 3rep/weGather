@@ -27,5 +27,11 @@ public class ManagerServiceImpl implements ManagerService{
 		return dao.loginManOk(managerid, password);
 	}
 
+	@Override
+	public int idCheckCount(String managerid) {
+		// TODO Auto-generated method stub
+		return dao.idCheckCount(managerid);
+	}
+
 
 }

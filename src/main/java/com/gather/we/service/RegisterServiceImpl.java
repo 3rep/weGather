@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.RegisterDAO;
 import com.gather.we.dto.RegisterDTO;
+import com.gather.we.dto.UserLogDTO;
 
 @Service
 public class RegisterServiceImpl implements RegisterService{
@@ -48,6 +49,20 @@ public class RegisterServiceImpl implements RegisterService{
 		// TODO Auto-generated method stub
 		return dao.registerEditOk(dto);
 	}
+
+	@Override
+	public List<UserLogDTO> userLogSelect(String userid) {
+		// TODO Auto-generated method stub
+		return dao.userLogSelect(userid);
+	}
+
+	@Override
+	public List<UserLogDTO> userLogNormSelect(String userid) {
+		// TODO Auto-generated method stub
+		return dao.userLogNormSelect(userid);
+	}
+
+
 
 	
 	

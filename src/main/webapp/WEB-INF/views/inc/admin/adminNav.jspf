@@ -13,6 +13,10 @@
 <link href="${path}/static/style/admin/adminCommon.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/sport.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/userList.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/userLog.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/userEdit.css" rel="stylesheet" type="text/css" />
+
 </head>
 <script>
 	$(function(){
@@ -54,7 +58,7 @@
 		<li class="sub-menu-container">
 			<ul class="sub-menu">
 				<li class="page">
-					<a href="/admin/userlist" class="page-link">		
+					<a href="/admin/userList" class="page-link">		
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
 						<span class="menu-title">회원목록</span>
 					</a>

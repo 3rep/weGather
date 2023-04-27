@@ -1,14 +1,42 @@
 @charset "UTF-8";
 
-#logManFrm input{margin-bottom:50px 0; width:90%;}
-
-#logManFrm li:nth-child(2n){
-	padding-bottom:30px;
-	margin : 0 auto;
+.loginMan_container{
+	width:1200px;
+	height:700px;
+	margin:0 auto;
+	text-align:center;	
+}
+#login_managerid{
+	width:600px;
+	height:40px;
 }
 
-img{float:left;}
-	
-form{
-display:inline-block;}
+#login_password{
+	width:600px;
+	height:40px;
+}
+#login_LOGIN{
+	width:600px;
+	height:40px;
+}
+.login_register {
+	background-color:#ddd; 
+	margin:0 auto; 
+	padding:0; 
+	width:600px; 
+	height:40px; 
+	border:1px solid black;
+}
+.login_register a:link, a:visited, a:hover{
+	text-decoration : none;
+	color:#000;
+}
 
+#login_img{
+	width:600px;
+	height:400px;
+	position:relative;
+	top:55%;
+	left:0;
+	
+}

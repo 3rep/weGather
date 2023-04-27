@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,10 +37,10 @@ public class ManagerController {
 		List<SportDTO> sportList = sportservice.dataSelect();
 		mav.addObject("sportList", sportList);
 		mav.setViewName("manager/manager");
-		System.out.println(sportList);
 		return mav;
 	}
 	
+	//회원가입(db)
 	@PostMapping("/managerOk")
 	public ModelAndView managerOk(HttpServletRequest request){
 		ManagerDTO dto = new ManagerDTO();
@@ -159,4 +161,18 @@ public class ManagerController {
 			}
 			return mav;
 		}
+		//아이디 중복검사 폼
+		@GetMapping("/manidCheck")
+		public String manidCheck(String managerid, Model model) {
+			//조회
+			//아이디의 갯수 구하기 - 0,1
+			int result = service.idCheckCount(managerid);
+			
+			//뷰에서 사용하기 위해서 모델에 세팅
+			model.addAttribute("managerid", managerid);
+			model.addAttribute("result", result);
+			
+			return "manager/idCheck";
+		}
+			
 }

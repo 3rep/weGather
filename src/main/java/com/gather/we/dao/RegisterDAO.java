@@ -3,6 +3,7 @@ package com.gather.we.dao;
 import java.util.List;
 
 import com.gather.we.dto.RegisterDTO;
+import com.gather.we.dto.UserLogDTO;
 
 public interface RegisterDAO {
 	//회원가입
@@ -16,4 +17,8 @@ public interface RegisterDAO {
 	public RegisterDTO registerEdit(String userid);
 	//회원정보 수정 DB update
 	public int registerEditOk(RegisterDTO dto);
+	//회원활동내역 랭크 게임
+	public List<UserLogDTO> userLogSelect(String userid);
+	//회원활동내역 일반 게임
+	public List<UserLogDTO> userLogNormSelect(String userid);
 }

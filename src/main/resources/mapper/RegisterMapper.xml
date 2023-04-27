@@ -25,5 +25,19 @@
 	<update id="registerEditOk">
 		update users set rank=#{rank} where userid=#{userid}
 	</update>
+	<select id="userLogSelect" resultType="com.gather.we.dto.UserLogDTO">
+		select rp.userid, rg.no, rg.gametime, si.*
+		from r_participate rp
+		join rank_game rg on rp.no=rg.no 
+		join stadium_info si on rg.st_no = si.st_no	
+		where userid=#{param1}	
+	</select>
+	<select id="userLogNormSelect" resultType="com.gather.we.dto.UserLogDTO">
+		select np.userid, ng.no, ng.gametime, si.*
+		from n_participate np
+		join norm_game ng on np.no=ng.no
+		join stadium_info si on ng.st_no = si.st_no		
+		where userid=#{param1}		
+	</select>
 </mapper>
 
