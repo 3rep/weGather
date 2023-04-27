@@ -40,7 +40,7 @@ public class ManagerController {
 		return mav;
 	}
 	
-	//È¸¿ø°¡ÀÔ(db)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(db)
 	@PostMapping("/managerOk")
 	public ModelAndView managerOk(HttpServletRequest request){
 		ManagerDTO dto = new ManagerDTO();
@@ -153,7 +153,7 @@ public class ManagerController {
 				session.setAttribute("logId", dto.getManagerid());
 				session.setAttribute("logName", dto.getM_name());
 				session.setAttribute("logStatus", "Y");
-				mav.setViewName("redirect:/");
+				mav.setViewName("redirect:/manager/rankgamelist");
 			}else{//ë¡œê·¸ì¸ ì‹¤íŒ¨
 				mav.setViewName("redirect:loginMan");
 				System.out.println(managerid);
@@ -161,14 +161,14 @@ public class ManagerController {
 			}
 			return mav;
 		}
-		//¾ÆÀÌµğ Áßº¹°Ë»ç Æû
+		//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ï¿½Ë»ï¿½ ï¿½ï¿½
 		@GetMapping("/manidCheck")
 		public String manidCheck(String managerid, Model model) {
-			//Á¶È¸
-			//¾ÆÀÌµğÀÇ °¹¼ö ±¸ÇÏ±â - 0,1
+			//ï¿½ï¿½È¸
+			//ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ - 0,1
 			int result = service.idCheckCount(managerid);
 			
-			//ºä¿¡¼­ »ç¿ëÇÏ±â À§ÇØ¼­ ¸ğµ¨¿¡ ¼¼ÆÃ
+			//ï¿½ä¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ğµ¨¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("managerid", managerid);
 			model.addAttribute("result", result);
 			
