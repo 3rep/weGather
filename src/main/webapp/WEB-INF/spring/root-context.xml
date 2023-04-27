@@ -5,6 +5,7 @@
     xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
@@ -21,11 +22,8 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:/mapper/*Mapper.xml"></property>
 	</bean>
-	<!--  
-	 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    	<property name="locations" value="classpath:/key.properties" />
-	</bean>
-	-->
+
+
 
 	 
 	<!-- 트랜잭션 처리를 하는 mybatis 객체를 생성--> 

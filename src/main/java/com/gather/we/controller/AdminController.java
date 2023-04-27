@@ -20,23 +20,21 @@ import com.gather.we.service.RegisterService;
 
 
 import java.io.File;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
+
 import com.gather.we.dto.UserLogDTO;
+
 import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
@@ -58,82 +56,59 @@ public class AdminController {
 	
 	@Autowired
 	RegisterService regservice;
-	
+
 	//로그인폼
-	@GetMapping("/loginAdmin")
-	public ModelAndView loginAdmin() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("admin/loginAdmin");
-		return mav;	//	/WEB-INF/views/register/loginForm.jsp
-	}
-	
-	//로그인(DB)
-	@PostMapping("/loginAdminOk")
-	public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
-		// Session 객체 얻어오기
-		// 매개변수로 HttpServletRequest request -> Session 구하기
-		// 매개변수로 HttpSession session
-		System.out.println("admin->"+adminid);
-		AdminDTO dto = service.loginAdminOk(adminid, password);
-		// dto->null인 경우 선택레코드가 없다. -로그인실패
-		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
-		ModelAndView mav = new ModelAndView();
-		if(dto!=null) {//로그인 성공
-			session.setAttribute("logId", dto.getAdminid());
-			session.setAttribute("logName", dto.getAdmin_name());
-			session.setAttribute("logStatus", "Y");
-			mav.setViewName("redirect:/");
-		}else{//로그인 실패
-			mav.setViewName("redirect:loginAdmin");
-			System.out.println(adminid);
-			System.out.println(password);
-		}
-		return mav;
-	}
-	
-	//(관리자 페이지)회원 리스트
-	@GetMapping("/userList")
-	public ModelAndView loginList() {
-		ModelAndView mav = new ModelAndView();
-		
-		List<RegisterDTO> list = regservice.dataAllSelect();
-		
-		mav.addObject("list", list);
-		mav.setViewName("admin/userList/userList");
-		
-		return mav;
-	}
-	//(관리자 페이지)회원정보 수정폼
-	@GetMapping("/userEdit/{userid}")
-	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
-		RegisterDTO dto = regservice.registerEdit(userid);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("dto", dto);
-		mav.setViewName("admin/userList/userEdit");
-		return mav;
-	}
-	//(관리자 페이지)회원활동내역
-	@GetMapping("/userLog/{userid}")
-	public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey) {
-		ModelAndView mav = new ModelAndView();
-		//UserLogDTO dto = regservice.userLogSelect(userid);
-		List<UserLogDTO> list = regservice.userLogSelect(userid);
-		List<UserLogDTO> listNorm = regservice.userLogNormSelect(userid);
-		
-		mav.addObject("userid", userid);
-		if(searchKey == null ||searchKey.equals("all")) {
-			mav.addObject("list", list);
-			mav.addObject("listNorm", listNorm);
-		}else if(searchKey.equals("rank_game")) {
-			mav.addObject("list", list);
-		}else if(searchKey.equals("norm_game")) {
-			mav.addObject("listNorm", listNorm);
-		}
-		mav.setViewName("admin/userList/userLog");
-		return mav;
-	}
-	
+			@GetMapping("/loginAdmin")
+			public String loginAdmin() {
+				return "admin/loginAdmin";	//	/WEB-INF/views/register/loginForm.jsp
+			}
+			
+			//로그인(DB)
+			@PostMapping("/loginAdminOk")
+			public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
+				// Session 객체 얻어오기
+				// 매개변수로 HttpServletRequest request -> Session 구하기
+				// 매개변수로 HttpSession session
+				System.out.println("admin->"+adminid);
+				AdminDTO dto = service.loginAdminOk(adminid, password);
+				// dto->null인 경우 선택레코드가 없다. -로그인실패
+				// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+				ModelAndView mav = new ModelAndView();
+				if(dto!=null) {//로그인 성공
+					session.setAttribute("logId", dto.getAdminid());
+					session.setAttribute("logName", dto.getAdmin_name());
+					session.setAttribute("logStatus", "Y");
+					mav.setViewName("redirect:/");
+				}else{//로그인 실패
+					mav.setViewName("redirect:loginAdmin");
+					System.out.println(adminid);
+					System.out.println(password);
+				}
+				return mav;
+			}
+			
+			//(관리자 페이지)회원 리스트
+			@GetMapping("admin/userList")
+			public ModelAndView loginList() {
+				ModelAndView mav = new ModelAndView();
+				
+				List<RegisterDTO> list = regservice.dataAllSelect();
+				
+				mav.addObject("list", list);
+				mav.setViewName("admin/userList");
+				
+				return mav;
+			}
+			//(관리자 페이지)회원정보 수정폼
+			@GetMapping("admin/userEdit/{userid}")
+			public ModelAndView loginEdit(@PathVariable("userid") String userid) {
+				RegisterDTO dto = regservice.registerEdit(userid);
+				ModelAndView mav = new ModelAndView();
+				mav.addObject("dto", dto);
+				mav.setViewName("admin/userEdit");
+				return mav;
+			}
+
 	// 醫낅ぉ 紐⑸줉
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
