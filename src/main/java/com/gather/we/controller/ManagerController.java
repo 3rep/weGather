@@ -2,6 +2,7 @@ package com.gather.we.controller;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,15 +11,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.MRankGameListCriteria;
 import com.gather.we.dto.MSettlementCriteria;
 import com.gather.we.dto.MSettlementPageDTO;
-import com.gather.we.dto.PageDTO;
+import com.gather.we.dto.Manager10DTO;
 import com.gather.we.dto.ManagerRankGameDTO;
-import com.gather.we.service.ManagerSettlementService;
+import com.gather.we.dto.PageDTO;
+import com.gather.we.dto.PagingVO;
+import com.gather.we.service.Manager10Service;
 import com.gather.we.service.ManagerRankGameListService;
+import com.gather.we.service.ManagerSettlementService;
+import com.google.gson.JsonSyntaxException;
 
 
 @Controller
@@ -72,4 +80,77 @@ public class ManagerController{
 		model.addAttribute("completedamount", mSettlementService.getTotalCompletedAmount());
 		model.addAttribute("inprogressamount", mSettlementService.getTotalInprogressAmount());
 	}
+	
+	
+	
+	//여기부터 지훈님꺼
+	@Autowired
+	Manager10Service service;
+	
+	@GetMapping("/manager10")
+	public ModelAndView getManager10(PagingVO vo) {
+		   
+			ModelAndView mav = new ModelAndView();
+					
+		    vo.setTotalRecord(service.totalRecord(vo));
+		  	    
+		    mav.addObject("managerList", service.pageSelect(vo));
+		    mav.addObject("vo", vo);
+		    
+		    mav.setViewName("/manager/manager10");
+		    return mav;
+		}
+		@GetMapping("/managerPast")
+		public ModelAndView getManagerPast(PagingVO vo) {
+			ModelAndView mav = new ModelAndView();
+			vo.setTotalRecord(service.totalRecord(vo));
+		  
+		    mav.addObject("managerList", service.pageSelect(vo));
+		    mav.addObject("vo", vo);
+		    mav.setViewName("/manager/managerPast");
+	    return mav;
+	}
+
+		
+		 @GetMapping("/managerInput")
+		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank) {
+		     ModelAndView mav = new ModelAndView();
+		     List<Manager10DTO> managerInputList;
+		     if (rank != null) {
+		         managerInputList = service.getAllManagerInputByRank(rank);
+		     } else {
+		         managerInputList = service.getAllManagerInput();
+		     }
+		     mav.addObject("managerInputList", managerInputList);
+		     mav.setViewName("/manager/managerInput");
+		     return mav;
+		 }
+		
+		 @PostMapping("/managerInput")
+		 public ModelAndView submitRank(@RequestBody List<Manager10DTO> managerInputList) {
+		     ModelAndView mav = new ModelAndView();
+		     try {
+		         for (Manager10DTO managerInput : managerInputList) {
+		             service.updateRank(managerInput.getUserid(), managerInput.getRank());
+		         }
+		         mav.setViewName("redirect:/managerPast");
+		     } catch (NumberFormatException | JsonSyntaxException e) {
+		         mav.addObject("error", "Invalid input format");
+		         mav.setViewName("errorPage");
+		     } catch (Exception e) {
+		         mav.addObject("error", "An error occurred while processing your request");
+		         mav.setViewName("errorPage");
+		     }
+		     return mav;
+		 }
+		
+		 
+		 @GetMapping("/entry")
+		 public ModelAndView EntryManager2() {
+			    ModelAndView mav = new ModelAndView();
+			    List<Manager10DTO> entryList = service.getAllEntry();
+			    mav.addObject("entryList", entryList);
+			    mav.setViewName("/manager/entry");
+			    return mav;
+			}
 }

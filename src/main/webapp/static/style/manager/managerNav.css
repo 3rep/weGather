@@ -14,7 +14,7 @@ body {
 	align-items: center;
 	background-color: var(--color-manager-dark-green);
 	position: relative;
-	padding: 0 16px;
+	
 }
 /* 사이트 로고 */
 #manager-nav #logo{
@@ -46,16 +46,18 @@ body {
 	display: flex;
 	align-items: center;
 }
-
+.menu.active{
+	background-color:var(--color-manager-dark-green);
+}
 .menu-title.active { /* 페이지 활성화시 적용되는 스타일 */
 	font-weight: var(--weight-bold);
-}
-.menu-title {
+	background-color:var(--color-manager-dark-green);
 	color: var(--color-white);
+	border:none;
 }
 .menu-title a{
 	color: var(--color-white);
-}
+}  
 
 .check.active { /* 페이지 활성화시 적용되는 스타일 */
 	display: block;
@@ -68,6 +70,10 @@ body {
 
 .sub-menu-container.active { /* 페이지 활성화시 적용되는 스타일 */
 	display: block;
+	background-color:var(--color-manager-middle-green);
+	border:0px;
+	margin:0px;
+	padding:0px;
 }
 
 .sub-menu {
@@ -83,16 +89,21 @@ body {
 	height: 100%;
 	display: flex;
 	align-items: center;
-	padding: 8px 40px;
+	padding: 8px 38px;
 }
+
 
 .page-link:link, .page-link:visited, .page-link:hover, .page-link:focus {
 	color: var(--color-dark-gray);
 }
 
 .page-link.active { /* 서브 페이지 활성화시 적용되는 스타일 */
-	color: var(--color-black);
+	color: #484848;
 	font-weight: var(--weight-bold);
+	background-color:var(--color-manager-middle-green);
+	border:none;
+	padding:8px 38px;
+	align-items; center;
 }
 
 /* 아이콘 */
@@ -120,8 +131,7 @@ body {
 .logout {
 	width: 20px;
 }
-
-
+	
 
 /* 매니저정보 */
 .manager-info-container {
