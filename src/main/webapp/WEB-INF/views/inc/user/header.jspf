@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="${path}/static/style/user/mypage/applyList.css" type="text/css">
 <link rel="stylesheet" href="${path}/static/style/user/mypage/rank.css" type="text/css">
 <link rel="stylesheet" href="${path}/static/style/user/mypage/paymentList.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/info.css" type="text/css">
 
 <link rel="stylesheet" href="${path}/static/style/user/game/gameCommon.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameHeader.css" type="text/css" />

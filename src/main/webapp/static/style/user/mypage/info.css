@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#infoContent{
+	/* margin-left: 300px;
+	margin-top: 50px;
+	margin-right: 5px;
+	margin-bottom: 50px; */
+	font-size: 18px;
+	margin-left: 285px;
+	padding-top: 70px;
+	height: 1200px;
+}
+/*상부 스타일*/
+.infoh3{
+	text-align: right;
+}
+
+/*----회원정보수정 폼-----------*/
+#infoEditForm{
+	
+}

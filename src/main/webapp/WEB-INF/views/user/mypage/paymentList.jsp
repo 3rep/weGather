@@ -39,8 +39,3 @@
 		</table>
 	</div><!-- 오른쪽 내용칸 end ------------>
 </div>
-<script>
-	const timestamp = 1575529698
-	var myDate = new Date(timestamp * 1000);
-	
-</script>

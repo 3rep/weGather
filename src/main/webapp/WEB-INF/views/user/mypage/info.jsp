@@ -1,16 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!-- 오른쪽 내용칸 -->
-		<div id="content"> 
-			<h2>내정보수정</h2>
-			<hr/>
-			<p>
-			예시본문<br/>
-			백곰이라고도 한다. 몸길이 수컷 190~250cm, 암컷 170~250cm, 꼬리길이 8~10cm, 어깨높이 120~140cm, 뒷발길이 30~37cm, 귀길이 9~15cm, 몸무게 수컷 300~800kg, 암컷 150~500kg이다. 암컷은 수컷보다 몸이 작다. 다른 곰보다 머리가 작고 목이 길며 귀는 작고 둥글다. 발바닥에는 털이 있으며 척구(蹠球)는 작아서 얼음 위를 걸어 다니기에 알맞다. 몸빛은 털갈이 직후에는 흰색이나 차츰 황백색으로 변한다. 어린 것은 어미보다 희끗희끗하다. 눈·코·척구는 검은색이다. 이빨은 38~42개이다.
-[네이버 지식백과] 북극곰 [Polar Bear] (두산백과 두피디아, 두산백과)
-			</p>
-		</div>
-	</div>
-</body>
-</html>
+	<!-- 오른쪽 내용칸 -->
+	<div id="infoContent"> 
+		<h3 class="infoh3">결제내역</h3>
+		<hr/>
+		<!--회원정보수정 폼-->
+		<form method="post" id="infoEditForm" >
+			<ul>
+				<li>
+					<input type="radio" name="type" value="user" checked/> 사용자
+				</li>
+			<li>아이디</li>
+			<li>
+				<input type="text" name="userid" id="userid" minlength="4" maxlength="15" value="${dto.userid}" readonly"/>
+			</li>
+			<li>비밀번호</li>
+			<li>
+				<input type="password" placeholder="비밀번호를 입력하세요..." name="password" id="userpwd" minlength="4" maxlength="15" value="" />
+			</li>
+			<li>성별</li>
+			<li>
+				<input type="radio" name="gender" value="남성"<c:if test="${dto.gender=='남성'}">checked</c:if> readonly/> 남성
+				<input type="radio" name="gender" value="여성"<c:if test="${dto.gender=='여성'}">checked</c:if> readonly/> 여성
+			</li>
+			<li>이름</li>
+			<li>
+				<input type="text" name="username" id="username" readonly value="${dto.username}"/>
+			</li>
+			<li>연락처</li>
+			<li>
+				<select name="tel1" id="tel1" >
+					<option value="010" <c:if test="${dto.tel1=='010'}">selected</c:if>>010</option>
+						<option value="02" <c:if test="${dto.tel1=='02'}">selected</c:if>>02</option>
+						<option value="031" <c:if test="${dto.tel1=='031'}">selected</c:if>>031</option>
+						<option value="041" <c:if test="${dto.tel1=='041'}">selected</c:if>>041</option>
+						<option value="051" <c:if test="${dto.tel1=='051'}">selected</c:if>>051</option>
+				</select>
+				<input type="text" name="tel2" id="tel2" maxlength="4" value="${dto.tel2}"/>
+				<input type="text" name="tel3" id="tel3" maxlength="4" value="${dto.tel3}"/>
+			</li>
+			<li>이메일</li>
+			<li><input type="text" name="email" id="email" value="${dto.email}" /></li>
+			<li>주소</li>
+			<li><input type="text" name="address" id="address" value="${dto.address}"/></li>
+			<li>MBTI</li>
+			<li><input type="text" name="mbti" id="mbti" value="${dto.mbti }"/>
+			<br/><br/>
+			<input type="submit" value="회원정보수정완료"/>
+		</form> <!-- 회원정보수정 폼 end -->
+	</div><!-- 오른쪽 내용칸 end ------------>
+</div>	
+<script>
+	$(function(){
+		//유효성검사
+		$("#joinEditForm").submit(function(){
+			//비밀번호검사
+			if($("#userpwd").val()==""){
+				alert("비밀번호를 입력하셔야 회원정보수정이 가능합니다.");
+				return false;
+			}
+		}
+		//form태그의 action속성 설정
+		$("#infoEditForm").attr("action","infoEditOk");
+	});
+			
+</script>
