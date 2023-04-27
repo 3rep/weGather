@@ -31,7 +31,7 @@ import com.google.gson.JsonSyntaxException;
 
 @Controller
 @RequestMapping("/manager/*")
-public class ManagerController{
+public class ManagerPageController{
 	@Autowired
 	ManagerRankGameListService rankGameListService;
 	
