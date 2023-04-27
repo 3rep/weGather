@@ -83,6 +83,12 @@ public class ManagerPageController{
 		model.addAttribute("inprogressamount", mSettlementService.getTotalInprogressAmount());
 	}
 	
+	//매니저 로그아웃
+	@GetMapping("/logout")
+	public String logout(Model model, HttpSession session) {
+		session.invalidate();
+		return "redirect:/loginMan";
+	}
 	
 	
 	//여기부터 지훈님꺼

@@ -87,7 +87,7 @@
 			<img src="${path}/static/img/manager/manager.png" alt="manager" class="manager"/>
 			<span class="managerid">매니저ID</span>
 		</div>
-		<a href="#">
+		<a href="/manager/logout">
 			<img src="${path}/static/img/manager/logout.png" alt="logout" class="logout"/>
 		</a>
 	</div>
