@@ -1,6 +1,34 @@
 @charset "UTF-8";
 
 #paymentListContent{
+	/* margin-left: 300px;
+	margin-top: 50px;
+	margin-right: 5px;
+	margin-bottom: 50px; */
+	font-size: 18px;
+	margin-left: 285px;
+	padding-top: 70px;
+	height: 1000px;
+}
+/*상부 스타일*/
+.pmlh3{
+	text-align: right;
+}
+/*날짜 필터*/
+.pmView{
+	text-align: right;
+}
+
+.pmDate{
+	margin-top: 20px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+}
+/*----table-----------*/
+
+
+#paymentListContent{
 	/*
 	margin-left: 300px;
 	margin-top: 50px;
@@ -15,7 +43,8 @@
 #pmTable tr{
 	border: 1px solid gray;
 }
-#pmTable td, th{
+#pmTable td, 
+#pmTable th{
 	text-align: center;
 	width: 15%;
 	padding: 15px;

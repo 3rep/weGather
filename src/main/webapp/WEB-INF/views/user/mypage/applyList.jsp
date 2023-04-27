@@ -4,34 +4,29 @@
 
 	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
-		<span style="font-size:25px">신청경기</span><br/>
-		<input type="date"/>
+		<h3 class="aplh3">신청경기</h3>
 		<hr/>
-		<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
-		<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
-		<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
+		<div class="aplBtn">
+			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
+			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
+			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
+			<input type="date" class="aplDate"/>
+		</div>
 		
 		<!-- 테이블 -------------------------------------------------------->
-		<table id="table">
-			<colgroup>
-	        	<col width="8%" />
-	        	<col width="8%" />
-	        	<col width="15%" />
-	        	<col width="25%" />
-	        	<col width="5%" />
-	        </colgroup>
+		<table id="aplTable">
 		    <thead>
 		    <tr>
-		    	<th>유형</th>
-		        <th>종목</th>
+		    	<th class="aplTh">유형</th>
+		        <th class="aplTh">종목</th>
 		        <th>날짜</th>
 		        <th>경기명(구장명)</th>
-		        <th>상태</th>
+		        <th class="aplTh">상태</th>
 		    </tr>
 		    </thead>
-		    <tbody>
+		    <tbody class="aplTb">
 			    <c:forEach var="list" items="${list }">
-				    <tr>
+				    <tr >
 				    	<!-- 경기유형: 랭크->4자리수 / 일반-> 3자리수 -->
 				    	<c:if test="${list.no>1000 }">
 					    	<td class="rg" >

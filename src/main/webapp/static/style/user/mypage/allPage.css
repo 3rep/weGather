@@ -4,7 +4,6 @@
 	margin: 0 auto;
 	width: 1200px;
 }
-
 .container-mypage-all #leftMenu{
 	display: flex;
 	flex-direction: column;
@@ -17,7 +16,16 @@
 	overflow: auto;
 	position: absolute;
 	text-align: center;
-	/* font-size: var(--font-micro); */		
+	height: 1000px;
+}
+
+/* 프로필까지 */
+#leftMenu>.h{
+	font-size: var(--font-regular);
+	/* margin-bottom: 50px; */
+	padding: 50px 20px 20px 20px; 
+	margin: 10px 0 20px 0;
+	font-weight: var(--weight-bold);
 }
 /*---leftMenu에서 스크롤바 없애기-----------------*/
 .container-mypage-all #leftMenu{ /*IE, Edge*/ 
@@ -26,7 +34,7 @@
 .container-mypage-all #leftMenu::-webkit-scrollbar{ /* Chrome, Safari, Opera */
   display:none;
 }
-/*----------------------------------------------*/
+/*----------------------------------------*/
 .container-mypage-all .img img{
 	width: 45%;
 	margin-bottom: 5px;
@@ -36,12 +44,15 @@
 }
 .container-mypage-all .img{
 	margin-bottom: 65px;
+	padding-bottom: 45px;
+	border-bottom: 5px solid white;
+	border-radius: 100px;
 }
 .container-mypage-all span{
 	font-size: 14px;
 }
 
-/*===== menuList 스타일넣기=====*/
+/* menuList 스타일넣기 */
 .container-mypage-all #menuList li{
 	float: left;
 }
@@ -65,23 +76,15 @@
 }
 .container-mypage-all #menuList>li:nth-child(2n):hover{
 	background: #FDEDB4;
-	/* font-weight: bold;  왜 안먹지...*/ 
+	font-weight: bold;  
 }
 .container-mypage-all .open{
 	padding-left: 25px;
 	/* text-align: left; */
 }
 
-/*==========================*/
 .container-mypage-all li a {
 	display: block;
 	padding: 10px;
-}
-.container-mypage-all .h{
-	font-size: var(--font-regular);
-	/* margin-bottom: 50px; */
-	padding: 50px 20px 20px 20px; 
-	margin: 10px 0 20px 0;
-	font-weight: var(--weight-bold);
 }
 

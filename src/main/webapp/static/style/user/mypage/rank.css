@@ -1,42 +1,85 @@
 @charset "utf-8";
 @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
 
-.container-mypage-all #rankContent{
+#rankContent{
 	/* margin-left: 300px;
 	margin-top: 50px;
 	margin-right: 5px;
 	margin-bottom: 50px; */
-	margin-left: 285px;
-	font-size: var(--font-small);
 	font-size: 18px;
 	margin-left: 285px;
-	padding-top: 50px;
+	padding-top: 70px;
+	height: 1000px;
 }
-/* 버튼 스타일 -----------*/
+/*상부 스타일*/
+.rh3{
+	text-align: right;
+}
+/*랭크요약 보여주기*/
+.rView{
+	margin-top: 20px;
+    margin-bottom: 5px;
+    background: steelblue;
+    padding: 25px;
+    border-radius: 10px;
+}
+#avg_all{
+	display: inline-block;
+    background: #ddd;
+    margin-left: 57px;
+    width: 150px;
+    height: 45px;
+    text-align: center;
+    margin-top: 6px;
+    font-weight: bold;
+    
+}
+.allRank{
+	background: aliceblue;
+    height: 60px;
+    line-height: 50px;
+    /* text-align: center; */
+    width: 400px;
+    display: inline-block;
+    margin-left: 256px;
+    margin-bottom: 15px;
+    /* border: 6px solid green; */
+    border-radius: 15px;
+    font-size: 20px;
+    padding-left: 55px;
+}
+.snRank {
+	margin-left: 256px;
+    background: aliceblue;
+    height: 100px;
+    width: 400px;
+    display: inline-block;
+    font-size: 20px;
+    /* text-align: center; */
+    border-radius: 15px;
+    padding-top: 12px;
+    padding-left: 55px;
+}
+#sportname{
+    width: 120px;
+    text-align: center;
+    margin-left: -4px;
+    margin-top: 8px;
+}
+#avg_sn {
+    background: #ddd;
+    width: 150px;
+    height: 45px;
+    display: inline-block;
+    margin-left: 45px;
+    margin-top: 15px;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
 
-/* 버튼 스타일 end -------*/
-
-
-#rankContent #chartView{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin-bottom: 30px;
-}
-#rankContent #sportname{
-	margin-right: 10px
-}
-#rankContent #rankTotal{
-	background: #ddd;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}	
-#rankContent #rankTotal div{
-	background: wheat;
-	border: 1px solid gray;
-	
-}
-.rankTotal span{
-	font-size:20px;
+/*---- chart -------------*/
+#rankContent #chart{
+	margin-top: 50px;
 }

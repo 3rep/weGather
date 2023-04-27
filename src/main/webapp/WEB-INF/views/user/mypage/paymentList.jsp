@@ -1,10 +1,15 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 	<!-- 오른쪽 내용칸 -->
 	<div id="paymentListContent"> 
-		<h3>결제내역</h3>
+		<h3 class="pmlh3">결제내역</h3>
 		<hr/>
+		<div class=pmView>
+			<input type="date" class="pmDate"/>
+		
+		</div>
 		
 		<!-- 결제내역 테이블 -->
 		<table id="pmTable">
@@ -34,10 +39,8 @@
 		</table>
 	</div><!-- 오른쪽 내용칸 end ------------>
 </div>
-</body>
 <script>
 	const timestamp = 1575529698
 	var myDate = new Date(timestamp * 1000);
 	
 </script>
-</html>
