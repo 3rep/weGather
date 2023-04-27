@@ -39,11 +39,11 @@
 	<img src="${path}/static/img/manager/logo_white.png" alt="Logo" id="logo">
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
-		<!-- 경기관리 -->
+		<!-- 경기목록 -->
 		<li class="menu">
-			<div class="menu-info">		
-				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-				<span class="menu-title">경기관리</span>
+			<div class="menu-info">
+					<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
+					<span class="menu-title"><a href="/manager/rankgamelist" class="list-link">경기목록</a></span>
 			</div>
 		</li>
 		
@@ -51,7 +51,7 @@
 		<li class="menu">
 			<div class="menu-info">		
 				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-				<span class="menu-title">활동내역</span>
+				<span class="menu-title"> 활동내역</span>
 			</div>
 			<img src="${path}/static/img/manager/check.png" alt="check" class="check"/>
 		</li>
@@ -74,9 +74,9 @@
 		</li>
 		<!-- 정산내역 메뉴 -->
 		<li class="menu">
-			<div class="menu-info">		
-				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-				<span class="menu-title">정산내역</span>
+			<div class="menu-info">
+					<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
+					<span class="menu-title"><a href="/manager/settlement" class="list-link">정산내역</a></span>
 			</div>
 		</li>
 	</ul>

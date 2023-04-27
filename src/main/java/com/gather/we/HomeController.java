@@ -12,8 +12,5 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
-	@GetMapping("/manager/modal")
-	public void modal() {
-		
-	}
+	
 }

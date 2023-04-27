@@ -10,11 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>We Gather, Just do it</title>
     <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
-    <link href="${path}/static/style/manager/managerMain.css" rel="stylesheet" type="text/css" />
+    <link href="${path}/static/style/manager/managerRankgamelist.css" rel="stylesheet" type="text/css" />
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <!-- Google api 키 넣어야됨 -->
+    <!-- Google api -->
     <link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" /> 
-	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <!-- 18행 src안의 key= 뒤에 각자 구글맵 key값 입력하시면 됩니다! -->
+	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQMNqbPbdbF5WTC6z-bdBcWxEMSmWTW9k"></script>
     <!-- //Google api -->
 </head>
 <body>
@@ -67,7 +68,7 @@
         </div>
     </div>
     <!-- 페이지네이션 클릭시 페이지이동 -->
-	<form id="actionForm" action="/manager/main" method='get'>
+	<form id="actionForm" action="/manager/rankgamelist" method='get'>
 		<!-- 클릭한 href에 들어있는 이동 페이지 번호로 바꿔준다 -->
 		<input id="pageNum" type="hidden" name="pageNum" value="${pageMaker.criteria.pageNum }"> 
 		<input type="hidden" name="amount" value="${pageMaker.criteria.amount }"> 
@@ -197,7 +198,7 @@
 					map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			    	var marker = new google.maps.Marker({ map: map, position: results[0].geometry.location });		// 지도 마킹
 				} else {
-					alert('Geocode was not successful for the following reason: ' + status);
+					alert('오류가 난 이유는 다음과 같습니다: ' + status);
 			 	}
 			});
 			$('#rank-map-dim').show();	// 모달 호출

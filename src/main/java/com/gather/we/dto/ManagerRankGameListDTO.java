@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class RankGameListDTO {
+public class ManagerRankGameListDTO {
 	private int no;
 	private String managerid;
 	private String stadium;
