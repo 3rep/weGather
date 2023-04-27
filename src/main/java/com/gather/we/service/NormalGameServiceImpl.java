@@ -25,6 +25,9 @@ public class NormalGameServiceImpl implements NormalGameService {
 	public NormGameDetailDTO normGameDetailSelect(int no) {
 		return dao.normGameDetailSelect(no);
 	}
-	
-	
+
+	@Override
+	public int currPeopleCount(int no) {
+		return dao.currPeopleCount(no);
+	}
 }

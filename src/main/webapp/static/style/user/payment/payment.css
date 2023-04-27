@@ -62,9 +62,18 @@
 	margin-left: 190px;
 }
 
-#payment_container .payment_info .amount.total {
+/* 총 결제금액 - 랭크경기 */
+#payment_container .payment_info .total_amount.rank {
 	font-weight: var(--weight-bold);
 	color: var(--color-blue);
+	margin-left: 190px;
+}
+
+/* 총 결제금액 - 일반경기 */
+#payment_container .payment_info .total_amount.normal {
+	font-weight: var(--weight-bold);
+	color: var(--color-manager-middle-green);
+	margin-left: 190px;
 }
 
 #payment_container .payment_info.total_amount:before { /* 총 결제금액 위에 구분선 추가 */
@@ -95,6 +104,15 @@
 	font-size: var(--font-small);
 	font-weight: var(--weight-bold);
 	color: var(--color-white);
-	background-color: var(--color-blue);
 	padding: 18px 0;
+}
+
+/* 결제하기 버튼 - 랭크경기 */
+#payment_container .btn-pay.rank {
+	background-color: var(--color-blue);
+}
+
+/* 결제하기 버튼 - 일반경기 */
+#payment_container .btn-pay.normal {
+	background-color: var(--color-manager-middle-green);
 }

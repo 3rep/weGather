@@ -24,4 +24,8 @@
 		from norm_game n, sport s, stadium_info st
 		where n.no=${no} and n.s_no = s.s_no and n.st_no = st.st_no
 	</select>
+	
+	<update id="currPeopleCount">
+		update norm_game set curr_people=curr_people+1 where no=${no}
+	</update>
 </mapper>
