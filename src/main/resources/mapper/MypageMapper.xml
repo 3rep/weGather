@@ -83,5 +83,9 @@
 		on game.no=parti.no
 		order by game.gametime desc
 	</select>
+	<update id="infoEdit">
+		update users set password=#{password}, email=#{email}, tel=#{tel}, address=#{address}, mbti=#{mbti}
+		where userid=#{userid}
+	</update>
 	
 </mapper>
