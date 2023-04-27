@@ -85,7 +85,7 @@
 	<div class="manager-info-container">
 		<div class="manager-info">
 			<img src="${path}/static/img/manager/manager.png" alt="manager" class="manager"/>
-			<span class="managerid">매니저ID</span>
+			<span class="managerid">${logName } 매니저님</span>
 		</div>
 		<a href="/manager/logout">
 			<img src="${path}/static/img/manager/logout.png" alt="logout" class="logout"/>

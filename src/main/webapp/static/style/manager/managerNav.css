@@ -16,6 +16,9 @@ body {
 	position: relative;
 	
 }
+.menu.active, .menu-title.active {
+  border: none;
+}
 /* 사이트 로고 */
 #manager-nav #logo{
 	width: 200px;
@@ -53,7 +56,7 @@ body {
 	font-weight: var(--weight-bold);
 	background-color:var(--color-manager-dark-green);
 	color: var(--color-white);
-	border:none;
+	border: none;
 }
 .menu-title a{
 	color: var(--color-white);
@@ -61,8 +64,9 @@ body {
 
 .check.active { /* 페이지 활성화시 적용되는 스타일 */
 	display: block;
+	border : none;
+	background-color:transparent;
 }
-
 /* 네비게이션 서브메뉴 */
 .sub-menu-container{
 	display: none;

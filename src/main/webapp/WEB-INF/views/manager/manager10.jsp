@@ -19,7 +19,7 @@
   		
   		 <div class= "box1">
   		 
-  		  <div><h3>신청한 경기 수: ${vo.totalRecord }</h3></div>
+  		  <div>신청한 경기 수: ${vo.totalRecord }</div>
 		 <div></div> </div>
 		
  		   <div class="container">
