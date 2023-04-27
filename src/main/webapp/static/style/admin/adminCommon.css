@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+	background: var(--color-board-blue);
+}
+
 .container {
 	width: 100%;
 	margin: 40px 60px;
