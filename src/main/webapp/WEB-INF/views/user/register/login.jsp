@@ -6,8 +6,8 @@
 
 <div class="login_container">
 	<h1>로그인</h1>
+
 	<form method="post" action="loginOk" id="logFrm">
-		
 		<ul>
 			<li>아이디</li>
 			<li><input type="text" name="id" id="log_id"/></li>
@@ -23,6 +23,7 @@
 	<!--   
 	<div>
 		<img src="static/img/futsal.jpeg" id="log_img" >
+
 	</div>
 	-->
 </div>

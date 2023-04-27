@@ -18,5 +18,10 @@ public class StadiumInfoServiceImpl implements StadiumInfoService {
 	public List<StadiumInfoDTO> stadiumInfoAllSelect() {
 		return dao.stadiumInfoAllSelect();
 	}
+
+	@Override
+	public StadiumInfoDTO stadiumInfoOneSelect(int st_no) {
+		return dao.stadiumInfoOneSelect(st_no);
+	}
 	
 }

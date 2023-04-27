@@ -14,6 +14,7 @@ public class NormGameDTO {
 	private int max_people;
 	private int curr_people;
 	private String gendertype;
+	private int req_rank;
 	private int payment;
 	private int g_status;
 }

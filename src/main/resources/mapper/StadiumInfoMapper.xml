@@ -6,4 +6,9 @@
  	<select id="stadiumInfoAllSelect" resultType="com.gather.we.dto.StadiumInfoDTO">
 		select st_no, stadium, location, region from stadium_info
 	</select>
+	
+	<select id="stadiumInfoOneSelect" resultType="com.gather.we.dto.StadiumInfoDTO">
+		select st_no, stadium, location, region from stadium_info
+		where st_no=${st_no}
+	</select>
 </mapper>

@@ -26,6 +26,11 @@
 	background: url("/static/img/game/rank_game_header.jpg") no-repeat 50% 35% / cover;
 }
 
+/* 일반경기 헤더 이미지 */
+.norm_game_header {
+	background: url("/static/img/game/norm_game_header.jpg") no-repeat 50% 35% / cover;
+}
+
 /* 경기 유형 */
 .game_header_title {
 	font-size: var(--font-large);
@@ -41,4 +46,8 @@
 	font-size: var(--font-regular);
 	text-align: center;
 	line-height: 60px;
+}
+
+.norm_game_nav {
+	background-color: var(--color-manager-middle-green);
 }

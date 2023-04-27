@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- 구글 api 키값 넣기 key= 다음 -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+
+<!-- 구글맵api : =이하에 api키 넣으면 됨 -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6MCfWC6EB6u8KU4V0hGt3xhuebQFKlE&callback=initMap"></script>
+
 <script>
 	let map;
 	let geoCoder;
@@ -152,8 +154,7 @@
 	            	<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply">참가신청</button>
 	         	</c:otherwise>
 	      	</c:choose>
+	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
 		</div>
 	</div>
-
-
 </div>
