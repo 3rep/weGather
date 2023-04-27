@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gather.we.dao.Manager10DAO;
 
 import com.gather.we.dto.Manager10DTO;
-import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.ManagerPagingVO;
 
 
 @Service
@@ -83,7 +83,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public int totalRecord(PagingVO vo) {
+	public int totalRecord(ManagerPagingVO vo) {
 		
 		return dao.totalRecord(vo);
 	}
@@ -93,7 +93,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> pageSelect(PagingVO vo) {
+	public List<Manager10DTO> pageSelect(ManagerPagingVO vo) {
 		
 		return dao.pageSelect(vo);
 	}

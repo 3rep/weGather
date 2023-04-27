@@ -8,7 +8,7 @@ import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.gather.we.dto.Manager10DTO;
-import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.ManagerPagingVO;
 
 
 public interface Manager10Service {
@@ -21,9 +21,9 @@ public interface Manager10Service {
 	
 	 public List<Manager10DTO> getAllEntry();
 	 
-	 public int totalRecord(PagingVO vo);
+	 public int totalRecord(ManagerPagingVO vo);
 		//해당페이지 선택
-	 public List<Manager10DTO> pageSelect(PagingVO vo);
+	 public List<Manager10DTO> pageSelect(ManagerPagingVO vo);
 	 
 	 public List<Manager10DTO> getAllManager10By(String managerid);
 	 

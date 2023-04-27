@@ -22,7 +22,7 @@ import com.gather.we.dto.MSettlementPageDTO;
 import com.gather.we.dto.Manager10DTO;
 import com.gather.we.dto.ManagerRankGameDTO;
 import com.gather.we.dto.PageDTO;
-import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.ManagerPagingVO;
 import com.gather.we.service.Manager10Service;
 import com.gather.we.service.ManagerRankGameListService;
 import com.gather.we.service.ManagerSettlementService;
@@ -88,7 +88,7 @@ public class ManagerPageController{
 	Manager10Service service;
 	
 	@GetMapping("/manager10")
-	public ModelAndView getManager10(PagingVO vo) {
+	public ModelAndView getManager10(ManagerPagingVO vo) {
 		   
 			ModelAndView mav = new ModelAndView();
 					
@@ -101,7 +101,7 @@ public class ManagerPageController{
 		    return mav;
 		}
 		@GetMapping("/managerPast")
-		public ModelAndView getManagerPast(PagingVO vo) {
+		public ModelAndView getManagerPast(ManagerPagingVO vo) {
 			ModelAndView mav = new ModelAndView();
 			vo.setTotalRecord(service.totalRecord(vo));
 		  

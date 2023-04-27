@@ -1,6 +1,7 @@
 package com.gather.we.dto;
 
-public class PagingVO {
+public class ManagerPagingVO {
+	//PagingVO-> ManagerPagingVO로 파일이름변경(devlop에도 같은 이름 파일 있어서)
 	//private static final int onePageNumCount = 0;
 	//페이징에 필요한 변수들
 	private int nowPage = 1;//현재페이지
