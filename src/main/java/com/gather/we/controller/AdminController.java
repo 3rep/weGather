@@ -64,14 +64,24 @@ public class AdminController {
 	AdminService service;
 	@Autowired
 	RegisterService regservice;
-
-	//로그인폼	
+	
+	// 관리자 홈
+	@GetMapping("/")
+	public ModelAndView adminHome() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect:userList");
+		
+		return mav;
+	}
+	
+	// 관리자 로그인폼
 	@GetMapping("/loginAdmin")
 	public String loginAdmin() {
 		return "admin/loginAdmin";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
-	//濡쒓렇�씤(DB)
+	// 관리자 로그인(DB)
 	@PostMapping("/loginAdminOk")
 	public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
 		// Session 媛앹껜 �뼸�뼱�삤湲�
@@ -95,8 +105,8 @@ public class AdminController {
 		return mav;
 	}
 			
-	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝 由ъ뒪�듃
-	@GetMapping("admin/userList")
+	// 회원정보 목록
+	@GetMapping("/userList")
 	public ModelAndView loginList() {
 		ModelAndView mav = new ModelAndView();
 		
@@ -107,8 +117,8 @@ public class AdminController {
 		
 		return mav;
 	}
-	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝�젙蹂� �닔�젙�뤌
-	@GetMapping("admin/userEdit/{userid}")
+	// 회원정보 수정
+	@GetMapping("/userEdit/{userid}")
 	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
 		RegisterDTO dto = regservice.registerEdit(userid);
 		ModelAndView mav = new ModelAndView();

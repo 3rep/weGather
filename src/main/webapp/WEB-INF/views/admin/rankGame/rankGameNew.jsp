@@ -3,6 +3,10 @@
 <script>
 	// 유효성검사
 	$(function(){
+		$("#gametype").change(function(){
+			if($(this).val() == "rank")
+		});
+		
 		$("#rankgameForm").submit(function(){
 			if($("#gametime").val()==""){
 				alert("날짜/시간을 입력하세요.");
@@ -39,7 +43,10 @@
 		<ul>
 			<li class="item">
 				<label>경기유형</label>
-				<input type="text" value="랭크경기" id="gametype" readonly disabled/>
+				<select name="gametype" id="gametype">
+					<option value="rank" selected>랭크경기</option>
+					<option value="normal">일반경기</option>
+				</select>
 			</li>
 			
 			<li class="item">
