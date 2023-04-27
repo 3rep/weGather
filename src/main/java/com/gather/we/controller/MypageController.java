@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,6 +41,7 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		//System.out.println(logId);
 		MypageUserDTO dto = service.getUserinfo(logId);
+		System.out.println(dto);
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
@@ -98,7 +101,7 @@ public class MypageController {
 		return mav;
 	}
 	
-	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
+	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
 		System.out.println(sportname);
@@ -125,24 +128,42 @@ public class MypageController {
 		return json;
 	}
 	
-	@GetMapping("mypage/paymentList")
+	@GetMapping("/mypage/paymentList")
 	public ModelAndView paymentList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		System.out.println(logName);
+		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
-		System.out.println("list: "+ list);
+		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
 	
-	@GetMapping("mypage/info")
-	public ModelAndView info() {
+	@GetMapping("/mypage/info")
+	public ModelAndView info(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		String logId = (String)session.getAttribute("logId");
+		MypageUserDTO dto = service.getUserinfo(logId);
+		
+		mav.addObject("dto", dto);
 		mav.setViewName("user/mypage/info");
 		return mav;
 	}
+	
+	
+	@PostMapping("mypage/infoEdit")
+	public ModelAndView infoEdit(MypageUserDTO dto, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		dto.setUserid((String)session.getAttribute("logId"));
+		System.out.println("여기다 "+dto.getUserid());
+		
+		int cnt = service.infoEdit(dto);
+		mav.setViewName("redirect:info");
+		return mav;
+	}
+	
 }	
