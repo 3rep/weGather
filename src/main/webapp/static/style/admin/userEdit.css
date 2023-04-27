@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+#logAdminFrm input{margin-bottom:50px 0; width:90%;}
+
+#logAdminFrm li:nth-child(2n){
+		padding-bottom:30px;
+		margin : 0 auto;
+}
+
+.userEdit_container{
+	width: 1200px;
+	margin:0 auto;
+}
+#user_name{
+	width:250px;
+	height:40px;
+}
+#rank{
+	width:60px;
+	height:40px;
+}
+#submit{
+	height:40px;
+}
+#userid, #username, #userpwd, #username, #email, #address, #mbti{
+	width:500px;
+	height:40px;
+}
+#userEdit_img{
+	width:500px;
+	height:300px;
+	position:relative;
+	left:30px;
+	
+}
+#tel1{
+	width:50px;
+	height:40px;
+}
+#tel2,#tel3{
+	width:220px;
+	heiht:40px;
+}

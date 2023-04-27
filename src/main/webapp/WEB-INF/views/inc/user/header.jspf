@@ -27,6 +27,8 @@
 <link rel="stylesheet" href="${path}/static/style/user/game/sportList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameDetail.css" type="text/css" />
+<link href="${path}/static/style/register/register.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/payment/payment.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/payment/paymentDone.css" type="text/css" />
 
@@ -35,7 +37,6 @@
 
 <body>
 <header>
-	
 <!-- sub Nav : 주메뉴 위에 출력되는 얇은 서브 메뉴바 -->
 <div class="nav-container1">
 	<nav class="navbar navbar-expand-lg">
@@ -45,6 +46,7 @@
     		</button>
 	    	<div class="collapse navbar-collapse justify-content-end">
 	    		<ul class="navbar-nav">
+
 	        		<c:if test="${logStatus!='Y' }">
 		        		<li class="nav-item">
 		          			<a class="nav-link" href="loginChoose">로그인</a>
@@ -67,6 +69,7 @@
 		        			<a class="nav-link" href="logout">로그아웃</a>
 		        		</li>
 		        	</c:if>	
+
 	      		</ul>
 	    	</div>
 	  	</div>

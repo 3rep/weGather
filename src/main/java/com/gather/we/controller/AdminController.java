@@ -36,14 +36,20 @@ import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
 import com.gather.we.service.RegisterService;
 
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+
 
 import com.gather.we.dto.ManagerDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
+
+import com.gather.we.dto.UserLogDTO;
 import com.gather.we.service.AdminManagerService;
+
 import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
@@ -65,58 +71,62 @@ public class AdminController {
 	@Autowired
 	RegisterService regservice;
 
-	//로그인폼	
-	@GetMapping("/loginAdmin")
-	public String loginAdmin() {
-		return "admin/loginAdmin";	//	/WEB-INF/views/register/loginForm.jsp
-	}
-	
-	//濡쒓렇�씤(DB)
-	@PostMapping("/loginAdminOk")
-	public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
-		// Session 媛앹껜 �뼸�뼱�삤湲�
-		// 留ㅺ컻蹂��닔濡� HttpServletRequest request -> Session 援ы븯湲�
-		// 留ㅺ컻蹂��닔濡� HttpSession session
-		System.out.println("admin->"+adminid);
-		AdminDTO dto = service.loginAdminOk(adminid, password);
-		// dto->null�씤 寃쎌슦 �꽑�깮�젅肄붾뱶媛� �뾾�떎. -濡쒓렇�씤�떎�뙣
-		// 		null�씠 �븘�땶 寃쎌슦 �꽑�깮�젅肄붾뱶 �엳�떎. - 濡쒓렇�씤 �꽦怨�
-		ModelAndView mav = new ModelAndView();
-		if(dto!=null) {//濡쒓렇�씤 �꽦怨�
-			session.setAttribute("logId", dto.getAdminid());
-			session.setAttribute("logName", dto.getAdmin_name());
-			session.setAttribute("logStatus", "Y");
-			mav.setViewName("redirect:/");
-		}else{//濡쒓렇�씤 �떎�뙣
-			mav.setViewName("redirect:loginAdmin");
-			System.out.println(adminid);
-			System.out.println(password);
-		}
-		return mav;
-	}
+
+	//로그인폼
+			@GetMapping("/loginAdmin")
+			public String loginAdmin() {
+				return "admin/loginAdmin";	//	/WEB-INF/views/register/loginForm.jsp
+			}
 			
-	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝 由ъ뒪�듃
-	@GetMapping("admin/userList")
-	public ModelAndView loginList() {
-		ModelAndView mav = new ModelAndView();
-		
-		List<RegisterDTO> list = regservice.dataAllSelect();
-		
-		mav.addObject("list", list);
-		mav.setViewName("admin/userList");
-		
-		return mav;
-	}
-	//(愿�由ъ옄 �럹�씠吏�)�쉶�썝�젙蹂� �닔�젙�뤌
-	@GetMapping("admin/userEdit/{userid}")
-	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
-		RegisterDTO dto = regservice.registerEdit(userid);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("dto", dto);
-		mav.setViewName("admin/userEdit");
-		return mav;
-	}
+			//로그인(DB)
+			@PostMapping("/loginAdminOk")
+			public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
+				// Session 객체 얻어오기
+				// 매개변수로 HttpServletRequest request -> Session 구하기
+				// 매개변수로 HttpSession session
+				System.out.println("admin->"+adminid);
+				AdminDTO dto = service.loginAdminOk(adminid, password);
+				// dto->null인 경우 선택레코드가 없다. -로그인실패
+				// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+				ModelAndView mav = new ModelAndView();
+				if(dto!=null) {//로그인 성공
+					session.setAttribute("logId", dto.getAdminid());
+					session.setAttribute("logName", dto.getAdmin_name());
+					session.setAttribute("logStatus", "Y");
+					mav.setViewName("redirect:/");
+				}else{//로그인 실패
+					mav.setViewName("redirect:loginAdmin");
+					System.out.println(adminid);
+					System.out.println(password);
+				}
+				return mav;
+			}
+			
+			//(관리자 페이지)회원 리스트
+			@GetMapping("admin/userList")
+			public ModelAndView loginList() {
+				ModelAndView mav = new ModelAndView();
+				
+				List<RegisterDTO> list = regservice.dataAllSelect();
+				
+				mav.addObject("list", list);
+				mav.setViewName("admin/userList");
+				
+				return mav;
+			}
+			//(관리자 페이지)회원정보 수정폼
+			@GetMapping("admin/userEdit/{userid}")
+			public ModelAndView loginEdit(@PathVariable("userid") String userid) {
+				RegisterDTO dto = regservice.registerEdit(userid);
+				ModelAndView mav = new ModelAndView();
+				mav.addObject("dto", dto);
+				mav.setViewName("admin/userEdit");
+				return mav;
+			}
+
+
 	// 종목 목록
+
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
