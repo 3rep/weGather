@@ -22,4 +22,9 @@ public class UserPayServiceImpl implements UserPayService {
 	public UserPayDoneDTO rankPayDoneSelect(String payment_no) {
 		return dao.rankPayDoneSelect(payment_no);
 	}
+
+	@Override
+	public UserPayDoneDTO normPayDoneSelect(String payment_no) {
+		return dao.normPayDoneSelect(payment_no);
+	}
 }

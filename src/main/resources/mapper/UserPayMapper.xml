@@ -16,4 +16,13 @@
 		inner join stadium_info st on r.st_no = st.st_no
 		where p.payment_no=#{payment_no}
 	</select>
+	<select id="normPayDoneSelect" resultType="com.gather.we.dto.UserPayDoneDTO">
+		select s.sportname, n.gametime, st.stadium, n.payment
+		from user_pay p
+		inner join n_participate np on p.payment_no = np.payment_no
+		inner join norm_game n on np.no = n.no
+		inner join sport s on n.s_no = s.s_no
+		inner join stadium_info st on n.st_no = st.st_no
+		where p.payment_no=#{payment_no}
+	</select>
 </mapper>

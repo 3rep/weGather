@@ -14,7 +14,16 @@
             <th>결제금액</th>
         </tr>
         <tr>
-            <td><c:if test="${param.gametype eq 'rankgame'}">랭크경기</c:if></td>
+            <td>
+            	<c:choose>
+					<c:when test="${gametype eq 'rankgame'}">
+		            	랭크경기
+					</c:when>
+		         	<c:when test="${gametype eq 'normgame'}">
+		            	일반경기
+		         	</c:when>
+		      	</c:choose>
+            </td>
             <td>${payDoneInfo.sportname}</td>
             <td><fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${payDoneInfo.gametime}" /></td>
             <td>${payDoneInfo.stadium}</td>
