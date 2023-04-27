@@ -10,7 +10,9 @@
 			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
-			<input type="date" class="aplDate"/>
+			<form id="aplSelect" method="get" action="applyList">
+				<input type="date" name="aplSelectedDate" class="aplDate" />
+			</form>	
 		</div>
 			
 		<!-- 테이블 -------------------------------------------------------->

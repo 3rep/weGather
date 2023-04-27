@@ -19,9 +19,11 @@
 .rView{
 	margin-top: 20px;
     margin-bottom: 5px;
-    background: steelblue;
+    background: #F8F8FF;
     padding: 25px;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ddd;
+    
 }
 #avg_all{
 	display: inline-block;
@@ -35,7 +37,7 @@
     
 }
 .allRank{
-	background: aliceblue;
+	background: #D3DAFF;
     height: 60px;
     line-height: 50px;
     /* text-align: center; */
@@ -50,7 +52,7 @@
 }
 .snRank {
 	margin-left: 256px;
-    background: aliceblue;
+    background: #D3DAFF;
     height: 100px;
     width: 400px;
     display: inline-block;
@@ -81,5 +83,9 @@
 
 /*---- chart -------------*/
 #rankContent #chart{
-	margin-top: 50px;
+	margin-top: 20px;
+    background: #F8F8FF;
+    height: 550px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ddd;
 }
