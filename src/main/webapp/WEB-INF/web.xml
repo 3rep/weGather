@@ -23,7 +23,9 @@
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
 				/WEB-INF/spring/root-context.xml
+				/WEB-INF/spring/appServlet/mvc-context.xml
 			</param-value>
+
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -35,15 +37,27 @@
 	
 	<!-- include -->
 	<jsp-config>
-	<!-- 	<jsp-property-group>
-			<url-pattern>/WEB-INF/views/*</url-pattern>
-			<include-prelude>/WEB-INF/views/inc/header.jspf</include-prelude>
-			<include-coda>/WEB-INF/views/inc/footer.jspf</include-coda>
-		</jsp-property-group> -->
 		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/user/*</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/user/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/inc/user/footer.jspf</include-coda>
+		</jsp-property-group>
+		
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/admin/*</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/admin/adminNav.jspf</include-prelude>
+		</jsp-property-group>
+
+	  <jsp-property-group>
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/managerNav.jspf</include-prelude>
+  	</jsp-property-group>
+
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
+			<include-prelude>/WEB-INF/views/mypage/allPage.jsp</include-prelude>
 		</jsp-property-group>
+		
 	</jsp-config>
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
@@ -65,5 +79,5 @@
 		<filter-name>SpringEncodeFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 </web-app>

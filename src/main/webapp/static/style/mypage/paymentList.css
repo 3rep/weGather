@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+#paymentListContent{
+	/*
+	margin-left: 300px;
+	margin-top: 50px;
+	margin-right: 5px;
+	margin-bottom: 50px;
+	*/
+	/* background: #ddd; */
+	font-size: 18px;
+	margin-left: 285px;
+}
+
+#pmTable tr{
+	border: 1px solid gray;
+}
+#pmTable td, th{
+	text-align: center;
+	width: 15%;
+	padding: 15px;
+}
+/* #pmTable>tbody td:nth-child(5n+2),
+#pmTable>tbody td:nth-child(5n+4){
+	width: 25%;
+} */

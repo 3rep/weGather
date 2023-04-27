@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.register_container{
+	width:1200px;
+	height:700px;
+	margin:0 auto;
+}
+
+#register_img{
+	width:600px;
+	height:500px;
+	position:relative;
+	top:25%;
+	left: 10%;
+		
+}
+#idCheck{
+	height:40px;
+}
+form{
+	float:left;
+}
+#userid{
+	width:370px;
+	height:40px;
+}
+#userpwd, #username, #email, #address, #mbti, #submit{
+	width: 500px;
+	height:40px;
+}
+#tel1{
+	width:50px;
+	height:40px;
+}
+#tel2, #tel3{
+	width:220px;
+	height:40px;
+}
+

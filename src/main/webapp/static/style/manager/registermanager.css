@@ -1,0 +1,47 @@
+@charset "UTF-8";
+.manager_container{
+	width:1200px;
+	height:800px;
+	margin: 0 auto;
+}
+#manager_img{
+	width:500px;
+	height:650px;
+	position:relative;
+	top:55%;
+	left: 15%;
+	
+	
+}
+#mangerid{
+	width:370px; 
+	height:40px;
+}
+#idCheck{
+	height:40px;
+}
+#password{
+	width:500px;
+	height:40px;
+}
+
+#m_name{
+	width:500px;
+	height:40px;
+}
+#tel1{
+	width:50px;
+	height:40px;
+}
+#tel2, #tel3{
+	width:220px; height:40px;
+}
+#s_no{
+	width:100px; height:40px;
+}
+#email, #address, #m_account, #submit{
+	width:500px; height:40px;
+}
+form{
+	float:left;
+}
