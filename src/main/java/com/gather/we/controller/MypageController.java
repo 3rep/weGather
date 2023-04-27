@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +42,7 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-		//System.out.println(logId);
 		MypageUserDTO dto = service.getUserinfo(logId);
-		System.out.println(dto);
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
@@ -154,16 +155,44 @@ public class MypageController {
 		return mav;
 	}
 	
-	
 	@PostMapping("mypage/infoEdit")
-	public ModelAndView infoEdit(MypageUserDTO dto, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		dto.setUserid((String)session.getAttribute("logId"));
-		System.out.println("여기다 "+dto.getUserid());
+	public ResponseEntity<String> infoEdit(MypageUserDTO dto, HttpSession session) {
 		
-		int cnt = service.infoEdit(dto);
-		mav.setViewName("redirect:info");
-		return mav;
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		//System.out.println("여기다 "+dto.getUserid());
+
+		try {
+			int cnt = service.infoEdit(dto);
+			//정보수정 성공
+			String body = "<script>";
+			body += "alert('회원정보 수정이 완료되었습니다.');";
+			body += "location.href='info';";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			//정보수정 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('회원정보 수정이 실패하였습니다.');";
+			body += "history.back();";
+			body += "</script>";
+			entity =  new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
 	}
+	
+	/*
+	 * @PostMapping("mypage/infoEdit") public ModelAndView infoEdit(MypageUserDTO
+	 * dto, HttpSession session) { ModelAndView mav = new ModelAndView();
+	 * dto.setUserid((String)session.getAttribute("logId"));
+	 * System.out.println("여기다 "+dto.getUserid());
+	 * 
+	 * int cnt = service.infoEdit(dto); mav.setViewName("redirect:info"); return
+	 * mav; }
+	 */
 	
 }	

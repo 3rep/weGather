@@ -26,10 +26,7 @@
 		<hr/>
 		<!--회원정보수정 폼-->
 		<form method="post" id="infoEditForm" action="infoEdit"> 
-			<ul>
-				<li>
-					<input type="radio" name="type" value="user" checked/> 사용자
-				</li>
+			<ul id="infoUl">
 				<li>아이디</li>
 				<li>
 					<input type="text" name="userid" id="userid" minlength="4" maxlength="15" value="${dto.userid}" readonly"/>
@@ -63,7 +60,7 @@
 				<li>
 					<input type="text" name="email" id="email" value="${dto.email}" />
 				</li>
-				<li>주소</li>
+				<li >주소</li>
 				<li>
 					<input type="text" name="address" id="address" value="${dto.address}"/>
 				</li>
@@ -71,9 +68,9 @@
 				<li>
 					<input type="text" name="mbti" id="mbti" value="${dto.mbti }"/>
 				</li>
-				<br/>
-				<li> <input type="submit" value="정보수정완료"/></li>
 			</ul>
+			<div class="infoBtn"><button type="submit" id="infoBtn">수정하기</button></div>
+			
 		</form> <!-- 회원정보수정 폼 end -->
 	</div><!-- 오른쪽 내용칸 end ------------>
 </div>	
