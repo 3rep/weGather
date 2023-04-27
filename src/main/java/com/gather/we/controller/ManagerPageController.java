@@ -4,6 +4,8 @@ package com.gather.we.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,10 +55,10 @@ public class ManagerPageController{
 	 //@param RankGameListDTO, Principal
 	 // @return	ResponseEntity<?>
 	@PostMapping("/apply")
-	public ResponseEntity<?> apply(ManagerRankGameDTO rankGameDTO, Principal principal) {
+	public ResponseEntity<?> apply(ManagerRankGameDTO rankGameDTO, HttpSession session) {
 		try {
-			// 현재는 managerid 파라미터로 사용 중 추후 로그인 개발 시 Principal에서 파라미터 사용예정
-			// rankGameListDTO.setManagerid(principal.getName());	//	로그인 사용자 id 가져오기
+			String userId=(String)session.getAttribute("logId");
+			rankGameDTO.setManagerid(userId);
 			if (rankGameListService.updateApply(rankGameDTO) > 0) {		// update 시 리턴 값이 0보다 클 경우
 				// 성공
 				return ResponseEntity.ok().body(rankGameDTO);
