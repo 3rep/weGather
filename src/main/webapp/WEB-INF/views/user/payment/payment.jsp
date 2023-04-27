@@ -7,7 +7,18 @@
 <script>
 	const no = ${gameDetail.no};
 	const gametype = "${gametype}";
+	
+	$(document).ready(function(){ 
+		if(gametype=="rankgame") {
+			$('.btn-pay').addClass('rank');
+			$('.total_amount').addClass('rank');
+		} else if(gametype=='normgame') {	
+			$('.btn-pay').addClass('normal');
+			$('.total_amount').addClass('normal');
+		}
+  	});
 
+	// 결제 구현
 	var IMP = window.IMP;
 	IMP.init("가맹점 식별코드"); // 예: "imp00000000a"
 	
@@ -154,7 +165,7 @@
 				</li>
 				<li class="payment_info total_amount">
 					<span class="payment_label">총 결제금액</span>
-					<span class="amount total">${gameDetail.payment}원</span>
+					<span class="amount total_amount">${gameDetail.payment}원</span>
 				</li>
 			</ul>
 			
