@@ -36,14 +36,13 @@
 				    	<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
 				    	<c:set var="paidTime" value="${list.paid_at}" />
 						<%
-						Long paid_at = (Long)pageContext.getAttribute("paidTime");
-							System.out.println("paid_at"+paid_at);						
-						Date mpPaid_at = new Date(paid_at*1000);
-							System.out.println("mpPaid_at"+mpPaid_at);						
-						pageContext.setAttribute("mpPaid_at", mpPaid_at );
-						
+						Long ptLong = (Long)pageContext.getAttribute("paidTime");
+						Date ptDate = new Date(ptLong*1000);
+						pageContext.setAttribute("ptDate", ptDate );
 						%>
-				    	<td ><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${mpPaid_at}"/></td>
+						
+						<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->
+				    	<td ><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ptDate}"/></td>
 				    	
 				    	<c:if test="${list.success == 's'}">
 				    		<td class="pmTd">결제완료</td>

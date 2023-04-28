@@ -9,16 +9,9 @@
 				alert("비밀번호를 입력하셔야 회원정보수정이 가능합니다.");
 				return false;
 			}
-		}
-		//form태그의 action속성 설정
-		$("#infoEditForm").attr("action","infoEdit");
-
-	});	
+		})
+	})	
 		
-	$(function(){
-		alert("${msg}");
-		history.back();
-	});
 </script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="infoContent"> 
@@ -29,7 +22,7 @@
 			<ul id="infoUl">
 				<li>아이디</li>
 				<li>
-					<input type="text" name="userid" id="userid" minlength="4" maxlength="15" value="${dto.userid}" readonly"/>
+					<input type="text" name="userid" id="userid" minlength="4" maxlength="15" value="${dto.userid}" readonly/>
 				</li>
 				<li>비밀번호</li>
 				<li>
@@ -70,7 +63,6 @@
 				</li>
 			</ul>
 			<div class="infoBtn"><button type="submit" id="infoBtn">수정하기</button></div>
-			
 		</form> <!-- 회원정보수정 폼 end -->
 	</div><!-- 오른쪽 내용칸 end ------------>
 </div>	
