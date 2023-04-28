@@ -20,20 +20,25 @@
 #registerForm{
 	float:left;
 }
-#userid{
+#register-ul>li>#userid{
 	width:370px;
 	height:40px;
 }
-#userpwd, #username, #email, #address, #mbti, #submit{
+#register-ul>li>#userpwd, 
+#register-ul>li>#username, 
+#register-ul>li>#email, 
+#register-ul>li>#address, 
+#register-ul>li>#mbti, 
+#register-ul>li>#submit{
 	width: 500px;
 	height:40px;
 }
 #tel1{
-	width:50px;
+	width:130px;
 	height:40px;
 }
 #tel2, #tel3{
-	width:220px;
+	width:180px;
 	height:40px;
 }
 

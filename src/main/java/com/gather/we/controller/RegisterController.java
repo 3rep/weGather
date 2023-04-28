@@ -66,7 +66,7 @@ public class RegisterController {
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
 			session.setAttribute("logRank", dto.getRank());
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
 			if(dtoadmin!=null) {

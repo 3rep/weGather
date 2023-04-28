@@ -30,7 +30,7 @@
 	
 	<form method="post" id="registerForm">
 		
-		<ul>
+		<ul id="register-ul">
 			<br/>
 			<li>구분</li>
 			<li>
@@ -49,7 +49,7 @@
 				<input type="radio" name="gender" value="남성"/> 남성
 				<input type="radio" name="gender" value="여성"/> 여성
 			</li>
-		<li>이름</li>	<!-- 추가!!!!!!!!!!! -->
+		<li>이름</li>	
 		<li><input type="text" placeholder="이름을 입력하세요..."name="username" id="username" minlength="2" maxlength="10" /></li>
 		<li>연락처</li>
 		<li>

@@ -4,8 +4,8 @@
 	<script>
 	$(function(){
 		//웹에서 날짜 선택시 자동 제출	
-		$("#search-date").on("change",function(){
-			$("#search-form").submit();
+		$("#aplSelect").on("change",function(){
+			$("#aplSelect").submit();
 		});
 	});
 	</script>
@@ -18,7 +18,7 @@
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
 			<!-- 날짜 필터링 : 달력에서 클릭한 값이 DB로 들어감 = DTO에 들어감 : gametime과 비교하는 쿼리문 쓰면 됨 -->
-			<form id="aplSelect" method="get" action="applyList">
+			<form id="aplSelect" method="post" action="applyList">
 				<input type="date" name="aplSelectedDate" class="aplDate" />
 			</form>
 		</div>

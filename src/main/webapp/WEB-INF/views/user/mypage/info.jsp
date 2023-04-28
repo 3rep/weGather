@@ -29,7 +29,7 @@
 					<input type="password" placeholder="비밀번호를 입력하세요..." name="password" id="userpwd" minlength="4" maxlength="15" value="" />
 				</li>
 				<li>성별</li>
-				<li>
+				<li id="infoGender">
 					<input type="radio" name="gender" value="남성"<c:if test="${dto.gender=='남성'}">checked</c:if> readonly/> 남성
 					<input type="radio" name="gender" value="여성"<c:if test="${dto.gender=='여성'}">checked</c:if> readonly/> 여성
 				</li>
@@ -38,7 +38,7 @@
 					<input type="text" name="username" id="username" readonly value="${dto.username}"/>
 				</li>
 				<li>연락처</li>
-				<li>
+				<li id="infoTel">
 					<select name="tel1" id="tel1" >
 						<option value="010" <c:if test="${dto.tel1=='010'}">selected</c:if>>010</option>
 							<option value="02" <c:if test="${dto.tel1=='02'}">selected</c:if>>02</option>
@@ -46,8 +46,8 @@
 							<option value="041" <c:if test="${dto.tel1=='041'}">selected</c:if>>041</option>
 							<option value="051" <c:if test="${dto.tel1=='051'}">selected</c:if>>051</option>
 					</select>
-					<input type="text" name="tel2" id="tel2" maxlength="4" value="${dto.tel2}"/>
-					<input type="text" name="tel3" id="tel3" maxlength="4" value="${dto.tel3}"/>
+					- <input type="text" name="tel2" id="tel2" maxlength="4" value="${dto.tel2}"/>
+					- <input type="text" name="tel3" id="tel3" maxlength="4" value="${dto.tel3}"/>
 				</li>
 				<li>이메일</li>
 				<li>

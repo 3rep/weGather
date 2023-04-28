@@ -37,12 +37,13 @@ public class MypageController {
 	MypageService service;
 	
 	@GetMapping("/mypage/applyList") 
-	public ModelAndView applyList(HttpSession session) {
+	public ModelAndView applyList(HttpSession session, MypageApplyListDTO dto) {
 		
+		System.out.println("dto--->"+dto);
 		ModelAndView mav = new ModelAndView();
+		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-		MypageUserDTO dto = service.getUserinfo(logId);
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
