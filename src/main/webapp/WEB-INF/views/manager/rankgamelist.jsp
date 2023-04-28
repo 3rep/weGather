@@ -161,7 +161,7 @@
 		// 신청하기 ajax
 		apply : (e) => {
 			const params = {
-				'managerid' : 'messi'
+				'managerid' : '<%=session.getAttribute("logid")%>'
 				, 'no' : e.target.dataset.no
 			}
 				

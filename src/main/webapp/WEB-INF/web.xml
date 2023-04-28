@@ -50,7 +50,7 @@
 
 	  <jsp-property-group>
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
-			<include-prelude>/WEB-INF/views/inc/managerNav.jspf</include-prelude>
+			<include-prelude>/WEB-INF/views/inc/manager/managerNav.jspf</include-prelude>
   	</jsp-property-group>
 
 		<jsp-property-group>
