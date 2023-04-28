@@ -16,6 +16,7 @@ public class RankGameDTO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private Date gametime;
 	
+	private String usetime;
 	private int min_people;
 	private int max_people;
 	private int curr_people;

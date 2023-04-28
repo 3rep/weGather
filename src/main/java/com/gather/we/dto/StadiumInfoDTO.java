@@ -8,4 +8,5 @@ public class StadiumInfoDTO {
 	private String stadium;
 	private String location;
 	private String region;
+	private String idletime;
 }

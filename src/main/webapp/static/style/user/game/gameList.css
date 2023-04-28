@@ -31,6 +31,15 @@
 	border-radius: 2px;
 }
 
+.new_game {
+	position: absolute;
+	right: 12%;
+}
+
+.new_game:link, .new_game:hover, .new_game:visited{
+	color: var(--color-dark-gray);
+}
+
 .back_to_list {
 	position: absolute;
 	right: 2%;

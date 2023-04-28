@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background: var(--color-board-blue);
+	background: var(--color-board-blue); /* #f6f6f6; */
 }
 
 .container {

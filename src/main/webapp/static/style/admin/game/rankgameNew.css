@@ -8,8 +8,8 @@
 }
 
 #rankgameForm ul{
-	height: 440px;
-	overflow-y: scroll;
+	height: 680px;
+	overflow-y: auto;
 }
 
 #rankgameForm label {

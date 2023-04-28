@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 #container-allManager2 {
-	background: var(--color-admin-gray);
 	border-radius: 20px;
 	padding: 0 20px;
 	display: flex;
@@ -17,27 +16,32 @@
 	color: var(--color-black);
 }
 
+#container-allManager2 .manager_list {
+	height: 700px;	
+}
+
 #container-allManager2 .manager_list li {
 	float: left;
 	text-align: center;
-	border-bottom: 1px solid gray;
-	line-height: 2em;
+	border-bottom: 2px solid #f3f3f3;
+	line-height: 3.5em;
 	font-size: var(--font-micro);
-	background: var(--color-admin-blue-gray);
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	background: var(--color-white);
 }
 
+/* 테이블 각 영역의 넓이 */
 #container-allManager2 .manager_list li:nth-child(10n+1) {
 	width: 3%;
 }
 
 #container-allManager2 .manager_list li:nth-child(10n+2) {
-	width: 3%;
+	width: 4%;
 }
 
 #container-allManager2 .manager_list li:nth-child(10n+3) {
-	width: 8%;
+	width: 7%;
 }
 
 #container-allManager2 .manager_list li:nth-child(10n+4) {
@@ -82,6 +86,57 @@
 
 #container-allManager2 .manager_list li:nth-last-child(10) {
 	border-radius: 0 0 0 20px;
+}
+
+/* 테이블 헤더 부분 */
+#container-allManager2 .manager_list li:nth-child(1) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(2) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(3) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(4) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(5) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(6) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(7) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(8) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(9) {
+	background: white;
+	font-weight: var(--weight-bold);
+}
+
+#container-allManager2 .manager_list li:nth-child(10) {
+	background: white;
+	font-weight: var(--weight-bold);
 }
 
 #container-allManager2 .button_box {

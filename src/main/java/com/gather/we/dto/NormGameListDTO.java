@@ -10,6 +10,7 @@ public class NormGameListDTO {
 	private int no;
 	private int s_no;
 	private Date gametime;
+	private String usetime;
 	private int min_people;
 	private int max_people;
 	private int curr_people;
