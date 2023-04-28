@@ -6,11 +6,11 @@ import com.gather.we.dto.MSettlementCriteria;
 import com.gather.we.dto.ManagerSettlementDTO;
 
 public interface ManagerSettlementService {
-	public List<ManagerSettlementDTO> mSettlementAllSelect(MSettlementCriteria mscriteria);//정산내역 리스트, 페이징
+	public List<ManagerSettlementDTO> mSettlementAllSelect(MSettlementCriteria mscriteria, String logId);//정산내역 리스트, 페이징
 	
-	public int getTotalCount(MSettlementCriteria mscriteria);//정산내역 레코드 수
+	public int getTotalCount(MSettlementCriteria mscriteria, String logId);//정산내역 레코드 수
 	
-	public int getTotalCompletedAmount();//정산내역-완료 합계
+	public int getTotalCompletedAmount(String logId);//정산내역-완료 합계
 	
-	public int getTotalInprogressAmount();// 정산내역-처리중 합계
+	public int getTotalInprogressAmount(String logId);// 정산내역-처리중 합계
 }
