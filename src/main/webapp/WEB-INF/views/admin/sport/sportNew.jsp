@@ -43,7 +43,7 @@
 			</li>
 		</ul>
 		<div class="btns">
-			<a class="btn-gray btn-cancel">취소</a>
+			<a class="btn-gray btn-cancel prev">취소</a>
 			<input type="submit" value="등록" class="btn-black"/>
 		</div>
 	</form>
