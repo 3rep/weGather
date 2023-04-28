@@ -116,6 +116,12 @@
 						<span class="menu-title">종목목록</span>
 					</a>
 				</li>
+				<li class="page">
+					<a href="/admin/sport/new" class="page-link">	
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">종목등록</span>
+					</a>
+				</li>
 			</ul>
 		</li>
 		<!-- 경기관리 메뉴 -->
@@ -139,6 +145,12 @@
 					<a href="/admin/normgame/normgamelist" class="page-link">		
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
 						<span class="menu-title">일반경기목록</span>
+					</a>
+				</li>
+				<li class="page">
+					<a href="/admin/game/new" class="page-link">		
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">경기등록</span>
 					</a>
 				</li>
 			</ul>
