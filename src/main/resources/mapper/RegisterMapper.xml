@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.RegisterDAO">
 	<select id="loginOk" resultType="com.gather.we.dto.RegisterDTO">
-		select userid, username from users
+		select userid, username, rank from users
 		where userid=#{param1} and password=#{param2}
 	</select>
 	<insert id="registerInsert">

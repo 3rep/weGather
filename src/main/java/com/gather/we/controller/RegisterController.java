@@ -31,7 +31,6 @@ public class RegisterController {
 	AdminService adminservice;
 
 	//로그인 선택 창
-
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
 		return "user/register/loginChoose";	
@@ -44,43 +43,46 @@ public class RegisterController {
 	}
 	
 	//로그인(DB)
-		@PostMapping("/loginOk")
+	@PostMapping("/loginOk")
 
-		public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
-			// Session 객체 얻어오기
-			// 매개변수로 HttpServletRequest request -> Session 구하기
-			// 매개변수로 HttpSession session
-			System.out.println("id->"+id);
-			RegisterDTO dto = new RegisterDTO();
-			AdminDTO dtoadmin = new AdminDTO();
-			// dto->null인 경우 선택레코드가 없다. -로그인실패
-			// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
-			ModelAndView mav = new ModelAndView();
-			
-			//사용자 로그인
-			dto = service.loginOk(id, password);
-			if(dto!=null) {
-				session.setAttribute("logId", dto.getUserid());
-				session.setAttribute("logName", dto.getUsername());
-				session.setAttribute("logStatus", "Y");
-				session.setAttribute("adminlogStatus", "N");
-				mav.setViewName("redirect:/");
-			}else {	//관리자 로그인
-				dtoadmin = adminservice.loginAdminOk(id, password);
-				if(dtoadmin!=null) {
-				session.setAttribute("logId", dtoadmin.getAdminid());
-				session.setAttribute("logName", dtoadmin.getAdmin_name());
-				session.setAttribute("logStatus", "Y");
-				session.setAttribute("adminlogStatus", "Y");
-				mav.setViewName("redirect:/admin/userList");
-				}else{//로그인 실패
-					System.out.println("로그인 실패");
-					mav.setViewName("redirect:login");	
-				}
+	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
+		// Session 객체 얻어오기
+		// 매개변수로 HttpServletRequest request -> Session 구하기
+		// 매개변수로 HttpSession session
+		System.out.println("id->"+id);
+		RegisterDTO dto = new RegisterDTO();
+		
+		AdminDTO dtoadmin = new AdminDTO();
+		// dto->null인 경우 선택레코드가 없다. -로그인실패
+		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+		ModelAndView mav = new ModelAndView();
+		
+		//사용자 로그인
+		dto = service.loginOk(id, password);
+		System.out.println("dto->"+dto);
+		if(dto!=null) {
+			session.setAttribute("logId", dto.getUserid());
+			session.setAttribute("logName", dto.getUsername());
+			session.setAttribute("logStatus", "Y");
+			session.setAttribute("adminlogStatus", "N");
+			session.setAttribute("logRank", dto.getRank());
+			mav.setViewName("redirect:/");
+		}else {	//관리자 로그인
+			dtoadmin = adminservice.loginAdminOk(id, password);
+			if(dtoadmin!=null) {
+			session.setAttribute("logId", dtoadmin.getAdminid());
+			session.setAttribute("logName", dtoadmin.getAdmin_name());
+			session.setAttribute("logStatus", "Y");
+			session.setAttribute("adminlogStatus", "Y");
+			mav.setViewName("redirect:/admin/userList");
+			}else{//로그인 실패
+				System.out.println("로그인 실패");
+				mav.setViewName("redirect:login");	
 			}
-			
-			return mav;
 		}
+		
+		return mav;
+	}
 	//로그인한 경우 화면
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
