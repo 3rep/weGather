@@ -15,8 +15,7 @@
 
 #filterForm {
 	width: 1000px;
-	margin: 0 auto;
-	margin-bottom: 30px;
+	margin: 0 auto 30px;
 	position: relative;
 }
 
@@ -146,6 +145,6 @@
 	font-weight: var(--weight-bold);
 }
 
-.game_stadium2:hover {
+.game_stadium2:hover, .game_stadium2:visited, .game_stadium2:link {
 	color: var(--color-white);
 }

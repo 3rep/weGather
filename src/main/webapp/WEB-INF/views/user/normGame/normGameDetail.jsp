@@ -120,7 +120,7 @@
 			<!-- 참가신청 -->
 			<c:choose>
 				<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
-	            	<button class="btn_norm_apply close">인원마감</button>
+	            	<button class="btn_apply_norm close">인원마감</button>
 				</c:when>
 	         	<c:otherwise>
 	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply_norm">참가신청</button>

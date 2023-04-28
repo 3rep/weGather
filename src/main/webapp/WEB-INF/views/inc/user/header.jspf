@@ -53,10 +53,10 @@
 
 	        		<c:if test="${logStatus!='Y' }">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="loginChoose">로그인</a>
+		          			<a class="nav-link" href="${path}/loginChoose">로그인</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="registerChoose">회원가입</a>
+		          			<a class="nav-link" href="${path}/registerChoose">회원가입</a>
 		        		</li>
 		        	</c:if>
 		        	<c:if test="${logStatus=='Y' }">	

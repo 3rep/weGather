@@ -204,19 +204,26 @@
 			<!-- 경기 상세 정보 -->
 			<ul class="gamenew_detail">
 				<c:forEach var="gameDTO" items="${newNormGameList}" varStatus="status">
-					<li class="gamenew_info">
-						<a href="newdetail?no=${gameDTO.no}&s_no=${sportDTO.s_no}"><span class="gamenew_detail_main">${status.count}. 시작시간 (<fmt:formatDate pattern="yy년 MM월 dd일 E요일 HH:mm" value="${gameDTO.gametime}" />)</span></a><br/>
-						<span class="gamenew_detail_sub">이용시간 (${gameDTO.usetime}) | 결제금액 (<fmt:formatNumber value="${gameDTO.payment}" maxFractionDigits="3"/>원)</span>
-					</li>
+					<c:if test="${gameDTO.s_no == sportDTO.s_no }">
+						<li class="gamenew_info">
+							<a href="newdetail?no=${gameDTO.no}&s_no=${sportDTO.s_no}"><span class="gamenew_detail_main">${status.count}. 시작시간 (<fmt:formatDate pattern="yy년 MM월 dd일 E요일 HH:mm" value="${gameDTO.gametime}" />)</span></a><br/>
+							<span class="gamenew_detail_sub">이용시간 (${gameDTO.usetime}) | 결제금액 (<fmt:formatNumber value="${gameDTO.payment}" maxFractionDigits="3"/>원)</span>
+						</li>
+					</c:if>
 				</c:forEach>
 				
 				<!-- 위치정보 -->
 				<li class="game_detail_sub">
 					<div class="location_info">위치정보</div>
-					<span class="location">${newNormGameList[0].location}</span>				
-					<div id="map"></div>
+					<c:if test="${newNormGameList[0].location != null && newNormGameList[0].location ne ''}">
+						<c:if test="${newNormGameList[0].s_no == sportDTO.s_no }">
+							<span class="location">${newNormGameList[0].location}</span>				
+							<div id="map"></div>
+						</c:if>
+					</c:if>
 				</li>
 			</ul>
+			<button onclick="location.href='${path}/normgame/normgamelist?s_no=${sportDTO.s_no}'" class="btn_back" >뒤로가기</button>
 		</div>
 	</div>
 </div>

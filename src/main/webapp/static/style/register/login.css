@@ -34,7 +34,7 @@
 	border:1px solid black;
 		
 }
-#log_register a:link, a:visited, a:hover{
+#log_register a:link, #log_register a:visited, #log_register a:hover{
 	text-decoration : none;
 	color:#000;
 }
