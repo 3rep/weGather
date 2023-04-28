@@ -6,7 +6,6 @@
 <link href="${path}/static/style/register/loginChoose.css" rel="stylesheet" type="text/css" />
 
 
-
 <div class="loginChoose_container">
 	<br/>
 	<h1>로그인 선택</h1>
@@ -17,3 +16,4 @@
 		<a href="loginMan"><h2>매니저 로그인</h2></a>
 	</div>
 </div>
+

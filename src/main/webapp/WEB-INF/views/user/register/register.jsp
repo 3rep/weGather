@@ -5,7 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
-	
 	$(function(){
 		//아이디 중복검사
 		$("input[value=아이디중복검사]").click(function(){
@@ -21,11 +20,10 @@
 			$("#registerForm").attr("action","registerOk");
 			return true;
 		});
-		
-		
 	});
 
 </script>
+
 <div class="register_container">
 	
 	<h1>회원가입</h1>
@@ -61,7 +59,7 @@
 				<option value="041">041</option>
 				<option value="051">051</option>
 			</select>
-			<input type="text" name="tel2" id="tel2" maxlength="4"/>
+			<input type="text" name="tel2" id="tel2" maxlength="4" />
 			<input type="text" name="tel3" id="tel3" maxlength="4" />
 		</li>
 		<li>이메일</li>
@@ -73,13 +71,16 @@
 		<br/>
 		<li>
 			<input type="submit" value="회원가입" id="submit"/>
+
 		</li>
 		</ul>	
 		
 	</form>
+
 	<form >
 	<br/><br/>
 	<img src="static/img/futsal.jpeg" id="register_img">
+
 	</form>
 </div>
 

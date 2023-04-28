@@ -32,6 +32,7 @@
     /* Font size */
     --font-large: 54px;
     --font-medium: 40px;
+    --font-medium-two: 35px;
     --font-semi-medium: 30px;
     --font-regular: 26px;
     --font-small: 22px;
@@ -87,8 +88,14 @@
   
   h2 {
     font-size: var(--font-medium);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-bold);
     margin: 8px 0;
+  }
+  
+  h3 {
+  	font-size: var(--font-semi-medium);
+  	font-weight: var(--weight-bold);
+  	margin: 8px 0;
   }
   
   p {

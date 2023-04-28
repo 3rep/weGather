@@ -7,3 +7,32 @@
 	width: 1200px;
 	margin: 60px auto;
 }
+
+/* 경기 유형 설명 컨테이너*/
+.game_type_container.rank { /* 랭크 */
+	display: flex;
+	width: 1020px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px 0;
+	background-color: var(--color-blue);
+}
+
+.game_type_container.norm { /* 일반 */
+	display: flex;
+	width: 1020px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px 0;
+	background-color: var(--color-manager-middle-green);
+}
+
+/* 경기 유형 설명*/
+.game_type_desc {
+	text-align: center;
+	font-size: var(--font-regular);
+	font-weight: var(--weight-bold);
+	color: var(--color-white);
+}

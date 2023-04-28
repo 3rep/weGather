@@ -37,7 +37,6 @@
 	</servlet-mapping>
 	
 	<!-- include -->
-
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/user/*</url-pattern>
@@ -49,14 +48,19 @@
 			<url-pattern>/WEB-INF/views/admin/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/admin/adminNav.jspf</include-prelude>
 		</jsp-property-group>
-		<!-- 
-		<jsp-property-group>
+
+		<!-- <jsp-property-group>
+
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/manager/adminNav.jspf</include-prelude>
+		</jsp-property-group> -->
+
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
+			<include-prelude>/WEB-INF/views/mypage/allPage.jsp</include-prelude>
 		</jsp-property-group>
 		-->
 	</jsp-config>
-	
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
 	<filter>
@@ -77,5 +81,5 @@
 		<filter-name>SpringEncodeFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 </web-app>
