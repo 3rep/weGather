@@ -88,27 +88,47 @@ public class AdminController {
 			}
 			
 			//(관리자 페이지)회원 리스트
-			@GetMapping("admin/userList")
+			@GetMapping("/userList")
 			public ModelAndView loginList() {
 				ModelAndView mav = new ModelAndView();
 				
 				List<RegisterDTO> list = regservice.dataAllSelect();
 				
 				mav.addObject("list", list);
-				mav.setViewName("admin/userList");
+				mav.setViewName("admin/userList/userList");
 				
 				return mav;
 			}
 			//(관리자 페이지)회원정보 수정폼
-			@GetMapping("admin/userEdit/{userid}")
+			@GetMapping("/userEdit/{userid}")
 			public ModelAndView loginEdit(@PathVariable("userid") String userid) {
 				RegisterDTO dto = regservice.registerEdit(userid);
 				ModelAndView mav = new ModelAndView();
 				mav.addObject("dto", dto);
-				mav.setViewName("admin/userEdit");
+				mav.setViewName("admin/userList/userEdit");
 				return mav;
 			}
-
+			
+			//(관리자 페이지)회원활동내역
+			@GetMapping("/userLog/{userid}")
+			public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey) {
+				ModelAndView mav = new ModelAndView();
+				//UserLogDTO dto = regservice.userLogSelect(userid);
+				List<UserLogDTO> list = regservice.userLogSelect(userid);
+				List<UserLogDTO> listNorm = regservice.userLogNormSelect(userid);
+				
+				mav.addObject("userid", userid);
+				if(searchKey == null ||searchKey.equals("all")) {
+					mav.addObject("list", list);
+					mav.addObject("listNorm", listNorm);
+				}else if(searchKey.equals("rank_game")) {
+					mav.addObject("list", list);
+				}else if(searchKey.equals("norm_game")) {
+					mav.addObject("listNorm", listNorm);
+				}
+				mav.setViewName("admin/userList/userLog");
+				return mav;
+			}
 	// 醫낅ぉ 紐⑸줉
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
