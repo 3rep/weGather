@@ -58,11 +58,11 @@ public class MypageServiceImpl implements MypageService {
 		return dao.paymentList(username);
 	}
 
-	
+	@Override
+	public int infoEdit(MypageUserDTO dto) {
+		return dao.infoEdit(dto);
+	}
 
-	
-
-	
 
 
 	

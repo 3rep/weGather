@@ -54,8 +54,8 @@
   	</jsp-property-group>
 
 		<jsp-property-group>
-			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
-			<include-prelude>/WEB-INF/views/mypage/allPage.jsp</include-prelude>
+			<url-pattern>/WEB-INF/views/user/mypage/*</url-pattern>
+			<include-prelude>/WEB-INF/views/user/mypage/allPage.jsp</include-prelude>
 		</jsp-property-group>
 		
 	</jsp-config>
