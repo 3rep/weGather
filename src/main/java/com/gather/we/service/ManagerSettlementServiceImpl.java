@@ -16,23 +16,23 @@ public class ManagerSettlementServiceImpl implements ManagerSettlementService {
 	ManagerSettlementDAO dao;
 	
 	@Override
-	public List<ManagerSettlementDTO> mSettlementAllSelect(MSettlementCriteria mscriteria) {
-		return dao.getListWithPaging(mscriteria);
+	public List<ManagerSettlementDTO> mSettlementAllSelect(MSettlementCriteria mscriteria, String logId) {
+		return dao.getListWithPaging(mscriteria, logId);
 	}
 
 	@Override
-	public int getTotalCount(MSettlementCriteria mscriteria) {
-		return dao.getTotalCount(mscriteria);
+	public int getTotalCount(MSettlementCriteria mscriteria, String logId) {
+		return dao.getTotalCount(mscriteria, logId);
 	}
 
 	@Override
-	public int getTotalCompletedAmount() {
-		return dao.selectCompletedAmount();
+	public int getTotalCompletedAmount(String logId) {
+		return dao.selectCompletedAmount(logId);
 	}
 
 	@Override
-	public int getTotalInprogressAmount() {
-		return dao.selectInprogressAmount();
+	public int getTotalInprogressAmount(String logId) {
+		return dao.selectInprogressAmount(logId);
 	}
 
 }

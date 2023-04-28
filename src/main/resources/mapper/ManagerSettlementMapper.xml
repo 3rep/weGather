@@ -13,8 +13,7 @@
 	</select>
 	
 	<!-- 정산내역 페이징 -->
-	<select id="getListWithPaging" resultType="com.gather.we.dto.ManagerSettlementDTO">
-		
+	<select id="getListWithPaging" parameterType="com.gather.we.dto.MSettlementCriteria" resultType="com.gather.we.dto.ManagerSettlementDTO">
 			SELECT *
 			FROM (
 				  SELECT rownum rnum, t.*
@@ -24,39 +23,38 @@
 					  	INNER JOIN stadium_info s ON rg.st_no = s.st_no
 					    INNER JOIN m_settlement ms ON rg.no = ms.no
 				      WHERE 1=1
-				      <if test="keyword != null and keyword != ''"> 
-				        AND s.stadium LIKE '%' || #{keyword} || '%'			<!-- 키워드 검색 조건 -->
+				      	AND rg.managerid = #{logId}
+				      <if test="mscriteria.keyword != null and mscriteria.keyword != ''"> 
+				        AND s.stadium LIKE '%' || #{mscriteria.keyword} || '%'			<!-- 키워드 검색 조건 -->
 					  </if>
-					  <if test="datetime != null and datetime != ''">
-					    AND TO_DATE(rg.gametime, 'YY/MM/DD') = #{datetime}  <!-- 날짜 검색 조건 -->
+					  <if test="mscriteria.datetime != null and mscriteria.datetime != ''">
+					    AND TO_DATE(rg.gametime, 'YY/MM/DD') = #{mscriteria.datetime}  <!-- 날짜 검색 조건 -->
 					  </if>
-					  
 					  ORDER BY
 					  <choose>
-					    <when test="datetime != null and datetime != ''"> rg.gametime DESC </when>				<!-- 정산일 필터 -->
-					    <when test="dStatusOrder != null and dStatusOrder != ''"> ms.d_status DESC </when>		<!-- 입금상태 필터 -->
+					    <when test="mscriteria.datetime != null and mscriteria.datetime != ''"> rg.gametime DESC </when>				<!-- 정산일 필터 -->
+					    <when test="mscriteria.dStatusOrder != null and mscriteria.dStatusOrder != ''"> ms.d_status DESC </when>		<!-- 입금상태 필터 -->
 					    <otherwise> rg.gametime DESC </otherwise>												<!-- default 필터 -->
 					  </choose>
-					  
 			  	 ) t
-			  WHERE rownum <![CDATA[<=]]> ${pageNum * amount}
+			  WHERE rownum <![CDATA[<=]]> ${mscriteria.pageNum * mscriteria.amount}
 			)
-			WHERE rnum <![CDATA[>]]> ${(pageNum - 1) * amount }
-		
+			WHERE rnum <![CDATA[>]]> ${(mscriteria.pageNum - 1) * mscriteria.amount }
 	</select>
 	
 	<!-- 정산내역 총 개수 -->
-	<select id="getTotalCount" resultType="int">
+	<select id="getTotalCount" parameterType="com.gather.we.dto.MSettlementCriteria" resultType="int">
 		SELECT count(*)
 		FROM rank_game rg
 			INNER JOIN stadium_info s ON rg.st_no = s.st_no
 			INNER JOIN m_settlement ms ON rg.no = ms.no
 		WHERE 1=1
-		<if test="keyword != null and keyword !=''">
-			AND s.stadium LIKE '%'||#{keyword}||'%'
+			AND rg.managerid = #{logId} 
+		<if test="mscriteria.keyword != null and mscriteria.keyword !=''">
+			AND s.stadium LIKE '%'||#{mscriteria.keyword}||'%'
 		</if>
-		<if test="datetime != null and datetime !=''">
-			AND TO_DATE(rg.gametime, 'YY/MM/DD') = #{datetime}
+		<if test="mscriteria.datetime != null and mscriteria.datetime !=''">
+			AND TO_DATE(rg.gametime, 'YY/MM/DD') = #{mscriteria.datetime}
 		</if>
 	</select>
 	
@@ -67,6 +65,7 @@
 	        INNER JOIN stadium_info s ON rg.st_no = s.st_no
 	        INNER JOIN m_settlement ms ON rg.no = ms.no
 	    WHERE ms.d_status = 1 
+	    	AND rg.managerid = #{logId}	
 	</select>
 	
 	<!-- 정산내역-처리중합계 -->
@@ -75,6 +74,7 @@
 	    FROM rank_game rg
 	        INNER JOIN stadium_info s ON rg.st_no = s.st_no
 	        INNER JOIN m_settlement ms ON rg.no = ms.no
-	    WHERE ms.d_status = 0 
+	    WHERE ms.d_status = 0
+	    	AND rg.managerid = #{logId} 
 	</select>
 </mapper>
