@@ -160,8 +160,6 @@ public class AdminController {
 			}
 
 	// 종목 목록
-
-
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -389,8 +387,8 @@ public class AdminController {
 		return mav;
 	}
 	
-	// 경기 등록 페이지
-	@GetMapping("/rankgame/new")
+	// 경기 등록
+	@GetMapping("/game/new")
 	public ModelAndView rankGameNew() {
 		ModelAndView mav = new ModelAndView();
 		

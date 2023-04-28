@@ -6,8 +6,7 @@ body {
 
 .container {
 	width: 100%;
-	margin: 40px 60px;
-	position: relative;
+	margin: 40px 60px 40px 320px;
 }
 
 #page-title {
