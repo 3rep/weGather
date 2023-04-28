@@ -113,8 +113,12 @@
 					<div>${rankGameDetail.stadium}</div>
 				</li>
 				<li class="game_detail_sub">
+					<span class="game_detail_label">이용시간 |</span>
+					<span>${rankGameDetail.usetime}</span>				
+				</li>
+				<li class="game_detail_sub">
 					<span class="game_detail_label">종목 |</span>
-					<span class="game_detail_value">${rankGameDetail.sportname}</span>				
+					<span>${rankGameDetail.sportname}</span>				
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">매니저 |</span>

@@ -96,7 +96,8 @@
 				<div class="game_info_container">
 					<!-- 경기 날짜/시간 -->
 					<span class="game_time">
-						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${RankGameDTO.gametime}" />
+						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${RankGameDTO.gametime}" /><br/>
+						이용시간 : ${RankGameDTO.usetime}
 					</span>
 					<div class="game_info">
 						<!-- 구장 이름 -->

@@ -17,4 +17,8 @@
  	<select id="sportAllSelect" resultType="com.gather.we.dto.SportDTO">
 		select s_no, sportname, sportdesc, filename from sport
 	</select>
+	<select id="sportOneSelect" resultType="com.gather.we.dto.SportDTO">
+		select s_no, sportname, sportdesc, filename from sport
+		where s_no=${param1}
+	</select>
 </mapper>

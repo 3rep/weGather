@@ -37,6 +37,7 @@
 			<option value="여자만" <c:if test="${param.gendertype eq '여자만'}">selected</c:if>>여자만</option>
 		</select>
 		<input type="submit" value="필터 적용" class="btn-filter"/>
+		<a href="${path}/normgame/new?s_no=${s_no}" class="new_game">경기 개설</a>
 		<a href="${path}/normgame/sportlist" class="back_to_list">종목보기</a>
 	</form>
 	
@@ -83,7 +84,8 @@
 				<div class="game_info_container">
 					<!-- 경기 날짜/시간 -->
 					<span class="game_time">
-						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${NormGameDTO.gametime}" />
+						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${NormGameDTO.gametime}" /><br/>
+						이용시간 : ${NormGameDTO.usetime}
 					</span>
 					<div class="game_info">
 						<!-- 구장 이름 -->

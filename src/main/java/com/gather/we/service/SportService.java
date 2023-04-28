@@ -14,5 +14,6 @@ public interface SportService {
 	public int sportDelete(int no);
 	// 醫낅ぉ �쟾泥댁꽑�깮
 	public List<SportDTO> sportAllSelect();
-
+	// 스포츠 종목 하나 선택
+	public SportDTO sportOneSelect(int s_no);
 }

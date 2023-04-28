@@ -25,6 +25,31 @@ public class NormalGameServiceImpl implements NormalGameService {
 	public NormGameDetailDTO normGameDetailSelect(int no) {
 		return dao.normGameDetailSelect(no);
 	}
+
+	@Override
+	public List<NormGameDetailDTO> normGameDetailAllSelect() {
+		return dao.normGameDetailAllSelect();
+	}
+
+	@Override
+	public int normGameInsert(NormGameDTO dto) {
+		return dao.normGameInsert(dto);
+	}
+
+	@Override
+	public List<NormGameDetailDTO> newNormGameList(int st_no) {
+		return dao.newNormGameList(st_no);
+	}
+
+	@Override
+	public int normGameUpdate(NormGameDTO dto) {
+		return dao.normGameUpdate(dto);
+	}
+
+	@Override
+	public int normGameCountUp(int no) {
+		return dao.normGameCountUp(no);
+	}
 	
 	
 }

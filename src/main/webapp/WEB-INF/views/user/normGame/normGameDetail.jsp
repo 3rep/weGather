@@ -40,7 +40,7 @@
 <div class="game_header norm_game_header">
 	<span class="game_header_title">일반경기</span>
 </div>
-<div class="game_nav">종목선택 > 경기목록 > <b>경기상세정보</b></div>
+<div class="game_nav norm_game_nav">종목선택 > 경기목록 > <b>경기상세정보</b></div>
 
 <div class="game_container">
 	<div class="game_detail_container">
@@ -85,8 +85,12 @@
 					<div>${normGameDetail.stadium}</div>
 				</li>
 				<li class="game_detail_sub">
+					<span class="game_detail_label">이용시간 |</span>
+					<span>${normGameDetail.usetime}</span>				
+				</li>
+				<li class="game_detail_sub">
 					<span class="game_detail_label">종목 |</span>
-					<span class="game_detail_value">${normGameDetail.sportname}</span>				
+					<span>${normGameDetail.sportname}</span>				
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">최소 충족인원 |</span>
@@ -119,7 +123,7 @@
 	            	<button class="btn_apply close">인원마감</button>
 				</c:when>
 	         	<c:otherwise>
-	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply">참가신청</button>
+	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply_norm">참가신청</button>
 	         	</c:otherwise>
 	      	</c:choose>
 		</div>

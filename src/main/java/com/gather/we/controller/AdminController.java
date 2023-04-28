@@ -34,12 +34,15 @@ import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.AdminDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
+import com.gather.we.service.NormalGameService;
 import com.gather.we.service.RegisterService;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gather.we.dto.ManagerDTO;
+import com.gather.we.dto.NormGameDTO;
+import com.gather.we.dto.NormGameDetailDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
@@ -64,6 +67,8 @@ public class AdminController {
 	AdminService service;
 	@Autowired
 	RegisterService regservice;
+	@Autowired
+	NormalGameService normGameService;
 	
 	// 관리자 홈
 	@GetMapping("/")
@@ -241,7 +246,20 @@ public class AdminController {
 		return mav;
 	}
 	
-	// 랭크경기 등록
+	// 일반경기 목록
+	@GetMapping("/normgame/normgamelist")
+	public ModelAndView normGameList() {
+		ModelAndView mav = new ModelAndView();
+
+		List<NormGameDetailDTO> normGameList = normGameService.normGameDetailAllSelect();
+
+		mav.addObject("normGameList", normGameList);
+		mav.setViewName("admin/normGame/normGameList");
+
+		return mav;
+	}
+	
+	// 경기 등록 페이지
 	@GetMapping("/rankgame/new")
 	public ModelAndView rankGameNew() {
 		ModelAndView mav = new ModelAndView();
@@ -257,7 +275,7 @@ public class AdminController {
 	}
 	
 	// 랭크경기 등록(DB)
-	@PostMapping("/rankgame/newOk")
+	@PostMapping("/rankgame/ranknewOk")
 	public ResponseEntity<String> rankgameNewOk(RankGameDTO dto, HttpServletRequest request){
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -267,13 +285,38 @@ public class AdminController {
 			rankGameService.rankGameInsert(dto);
 			
 			// 랭크경기 목록으로 이동
-			String body = "<script> location.href='/admin/rankgame/rankgamelist';</script>";
+			String body = "<script> alert('랭크경기를 등록하였습니다.'); location.href='/admin/rankgame/rankgamelist';</script>";
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
 			// 랭크경기 등록 실패
 			e.printStackTrace();
 			String body = "<script>";
 			body += "alert('랭크경기 등록을 실패하였습니다.');";
+			body += "history.go(-1);";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	// 일반경기 등록(DB)
+	@PostMapping("/normgame/normnewOk")
+	public ResponseEntity<String> normgameNewOk(NormGameDTO dto, HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		try {
+			// 작성된 일반경기 내용을 DB에 저장
+			normGameService.normGameInsert(dto);
+
+			// 일반경기 목록으로 이동
+			String body = "<script> alert('일반경기를 등록하였습니다.'); location.href='/admin/normgame/normgamelist';</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			// 일반경기 등록 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('일반경기 등록을 실패하였습니다.');";
 			body += "history.go(-1);";
 			body += "</script>";
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
