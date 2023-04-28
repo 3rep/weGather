@@ -76,11 +76,11 @@ public class RegisterController {
 			session.setAttribute("adminlogStatus", "Y");
 			mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
-				System.out.println("로그인 실패");
-				mav.setViewName("redirect:login");	
+				//System.out.println("로그인 실패");
+				mav.addObject("msg", "회원등록실패하였습니다.");
+				mav.setViewName("user/register/registerOkResult");
 			}
 		}
-		
 		return mav;
 	}
 	//로그인한 경우 화면
@@ -113,6 +113,7 @@ public class RegisterController {
 		int result = service.registerInsert(dto);
 		
 		if(result>0) {//회원가입 성공시 - 로그인폼 이동
+			mav.addObject("msg", "회원등록에 성공하였습니다.");
 			mav.setViewName("redirect:login");
 		}else {//회원가입 실패시
 			mav.addObject("msg", "회원등록실패하였습니다.");

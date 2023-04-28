@@ -14,12 +14,13 @@
 }
 #logFrm{
 	text-align:center;
-	position:relative;
+	/* position:relative; */
 	left:25%;
 }
 #log_password{
 	width:600px;
 	height:40px;
+	text-align:center;
 }
 #log_LOGIN{
 	width:600px;
