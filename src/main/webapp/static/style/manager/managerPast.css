@@ -2,12 +2,21 @@
 
 .h1 {
 	style="font-size: 30px;
-	width:500px; 
+	width:300px; 
 	top: 100px; 
-	left:100px;
+	left:30px;
 	position:relative;
 	
-}
+}	 
+	 .box1{
+		position: relative;
+		top:120px;
+		left:-210px;
+		font-size:15px;
+		width: 200px;
+		}
+	
+
 .body {
   margin: 0;
   padding: 0;
@@ -18,9 +27,9 @@
   align-items: center; 
   font-family: Arial, sans-serif;
   position: relative;
-  right: 350px;
+  right: 420px;
   width:720px;
-  
+  top:200px;
 }
 
 .container {
@@ -29,15 +38,15 @@
   flex-wrap: wrap; 
   align-items: center;
   justify-content: center; */
-  height: 100%; /* 컨테이너 높이를 60%로 설정 */
+  height: 90%; /* 컨테이너 높이를 60%로 설정 */
   max-width: 2000px; /* 컨테이너 너비를 최대 1200px까지 제한 */
   position: relative;
   top:130px;
-  right: 450px;
+  right: 420px;
   width: 700px;
   display: flex; /* 세로 정렬을 위해 추가 */
   flex-direction: column; /* 세로 정렬을 위해 추가 */
- 
+ top:200px;
 }
 .sub-container-left {
  	position: relative;
@@ -47,14 +56,12 @@
 
 
 .box {
-  background-color: #FFFFFF;
- 
+  background: #F8F9FB;
   padding: 3px;
   margin: 5px;
-  
   flex-basis: calc(25% - 10px); /* 한 줄에 4개의 박스가 나오도록 flex-basis값을 설정 */
   max-width: 1100px; 
-  height: 120px; /* 박스 높이를 120px로 조절 */
+  height: 90px; /* 박스 높이를 120px로 조절 */
   width:600px;
   border-style: solid;
   border-width: 1px;
@@ -101,7 +108,7 @@
   font-size: 15px;
   align-self: flex-end;
   display:inline-block;
-  top: 0px;
+  top: -15px;
   right:-15px;
   border-color: #D1D9E2;
   border-style: solid;
@@ -133,7 +140,7 @@
   align-items: center;
   margin-top: 20px;
   align-self: center; 
-  right: 43px;
+  right: 45px;
   position:relative;
 }
 
@@ -181,4 +188,11 @@
 .pagingDiv ul li:last-child span {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.active{
+	 display: block; 
+  padding: 5px 10px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }

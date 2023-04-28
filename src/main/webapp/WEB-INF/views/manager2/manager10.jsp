@@ -15,23 +15,25 @@
 </style>
 </head>
  <body>
-  	<h1 style="font-size: 30px;">신청한 경기 내역</h1>
-  	<div>총레코드 수: ${vo.totalRecord }</div>
+  	<h1 style="font-size: 30px; position:relative; left:90px; top:50px;">신청한 경기 내역</h1>
+  		
+  		 <div class= "box1">
+  		 
+  		  <div>신청한 경기 수: ${vo.totalRecord }</div>
+		 <div>현재 페이지: ${vo.nowPage }/${vo.totalPage }</div> </div>
 		
-		<div>${vo.totalPage }/${vo.nowPage }</div>
-    <div class="container">
-        <div class="half-container image-container">
-            <img src="/static/img/soccer1.jpg">
-        </div>
+ 		   <div class="container">
+        		<div class="half-container image-container">
+            		<img src="/static/img/soccer1.jpg">
+        		</div>
          
-        <div class="half-container box-container">
-            <c:forEach items="${managerList}" var="manager" varStatus="status">       
+        		<div class="half-container box-container">
+            	   <c:forEach items="${managerList}" var="manager" varStatus="status">       
      	
                    
                     <div class="box" >
                         <div>
 	                       <div><b>${manager.stadium}</b></div>
-	                       <div>--------------------</div>
 	                       <div>${manager.location}</div>
 	                      <div>
   								<fmt:parseDate var="gametime" value="${manager.gametime}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -46,8 +48,8 @@
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
                                 <a href="${path}/manager2/entry" class="page-link" style="display: flex; flex-direction: column;">
-                                    <button class="grey" style="height:100%;">확정</button>
-                                    <button class="blue" style="height:100%;">명단확인</button>
+                                    <button class="grey" >확정</button>
+                                    <button class="blue">명단확인</button>
                                 </a>
                             </c:if>
                         </div>
@@ -59,7 +61,7 @@
 	<div class="pagingDiv">
 		<ul>
 			<c:if test="${vo.nowPage==1}">
-				<li>prev</li>
+				<li class="active">prev</li>
 			</c:if>
 			<c:if test="${vo.nowPage>1}">
 				<li><a href="/manager2/manager10/${managerid}?nowPage=${vo.nowPage-1 }">prev</a></li>
@@ -68,8 +70,8 @@
 				<c:if test="${ p<=vo.totalPage}"> <!-- 표시항 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  -->
 					<!-- 현재 페이지 표시하기 -->
 					<c:if test="${p==vo.nowPage }">
-						<li style="background:#ddd;">${p}</li>
-					   </c:if>
+   						 <li class="active" style="background:#ddd;">${p}</li>
+					</c:if>
 					   <c:if test="${p!=vo.nowPage }">
 						   <li>	<a href="/manager2/manager10?nowPage=${p }">${p }</a></li>
 					   </c:if>
@@ -83,7 +85,7 @@
 				<li><a href="/manager2/manager10?nowPage=${vo.nowPage + 1 }">next</a></li>
 			</c:if>
 			<c:if test="${vo.nowPage==vo.totalPage }">
-				<li>next</li>
+				<li class="active">next</li>
 			</c:if>
 		</ul>
 		
@@ -93,7 +95,7 @@
     </div>
         </div>
       
-        
+    
 	
 </body>
 

@@ -14,11 +14,12 @@
 </style>
 
 <body>
-  <h1 style="font-size: 30px; width:500px; top: 100px; left:60px;">활동내역 - 이전경기내역</h1>
+  <h1 style="font-size: 30px; position:relative; left:80px; top:30px; width:300px; ">이전경기내역</h1>
+  <div class= "box1">
+  	<div>참여 경기 수: ${vo.totalRecord }</div>
+  	<div>현재페이지: ${vo.nowPage }/${vo.totalPage }</div>
+  </div>
   
-  <div>총레코드 수: ${vo.totalRecord }</div>
-		
-		<div>${vo.totalPage }/${vo.nowPage }</div>
   <div class="container">
   
   
@@ -63,7 +64,7 @@
 	<div class="pagingDiv">
 		<ul>
 			<c:if test="${vo.nowPage==1}">
-				<li>prev</li>
+				<li class="active">prev</li>
 			</c:if>
 			<c:if test="${vo.nowPage>1}">
 				<li><a href="/manager2/managerPast?nowPage=${vo.nowPage-1 }">prev</a></li>
@@ -72,7 +73,7 @@
 				<c:if test="${ p<=vo.totalPage}"> <!-- 표시항 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  -->
 					<!-- 현재 페이지 표시하기 -->
 					<c:if test="${p==vo.nowPage }">
-						<li style="background:#ddd;">${p}</li>
+   						 <li class="active" style="background:#ddd;">${p}</li>
 					</c:if>
 					   <c:if test="${p!=vo.nowPage }">
 						   <li>	<a href="/manager2/managerPast?nowPage=${p }">${p }</a></li>
@@ -87,7 +88,7 @@
 				<li><a href="/manager2/managerPast?nowPage=${vo.nowPage + 1 }">next</a></li>
 			</c:if>
 			<c:if test="${vo.nowPage==vo.totalPage }">
-				<li>next</li>
+				<li class="active">next</li>
 			</c:if>
 		</ul>
 		

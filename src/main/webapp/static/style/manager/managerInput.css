@@ -6,7 +6,7 @@
     width: 700px; /* 너비 줄이기 */
     position:absolute;
     top:300px;
-    left:400px;
+    left:350px;
     background-color: #FFFFFF;
     border-color: #D1D9E2;
   }
@@ -75,17 +75,11 @@
   .submit-button {
   position: absolute;
   top: 105%;
-  right: 90px;
+  right: 45px;
  background-color: #28BD54;
  color: #FFFFFF;
 }
-  .modify-button {
-  position: absolute;
-  top: 105%;
-  right: 45px;
- background-color: #448FE4;
- color: #FFFFFF;
-}
+  
 .back-button {
   position: absolute;
   top: 105%;

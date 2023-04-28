@@ -17,5 +17,6 @@
 <a href="/manager2/managerPast">매니저이전내역</a>
 <a href="/manager2/entry">참가자 명단 확인</a>
 <a href="/manager2/managerInput">사용자 랭크 입력</a>
+<a href="/hobby/recommendation">취미 추천 페이지</a>
 </body>
 </html>

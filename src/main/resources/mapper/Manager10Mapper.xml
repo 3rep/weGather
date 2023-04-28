@@ -57,21 +57,18 @@
 
 
 	
-		<select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
-	SELECT username AS username, userid, rank, gender, tel
-	FROM users
+ <select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
+		SELECT userid AS  userid, rank, p_no
+		FROM r_participate
   </select>
 	
 	
 	<select id="getAllManagerInput" resultType="com.gather.we.dto.Manager10DTO">
-		SELECT username AS username, rank, userid
-	FROM users
+		SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username
+		FROM r_participate rp
+		JOIN users u ON rp.userid = u.userid
 	</select>
-	<update id="updateUserRankByUserId">
-  UPDATE users
-  SET rank = #{rank}
-  WHERE userid = #{userId}
-</update>
+	
 	
 	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
 	 
@@ -79,8 +76,13 @@
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.gametime > sysdate
-				
 	</select>
 	
+   <update id="updateRank">
+ 	 UPDATE r_participate
+  	SET rank = ${rank}
+  	WHERE userid = ${userid}
+</update>
+
 	
  </mapper> 

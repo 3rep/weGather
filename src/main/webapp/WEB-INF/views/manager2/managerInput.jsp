@@ -13,7 +13,7 @@
 </style>
 
 <body>
-  <h1 style="font-size: 30px;">사용자 랭크입력</h1>
+  <h1 style="font-size: 30px; position:relative; left:90px; top:50px;">사용자 랭크입력</h1>
   <div id="container">
 
     <table>
@@ -47,34 +47,40 @@
       </tbody>
     </table>
     <a href="${path}/manager2/managerPast" class="page-link">	
-    <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button></a>
-	<button class="modify-button">수정</button>
-    <button class="back-button">취소</button>
+    <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>
+	<button class="back-button">취소</button></a>
   </div>
 
 </body>
 <script>
-    const modifyButton = document.querySelector('.modify-button');
-    const submitButton = document.querySelector('.submit-button');
     
-    modifyButton.addEventListener('click', () => {
-      // 랭크 정보 수정 API 호  출
-      alert('랭크 정보를 수정했습니다.');
+  
+    $(document).ready(function() {
+        $('.submit-button').click(function() {
+            var managerList = [];
+            $('tbody tr').each(function() {
+                var managerInput = {};
+                managerInput['userid'] = $(this).find('td:eq(0)').text();
+                managerInput['rank'] = $(this).find('select.rank-filter').val();
+                managerList.push(managerInput);
+            });
+            $.ajax({
+                url: "/manager2/managerInput",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(managerList),
+                success: function(response) {
+                    alert("랭크를 입력했습니다.");
+                    window.location.href = "/manager2/managerPast";
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("랭크 입력에 실패했습니다.");
+                }
+            });
+        });
     });
+   
     
-    submitButton.addEventListener('click', () => {
-      // 랭크 정보 입력 API 호출
-      
-      // managerPast 페이지에서 해당 버튼을 회색으로 변경
-      const no = '${manager.managerid}';
-      const button = window.opener.document.querySelector(`[data-no="${no}"]`);
-      button.classList.remove('btn-green');
-      button.classList.add('btn-gray');
-      button.innerText = '완료';
-      
-      // 창 닫기
-      window.close();
-    });
     </script>
     
    

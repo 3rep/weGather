@@ -7,16 +7,16 @@ public class Manager10DTO {
 	    private String gametime;
 	    private int g_status;
 	    private String managerid;
-	    private int manager;
+	    
 	    
 	    private String id;
 	    private String username;
 	    private String gender;
-	    private int rank;
+	    private Integer rank;
 	    private int s_no;
 	    private String userid;
 	    private int tel;
-	    
+	    private int p_no;
 	   
 		private String rankFilter;
 	   
@@ -27,13 +27,14 @@ public class Manager10DTO {
 	    
 	    
 	    
+		
+		
 		@Override
 		public String toString() {
 			return "Manager10DTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
-					+ ", g_status=" + g_status + ", manager=" + manager + ", id=" + id
-					+ ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
-					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", managerid=" + managerid
-					+ "]";
+					+ ", g_status=" + g_status + ", managerid=" + managerid + ", id=" + id + ", username=" + username
+					+ ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no + ", userid=" + userid + ", tel=" + tel
+					+ ", p_no=" + p_no + ", rankFilter=" + rankFilter + "]";
 		}
 		public String getStadium() {
 			return stadium;
@@ -60,12 +61,7 @@ public class Manager10DTO {
 			this.g_status = g_status;
 		}
 		
-		public int getManager() {
-			return manager;
-		}
-		public void setManager(int manager) {
-			this.manager = manager;
-		}
+		
 		public String getId() {
 			return id;
 		}
@@ -84,10 +80,10 @@ public class Manager10DTO {
 		public void setGender(String gender) {
 			this.gender = gender;
 		}
-		public int getRank() {
+		public Integer getRank() {
 			return rank;
 		}
-		public void setRank(int rank) {
+		public void setRank(Integer rank) {
 			this.rank = rank;
 		}
 		public int getS_no() {
@@ -120,15 +116,26 @@ public class Manager10DTO {
 		public void setManagerid(String managerid) {
 			this.managerid = managerid;
 		}
-	    
-	    
-	    
+		public int getP_no() {
+			return p_no;
+		}
+		public void setP_no(int p_no) {
+			this.p_no = p_no;
+		}
 	    
 		
-	
-    
-    
-    
+	    
+		public boolean isValid() {
+	        return userid != null && !userid.isEmpty() && rank != null;
+	    }
+
+	    // null 대응 메서드 추가
+	    public void initialize() {
+	        if (rank == null) {
+	            rank = 0;
+	        }
+	    }
+   
     
   
     

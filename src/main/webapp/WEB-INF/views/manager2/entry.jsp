@@ -15,7 +15,7 @@
 </style>
   
  <body>
- <h1 style="font-size: 30px;">참가명단 확인</h1>
+ <h1 style="font-size: 30px; position:relative; left:90px; top:50px;">참가명단 확인</h1>
   <div id="container">
 
     <table>

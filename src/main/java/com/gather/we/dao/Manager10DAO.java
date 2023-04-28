@@ -1,7 +1,9 @@
 package com.gather.we.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.gather.we.dto.Manager10DTO;
 import com.gather.we.dto.PagingVO;
@@ -29,5 +31,7 @@ public interface Manager10DAO {
 	 
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 	
+	 public List<Manager10DTO> updateRank(String userid, int rank);
+
 	
 	}

@@ -1,9 +1,11 @@
 package com.gather.we.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.Manager10DAO;
@@ -96,4 +98,25 @@ public class Manager10ServiceImpl implements Manager10Service {
 		return dao.pageSelect(vo);
 	}
 
+
+
+
+
+	@Override
+	public List<Manager10DTO> updateRank(String userid, int rank) {
+		
+		return dao.updateRank(userid, rank);
+	}
+
+
+
+
+
+	
+
+
+
+
+
 }
+
