@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,23 +36,21 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/applyList") //post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
+	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
-		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-
-		List<MypageApplyListDTO> list = service.allgameList(logId);
-		//System.out.println("list->"+list);
+		MypageUserDTO dto = service.getUserinfo(logId);
 		
+		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
-		//System.out.println(now);
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/applyList");		
+		mav.setViewName("user/mypage/applyList");		
+			
 		return mav;
 	}
 	
@@ -62,7 +65,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/rankList");
+		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
@@ -77,7 +80,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/normList");
+		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
 	
@@ -95,11 +98,11 @@ public class MypageController {
 		//System.out.println("alll: "+dto.getAvg_all());
 		mav.addObject("list", list);
 		mav.addObject("dto", dto);
-		mav.setViewName("mypage/rank");
+		mav.setViewName("user/mypage/rank");
 		return mav;
 	}
 	
-	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
+	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
 		System.out.println(sportname);
@@ -126,24 +129,87 @@ public class MypageController {
 		return json;
 	}
 	
-	@GetMapping("mypage/paymentList")
+	@GetMapping("/mypage/paymentList")
 	public ModelAndView paymentList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		System.out.println(logName);
+		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
 		System.out.println("list: "+ list);
 		
+		
+		// unix 타임스탬프를 2023-04-12 형태로 변환하기
+		// 현재 Unix 타임스탬프 (밀리초) 가져오기
+		//long unixTimestamp = System.currentTimeMillis();
+
+		// Unix 타임스탬프를 Date 객체로 변환하기
+		//Date date = new Date(unixTimestamp);
+
+		// SimpleDateFormat을 사용하여 날짜와 시간 형식 지정하기
+		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//String formattedDate = formatter.format(date);
+
+		//System.out.println(formattedDate);
+		
+		
+		
+		
 		mav.addObject("list", list);
-		mav.setViewName("mypage/paymentList");
+		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
 	
-	@GetMapping("mypage/info")
-	public ModelAndView info() {
+	@GetMapping("/mypage/info")
+	public ModelAndView info(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/info");
+		
+		String logId = (String)session.getAttribute("logId");
+		MypageUserDTO dto = service.getUserinfo(logId);
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("user/mypage/info");
 		return mav;
 	}
+	
+	@PostMapping("mypage/infoEdit")
+	public ResponseEntity<String> infoEdit(MypageUserDTO dto, HttpSession session) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		//System.out.println("여기다 "+dto.getUserid());
+
+		try {
+			int cnt = service.infoEdit(dto);
+			//정보수정 성공
+			String body = "<script>";
+			body += "alert('회원정보 수정이 완료되었습니다.');";
+			body += "location.href='info';";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			//정보수정 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('회원정보 수정이 실패하였습니다.');";
+			body += "history.back();";
+			body += "</script>";
+			entity =  new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	/*
+	 * @PostMapping("mypage/infoEdit") public ModelAndView infoEdit(MypageUserDTO
+	 * dto, HttpSession session) { ModelAndView mav = new ModelAndView();
+	 * dto.setUserid((String)session.getAttribute("logId"));
+	 * System.out.println("여기다 "+dto.getUserid());
+	 * 
+	 * int cnt = service.infoEdit(dto); mav.setViewName("redirect:info"); return
+	 * mav; }
+	 */
+	
 }	

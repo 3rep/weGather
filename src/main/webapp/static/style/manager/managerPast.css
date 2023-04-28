@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+.h1 {
+	style="font-size: 30px;
+	width:300px; 
+	top: 100px; 
+	left:30px;
+	position:relative;
+	
+}	 
+	 .box1{
+		position: relative;
+		top:120px;
+		left:-210px;
+		font-size:15px;
+		width: 200px;
+		}
+	
+
+.body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  height: 450px;
+ /* justify-content: center;*/
+  align-items: center; 
+  font-family: Arial, sans-serif;
+  position: relative;
+  right: 420px;
+  width:720px;
+  top:200px;
+}
+
+.container {
+ background-color: #FFFFFF;
+ /* display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  justify-content: center; */
+  height: 90%; /* 컨테이너 높이를 60%로 설정 */
+  max-width: 2000px; /* 컨테이너 너비를 최대 1200px까지 제한 */
+  position: relative;
+  top:130px;
+  right: 420px;
+  width: 700px;
+  display: flex; /* 세로 정렬을 위해 추가 */
+  flex-direction: column; /* 세로 정렬을 위해 추가 */
+ top:200px;
+}
+.sub-container-left {
+ 	position: relative;
+ 	width:70%;
+ 	
+}
+
+
+.box {
+  background: #F8F9FB;
+  padding: 3px;
+  margin: 5px;
+  flex-basis: calc(25% - 10px); /* 한 줄에 4개의 박스가 나오도록 flex-basis값을 설정 */
+  max-width: 1100px; 
+  height: 90px; /* 박스 높이를 120px로 조절 */
+  width:600px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #D1D9E2;
+}
+
+.box-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+ 
+}
+
+
+.sub-container-right {
+  flex-direction; colume;
+  display: flex;
+  position: absolute;
+  color: #fff;
+  padding: 0 auto;
+  margin: 5px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+ 
+  position: relative; /* 버튼 위치를 absolute로 지정 */
+  left: 400px; /* 오른쪽에 위치하도록 지정 */
+  bottom: 70px; /* 하단에 위치하도록 지정 */
+   
+}
+
+.btn-green {
+  position: absolute;
+  background-color: #48CD5D;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  font-size: 15px;
+  align-self: flex-end;
+  display:inline-block;
+  top: -15px;
+  right:-15px;
+  border-color: #D1D9E2;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.btn-gray {
+  background-color: gray !important;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  height: 20px;
+  width: 150px;
+  align-self: flex-end;
+  border-color: #D1D9E2;
+  border-style: solid;
+  border-width: 1px;
+}
+  .pagination-container{
+
+	
+
+	}
+
+.pagingDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  align-self: center; 
+  right: 45px;
+  position:relative;
+}
+
+
+
+.pagingDiv ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.pagingDiv ul li {
+  margin: 0 5px;
+}
+
+.pagingDiv ul li a,
+.pagingDiv ul li span {
+  display: block;
+  padding: 5px 10px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  text-decoration: #ccc;
+}
+
+.pagingDiv ul li a:hover {
+  background-color: #ccc;
+}
+
+.pagingDiv ul li span {
+  background-color: #ccc;
+  pointer-events: #ccc;
+}
+
+.pagingDiv ul li:first-child a,
+.pagingDiv ul li:first-child span {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagingDiv ul li:last-child a,
+.pagingDiv ul li:last-child span {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.active{
+	 display: block; 
+  padding: 5px 10px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}

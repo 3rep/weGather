@@ -18,7 +18,10 @@
 		select s_no, sportname, sportdesc, filename from sport
 	</select>
 	<select id="sportOneSelect" resultType="com.gather.we.dto.SportDTO">
-		select s_no, sportname, sportdesc, filename from sport
-		where s_no=${param1}
+		select s_no, sportname, sportdesc, filename from sport where s_no=${s_no}
 	</select>
+	<update id="sportUpdate" parameterType="com.gather.we.dto.SportDTO">
+		update rank_game set sportname=#{sportname}, sportdesc=#{sportdesc}, filename=#{filename}
+		where s_no=${s_no}
+	</update>
 </mapper>

@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="${path}/static/style/register/register.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <script>
 	$(function(){
 		//아이디 중복검사
@@ -20,13 +23,15 @@
 	});
 
 </script>
-<div class="container2">
-	<br/>
-	<h1 style="color:#162888">회원가입</h1>
-	<br/>
-	<form class="register-form" method="post" id="registerForm">
+
+<div class="register_container">
+	
+	<h1>회원가입</h1>
+	
+	<form method="post" id="registerForm">
 		
 		<ul>
+			<br/>
 			<li>구분</li>
 			<li>
 				<input type="radio" name="type" value="user" checked/> 사용자
@@ -34,7 +39,7 @@
 			<li>아이디</li>
 			<li>
 				<input type="text" placeholder="아이디를 입력하세요..."name="userid" id="userid" minlength="4" maxlength="15" />
-				<input type="button" value="아이디중복검사" />
+				<input type="button" value="아이디중복검사" id="idCheck"/>
 				<input type="hidden" id="idStatus" value="N"/>
 			</li>
 			<li>비밀번호</li>
@@ -65,13 +70,17 @@
 		<li><input type="text" name="mbti" id="mbti"/>
 		<br/>
 		<li>
-			<input type="submit" value="회원가입"/>
+			<input type="submit" value="회원가입" id="submit"/>
+
 		</li>
 		</ul>	
 		
 	</form>
-	<form>
-	<img class="register-img" src="static/img/futsal.jpeg" >
+
+	<form >
+	<br/><br/>
+	<img src="static/img/futsal.jpeg" id="register_img">
+
 	</form>
 </div>
 

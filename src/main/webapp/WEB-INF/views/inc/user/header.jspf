@@ -21,6 +21,11 @@
 <link rel="stylesheet" href="${path}/static/style/register/login.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/register/register.css" type="text/css" />
 
+<link rel="stylesheet" href="${path}/static/style/user/mypage/allPage.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/applyList.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/rank.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/paymentList.css" type="text/css">
+<link rel="stylesheet" href="${path}/static/style/user/mypage/info.css" type="text/css">
 
 <link rel="stylesheet" href="${path}/static/style/user/game/gameCommon.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameHeader.css" type="text/css" />
@@ -36,7 +41,6 @@
 
 <body>
 <header>
-	
 <!-- sub Nav : 주메뉴 위에 출력되는 얇은 서브 메뉴바 -->
 <div class="nav-container1">
 	<nav class="navbar navbar-expand-lg">
@@ -46,6 +50,7 @@
     		</button>
 	    	<div class="collapse navbar-collapse justify-content-end">
 	    		<ul class="navbar-nav">
+
 	        		<c:if test="${logStatus!='Y' }">
 		        		<li class="nav-item">
 		          			<a class="nav-link" href="loginChoose">로그인</a>
@@ -62,12 +67,13 @@
 		          			<a class="nav-link" href="#">랭크자리</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">마이페이지</a>
+		          			<a class="nav-link" href="${path}/mypage/applyList">마이페이지</a>
 		        		</li>
 		        		<li>
-		        			<a class="nav-link" href="logout">로그아웃</a>
+		        			<a class="nav-link" href="${path}/logout">로그아웃</a>
 		        		</li>
 		        	</c:if>	
+
 	      		</ul>
 	    	</div>
 	  	</div>
@@ -79,12 +85,12 @@
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid" id="mainNav">
 			<c:if test="${logStatus=='Y' }">
-				<a class="navbar-brand" href="userHome">
+				<a class="navbar-brand" href="${path}/userHome">
 	     			 <img src="${path}/static/img/logo/logo 4.png" alt="Logo" id="nav-logo" style="width:250px;">
 	    	</a>
     	</c:if>
     	<c:if test="${logStatus!='Y' }">
-				<a class="navbar-brand" href="/">
+				<a class="navbar-brand" href="${path}/">
 	     			 <img src="${path}/static/img/logo/logo 4.png" alt="Logo" id="nav-logo" style="width:250px;">
 	    	</a>
     	</c:if>
@@ -103,9 +109,9 @@
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="#">취미추천</a>
 	        		</li>
-	        		<li class="nav-item">
+	        		<!-- <li class="nav-item">
 	          			<a class="nav-link" href="#">마이페이지</a>
-	        		</li>
+	        		</li> -->
 	        		<li class="nav-item dropdown">
 		          		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">커뮤니티</a>
 			          		<ul class="dropdown-menu">

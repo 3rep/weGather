@@ -32,6 +32,8 @@ public interface MypageService {
 	
 	//결제list
 	public List<MypagePaymentDTO> paymentList(String username);
-
+	
+	//회원정보수정(DB) 
+	public int infoEdit(MypageUserDTO dto);
 
 }

@@ -24,7 +24,9 @@ public class RankGameController {
 	@Autowired
 	RankGameService rankGameService;
 	
+
 	// 종목 목록
+
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -37,19 +39,22 @@ public class RankGameController {
 		return mav;
 	}
 	
-	// 랭크경기 목록
+	// �옲�겕寃쎄린 紐⑸줉
 	@GetMapping("/rankgamelist")
 	public ModelAndView rankGameList(RankGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
 
+
+
 		// 지역 필터링 시 DB에서 해당 지역의 경기만 선택하여 가져오기 위해 지역 카테고리를 세부 지역으로 나누어 리스트에 담는다.
 		String region = dto.getRegion();// '대전/세종/충청'
+
 		if(region!=null) {
-			List<String> regionList = Arrays.asList(region.split("/"));// ['대전', '세종', '충청']
+			List<String> regionList = Arrays.asList(region.split("/"));// ['���쟾', '�꽭醫�', '異⑹껌']
 			dto.setRegionList(regionList);
 		}
 		
-		// DB에서 랭크경기 목록 받아오기
+		// DB�뿉�꽌 �옲�겕寃쎄린 紐⑸줉 諛쏆븘�삤湲�
 		List<RankGameDTO> rankGameList = rankGameService.rankGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -59,13 +64,14 @@ public class RankGameController {
 		return mav;
 	}
 	
-	// 랭크경기 세부정보
+	// �옲�겕寃쎄린 �꽭遺��젙蹂�
 	@GetMapping("/detail")
 	public ModelAndView rankGameDetail(int no) {
 		ModelAndView mav = new ModelAndView();
 		
-		// DB에서 랭크경기 세부정보 받아오기
+		// DB�뿉�꽌 �옲�겕寃쎄린 �꽭遺��젙蹂� 諛쏆븘�삤湲�
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
+
 
 		mav.addObject("rankGameDetail", rankGameDetail);
 		mav.setViewName("user/rankGame/rankGameDetail");

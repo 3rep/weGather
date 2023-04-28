@@ -21,4 +21,6 @@ public interface NormalGameService {
 	public int normGameUpdate(NormGameDTO dto);
 	// 일반경기 개설 후 참여인원 증가
 	public int normGameCountUp(int no);
+	// 일반경기 현재인원수 업데이트
+	public int currPeopleCount(int no);
 }

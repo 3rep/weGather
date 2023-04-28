@@ -50,4 +50,9 @@
  	<update id="normGameCountUp">
  		update norm_game set curr_people = curr_people+1 where no=${param1}
  	</update>
+
+	<update id="currPeopleCount">
+		update norm_game set curr_people=curr_people+1 where no=${no}
+	</update>
+
 </mapper>

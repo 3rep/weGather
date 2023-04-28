@@ -50,8 +50,8 @@
 		update rank_game set curr_people=curr_people+1 where no=${no}
 	</update>
 	
-	 	<select id="adminRankGameAllSelect" resultType="com.gather.we.dto.AdminRankGameDTO">
-		select s.sportname, st.stadium, r.gametime, r.usetime, r.no, r.g_status, r.managerid
+ 	<select id="adminRankGameAllSelect" resultType="com.gather.we.dto.AdminRankGameDTO">
+		select s.sportname, st.stadium, r.gametime, r.no, r.g_status, r.managerid
 		from rank_game r
 		inner join sport s on r.s_no = s.s_no
 		inner join stadium_info st on r.st_no = st.st_no

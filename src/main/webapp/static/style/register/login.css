@@ -1,34 +1,49 @@
 @charset "UTF-8";
 
-#container-login{
-	display: block;
-	text-align: center;
+.login_container{
+	width:1200px;
+	height:600px;
+	margin:0 auto;
+	text-align:center;	
+}
+
+#log_id{
+	width:600px;
+	height:40px;
+	text-align:center;
 }
 #logFrm{
-	display: inline;
+	text-align:center;
+	position:relative;
+	left:25%;
 }
-#logFrm>ul li{
+#log_password{
+	width:600px;
+	height:40px;
+}
+#log_LOGIN{
+	width:600px;
+	height:40px;
+}
+#log_register{
+	width:600px; 
+	height:40px;
+	background-color:#ddd; 
 	margin: 0 auto;
 	padding: 0;
-	width: 600px;
-	height: 40px;
+	border:1px solid black;
+		
 }
-#login-img{
-	width: 600px;
-	height: 400px;
-	margin-top: 20px;
+#log_register a:link, a:visited, a:hover{
+	text-decoration : none;
+	color:#000;
 }
-#logFrm input{
-	margin-bottom:50px 0; width:90%;
+
+#log_img{
+	position:relative;
+	top:80%;
+	right:25%;
+	width:600px;
+	height:400px;
 }
-#logFrm li:nth-child(2n){
-	padding-bottom:30px;
-	margin : 0 auto;
-}
-.login-register{
-	background-color: gray;
-	width: 540px;
-	height: 40px;
-	display: inline-block;
-	
-}
+

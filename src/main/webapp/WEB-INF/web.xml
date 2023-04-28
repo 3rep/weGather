@@ -20,7 +20,6 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
 				/WEB-INF/spring/root-context.xml
@@ -48,16 +47,17 @@
 			<url-pattern>/WEB-INF/views/admin/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/admin/adminNav.jspf</include-prelude>
 		</jsp-property-group>
-		
-		<!-- <jsp-property-group>
+
+	  <jsp-property-group>
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
-			<include-prelude>/WEB-INF/views/inc/manager/adminNav.jspf</include-prelude>
-		</jsp-property-group> -->
+			<include-prelude>/WEB-INF/views/inc/managerNav.jspf</include-prelude>
+  	</jsp-property-group>
 
 		<jsp-property-group>
-			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
-			<include-prelude>/WEB-INF/views/mypage/allPage.jsp</include-prelude>
+			<url-pattern>/WEB-INF/views/user/mypage/*</url-pattern>
+			<include-prelude>/WEB-INF/views/user/mypage/allPage.jsp</include-prelude>
 		</jsp-property-group>
+		
 	</jsp-config>
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->

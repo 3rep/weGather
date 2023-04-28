@@ -3,6 +3,7 @@ package com.gather.we.dao;
 import java.util.List;
 
 import com.gather.we.dto.RegisterDTO;
+import com.gather.we.dto.UserLogDTO;
 
 public interface RegisterDAO {
 	//íšŒì›ê°€ì…
@@ -16,4 +17,8 @@ public interface RegisterDAO {
 	public RegisterDTO registerEdit(String userid);
 	//íšŒì›ì •ë³´ ìˆ˜ì • DB update
 	public int registerEditOk(RegisterDTO dto);
+	//È¸¿øÈ°µ¿³»¿ª ·©Å© °ÔÀÓ
+	public List<UserLogDTO> userLogSelect(String userid);
+	//È¸¿øÈ°µ¿³»¿ª ÀÏ¹İ °ÔÀÓ
+	public List<UserLogDTO> userLogNormSelect(String userid);
 }

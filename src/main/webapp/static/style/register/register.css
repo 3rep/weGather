@@ -1,47 +1,39 @@
 @charset "UTF-8";
 
-.container1{
+.register_container{
 	width:1200px;
-	margin:0 auto;
-	text-align:center;
-}
-.container2{
-	width:1200px;
+	height:700px;
 	margin:0 auto;
 }
-/*초기화*/
-body, ul, li{
-	padding:0;
-	margin:0; 
-	list-style-type:none;
+
+#register_img{
+	width:600px;
+	height:500px;
+	position:relative;
+	top:25%;
+	left: 10%;
+		
 }
-	
-.box1{
-	width:300px;
-	height:300px;
-	border-radius:5%;
+#idCheck{
+	height:40px;
+}
+form{
 	float:left;
-	background-color:#660066;
-	margin : 50;
-}	
-.box2{
-	width:300px;
-	height:300px;
-	border-radius:5%;
-	float:left;
-	background-color:#ddd;
-	margin : 50;
-	
-}	
-.box3{
-	width:300px;
-	height:300px;
-	border-radius:5%;
-	float:left;
-	background-color:#000080;
-	margin: 50;
-}	
-.register-form{display:inline-block;}
-	
-.register-img{float:left;}
-	
+}
+#userid{
+	width:370px;
+	height:40px;
+}
+#userpwd, #username, #email, #address, #mbti, #submit{
+	width: 500px;
+	height:40px;
+}
+#tel1{
+	width:50px;
+	height:40px;
+}
+#tel2, #tel3{
+	width:220px;
+	height:40px;
+}
+

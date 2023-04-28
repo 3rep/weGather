@@ -51,5 +51,9 @@ public class NormalGameServiceImpl implements NormalGameService {
 		return dao.normGameCountUp(no);
 	}
 	
-	
+  @Override
+	public int currPeopleCount(int no) {
+		return dao.currPeopleCount(no);
+	}
+  
 }

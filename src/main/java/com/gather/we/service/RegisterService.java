@@ -3,6 +3,7 @@ package com.gather.we.service;
 import java.util.List;
 
 import com.gather.we.dto.RegisterDTO;
+import com.gather.we.dto.UserLogDTO;
 public interface RegisterService {
 	//ì¶”ìƒë©”ì†Œë“œ
 	public RegisterDTO loginOk(String userid, String password);
@@ -14,4 +15,8 @@ public interface RegisterService {
 	public RegisterDTO registerEdit(String userid);
 	//íšŒì›ì •ë³´ ìˆ˜ì • DB update
 	public int registerEditOk(RegisterDTO dto);
+	//È¸¿øÈ°µ¿³»¿ª
+	public List<UserLogDTO> userLogSelect(String userid);
+	//È¸¿øÈ°µ¿³»¿ª ÀÏ¹İ °ÔÀÓ
+	public List<UserLogDTO> userLogNormSelect(String userid);
 }

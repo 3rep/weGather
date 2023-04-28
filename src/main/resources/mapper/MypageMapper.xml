@@ -20,6 +20,9 @@
 		    union
 		    select no, userid from n_participate np) participate
 		on game.no = participate.no and participate.userid = #{param1}
+			<!-- <if test="aplSelectedDate != null and aplSelectedDate !=''">
+				and game.gametime <![CDATA[<=]]> ${aplSelectedDate}
+			</if> -->
 		join sport s
 		on s.s_no = game.s_no
 		join stadium_info si
@@ -83,5 +86,9 @@
 		on game.no=parti.no
 		order by game.gametime desc
 	</select>
+	<update id="infoEdit">
+		update users set password=#{password}, email=#{email}, tel=#{tel}, address=#{address}, mbti=#{mbti}
+		where userid=#{userid}
+	</update>
 	
 </mapper>

@@ -5,9 +5,20 @@
 <!-- iamport 결제 API -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script>
-	const no = ${rankGameDetail.no};
+	const no = ${gameDetail.no};
 	const gametype = "${gametype}";
+	
+	$(document).ready(function(){ 
+		if(gametype=="rankgame") {
+			$('.btn-pay').addClass('rank');
+			$('.total_amount').addClass('rank');
+		} else if(gametype=='normgame') {	
+			$('.btn-pay').addClass('normal');
+			$('.total_amount').addClass('normal');
+		}
+  	});
 
+	// 결제 구현
 	var IMP = window.IMP;
 	IMP.init("가맹점 식별코드"); // 예: "imp00000000a"
 	
@@ -17,7 +28,7 @@
 	      pay_method: "card",
 	      merchant_uid: "game_"+new Date().getTime(),
 	      name: "WeGather_경기참여",
-	      amount: ${rankGameDetail.payment},
+	      amount: ${gameDetail.payment},
 	      buyer_email: "${participantInfo.email}",
 	      buyer_name: "${participantInfo.username}",
 	      buyer_tel: "${participantInfo.tel}",
@@ -28,6 +39,7 @@
 	    	  $.ajax({
 	    		  type:'POST',
 	    		  url:'/paymentOk',
+	    		  dataType: 'json',
 	    		  data: {
 	    			  no: no,
 	    			  gametype: gametype,
@@ -63,57 +75,66 @@
 			<li class="payment_info">
 				<span class="payment_label">경기유형</span>
 				<span>
-					<c:if test="${gametype eq 'rankgame'}">
-						랭크경기
-					</c:if>
+					<c:choose>
+						<c:when test="${gametype eq 'rankgame'}">
+			            	랭크경기
+						</c:when>
+			         	<c:when test="${gametype eq 'normgame'}">
+			            	일반경기
+			         	</c:when>
+			      	</c:choose>
 				</span>
 			</li>
 			<li class="payment_info">
 				<span class="payment_label">경기종목</span>
-				<span>${rankGameDetail.sportname}</span>
+				<span>${gameDetail.sportname}</span>
 			</li>
-			<li class="payment_info">
-				<span class="payment_label">매니저</span>
-				<span>${rankGameDetail.m_name}</span>
-			</li>
+			<c:if test="${gametype eq 'rankgame'}">
+				<li class="payment_info">
+					<span class="payment_label">매니저</span>
+					<span>${gameDetail.m_name}</span>
+				</li>				
+			</c:if>
 			<li class="payment_info">
 				<span class="payment_label">성별유형</span>
-				<span>${rankGameDetail.gendertype}</span>
+				<span>${gameDetail.gendertype}</span>
 			</li>
-			<li class="payment_info">
-				<span class="payment_label">요구랭크</span>
-				<span>
-					<c:set var="rank" value="${rankGameDetail.req_rank}"/>
-					<c:choose>
-						<c:when test="${rank==1}">
-			            	브론즈이상
-						</c:when>
-			         	<c:when test="${rank==2}">
-			            	실버이상
-			         	</c:when>
-			         	<c:when test="${rank==3}">
-			            	골드이상
-						</c:when>
-			         	<c:when test="${rank==4}">
-			            	플래티넘이상
-			         	</c:when>
-			         	<c:when test="${rank==5}">
-			            	다이아이상
-						</c:when>
-			         	<c:otherwise>
-			            	모든랭크
-			         	</c:otherwise>
-			      	</c:choose>
-		      	</span>
-			</li>
+			<c:if test="${gametype eq 'rankgame'}">
+				<li class="payment_info">
+					<span class="payment_label">요구랭크</span>
+					<span>
+						<c:set var="rank" value="${gameDetail.req_rank}"/>
+						<c:choose>
+							<c:when test="${rank==1}">
+				            	브론즈이상
+							</c:when>
+				         	<c:when test="${rank==2}">
+				            	실버이상
+				         	</c:when>
+				         	<c:when test="${rank==3}">
+				            	골드이상
+							</c:when>
+				         	<c:when test="${rank==4}">
+				            	플래티넘이상
+				         	</c:when>
+				         	<c:when test="${rank==5}">
+				            	다이아이상
+							</c:when>
+				         	<c:otherwise>
+				            	모든랭크
+				         	</c:otherwise>
+				      	</c:choose>
+			      	</span>
+				</li>
+			</c:if>
 			<li class="payment_info">
 				<span class="payment_label">경기일정</span>
-				<span><fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${rankGameDetail.gametime}" /></span>
+				<span><fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${gameDetail.gametime}" /></span>
 			</li>
 			<li class="payment_info">
 				<span class="payment_label">경기장소</span>
-				<span>${rankGameDetail.stadium}</span><br/>
-				<span class="stadium_location">(${rankGameDetail.location})</span>
+				<span>${gameDetail.stadium}</span><br/>
+				<span class="stadium_location">(${gameDetail.location})</span>
 			</li>
 		</ul>
 		<div>
@@ -140,11 +161,11 @@
 				<li class="title">결제 상세</li>
 				<li class="payment_info">
 					<span class="payment_label">경기 참가비</span>
-					<span class="amount">${rankGameDetail.payment}원</span>
+					<span class="amount">${gameDetail.payment}원</span>
 				</li>
 				<li class="payment_info total_amount">
 					<span class="payment_label">총 결제금액</span>
-					<span class="amount total">${rankGameDetail.payment}원</span>
+					<span class="amount total_amount">${gameDetail.payment}원</span>
 				</li>
 			</ul>
 			

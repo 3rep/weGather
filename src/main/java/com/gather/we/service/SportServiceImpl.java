@@ -13,7 +13,6 @@ import com.gather.we.dao.SportDAO;
 import com.gather.we.dto.SportDTO;
 
 @Service
-
 public class SportServiceImpl implements SportService {
 
 	@Inject
@@ -21,10 +20,10 @@ public class SportServiceImpl implements SportService {
 
 	@Override
 	public List<SportDTO> dataSelect() {
-		// TODO Auto-generated method stub
 		return dao.dataSelect();
 	}
-
+	
+	@Override
 	public int sportInsert(SportDTO dto) {
 		return dao.sportInsert(dto);
 	}
@@ -38,10 +37,15 @@ public class SportServiceImpl implements SportService {
 	public List<SportDTO> sportAllSelect() {
 		return dao.sportAllSelect();
 	}
-
+	
 	@Override
 	public SportDTO sportOneSelect(int s_no) {
 		return dao.sportOneSelect(s_no);
+	}
+
+	@Override
+	public int sportUpdate(SportDTO dto) {
+		return dao.sportUpdate(dto);
 	}
 
 }
