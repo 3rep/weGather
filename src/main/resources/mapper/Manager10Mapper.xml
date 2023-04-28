@@ -70,13 +70,7 @@
     </select>
 	
 	
-	
-	<update id="updateUserRankByUserId">
- 		 UPDATE users
-  		SET rank = #{rank}
-  		WHERE userid = #{userId}
-	</update>
-	
+
 	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
 	 
 		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
