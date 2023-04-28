@@ -1,7 +1,11 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 	<!-- 오른쪽 내용칸 -->
 	<div id="paymentListContent"> 
 		<h3 class="pmlh3">결제내역</h3>
@@ -28,7 +32,19 @@
 				    	<td >${list.payment_no }</td>
 				    	<td >${list.gametime }</td>
 				    	<td class="pmTd">${list.paid_amount }</td>
-				    	<td >${list.paid_at }</td>
+				    	
+				    	<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
+				    	<c:set var="paidTime" value="${list.paid_at}" />
+						<%
+						Long paid_at = (Long)pageContext.getAttribute("paidTime");
+							System.out.println("paid_at"+paid_at);						
+						Date mpPaid_at = new Date(paid_at*1000);
+							System.out.println("mpPaid_at"+mpPaid_at);						
+						pageContext.setAttribute("mpPaid_at", mpPaid_at );
+						
+						%>
+				    	<td ><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${mpPaid_at}"/></td>
+				    	
 				    	<c:if test="${list.success == 's'}">
 				    		<td class="pmTd">결제완료</td>
 				    	</c:if>

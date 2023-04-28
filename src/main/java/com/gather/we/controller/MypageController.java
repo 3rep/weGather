@@ -136,7 +136,24 @@ public class MypageController {
 		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
-		//System.out.println("list: "+ list);
+		System.out.println("list: "+ list);
+		
+		
+		// unix 타임스탬프를 2023-04-12 형태로 변환하기
+		// 현재 Unix 타임스탬프 (밀리초) 가져오기
+		//long unixTimestamp = System.currentTimeMillis();
+
+		// Unix 타임스탬프를 Date 객체로 변환하기
+		//Date date = new Date(unixTimestamp);
+
+		// SimpleDateFormat을 사용하여 날짜와 시간 형식 지정하기
+		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//String formattedDate = formatter.format(date);
+
+		//System.out.println(formattedDate);
+		
+		
+		
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/mypage/paymentList");

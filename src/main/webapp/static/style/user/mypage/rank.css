@@ -19,7 +19,7 @@
 .rView{
 	margin-top: 20px;
     margin-bottom: 5px;
-    background: #F8F8FF;
+    background: #FFFBF8;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 0 10px #ddd;
@@ -27,19 +27,20 @@
 }
 #avg_all{
 	display: inline-block;
-    background: #ddd;
+    background: white;
     margin-left: 57px;
     width: 150px;
     height: 45px;
     text-align: center;
-    margin-top: 6px;
+    margin-top: 10px;
     font-weight: bold;
+    border-radius: 15px;
     
 }
 .allRank{
-	background: #D3DAFF;
-    height: 60px;
-    line-height: 50px;
+	background: #FDE9DD;
+    height: 64px;
+    line-height: 43px;
     /* text-align: center; */
     width: 400px;
     display: inline-block;
@@ -52,7 +53,7 @@
 }
 .snRank {
 	margin-left: 256px;
-    background: #D3DAFF;
+    background: #FDE9DD;
     height: 100px;
     width: 400px;
     display: inline-block;
@@ -60,7 +61,7 @@
     /* text-align: center; */
     border-radius: 15px;
     padding-top: 12px;
-    padding-left: 55px;
+    padding-left: 47px;
 }
 #sportname{
     width: 120px;
@@ -69,16 +70,18 @@
     margin-top: 8px;
 }
 #avg_sn {
-    background: #ddd;
+    background: white;
     width: 150px;
     height: 45px;
     display: inline-block;
-    margin-left: 45px;
+    margin-left: 53px;
     margin-top: 15px;
     position: absolute;
     text-align: center;
-    line-height: 40px;
+    line-height: 45px;
     font-weight: bold;
+    border-radius: 15px;
+    
 }
 
 /*---- chart -------------*/
