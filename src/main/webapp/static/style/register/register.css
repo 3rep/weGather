@@ -61,7 +61,7 @@
     padding-left: 10px;
     border-radius: 15px;
 }
-#tel1{
+.register-li> #tel1{
 	width: 113px;
     height: 37px;
     margin-left: 10px;
@@ -71,22 +71,16 @@
     border-radius: 15px;
     text-align: center;
 }
-#tel2, #tel3{
+.register-li #tel2, 
+.register-li #tel3{
 	width: 150px;
     height: 37px;
-    background: white;
+    background: #F1F6FF;
     border: none;
     border-radius: 15px;
     text-align: center;
 }
 #register-ul>li>#submit{
-    /* width: 180px;
-    background: ghostwhite;
-    height: 50px;
-    line-height: 44px;
-    margin-left: 33px;
-    border-radius: 30px;
-    border: 2px solid #324DAA; */
     width: 180px;
     background: #09449D;
     height: 50px;

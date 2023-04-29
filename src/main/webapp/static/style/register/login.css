@@ -2,7 +2,7 @@
 
 .login_container{
 	width:1200px;
-	height:600px;
+	height:500px;
 	margin:0 auto;
 	margin-top: 100px;
 	text-align:center;	
@@ -86,12 +86,12 @@
 	text-decoration : none;
 	color:#000;
 }
-
+/* 
 #log_img{
 	position:relative;
 	top:80%;
 	right:25%;
 	width:600px;
 	height:400px;
-}
+} */
 
