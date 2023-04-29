@@ -86,8 +86,9 @@
 
 	
 <select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
-        SELECT userid AS  userid, rank, p_no
-        FROM r_participate
+       SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username, u.tel, u.gender
+        FROM r_participate rp
+        JOIN users u ON rp.userid = u.userid
   </select>
 
 

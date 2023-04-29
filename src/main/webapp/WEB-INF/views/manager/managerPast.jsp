@@ -8,6 +8,9 @@
 	<meta charset="UTF-8">
 	<title>활동내역</title>
 	<link href="${path}/static/style/manager/managerPast.css" rel="stylesheet" type="text/css" />
+<!--  	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">-->
 	</head>
 	<style>
 
@@ -49,8 +52,14 @@
 <fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${gametime}"/></p></div>
        
        	 <div class="sub-container-right" style="width: 40%;">
-        	 <a href="${path}/manager/managerInput" class="page-link">	
-     	   <button class="btn-green" data-no="${manager.managerid}">사용자 랭크 입력</button></a>
+       	
+        	
+     	    <a href="${path}/manager/managerInput" class="page-link">	
+     	   <button id="rank-btn" class="btn-green" data-no="${manager.managerid}">사용자 랭크 입력</button></a></button>
+     	   
+        
+      </button>
+     	   
      	 </div>
        </div>
       </div>
@@ -100,20 +109,25 @@
    
 
 </body>
+
 <script>
-//const buttons = document.querySelectorAll('.btn-green');
-//  buttons.forEach(button => {
-//  button.addEventListener('click', () => {
-//    const no = button.getAttribute('data-no');
-//    // 여기서 서버로 매니저의 랭크 입력 정보를 보내고, 성공적으로 처리되면 아래 코드 실행
-//    const targetButton = document.querySelector(`[data-no="${no}"]`);
-//    targetButton.classList.remove('btn-green');
-//    targetButton.classList.add('btn-gray');
-//    targetButton.innerText = '완료';
-    
-    
+//저장된 텍스트가 있으면 불러오기
+ const rankBtn = document.getElementById('rank-btn');
+
+  // 저장된 텍스트가 있으면 불러오기
+  const storedText = localStorage.getItem('rankBtnText');
+  if (storedText) {
+    rankBtn.textContent = storedText;
+  }
+
+  // 버튼 클릭시 텍스트 변경하고 저장
+  rankBtn.addEventListener('click', () => {
+    const newText = '수정하기';
+    rankBtn.textContent = newText;
+    localStorage.setItem('rankBtnText', newText);
+  });
+  </script>
   
-  
-</script>
+
 </html>
 

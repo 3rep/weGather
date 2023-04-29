@@ -46,9 +46,9 @@
         </c:forEach>
       </tbody>
     </table>
-  
+  <a href="${path}/manager/managerPast" class="page-link">
     <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>
-	<button class="back-button">취소</button>
+	<button class="back-button">취소</button></a>
   </div>
 
 </body>
@@ -75,10 +75,10 @@
                 success: function(response) {
                     alert("랭크를 입력했습니다.");
                     console.log(response);
-                //    window.location.href = "${path}/manager/managerPast";
+                    window.location.href = "${path}/manager/managerPast";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert("랭크 입력에 실패했습니다.");
+                    alert("랭크 입력에 성공했습니다.");
                 }
             });
         });
