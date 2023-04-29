@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+
+#recommend_header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 170px;
+	background: url("/static/img/recommend/recommend_header.jpg") no-repeat 50% 35% / cover;
+}
+
+#recommend_header:after { /* 헤더 사진 위에 약간 어두운 색을 덧씌워 header_title 글자가 더 잘 보이도록 함 */
+	display: block;
+	width: 100%;
+	height: 170px;
+	content: '';
+	background-color: var(--color-black);
+	opacity: 0.4;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#recommend_header .title {
+	font-size: var(--font-large);
+	font-weight: var(--weight-bold);
+	color: white;
+	z-index: 99;
+}
+
+#recommend_nav {
+	height: 140px;
+	background-color: var(--color-pink);
+	color: var(--color-white);
+	font-size: var(--font-small);
+	text-align: center;
+	line-height: 60px;
+}
+
+#recommend_nav .recommend_user {
+	display: flex;
+	justify-content: space-between;
+	width: 1000px;
+	color: var(--color-black);
+	background-color: var(--color-light-gray);
+	padding: 20px 60px;
+	margin: 0 auto;
+}
+
+#recommend_nav .recommend_user.login {
+	justify-content: space-between;
+}
+
+#recommend_nav .recommend_user.non_login {
+	flex-direction: column;
+}
+
+#recommend_container {
+	width: 1200px;
+	margin: 60px auto;
+}
+
+#recommend_container .title-filter-wrap {
+	display: flex;
+	align-items: center;
+	margin-left: 100px;
+	margin-bottom: 24px;
+}
+
+#recommend_container .btn-filter {
+	display: flex;
+	margin-left: 20px;
+	border: none;
+	outline: none;
+	padding: 4px 16px;
+	border-radius: 8px;
+	font-size: var(--font-small);
+}
+
+#recommend_container .recommend_content {
+	width: 1000px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+}
+
+#recommend_container .mbti_result {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-light-gray);
+	border-radius: 12px;
+	border: 1px solid var(--color-gray);
+}
+
+#recommend_container .mbti_list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background-color: var(--color-light-gray);
+	padding: 40px;
+	padding-bottom: 0;
+	border-radius: 12px;
+	border: 1px solid var(--color-gray);
+}
+
+#recommend_container .mbti_item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	background-color: var(--color-white);
+	border-radius: 12px;
+	margin-bottom: 40px;
+}
+
+#recommend_container .mbti_type {
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+	margin-bottom: 8px;
+}

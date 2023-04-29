@@ -33,8 +33,13 @@
 <link rel="stylesheet" href="${path}/static/style/user/game/gameList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameDetail.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameNew.css" type="text/css" />
+
 <link rel="stylesheet" href="${path}/static/style/user/payment/payment.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/payment/paymentDone.css" type="text/css" />
+
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommend.css" type="text/css" />
+
+
 
 
 </head>
