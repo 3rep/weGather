@@ -59,10 +59,10 @@
 						경기확정 : g_status=1
 						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우    -->
 				        <c:if test="${list.g_status==2}">	
-				        	<td>경기취소</td>
+				        	<td class="aplStatus">경기취소</td>
 				        </c:if>
 				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
-				        	<td>신청완료/신청취소</td>
+				        	<td class="aplStatus" >신청완료(취소)</td>
 				        </c:if>
 				        
 				        <c:if test="${list.g_status==1 && list.gametime<now }">	

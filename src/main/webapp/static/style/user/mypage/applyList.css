@@ -148,9 +148,12 @@
  	width: 200px;
  }
 #aplThTr>#aplStadium{
-	width: 380px;
+	width: 370px;
 }  
 
  #aplThTr>#aplStatus{
- 	width: 150px;
+ 	width: 190px;
+ }
+ .aplStatus{
+ 	font-style: italic;
  }

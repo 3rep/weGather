@@ -17,35 +17,35 @@
 			
 		<!-- 테이블 -------------------------------------------------------->
 		<table id="aplTable">
-		    <thead>
-		    <tr>
+		    <thead id="aplThead">
+		    <tr id="aplThTr">
 		    	<th class="aplTh">유형</th>
 		        <th class="aplTh">종목</th>
-		        <th>날짜</th>
-		        <th>경기명(구장명)</th>
-		        <th class="aplTh">상태</th>
+		        <th id="aplDate">날짜</th>
+		        <th id="aplStadium">경기명(구장명)</th>
+		        <th id="aplStatus" >상태</th>
 		    </tr>
 		    </thead>
-		    <tbody class="aplTb">
+		    <tbody class="aplTbody">
 			    <c:forEach var="list" items="${list }">
-				    <tr>
+				    <tr id="aplTbTr" >
 				    	<td class="ng">일반</td>
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td><a href="">${list.stadium }</a></td>
 				       
 				        <c:if test="${list.g_status==2}">	
-				        	<td>경기취소</td>
+				        	<td class="aplStatus">경기취소</td>
 				        </c:if>
 				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
-				        	<td>신청완료/신청취소</td>
+				        	<td class="aplStatus" >신청완료(취소)</td>
 				        </c:if>
 				        
 				        <c:if test="${list.g_status==1 && list.gametime<now }">	
-				        	<td>경기종료</td>
+				        	<td class="aplStatus">경기종료</td>
 				        </c:if>
 				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
-				        	<td>경기확정</td>
+				        	<td class="aplStatus">경기확정</td>
 				        </c:if>
 				    </tr>
 			    </c:forEach>
