@@ -64,7 +64,7 @@
 				<li class="active">prev</li>
 			</c:if>
 			<c:if test="${vo.nowPage>1}">
-				<li><a href="/manager/manager10/${managerid}?nowPage=${vo.nowPage-1 }">prev</a></li>
+				<li><a href="${path }/manager/manager10/${managerid}?nowPage=${vo.nowPage-1 }">prev</a></li>
 			</c:if>
 			<c:forEach var="p" begin="${vo.startPageNum}" end="${vo.startPageNum+vo.onePageNumCount-1 }">
 				<c:if test="${ p<=vo.totalPage}"> <!-- 표시항 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  -->
@@ -73,7 +73,7 @@
    						 <li class="active" style="background:#ddd;">${p}</li>
 					</c:if>
 					   <c:if test="${p!=vo.nowPage }">
-						   <li>	<a href="/manager/manager10?nowPage=${p }">${p }</a></li>
+						   <li>	<a href="${path }/manager/manager10?nowPage=${p }">${p }</a></li>
 					   </c:if>
 					
 				</c:if>
@@ -82,7 +82,7 @@
 			
 			<!--다음 페이지-->
 			<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
-				<li><a href="/manager/manager10?nowPage=${vo.nowPage + 1 }">next</a></li>
+				<li><a href="${path }/manager/manager10?nowPage=${vo.nowPage + 1 }">next</a></li>
 			</c:if>
 			<c:if test="${vo.nowPage==vo.totalPage }">
 				<li class="active">next</li>
