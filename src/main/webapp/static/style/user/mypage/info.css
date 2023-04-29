@@ -32,7 +32,7 @@
 }
 #infoUl>li>input{
 	height: 40px;
-	background: aliceblue;
+	background: #F8F8F9;
     border: none;
     width: 500px;
 }
@@ -58,12 +58,12 @@
 	text-align: center;
     line-height: 50px;
     font-weight: 600;
-    background: #D9EEFF; /*#C3D8FE;*/
+    background: #EEEFFB; /*#C3D8FE;*/
     border-radius: 15px;
 }
 #infoUl>li:nth-child(2n){
 	flex: 1 1 70%;
-	background: #F1F7FC; /*aliceblue*/
+	background: #F8F8F9; /*aliceblue*/
 	padding-top: 4px;
     padding-left: 25px;
     border-radius: 15px;

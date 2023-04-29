@@ -5,13 +5,11 @@
 
 	<form method="post" action="loginOk" id="logFrm">
 		<ul>
-			<li>아이디</li>
-			<li><input type="text" name="id" id="log_id"/></li>
-			<li>비밀번호</li>
-			<li><input type="password" name="password" id="log_password"/></li>
-			<br/>
-			<li><input type="submit" value="LOGIN" id="log_LOGIN"/></li>
-			<br/>
+			<li class="logFrm">아이디</li>
+			<li class="logFrm"><input type="text" name="id" id="log_id"/></li>
+			<li class="logFrm">비밀번호</li>
+			<li class="logFrm"><input type="password" name="password" id="log_password"/></li>
+			<li id="log_LOGIN" ><input type="submit" value="LOGIN" /></li>
 			<li id="log_register"><a href="register" >회원가입</a></li>
 		</ul>
 	</form>

@@ -7,7 +7,7 @@
 		<h3 class="aplh3">신청경기</h3>
 		<hr/>
 		<div class="aplBtn">
-			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전체</button>
+			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전 체</button>
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
 			<form id="aplSelect" method="get" action="applyList">
