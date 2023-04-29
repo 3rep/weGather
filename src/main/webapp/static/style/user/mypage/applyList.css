@@ -126,6 +126,8 @@
 	display: inline-block;
 	margin-top: 12px;
 	width: 915px;
+	/* overflow-y: scroll;   	페이징 하자*/
+ 	overflow-y: clip; 
 }
 #aplTable td,
 #aplTable th{
@@ -141,8 +143,13 @@
 	color: white;
 	font-weight: 500;
 }
+#aplTbody{
+	    box-shadow: 0px 0px 2px rgba(0,0,0,.25);
+	
+	
+}
 #aplThTr .aplTh{
-	width: 110px; 
+	width: 120px; 
 }
 #aplThTr>#aplDate{
  	width: 200px;
@@ -151,9 +158,26 @@
 	width: 370px;
 }  
 
- #aplThTr>#aplStatus{
+#aplThTr>#aplStatus{
  	width: 190px;
- }
- .aplStatus{
+}
+.aplLink{
+	font-weight: 600;
+	color: #343230; /*색상 변경하기*/
+} 
+.aplStatus{
  	font-style: italic;
  }
+#aplTbTr .rg{
+	background: #FFDDC9;
+	font-weight: 600 ;
+	font-size: 18px;
+	color: #525150;
+	
+}
+#aplTbTr .ng{
+	background: #D4E5FF;
+	font-weight: 600;
+	font-size: 18px;
+	color: #525150;
+} 

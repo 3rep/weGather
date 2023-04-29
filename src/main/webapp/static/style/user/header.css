@@ -7,7 +7,7 @@ header {
 
 .nav-container1{
 	width:100%;
-	background: var(--color-dark-yellow);
+	background: var(--color-yellow) /* var(--color-dark-yellow) */;
 }
 
 .nav-container2{
@@ -34,7 +34,7 @@ header {
 }
 
 #subNav { /* 보조메뉴를 포함한 서브 내비게이션 스타일 */
-	background: var(--color-dark-yellow);
+	background: var(--color-yellow) /* var(--color-dark-yellow); */
 	font-size: var(--font-micro);
 	font-weight: var(--weight-regular);
 }

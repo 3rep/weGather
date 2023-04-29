@@ -119,7 +119,7 @@ public class MypageController {
 	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
-		System.out.println(sportname);
+		//System.out.println(sportname);
 		String logId = (String)session.getAttribute("logId");
 
 		List<MypageRankDTO> list = service.rank(logId, sportname);
@@ -150,7 +150,7 @@ public class MypageController {
 		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
-		System.out.println("list: "+ list);
+		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/mypage/paymentList");
