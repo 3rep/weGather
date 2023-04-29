@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<script>
+	$(function(){
+		var logId = '<%=(String)session.getAttribute("logId")%>';
+
+        if(logId=="null"){ 
+        	$(".recommend_user.non_login").addClass("active");
+        	$(".recommend_content.non_login").addClass("active");
+        } else {
+        	$(".recommend_user.login").addClass("active");
+        	$(".recommend_content.login").addClass("active");
+        }
+	});
+</script>
+
 <div id="recommend_header">
 	<span class="title">스포츠 추천</span>
 </div>
@@ -44,7 +58,7 @@
 		<button class="btn-filter">MBTI</button>
 		<button class="btn-filter">나이/성별</button>
 	</div>
-	<div class="recommend_content">
+	<div class="recommend_content non_login">
 		<div class="mbti_result">
 			<div>ESFJ</div>
 			<div>
@@ -65,7 +79,7 @@
 		</div>
 		<div><a href="/login">로그인</a>하시면 모든 MBTI의 추천 결과를 한눈에 볼 수 있습니다</div>
 	</div>
-	<div class="recommend_content">
+	<div class="recommend_content login">
 		<ul class="mbti_list">
 			<c:forEach var="mbtiType" items="${mbtiList}">
 				<li class="mbti_item">

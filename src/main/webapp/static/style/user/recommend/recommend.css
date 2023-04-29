@@ -39,7 +39,7 @@
 }
 
 #recommend_nav .recommend_user {
-	display: flex;
+	display: none;
 	justify-content: space-between;
 	width: 1000px;
 	color: var(--color-black);
@@ -48,11 +48,13 @@
 	margin: 0 auto;
 }
 
-#recommend_nav .recommend_user.login {
+#recommend_nav .recommend_user.login.active {
+	display: flex;
 	justify-content: space-between;
 }
 
-#recommend_nav .recommend_user.non_login {
+#recommend_nav .recommend_user.non_login.active {
+	display: flex;
 	flex-direction: column;
 }
 
@@ -80,11 +82,20 @@
 
 #recommend_container .recommend_content {
 	width: 1000px;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
 }
+
+#recommend_container .recommend_content.login.active {
+	display: flex;
+}
+
+#recommend_container .recommend_content.non_login.active {
+	display: flex;
+}
+
 
 #recommend_container .mbti_result {
 	width: 100%;
