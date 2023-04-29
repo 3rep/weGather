@@ -20,8 +20,7 @@ public class MypageApplyListDTO {
 	private Date gt2ago; //경기날짜 이틀전
 	
 	//날짜 필터링
-	private String aplSelectedDate; //달력에서 선택한 값
-	
+	private String aplSelectedDate; 
 	
 	
 

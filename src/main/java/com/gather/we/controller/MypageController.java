@@ -40,9 +40,9 @@ public class MypageController {
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
+		
 		//userid가 logId인지 확인
 		String logId = (String)session.getAttribute("logId");
-		MypageUserDTO dto = service.getUserinfo(logId);
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
@@ -90,15 +90,29 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageRankDTO> list = service.rankResult(logId);
+
+		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		try { //rank가 있는 경우
 		
-		MypageRankDTO dto = new MypageRankDTO();
-		dto.setAvg_all(list.get(0).getAvg_all());
+			MypageRankDTO dto = new MypageRankDTO();
+			//System.out.println("dto->"+dto);
+			dto.setAvg_all(list.get(0).getAvg_all());
 			
-		//System.out.println("list--->: "+ list);
-		//System.out.println("alll: "+dto.getAvg_all());
-		mav.addObject("list", list);
-		mav.addObject("dto", dto);
-		mav.setViewName("user/mypage/rank");
+			//System.out.println("list--->: "+ list);
+			//System.out.println("alll: "+dto.getAvg_all());
+			
+			mav.addObject("list", list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+			
+		}catch(Exception e){ //rank가 없는 경우
+			MypageRankDTO dto = new MypageRankDTO();
+			
+			mav.addObject("list",list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+		}
+		
 		return mav;
 	}
 	
@@ -137,23 +151,6 @@ public class MypageController {
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
 		System.out.println("list: "+ list);
-		
-		
-		// unix 타임스탬프를 2023-04-12 형태로 변환하기
-		// 현재 Unix 타임스탬프 (밀리초) 가져오기
-		//long unixTimestamp = System.currentTimeMillis();
-
-		// Unix 타임스탬프를 Date 객체로 변환하기
-		//Date date = new Date(unixTimestamp);
-
-		// SimpleDateFormat을 사용하여 날짜와 시간 형식 지정하기
-		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//String formattedDate = formatter.format(date);
-
-		//System.out.println(formattedDate);
-		
-		
-		
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/mypage/paymentList");
@@ -201,15 +198,5 @@ public class MypageController {
 		}
 		return entity;
 	}
-	
-	/*
-	 * @PostMapping("mypage/infoEdit") public ModelAndView infoEdit(MypageUserDTO
-	 * dto, HttpSession session) { ModelAndView mav = new ModelAndView();
-	 * dto.setUserid((String)session.getAttribute("logId"));
-	 * System.out.println("여기다 "+dto.getUserid());
-	 * 
-	 * int cnt = service.infoEdit(dto); mav.setViewName("redirect:info"); return
-	 * mav; }
-	 */
 	
 }	

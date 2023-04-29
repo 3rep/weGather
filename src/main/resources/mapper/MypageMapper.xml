@@ -20,8 +20,8 @@
 		    union
 		    select no, userid from n_participate np) participate
 		on game.no = participate.no and participate.userid = #{param1}
-			<!-- <if test="aplSelectedDate != null and aplSelectedDate !=''">
-				and game.gametime <![CDATA[<=]]> ${aplSelectedDate}
+			<!-- <if test='aplSelectedDate != null and aplSelectedDate !="" '>
+				and to_date(game.gametime) <![CDATA[<=]]> #{aplSelectedDate}
 			</if> -->
 		join sport s
 		on s.s_no = game.s_no
@@ -72,7 +72,7 @@
 		on s.s_no = rg.s_no
 	</select>
 	<select id="paymentList" resultType="com.gather.we.dto.MypagePaymentDTO">
-		select parti.no, parti.userid, u.username, to_char(game.gametime, 'yyyy-MM-dd HH:MI') gametime, up.payment_no, up.paid_at, up.paid_amount, up.success
+		select parti.no, parti.userid, u.username, to_char(game.gametime, 'yyyy-MM-dd HH24:MI') gametime, up.payment_no, up.paid_at, up.paid_amount, up.success
 		from user_pay up
 		join 
 		    (select no, userid, payment_no from r_participate rp
