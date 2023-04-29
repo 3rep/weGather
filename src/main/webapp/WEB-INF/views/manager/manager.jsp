@@ -89,7 +89,6 @@
 	</form>
 	
 	<form >
-		<br/>
 		<img src="static/img/manager.jpg" id="manager_img" >
 	</form>
 	 
