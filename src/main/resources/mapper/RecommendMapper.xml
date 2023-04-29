@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gather.we.dao.RecommendDAO">
+ 	<select id="sportStatisticsSelect" resultType="com.gather.we.dto.RecommendDTO">
+		select mbti, sportname, sport_ratio
+		from (
+		    select u.mbti, s.sportname, round(RATIO_TO_REPORT(count(s.sportname)) over()*100) || '%' as sport_ratio
+		    from (
+		        select userid, s_no
+		        from r_participate rp
+		        inner join rank_game r on rp.no=r.no
+		        union all
+		        select userid, s_no
+		        from n_participate np
+		        inner join norm_game n on np.no=n.no
+		        ) game
+		    inner join users u on u.userid=game.userid
+		    inner join sport s on s.s_no=game.s_no
+		    where u.mbti=#{mbtiType}
+		    group by u.mbti, s.sportname
+		    order by s.sportname desc
+		    )
+		where rownum <![CDATA[<=]]> 3
+	</select>
+</mapper>
