@@ -12,7 +12,7 @@ public class Manager10DTO {
 	    private String id;
 	    private String username;
 	    private String gender;
-	    private int rank;
+	    private Integer rank;
 	    private int s_no;
 	    private String userid;
 	    private int tel;
@@ -84,10 +84,10 @@ public class Manager10DTO {
 		public void setGender(String gender) {
 			this.gender = gender;
 		}
-		public int getRank() {
+		public Integer getRank() {
 			return rank;
 		}
-		public void setRank(int rank) {
+		public void setRank(Integer rank) {
 			this.rank = rank;
 		}
 		public int getS_no() {

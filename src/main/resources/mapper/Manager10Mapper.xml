@@ -3,38 +3,66 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.Manager10DAO">
-	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
+<!--  	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
   
     SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
     FROM rank_game  
     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
    
-</select>
+</select> -->
 
 
  
-  <select id="totalRecord" resultType="int">
-     SELECT COUNT(no) totalRecord 
+  <select id="getTotalRecordByManagerid" resultType="int">
+     SELECT COUNT(rank_game.st_no)  
      FROM rank_game 
      JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
-   <!--   WHERE rank_game.managerid (parameterType="string" 붙여야함.) -->
+     WHERE rank_game.managerid = #{managerid}
 </select>
 
+<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
+	  select * from 
+ 			(select * from 
+ 				( 
+		SELECT rank_game.st_no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
+		FROM rank_game  
+		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+		WHERE rank_game.managerid = #{managerid} 
+		And rank_game.gametime > sysdate
+				
+				 ) <![CDATA[
+ 				 where rownum<=${onePageRecord*nowPage} order by st_no asc 
+ 				 ]]>
+ 				 )
+ 		<choose>
+		  <when test="nowPage!=totalPage"> 		
+ 	   		 	<![CDATA[
+ 			 	where rownum<=${onePageRecord} order by st_no desc
+ 			 	]]>
+ 		 
+ 		  </when>
+ 		  <when test="nowPage==totalPage">	
+ 			   <![CDATA[
+ 		 		where rownum<=${onePageRecord} order by st_no desc
+ 		 		]]>
+ 	  	  </when>
+ 		</choose>  
+	</select>
 
 
  	<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
    
        select * from 
  			(select * from 
- 				(
+ 				( 
  				 					      
      select rank_game.s_no, rank_game.no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
     from rank_game
-    join stadium_info on stadium_info.st_no = rank_game.st_no order by rank_game.no desc
-   
- 					
- 			)
- 			 <![CDATA[
+    join stadium_info on stadium_info.st_no = rank_game.st_no 
+    WHERE rank_game.managerid = #{managerid}
+ 	order by rank_game.no desc				
+ 			
+ 			 ) <![CDATA[
  				 where rownum<=${onePageRecord*nowPage} order by no asc 
  				 ]]>
  				 )
@@ -50,7 +78,7 @@
  		 		where rownum<=${onePageRecord} order by no desc
  		 		]]>
  	  	  </when>
- 		</choose> 
+ 		</choose>  
 </select>
 
 
@@ -58,9 +86,8 @@
 
 	
 <select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
-       SELECT r.userid AS userid, r.rank AS rank, r.p_no AS p_no, u.tel AS tel, u.username AS username, u.gender AS gender
-	FROM r_participate r
-	JOIN users u ON r.userid = u.userid
+        SELECT userid AS  userid, rank, p_no
+        FROM r_participate
   </select>
 
 
@@ -72,26 +99,20 @@
 	
 	
 	
-	<update id="updateUserRankByUserId">
- 		 UPDATE users
-  		SET rank = #{rank}
-  		WHERE userid = #{userId}
-	</update>
 	
-	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
-	 
-		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
-		FROM rank_game  
-		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
-		WHERE rank_game.gametime > sysdate
-				
-	</select>
+	
 	
    <update id="updateRank">
  	 UPDATE r_participate
-  	SET rank = ${rank}
-  	WHERE userid = ${userid}
+  	SET rank = ${param2}
+  	WHERE userid = #{param1}
 </update>
 
 	
- </mapper> 
+ </mapper>
+
+ 
+ 
+ 
+ 
+ 

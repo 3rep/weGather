@@ -21,7 +21,7 @@ public interface Manager10Service {
 	
 	 public List<Manager10DTO> getAllEntry();
 	 
-	 public int totalRecord(ManagerPagingVO vo);
+	 public int getTotalRecordByManagerid(String managerid);
 		//해당페이지 선택
 	 public List<Manager10DTO> pageSelect(ManagerPagingVO vo);
 	 
@@ -29,10 +29,10 @@ public interface Manager10Service {
 	 
 	 public List<Manager10DTO> getAllManagerInputByRank(String rank);
 	 
-	 
+	 public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo);
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 
-	public List<Manager10DTO> updateRank(String userid, int rank);
+	public void updateRank(String userid, int rank);
 	 
 	 
 	 

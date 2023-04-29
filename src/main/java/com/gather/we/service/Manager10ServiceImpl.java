@@ -82,11 +82,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 
-	@Override
-	public int totalRecord(ManagerPagingVO vo) {
-		
-		return dao.totalRecord(vo);
-	}
+	
 
 
 
@@ -103,9 +99,28 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> updateRank(String userid, int rank) {
+	public void updateRank(String userid, int rank) {
+	 System.out.println(userid + "part" + String.valueOf(rank));
+		dao.updateRank(userid, rank);
 		
-		return dao.updateRank(userid, rank);
+	}
+
+
+
+
+
+	@Override
+	public int getTotalRecordByManagerid(String managerid) {
+		return dao.getTotalRecordByManagerid(managerid);
+	}
+
+
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo) {
+		return dao.getAllManagerPast(vo);
 	}
 
 

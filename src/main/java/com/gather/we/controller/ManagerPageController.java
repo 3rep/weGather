@@ -4,6 +4,8 @@ package com.gather.we.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.MRankGameListCriteria;
@@ -88,23 +91,25 @@ public class ManagerPageController{
 	Manager10Service service;
 	
 	@GetMapping("/manager10")
-	public ModelAndView getManager10(ManagerPagingVO vo) {
+	public ModelAndView getManager10(ManagerPagingVO vo, HttpSession session) {
 		   
 			ModelAndView mav = new ModelAndView();
-					
-		    vo.setTotalRecord(service.totalRecord(vo));
-		  	    
+			
+			String managerid = String.valueOf(session.getAttribute("logId"));
+		    vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
+		  	vo.setManagerid(managerid);
 		    mav.addObject("managerList", service.pageSelect(vo));
+		    System.out.println("list size : "+ service.pageSelect(vo).size());
 		    mav.addObject("vo", vo);
-		    
 		    mav.setViewName("/manager/manager10");
 		    return mav;
 		}
 		@GetMapping("/managerPast")
-		public ModelAndView getManagerPast(ManagerPagingVO vo) {
+		public ModelAndView getManagerPast(ManagerPagingVO vo, HttpSession session) {
 			ModelAndView mav = new ModelAndView();
-			vo.setTotalRecord(service.totalRecord(vo));
-		  
+			String managerid = String.valueOf(session.getAttribute("logId"));
+			vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
+			vo.setManagerid(managerid);
 		    mav.addObject("managerList", service.pageSelect(vo));
 		    mav.addObject("vo", vo);
 		    mav.setViewName("/manager/managerPast");
@@ -113,8 +118,10 @@ public class ManagerPageController{
 
 		
 		 @GetMapping("/managerInput")
-		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank) {
+		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank, HttpSession session) {
 		     ModelAndView mav = new ModelAndView();
+		     String managerid = String.valueOf(session.getAttribute("logId"));
+							   
 		     List<Manager10DTO> managerInputList;
 		     if (rank != null) {
 		         managerInputList = service.getAllManagerInputByRank(rank);
@@ -127,21 +134,17 @@ public class ManagerPageController{
 		 }
 		
 		 @PostMapping("/managerInput")
-		 public ModelAndView submitRank(@RequestBody List<Manager10DTO> managerInputList) {
-		     ModelAndView mav = new ModelAndView();
+		 @ResponseBody
+		 public ResponseEntity<String> submitRank(@RequestBody List<Manager10DTO> managerInputList) {		    
 		     try {
 		         for (Manager10DTO managerInput : managerInputList) {
 		             service.updateRank(managerInput.getUserid(), managerInput.getRank());
 		         }
-		         mav.setViewName("redirect:/managerPast");
-		     } catch (NumberFormatException | JsonSyntaxException e) {
-		         mav.addObject("error", "Invalid input format");
-		         mav.setViewName("errorPage");
-		     } catch (Exception e) {
-		         mav.addObject("error", "An error occurred while processing your request");
-		         mav.setViewName("errorPage");
+		     }  catch (Exception e) {
+//		    	 System.out.println(e.getMessage());
+//		         System.out.println("manager rank input fail");
 		     }
-		     return mav;
+		     return new ResponseEntity<String>("ok", HttpStatus.OK);
 		 }
 		
 		 
