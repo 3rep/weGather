@@ -12,6 +12,36 @@
         	$(".recommend_user.login").addClass("active");
         	$(".recommend_content.login").addClass("active");
         }
+
+        
+        const a = {};
+        let b;
+        <c:forEach items="${mbtiList}" var="mbtiType">
+        	b = [];
+    		<c:forEach items="${mbtiStatistics.get(mbtiType)}" var="sport">
+    			 b.push(["${sport.sportname}", "${sport.sport_ratio}"]);
+			</c:forEach>
+			a["${mbtiType}"] = b;
+		</c:forEach>
+    
+	    $(".mbti_select").change(function(){
+	    	var mbtiType = $(this).val();
+	    	var c = a[mbtiType];
+	    	
+	    	let tag = "<div>"+mbtiType+"</div>";
+	    	
+	    	for (let i = 0; i < c.length; i++){
+	    	    if(i===0){
+	    	    	tag += "<div>당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 <b>"+c[i][0]+"</b>입니다</div>";
+	    	    }
+	    	    
+	    	    tag += "<div><span>"+c[i][0]+"</span><span>"+c[i][1]+"</span><div>";
+	    	}
+	    	
+	    	$(".mbti_result").html(tag);
+	    	
+
+        });
 	});
 </script>
 
@@ -31,23 +61,10 @@
 			<span>
 				나의 MBTI는?
 			</span>
-			<select>
-				<option value="ISTP">ISTP</option>
-				<option value="ISTJ">ISTJ</option>
-				<option value="ISFP">ISFP</option>
-				<option value="ISFJ">ISFJ</option>
-				<option value="INTP">INTP</option>
-				<option value="INTJ">INTJ</option>
-				<option value="INFP">INFP</option>
-				<option value="INFJ">INFJ</option>
-				<option value="ESTP">ESTP</option>
-				<option value="ESTJ">ESTJ</option>
-				<option value="ESFP">ESFP</option>
-				<option value="ESFJ">ESFJ</option>
-				<option value="ENTP">ENTP</option>
-				<option value="ENTJ">ENTJ</option>
-				<option value="ENFP">ENFP</option>
-				<option value="ENFJ">ENFJ</option>
+			<select class="mbti_select">
+				<c:forEach var="mbtiType" items="${mbtiList}">
+					<option value="${mbtiType}">${mbtiType}</option>
+				</c:forEach>
 			</select>
 		</li>
 	</ul>
@@ -59,24 +76,7 @@
 		<button onclick="location.href='/recommend/gender'">나이/성별</button>
 	</div>
 	<div class="recommend_content non_login">
-		<div class="mbti_result">
-			<div>ESFJ</div>
-			<div>
-				<span>농구</span>
-				<span>42%</span>
-			</div>
-			<div>당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 농구입니다</div>
-			<div>
-				<div>
-					<span>야구</span>
-					<span>18%</span>
-				</div>
-				<div>
-					<span>배구</span>
-					<span>7%</span>
-				</div>
-			</div>
-		</div>
+		<div class="mbti_result"></div>
 		<div><a href="/login">로그인</a>하시면 모든 MBTI의 추천 결과를 한눈에 볼 수 있습니다</div>
 	</div>
 	<div class="recommend_content login">
