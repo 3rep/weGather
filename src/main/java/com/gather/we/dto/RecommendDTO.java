@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class RecommendDTO {
 	private String sportname;
-	private String sport_ratio;	
+	private String sport_ratio;
 }

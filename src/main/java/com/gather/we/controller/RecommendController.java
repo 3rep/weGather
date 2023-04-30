@@ -24,7 +24,6 @@ public class RecommendController {
 		String[] mbtiList = {"ISTP", "ISTJ", "ISFP", "ISFJ", "INTP", "INTJ", "INFP", "INFJ", 
 				"ESTP", "ESTJ", "ESFP", "ESFJ", "ENTP", "ENTJ", "ENFP", "ENFJ"};
 
-		
 		HashMap<String, List<RecommendDTO>> sportStatistics = new HashMap<>();
 				
 		for(String mbtiType: mbtiList) {
@@ -32,8 +31,16 @@ public class RecommendController {
 			sportStatistics.put(mbtiType, statisticsResult);
 		}
 		
+		List<RecommendDTO> manStatistics = service.genderStatisticsSelect("남성");
+		List<RecommendDTO> womanStatistics = service.genderStatisticsSelect("여성");
+		
+		System.out.println(manStatistics);
+		System.out.println(womanStatistics);
+		
 		mav.addObject("mbtiList", mbtiList);
 		mav.addObject("sportStatistics", sportStatistics);
+		mav.addObject("manStatistics", manStatistics);
+		mav.addObject("womanStatistics", womanStatistics);
 		mav.setViewName("user/recommend/recommend");
 		
 		return mav;

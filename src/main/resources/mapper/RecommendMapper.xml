@@ -24,4 +24,21 @@
 		    )
 		where rownum <![CDATA[<=]]> 3
 	</select>
+	
+	 <select id="genderStatisticsSelect" resultType="com.gather.we.dto.RecommendDTO">
+		select u.gender, s.sportname, round(RATIO_TO_REPORT(count(s.sportname)) over()*100) as sport_ratio
+		from (
+		    select userid, s_no
+		    from r_participate rp
+		    inner join rank_game r on rp.no=r.no
+		    union all
+		    select userid, s_no
+		    from n_participate np
+		    inner join norm_game n on np.no=n.no
+		    ) game
+		inner join users u on u.userid=game.userid
+		inner join sport s on s.s_no=game.s_no
+		where u.gender=#{gender}
+		group by u.gender, s.sportname
+	</select>
 </mapper>

@@ -7,4 +7,6 @@ import com.gather.we.dto.RecommendDTO;
 public interface RecommendDAO {
 	// mbti유형의 스포츠 통계 선택
 	public List<RecommendDTO> sportStatisticsSelect(String mbtiType);
+	// 성별 스포츠 통계 선택
+	public List<RecommendDTO> genderStatisticsSelect(String gender);
 }
