@@ -30,58 +30,57 @@ public class RegisterController {
 	@Autowired
 	AdminService adminservice;
 
-	//ë¡œê·¸ì¸ ì„ íƒ ì°½
+	//·Î±×ÀÎ ¼±ÅÃÃ¢
 
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
 		return "user/register/loginChoose";	
 	}
 	
-	//ë¡œê·¸ì¸í¼
+	//·Î±×ÀÎÆû
 	@GetMapping("/login")
 	public String login() {
 		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
-	//ë¡œê·¸ì¸(DB)
-		@PostMapping("/loginOk")
-
-		public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
-			// Session ê°ì²´ ì–»ì–´ì˜¤ê¸°
-			// ë§¤ê°œë³€ìˆ˜ë¡œ HttpServletRequest request -> Session êµ¬í•˜ê¸°
-			// ë§¤ê°œë³€ìˆ˜ë¡œ HttpSession session
-			System.out.println("id->"+id);
-			RegisterDTO dto = new RegisterDTO();
-			AdminDTO dtoadmin = new AdminDTO();
-			// dto->nullì¸ ê²½ìš° ì„ íƒë ˆì½”ë“œê°€ ì—†ë‹¤. -ë¡œê·¸ì¸ì‹¤íŒ¨
-			// 		nullì´ ì•„ë‹Œ ê²½ìš° ì„ íƒë ˆì½”ë“œ ìˆë‹¤. - ë¡œê·¸ì¸ ì„±ê³µ
-			ModelAndView mav = new ModelAndView();
-			
-			//ì‚¬ìš©ì ë¡œê·¸ì¸
-			dto = service.loginOk(id, password);
-			if(dto!=null) {
-				session.setAttribute("logId", dto.getUserid());
-				session.setAttribute("logName", dto.getUsername());
-				session.setAttribute("logStatus", "Y");
-				session.setAttribute("adminlogStatus", "N");
-				mav.setViewName("redirect:/");
-			}else {	//ê´€ë¦¬ì ë¡œê·¸ì¸
-				dtoadmin = adminservice.loginAdminOk(id, password);
-				if(dtoadmin!=null) {
-				session.setAttribute("logId", dtoadmin.getAdminid());
-				session.setAttribute("logName", dtoadmin.getAdmin_name());
-				session.setAttribute("logStatus", "Y");
-				session.setAttribute("adminlogStatus", "Y");
-				mav.setViewName("redirect:/admin/userList");
-				}else{//ë¡œê·¸ì¸ ì‹¤íŒ¨
-					System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨");
-					mav.setViewName("redirect:login");	
-				}
+	//·Î±×ÀÎ(DB)
+	@PostMapping("/loginOk")
+	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
+		// Session °´Ã¼ ¾ò¾î¿À±â
+		// ¸Å°³º¯¼ö·Î HttpServletRequest request -> Session ±¸ÇÏ±â
+		// ¸Å°³º¯¼ö·Î HttpSession session
+		System.out.println("id->"+id);
+		RegisterDTO dto = new RegisterDTO();
+		AdminDTO dtoadmin = new AdminDTO();
+		// dto->nullÀÎ °æ¿ì ¼±ÅÃ·¹ÄÚµå°¡ ¾ø´Ù. -·Î±×ÀÎ ½ÇÆĞ
+		// 		nullÀÌ ¾Æ´Ñ °æ¿ì ¼±ÅÃ·¹ÄÚµå ÀÖ´Ù. - ·Î±×ÀÎ ¼º°ø
+		ModelAndView mav = new ModelAndView();
+		
+		//»ç¿ëÀÚ ·Î±×ÀÎ
+		dto = service.loginOk(id, password);
+		if(dto!=null) {
+			session.setAttribute("logId", dto.getUserid());
+			session.setAttribute("logName", dto.getUsername());
+			session.setAttribute("logStatus", "Y");
+			session.setAttribute("adminlogStatus", "N");
+			mav.setViewName("redirect:/");
+		}else {	//°ü¸®ÀÚ ·Î±×ÀÎ
+			dtoadmin = adminservice.loginAdminOk(id, password);
+			if(dtoadmin!=null) {
+			session.setAttribute("logId", dtoadmin.getAdminid());
+			session.setAttribute("logName", dtoadmin.getAdmin_name());
+			session.setAttribute("logStatus", "Y");
+			session.setAttribute("adminlogStatus", "Y");
+			mav.setViewName("redirect:/admin/userList");
+			}else{//·Î±×ÀÎ ½ÇÆĞ
+				System.out.println("·Î±×ÀÎ ½ÇÆĞ");
+				mav.setViewName("redirect:login");	
 			}
-			
-			return mav;
 		}
-	//ë¡œê·¸ì¸í•œ ê²½ìš° í™”ë©´
+		
+		return mav;
+	}
+	//·Î±×ÀÎÇÑ °æ¿ì È­¸é
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -91,12 +90,12 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//íšŒì›ê°€ì… ì„ íƒ ì°½
+	//È¸¿ø°¡ÀÔ ¼±ÅÃÃ¢
 	@GetMapping("/registerChoose")
 	public String registerChoose() {
 		return "user/register/registerChoose";	
 	}
-	//íšŒì›ê°€ì… í¼
+	//È¸¿ø°¡ÀÔ Æû
 	@GetMapping("/register")
 	public String register() {
 		return "user/register/register";
@@ -107,26 +106,26 @@ public class RegisterController {
 		System.out.println(dto.toString());
 		
 		ModelAndView mav = new ModelAndView();
-		//íšŒì›ê°€ì…
+		//È¸¿ø°¡ÀÔ
 		int result = service.registerInsert(dto);
 		
-		if(result>0) {//íšŒì›ê°€ì… ì„±ê³µì‹œ - ë¡œê·¸ì¸í¼ ì´ë™
+		if(result>0) {//È¸¿ø°¡ÀÔ ¼º°ø½Ã - ·Î±×ÀÎÆû ÀÌµ¿
 			mav.setViewName("redirect:login");
-		}else {//íšŒì›ê°€ì… ì‹¤íŒ¨ì‹œ
-			mav.addObject("msg", "íšŒì›ë“±ë¡ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
+		}else {//È¸¿ø°¡ÀÔ ½ÇÆĞ½Ã
+			mav.addObject("msg", "È¸¿øµî·Ï½ÇÆĞÇÏ¿´½À´Ï´Ù.");
 			mav.setViewName("user/register/registerOkResult");
 		}
 		return mav;		
 	}
 
-	//ì•„ì´ë”” ì¤‘ë³µê²€ì‚¬ í¼
+	//¾ÆÀÌµğ Áßº¹°Ë»ç Æû
 		@GetMapping("/idCheck")
 		public String idCheck(String userid, Model model) {
-			//ì¡°íšŒ
-			//ì•„ì´ë””ì˜ ê°¯ìˆ˜ êµ¬í•˜ê¸° - 0,1
+			//Á¶È¸
+			//¾ÆÀÌµğ °¹¼ö ±¸ÇÏ±â - 0,1
 			int result = service.idCheckCount(userid);
 			
-			//ë·°ì—ì„œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ ëª¨ë¸ì— ì„¸íŒ…
+			//ºä¿¡¼­ »ç¿ëÇÏ±â À§ÇØ¼­ ¸ğµ¨¿¡ ¼¼ÆÃ
 			model.addAttribute("userid", userid);
 			model.addAttribute("result", result);
 			
@@ -134,7 +133,7 @@ public class RegisterController {
 		}
 
 	
-	//íšŒì›ì •ë³´ ìˆ˜ì •(db)
+	//È¸¿øÁ¤º¸ ¼öÁ¤(db)
 	@PostMapping("/userEditOk")
 	public ModelAndView loginEditOk(RegisterDTO dto) {
 		System.out.println(dto.toString());
@@ -143,13 +142,13 @@ public class RegisterController {
 		if(cnt>0) {
 			mav.setViewName("redirect:admin/userList");
 		}else {
-			mav.addObject("msg", "íšŒì›ì •ë³´ìˆ˜ì • ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
+			mav.addObject("msg", "È¸¿øÁ¤º¸¼öÁ¤ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
 			mav.setViewName("user/register/registerOkResult");
 		}
 		return mav;
 	}
 	
-	//ë¡œê·¸ì•„ì›ƒ - ì„¸ì…˜ì œê±°
+	//·Î±×¾Æ¿ô - ¼¼¼ÇÁ¦°Å
 		@RequestMapping("/logout")
 		public ModelAndView logout(HttpSession session) {
 			session.invalidate();
