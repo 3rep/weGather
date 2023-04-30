@@ -9,6 +9,7 @@
             <th>종목</th>
             <th>구장이름</th>
             <th>경기일정</th>
+            <th>이용시간</th>
             <th>매니저</th>
             <th>경기상태</th>
         </tr>
@@ -18,6 +19,7 @@
 				<td>${rankGame.sportname}</td>
 				<td><a href="edit?no=${rankGame.no}" class="stadium">${rankGame.stadium}</a></td>
 				<td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${rankGame.gametime}" /></td>
+				<td>${rankGame.usetime}</td>
 				<td>${rankGame.managerid}</td>
 				<td>
 					<c:set var="status" value="${rankGame.g_status}"/>
@@ -36,7 +38,7 @@
         	</tr>
 		</c:forEach>
 	</table>
-	<a href="new" class="btn-black new-game">경기 등록</a>
+	<a href="${path}/admin/game/new" class="btn-black new-game">경기 등록</a>
 </div>
 </body>
 </html>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+/* CSS 스타일링 */
+  #container {
+    margin: 0 auto; /* 가운데 정렬 */
+    width: 700px; /* 너비 줄이기 */
+    position:absolute;
+    top:300px;
+    left:350px;
+    background-color: #FFFFFF;
+    border-color: #D1D9E2;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: 100%;
+    table-layout: fixed;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  td, th {
+    border: 1px solid black;
+    border-color: rgba(0, 0, 0, 0.3); 
+    padding: 5px;
+    text-align: left; 
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  td:first-child, th:first-child {
+    border-left: none;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  td:last-child, th:last-child {
+    border-right: none;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:last-child td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* 마지막 행 경계선 색상 */
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  tr:nth-child(even) td {
+    
+    background-color: #FFFFFF;
+    stroke: #D1D9E2;
+  }
+  .submit-button {
+  position: absolute;
+  top: 105%;
+  right: 45px;
+ background-color: #28BD54;
+ color: #FFFFFF;
+}
+  
+.back-button {
+  position: absolute;
+  top: 105%;
+  right: 0;
+ background-color: #2E3646;
+ color: #FFFFFF;
+}

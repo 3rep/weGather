@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gather.we.dao.Manager10DAO">
+	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
+  
+    SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+    FROM rank_game  
+    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+   
+</select>
+
+
+ 
+  <select id="totalRecord" resultType="int">
+     SELECT COUNT(no) totalRecord 
+     FROM rank_game 
+     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
+   <!--   WHERE rank_game.managerid (parameterType="string" 붙여야함.) -->
+</select>
+
+
+
+ 	<select id="pageSelect" resultType="com.gather.we.dto.Manager10DTO">
+   
+       select * from 
+ 			(select * from 
+ 				(
+ 				 					      
+     select rank_game.s_no, rank_game.no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+    from rank_game
+    join stadium_info on stadium_info.st_no = rank_game.st_no order by rank_game.no desc
+   
+ 					
+ 			)
+ 			 <![CDATA[
+ 				 where rownum<=${onePageRecord*nowPage} order by no asc 
+ 				 ]]>
+ 				 )
+ 		<choose>
+		  <when test="nowPage!=totalPage"> 		
+ 	   		 	<![CDATA[
+ 			 	where rownum<=${onePageRecord} order by no desc
+ 			 	]]>
+ 		 
+ 		  </when>
+ 		  <when test="nowPage==totalPage">	
+ 			   <![CDATA[
+ 		 		where rownum<=${onePageRecord} order by no desc
+ 		 		]]>
+ 	  	  </when>
+ 		</choose> 
+</select>
+
+
+
+
+	
+<select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
+        SELECT userid AS  userid, rank, p_no
+        FROM r_participate
+  </select>
+
+
+    <select id="getAllManagerInput" resultType="com.gather.we.dto.Manager10DTO">
+        SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username
+        FROM r_participate rp
+        JOIN users u ON rp.userid = u.userid
+    </select>
+	
+	
+
+	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
+	 
+		SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
+		FROM rank_game  
+		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+		WHERE rank_game.gametime > sysdate
+				
+	</select>
+	
+   <update id="updateRank">
+ 	 UPDATE r_participate
+  	SET rank = ${rank}
+  	WHERE userid = ${userid}
+</update>
+
+	
+ </mapper> 

@@ -13,7 +13,6 @@ import com.gather.we.dao.SportDAO;
 import com.gather.we.dto.SportDTO;
 
 @Service
-
 public class SportServiceImpl implements SportService {
 
 	@Inject
@@ -49,5 +48,4 @@ public class SportServiceImpl implements SportService {
 		return dao.sportUpdate(dto);
 	}
 
-	
 }

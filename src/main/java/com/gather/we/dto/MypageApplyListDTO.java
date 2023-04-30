@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MypageApplyListDTO {
 
-	private String userid; //¾ÆÀÌµğ
-	private int no; //°æ±âÀÏ·Ã¹øÈ£ 
-	private String sportname; //Á¾¸ñ¸í
-	private Date gametime; //°æ±â½Ã°£
-	private String stadium; //±¸Àå¸í
-	private int g_status; //·©Å©°æ±â °æ±â»óÅÂ
-	private Date gt2ago;
+	private String userid; //ì•„ì´ë”” 
+	private int no; //ê²½ê¸°ì¼ë ¨ë²ˆí˜¸
+	private String sportname; //ì¢…ëª©ëª…
+	private Date gametime; //ê²½ê¸°ë‚ ì§œ
+	private String stadium; //êµ¬ì¥ëª…(ê²½ê¸°ëª…)
+	private int g_status; //ê²½ê¸°ìƒíƒœ
+	private Date gt2ago; //ê²½ê¸°ë‚ ì§œ ì´í‹€ì „
 	
+	//ë‚ ì§œ í•„í„°ë§
+	private String aplSelectedDate; 
 	
 	
 

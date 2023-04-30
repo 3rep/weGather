@@ -1,9 +1,12 @@
 @charset "UTF-8";
 
+body {
+	background: var(--color-board-blue); /* #f6f6f6; */
+}
+
 .container {
 	width: 100%;
-	margin: 40px 60px;
-	position: relative;
+	margin: 40px 60px 40px 320px;
 }
 
 #page-title {

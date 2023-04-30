@@ -29,7 +29,7 @@ public class ManagerController {
 	@Autowired
 	SportService sportservice;
 	
-	//È¸¿ø°¡ÀÔ Æû
+	//È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@GetMapping("/manager")
 	public ModelAndView manager() {
 		
@@ -40,7 +40,7 @@ public class ManagerController {
 		return mav;
 	}
 	
-	//È¸¿ø°¡ÀÔ(db)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(db)
 	@PostMapping("/managerOk")
 	public ModelAndView managerOk(HttpServletRequest request){
 		ManagerDTO dto = new ManagerDTO();
@@ -58,118 +58,119 @@ public class ManagerController {
 		dto.setS_no(Integer.parseInt(request.getParameter("s_no")));
 	//public ModelAndView managerOk(MultipartHttpServletRequest multi, ManagerDTO dto){
 		System.out.println("qwer");
-		// ÆÄÀÏ¾÷·Îµå±¸Çö
+		// ï¿½ï¿½ï¿½Ï¾ï¿½Îµå±¸ï¿½ï¿½
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)request;
 		
-		// mr¿¡¼­ MultipartFile°´Ã¼ ¾ò¾î¿À±â
-		MultipartFile file = mr.getFile("prooffile"); //form¿¡ ÀÖ´Â name
+		// mrï¿½ï¿½ï¿½ï¿½ MultipartFileï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½
+		MultipartFile file = mr.getFile("prooffile"); //formï¿½ï¿½ ï¿½Ö´ï¿½ name
 		//MultipartFile file = multi.getFile("prooffile");
 		
-		// ÆÄÀÏÀ» ¼­¹ö¿¡ ¾÷·ÎµåÇÒ À§Ä¡ÀÇ Àı´ëÁÖ¼Ò
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
 		//String path = request.getSession().getServletContext().getRealPath("/uploadfile");
 		String path = request.getSession().getServletContext().getRealPath("/uploadfile");
 		System.out.println("path->" + path);
 		
-		if(file!=null) {//¾÷·Îµå ÆÄÀÏÀÌ ÀÖÀ» °æ¿ì			
-			String orgFilename = file.getOriginalFilename();// »ç¿ëÀÚ°¡ ¾÷·ÎµåÇÑ ÆÄÀÏ¸í
+		if(file!=null) {//ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½			
+			String orgFilename = file.getOriginalFilename();// ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
 			if(orgFilename != null && !orgFilename.equals("")) {
-				// °°Àº ÆÄÀÏ¸íÀÌ ÀÌ¹Ì Á¸ÀçÇÏ¸é rename ¼öÇà
+				// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ rename ï¿½ï¿½ï¿½ï¿½
 				File f = new File(path, orgFilename);
 				if(f.exists()) {
 					//	abc.gif -> abc (1).gif -> abc (2).gif -> abc (3).gif
 					for(int renameNum=1;;renameNum++) {// 1,2,3,4....
-						// ÆÄÀÏ¸í, È®ÀåÀÚ¸¦ ³ª´«´Ù.
-						int point = orgFilename.lastIndexOf(".");// ¸¶Áö¸· .ÀÇ À§Ä¡ ±¸ÇÏ±â
-						String orgFile = orgFilename.substring(0, point);// È®ÀåÀÚ¸¦ »« ÆÄÀÏ¸í
-						String orgExt = orgFilename.substring(point+1);// È®ÀåÀÚ
+						// ï¿½ï¿½ï¿½Ï¸ï¿½, È®ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+						int point = orgFilename.lastIndexOf(".");// ï¿½ï¿½ï¿½ï¿½ .ï¿½ï¿½ ï¿½Ä¡ ï¿½ï¿½ï¿½Ï±ï¿½
+						String orgFile = orgFilename.substring(0, point);// È®ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
+						String orgExt = orgFilename.substring(point+1);// È®ï¿½ï¿½ï¿½ï¿½
 						
-						String newFilename = orgFile+" ("+renameNum+")."+orgExt;//»õ·Î ¸¸µé¾îÁø ÆÄÀÏ¸í
+						String newFilename = orgFile+" ("+renameNum+")."+orgExt;//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
 						f = new File(path, newFilename);
-						if(!f.exists()) {// »õ·Î ¸¸µé ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é ¹İº¹¹® Áß´Ü
+						if(!f.exists()) {// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½İºï¿½ï¿½ï¿½ ï¿½ß´ï¿½
 							orgFilename = newFilename;
 							break;
 						}
 					}
 				}
 				
-				// ÆÄÀÏ ¾÷·Îµå ¼öÇà
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½
 				try {
 					file.transferTo(new File(path, orgFilename));
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
 				
-				// ÆÄÀÏ¸íÀ» db¿¡ ÀúÀåÇÏ±â À§ÇØ dto¿¡ ¼¼ÆÃ
+				// ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ dbï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				dto.setProoffile(orgFilename);
 			}
 		}
 
 		ModelAndView mav = new ModelAndView();
 		try {
-			// ÀÛ¼ºµÈ ±Û ³»¿ëÀ» db¿¡ ÀúÀå
+			// ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ dbï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			int result = service.managerInsert(dto);
 
-			// Á¤»óÃ³¸®µÇ¸é Á¾¸ñ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿
+			// ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 			mav.setViewName("redirect:/loginMan");
 			
 		}catch(Exception e) {
-			// ·¹ÄÚµå Ãß°¡ ¿¡·¯
+			// ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
 			e.printStackTrace();
 			
-			// ÆÄÀÏ »èÁ¦
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			fileDelete(path, dto.getProoffile());
 			
-			// DB¿¡ ÀúÀåµÈ ·¹ÄÚµå »èÁ¦
+			// DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½
 			service.dataDelete(dto.getManagerid());
-			mav.addObject("msg", "È¸¿ø µî·Ï ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+			mav.addObject("msg", "È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½Ï´ï¿½.");
 			mav.setViewName("manager/managerOkResult");
 		}
 		return mav;
 	}
-		// ¾÷·ÎµåµÈ ÆÄÀÏ »èÁ¦
+		// ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		public void fileDelete(String path, String filename) {
 			File f = new File(path, filename);
 			f.delete();
 		}
 		
-		//¸Å´ÏÀú ·Î±×ÀÎ
+		//ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
 		@GetMapping("/loginMan")
 		public String loginMan() {
 			return "manager/loginMan";	
 		}
 		
-		//¸Å´ÏÀú ·Î±×ÀÎ(DB)
+		//ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½(DB)
 		@PostMapping("/loginManOk")
 		public ModelAndView loginManOk(String managerid, String password, HttpServletRequest request, HttpSession session) {
-			// Session °´Ã¼ ¾ò¾î¿À±â
-			// ¸Å°³º¯¼ö·Î HttpServletRequest request -> Session ±¸ÇÏ±â
-			// ¸Å°³º¯¼ö·Î HttpSession session
+			// Session ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HttpServletRequest request -> Session ï¿½ï¿½ï¿½Ï±ï¿½
+			// ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HttpSession session
 			System.out.println("managerid->"+managerid);
 			ManagerDTO dto = service.loginManOk(managerid, password);
-			// dto->nullÀÎ °æ¿ì ¼±ÅÃ·¹ÄÚµå°¡ ¾ø´Ù. -·Î±×ÀÎ ½ÇÆĞ
-			// 		nullÀÌ ¾Æ´Ñ °æ¿ì ¼±ÅÃ·¹ÄÚµå ÀÖ´Ù. - ·Î±×ÀÎ ¼º°ø
+			// dto->nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Úµå°¡ ï¿½ï¿½ï¿½. -ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			// 		nullï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Úµï¿½ ï¿½Ö´ï¿½. - ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			ModelAndView mav = new ModelAndView();
-			if(dto!=null) {//·Î±×ÀÎ ¼º°ø
+			if(dto!=null) {//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				session.setAttribute("logId", dto.getManagerid());
 				session.setAttribute("logName", dto.getM_name());
 				session.setAttribute("logS_no", dto.getS_no());
 				session.setAttribute("logStatus", "Y");
-				mav.setViewName("redirect:/");
-			}else{//·Î±×ÀÎ ½ÇÆĞ
+
+				mav.setViewName("redirect:/manager/rankgamelist");
+			}else{//ë¡œê·¸ì¸ ì‹¤íŒ¨
 				mav.setViewName("redirect:loginMan");
 				System.out.println(managerid);
 				System.out.println(password);
 			}
 			return mav;
 		}
-		//¾ÆÀÌµğ Áßº¹°Ë»ç Æû
+		//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ï¿½Ë»ï¿½ ï¿½ï¿½
 		@GetMapping("/manidCheck")
 		public String manidCheck(String managerid, Model model) {
-			//Á¶È¸
-			//¾ÆÀÌµğÀÇ °¹¼ö ±¸ÇÏ±â - 0,1
+			//ï¿½ï¿½È¸
+			//ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ - 0,1
 			int result = service.idCheckCount(managerid);
 			
-			//ºä¿¡¼­ »ç¿ëÇÏ±â À§ÇØ¼­ ¸ğµ¨¿¡ ¼¼ÆÃ
+			//ï¿½ä¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ğµ¨¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("managerid", managerid);
 			model.addAttribute("result", result);
 			
