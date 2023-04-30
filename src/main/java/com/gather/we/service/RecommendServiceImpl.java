@@ -24,4 +24,9 @@ public class RecommendServiceImpl implements RecommendService {
 		return dao.genderStatisticsSelect(gender);
 	}
 
+	@Override
+	public String userMbtiSelect(String userid) {
+		return dao.userMbtiSelect(userid);
+	}
+
 }

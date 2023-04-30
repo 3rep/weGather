@@ -41,4 +41,8 @@
 		where u.gender=#{gender}
 		group by u.gender, s.sportname
 	</select>
+	
+	<select id="userMbtiSelect" resultType="string">
+		select mbti from users where userid=#{userid}
+	</select>
 </mapper>

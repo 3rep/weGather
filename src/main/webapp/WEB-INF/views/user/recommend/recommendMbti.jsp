@@ -50,10 +50,11 @@
 </div>
 <div id="recommend_nav">
 	<ul class="recommend_user login">
-		<li>ESFJ</li>
-		<li>당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 농구입니다</li>
-		<li>농구</li>
-		<li>42%</li>
+		<c:set var="userRecommend" value="${mbtiStatistics.get(userMbti)[0]}"/>
+		<li>${userMbti}</li>
+		<li>당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 <b>${userRecommend.sportname}</b>입니다</li>
+		<li>${userRecommend.sportname}</li>
+		<li>${userRecommend.sport_ratio}</li>
 	</ul>
 	<ul class="recommend_user non_login">
 		<li>MBTI를 선택하고 맞춤형 추천 결과를 확인해보세요</li>
@@ -85,7 +86,7 @@
 				<li class="mbti_item">
 					<span class="mbti_type">${mbtiType}</span>
 					<ul>
-						<c:forEach var="statistics" items="${sportStatistics.get(mbtiType)}">
+						<c:forEach var="statistics" items="${mbtiStatistics.get(mbtiType)}">
 							<li>
 								<span>${statistics.sportname}: </span>
 								<span>${statistics.sport_ratio}</span>
