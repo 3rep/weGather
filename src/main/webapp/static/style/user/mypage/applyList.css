@@ -87,7 +87,12 @@
 .aplLink{
 	font-weight: 600;
 	color: #343230; /*색상 변경하기*/
+	text-decoration: underline;
+    text-underline-position: under;
 } 
+.linkToGame:link, .linkToGame:hover, .linkToGame:visited{
+	color: var(--color-dark-gray);
+}
 .aplStatus{
  	font-style: italic;
  }

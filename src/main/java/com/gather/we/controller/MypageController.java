@@ -35,7 +35,7 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
-	
+
 	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session) {
 		
