@@ -8,8 +8,8 @@
 		where userid=#{param1} and password=#{param2}
 	</select>
 	<insert id="registerInsert">
-		insert into users(userid, type, username, password, email, tel, address, gender, mbti)
-		values(#{userid}, #{type}, #{username}, #{password}, #{email},#{tel}, #{address}, #{gender}, #{mbti})
+		insert into users(userid, type, username, password, email, tel, address, gender, mbti, age)
+		values(#{userid}, #{type}, #{username}, #{password}, #{email},#{tel}, #{address}, #{gender}, #{mbti}, ${age})
 	</insert>
 	<select id="idCheckCount" resultType="int">
 		select count(userid)cnt from users where userid=#{param1}

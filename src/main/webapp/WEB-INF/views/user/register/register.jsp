@@ -50,6 +50,8 @@
 				<input type="radio" name="gender" value="여성"/> 여성
 			</li>
 		<li><input type="text" placeholder="이름을 입력하세요..."name="username" id="username" minlength="2" maxlength="10" /></li>
+		<li>나이</li>
+		<li><input type="text" name="age" id="age"/>
 		<li>연락처</li>
 		<li>
 			<select name="tel1" id="tel1">
