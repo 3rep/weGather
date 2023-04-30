@@ -5,11 +5,14 @@
 #rankgameForm {
 	display: flex;
 	flex-direction: column;
+	border-radius: 20px;
 }
 
 #rankgameForm ul{
-	height: 680px;
 	overflow-y: auto;
+	background-color: var(--color-white);
+	margin-bottom: 0;
+	border-radius: 20px;
 }
 
 #rankgameForm label {
@@ -17,7 +20,7 @@
 	width: 150px;
 	height: 60px;
 	line-height: 60px;
-	border-right: 1px solid var(--color-admin-blue-gray);
+	border-right: 2px solid #f3f3f3;
 	padding: 0 16px;
 	margin-right: 24px;
 }
@@ -26,11 +29,11 @@
 	display: flex;
 	align-items: center;
 	height: 60px;
-	border-bottom: 1px solid var(--color-admin-blue-gray);
+	border-bottom: 2px solid #f3f3f3;
 }
 
-#rankgameForm .item:first-of-type {
-	border-top: 1px solid var(--color-admin-blue-gray);
+#rankgameForm .item:last-of-type {
+	border-bottom: none;
 }
 
 #rankgameForm #gametype {
@@ -47,7 +50,7 @@
 
 #rankgameForm .btns {
 	align-self: end;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 #rankgameForm .btn-cancel {

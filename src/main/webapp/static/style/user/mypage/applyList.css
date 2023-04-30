@@ -22,13 +22,14 @@
 }
 /*버튼 스타일*/
 .applyListBtn{
-	background-color: #ddd; /*cadetblue;*/
+	background-color: #D8DDF4; /*cadetblue;*/
     margin-right: 10px;
     padding: 8px;
     width: 100px;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px darkkhaki;
-    color: white;
+    box-shadow: 3px 3px 5px #4D4D86;
+    color: #37375D;
+    font-size: 16px;
 }
 /*달력 필터*/
 #aplSelect{
@@ -43,8 +44,8 @@
 }
 
 /*---- table --------------*/
-#aplTable {
-  /*border: 1px #a39485 solid;*/		  	
+/* #aplTable {
+  border: 1px #a39485 solid;		  	
   font-size: .9em;
   box-shadow: 0px 0px 2px rgba(0,0,0,.25);
   width: 100%;
@@ -53,16 +54,15 @@
   border-radius: 5px;
   display: inline-block;
   margin-top: 10px;
-  /* display: inline-block; */
-  overflow-y: clip;  			/*페이징 하자*/
-  /* overflow-y: scroll; */    
-  
+  display: inline-block;
+  overflow-y: clip;  			페이징 하자
+  overflow-y: scroll;    
 }
 
 #aplTable>thead {
   font-weight: bold;
   color: #fff;
-  background: #485260;	/*색상 변경하기   #7D726F*/
+  background: #51516A;	색상 변경하기   #7D726F
 }
   
 #aplTable td, 
@@ -90,9 +90,17 @@
 #aplTable .aplTh{
 	width: 13%
 }
+.aplTb .aplStatus{
+	font-style: italic;
+}
 
+#aplTable>.aplTb{
+	border: none;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.25);
+    
+}
 .aplTb a {
-  color: #343230; /*색상 변경하기*/
+  color: #343230; 색상 변경하기
   font-size: 15px;
   font-weight: 500;
 }
@@ -109,8 +117,43 @@
 	font-weight: 600;
 	font-size: 15px;
 	color: #525150;
+} */
+
+
+/* 다시 해본다 싀익 */
+#aplTable{
+	height: 900px;
+	display: inline-block;
+	margin-top: 12px;
+	width: 915px;
 }
+#aplTable td,
+#aplTable th{
+	text-align: center;
+	/* width:15%; */
+	padding: 17px;
+}
+#aplTable tr{
+	border-block: 1px solid #ddd;
+}
+#aplThead{
+	background: #51516A;
+	color: white;
+	font-weight: 500;
+}
+#aplThTr .aplTh{
+	width: 110px; 
+}
+#aplThTr>#aplDate{
+ 	width: 200px;
+ }
+#aplThTr>#aplStadium{
+	width: 370px;
+}  
 
-
-  
- 
+ #aplThTr>#aplStatus{
+ 	width: 190px;
+ }
+ .aplStatus{
+ 	font-style: italic;
+ }

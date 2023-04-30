@@ -11,7 +11,7 @@ public class MSettlementCriteria {
 	private String keyword;// 검색어
 	private String datetime; //정산일자 정렬
 	private String dStatusOrder; //지급상태 정렬
-	
+	private String logId;
 	public MSettlementCriteria() {//생성자를 이용한 기본값셋팅
 		this.pageNum = 1;
 		this.amount = 10;//한페이지에 데이터 4개씩 출력

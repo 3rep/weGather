@@ -10,6 +10,9 @@
 		<div class="rView">
 			<div class="allRank">
 				<c:choose>
+					<c:when test="${dto.getAvg_all()==0 }">
+						종합 랭크 <div id="avg_all"> no Rank </div>
+					</c:when>
 					<c:when test="${dto.getAvg_all()==1 }">
 						종합 랭크 <div id="avg_all"> 브론즈 </div>
 					</c:when>

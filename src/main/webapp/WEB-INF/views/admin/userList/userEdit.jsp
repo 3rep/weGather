@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
@@ -25,12 +23,15 @@
 		<form method="post" id="userEditForm">
 			
 			<ul>
+				<!-- 
 				<li>
+					 
 					<input type="text" id="user_name" minlength="4" maxlength="15" value="${dto.username}" readonly />
-					<input type="text" name="rank" id="rank" value="${dto.rank}" >
+					<input type="text" name="rank" id="rankEdit" value="${dto.rank}" >
 					<input type="submit" value="랭크수정" id="submit" >
+					<hr/ id="line">
 				</li>
-				<hr/ style="width:500px;">
+				-->
 				<li>구분</li>
 				<li>
 					<input type="radio" name="type" value="user"<c:if test="${dto.type=='user'}">checked</c:if>/> 사용자
@@ -67,7 +68,7 @@
 			<li>MBTI</li>
 			<li><input type="text" name="mbti" id="mbti" readonly value="${dto.mbti }"/>
 			<br/><br/>
-				<div class="userLog_List_btn">
+				<div class="userEdit_List_btn">
 					<a href="/admin/userList"> ◀ 회원 목록</a>
 				</div>
 	

@@ -13,7 +13,9 @@ body {
 	flex-direction: column;
 	align-items: center;
 	background-color: var(--color-admin-black);
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
 	padding: 0 16px;
 }
 
@@ -22,7 +24,7 @@ body {
 	margin-top: 26px;
 }
 
-.menu-container {
+#admin-nav .menu-container {
 	display: flex;
 	flex-direction: column;
 	width: 220px;
@@ -32,7 +34,7 @@ body {
 }
 
 /* 네비게이션 메뉴 */
-.menu { 
+#admin-nav .menu { 
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -42,47 +44,47 @@ body {
 	color: var(--color-white);
 }
 
-.menu-info {
+#admin-nav .menu-info {
 	display: flex;
 	align-items: center;
 }
 
-.hexagon_icon {
+#admin-nav .hexagon_icon {
 	width: 16px;
 	margin-right: 8px;
 }
 
-.menu-title.active { /* 메뉴 활성화 시 적용되는 스타일 */
+#admin-nav .menu-title.active { /* 메뉴 활성화 시 적용되는 스타일 */
 	font-weight: var(--weight-bold);
 }
 
-.chevron_down_icon {
+#admin-nav .chevron_down_icon {
 	width: 20px;
 	display: none;
 }
 
-.chevron_down_icon.active { /* 메뉴 활성화 시 적용되는 스타일 */
+#admin-nav .chevron_down_icon.active { /* 메뉴 활성화 시 적용되는 스타일 */
 	display: block;
 }
 
 /* 네비게이션 서브메뉴 */
-.sub-menu-container{
+#admin-nav .sub-menu-container{
 	display: none;
 }
 
-.sub-menu-container.active { /* 서브메뉴 활성화 시 적용되는 스타일 */
+#admin-nav .sub-menu-container.active { /* 서브메뉴 활성화 시 적용되는 스타일 */
 	display: block;
 }
 
-.sub-menu {
+#admin-nav .sub-menu {
 	background-color: var(--color-admin-gray);
 }
 
-.page {
+#admin-nav .page {
 	height: 46px;
 }
 
-.page-link {
+#admin-nav .page-link {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -90,22 +92,22 @@ body {
 	padding: 8px 40px;
 }
 
-.page-link:link, .page-link:visited, .page-link:hover, .page-link:focus {
+#admin-nav .page-link:link, .page-link:visited, .page-link:hover, .page-link:focus {
 	color: var(--color-dark-gray);
 }
 
-.page-link.active { /* 페이지 활성화 시 적용되는 스타일 */
+#admin-nav .page-link.active { /* 페이지 활성화 시 적용되는 스타일 */
 	color: var(--color-black);
 	font-weight: var(--weight-bold);
 }
 
-.minus_circle_icon {
+#admin-nav .minus_circle_icon {
 	width: 16px;
 	margin-right: 8px;
 }
 
 /* admin-info */
-.admin-info-container {
+#admin-nav .admin-info-container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -116,25 +118,20 @@ body {
 	bottom: 10px;
 }
 
-.admin-info {
+#admin-nav .admin-info {
 	display: flex;
 	align-items: center;
 }
 
-.user_icon {
+#admin-nav .user_icon {
 	width: 24px;
 	margin-right: 8px;
 }
 
-.adminid {
+#admin-nav .adminid {
 	color: var(--color-white);
 }
 
-.logout_icon {
+#admin-nav .logout_icon {
 	width: 20px;
-}
-
-.container {
-	width: 100%;
-	margin: 40px 60px;
 }
