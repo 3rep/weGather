@@ -52,7 +52,7 @@
 <!-- 관리자페이지 네비게이션 바 -->
 <nav id="admin-nav">
 	<!-- 사이트 로고 -->
-	<img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo">
+	<a><img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo"></a>
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
 		<!-- 회원관리 메뉴 -->
