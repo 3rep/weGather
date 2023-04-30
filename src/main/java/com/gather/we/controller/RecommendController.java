@@ -17,8 +17,8 @@ public class RecommendController {
 	@Autowired
 	RecommendService service;
 	
-	@GetMapping("/recommend")
-	public ModelAndView recommend() {
+	@GetMapping("/recommend/mbti")
+	public ModelAndView recommendByMbti() {
 		ModelAndView mav = new ModelAndView();
 		
 		String[] mbtiList = {"ISTP", "ISTJ", "ISFP", "ISFJ", "INTP", "INTJ", "INFP", "INFJ", 
@@ -31,17 +31,24 @@ public class RecommendController {
 			sportStatistics.put(mbtiType, statisticsResult);
 		}
 		
-		List<RecommendDTO> manStatistics = service.genderStatisticsSelect("남성");
-		List<RecommendDTO> womanStatistics = service.genderStatisticsSelect("여성");
-		
-		System.out.println(manStatistics);
-		System.out.println(womanStatistics);
 		
 		mav.addObject("mbtiList", mbtiList);
 		mav.addObject("sportStatistics", sportStatistics);
+		mav.setViewName("user/recommend/recommendMbti");
+		
+		return mav;
+	}
+	
+	@GetMapping("/recommend/gender")
+	public ModelAndView recommendByGender() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<RecommendDTO> manStatistics = service.genderStatisticsSelect("남성");
+		List<RecommendDTO> womanStatistics = service.genderStatisticsSelect("여성");
+		
 		mav.addObject("manStatistics", manStatistics);
 		mav.addObject("womanStatistics", womanStatistics);
-		mav.setViewName("user/recommend/recommend");
+		mav.setViewName("user/recommend/recommendGender");
 		
 		return mav;
 	}
