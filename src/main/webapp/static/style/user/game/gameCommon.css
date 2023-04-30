@@ -27,7 +27,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px 0;
-	background-color: var(--color-manager-middle-green);
+	background-color: var(--color-norm-green);
+	border-radius: 20px;
 }
 
 /* 경기 유형 설명*/
