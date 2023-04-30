@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.AdminDTO;
+import com.gather.we.dto.MypageRankDTO;
+import com.gather.we.dto.MypageUserDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
+import com.gather.we.service.MypageService;
 import com.gather.we.service.RegisterService;
 
 
@@ -29,6 +32,8 @@ public class RegisterController {
 
 	@Autowired
 	AdminService adminservice;
+	MypageService mypageservice;
+	
 
 	//로그인 선택 창
 	@GetMapping("/loginChoose")
@@ -52,6 +57,14 @@ public class RegisterController {
 		System.out.println("id->"+id);
 		RegisterDTO dto = new RegisterDTO();
 		
+		//종합랭크 가져오기
+		List<MypageRankDTO> list = mypageservice.rankResult(id);
+		System.out.println("listtt:" + list);
+		MypageRankDTO mpdto = new MypageRankDTO();
+		System.out.println("mpdto:::"+mpdto);
+		//mpdto.setAvg_all(0)
+		
+		
 		AdminDTO dtoadmin = new AdminDTO();
 		// dto->null인 경우 선택레코드가 없다. -로그인실패
 		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
@@ -65,7 +78,7 @@ public class RegisterController {
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
-			session.setAttribute("logRank", dto.getRank());
+			session.setAttribute("logRank", mpdto.getRank());
 			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);

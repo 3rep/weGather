@@ -37,6 +37,10 @@
 				<li>
 					<input type="text" name="username" id="username" readonly value="${dto.username}"/>
 				</li>
+				<li>나이</li>
+				<li>
+					<input type="text" name="age" id="age" value="${dto.age }" readonly/>
+				</li>
 				<li>연락처</li>
 				<li id="infoTel">
 					<select name="tel1" id="tel1" >
