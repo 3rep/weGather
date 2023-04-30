@@ -7,4 +7,11 @@
 		select adminid, admin_name from admin
 		where adminid=#{param1} and password=#{param2}
 	</select>
+	<select id="revenue" resultType="com.gather.we.dto.UserPayDTO">
+ 		select payment_no, payer_name, paid_amount, paid_at, success from user_pay
+ 		
+ 	</select>
+ 	<select id="expense" resultType="com.gather.we.dto.ManagerSettlementDTO">
+ 		select no, managerid, to_char(datetime, 'YYYY-MM-DD')datetime, d_status, amount from m_settlement
+ 	</select>
 </mapper>
