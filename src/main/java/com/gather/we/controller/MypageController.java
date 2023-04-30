@@ -61,6 +61,7 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageApplyListDTO> list = service.rankgameList(logId);
+		//System.out.println("listtt:"+list);
 		Date now = new Date();
 
 		mav.addObject("list", list);
@@ -92,6 +93,7 @@ public class MypageController {
 		List<MypageRankDTO> list = service.rankResult(logId);
 
 		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		//	-> try-catch문 쓰자
 		try { //rank가 있는 경우
 		
 			MypageRankDTO dto = new MypageRankDTO();

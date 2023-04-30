@@ -32,6 +32,8 @@ public class RegisterController {
 
 	@Autowired
 	AdminService adminservice;
+	
+	@Autowired
 	MypageService mypageservice;
 	
 
@@ -57,18 +59,32 @@ public class RegisterController {
 		System.out.println("id->"+id);
 		RegisterDTO dto = new RegisterDTO();
 		
-		//종합랭크 가져오기
-		List<MypageRankDTO> list = mypageservice.rankResult(id);
-		System.out.println("listtt:" + list);
-		MypageRankDTO mpdto = new MypageRankDTO();
-		System.out.println("mpdto:::"+mpdto);
-		//mpdto.setAvg_all(0)
-		
-		
 		AdminDTO dtoadmin = new AdminDTO();
 		// dto->null인 경우 선택레코드가 없다. -로그인실패
 		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
 		ModelAndView mav = new ModelAndView();
+		
+		
+		//종합랭크 가져오기
+		MypageRankDTO mpdto = new MypageRankDTO();
+		mpdto.setUserid(id);
+		System.out.println("mpdto:::"+mpdto);
+		System.out.println(mpdto.getUserid());
+
+		List<MypageRankDTO> list = mypageservice.rankResult(mpdto.getUserid());
+		System.out.println("listtt:" + list);
+		
+		try {
+			if(list != null) {
+				session.setAttribute("logRank", list.get(0).getAvg_all());
+				mav.setViewName("redirect:/userHome");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.setAttribute("logRank", "0");
+			mav.setViewName("redirect:/userHome");
+		}
+		
 		
 		//사용자 로그인
 		dto = service.loginOk(id, password);
@@ -78,7 +94,7 @@ public class RegisterController {
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
-			session.setAttribute("logRank", mpdto.getRank());
+			//session.setAttribute("logRank", mpdto.getRank());
 			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
@@ -90,12 +106,13 @@ public class RegisterController {
 			mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
 				//System.out.println("로그인 실패");
-				mav.addObject("msg", "회원등록실패하였습니다.");
+				mav.addObject("msg", "로그인에 실패하였습니다.");
 				mav.setViewName("user/register/registerOkResult");
 			}
 		}
 		return mav;
 	}
+	
 	//로그인한 경우 화면
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
