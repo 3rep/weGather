@@ -30,7 +30,8 @@ public class RegisterController {
 	@Autowired
 	AdminService adminservice;
 
-	//로그인 선택 창
+
+	//로그인 선택창
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
 		return "user/register/loginChoose";	
@@ -42,22 +43,24 @@ public class RegisterController {
 		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
+
+
 	//로그인(DB)
 	@PostMapping("/loginOk")
 
 	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
-		// Session 객체 얻어오기
-		// 매개변수로 HttpServletRequest request -> Session 구하기
-		// 매개변수로 HttpSession session
+		// Session 媛앹껜 �뼸�뼱�삤湲�
+		// 留ㅺ컻蹂��닔濡� HttpServletRequest request -> Session 援ы븯湲�
+		// 留ㅺ컻蹂��닔濡� HttpSession session
 		System.out.println("id->"+id);
 		RegisterDTO dto = new RegisterDTO();
 		
 		AdminDTO dtoadmin = new AdminDTO();
-		// dto->null인 경우 선택레코드가 없다. -로그인실패
-		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+		// dto->null�씤 寃쎌슦 �꽑�깮�젅肄붾뱶媛� �뾾�떎. -濡쒓렇�씤�떎�뙣
+		// 		null�씠 �븘�땶 寃쎌슦 �꽑�깮�젅肄붾뱶 �엳�떎. - 濡쒓렇�씤 �꽦怨�
 		ModelAndView mav = new ModelAndView();
 		
-		//사용자 로그인
+		//�궗�슜�옄 濡쒓렇�씤
 		dto = service.loginOk(id, password);
 		System.out.println("dto->"+dto);
 		if(dto!=null) {
@@ -65,9 +68,10 @@ public class RegisterController {
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
+
 			session.setAttribute("logRank", dto.getRank());
 			mav.setViewName("redirect:/userHome");
-		}else {	//관리자 로그인
+		}else {	//愿�由ъ옄 濡쒓렇�씤
 			dtoadmin = adminservice.loginAdminOk(id, password);
 			if(dtoadmin!=null) {
 			session.setAttribute("logId", dtoadmin.getAdminid());
@@ -76,14 +80,14 @@ public class RegisterController {
 			session.setAttribute("adminlogStatus", "Y");
 			mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
-				//System.out.println("로그인 실패");
-				mav.addObject("msg", "회원등록실패하였습니다.");
-				mav.setViewName("user/register/registerOkResult");
+				System.out.println("로그인 실패");
+				mav.setViewName("redirect:login");	
 			}
 		}
+		
 		return mav;
 	}
-	//로그인한 경우 화면
+	
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -93,7 +97,7 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//회원가입 선택 창
+	//회원가입 선택창
 	@GetMapping("/registerChoose")
 	public String registerChoose() {
 		return "user/register/registerChoose";	
@@ -113,7 +117,8 @@ public class RegisterController {
 		int result = service.registerInsert(dto);
 		
 		if(result>0) {//회원가입 성공시 - 로그인폼 이동
-			mav.addObject("msg", "회원등록에 성공하였습니다.");
+
+			mav.addObject("msg", "회원가입 성공.");
 			mav.setViewName("redirect:login");
 		}else {//회원가입 실패시
 			mav.addObject("msg", "회원등록실패하였습니다.");
@@ -126,7 +131,7 @@ public class RegisterController {
 		@GetMapping("/idCheck")
 		public String idCheck(String userid, Model model) {
 			//조회
-			//아이디의 갯수 구하기 - 0,1
+			//아이디 갯수 구하기 - 0,1
 			int result = service.idCheckCount(userid);
 			
 			//뷰에서 사용하기 위해서 모델에 세팅

@@ -41,7 +41,7 @@ public class MypageController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//useridê°€ logIdì¸ì§€ í™•ì¸
+		//userid°¡ logIdÀÎÁö È®ÀÎ
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
@@ -131,7 +131,7 @@ public class MypageController {
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//jsoníƒ€ì…ìœ¼ë¡œ ë³€í™˜
+		//jsonÅ¸ÀÔÀ¸·Î º¯È¯
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
