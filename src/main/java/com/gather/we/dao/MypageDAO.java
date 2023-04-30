@@ -8,9 +8,9 @@ import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
 
 public interface MypageDAO {
-	//db에 등록된 사용자 1인의 정보 가져오기 --test용
+	//DB에 등록된 사용자 1인의 정보 가져오기 -> 회원정보수정시 사용
 	public MypageUserDTO getUserinfo(String userid);
-	//username 프로필아래에 넣기
+	//username : 프로필아래에 이름넣기
 	public String getUsername(String userid);
 	
 	//모든 경기(랭크+일반)
@@ -28,5 +28,7 @@ public interface MypageDAO {
 	//결제list
 	public List<MypagePaymentDTO> paymentList(String username);
 
-
+	//회원정보수정(DB) 
+	public int infoEdit(MypageUserDTO dto);
+	
 }

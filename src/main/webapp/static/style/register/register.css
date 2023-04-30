@@ -2,38 +2,102 @@
 
 .register_container{
 	width:1200px;
-	height:700px;
+	height:1000px;
 	margin:0 auto;
+	margin-top: 65px;
 }
 
 #register_img{
 	width:600px;
 	height:500px;
 	position:relative;
-	top:25%;
+	top:19%;
 	left: 10%;
 		
 }
 #idCheck{
-	height:40px;
+	height: 45px;
+    border-radius: 12px;
+    background: #BAD0F8; /* #B8D2FF; */
+    border: none;
 }
-form{
+#registerForm{
 	float:left;
+	font-size: 20px;
 }
-#userid{
-	width:370px;
-	height:40px;
+#registerForm>#register-ul .register-li{
+	margin-bottom: 5px;
+    background: #F1F6FF;
+    height: 45px;
+    border-radius: 15px;
 }
-#userpwd, #username, #email, #address, #mbti, #submit{
-	width: 500px;
-	height:40px;
+#register-gender{
+	padding-top: 7px;
+	padding-left: 10px;
+}
+
+#register-ul>li>#userid{
+	line-height: 40px;
+    width: 370px;
+    height: 40px;
+    margin-top: 2px;
+    border: none;
+    background: #F1F6FF;
+    padding-left: 10px;
+    border-radius: 15px;
+}
+
+#register-ul>li>#userpwd, 
+#register-ul>li>#username, 
+#register-ul>li>#email, 
+#register-ul>li>#address, 
+#register-ul>li>#mbti{
+	width: 528px;
+    height: 40px;
+    background: #F1F6FF;
+    line-height: 40px;
+    margin-top: 2px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 15px;
 }
 #tel1{
-	width:50px;
-	height:40px;
+	width: 113px;
+    height: 37px;
+    margin-left: 10px;
+    margin-top: 2px;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
 }
 #tel2, #tel3{
-	width:220px;
-	height:40px;
+	width: 150px;
+    height: 37px;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+}
+#register-ul>li>#submit{
+    /* width: 180px;
+    background: ghostwhite;
+    height: 50px;
+    line-height: 44px;
+    margin-left: 33px;
+    border-radius: 30px;
+    border: 2px solid #324DAA; */
+    width: 180px;
+    background: #09449D;
+    height: 50px;
+    line-height: 45px;
+    margin-left: 30px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+}
+#register-ul>.register-submit{
+	text-align: right;
+	margin-top: 20px;
 }
 

@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,23 +36,21 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/mypage/applyList") //post�� �������°� �����ʳ�? -> {userid} �����ϴϱ�
+	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
 		
 		//userid�� logId���� Ȯ��
 		String logId = (String)session.getAttribute("logId");
-
-		List<MypageApplyListDTO> list = service.allgameList(logId);
-		//System.out.println("list->"+list);
 		
+		List<MypageApplyListDTO> list = service.allgameList(logId);
 		Date now = new Date();
-		//System.out.println(now);
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/applyList");		
+		mav.setViewName("user/mypage/applyList");		
+			
 		return mav;
 	}
 	
@@ -62,7 +65,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/rankList");
+		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
@@ -77,7 +80,7 @@ public class MypageController {
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
-		mav.setViewName("mypage/normList");
+		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
 	
@@ -87,19 +90,33 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageRankDTO> list = service.rankResult(logId);
+
+		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		try { //rank가 있는 경우
 		
-		MypageRankDTO dto = new MypageRankDTO();
-		dto.setAvg_all(list.get(0).getAvg_all());
+			MypageRankDTO dto = new MypageRankDTO();
+			//System.out.println("dto->"+dto);
+			dto.setAvg_all(list.get(0).getAvg_all());
 			
-		//System.out.println("list--->: "+ list);
-		//System.out.println("alll: "+dto.getAvg_all());
-		mav.addObject("list", list);
-		mav.addObject("dto", dto);
-		mav.setViewName("mypage/rank");
+			//System.out.println("list--->: "+ list);
+			//System.out.println("alll: "+dto.getAvg_all());
+			
+			mav.addObject("list", list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+			
+		}catch(Exception e){ //rank가 없는 경우
+			MypageRankDTO dto = new MypageRankDTO();
+			
+			mav.addObject("list",list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+		}
+		
 		return mav;
 	}
 	
-	@PostMapping(value="mypage/rankMain", produces="application/text;charset=UTF-8") 
+	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
 		System.out.println(sportname);
@@ -126,24 +143,60 @@ public class MypageController {
 		return json;
 	}
 	
-	@GetMapping("mypage/paymentList")
+	@GetMapping("/mypage/paymentList")
 	public ModelAndView paymentList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		System.out.println(logName);
+		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
 		System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
-		mav.setViewName("mypage/paymentList");
+		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
 	
-	@GetMapping("mypage/info")
-	public ModelAndView info() {
+	@GetMapping("/mypage/info")
+	public ModelAndView info(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/info");
+		
+		String logId = (String)session.getAttribute("logId");
+		MypageUserDTO dto = service.getUserinfo(logId);
+		
+		mav.addObject("dto", dto);
+		mav.setViewName("user/mypage/info");
 		return mav;
 	}
+	
+	@PostMapping("mypage/infoEdit")
+	public ResponseEntity<String> infoEdit(MypageUserDTO dto, HttpSession session) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		//System.out.println("여기다 "+dto.getUserid());
+
+		try {
+			int cnt = service.infoEdit(dto);
+			//정보수정 성공
+			String body = "<script>";
+			body += "alert('회원정보 수정이 완료되었습니다.');";
+			body += "location.href='info';";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			//정보수정 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('회원정보 수정이 실패하였습니다.');";
+			body += "history.back();";
+			body += "</script>";
+			entity =  new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
 }	

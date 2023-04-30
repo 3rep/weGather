@@ -8,15 +8,16 @@
 
 #sportlist_container table {
 	width: 100%;
-	border: 1px solid var(--color-black);
 	border-collapse: collapse;
 	text-align: center;
+	background-color: var(--color-white);
+	border-radius: 20px;
 }
 
 #sportlist_container th, 
 #sportlist_container td {
-	border: 1px solid var(--color-black);
-	padding: 10px 14px;
+	padding: 14px;
+	border-bottom: 2px solid #f3f3f3;
 }
 
 #sportlist_container th:nth-of-type(1) {

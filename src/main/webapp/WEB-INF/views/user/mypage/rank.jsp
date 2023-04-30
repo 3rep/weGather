@@ -3,51 +3,53 @@
 
 	<!-- 오른쪽 내용칸 -->
 	<div id="rankContent"> 
-		<h3>나의 랭크</h3>
+		<h3 class="rh3">나의 랭크</h3>
 		<hr/>
 		
-		<!-- 종합랭크 보여주기 -->
-		<c:choose>
-			<c:when test="${dto.getAvg_all()==1 }">
-				<div>종합 랭크 [ 브론즈 ] </div>
-			</c:when>
-			<c:when test="${dto.getAvg_all()==2 }">
-				<div>종합 랭크 [ 실버 ] </div>
-			</c:when>
-			<c:when test="${dto.getAvg_all()==3 }">
-				<div>종합 랭크 [ 골드 ] </div>
-			</c:when>
-			<c:when test="${dto.getAvg_all()==4 }">
-				<div>종합 랭크 [ 플래티넘 ] </div>
-			</c:when>
-			<c:when test="${dto.getAvg_all()==5 }">
-				<div>종합 랭크 [ 다이아 ] </div>
-			</c:when>
-		</c:choose>
-		
-		<!-- 종목별 랭크 보여주기 -->
-		<div>
-			종목별 랭크
-			<!-- 종목select : DB에 등록된 스포츠종목 받아오기 -->
-			<select id="sportname" name="sportname" required>
-				<option value="" >--종목선택--</option>
-				<c:forEach var="sportList" items="${list}">
-					<option value="${sportList.sportname}">${sportList.sportname}</option>
-				</c:forEach>
-			</select>
-			<span id="avg_sn"></span>
+		<!-- 랭크 보여주기 : 종합/종목별(selectbox) -->
+		<div class="rView">
+			<div class="allRank">
+				<c:choose>
+					<c:when test="${dto.getAvg_all()==0 }">
+						종합 랭크 <div id="avg_all"> no Rank </div>
+					</c:when>
+					<c:when test="${dto.getAvg_all()==1 }">
+						종합 랭크 <div id="avg_all"> 브론즈 </div>
+					</c:when>
+					<c:when test="${dto.getAvg_all()==2 }">
+						종합 랭크 <div id="avg_all"> 실버 </div>
+					</c:when>
+					<c:when test="${dto.getAvg_all()==3 }">
+						종합 랭크 <div id="avg_all"> 골드 </div> 
+					</c:when>
+					<c:when test="${dto.getAvg_all()==4 }">
+						종합 랭크 <div id="avg_all"> 플래티넘 </div> 
+					</c:when>
+					<c:when test="${dto.getAvg_all()==5 }">
+						종합 랭크 <div id="avg_all"> 다이아 </div>
+					</c:when>
+				</c:choose>
+			</div>
+			<div class="snRank">
+				종목별 랭크
+				<div id="avg_sn"></div><br/>
+				<!-- 종목select : DB에 등록된 스포츠종목 받아오기 -->
+				<select id="sportname" name="sportname" required>
+					<option value="" >--선택--</option>
+					<c:forEach var="sportList" items="${list}">
+						<option value="${sportList.sportname}">${sportList.sportname}</option>
+					</c:forEach>
+				</select><br/>
+				
+			</div>
 		</div>
-		
 		<!-- BarChart넣기 -->
 		<div id="chart" class="chart" style="width:100%">
 			<canvas id="line_chart"></canvas>
 		</div>
 		
-		
-		
 	</div> <!-- 오른쪽 내용칸 div end -->
 </div>	<!-- 왼쪽메뉴바와 오른쪽 본문 합친 div -->
-</body>
 <!-- 차트 그리기 script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

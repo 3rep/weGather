@@ -15,12 +15,11 @@
 <link href="${path}/static/style/admin/sport/sportNew.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game/rankgameList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game/rankgameNew.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/game/normgameList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game.css" rel="stylesheet" type="text/css" />
-
 <link href="${path}/static/style/admin/userList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/userLog.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/userEdit.css" rel="stylesheet" type="text/css" />
-
 <link href="${path}/static/style/admin/managerApproveList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerApproveDetail.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerList.css" rel="stylesheet" type="text/css" />
@@ -117,6 +116,12 @@
 						<span class="menu-title">종목목록</span>
 					</a>
 				</li>
+				<li class="page">
+					<a href="/admin/sport/new" class="page-link">	
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">종목등록</span>
+					</a>
+				</li>
 			</ul>
 		</li>
 		<!-- 경기관리 메뉴 -->
@@ -134,6 +139,18 @@
 					<a href="/admin/rankgame/rankgamelist" class="page-link">		
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
 						<span class="menu-title">랭크경기목록</span>
+					</a>
+				</li>
+				<li class="page">
+					<a href="/admin/normgame/normgamelist" class="page-link">		
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">일반경기목록</span>
+					</a>
+				</li>
+				<li class="page">
+					<a href="/admin/game/new" class="page-link">		
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">경기등록</span>
 					</a>
 				</li>
 			</ul>

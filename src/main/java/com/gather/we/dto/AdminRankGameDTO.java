@@ -12,4 +12,5 @@ public class AdminRankGameDTO {
 	private int g_status;
 	private String sportname;
 	private String stadium;
+	private String usetime;
 }
