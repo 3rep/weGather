@@ -47,31 +47,30 @@ public class RegisterController {
 
 	//로그인(DB)
 	@PostMapping("/loginOk")
-
 	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
-		// Session 媛앹껜 �뼸�뼱�삤湲�
-		// 留ㅺ컻蹂��닔濡� HttpServletRequest request -> Session 援ы븯湲�
-		// 留ㅺ컻蹂��닔濡� HttpSession session
+		// Session 객체 얻어오기
+		// 매개변수로 HttpServletRequest request -> Session 구하기
+		// 매개변수로 HttpSession session
 		System.out.println("id->"+id);
 		RegisterDTO dto = new RegisterDTO();
 		
 		AdminDTO dtoadmin = new AdminDTO();
-		// dto->null�씤 寃쎌슦 �꽑�깮�젅肄붾뱶媛� �뾾�떎. -濡쒓렇�씤�떎�뙣
-		// 		null�씠 �븘�땶 寃쎌슦 �꽑�깮�젅肄붾뱶 �엳�떎. - 濡쒓렇�씤 �꽦怨�
+		// dto->null인 경우 선택레코드가 없다. -로그인실패
+		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
 		ModelAndView mav = new ModelAndView();
 		
-		//�궗�슜�옄 濡쒓렇�씤
+		//사용자 로그인
 		dto = service.loginOk(id, password);
 		System.out.println("dto->"+dto);
+
 		if(dto!=null) {
 			session.setAttribute("logId", dto.getUserid());
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
-
 			session.setAttribute("logRank", dto.getRank());
 			mav.setViewName("redirect:/userHome");
-		}else {	//愿�由ъ옄 濡쒓렇�씤
+		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
 			if(dtoadmin!=null) {
 			session.setAttribute("logId", dtoadmin.getAdminid());
@@ -83,8 +82,7 @@ public class RegisterController {
 				System.out.println("로그인 실패");
 				mav.setViewName("redirect:login");	
 			}
-		}
-		
+		}		
 		return mav;
 	}
 	
@@ -102,6 +100,7 @@ public class RegisterController {
 	public String registerChoose() {
 		return "user/register/registerChoose";	
 	}
+	
 	//회원가입 폼
 	@GetMapping("/register")
 	public String register() {
@@ -140,7 +139,6 @@ public class RegisterController {
 			
 			return "user/register/idCheck";
 		}
-
 	
 	//회원정보 수정(db)
 	@PostMapping("/userEditOk")
@@ -158,11 +156,11 @@ public class RegisterController {
 	}
 	
 	//로그아웃 - 세션제거
-		@RequestMapping("/logout")
-		public ModelAndView logout(HttpSession session) {
-			session.invalidate();
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/");
-			return mav;
-		}
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 }

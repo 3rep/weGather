@@ -11,6 +11,7 @@
 <div class="game_container">
 	<h4 class="game_notice">※ 일반경기 참여 신청은 경기 시작 4시간 전까지 가능합니다.</h4>
 	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 신청 마감시간은 2023-04-23 13:00</div>
+	
 	<!-- 필터 -->
 	<form method="get" action="normgamelist" id="filterForm">
 		<input type="hidden" name="s_no" value="${s_no}"/>
@@ -37,7 +38,7 @@
 			<option value="여자만" <c:if test="${param.gendertype eq '여자만'}">selected</c:if>>여자만</option>
 		</select>
 		<input type="submit" value="필터 적용" class="btn-filter"/>
-		<a href="${path}/normgame/new?s_no=${s_no}" class="new_game">경기 개설</a>
+		<c:if test="${logStatus == 'Y' }"><a href="${path}/normgame/new?s_no=${s_no}" class="new_game">경기개설</a></c:if>
 		<a href="${path}/normgame/sportlist" class="back_to_list">종목보기</a>
 	</form>
 	
