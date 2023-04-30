@@ -21,16 +21,19 @@
     background: #BAD0F8; /* #B8D2FF; */
     border: none;
 }
+
 #registerForm{
 	float:left;
 	font-size: 20px;
 }
+
 #registerForm>#register-ul .register-li{
 	margin-bottom: 5px;
     background: #F1F6FF;
     height: 45px;
     border-radius: 15px;
 }
+
 #register-gender{
 	padding-top: 7px;
 	padding-left: 10px;

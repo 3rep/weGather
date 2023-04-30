@@ -34,7 +34,7 @@ public class NormalGameController {
 	@Autowired
 	StadiumInfoService stadiumService;
 	
-	// ì¢…ëª© ëª©ë¡
+	// Á¾¸ñ¸ñ·Ï
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -47,19 +47,19 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// ì¼ë°˜ê²½ê¸° ëª©ë¡
+	// ÀÏ¹İ°æ±â ¸ñ·Ï
 	@GetMapping("/normgamelist")
 	public ModelAndView normGameList(NormGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
 		
-		// ì§€ì—­ í•„í„°ë§ ì‹œ DBì—ì„œ í•´ë‹¹ ì§€ì—­ì˜ ê²½ê¸°ë§Œ ì„ íƒí•˜ì—¬ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ ì§€ì—­ ì¹´í…Œê³ ë¦¬ë¥¼ ì„¸ë¶€ ì§€ì—­ìœ¼ë¡œ ë‚˜ëˆ„ì–´ ë¦¬ìŠ¤íŠ¸ì— ë‹´ëŠ”ë‹¤.
-		String region = dto.getRegion();// 'ëŒ€ì „/ì„¸ì¢…/ì¶©ì²­'
+		// Áö¿ª ÇÊÅÍ¸µ ½Ã db¿¡¼­ ÇØ´ç Áö¿ªÀÇ °æ±â¸¸ ¼±ÅÃÇÏ¿© °¡Á®¿À±â À§ÇØ Áö¿ª Ä«Å×°í¸®¸¦ ¼¼ºÎ Áö¿ªÀ¸·Î ³ª´©¾î ¸®½ºÆ®¿¡ ´ã´Â´Ù.
+		String region = dto.getRegion();// '´ëÀü/¼¼Á¾/ÃæÃ»'
 		if(region!=null) {
-			List<String> regionList = Arrays.asList(region.split("/"));// ['ëŒ€ì „', 'ì„¸ì¢…', 'ì¶©ì²­']
+			List<String> regionList = Arrays.asList(region.split("/"));// ['´ëÀü', '¼¼Á¾', 'ÃæÃ»']
 			dto.setRegionList(regionList);
 		}
 		
-		// DBì—ì„œ ì¼ë°˜ê²½ê¸° ëª©ë¡ ë°›ì•„ì˜¤ê¸°
+		// DB¿¡¼­ ÀÏ¹İ°æ±â ¸ñ·Ï ¹Ş¾Æ¿À±â
 		List<NormGameDTO> normGameList = normGameService.normGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -69,12 +69,12 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// ì¼ë°˜ê²½ê¸° ì„¸ë¶€ì •ë³´
+	// ÀÏ¹İ°æ±â ¼¼ºÎÁ¤º¸
 	@GetMapping("/detail")
 	public ModelAndView normGameDetail(int no) {
 		ModelAndView mav = new ModelAndView();
 		
-		// DBì—ì„œ ì¼ë°˜ê²½ê¸° ì„¸ë¶€ì •ë³´ ë°›ì•„ì˜¤ê¸°
+		// DB¿¡¼­ ÀÏ¹İ°æ±â ¼¼ºÎÁ¤º¸ ¹Ş¾Æ¿À±â
 		NormGameDetailDTO normGameDetail = normGameService.normGameDetailSelect(no);
 
 		mav.addObject("normGameDetail", normGameDetail);

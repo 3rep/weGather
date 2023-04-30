@@ -35,7 +35,15 @@
 			}
 		})
 	}
-
+	
+	$(function(){
+		$(".btn_back").click(function(){
+			event.preventDefault();
+			
+			location.href="${path}/normgame/new?s_no=${sportDTO.s_no}";
+		})
+	});
+	
 </script>
 
 <div class="game_header norm_game_header">
@@ -104,6 +112,7 @@
 					</li>
 				</ul>
 				<input type="submit" value="경기개설" class="btn_apply_norm"/>
+				<button class="btn_back" >뒤로가기</button>
 			</form>
 		</div>
 	</div>

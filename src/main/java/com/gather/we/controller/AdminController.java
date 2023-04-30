@@ -51,11 +51,13 @@ import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
 
 import com.gather.we.dto.UserLogDTO;
+import com.gather.we.dto.UserPayDTO;
 import com.gather.we.service.AdminManagerService;
 
 import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
+import com.gather.we.service.UserPayService;
 
 @RestController
 @RequestMapping("/admin")
@@ -92,6 +94,7 @@ public class AdminController {
 		return "admin/loginAdmin";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
+
    //로그인(DB)
 	@PostMapping("/loginAdminOk")
 	public ModelAndView loginAdminOk(String adminid, String password, HttpServletRequest request, HttpSession session) {
@@ -115,50 +118,74 @@ public class AdminController {
 		}
 		return mav;
 	}
-			
-			//(관리자 페이지)회원 리스트
-			@GetMapping("/userList")
-			public ModelAndView loginList() {
-				ModelAndView mav = new ModelAndView();
-				
-				List<RegisterDTO> list = regservice.dataAllSelect();
-				
-				mav.addObject("list", list);
-				mav.setViewName("admin/userList/userList");
-				
-				return mav;
-			}
-			//(관리자 페이지)회원정보 수정폼
-			@GetMapping("/userEdit/{userid}")
-			public ModelAndView loginEdit(@PathVariable("userid") String userid) {
-				RegisterDTO dto = regservice.registerEdit(userid);
-				ModelAndView mav = new ModelAndView();
-				mav.addObject("dto", dto);
-				mav.setViewName("admin/userList/userEdit");
-				return mav;
-			}
-			
-			//(관리자 페이지)회원활동내역
-			@GetMapping("/userLog/{userid}")
-			public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey) {
-				ModelAndView mav = new ModelAndView();
-				//UserLogDTO dto = regservice.userLogSelect(userid);
-				List<UserLogDTO> list = regservice.userLogSelect(userid);
-				List<UserLogDTO> listNorm = regservice.userLogNormSelect(userid);
-				
-				mav.addObject("userid", userid);
-				if(searchKey == null ||searchKey.equals("all")) {
-					mav.addObject("list", list);
-					mav.addObject("listNorm", listNorm);
-				}else if(searchKey.equals("rank_game")) {
-					mav.addObject("list", list);
-				}else if(searchKey.equals("norm_game")) {
-					mav.addObject("listNorm", listNorm);
-				}
-				mav.setViewName("admin/userList/userLog");
-				return mav;
-			}
+	
+	//(관리자 페이지)회원 리스트
+	@GetMapping("/userList")
+	public ModelAndView loginList() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<RegisterDTO> list = regservice.dataAllSelect();
+		
+		mav.addObject("list", list);
+		mav.setViewName("admin/userList/userList");
+		
+		return mav;
+	}
+	//(관리자 페이지)회원정보 수정폼
+	@GetMapping("/userEdit/{userid}")
+	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
+		RegisterDTO dto = regservice.registerEdit(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("admin/userList/userEdit");
+		return mav;
+	}
+	
+	//(관리자 페이지)회원활동내역
+	@GetMapping("/userLog/{userid}")
+	public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey) {
+		ModelAndView mav = new ModelAndView();
+		//UserLogDTO dto = regservice.userLogSelect(userid);
+		List<UserLogDTO> list = regservice.userLogSelect(userid);
+		List<UserLogDTO> listNorm = regservice.userLogNormSelect(userid);
+		
+		mav.addObject("userid", userid);
+		if(searchKey == null ||searchKey.equals("all")) {
+			mav.addObject("list", list);
+			mav.addObject("listNorm", listNorm);
+		}else if(searchKey.equals("rank_game")) {
+			mav.addObject("list", list);
+		}else if(searchKey.equals("norm_game")) {
+			mav.addObject("listNorm", listNorm);
+		}
+		mav.setViewName("admin/userList/userLog");
+		return mav;
+	}
+	//(관리자) 수입내역
 
+		@GetMapping("/revenue")
+		public ModelAndView revenue() {
+			ModelAndView mav = new ModelAndView();
+			
+			List<UserPayDTO> pay = service.revenue();
+			
+			mav.addObject("pay", pay);
+			mav.setViewName("admin/revenue/revenue");
+			
+			return mav;
+		}
+	//(관리자) 지출내역
+		@GetMapping("/expense")
+		public ModelAndView expense() {
+			ModelAndView mav = new ModelAndView();
+			
+			List<UserPayDTO> expense = service.expense();
+			
+			mav.addObject("expense", expense);
+			mav.setViewName("admin/revenue/expense");
+			
+			return mav;
+		}
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {

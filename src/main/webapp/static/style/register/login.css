@@ -82,12 +82,14 @@
 	color: #324DAA;
     font-weight: 600;
 }
+
 #log_register a:link, 
 #log_register a:visited, 
 #log_register a:hover{
 	text-decoration : none;
 	color:#000;
 }
+
 /* 
 #log_img{
 	position:relative;
