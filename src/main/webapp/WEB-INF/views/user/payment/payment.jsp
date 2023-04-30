@@ -22,7 +22,7 @@
 
 	// 결제 구현
 	var IMP = window.IMP;
-	IMP.init("가맹점 식별코드"); // 예: "imp00000000a"
+	IMP.init("imp57122251"); // 예: "imp00000000a"
 	
 	function requestPay() {
 	    IMP.request_pay({

@@ -37,7 +37,8 @@ public class RegisterController {
 	MypageService mypageservice;
 	
 
-	//로그인 선택 창
+
+	//로그인 선택창
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
 		return "user/register/loginChoose";	
@@ -49,9 +50,10 @@ public class RegisterController {
 		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
+
+
 	//로그인(DB)
 	@PostMapping("/loginOk")
-
 	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
 		// Session 객체 얻어오기
 		// 매개변수로 HttpServletRequest request -> Session 구하기
@@ -89,6 +91,7 @@ public class RegisterController {
 		//사용자 로그인
 		dto = service.loginOk(id, password);
 		System.out.println("dto->"+dto);
+
 		if(dto!=null) {
 			session.setAttribute("logId", dto.getUserid());
 			session.setAttribute("logName", dto.getUsername());
@@ -110,7 +113,7 @@ public class RegisterController {
 				mav.addObject("msg", "로그인에 실패하였습니다.");
 				mav.setViewName("user/register/registerOkResult");
 			}
-		}
+		}		
 		return mav;
 	}
 	
@@ -124,11 +127,12 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//회원가입 선택 창
+	//회원가입 선택창
 	@GetMapping("/registerChoose")
 	public String registerChoose() {
 		return "user/register/registerChoose";	
 	}
+	
 	//회원가입 폼
 	@GetMapping("/register")
 	public String register() {
@@ -144,7 +148,8 @@ public class RegisterController {
 		int result = service.registerInsert(dto);
 		
 		if(result>0) {//회원가입 성공시 - 로그인폼 이동
-			mav.addObject("msg", "회원등록에 성공하였습니다.");
+
+			mav.addObject("msg", "회원가입 성공.");
 			mav.setViewName("redirect:login");
 		}else {//회원가입 실패시
 			mav.addObject("msg", "회원등록실패하였습니다.");
@@ -157,7 +162,7 @@ public class RegisterController {
 		@GetMapping("/idCheck")
 		public String idCheck(String userid, Model model) {
 			//조회
-			//아이디의 갯수 구하기 - 0,1
+			//아이디 갯수 구하기 - 0,1
 			int result = service.idCheckCount(userid);
 			
 			//뷰에서 사용하기 위해서 모델에 세팅
@@ -166,7 +171,6 @@ public class RegisterController {
 			
 			return "user/register/idCheck";
 		}
-
 	
 	//회원정보 수정(db)
 	@PostMapping("/userEditOk")
@@ -184,11 +188,11 @@ public class RegisterController {
 	}
 	
 	//로그아웃 - 세션제거
-		@RequestMapping("/logout")
-		public ModelAndView logout(HttpSession session) {
-			session.invalidate();
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/");
-			return mav;
-		}
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 }

@@ -7,6 +7,7 @@ public class UserPayDTO {
 	private String payment_no;
 	private String success;
 	private String payer_name;
-	private int paid_at;
+	private long paid_at;
 	private int paid_amount;
+	private int sum;
 }
