@@ -5,7 +5,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 1020px;
-	margin: 0 auto;
+	margin: 10px auto; /* 0 auto;*/
 }
 
 .sport_item {
