@@ -6,7 +6,8 @@ public class MypageUserDTO {
 	private String username;
 	private String password;
 	private String email;
-
+	private String age;
+	
 	private String tel;
 	private String tel1;
 	private String tel2;
@@ -15,14 +16,13 @@ public class MypageUserDTO {
 	private String address;
 	private String gender;
 	private String mbti;
-	private int rank;
 	private String signupdate;
 	
 	@Override
 	public String toString() {
 		return "MypageUserDTO [userid=" + userid + ", type=" + type + ", username=" + username + ", password="
 				+ password + ", email=" + email + ", tel=" + tel + ", address=" + address + ", gender=" + gender
-				+ ", mbti=" + mbti + ", rank=" + rank + ", signupdate=" + signupdate + "]";
+				+ ", mbti=" + mbti + ", signupdate=" + signupdate + "]";
 	}
 
 	public String getUserid() {
@@ -64,6 +64,15 @@ public class MypageUserDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
 	// ---- tel 쪼개기 ------------------
 	public String getTel() {
 		tel = tel1+"-"+tel2+"-"+tel3;
@@ -124,14 +133,6 @@ public class MypageUserDTO {
 
 	public void setMbti(String mbti) {
 		this.mbti = mbti;
-	}
-
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
 	}
 
 	public String getSignupdate() {

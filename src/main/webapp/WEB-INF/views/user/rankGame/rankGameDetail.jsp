@@ -165,7 +165,7 @@
 	      			</c:choose>
 	         	</c:otherwise>
 	      	</c:choose>
-	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
+	      	<!-- <button onclick="history.back()" class="btn_back" >뒤로가기</button> -->
 		</div>
 	</div>
 </div>

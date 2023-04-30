@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.AdminDTO;
+import com.gather.we.dto.MypageRankDTO;
+import com.gather.we.dto.MypageUserDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
+import com.gather.we.service.MypageService;
 import com.gather.we.service.RegisterService;
 
 
@@ -29,6 +32,10 @@ public class RegisterController {
 
 	@Autowired
 	AdminService adminservice;
+	
+	@Autowired
+	MypageService mypageservice;
+	
 
 
 	//로그인 선택창
@@ -59,6 +66,28 @@ public class RegisterController {
 		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
 		ModelAndView mav = new ModelAndView();
 		
+		
+		//종합랭크 가져오기
+		MypageRankDTO mpdto = new MypageRankDTO();
+		mpdto.setUserid(id);
+		System.out.println("mpdto:::"+mpdto);
+		System.out.println(mpdto.getUserid());
+
+		List<MypageRankDTO> list = mypageservice.rankResult(mpdto.getUserid());
+		System.out.println("listtt:" + list);
+		
+		try {
+			if(list != null) {
+				session.setAttribute("logRank", list.get(0).getAvg_all());
+				mav.setViewName("redirect:/userHome");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.setAttribute("logRank", "0");
+			mav.setViewName("redirect:/userHome");
+		}
+		
+		
 		//사용자 로그인
 		dto = service.loginOk(id, password);
 		System.out.println("dto->"+dto);
@@ -68,24 +97,27 @@ public class RegisterController {
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("adminlogStatus", "N");
-			session.setAttribute("logRank", dto.getRank());
+			//session.setAttribute("logRank", mpdto.getRank());
 			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
+      
 			if(dtoadmin!=null) {
-			session.setAttribute("logId", dtoadmin.getAdminid());
-			session.setAttribute("logName", dtoadmin.getAdmin_name());
-			session.setAttribute("logStatus", "Y");
-			session.setAttribute("adminlogStatus", "Y");
-			mav.setViewName("redirect:/admin/userList");
+        session.setAttribute("logId", dtoadmin.getAdminid());
+        session.setAttribute("logName", dtoadmin.getAdmin_name());
+        session.setAttribute("logStatus", "Y");
+        session.setAttribute("adminlogStatus", "Y");
+			  mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
-				System.out.println("로그인 실패");
-				mav.setViewName("redirect:login");	
+				//System.out.println("로그인 실패");
+				mav.addObject("msg", "로그인에 실패하였습니다.");
+				mav.setViewName("user/register/registerOkResult");
 			}
 		}		
 		return mav;
 	}
 	
+	//로그인한 경우 화면
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();

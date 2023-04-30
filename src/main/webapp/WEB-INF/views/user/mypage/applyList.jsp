@@ -51,26 +51,57 @@
 						
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
-				        <td><a href="">${list.stadium } 이동링크걸어야해</a></td> <!-- 경기상세정보로 페이지 이동!! -->
+				        <td>${list.stadium }</a></td> 
 				       
-				       <!--g_status : 2(취소)/1(확정)/0(대기) 
+				        <!--g_status : 2(취소)/1(확정)/0(대기) 
 						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
 						신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
 						경기확정 : g_status=1
-						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우    -->
-				        <c:if test="${list.g_status==2}">	
-				        	<td class="aplStatus">경기취소</td>
-				        </c:if>
-				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
-				        	<td class="aplStatus" >신청완료(취소)</td>
-				        </c:if>
+						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 -->
+						
+						<!-- 신청완료, 신청취소, 경기확정은 : 경기상세정보로 페이지 이동!! -->
 				        
-				        <c:if test="${list.g_status==1 && list.gametime<now }">	
-				        	<td class="aplStatus">경기종료</td>
-				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
-				        	<td class="aplStatus">경기확정</td>
-				        </c:if>
+				        <!-- 신청완료(취소), 경기확정의 경우 경기세부정보페이지로 이동링크 건다. 
+				        		랭크경기, 일반경깅 구분해서 링크달아야해  -->
+				        <c:choose>
+				       		<c:when test="${list.no>1000 }"> 
+						        <c:if test="${list.g_status==2}">	
+						        	<td class="aplStatus">경기취소</td>
+						        </c:if>
+						        <c:if test="${list.g_status==1 && list.gametime<now }">	
+						        	<td class="aplStatus">경기종료
+						        </c:if>
+						        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+						        	<td class="aplLink">
+						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
+						        	</td>
+						        </c:if>
+						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+						        	<td class="aplLink">
+						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
+						        	</td>
+						        </c:if>
+					    	</c:when>
+					    	
+					    	<c:when test="${list.no<1000 }">    
+					        	<c:if test="${list.g_status==2}">	
+						        	<td class="aplStatus">경기취소</td>
+						        </c:if>
+						        <c:if test="${list.g_status==1 && list.gametime<now }">	
+						        	<td class="aplStatus">경기종료
+						        </c:if>
+						        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+						        	<td class="aplLink">
+						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
+						        	</td>
+						        </c:if>
+						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+						        	<td class="aplLink">
+						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
+						        	</td>
+						        </c:if>
+				        	</c:when>
+				        </c:choose>
 				    </tr>
 			    </c:forEach>
 		    </tbody>

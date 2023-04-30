@@ -35,7 +35,7 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
-	
+
 	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session) {
 		
@@ -61,6 +61,7 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageApplyListDTO> list = service.rankgameList(logId);
+		//System.out.println("listtt:"+list);
 		Date now = new Date();
 
 		mav.addObject("list", list);
@@ -92,6 +93,7 @@ public class MypageController {
 		List<MypageRankDTO> list = service.rankResult(logId);
 
 		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		//	-> try-catch문 쓰자
 		try { //rank가 있는 경우
 		
 			MypageRankDTO dto = new MypageRankDTO();
@@ -119,7 +121,7 @@ public class MypageController {
 	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
-		System.out.println(sportname);
+		//System.out.println(sportname);
 		String logId = (String)session.getAttribute("logId");
 
 		List<MypageRankDTO> list = service.rank(logId, sportname);
@@ -150,7 +152,7 @@ public class MypageController {
 		//System.out.println(logName);
 		
 		List<MypagePaymentDTO> list = service.paymentList(logName);
-		System.out.println("list: "+ list);
+		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
 		mav.setViewName("user/mypage/paymentList");

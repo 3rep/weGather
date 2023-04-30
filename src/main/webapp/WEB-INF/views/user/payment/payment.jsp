@@ -12,9 +12,11 @@
 		if(gametype=="rankgame") {
 			$('.btn-pay').addClass('rank');
 			$('.total_amount').addClass('rank');
+			$('.payment_section').addClass('rank');
 		} else if(gametype=='normgame') {	
 			$('.btn-pay').addClass('normal');
 			$('.total_amount').addClass('normal');
+			$('.payment_section').addClass('normal');
 		}
   	});
 
@@ -153,7 +155,7 @@
 					<span class="payment_label">이메일</span>
 					<span>${participantInfo.email}</span>
 				</li>
-				<li><button class="btn_modify">수정</button></li>
+				<li><button class="btn_modify" onclick="location.href='/mypage/info'">수정</button></li>
 			</ul>
 			
 			<!-- 결제 상세 -->

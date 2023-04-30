@@ -36,9 +36,12 @@
     border: none;
     width: 500px;
 }
+#infoUl>#infoGender{
+	line-height: 40px;
+}
 #infoUl>#infoGender>input{
 	width: 15px;
-	height: 10px;
+	height: 12px;
 }
 #infoUl>#infoTel input{
 	width: 150px;
@@ -71,7 +74,7 @@
 
 /* submit버튼 스타일 */
 #infoBtn{
-	background: #3C6CC4;
+	background: #49496E;
 	height: 45px;
 	width: 200px;
 	border-radius: 50px;

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="login_container">
 	<h1>로그인</h1>
-
 	<form method="post" action="loginOk" id="logFrm">
 		<ul>
 			<li class="logFrm">아이디</li>

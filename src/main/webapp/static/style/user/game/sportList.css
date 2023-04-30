@@ -5,7 +5,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 1020px;
-	margin: 0 auto;
+	margin: 10px auto; /* 0 auto;*/
 }
 
 .sport_item {
@@ -33,7 +33,7 @@
 }
 
 .norm_game_tag {
-	background-color: var(--color-manager-middle-green);
+	background-color: var(--color-norm-green);
 }
 
 .sport_desc_container { /* 종목 설명 - opacity를 0으로 설정하여 화면에 보이지 않게 함 */
