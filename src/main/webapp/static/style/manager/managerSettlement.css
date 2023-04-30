@@ -15,13 +15,14 @@
 		tr:last-child td:last-child {border-bottom-right-radius:6px;}
 		
 		/* 페이지네이션 */
-		ul.pagination {list-style:none;display:flex;justify-content:center;align-items:center;}
-		ul.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;}
-		ul.pagination li.active {background-color:black;border-color:#F8F9FB;}
-		ul.pagination li:hover {background-color:#F8F9FB;}
-		ul.pagination li a {color:black;}
-		ul.pagination li.active a {color:white;}
-		ul.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}
+		.pagination-container{margin-top:13px;}
+		.pagination-container ul {list-style:none;display:flex;justify-content:center;align-items:center;}
+		.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;}
+		.pagination li.active {background-color:gray;border-color:#F8F9FB;}
+		.pagination li:hover {background-color:#F8F9FB;}
+		.pagination li a {color:black;}
+		.pagination li.active a {color:white;}
+		.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}	
 		
 		/*검색,필터*/
 		.search_area form {display:flex;flex-direction:row;align-items:center;height:50px;}		

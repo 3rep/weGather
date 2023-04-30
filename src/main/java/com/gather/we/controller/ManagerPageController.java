@@ -1,7 +1,6 @@
 package com.gather.we.controller;
 
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,9 +21,9 @@ import com.gather.we.dto.MRankGameListCriteria;
 import com.gather.we.dto.MSettlementCriteria;
 import com.gather.we.dto.MSettlementPageDTO;
 import com.gather.we.dto.Manager10DTO;
+import com.gather.we.dto.ManagerPagingVO;
 import com.gather.we.dto.ManagerRankGameDTO;
 import com.gather.we.dto.PageDTO;
-import com.gather.we.dto.ManagerPagingVO;
 import com.gather.we.service.Manager10Service;
 import com.gather.we.service.ManagerRankGameListService;
 import com.gather.we.service.ManagerSettlementService;

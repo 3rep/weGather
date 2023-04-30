@@ -45,8 +45,9 @@
                         </div>
                     </li>
                     </c:forEach>
-                  
+                </ul>
                   <!-- 페이지네이션 -->
+                  	<div class="pagination-container">
                     	<ul class="pagination">
                     		<c:if test="${pageMaker.prev }">
                     			<!-- 이전 페이지 : 시작페이지가 1~10이 아닌 경우 보임 -->
@@ -54,7 +55,7 @@
                     		</c:if>
 	
 							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-                    			<li class="paginate-button ${pageMaker.criteria.pageNum == num ? "active":""}"><a href="${num }">${num }</a></li>
+                    			<li class="paginate-button ${pageMaker.criteria.pageNum == num ? 'active':''}"><a href="${num }">${num }</a></li>
 							</c:forEach>
                     		
                     		<c:if test="${pageMaker.next }">
@@ -62,8 +63,8 @@
                     			<li class="paginate-button next"><a href="${pageMaker.endPage+1 }">Next</a></li>
                     		</c:if>
                     	</ul>
+                    </div>
                     <!--end 페이지네이션 -->
-                </ul>
             </div>
         </div>
     </div>
