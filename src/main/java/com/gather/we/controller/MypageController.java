@@ -41,7 +41,7 @@ public class MypageController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//userid°¡ logIdÀÎÁö È®ÀÎ
+		//useridï¿½ï¿½ logIdï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageApplyListDTO> list = service.allgameList(logId);
@@ -61,7 +61,7 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageApplyListDTO> list = service.rankgameList(logId);
-		//System.out.println("listtt:"+list);
+		//System.out.println("list:"+list);
 		Date now = new Date();
 
 		mav.addObject("list", list);
@@ -133,7 +133,7 @@ public class MypageController {
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//jsonÅ¸ÀÔÀ¸·Î º¯È¯
+		//jsonÅ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		

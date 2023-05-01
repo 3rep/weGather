@@ -32,21 +32,21 @@
 				    	<td class="ng">일반</td>
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
-				        <td>${list.stadium }</a></td>
+				        <td>${list.stadium }</td>
 				     
-				       <!--g_status : 2(취소)/1(확정)/0(대기) -->
-				        <c:if test="${list.g_status==2}">	
+				       <!--g_status : 3(취소)/2(확정)/1(대기)/0(미개설) -->
+				        <c:if test="${list.g_status==3}">	
 				        	<td class="aplStatus">경기취소</td>
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gametime<now }">	
+				        <c:if test="${list.g_status==2 && list.gametime<now }">	
 				        	<td class="aplStatus">경기종료
 				        </c:if>
-				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+				        <c:if test="${list.g_status==1 && (list.gt1ago>now) }">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 				        	</td>
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+				        <c:if test="${list.g_status==2 && list.gametime>=now }">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
 				        	</td>
