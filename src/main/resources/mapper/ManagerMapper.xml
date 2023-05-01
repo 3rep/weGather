@@ -11,7 +11,7 @@
  		delete from manager where managerid=#{param1}
  	</delete>
  	<select id="loginManOk" resultType="com.gather.we.dto.ManagerDTO">
-		select managerid, m_name from manager
+		select managerid, m_name, s_no from manager
 		where managerid=#{param1} and password=#{param2}
 	</select>
 	<select id="idCheckCount" resultType="int">

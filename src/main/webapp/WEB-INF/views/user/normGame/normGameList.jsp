@@ -9,8 +9,8 @@
 </div>
 <div class="game_nav norm_game_nav">종목선택 > <b>경기목록</b> > 경기상세정보</div>
 <div class="game_container">
-	<h4 class="game_notice">※ 일반경기 참여 신청은 경기 시작 4시간 전까지 가능합니다.</h4>
-	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 신청 마감시간은 2023-04-23 13:00</div>
+	<h4 class="game_notice">※ 일반경기 참여 신청은 경기 시작 이틀 전까지 가능합니다.</h4>
+	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 신청 마감시간은 2023-04-23 23:59</div>
 	
 	<!-- 필터 -->
 	<form method="get" action="normgamelist" id="filterForm">
@@ -60,13 +60,13 @@
 			// 3. 경기일정 구하기
 			Date gametime = (Date) pageContext.getAttribute("gametime");
 
-			// 4. 경기 신청 마감시간 구하기: 경기일정 당일 경기시간의 4시간 전
+			// 4. 경기 신청 마감시간 구하기: 경기일정 당일 경기시간의 하루 전
 			closeCalendar.setTime(gametime);
-			closeCalendar.add(closeCalendar.HOUR_OF_DAY, -4); // (gametime의 시간) - 4
+			closeCalendar.add(closeCalendar.DATE, -1); // gametime - 1
 
-			// 5. 경기 신청 마감임박 시작일 구하기: 경기신청 마감일의 24시간 전
+			// 5. 경기 신청 마감임박 시작일 구하기: 경기신청 마감일의 2일 전
 			closeImminentCalendar.setTime(gametime);
-			closeImminentCalendar.add(closeImminentCalendar.DATE, -1); // gametime-1
+			closeImminentCalendar.add(closeImminentCalendar.DATE, -2); // gametime - 2
 
 			// 6. 마감 임박 경기인지 확인
 			// closeImminentCalendar < nowCalendar < closeCalendar 이면 true, 아니면 false
@@ -106,13 +106,11 @@
 							<fmt:parseNumber var="oneTeamNumber" integerOnly="true" value="${NormGameDTO.min_people/2}" />
 							<span class="game_condition">${oneTeamNumber}vs${oneTeamNumber}</span>
 							
-							<!-- 몇 파전 -->
-							<!-- 팀의 수를 구하기 위해 max_people을 한 팀당 인원수로 나누고 정수로 변환한다. -->
-							<fmt:parseNumber var="teamCount" integerOnly="true" value="${NormGameDTO.max_people/oneTeamNumber}" />
-							<span class="game_condition">${teamCount}파전</span>
-							
 							<!-- 인원 정보 -->
 							<span class="game_condition">참여인원 ${NormGameDTO.curr_people} / ${NormGameDTO.max_people}</span>
+							
+							<!-- 최소 인원 -->
+							<span class="game_condition">최소인원 ${NormGameDTO.min_people} 명</span>
 						</div>
 					</div>
 				</div>

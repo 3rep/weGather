@@ -3,7 +3,8 @@ package com.gather.we.dao;
 import java.util.List;
 
 import com.gather.we.dto.AdminDTO;
-
+import com.gather.we.dto.ManagerSettlementDTO;
+import com.gather.we.dto.RegisterDTO;
 import com.gather.we.dto.UserPayDTO;
 
 public interface AdminDAO {
@@ -11,4 +12,5 @@ public interface AdminDAO {
 	//정산 수입내역
 	public List<UserPayDTO> revenue();
 	public List<UserPayDTO> expense();
+	public int waitOk(ManagerSettlementDTO dto);
 }

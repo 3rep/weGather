@@ -19,5 +19,4 @@ public class ManagerRankGameDTO {
 	private int payment;
 	private int managerfee;
 	private int g_status;
-	private int manager;
 }

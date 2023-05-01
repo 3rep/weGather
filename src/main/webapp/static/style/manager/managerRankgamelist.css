@@ -9,7 +9,7 @@
 		
 		/* 랭크경기 리스트 */
         .rank-wrap {display:flex;flex-direction: row; margin-left: 90px;}
-        .rank-visual {margin-right:74px;margin-left:-21px;width:410px;height:783px;overflow:hidden;}
+        .rank-visual {margin-top:0px;margin-right:74px;margin-left:-21px;width:472px;height:886px;overflow:hidden; background-size: cover; background-position: center; background-repeat: no-repeat;}
         .rank-list ul {margin:0;padding:0;}
         .rank-item {position:relative;margin-bottom:57px;padding:37px 40px 30px;width:472px;min-height:170px;background-color: #F8F9FB;border:1px solid #D1D9E2;}
         .rank-list .rank-item:last-child {margin-bottom:0;}

@@ -149,7 +149,7 @@
 	<div class="game_detail_container">
 	
 		<!-- game_detail_wrap (left) -->
-		<div class="game_detail_wrap left">
+		<div class="game_new_wrap left">
 			<!-- 종목 이미지 -->
 			<img src="${path}/uploadfile/sport/${sportDTO.filename}" class="sport_img"/>
 			
@@ -202,7 +202,7 @@
 			<div class="normgame_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
-			<ul class="gamenew_detail">
+			<ul class="normgame_detail">
 				<c:forEach var="gameDTO" items="${newNormGameList}" varStatus="status">
 					<c:if test="${gameDTO.s_no == sportDTO.s_no }">
 						<li class="gamenew_info">

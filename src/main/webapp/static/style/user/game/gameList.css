@@ -101,13 +101,13 @@
 	border: 2px solid var(--color-norm-green);
 	margin: 0 16px;
 	border-radius: 10px;
+	justify-content: space-around;
 }
 
 .game_time {
 	width: 220px;
 	padding: 0 24px;
 	font-weight: var(--weight-bold);
-	margin-right: 8px;
 }
 
 .game_stadium {
