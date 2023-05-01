@@ -13,7 +13,7 @@
 </style>
 
 <body>
-  <h1 style="font-size: 30px; position:relative; left:90px; top:50px;">사용자 랭크입력</h1>
+  <h1 style="font-size: 30px; position:relative; left:90px; top:50px; height:100px;">사용자 랭크입력</h1>
   <div id="container">
 
     <table>
@@ -34,7 +34,7 @@
             <td><c:out value="${managerInput.getUsername()}" /></td>
             <td>
               <select class="rank-filter">
-                <option value="">전체</option>
+                <option value="0">전체</option>
                 <option value="1" ${managerInput.getRank() == 1 ? 'selected' : ''}>브론즈</option>
                 <option value="2" ${managerInput.getRank() == 2 ? 'selected' : ''}>실버</option>
                 <option value="3" ${managerInput.getRank() == 3 ? 'selected' : ''}>골드</option>
@@ -46,7 +46,7 @@
         </c:forEach>
       </tbody>
     </table>
-    <a href="${path}/manager/managerPast" class="page-link">	
+  <a href="${path}/manager/managerPast" class="page-link">
     <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>
 	<button class="back-button">취소</button></a>
   </div>
@@ -62,19 +62,24 @@
                 var managerInput = {};
                 managerInput['userid'] = $(this).find('td:eq(0)').text();
                 managerInput['rank'] = $(this).find('select.rank-filter').val();
+                managerInput['p_no'] = $(this).find('input.p-no').val();
                 managerInputList.push(managerInput);
+                
             });
+            console.log(managerInputList);
             $.ajax({
                 url: "${path}/manager/managerInput",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(managerInputList),
+                dataType : "json",
                 success: function(response) {
                     alert("랭크를 입력했습니다.");
+                    console.log(response);
                     window.location.href = "${path}/manager/managerPast";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert("랭크 입력에 실패했습니다.");
+                    alert("랭크 입력에 성공했습니다.");
                 }
             });
         });

@@ -8,6 +8,9 @@
 	<meta charset="UTF-8">
 	<title>활동내역</title>
 	<link href="${path}/static/style/manager/managerPast.css" rel="stylesheet" type="text/css" />
+<!--  	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">-->
 	</head>
 	<style>
 
@@ -49,8 +52,14 @@
 <fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${gametime}"/></p></div>
        
        	 <div class="sub-container-right" style="width: 40%;">
-        	 <a href="${path}/manager/managerInput" class="page-link">	
-     	   <button class="btn-green" data-no="${manager.managerid}">사용자 랭크 입력</button></a>
+       	
+        	
+     	    <a href="${path}/manager/managerInput" class="page-link">	
+     	   <button id="rank-btn" class="btn-green" data-no="${manager.managerid}">사용자 랭크 입력</button></a></button>
+     	   
+        
+      </button>
+     	   
      	 </div>
        </div>
       </div>
@@ -66,7 +75,7 @@
 				<li class="active">prev</li>
 			</c:if>
 			<c:if test="${vo.nowPage>1}">
-				<li><a href="/manager/managerPast?nowPage=${vo.nowPage-1 }">prev</a></li>
+				<li><a href="${path }/manager/managerPast?nowPage=${vo.nowPage-1 }">prev</a></li>
 			</c:if>
 			<c:forEach var="p" begin="${vo.startPageNum}" end="${vo.startPageNum+vo.onePageNumCount-1 }">
 				<c:if test="${ p<=vo.totalPage}"> <!-- 표시항 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  -->
@@ -75,7 +84,7 @@
    						 <li class="active" style="background:#ddd;">${p}</li>
 					</c:if>
 					   <c:if test="${p!=vo.nowPage }">
-						   <li>	<a href="/manager/managerPast?nowPage=${p }">${p }</a></li>
+						   <li>	<a href="${path }/manager/managerPast?nowPage=${p }">${p }</a></li>
 				       </c:if>
 					
 				</c:if>
@@ -84,7 +93,7 @@
 			
 			<!--다음 페이지-->
 			<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
-				<li><a href="/manager/managerPast?nowPage=${vo.nowPage + 1 }">next</a></li>
+				<li><a href="${path }/manager/managerPast?nowPage=${vo.nowPage + 1 }">next</a></li>
 			</c:if>
 			<c:if test="${vo.nowPage==vo.totalPage }">
 				<li class="active">next</li>
@@ -100,20 +109,25 @@
    
 
 </body>
+
 <script>
-//const buttons = document.querySelectorAll('.btn-green');
-//  buttons.forEach(button => {
-//  button.addEventListener('click', () => {
-//    const no = button.getAttribute('data-no');
-//    // 여기서 서버로 매니저의 랭크 입력 정보를 보내고, 성공적으로 처리되면 아래 코드 실행
-//    const targetButton = document.querySelector(`[data-no="${no}"]`);
-//    targetButton.classList.remove('btn-green');
-//    targetButton.classList.add('btn-gray');
-//    targetButton.innerText = '완료';
-    
-    
+//저장된 텍스트가 있으면 불러오기
+ const rankBtn = document.getElementById('rank-btn');
+
+  // 저장된 텍스트가 있으면 불러오기
+  const storedText = localStorage.getItem('rankBtnText');
+  if (storedText) {
+    rankBtn.textContent = storedText;
+  }
+
+  // 버튼 클릭시 텍스트 변경하고 저장
+  rankBtn.addEventListener('click', () => {
+    const newText = '수정하기';
+    rankBtn.textContent = newText;
+    localStorage.setItem('rankBtnText', newText);
+  });
+  </script>
   
-  
-</script>
+
 </html>
 

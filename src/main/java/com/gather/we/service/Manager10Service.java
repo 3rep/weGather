@@ -21,18 +21,25 @@ public interface Manager10Service {
 	
 	 public List<Manager10DTO> getAllEntry();
 	 
-	 public int totalRecord(ManagerPagingVO vo);
+	 public int getTotalRecordByManagerid(String managerid);
 		//해당페이지 선택
 	 public List<Manager10DTO> pageSelect(ManagerPagingVO vo);
 	 
 	 public List<Manager10DTO> getAllManager10By(String managerid);
 	 
-	 public List<Manager10DTO> getAllManagerInputByRank(String rank);
+	 public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer p_no);
 	 
+	 public List<Manager10DTO> getAllManagerInputByManagerid(String rank, Integer p_no);
+	 
+	 public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo);
 	 
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 
-	public List<Manager10DTO> updateRank(String userid, int rank);
+	
+
+	public void deleteRankGame(String managerid);
+
+	public void updateRank(String userid, int rank, Integer p_no);
 	 
 	 
 	 
