@@ -1,5 +1,8 @@
 package com.gather.we.dto;
 
+import lombok.Data;
+
+
 public class ManagerPagingVO {
 	//PagingVO-> ManagerPagingVO로 파일이름변경(devlop에도 같은 이름 파일 있어서)
 	//private static final int onePageNumCount = 0;
@@ -13,7 +16,7 @@ public class ManagerPagingVO {
 //	private int onPageNumCount=3; //한페이지 당 페이지 개수
 	private int startPageNum = 1;
 	private int onePageNumCount=10;
-	
+	private String managerid;
 	//
 	//검색에 필요한 변수들
 	
@@ -28,80 +31,97 @@ public class ManagerPagingVO {
 
 		//출력할 페이지 시작 번호. 
 		
+		
 	}
-	@Override
+
+
+@Override
 	public String toString() {
-		return "PagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord=" + totalRecord
-				+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", startPageNum=" + startPageNum
-				+ ", onePageNumCount=" + onePageNumCount + "]";
+		return "ManagerPagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord="
+				+ totalRecord + ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", startPageNum="
+				+ startPageNum + ", onePageNumCount=" + onePageNumCount + ", managerid=" + managerid + "]";
 	}
-	public void setNowPage(int nowPage) {
-		this.nowPage = nowPage;
+
+
+public void setNowPage(int nowPage) {
+	this.nowPage = nowPage;
+
+	startPageNum= ((nowPage-1)/onePageNumCount)*onePageNumCount+1;
 	
-		startPageNum= ((nowPage-1)/onePageNumCount)*onePageNumCount+1;
-		
-	}
-	public int getOnePageRecord() {
-		return onePageRecord;
-	}
-	public void setOnePageRecord(int onePageRecord) {
-		this.onePageRecord = onePageRecord;
-	}
-	public int getTotalRecord() {
-		return totalRecord;
-	}
-	public void setTotalRecord(int totalRecord) {
-		this.totalRecord = totalRecord;
-		
-		//총레코드 수를 이용하여 총페이지 수를 구하기 
-		
-		totalPage = (int)Math.ceil((double)totalRecord/onePageRecord);
-		
-		//마지막 페이지에 남아 있는 레코드 수
-		
-		lastPageRecord = onePageRecord;
-		if(nowPage==totalPage) {
-			if(totalRecord%onePageRecord==0){//나머지가 0인 경우는 lastPageRecord<- onePageRecord
-				lastPageRecord = onePageRecord;
-			}else{//나머지가 있을 경우 남아 있는 레코드수를 lastpageRecord
-				lastPageRecord = totalRecord % onePageRecord;
-			}
+}
+public int getOnePageRecord() {
+	return onePageRecord;
+}
+public void setOnePageRecord(int onePageRecord) {
+	this.onePageRecord = onePageRecord;
+}
+public int getTotalRecord() {
+	return totalRecord;
+}
+public void setTotalRecord(int totalRecord) {
+	this.totalRecord = totalRecord;
+	
+	//총레코드 수를 이용하여 총페이지 수를 구하기 
+	
+	totalPage = (int)Math.ceil((double)totalRecord/onePageRecord);
+	
+	//마지막 페이지에 남아 있는 레코드 수
+	
+	lastPageRecord = onePageRecord;
+	if(nowPage==totalPage) {
+		if(totalRecord%onePageRecord==0){//나머지가 0인 경우는 lastPageRecord<- onePageRecord
+			lastPageRecord = onePageRecord;
+		}else{//나머지가 있을 경우 남아 있는 레코드수를 lastpageRecord
+			lastPageRecord = totalRecord % onePageRecord;
 		}
 	}
-	public int getTotalPage() {
-		return totalPage;
-	}
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;	
-		
-		
-	}
-	public int getLastPageRecord() {
-		return lastPageRecord;
-	}
-	public void setLastPageRecord(int lastPageRecord) {
-		this.lastPageRecord = lastPageRecord;
-	}
-
-	public int getStartPageNum() {
-		return startPageNum;
-	}
-
-	public void setStartPageNum(int startPageNum) {
-		this.startPageNum = startPageNum;
-	}
-
-	public int getOnePageNumCount() {
-		return onePageNumCount;
-	}
-
-	public void setOnePageNumCount(int onePageNumCount) {
-		this.onePageNumCount = onePageNumCount;
-	}
-
-	
-	//검색에 필요한 변수들
-	
+}
+public int getTotalPage() {
+	return totalPage;
+}
+public void setTotalPage(int totalPage) {
+	this.totalPage = totalPage;	
 	
 	
 }
+public int getLastPageRecord() {
+	return lastPageRecord;
+}
+public void setLastPageRecord(int lastPageRecord) {
+	this.lastPageRecord = lastPageRecord;
+}
+
+public int getStartPageNum() {
+	return startPageNum;
+}
+
+public void setStartPageNum(int startPageNum) {
+	this.startPageNum = startPageNum;
+}
+
+public int getOnePageNumCount() {
+	return onePageNumCount;
+}
+
+public void setOnePageNumCount(int onePageNumCount) {
+	this.onePageNumCount = onePageNumCount;
+}
+
+
+public String getManagerid() {
+	return managerid;
+}
+
+
+public void setManagerid(String managerid) {
+	this.managerid = managerid;
+}
+
+
+//검색에 필요한 변수들
+
+
+
+}
+	
+	

@@ -10,11 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.MRankGameListCriteria;
@@ -96,23 +98,66 @@ public class ManagerPageController{
 	Manager10Service service;
 	
 	@GetMapping("/manager10")
-	public ModelAndView getManager10(ManagerPagingVO vo) {
+	public ModelAndView getManager10(ManagerPagingVO vo, HttpSession session) {
 		   
 			ModelAndView mav = new ModelAndView();
-					
-		    vo.setTotalRecord(service.totalRecord(vo));
-		  	    
+			
+			String managerid = String.valueOf(session.getAttribute("logId"));
+		    vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
+		  	vo.setManagerid(managerid);
 		    mav.addObject("managerList", service.pageSelect(vo));
+		    System.out.println("list size : "+ service.pageSelect(vo).size());
 		    mav.addObject("vo", vo);
-		    
 		    mav.setViewName("/manager/manager10");
 		    return mav;
 		}
+	
+	
+
+	@DeleteMapping("/manager10")
+	@ResponseBody
+	public  ResponseEntity<String> deleteRankGame(@RequestParam("_method") String method, @RequestParam("managerid") String managerid) {
+		System.out.println("managerid의 값은 " + managerid + "입니다.");
+		if (!method.equals("DELETE")) {
+	        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Invalid method");
+		}
+		try {
+	        service.deleteRankGame(managerid);
+	        System.out.println("Deleted manager with ID: " + managerid);
+	        return ResponseEntity.ok("ok");
+	    } catch (Exception e) {
+	        System.out.println(e.getMessage());
+	        // Exception 처리
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+	    // 삭제 후 리다이렉트
+	}
+	//	 return new  ResponseEntity<String>("success", HttpStatus.OK);
+		}
+//	@PostMapping("/manager10")
+//	@ResponseBody
+//	public ResponseEntity<String> deleteManager(@RequestBody List<Manager10DTO> manager10List) {
+//		    try {
+//	        for (Manager10DTO manager10 : manager10List) {
+//	 //           if((manager10.getManagerid() == null || manager10.getManagerid().isEmpty())){
+	    //            manager10.setManagerid(""); //초기화
+	    //        }
+//	            service.deleteRankGame(manager10.getManagerid());
+//	            System.out.println("manager10"+manager10);
+//	        }
+//	    } catch (Exception e) {
+//	        System.out.println(e.getMessage());
+//	        // Exception 처리
+//	    }
+//	    return new ResponseEntity<String>("ok", HttpStatus.OK);
+//	}
+	
+	
 		@GetMapping("/managerPast")
-		public ModelAndView getManagerPast(ManagerPagingVO vo) {
+		public ModelAndView getManagerPast(ManagerPagingVO vo, HttpSession session) {
 			ModelAndView mav = new ModelAndView();
-			vo.setTotalRecord(service.totalRecord(vo));
-		  
+			String managerid = String.valueOf(session.getAttribute("logId"));
+			vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
+			vo.setManagerid(managerid);
 		    mav.addObject("managerList", service.pageSelect(vo));
 		    mav.addObject("vo", vo);
 		    mav.setViewName("/manager/managerPast");
@@ -121,11 +166,15 @@ public class ManagerPageController{
 
 		
 		 @GetMapping("/managerInput")
-		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank) {
+		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank,
+				 								 @RequestParam(value = "p_no", required = false) Integer p_no,
+				 								 HttpSession session) {
 		     ModelAndView mav = new ModelAndView();
+		     String managerid = String.valueOf(session.getAttribute("logId"));
+							   
 		     List<Manager10DTO> managerInputList;
 		     if (rank != null) {
-		         managerInputList = service.getAllManagerInputByRank(rank);
+		         managerInputList = service.getAllManagerInputByManagerid(rank, p_no);
 		     } else {
 		         managerInputList = service.getAllManagerInput();
 		     }
@@ -135,21 +184,17 @@ public class ManagerPageController{
 		 }
 		
 		 @PostMapping("/managerInput")
-		 public ModelAndView submitRank(@RequestBody List<Manager10DTO> managerInputList) {
-		     ModelAndView mav = new ModelAndView();
+		 @ResponseBody
+		 public ResponseEntity<String> submitRank(@RequestBody List<Manager10DTO> managerInputList) {		    
 		     try {
 		         for (Manager10DTO managerInput : managerInputList) {
-		             service.updateRank(managerInput.getUserid(), managerInput.getRank());
+		             service.updateRank(managerInput.getUserid(), managerInput.getRank(), managerInput.getP_no());
 		         }
-		         mav.setViewName("redirect:/managerPast");
-		     } catch (NumberFormatException | JsonSyntaxException e) {
-		         mav.addObject("error", "Invalid input format");
-		         mav.setViewName("errorPage");
-		     } catch (Exception e) {
-		         mav.addObject("error", "An error occurred while processing your request");
-		         mav.setViewName("errorPage");
+		     }  catch (Exception e) {
+//		    	 System.out.println(e.getMessage());
+//		         System.out.println("manager rank input fail");
 		     }
-		     return mav;
+		     return new ResponseEntity<String>("ok", HttpStatus.OK);
 		 }
 		
 		 

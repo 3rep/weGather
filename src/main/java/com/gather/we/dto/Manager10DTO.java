@@ -12,7 +12,7 @@ public class Manager10DTO {
 	    private String id;
 	    private String username;
 	    private String gender;
-	    private int rank;
+	    private Integer rank;
 	    private int s_no;
 	    private String userid;
 	    private int tel;
@@ -20,20 +20,20 @@ public class Manager10DTO {
 	   
 		private String rankFilter;
 	   
+	    private int p_no;
 	    
 	    
 	    
 	    
 	    
 	    
-	    
+		
 		@Override
 		public String toString() {
 			return "Manager10DTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
-					+ ", g_status=" + g_status + ", manager=" + manager + ", id=" + id
+					+ ", g_status=" + g_status + ", managerid=" + managerid + ", manager=" + manager + ", id=" + id
 					+ ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
-					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", managerid=" + managerid
-					+ "]";
+					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", p_no=" + p_no + "]";
 		}
 		public String getStadium() {
 			return stadium;
@@ -84,10 +84,10 @@ public class Manager10DTO {
 		public void setGender(String gender) {
 			this.gender = gender;
 		}
-		public int getRank() {
+		public Integer getRank() {
 			return rank;
 		}
-		public void setRank(int rank) {
+		public void setRank(Integer rank) {
 			this.rank = rank;
 		}
 		public int getS_no() {
@@ -119,6 +119,12 @@ public class Manager10DTO {
 		}
 		public void setManagerid(String managerid) {
 			this.managerid = managerid;
+		}
+		public int getP_no() {
+			return p_no;
+		}
+		public void setP_no(int p_no) {
+			this.p_no = p_no;
 		}
 	    
 	    

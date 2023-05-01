@@ -11,7 +11,7 @@
 	 .box1{
 		position: relative;
 		top:120px;
-		left:-210px;
+		left:-180px;
 		font-size:15px;
 		width: 200px;
 		}
@@ -27,7 +27,7 @@
   align-items: center; 
   font-family: Arial, sans-serif;
   position: relative;
-  right: 420px;
+  right: 360px;
   width:720px;
   top:200px;
 }
@@ -42,7 +42,7 @@
   max-width: 2000px; /* 컨테이너 너비를 최대 1200px까지 제한 */
   position: relative;
   top:130px;
-  right: 420px;
+  right: 360px;
   width: 700px;
   display: flex; /* 세로 정렬을 위해 추가 */
   flex-direction: column; /* 세로 정렬을 위해 추가 */
