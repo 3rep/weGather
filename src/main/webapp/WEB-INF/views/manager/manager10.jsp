@@ -45,11 +45,9 @@
                             <c:if test="${manager.g_status == 0}">
                                 <button class="green" style="width: 90px;">승인대기</button>
                                 
-                                <form id="delete" action="${path}/manager/manager10" method="post">
-  								<input type="hidden" name="_method" value="delete">
-  								<button type="submit" class="red" style="width: 90px;">취소신청</button>
-									</form> 
-                            
+                              <form id="post" action="${path}/manager/manager10" method="POST">
+    				<button type="submit" class="red" style="width: 90px;">취소신청</button>
+						</form>
                           	 
                             
                             </c:if>
@@ -116,26 +114,27 @@ $(document).on('click', '.red', function() {
 	
 	
 document.getElementById('delete').addEventListener('submit', function(e) {
-    e.preventDefault(); // 기존에 정의된 submit 기능을 막습니다.
-    
-    // ajax 요청을 보냅니다.
-    var xhr = new XMLHttpRequest();
-    xhr.open('DELETE', '${path}/manager/manager10?managerid=' + encodeURIComponent(session.getAttribute("logId")));
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-      if (xhr.status === 200) { // 성공적으로 응답 받았을 때
-        console.log(xhr.responseText); // 서버로부터 받은 응답을 출력합니다.
-        location.reload(); // 페이지를 새로고침합니다.
-      } else { // 에러 발생시
-        console.error(xhr.statusText);
-      }
-    };
-    xhr.onerror = function() { // 에러 발생시
-      console.error(xhr.statusText);
-    };
-    xhr.send(); // 요청을 보냅니다.
-  });
+	  e.preventDefault(); // 기존에 정의된 submit 기능을 막습니다.
 
+	  var form = new FormData(this);
+	  form.append('managerid', session.getAttribute('logId'));
+
+	  // ajax 요청을 보냅니다.
+	  var xhr = new XMLHttpRequest();
+	  xhr.open('POST', '${path}/manager/manager10');
+	  xhr.onload = function() {
+	    if (xhr.status === 200) { // 성공적으로 응답 받았을 때
+	      console.log(xhr.responseText); // 서버로부터 받은 응답을 출력합니다.
+	      location.reload(); // 페이지를 새로고침합니다.
+	    } else { // 에러 발생시
+	      console.error(xhr.statusText);
+	    }
+	  };
+	  xhr.onerror = function() { // 에러 발생시
+	    console.error(xhr.statusText);
+	  };
+	  xhr.send(form); // 요청을 보냅니다.
+	});
 
 //function deleteRankGame(managerid) {
 //    if (confirm('취소하겠습니까?')) {

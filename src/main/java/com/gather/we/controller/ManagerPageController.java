@@ -114,7 +114,7 @@ public class ManagerPageController{
 	
 	
 
-	@DeleteMapping("/manager10")
+	@PostMapping("/manager10")
 	@ResponseBody
 	public  ResponseEntity<String> deleteRankGame(@RequestParam("_method") String method, @RequestParam("managerid") String managerid) {
 		System.out.println("managerid의 값은 " + managerid + "입니다.");
