@@ -11,17 +11,19 @@ import com.gather.we.dto.RankBoardPageDTO;
 import com.gather.we.service.RankBoardService;
 
 @Controller
-@RequestMapping("/user/rankBoard/*")
+@RequestMapping("/rankBoard")
 public class RankBoardController {
 	
 	@Autowired
 	private RankBoardService service;
 	
-	@GetMapping("/rankBoard")
-	public void rankBoard(RankBoardCriteria criteria,Model model) {
+	@GetMapping
+	public String rankBoard(RankBoardCriteria criteria,Model model) {
 		model.addAttribute("ranklist", service.getUserRankList(criteria));
 		int total = service.getTotalCount(criteria);
 		model.addAttribute("pageMaker", new RankBoardPageDTO(criteria,total));
+		
+		return "user/rankBoard/rankBoard";
 	}
 	
 }
