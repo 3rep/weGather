@@ -13,7 +13,7 @@
 </style>
 
 <body>
-  <h1 style="font-size: 30px; position:relative; left:90px; top:50px;">사용자 랭크입력</h1>
+  <h1 style="font-size: 30px; position:relative; left:90px; top:50px; height:100px;">사용자 랭크입력</h1>
   <div id="container">
 
     <table>

@@ -20,6 +20,11 @@
      WHERE rank_game.managerid = #{managerid}
 </select>
 
+<delete id="deleteRankGame">
+    DELETE FROM rank_game
+    WHERE managerid = #{param1}
+</delete>
+
 <select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
 	  select * from 
  			(select * from 

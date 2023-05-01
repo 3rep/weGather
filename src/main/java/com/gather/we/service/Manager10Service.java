@@ -33,6 +33,8 @@ public interface Manager10Service {
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 
 	public void updateRank(String userid, int rank);
+
+	public void deleteRankGame(String managerid);
 	 
 	 
 	 

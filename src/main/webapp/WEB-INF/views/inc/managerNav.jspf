@@ -65,7 +65,7 @@
 					</a>
 				</li>
 				<li class="page">
-					<a href="${path }/manager/managerPast" class="page-link">	
+					<a href="${path}/manager/managerPast" class="page-link">	
 						<img src="${path}/static/img/manager/circle.png" alt="circle" class="circle"/>
 						<span class="menu-title">이전 경기내역</span>
 					</a>

@@ -7,10 +7,12 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +36,7 @@ import com.google.gson.JsonSyntaxException;
 
 @Controller
 @RequestMapping("/manager/*")
+
 public class ManagerPageController{
 	@Autowired
 	ManagerRankGameListService rankGameListService;
@@ -104,6 +107,41 @@ public class ManagerPageController{
 		    mav.setViewName("/manager/manager10");
 		    return mav;
 		}
+	
+	
+//	@PostMapping("/manager10")
+//	@ResponseBody
+//	public ResponseEntity<String> deleteManager(@RequestBody List<Manager10DTO> manager10List) {
+//		    try {
+//	        for (Manager10DTO manager10 : manager10List) {
+//	 //           if((manager10.getManagerid() == null || manager10.getManagerid().isEmpty())){
+	    //            manager10.setManagerid(""); //초기화
+	    //        }
+//	            service.deleteRankGame(manager10.getManagerid());
+//	            System.out.println("manager10"+manager10);
+//	        }
+//	    } catch (Exception e) {
+//	        System.out.println(e.getMessage());
+//	        // Exception 처리
+//	    }
+//	    return new ResponseEntity<String>("ok", HttpStatus.OK);
+//	}
+	@PostMapping("/manager10")
+	@ResponseBody
+	public  ResponseEntity<String> deleteRankGame(@RequestParam("deleteRankGame") String managerid) {
+	    try {
+	        service.deleteRankGame(managerid);
+	        System.out.println("Deleted manager with ID: " + managerid);
+	    } catch (Exception e) {
+	        System.out.println(e.getMessage());
+	        // Exception 처리
+	    }
+	    return new  ResponseEntity<String>("ok", HttpStatus.OK); // 삭제 후 리다이렉트
+	}
+	
+	
+	
+	
 		@GetMapping("/managerPast")
 		public ModelAndView getManagerPast(ManagerPagingVO vo, HttpSession session) {
 			ModelAndView mav = new ModelAndView();

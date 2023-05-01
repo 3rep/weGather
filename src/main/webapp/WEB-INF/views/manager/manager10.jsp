@@ -15,7 +15,7 @@
 </style>
 </head>
  <body>
-  	<h1 style="font-size: 30px; position:relative; left:90px; top:50px;">신청한 경기 내역</h1>
+  	<h1 style="font-size: 30px; position:relative; left:90px; top:50px; height:150px;">신청한 경기 내역</h1>
   		
   		 <div class= "box1">
   		 
@@ -44,7 +44,8 @@
                         <div class="sub-box"> 
                             <c:if test="${manager.g_status == 0}">
                                 <button class="green" style="width: 90px;">승인대기</button>
-                                <button onclick="deleteManager()" class="red" style="width: 90px;">취소신청</button>
+                                
+                                <button onclick="deleteRankGame('${manager.managerid}')" class="red" style="width: 90px;">취소신청</button>
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
                                 <a href="${path}/manager/entry" class="page-link" style="display: flex; flex-direction: column;">
@@ -103,16 +104,28 @@
 <script>
 
 
-
-
-  function deleteManager() {
-    if (confirm("취소하시겠습니까?")) {
-      alert("취소되었습니다.");
-      // 여기에 취소 처리를 위한 로직을 추가할 수 있습니다.
+function deleteRankGame(managerid) {
+    if (confirm('취소하겠습니까?')) {
+        $.ajax({
+            url: '${path}/manager/manager10',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({deleteRankGame: managerid}),
+            dataType : "json",
+            success: function(response) {
+            	console.log(response);
+                const box = document.querySelector(`.box1 #box-${managerid}`);
+                if (box) {  // 요소가 존재하는 경우에만 parentElement를 참조하도록 수정
+                    box.parentElement.removeChild(box);
+                    alert('취소되었습니다.');
+                }
+            },
+            error: function() {
+                alert('요청 처리에 실패하였습니다.');
+            }
+        });
     }
-  }
-  
-  
+}
   
 </script>
  

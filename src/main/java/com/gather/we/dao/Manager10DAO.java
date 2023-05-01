@@ -31,6 +31,7 @@ public interface Manager10DAO {
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 	
 	 public void updateRank(String userid, int rank);
-
+	 
+	 public void deleteRankGame(String managerid);
 	
 	}

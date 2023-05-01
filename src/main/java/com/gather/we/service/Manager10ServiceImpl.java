@@ -127,6 +127,17 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 
+	@Override
+	public void deleteRankGame(String managerid) {
+		
+		 dao.deleteRankGame(managerid);
+		
+	}
+
+
+
+
+
 	
 
 
