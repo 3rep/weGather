@@ -9,6 +9,7 @@ import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
+import com.gather.we.dto.PagingVO;
 
 @Service
 public interface MypageService {
@@ -19,7 +20,9 @@ public interface MypageService {
 	
 	//applyList 페이지에 필요한 메소드
 	//모든 경기(랭크+일반)
-	public List<MypageApplyListDTO> allgameList(String userid);
+	public List<MypageApplyListDTO> allgameList(String userid, PagingVO vo);
+	// 랭크+일반 총레코드수
+	public int allTotalRecord(String userid, PagingVO vo);
 	//랭크전
 	public List<MypageApplyListDTO> rankgameList(String userid); 
 	//일반전

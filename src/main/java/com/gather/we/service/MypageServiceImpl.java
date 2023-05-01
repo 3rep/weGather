@@ -11,6 +11,7 @@ import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
+import com.gather.we.dto.PagingVO;
 
 @Service
 public class MypageServiceImpl implements MypageService {
@@ -29,8 +30,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public List<MypageApplyListDTO> allgameList(String userid) {
-		return dao.allgameList(userid);
+	public List<MypageApplyListDTO> allgameList(String userid, PagingVO vo) {
+		return dao.allgameList(userid, vo);
 	}
 	
 	@Override
@@ -61,6 +62,11 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public int infoEdit(MypageUserDTO dto) {
 		return dao.infoEdit(dto);
+	}
+
+	@Override
+	public int allTotalRecord(String userid, PagingVO vo) {
+		return dao.allTotalRecord(userid, vo);
 	}
 
 

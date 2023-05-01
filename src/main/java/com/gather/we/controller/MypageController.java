@@ -27,6 +27,7 @@ import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.service.MypageService;
 
 
@@ -37,18 +38,23 @@ public class MypageController {
 	MypageService service;
 
 	@GetMapping("/mypage/applyList") 
-	public ModelAndView applyList(HttpSession session) {
+	public ModelAndView applyList(HttpSession session, PagingVO vo) {
 		
 		ModelAndView mav = new ModelAndView();
 		
 		//userid�� logId���� Ȯ��
 		String logId = (String)session.getAttribute("logId");
 		
-		List<MypageApplyListDTO> list = service.allgameList(logId);
+		vo.setTotalRecord(service.allTotalRecord(logId, vo));
+		vo.setOnePageRecord(3);
+		vo.setOnePageNumCount(5);
+		
+		List<MypageApplyListDTO> list = service.allgameList(logId, vo);
 		Date now = new Date();
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/applyList");		
 			
 		return mav;
