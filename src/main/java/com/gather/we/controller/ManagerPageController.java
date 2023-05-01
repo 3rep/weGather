@@ -76,13 +76,17 @@ public class ManagerPageController{
 	
 	//매니저 정산 내역
 	@GetMapping("/settlement")
-	public void settlement(HttpSession session, Model model, MSettlementCriteria mscriteria) {
-		String logId = (String)session.getAttribute("logId");
-		model.addAttribute("settlement", mSettlementService.mSettlementAllSelect(mscriteria,logId));
-		int total = mSettlementService.getTotalCount(mscriteria,logId);
-		model.addAttribute("pageMaker", new MSettlementPageDTO(mscriteria, total));
-		model.addAttribute("completedamount", mSettlementService.getTotalCompletedAmount(logId));
-		model.addAttribute("inprogressamount", mSettlementService.getTotalInprogressAmount(logId));
+	public void settlement(HttpSession session, Model model, MSettlementCriteria mscriteria){
+		try {
+			String logId = (String)session.getAttribute("logId");
+			model.addAttribute("settlement", mSettlementService.mSettlementAllSelect(mscriteria,logId));
+			int total = mSettlementService.getTotalCount(mscriteria,logId);
+			model.addAttribute("pageMaker", new MSettlementPageDTO(mscriteria, total));
+			model.addAttribute("completedamount", mSettlementService.getTotalCompletedAmount(logId));
+			model.addAttribute("inprogressamount", mSettlementService.getTotalInprogressAmount(logId));
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	//매니저 로그아웃
