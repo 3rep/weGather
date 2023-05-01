@@ -129,7 +129,7 @@
 
 /* 첫번째div : 로그인, 회원가입창 */
 .main-container #cloudy{
-    background-color: rgba(0, 0, 0, 30%); /*검정색 투명도30%*/
+    background-color: rgba(0, 0, 0, 50%); /*검정색 투명도30%*/
     z-index: 1;
     position: absolute;
     display: flex;
@@ -141,7 +141,7 @@
 }
 
 .main-container .login{
-	background-color: rgba(255, 255, 255, 10%);/*흰색 투명도30%*/
+	/* background-color: rgba(255, 255, 255, 10%); *//*흰색 투명도30%*/
     border-radius: 60px;
     padding: 10px 55px 20px 55px;
     position: relative;

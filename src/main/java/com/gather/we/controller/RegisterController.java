@@ -101,13 +101,13 @@ public class RegisterController {
 			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
-      
+			
 			if(dtoadmin!=null) {
-        session.setAttribute("logId", dtoadmin.getAdminid());
-        session.setAttribute("logName", dtoadmin.getAdmin_name());
-        session.setAttribute("logStatus", "Y");
-        session.setAttribute("adminlogStatus", "Y");
-			  mav.setViewName("redirect:/admin/userList");
+				session.setAttribute("logId", dtoadmin.getAdminid());
+				session.setAttribute("logName", dtoadmin.getAdmin_name());
+				session.setAttribute("logStatus", "Y");
+				session.setAttribute("adminlogStatus", "Y");
+				mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
 				//System.out.println("로그인 실패");
 				mav.addObject("msg", "로그인에 실패하였습니다.");
