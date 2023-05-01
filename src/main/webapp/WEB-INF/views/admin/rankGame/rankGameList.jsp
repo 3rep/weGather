@@ -65,7 +65,6 @@
 		</c:if>
 	</ul>
 	</div>
-	
 	<a href="${path}/admin/game/new" class="btn-black new-game">경기 등록</a>
 </div>
 </body>
