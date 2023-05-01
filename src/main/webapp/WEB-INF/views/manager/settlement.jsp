@@ -65,11 +65,9 @@
 				     	 <th>금액</th>
 					</tr>
 				</thead>
-				<!-- 매니저로그인 합치면, mapper에 where절 매니저아이디 추가 -->
 				<c:forEach var="settlement" items="${settlement }" varStatus="status">
 					<tbody>
 						    <tr>
-						      <!--<td>${status.count }</td>-->
 						      <td id="td-num">${(pageMaker.mscriteria.pageNum-1) * pageMaker.mscriteria.amount + status.count }</td>
 						      <td>${settlement.stadium }</td>
 						      <td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${settlement.gametime }"/></td>
