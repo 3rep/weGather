@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
-	function setUserid(id){
+	function setManagerid(id){
 		//회원가입 폼에 체크한 아이디를 표기
 		opener.document.getElementById("managerid").value=id;
 		opener.document.getElementById("idStatus").value ="Y";
@@ -18,7 +18,7 @@
 	<div>
 		<!-- 사용가능한 경우 -->
 		<c:if test="${result==0}">
-			<b>${userid}</b>는 사용가능한 아이디입니다.
+			<b>${managerid}</b>는 사용가능한 아이디입니다.
 			<input type="button" value="사용하기" onclick="setManagerid('${managerid}')"/>
 		</c:if>
 		

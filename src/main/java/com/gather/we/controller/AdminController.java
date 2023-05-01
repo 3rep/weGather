@@ -44,6 +44,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 import com.gather.we.dto.ManagerDTO;
+import com.gather.we.dto.ManagerSettlementDTO;
 import com.gather.we.dto.NormGameDTO;
 import com.gather.we.dto.NormGameDetailDTO;
 import com.gather.we.dto.RankGameDTO;
@@ -186,6 +187,22 @@ public class AdminController {
 			
 			return mav;
 		}
+	// (관리자) 매니저 결제 승인
+	@PostMapping("/waitOk")
+	public ModelAndView waitOk(ManagerSettlementDTO dto) {
+		System.out.println(dto.toString());
+		ModelAndView mav = new ModelAndView();
+		int cnt = service.waitOk(dto);
+		if(cnt>0) {
+			mav.setViewName("redirect:admin/expense");
+		}else {
+			mav.addObject("msg", "회원정보수정 실패하였습니다.");
+			mav.setViewName("redirect:admin/expense");
+		}
+
+		return mav;
+	}
+	
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
 	public ModelAndView sportList() {

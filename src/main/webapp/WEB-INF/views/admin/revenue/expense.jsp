@@ -19,7 +19,15 @@
 				<li>${m_settlement.datetime}</li>
 				<li>${m_settlement.d_status}</li>
 				<li>${m_settlement.amount}</li>
-		
+				<form method=post action="waitOk"id="m_settleForm">
+				<c:if test="${m_settlement.d_status==0}">
+					<input type="submit" value="결제대기" id="wait"/>
+					<input type="hidden" value="${m_settlement.managerid}" name="managerid"/>
+				</c:if>
+				<c:if test="${m_settlement.d_status==1}">
+					<li>결제완료</li>
+				</c:if>
+				</form>
 			</c:forEach>
 		</ul>
 	</div>

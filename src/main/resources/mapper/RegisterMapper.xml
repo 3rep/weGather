@@ -19,7 +19,7 @@
  		order by signupdate desc
  	</select>
 	<select id="registerEdit" resultType="com.gather.we.dto.RegisterDTO">
-		select userid, type, username,rank, password, email, tel, address, gender, mbti from users
+		select userid, type, username, password, email, tel, address, gender, mbti from users
 		where userid=#{param1}
 	</select>
 	<update id="registerEditOk">
