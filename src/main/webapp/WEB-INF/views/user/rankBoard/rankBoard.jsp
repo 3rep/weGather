@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-GsWP7a9Kj6EuHYsXsLK9TC6Z9gGnU6ZL2/KuZrHdPYojIuBm+qn8XoPmOf4NMWPG" crossorigin="anonymous"></script>
 <script>	
 	$(function(){
@@ -71,16 +72,16 @@
 	.pagination li.active a {color:white;}
 	.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}	
 
-/*비디오*/
-	.video-box{width:100%; height:230px; overflow:hidden; margin:0px; position:relative;opacity: 0.8;}
-	video{width:100%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+/*이미지*/
+	.img-box{width:100%; height:230px; overflow:hidden; margin:0px; position:relative;}
+	.img-box img{width:100%; position:absolute; top:40%; left:50%; transform:translate(-50%,-50%);opacity: 0.8;}
+	.rankboard_title{position:absolute; z-index:1;top:19%; left:43%;font-size:var(--font-large);font-weight:var(--weight-bold); color:white;}
 </style>
 </head>
 <body>
-	<div class="video-box">
-			<video muted autoplay loop>
-				<source type="video/mp4" src="${path}/static/video/rankBoard/rankboard.mp4">
-			</video>
+	<div class="img-box">
+		<img alt="rankboard" src="${path}/static/img/rankBoard/field.jpg"/>
+		<span class="rankboard_title">랭크보드</span>		
 	</div>
 	<div id="rankboard-container">
 		<div class="search_wrap">
