@@ -115,6 +115,55 @@
 							text: ""
 						}
 				});
+	    	
+	    	/* bar chart */
+	    	var age_labels = [];
+	    	var age_data = [];
+	    	var sport_labels = [];
+	    	var s = {};
+	    	
+	    	<c:forEach items="${ageGroup}" var="age">
+	    		age_labels.push("${age}");
+			</c:forEach>
+			
+			<c:forEach items="${sportnameList}" var="sportname">
+				sport_labels.push("${sportname}");
+				s["${sportname}"] = [];
+				
+			</c:forEach>
+			
+			<c:forEach items="${ageStatistics}" var="statistics">
+				<c:forEach items="${statistics}" var="sport" varStatus="status">
+					s["${sport.sportname}"].push("${sport.sport_ratio}");
+				</c:forEach>
+			</c:forEach>
+			
+			let index = 0;
+			for(var sportname of sport_labels) {
+				const data = {
+						label: sportname,
+	                    data: s[sportname],
+	                    backgroundColor: colorList[index],
+	                    borderColor: '#CBCE91',
+	                    borderWidth: 1
+						}
+				age_data.push(data);
+				index++;
+			}
+			
+	    	
+	    	let ageChart= $('#ageChart');
+	    	
+	        const myChart = new Chart(ageChart, {
+	        type: 'bar',
+	        data:{
+	            labels: age_labels,
+	            datasets: age_data
+	        },
+	        options:{
+	                    maintainAspectRatio :false,//그래프의 비율 유지
+	                }
+	        });
 
 	});
 </script>
@@ -139,6 +188,6 @@
 			<canvas id="mChart" width="350px" height="350px"></canvas>
 			<canvas id="wChart" width="350px" height="350px"></canvas>
 		</div>
-		<div></div>
+		<div class="age_result"><canvas id="ageChart"></canvas></div>
 	</div>
 </div>

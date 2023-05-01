@@ -1,5 +1,6 @@
 package com.gather.we.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,12 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.RecommendDTO;
 import com.gather.we.service.RecommendService;
+import com.gather.we.service.SportService;
 
 @RestController
 public class RecommendController {
 	
 	@Autowired
-	RecommendService service;
+	RecommendService recommendService;
+	
+	@Autowired
+	SportService sportService;
 	
 	@GetMapping("/recommend/mbti")
 	public ModelAndView recommendByMbti(HttpSession session) {
@@ -26,7 +31,7 @@ public class RecommendController {
 		String userid = (String)session.getAttribute("logId");
 		
 		if(userid!=null) {			
-			String userMbti = service.userMbtiSelect(userid);
+			String userMbti = recommendService.userMbtiSelect(userid);
 			mav.addObject("userMbti", userMbti);
 		}
 		
@@ -36,7 +41,7 @@ public class RecommendController {
 		HashMap<String, List<RecommendDTO>> mbtiStatistics = new HashMap<>();
 		
 		for(String mbtiType: mbtiList) {
-			List<RecommendDTO> statisticsResult = service.sportStatisticsSelect(mbtiType);
+			List<RecommendDTO> statisticsResult = recommendService.sportStatisticsSelect(mbtiType);
 			mbtiStatistics.put(mbtiType, statisticsResult);
 		}
 			
@@ -51,9 +56,24 @@ public class RecommendController {
 	public ModelAndView recommendByGender() {
 		ModelAndView mav = new ModelAndView();
 		
-		List<RecommendDTO> manStatistics = service.genderStatisticsSelect("남성");
-		List<RecommendDTO> womanStatistics = service.genderStatisticsSelect("여성");
+		List<String> sportnameList = sportService.sortedSportnameSelect();
 		
+		String[] ageGroup = {"10대", "20대", "30대", "40대", "50대", "60대 이상"};
+	
+		List<List<RecommendDTO>> ageStatistics = new ArrayList<>();
+		
+		for(String age: ageGroup) {
+			List<RecommendDTO> statisticsResult = recommendService.ageStatisticsSelect(age);
+			ageStatistics.add(statisticsResult);
+		}
+		System.out.println(ageStatistics);
+		
+		List<RecommendDTO> manStatistics = recommendService.genderStatisticsSelect("남성");
+		List<RecommendDTO> womanStatistics = recommendService.genderStatisticsSelect("여성");
+		
+		mav.addObject("sportnameList", sportnameList);
+		mav.addObject("ageGroup", ageGroup);
+		mav.addObject("ageStatistics", ageStatistics);
 		mav.addObject("manStatistics", manStatistics);
 		mav.addObject("womanStatistics", womanStatistics);
 		mav.setViewName("user/recommend/recommendUserInfo");

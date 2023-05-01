@@ -29,4 +29,9 @@ public class RecommendServiceImpl implements RecommendService {
 		return dao.userMbtiSelect(userid);
 	}
 
+	@Override
+	public List<RecommendDTO> ageStatisticsSelect(String age) {
+		return dao.ageStatisticsSelect(age);
+	}
+
 }

@@ -43,3 +43,9 @@
 	padding: 40px;
 }
 
+#recommend_container .age_result {
+	width: 900px;
+	height: 400px;
+	margin-top: 50px;
+	margin-bottom: 20px;
+}

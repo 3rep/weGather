@@ -11,4 +11,6 @@ public interface RecommendService {
 	public List<RecommendDTO> genderStatisticsSelect(String gender);
 	// 사용자 mbti 선택
 	public String userMbtiSelect(String userid);
+	// 나이별 스포츠 통계 선택
+	public List<RecommendDTO> ageStatisticsSelect(String age);
 }
