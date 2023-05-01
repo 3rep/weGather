@@ -1,5 +1,7 @@
 package com.gather.we.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,13 +40,12 @@ public class UserPayController {
 	@Autowired
 	ParticipateService participateService;
 	
-	// 로그인기능 완료되면 세션에서 받아오는걸로 수정
-	String userid = "man2";
-	
 	// 결제페이지
 	@GetMapping("/payment")
-	public ModelAndView makePayment(int no, String gametype) {
+	public ModelAndView makePayment(int no, String gametype, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		String userid = (String)session.getAttribute("logId");
 		
 		if(gametype.equals("rankgame")) {
 			RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
@@ -65,7 +66,10 @@ public class UserPayController {
 	
 	// 결제(DB)
 	@PostMapping("/paymentOk")
-	public String makePaymentOk(int no, String gametype, String payment_no, String payer_name, int paid_amount, int paid_at, String success) {
+	public String makePaymentOk(int no, String gametype, String payment_no, String payer_name, int paid_amount, 
+			int paid_at, String success, HttpSession session) {
+		
+		String userid = (String)session.getAttribute("logId");
 		
 		try {
 			UserPayDTO userPayDTO = new UserPayDTO();
