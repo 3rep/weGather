@@ -126,6 +126,19 @@ public class ManagerController {
 		}
 		return mav;
 	}
+	//아이디 중복검사 폼
+	@GetMapping("/idCheckMan")
+	public String idCheck(String managerid, Model model) {
+		//조회
+		//아이디 갯수 구하기 - 0,1
+		int result = service.idCheckCount(managerid);
+		
+		//뷰에서 사용하기 위해서 모델에 세팅
+		model.addAttribute("managerid", managerid);
+		model.addAttribute("result", result);
+		
+		return "manager/idCheck";
+	}
 		// ��ε�� ���� ���
 		public void fileDelete(String path, String filename) {
 			File f = new File(path, filename);
@@ -154,7 +167,7 @@ public class ManagerController {
 				session.setAttribute("logName", dto.getM_name());
 				session.setAttribute("logS_no", dto.getS_no());
 				session.setAttribute("logStatus", "Y");
-
+				System.out.println(dto);
 				mav.setViewName("redirect:/manager/rankgamelist");
 			}else{//로그인 실패
 				mav.setViewName("redirect:loginMan");

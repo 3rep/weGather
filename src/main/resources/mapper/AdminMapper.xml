@@ -14,4 +14,7 @@
  	<select id="expense" resultType="com.gather.we.dto.ManagerSettlementDTO">
  		select no, managerid, to_char(datetime, 'YYYY-MM-DD')datetime, d_status, amount from m_settlement
  	</select>
+ 	<update id="waitOk">
+		update m_settlement set d_status=1 where managerid=#{managerid}
+	</update>
 </mapper>
