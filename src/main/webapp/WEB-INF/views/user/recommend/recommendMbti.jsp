@@ -7,10 +7,10 @@
 
         if(logId=="null"){ 
         	$(".recommend_user.non_login").addClass("active");
-        	$(".recommend_content.non_login").addClass("active");
+        	$(".recommend_content_mbti.non_login").addClass("active");
         } else {
         	$(".recommend_user.login").addClass("active");
-        	$(".recommend_content.login").addClass("active");
+        	$(".recommend_content_mbti.login").addClass("active");
         }
 
         
@@ -73,9 +73,9 @@
 	<div class="title-filter-wrap">
 		<h3>맞춤형 스포츠 추천</h3>
 		<button onclick="location.href='/recommend/mbti'" class="filter active">MBTI</button>
-		<button onclick="location.href='/recommend/gender'" class="filter">나이/성별</button>
+		<button onclick="location.href='/recommend/userinfo'" class="filter">나이/성별</button>
 	</div>
-	<div class="recommend_content non_login">
+	<div class="recommend_content_mbti non_login">
 		<div class="mbti_result">
 			<c:set var="defaultResult" value="${mbtiStatistics.get('ISTP')}" />
 			<div class="mbti">ISTP</div>
@@ -86,7 +86,7 @@
 		</div>
 		<div class="login-message"><a href="/login">로그인</a>하시면 모든 MBTI의 추천 결과를 한눈에 볼 수 있습니다</div>
 	</div>
-	<div class="recommend_content login">
+	<div class="recommend_content_mbti login">
 		<ul class="mbti_list">
 			<c:forEach var="mbtiType" items="${mbtiList}">
 				<li class="mbti_item <c:if test="${mbtiType==userMbti}">active</c:if>">

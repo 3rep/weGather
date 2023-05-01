@@ -122,7 +122,7 @@
 	<div class="title-filter-wrap">
 		<h2>맞춤형 스포츠 추천</h2>
 		<button onclick="location.href='/recommend/mbti'">MBTI</button>
-		<button onclick="location.href='/recommend/gender'">나이/성별</button>
+		<button onclick="location.href='/recommend/userinfo'">나이/성별</button>
 	</div>
 	<div class="">
 		<div class="age_gender_result">

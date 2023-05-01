@@ -47,7 +47,7 @@ public class RecommendController {
 		return mav;
 	}
 	
-	@GetMapping("/recommend/gender")
+	@GetMapping("/recommend/userinfo")
 	public ModelAndView recommendByGender() {
 		ModelAndView mav = new ModelAndView();
 		
@@ -56,7 +56,7 @@ public class RecommendController {
 		
 		mav.addObject("manStatistics", manStatistics);
 		mav.addObject("womanStatistics", womanStatistics);
-		mav.setViewName("user/recommend/recommendGender");
+		mav.setViewName("user/recommend/recommendUserInfo");
 		
 		return mav;
 	}

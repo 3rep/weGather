@@ -37,7 +37,9 @@
 <link rel="stylesheet" href="${path}/static/style/user/payment/payment.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/payment/paymentDone.css" type="text/css" />
 
-<link rel="stylesheet" href="${path}/static/style/user/recommend/recommend.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendCommon.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendMbti.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendUserInfo.css" type="text/css" />
 
 
 

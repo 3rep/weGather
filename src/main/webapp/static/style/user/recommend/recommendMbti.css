@@ -1,122 +1,24 @@
 @charset "UTF-8";
 
-
-#recommend_header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	height: 170px;
-	background: url("/static/img/recommend/recommend_header.jpg") no-repeat 50% 35% / cover;
-}
-
-#recommend_header:after { /* 헤더 사진 위에 약간 어두운 색을 덧씌워 header_title 글자가 더 잘 보이도록 함 */
-	display: block;
-	width: 100%;
-	height: 170px;
-	content: '';
-	background-color: var(--color-black);
-	opacity: 0.4;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-#recommend_header .title {
-	font-size: var(--font-large);
-	font-weight: var(--weight-bold);
-	color: white;
-	z-index: 99;
-}
-
-#recommend_nav {
-	background-color: var(--color-light-pink);
-	color: var(--color-white);
-	text-align: center;
-	padding: 14px 0;
-}
-
-#recommend_nav .recommend_user {
+#recommend_container .recommend_content_mbti {
 	display: none;
-	justify-content: space-between;
 	width: 1000px;
-	font-size: var(--font-micro);
-	font-weight: var(--weight-bold);
-	color: var(--color-black);
-	background-color: var(--color-board-blue);
-	border-radius: 8px;
-	margin: 0 auto;
-	line-height: 40px;
-	padding: 12px 0;
-}
-
-#recommend_nav .recommend_user.login.active {
-	display: flex;
-	padding: 12px 100px;
-}
-
-#recommend_nav .recommend_user.non_login.active {
-	display: flex;
 	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
 }
 
-#recommend_nav .recommend_user.login li:nth-of-type(1) {
-	font-size: var(--font-small);
+#recommend_container .recommend_content_mbti.login.active {
+	display: flex;
 }
 
-#recommend_nav .recommend_user.login li:nth-of-type(3) {
-	background-color: var(--color-lightest-blue);
-	padding: 0 14px;
-	border-radius: 20px;
-	color: var(--color-white);
+#recommend_container .recommend_content_mbti.non_login.active {
+	display: flex;
 }
 
 #recommend_nav .mbti_select {
 	margin-left: 8px;
 	border-radius: 4px;
-}
-
-#recommend_container {
-	width: 1200px;
-	margin: 60px auto 190px;
-}
-
-#recommend_container .title-filter-wrap {
-	display: flex;
-	align-items: center;
-	margin-left: 100px;
-	margin-bottom: 36px;
-}
-
-#recommend_container .filter {
-	display: flex;
-	margin-left: 20px;
-	border: none;
-	outline: none;
-	padding: 4px 18px;
-	border-radius: 6px;
-	font-size: var(--font-small);
-	background-color: var(--color-light-gray);
-}
-
-#recommend_container .filter.active {
-	background-color: var(--color-light-pink);
-}
-
-#recommend_container .recommend_content {
-	width: 1000px;
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	margin: 0 auto;
-}
-
-#recommend_container .recommend_content.login.active {
-	display: flex;
-}
-
-#recommend_container .recommend_content.non_login.active {
-	display: flex;
 }
 
 #recommend_container .mbti_result {
