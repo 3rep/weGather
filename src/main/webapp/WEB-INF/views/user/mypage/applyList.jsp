@@ -8,6 +8,7 @@
 			$("#aplSelect").submit();
 		});
 	});
+	
 	</script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
@@ -51,7 +52,7 @@
 						
 				        <td>${list.sportname }</td>
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
-				        <td>${list.stadium }</a></td> 
+				        <td>${list.stadium }</td> 
 				       
 				        <!--g_status : 2(취소)/1(확정)/0(대기) 
 						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
@@ -63,7 +64,7 @@
 				        
 				        <!-- 신청완료(취소), 경기확정의 경우 경기세부정보페이지로 이동링크 건다. 
 				        		랭크경기, 일반경깅 구분해서 링크달아야해  -->
-				        <c:choose>
+					<c:choose>
 				       		<c:when test="${list.no>1000 }"> 
 						        <c:if test="${list.g_status==2}">	
 						        	<td class="aplStatus">경기취소</td>
@@ -71,7 +72,7 @@
 						        <c:if test="${list.g_status==1 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+						        <c:if test="${list.g_status==0 && list.gt2ago>now }">	
 						        	<td class="aplLink">
 						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
@@ -82,15 +83,14 @@
 						        	</td>
 						        </c:if>
 					    	</c:when>
-					    	
 					    	<c:when test="${list.no<1000 }">    
-					        	<c:if test="${list.g_status==2}">	
+					        	<c:if test="${list.g_status==3}">	
 						        	<td class="aplStatus">경기취소</td>
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gametime<now }">	
+						        <c:if test="${list.g_status==2 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+						        <c:if test="${list.g_status==1 && list.gt1ago>now }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
@@ -106,5 +106,28 @@
 			    </c:forEach>
 		    </tbody>
 		</table>
-	</div>	
-</div>
+		
+		<!-- 페이징 -->
+		<div class="pagingDiv">
+		<ul>
+			<!-- 이전페이지 -->
+			<c:if test="${vo.nowPage>1}">
+				<li><a href="applyList?nowPage=${vo.nowPage-1}">이전</a></li>
+			</c:if>
+			<!-- 페이지번호 -->
+			<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
+				<c:if test="${pageNum<=vo.totalPage}">
+					<li>
+					<c:if test="${vo.nowPage==pageNum }"><b></c:if>
+					<a href="applyList?nowPage=${pageNum}">${pageNum}</a>
+					<c:if test="${vo.nowPage==pageNum }"></b></c:if>
+					</li>
+				</c:if>
+			</c:forEach>
+			<!-- 다음페이지 -->
+			<c:if test="${vo.nowPage<vo.totalPage}">
+				<li><a href="applyList?nowPage=${vo.nowPage+1}">다음</a></li>
+			</c:if>
+		</ul>
+		</div>
+	</div>

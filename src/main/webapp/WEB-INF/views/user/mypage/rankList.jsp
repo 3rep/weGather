@@ -41,7 +41,7 @@
 				        <c:if test="${list.g_status==1 && list.gametime<now }">	
 				        	<td class="aplStatus">경기종료
 				        </c:if>
-				        <c:if test="${list.g_status==0 && (list.gametime>list.gt2ago) }">	
+				        <c:if test="${list.g_status==0 && (list.gt2ago>now) }">	
 				        	<td class="aplLink">
 				        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 				        	</td>
@@ -55,4 +55,28 @@
 			    </c:forEach>
 		    </tbody>
 		</table>
+		
+		<!-- 페이징 -->
+		<div class="pagingDiv">
+		<ul>
+			<!-- 이전페이지 -->
+			<c:if test="${vo.nowPage>1}">
+				<li><a href="rankList?nowPage=${vo.nowPage-1}">이전</a></li>
+			</c:if>
+			<!-- 페이지번호 -->
+			<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
+				<c:if test="${pageNum<=vo.totalPage}">
+					<li>
+					<c:if test="${vo.nowPage==pageNum }"><b></c:if>
+					<a href="rankList?nowPage=${pageNum}">${pageNum}</a>
+					<c:if test="${vo.nowPage==pageNum }"></b></c:if>
+					</li>
+				</c:if>
+			</c:forEach>
+			<!-- 다음페이지 -->
+			<c:if test="${vo.nowPage<vo.totalPage}">
+				<li><a href="rankList?nowPage=${vo.nowPage+1}">다음</a></li>
+			</c:if>
+		</ul>
+		</div>
 	</div>

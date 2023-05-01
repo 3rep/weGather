@@ -149,15 +149,15 @@
 	<div class="game_detail_container">
 	
 		<!-- game_detail_wrap (left) -->
-		<div class="game_detail_wrap left">
+		<div class="game_new_wrap left">
 			<!-- 종목 이미지 -->
 			<img src="${path}/uploadfile/sport/${sportDTO.filename}" class="sport_img"/>
 			
 			<!-- 지역과 구장 선택 -->
 			<form method="get" action="new">
 				<input type="hidden" name="s_no" value="${sportDTO.s_no}"/>
-				<ul>
-					<li class = "select sport">
+				<ul  class="game_new_select">
+					<li class ="select sport">
 						스포츠 종목 : ${sportDTO.sportname}
 					</li>
 					<li class ="select region">
@@ -199,10 +199,10 @@
 		<!-- game_detail_wrap (right) -->
 		<div class="game_detail_wrap right">
 			<!-- 경기 유형 -->
-			<div class="game_type">일반경기</div>
+			<div class="normgame_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
-			<ul class="gamenew_detail">
+			<ul class="normgame_detail">
 				<c:forEach var="gameDTO" items="${newNormGameList}" varStatus="status">
 					<c:if test="${gameDTO.s_no == sportDTO.s_no }">
 						<li class="gamenew_info">
