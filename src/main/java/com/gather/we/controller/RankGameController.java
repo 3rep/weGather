@@ -26,7 +26,6 @@ public class RankGameController {
 	
 
 	// 종목 목록
-
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();

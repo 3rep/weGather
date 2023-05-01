@@ -46,6 +46,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.gather.we.dto.ManagerDTO;
 import com.gather.we.dto.NormGameDTO;
 import com.gather.we.dto.NormGameDetailDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
@@ -390,12 +391,22 @@ public class AdminController {
 	
 	// 랭크경기 목록
 	@GetMapping("/rankgame/rankgamelist")
-	public ModelAndView rankGameList() {
+	public ModelAndView rankGameList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+				
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(rankGameService.totalRecord());
 		
 		List<AdminRankGameDTO> rankGameList = rankGameService.adminRankGameAllSelect();
 		
-		mav.addObject("rankGameList", rankGameList);
+		mav.addObject("rankGameList", rankGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
 		mav.setViewName("admin/rankGame/rankGameList");
 		
 		return mav;
@@ -403,12 +414,21 @@ public class AdminController {
 	
 	// 일반경기 목록
 	@GetMapping("/normgame/normgamelist")
-	public ModelAndView normGameList() {
+	public ModelAndView normGameList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
-
-		List<NormGameDetailDTO> normGameList = normGameService.normGameDetailAllSelect();
-
-		mav.addObject("normGameList", normGameList);
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+		
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(normGameService.totalRecord());
+		
+		// DB조회
+		mav.addObject("normGameList", normGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
 		mav.setViewName("admin/normGame/normGameList");
 
 		return mav;

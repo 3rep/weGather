@@ -51,5 +51,23 @@
 
 #ranklist_container .new-game {
 	align-self: end;
-	margin-top: 30px;
+}
+
+#ranklist_container .pagingDiv {
+	display: flex;
+	justify-content: center;
+}
+
+#ranklist_container .pagingDiv li{
+	float:left;
+	display: flex;
+	padding: 3px 5px;
+	margin: 0 12px;
+	font-size: var(--font-micro);
+}
+
+#ranklist_container .pagingDiv a:link,
+#ranklist_container .pagingDiv a:hover,
+#ranklist_container .pagingDiv a:visited {
+	color: var(--color-black);
 }

@@ -54,5 +54,31 @@
 	<update id="currPeopleCount">
 		update norm_game set curr_people=curr_people+1 where no=${no}
 	</update>
-
+	
+	<select id="pageSelect" resultType="com.gather.we.dto.NormGameDetailDTO">
+		select * from
+				(select * from
+			    	(select n.no, n.s_no, n.st_no, n.gametime, n.usetime, n.min_people, n.max_people, n.curr_people, n.gendertype, n.payment, n.g_status, s.sportname, s.filename, st.stadium, st.location
+						from norm_game n, sport s, stadium_info st where n.s_no = s.s_no and n.st_no = st.st_no order by n.no desc)
+			    	<![CDATA[
+			    	where rownum<=${nowPage*onePageRecord} order by no asc
+			    	]]>
+		    		)
+		    		<choose>
+		    		<when test="nowPage!=totalPage">
+		    	<![CDATA[
+		    	where rownum<=${onePageRecord} order by no desc
+		    	]]>
+		    	</when>
+		    	<when test="nowPage==totalPage">
+		    	<![CDATA[
+		    	where rownum<=${lastPageRecord} order by no desc
+		    	]]>
+		    	</when>
+		    	</choose>
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(no) from norm_game
+	</select>
 </mapper>

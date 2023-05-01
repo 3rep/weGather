@@ -13,6 +13,7 @@
             <th>1인당 결제금액</th>
             <th>경기상태</th>
         </tr>
+        
 		<c:forEach var="normGame" items="${normGameList}">
 			<tr>
 				<td>${normGame.no}</td>
@@ -41,6 +42,34 @@
         	</tr>
 		</c:forEach>
 	</table>
+	
+	<!-- 페이징 -->
+	<div class="pagingDiv">
+	<ul>
+		<!-- 이전페이지 -->
+		<c:if test="${vo.nowPage>1}">
+			<li><a href="normgamelist?nowPage=${vo.nowPage-1}">이전</a></li>
+		</c:if>
+		<!-- 페이지번호 -->
+		<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
+			<c:if test="${pageNum<=vo.totalPage}">
+				<li>
+				<c:if test="${vo.nowPage==pageNum }"><b></c:if>
+				<a href="normgamelist?nowPage=${pageNum}">${pageNum}</a>
+				<c:if test="${vo.nowPage==pageNum }"></b></c:if>
+				</li>
+			</c:if>
+			<c:if test="${pageNum>vo.totalPage}">
+				<li style="visibility:hidden;">${pageNum}</li>
+			</c:if>
+		</c:forEach>
+		<!-- 다음페이지 -->
+		<c:if test="${vo.nowPage<vo.totalPage}">
+			<li><a href="normgamelist?nowPage=${vo.nowPage+1}">다음</a></li>
+		</c:if>
+	</ul>
+	</div>
+	
 	<a href="${path}/admin/game/new" class="btn-black new-game">경기 등록</a>
 </div>
 </body>
