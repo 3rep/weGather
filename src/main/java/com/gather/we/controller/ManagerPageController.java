@@ -118,7 +118,7 @@ public class ManagerPageController{
 	@ResponseBody
 	public  ResponseEntity<String> deleteRankGame(@RequestParam("_method") String method, @RequestParam("managerid") String managerid) {
 		System.out.println("managerid의 값은 " + managerid + "입니다.");
-		if (!method.equals("DELETE")) {
+		if (!method.equals("POST")) {
 	        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Invalid method");
 		}
 		try {

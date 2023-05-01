@@ -45,9 +45,9 @@
                             <c:if test="${manager.g_status == 0}">
                                 <button class="green" style="width: 90px;">승인대기</button>
                                 
-                              <form id="post" action="${path}/manager/manager10" method="POST">
-    				<button type="submit" class="red" style="width: 90px;">취소신청</button>
-						</form>
+                              <form id="post" action="/manager10" method="POST">
+    						<button type="submit" class="red" style="width: 90px;">취소신청</button>
+							</form>
                           	 
                             
                             </c:if>
