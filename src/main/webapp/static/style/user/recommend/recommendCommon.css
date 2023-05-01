@@ -36,41 +36,6 @@
 	padding: 14px 0;
 }
 
-#recommend_nav .recommend_user {
-	display: none;
-	justify-content: space-between;
-	width: 1000px;
-	font-size: var(--font-micro);
-	font-weight: var(--weight-bold);
-	color: var(--color-black);
-	background-color: var(--color-board-blue);
-	border-radius: 8px;
-	margin: 0 auto;
-	line-height: 40px;
-	padding: 12px 0;
-}
-
-#recommend_nav .recommend_user.login.active {
-	display: flex;
-	padding: 12px 100px;
-}
-
-#recommend_nav .recommend_user.non_login.active {
-	display: flex;
-	flex-direction: column;
-}
-
-#recommend_nav .recommend_user.login li:nth-of-type(1) {
-	font-size: var(--font-small);
-}
-
-#recommend_nav .recommend_user.login li:nth-of-type(3) {
-	background-color: var(--color-lightest-blue);
-	padding: 0 14px;
-	border-radius: 20px;
-	color: var(--color-white);
-}
-
 #recommend_container {
 	width: 1200px;
 	margin: 60px auto 190px;

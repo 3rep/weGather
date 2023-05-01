@@ -6,10 +6,10 @@
 		var logId = '<%=(String)session.getAttribute("logId")%>';
 
         if(logId=="null"){ 
-        	$(".recommend_user.non_login").addClass("active");
+        	$(".recommend_user_mbti.non_login").addClass("active");
         	$(".recommend_content_mbti.non_login").addClass("active");
         } else {
-        	$(".recommend_user.login").addClass("active");
+        	$(".recommend_user_mbti.login").addClass("active");
         	$(".recommend_content_mbti.login").addClass("active");
         }
 
@@ -50,14 +50,14 @@
 	<span class="title">스포츠 추천</span>
 </div>
 <div id="recommend_nav">
-	<ul class="recommend_user login">
+	<ul class="recommend_user_mbti login">
 		<c:set var="userRecommend" value="${mbtiStatistics.get(userMbti)[0]}"/>
 		<li>${userMbti}</li>
 		<li>당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 ${userRecommend.sportname}입니다!</li>
 		<li>${userRecommend.sportname}</li>
 		<li>${userRecommend.sport_ratio}</li>
 	</ul>
-	<div class="recommend_user non_login">
+	<div class="recommend_user_mbti non_login">
 		<div>MBTI를 선택하고 맞춤형 추천 결과를 확인해 보세요</div>
 		<div>
 			<span>나의 MBTI는?</span>

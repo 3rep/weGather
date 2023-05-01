@@ -4,6 +4,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 	$(function(){
+		var logId = '<%=(String)session.getAttribute("logId")%>';
+
+        if(logId=="null"){ 
+        	$(".recommend_user_info.non_login").addClass("active");
+        } else {
+        	$(".recommend_user_info.login").addClass("active");
+        }
 
         /* 남성 파이차트*/
     	var colorList = ['#FA7577', '#FAD275', '#A9CC8E', '#60A9A7', '#7391AB', '#3098C5', '#F9AC4E', '#FA9461', '#5295B8'];
@@ -35,7 +42,7 @@
 						display: true,
 						text: '남성',
 						position: 'top',
-						fontSize: 25,
+						fontSize: 30,
 						fontColor: '#111',
 						padding: 20
  	    		        },
@@ -87,7 +94,7 @@
 							display: true,
 							text: '여성',
 							position: 'top',
-							fontSize: 25,
+							fontSize: 30,
 							fontColor: '#111',
 							padding: 20
 	 	    		        },
@@ -116,22 +123,22 @@
 	<span class="title">스포츠 추천</span>
 </div>
 <div id="recommend_nav">
-
+	<div class="recommend_user_info login">
+		
+	</div>
+	<div class="recommend_user_info non_login">성별과 나이에 따른 스포츠 추천 결과를 확인해보세요</div>
 </div>
 <div id="recommend_container">
 	<div class="title-filter-wrap">
-		<h2>맞춤형 스포츠 추천</h2>
-		<button onclick="location.href='/recommend/mbti'">MBTI</button>
-		<button onclick="location.href='/recommend/userinfo'">나이/성별</button>
+		<h3>맞춤형 스포츠 추천</h3>
+		<button onclick="location.href='/recommend/mbti'" class="filter">MBTI</button>
+		<button onclick="location.href='/recommend/userinfo'" class="filter active">나이/성별</button>
 	</div>
-	<div class="">
-		<div class="age_gender_result">
-			<div>
-				<canvas id="mChart" width="500px" height="500px"></canvas>
-				<canvas id="wChart" width="500px" height="500px"></canvas>
-				<div></div>
-			</div>
-			<div></div>
+	<div class="recommend_content_user_info">
+		<div class="gender_result">
+			<canvas id="mChart" width="350px" height="350px"></canvas>
+			<canvas id="wChart" width="350px" height="350px"></canvas>
 		</div>
+		<div></div>
 	</div>
 </div>
