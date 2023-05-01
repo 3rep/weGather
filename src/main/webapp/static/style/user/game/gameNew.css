@@ -26,6 +26,9 @@
 	width: 100%;
 	margin-bottom: 30px;
 } */
+.norm_game_new_select li{
+	padding: 3px;
+}
 
 .game_detail_wrap .select {
 	display: flex;
@@ -66,10 +69,11 @@
 .gamenew_detail {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--color-light-gray);
-	border: 1px solid var(--color-gray);
+	background-color: var(--color-norm-light-green);
+	/* border: 1px solid var(--color-gray); */
 	padding: 28px 32px;
 	margin-bottom: 30px;
+	border-radius: 20px;
 }
 
 .gamenew_info {

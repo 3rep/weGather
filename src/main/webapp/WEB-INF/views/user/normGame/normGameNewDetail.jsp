@@ -83,7 +83,7 @@
 				<input type="hidden" name="no" value="${normGameDTO.no}"/>
 				<input type="hidden" name="s_no" value="${sportDTO.s_no}"/>
 				<!-- 경기 유형 -->
-				<div class="game_type">일반경기</div>
+				<div class="normgame_type">일반경기</div>
 				
 				<!-- 경기 상세 정보 입력 -->
 				<ul class="gamenew_detail">
@@ -112,7 +112,7 @@
 					</li>
 				</ul>
 				<input type="submit" value="경기개설" class="btn_apply_norm"/>
-				<button class="btn_back" >뒤로가기</button>
+				<!-- <button class="btn_back" >뒤로가기</button> -->
 			</form>
 		</div>
 	</div>

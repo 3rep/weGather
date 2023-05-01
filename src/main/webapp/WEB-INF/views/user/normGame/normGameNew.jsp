@@ -156,7 +156,7 @@
 			<!-- 지역과 구장 선택 -->
 			<form method="get" action="new">
 				<input type="hidden" name="s_no" value="${sportDTO.s_no}"/>
-				<ul>
+				<ul class="norm_game_new_select">
 					<li class = "select sport">
 						스포츠 종목 : ${sportDTO.sportname}
 					</li>
@@ -199,7 +199,7 @@
 		<!-- game_detail_wrap (right) -->
 		<div class="game_detail_wrap right">
 			<!-- 경기 유형 -->
-			<div class="game_type">일반경기</div>
+			<div class="normgame_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
 			<ul class="gamenew_detail">
@@ -223,7 +223,7 @@
 					</c:if>
 				</li>
 			</ul>
-			<button onclick="location.href='${path}/normgame/normgamelist?s_no=${sportDTO.s_no}'" class="btn_back" >뒤로가기</button>
+			<%-- <button onclick="location.href='${path}/normgame/normgamelist?s_no=${sportDTO.s_no}'" class="btn_back" >뒤로가기</button> --%>
 		</div>
 	</div>
 </div>
