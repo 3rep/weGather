@@ -1,20 +1,50 @@
 @charset "UTF-8";
 
-.game_new_wrap.left {
+/*.game_new_wrap.left {
 	width: 35%;
     margin: 0 20px;
 }
 
 .game_new_wrap.left .sport_img {
 	width: 100%;
-    margin-bottom: 30px;
+	margin-bottom: 30px;
+} */
+
+.norm_game_new_select li{
+	padding: 3px;
 }
 
+.game_detail_wrap .select {
+	display: flex;
+	align-content: center;
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+	background-color: var(--color-white);
+	margin-bottom: 24px;
+  /*margin-bottom: 30px;*/
+}
+
+/***** develop이랑 충돌난 부분
 .game_new_wrap.left .game_new_select li{
 	font-size: var(--font-micro);
 	font-weight: var(--weight-bold);
+	background-color: var(--color-gray);
+	border: 1px solid var(--color-gray);
+	padding: 16px 0;
+} */
+
+.gamenew_detail {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-norm-light-green);
+	/* border: 1px solid var(--color-gray); */
+	padding: 28px 32px;
+	margin-bottom: 30px;
+	border-radius: 20px;
+  
+    /*** developt이랑 충돌일어난 부분
 	margin: 30px 0;
-	line-height: 1.5em;
+	line-height: 1.5em;*/
 }
 
 .gamenew_info {

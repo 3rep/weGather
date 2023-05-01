@@ -25,6 +25,12 @@
 	font-weight: var(--weight-bold);
 	font-size: var(--font-small);
 }
+#payment_Done_container .payment_notice #payment_notice_link{
+	color: var(--color-blue);
+	font-weight: var(--weight-bold);
+	font-size: var(--font-small);
+	text-decoration-line: underline;
+}
 
 #payment_Done_container table {
 	width: 100%;
@@ -37,10 +43,12 @@
 #payment_Done_container td {
 	border: 1px solid var(--color-gray);
 	padding: 10px;
+	height: 50px;
 }
 
 #payment_Done_container th {
-	background-color: var(--color-light-gray);
+	background-color: var(--color-light-gray); /* #5D5D80; */
+	height: 50px;
 }
 
 #payment_Done_container th:nth-of-type(3),

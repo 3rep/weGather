@@ -111,8 +111,8 @@
 						<div id="map"></div>
 					</li>
 				</ul>
-				<input type="submit" value="경기개설" class="btn_apply_norm_new"/>
-				<button class="btn_back" >뒤로가기</button>
+				<input type="submit" value="경기개설" class="btn_apply_norm"/>
+				<!-- <button class="btn_back" >뒤로가기</button> -->
 			</form>
 		</div>
 	</div>
