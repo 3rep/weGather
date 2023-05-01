@@ -45,7 +45,7 @@
 						<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->
 				    	<td ><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ptDate}"/></td>
 				    	
-				    	<c:if test="${list.success == 's'}">
+				    	<c:if test="${list.success == 'true'}">
 				    		<td class="pmTd">결제완료</td>
 				    	</c:if>
 				    </tr>
