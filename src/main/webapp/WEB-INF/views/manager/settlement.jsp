@@ -65,11 +65,9 @@
 				     	 <th>금액</th>
 					</tr>
 				</thead>
-				<!-- 매니저로그인 합치면, mapper에 where절 매니저아이디 추가 -->
 				<c:forEach var="settlement" items="${settlement }" varStatus="status">
 					<tbody>
 						    <tr>
-						      <!--<td>${status.count }</td>-->
 						      <td id="td-num">${(pageMaker.mscriteria.pageNum-1) * pageMaker.mscriteria.amount + status.count }</td>
 						      <td>${settlement.stadium }</td>
 						      <td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${settlement.gametime }"/></td>
@@ -86,25 +84,27 @@
 		     </table>
 		    </div>
 			<!-- 페이지네이션 -->
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev }">
-					<!-- 이전 페이지 : 시작페이지가 1~10이 아닌 경우 보임 -->
-					<li class="paginate-button previous"><a
-						href="${pageMaker.startPage-1 }">Previous</a></li>
-				</c:if>
-	
-				<c:forEach begin="${pageMaker.startPage }"
-					end="${pageMaker.endPage }" var="num">
-					<li class="paginate-button ${pageMaker.mscriteria.pageNum == num ? "active":""}"><a
-						href="${num }">${num }</a></li>
-				</c:forEach>
-	
-				<c:if test="${pageMaker.next }">
-					<!-- 다음 페이지 : 끝페이지가 마지막 페이지가 아닌 경우 보임. 끝페이지의 다음페이지로 이동 -->
-					<li class="paginate-button next"><a
-						href="${pageMaker.endPage+1 }">Next</a></li>
-				</c:if>
-			</ul>
+			<div class="pagination-container">
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev }">
+						<!-- 이전 페이지 : 시작페이지가 1~10이 아닌 경우 보임 -->
+						<li class="paginate-button previous"><a
+							href="${pageMaker.startPage-1 }">Previous</a></li>
+					</c:if>
+		
+					<c:forEach begin="${pageMaker.startPage }"
+						end="${pageMaker.endPage }" var="num">
+						<li class="paginate-button ${pageMaker.mscriteria.pageNum == num ? 'active':''}"><a
+							href="${num }">${num }</a></li>
+					</c:forEach>
+		
+					<c:if test="${pageMaker.next }">
+						<!-- 다음 페이지 : 끝페이지가 마지막 페이지가 아닌 경우 보임. 끝페이지의 다음페이지로 이동 -->
+						<li class="paginate-button next"><a
+							href="${pageMaker.endPage+1 }">Next</a></li>
+					</c:if>
+				</ul>
+			</div>
 		<!--end 페이지네이션 -->
 	</div>
 	 <!-- 페이지네이션 클릭시 페이지이동-->
