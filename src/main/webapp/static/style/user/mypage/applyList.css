@@ -45,7 +45,7 @@
 
 /*---- table --------------*/
 #aplTable{
-	height: 900px;
+	height: 600px;
 	display: inline-block;
 	margin-top: 12px;
 	width: 915px;
@@ -109,3 +109,22 @@
 	font-size: 18px;
 	color: #525150;
 } 
+
+#applyListContent .pagingDiv {
+	display: flex;
+	justify-content: center;
+}
+
+#applyListContent .pagingDiv li{
+	float:left;
+	display: flex;
+	padding: 3px 5px;
+	margin: 0 12px;
+	font-size: var(--font-micro);
+}
+
+#applyListContent .pagingDiv a:link,
+#applyListContent .pagingDiv a:hover,
+#applyListContent .pagingDiv a:visited {
+	color: var(--color-black);
+}

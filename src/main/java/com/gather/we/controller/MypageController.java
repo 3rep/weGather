@@ -44,12 +44,13 @@ public class MypageController {
 		
 		//userid�� logId���� Ȯ��
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.allTotalRecord(logId));
 		
-		vo.setTotalRecord(service.allTotalRecord(logId, vo));
-		vo.setOnePageRecord(3);
-		vo.setOnePageNumCount(5);
+		List<MypageApplyListDTO> list = service.allgameList(vo);
 		
-		List<MypageApplyListDTO> list = service.allgameList(logId, vo);
 		Date now = new Date();
 		
 		mav.addObject("list", list);
@@ -61,32 +62,41 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/rankList")
-	public ModelAndView rankList(HttpSession session) {
+	public ModelAndView rankList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		
-		List<MypageApplyListDTO> list = service.rankgameList(logId);
-		//System.out.println("list:"+list);
+		List<MypageApplyListDTO> list = service.rankgameList(vo);
+		
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
 	@GetMapping("/mypage/normList")
-	public ModelAndView normList(HttpSession session) {
+	public ModelAndView normList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.normTotalRecord(logId));
 		
-		List<MypageApplyListDTO> list = service.normgameList(logId);
+		List<MypageApplyListDTO> list = service.normgameList(vo);
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
@@ -152,15 +162,19 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/paymentList")
-	public ModelAndView paymentList(HttpSession session) {
+	public ModelAndView paymentList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		//System.out.println(logName);
+		vo.setUsername(logName);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.paymentTotalRecord(logName));
 		
-		List<MypagePaymentDTO> list = service.paymentList(logName);
+		List<MypagePaymentDTO> list = service.paymentList(vo);
 		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}

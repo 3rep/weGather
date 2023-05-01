@@ -28,7 +28,7 @@
 }
 /*----table-----------*/
 #pmTable{
-	height: 900px;
+	height: 600px;
     overflow-y: scroll;
     display: inline-block;
 }
@@ -55,4 +55,21 @@
 	font-weight: 500;
 	font-style: italic;
 }
+#paymentListContent .pagingDiv {
+	display: flex;
+	justify-content: center;
+}
 
+#paymentListContent .pagingDiv li{
+	float:left;
+	display: flex;
+	padding: 3px 5px;
+	margin: 0 12px;
+	font-size: var(--font-micro);
+}
+
+#paymentListContent .pagingDiv a:link,
+#paymentListContent .pagingDiv a:hover,
+#paymentListContent .pagingDiv a:visited {
+	color: var(--color-black);
+}

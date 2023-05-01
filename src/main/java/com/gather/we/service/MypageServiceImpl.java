@@ -30,18 +30,18 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public List<MypageApplyListDTO> allgameList(String userid, PagingVO vo) {
-		return dao.allgameList(userid, vo);
+	public List<MypageApplyListDTO> allgameList(PagingVO vo) {
+		return dao.allgameList(vo);
 	}
 	
 	@Override
-	public List<MypageApplyListDTO> rankgameList(String userid) {
-		return dao.rankgameList(userid);
+	public List<MypageApplyListDTO> rankgameList(PagingVO vo) {
+		return dao.rankgameList(vo);
 	}
 
 	@Override
-	public List<MypageApplyListDTO> normgameList(String userid) {
-		return dao.normgameList(userid);
+	public List<MypageApplyListDTO> normgameList(PagingVO vo) {
+		return dao.normgameList(vo);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<MypagePaymentDTO> paymentList(String username) {
-		return dao.paymentList(username);
+	public List<MypagePaymentDTO> paymentList(PagingVO vo) {
+		return dao.paymentList(vo);
 	}
 
 	@Override
@@ -65,11 +65,22 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int allTotalRecord(String userid, PagingVO vo) {
-		return dao.allTotalRecord(userid, vo);
+	public int allTotalRecord(String userid) {
+		return dao.allTotalRecord(userid);
 	}
 
+	@Override
+	public int normTotalRecord(String userid) {
+		return dao.normTotalRecord(userid);
+	}
 
+	@Override
+	public int rankTotalRecord(String userid) {
+		return dao.rankTotalRecord(userid);
+	}
 
-	
+	@Override
+	public int paymentTotalRecord(String username) {
+		return dao.paymentTotalRecord(username);
+	}
 }
