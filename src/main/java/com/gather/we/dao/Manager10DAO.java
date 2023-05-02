@@ -16,7 +16,7 @@ public interface Manager10DAO {
 	 
 	 public List<Manager10DTO> getAllManagerInput();
 	 
-	 public List<Manager10DTO> getAllEntry();
+	 public List<Manager10DTO> getAllEntry(Integer p_no);
 	  
 	 public List<Manager10DTO> getAllManager10(String managerid);
 	 
@@ -33,6 +33,8 @@ public interface Manager10DAO {
 	
 	 public void updateRank(String userid, int rank, Integer p_no);
 	 
-	 public void deleteRankGame(String managerid);
+	 public void deleteRankGame(String managerid, Integer p_no);
+	 
+	
 	
 	}

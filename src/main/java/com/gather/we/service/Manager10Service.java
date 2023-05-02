@@ -19,7 +19,7 @@ public interface Manager10Service {
 	 
 	 public List<Manager10DTO> getAllManagerInput();
 	
-	 public List<Manager10DTO> getAllEntry();
+	 public List<Manager10DTO> getAllEntry(Integer p_no);
 	 
 	 public int getTotalRecordByManagerid(String managerid);
 		//해당페이지 선택
@@ -37,9 +37,11 @@ public interface Manager10Service {
 
 	
 
-	public void deleteRankGame(String managerid);
+	public void deleteRankGame(String managerid, Integer p_no);
 
 	public void updateRank(String userid, int rank, Integer p_no);
+
+	
 	 
 	 
 	 

@@ -55,11 +55,11 @@
 	<div class="game_detail_container">
 	
 		<!-- game_detail_wrap (left) -->
-		<div class="game_detail_wrap left">
+		<div class="game_new_wrap left">
 			<!-- 종목 이미지 -->
 			<img src="${path}/uploadfile/sport/${sportDTO.filename}" class="sport_img"/>
-				<ul>
-					<li class = "select sport">
+				<ul class="norm_game_new_select">
+					<li class ="select sport">
 						스포츠 종목 : ${sportDTO.sportname}
 					</li>
 					<li class="select desc">
@@ -83,10 +83,10 @@
 				<input type="hidden" name="no" value="${normGameDTO.no}"/>
 				<input type="hidden" name="s_no" value="${sportDTO.s_no}"/>
 				<!-- 경기 유형 -->
-				<div class="game_type">일반경기</div>
+				<div class="normgame_type">일반경기</div>
 				
 				<!-- 경기 상세 정보 입력 -->
-				<ul class="gamenew_detail">
+				<ul class="normgame_detail">
 						<li class="gamenew_write">
 							<span class="gamenew_detail_main">경기충족인원</span> : 
 							<span class="gamenew_detail_sub"><input type="text" name="min_people" id="min_people"/> 명</span>
@@ -112,7 +112,7 @@
 					</li>
 				</ul>
 				<input type="submit" value="경기개설" class="btn_apply_norm"/>
-				<button class="btn_back" >뒤로가기</button>
+				<!-- <button class="btn_back" >뒤로가기</button> -->
 			</form>
 		</div>
 	</div>

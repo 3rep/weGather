@@ -74,29 +74,40 @@
 	height: 100%;
 	flex-basis: 10%;
 	line-height: 90px;
-	background-color: var(--color-light-gray);
+	/* background-color: var(--color-light-gray); */
 	font-weight: var(--weight-bold);
-	/* border: 1px solid var(--color-gray); */
+	border: 2px solid var(--color-gray); 
 	border-radius: 10px;
 	font-size: 18px;
 }
 
-.game_info_container {
+.game_info_container.rank {
 	height: 100%;
 	flex-basis: 75%;
 	display: flex;
 	align-items: center;
-	background-color: var(--color-light-gray);
-	/* border: 1px solid var(--color-gray); */
+	/* background-color: var(--color-light-gray); */
+	border: 2px solid var(--color-rank-blue); 
 	margin: 0 16px;
 	border-radius: 10px;
+}
+
+.game_info_container.norm {
+	height: 100%;
+	flex-basis: 75%;
+	display: flex;
+	align-items: center;
+	/* background-color: var(--color-light-gray); */
+	border: 2px solid var(--color-norm-green);
+	margin: 0 16px;
+	border-radius: 10px;
+	justify-content: space-around;
 }
 
 .game_time {
 	width: 220px;
 	padding: 0 24px;
 	font-weight: var(--weight-bold);
-	margin-right: 8px;
 }
 
 .game_stadium {

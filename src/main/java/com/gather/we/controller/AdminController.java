@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.AdminRankGameDTO;
 import com.gather.we.dto.AdminDTO;
+import com.gather.we.dto.AdminManagerSettlementDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
 import com.gather.we.service.NormalGameService;
@@ -168,41 +169,62 @@ public class AdminController {
 		return mav;
 	}
 	//(관리자) 수입내역
-
-		@GetMapping("/revenue")
-		public ModelAndView revenue() {
-			ModelAndView mav = new ModelAndView();
-			
-			List<UserPayDTO> pay = service.revenue();
-			
-			mav.addObject("pay", pay);
-			mav.setViewName("admin/revenue/revenue");
-			
-			return mav;
-		}
+	@GetMapping("/revenue")
+	public ModelAndView revenue() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<UserPayDTO> pay = service.revenue();
+		
+		mav.addObject("pay", pay);
+		mav.setViewName("admin/revenue/revenue");
+		
+		return mav;
+	}
+	
 	//(관리자) 지출내역
-		@GetMapping("/expense")
-		public ModelAndView expense() {
-			ModelAndView mav = new ModelAndView();
-			
-			List<UserPayDTO> expense = service.expense();
-			
-			mav.addObject("expense", expense);
-			mav.setViewName("admin/revenue/expense");
-			
-			return mav;
-		}
-	// (관리자) 매니저 결제 승인
+	@GetMapping("/expense")
+	public ModelAndView expense() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<AdminManagerSettlementDTO> expense = service.expense();
+		
+		mav.addObject("expense", expense);
+		mav.setViewName("admin/revenue/expense");
+		
+		return mav;
+	}
+	
+	//(관리자) 매니저비
+	@GetMapping("/managerfee")
+	public ModelAndView managerFee() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<AdminManagerSettlementDTO> managerFee = service.managerFee();
+		
+		mav.addObject("managerFee", managerFee);
+		mav.setViewName("admin/revenue/managerFee");
+		
+		return mav;
+	}
+	
+	// (관리자) 매니저 지급 완료
 	@PostMapping("/waitOk")
-	public ModelAndView waitOk(ManagerSettlementDTO dto) {
+	public ModelAndView waitOk(AdminManagerSettlementDTO dto) {
 		System.out.println(dto.toString());
+		
+		// 지급일 셋팅
+		Date datetime = new Date();
+		dto.setDatetime(datetime);
+		
 		ModelAndView mav = new ModelAndView();
 		int cnt = service.waitOk(dto);
 		if(cnt>0) {
-			mav.setViewName("redirect:admin/expense");
+			mav.setViewName("redirect:/admin/managerfee");
 		}else {
-			System.out.println("qwe");
-			mav.setViewName("redirect:admin/expense");
+
+			mav.addObject("msg", "회원정보수정 실패하였습니다.");
+			mav.setViewName("redirect:/admin/managerfee");
+
 		}
 
 		return mav;

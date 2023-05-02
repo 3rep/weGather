@@ -23,4 +23,14 @@ public class GameSchedulerServiceImpl implements GameSchedulerService {
 	public int statusUpdate(GameSchedulerDTO dto) {
 		return dao.statusUpdate(dto);
 	}
+
+	@Override
+	public List<GameSchedulerDTO> normStatusUpdateListSelect() {
+		return dao.normStatusUpdateListSelect();
+	}
+
+	@Override
+	public int normStatusUpdate(GameSchedulerDTO dto) {
+		return dao.normStatusUpdate(dto);
+	}
 }

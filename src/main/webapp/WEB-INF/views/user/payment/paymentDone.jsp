@@ -4,7 +4,7 @@
 
 <div id="payment_Done_container">
 	<h2 class="payment_title">결제가 완료되었습니다.</h2>
-	<h3 class="payment_notice">결제내역은 <span>마이페이지 > 결제내역</span>에서<br/> 확인하실 수 있습니다.</h3>
+	<h3 class="payment_notice">결제내역은 <span>마이페이지 > <a id="payment_notice_link" href="${path}/mypage/paymentList">결제내역</a></span>에서<br/> 확인하실 수 있습니다.</h3>
 	<table>
         <tr>
             <th>경기유형</th>
