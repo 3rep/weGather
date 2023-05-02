@@ -19,7 +19,7 @@ public interface Manager10Service {
 	 
 	 public List<Manager10DTO> getAllManagerInput();
 	
-	 public List<Manager10DTO> getAllEntry(Integer no);
+	 public List<Manager10DTO> getAllEntry(Integer p_no);
 	 
 	 public int getTotalRecordByManagerid(String managerid);
 		//해당페이지 선택
@@ -27,7 +27,7 @@ public interface Manager10Service {
 	 
 	 public List<Manager10DTO> getAllManager10By(String managerid);
 	 
-	 public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer  p_no);
+	 public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer p_no);
 	 
 	 public List<Manager10DTO> getAllManagerInputByManagerid(String rank, Integer p_no);
 	 
