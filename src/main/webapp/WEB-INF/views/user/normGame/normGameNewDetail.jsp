@@ -4,8 +4,6 @@
 <!-- 구글맵api : =이하에 api키 넣으면 됨 -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6MCfWC6EB6u8KU4V0hGt3xhuebQFKlE&callback=initMap"></script>
 
-
-
 <script>
 	let map;
 	let geoCoder;
@@ -111,7 +109,10 @@
 						<div id="map"></div>
 					</li>
 				</ul>
-				<input type="submit" value="경기개설" class="btn_apply_norm"/>
+				
+				<c:if test="${logStatus == 'Y' }">
+					<input type="submit" value="경기개설" class="btn_apply_norm"/>
+				</c:if>
 				<!-- <button class="btn_back" >뒤로가기</button> -->
 			</form>
 		</div>

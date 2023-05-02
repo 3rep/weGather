@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.NormalGameDAO">
 	<select id="normGameListSelect" resultType="com.gather.we.dto.NormGameListDTO">
-		select n.no, s.stadium, s.region, n.gametime, n.usetime, n.min_people, n.max_people, n.curr_people, n.gendertype
+		select n.no, s.stadium, s.region, n.gametime, n.usetime, n.min_people, n.max_people, n.curr_people, n.gendertype, n.writer
 		from norm_game n join stadium_info s on n.st_no=s.st_no 
 		where s_no=${s_no} and (<![CDATA[gametime-16 <= sysdate and sysdate <= gametime]]>) and (<![CDATA[1 <= n.g_status and n.g_status <= 2]]>)
 		<if test="regionList!=null and regionList[0]!='all'">
@@ -43,7 +43,7 @@
  	</select>
  	
  	<update id="normGameUpdate" parameterType="com.gather.we.dto.NormGameDTO">
- 		update norm_game set min_people=${min_people}, max_people=${max_people}, gendertype=#{gendertype}, g_status=1
+ 		update norm_game set min_people=${min_people}, max_people=${max_people}, gendertype=#{gendertype}, g_status=1, writer=#{writer}
 		where no=${no}
  	</update>
  	

@@ -12,4 +12,14 @@
  		insert into n_participate(p_no, userid, no, payment_no)
  		values(normpart_sq.nextval, #{userid}, ${no}, #{payment_no})
  	</insert>
+ 	
+ 	<select id="isNormParticipate" resultType="int">
+ 		select count(no) from
+ 			(select * from n_participate where userid=#{param1} and no=${param2})
+ 	</select>
+ 	
+ 	<select id="isRankParticipate" resultType="int">
+ 		select count(no) from
+ 			(select * from r_participate where userid=#{param1} and no=${param2})
+ 	</select>
 </mapper>

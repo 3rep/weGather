@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +22,7 @@ import com.gather.we.dto.NormGameListDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
 import com.gather.we.service.NormalGameService;
+import com.gather.we.service.ParticipateService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
 
@@ -33,8 +35,10 @@ public class NormalGameController {
 	NormalGameService normGameService;
 	@Autowired
 	StadiumInfoService stadiumService;
+	@Autowired
+	ParticipateService participateService;
 	
-	// ������
+	// 종목보기
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -47,19 +51,17 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// �Ϲݰ�� ���
+	// 일반경기 목록
 	@GetMapping("/normgamelist")
 	public ModelAndView normGameList(NormGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
 		
-		// ���� ���͸� �� db���� �ش� ������ ��⸸ �����Ͽ� �������� ���� ���� ī�װ��� ���� �������� ������ ����Ʈ�� ��´�.
-		String region = dto.getRegion();// '����/����/��û'
+		String region = dto.getRegion();
 		if(region!=null) {
-			List<String> regionList = Arrays.asList(region.split("/"));// ['����', '����', '��û']
+			List<String> regionList = Arrays.asList(region.split("/"));
 			dto.setRegionList(regionList);
 		}
 		
-		// DB���� �Ϲݰ�� ��� �޾ƿ���
 		List<NormGameDTO> normGameList = normGameService.normGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -69,15 +71,20 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// �Ϲݰ�� ��������
+	// 일반경기 상세페이지
 	@GetMapping("/detail")
-	public ModelAndView normGameDetail(int no) {
+	public ModelAndView normGameDetail(HttpSession session, int no) {
 		ModelAndView mav = new ModelAndView();
+		String logId = (String) session.getAttribute("logId");
 		
-		// DB���� �Ϲݰ�� �������� �޾ƿ���
+		// 해당 경기에 로그인 사용자가 참가하였는지 여부 (1이면 Yes, 0이면 No)
+		int isPart = participateService.isNormParticipate(logId, no);
+		
+		// 일반경기 상세 정보 (DB)
 		NormGameDetailDTO normGameDetail = normGameService.normGameDetailSelect(no);
 
 		mav.addObject("normGameDetail", normGameDetail);
+		mav.addObject("isPart", isPart);
 		mav.setViewName("user/normGame/normGameDetail");
 		
 		return mav;
@@ -135,16 +142,27 @@ public class NormalGameController {
 	public ResponseEntity<String> normGameNewDetailOk(NormGameDTO dto, HttpServletRequest request){
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
+		HttpSession session = request.getSession();
+		
+		String logStatus = (String) session.getAttribute("logStatus");
+		String logId = null;
+		if(logStatus == "Y") {
+			 logId = (String) session.getAttribute("logId");
+		}
+		
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		try {
+			if(logStatus == "Y") {
+				dto.setWriter(logId);
+			}else {
+				throw new Exception();
+			}
+			
 			// 사용자가 작성한 정보를 DB에 저장
 			normGameService.normGameUpdate(dto);
 			
-			// 경기 참여자 수 +1
-			normGameService.normGameCountUp(dto.getNo());
-			
 			// 일반경기 목록으로 이동
-			String body = "<script> alert('일반경기를 개설하였습니다.'); location.href='/normgame/normgamelist?s_no="+dto.getS_no()+"';</script>";
+			String body = "<script> alert('일반경기를 개설하였습니다. 목록에서 확인 후 참가신청하세요.'); location.href='/normgame/normgamelist?s_no="+dto.getS_no()+"';</script>";
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
 			// 일반경기 등록 실패

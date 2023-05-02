@@ -118,7 +118,7 @@
 				<!-- 경기 신청 가능 상태 -->
 				<c:choose>
 					<c:when test="${isClose || (NormGameDTO.curr_people >= NormGameDTO.max_people)}">
-		            	<div class="game-status close">신청마감</div>
+		            	<div class="game-status close"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">신청마감</a></div>
 		         	</c:when>
 		         	<c:when test="${isImminent}">
 		            	<div class="game-status imminent"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">마감임박</a></div>
