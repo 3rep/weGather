@@ -26,6 +26,7 @@
 <delete id="deleteRankGame">
     DELETE FROM rank_game
     WHERE managerid = #{managerid}
+    AND p_no= ${p_no} 
 </delete>
 
 <select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
@@ -96,9 +97,10 @@
 
 	
 <select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
-       SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username, u.tel, u.gender
+       SELECT rp.userid AS userid, rp.rank, rp.no, u.username, u.tel, u.gender
         FROM r_participate rp
         JOIN users u ON rp.userid = u.userid
+        WHERE rp.no = #{no}
   </select>
 
 
@@ -106,6 +108,7 @@
         SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username
         FROM r_participate rp
         JOIN users u ON rp.userid = u.userid
+        WHERE rp.p_no = #{p_no}
     </select>
 	
 	
@@ -117,7 +120,7 @@
  	 UPDATE r_participate
   	SET rank = ${param2}
   	WHERE userid = #{param1}
-  	AND p_no= ${param3} 
+  	AND p_no= #{p_no} 
 </update>
 
 	

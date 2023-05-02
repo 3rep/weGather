@@ -60,6 +60,18 @@
 		
 	</jsp-config>
 	 
+	  <!-- HTTP Method Filter -->
+ <filter>
+    <filter-name>httpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>httpMethodFilter</filter-name>
+    <url-pattern>/manager10</url-pattern>
+ </filter-mapping>
+ 
+	 
+	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
 	<filter>
 		<description></description>

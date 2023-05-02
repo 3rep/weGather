@@ -73,9 +73,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllEntry() {
+	public List<Manager10DTO> getAllEntry(Integer no) {
 		// TODO Auto-generated method stub
-		return dao.getAllEntry();
+		return dao.getAllEntry(no);
 	}
 
 
@@ -123,9 +123,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public void deleteRankGame(String managerid) {
+	public void deleteRankGame(String managerid, Integer p_no) {
 		
-		 dao.deleteRankGame(managerid);
+		 dao.deleteRankGame(managerid, p_no);
 		
 	}
 
@@ -146,6 +146,11 @@ public class Manager10ServiceImpl implements Manager10Service {
 		
 		return dao.getAllManagerInputByManagerid(rank, p_no);
 	}
+
+
+
+
+
 
 
 

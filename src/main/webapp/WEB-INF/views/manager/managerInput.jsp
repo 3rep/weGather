@@ -62,7 +62,7 @@
                 var managerInput = {};
                 managerInput['userid'] = $(this).find('td:eq(0)').text();
                 managerInput['rank'] = $(this).find('select.rank-filter').val();
-                managerInput['p_no'] = $(this).find('input.p-no').val();
+                managerInput['p_no'] = $(this).find('input.p_no').val();
                 managerInputList.push(managerInput);
                 
             });
