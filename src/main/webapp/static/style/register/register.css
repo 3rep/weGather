@@ -54,8 +54,8 @@
 #register-ul>li>#userpwd, 
 #register-ul>li>#username, 
 #register-ul>li>#email, 
-#register-ul>li>#address, 
-#register-ul>li>#mbti,
+#register-ul>li>#address,
+#register-ul>li>#mbti, 
 #register-ul>li>#age{
 	width: 528px;
     height: 40px;
@@ -81,6 +81,15 @@
 	width: 150px;
     height: 37px;
     background: #F1F6FF;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+}
+#register-ul>li>#mbti{}
+.register-li> #mbti{
+	width:150px;
+	height:37px;
+	background: #F1F6FF;
     border: none;
     border-radius: 15px;
     text-align: center;

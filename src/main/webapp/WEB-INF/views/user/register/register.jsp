@@ -79,7 +79,27 @@
 			</li>
 			<li>MBTI</li>
 			<li class="register-li">
-				<input type="text" name="mbti" id="mbti"/>
+				<select name="mbti" id="mbti">
+					<option value="ISTJ">ISTJ</option>
+					<option value="ISFJ">ISFJ</option>
+					<option value="INFJ">INFJ</option>
+					<option value="INTJ">INTJ</option>
+					
+					<option value="ISTP">ISTP</option>
+					<option value="ISFP">ISFP</option>
+					<option value="INFP">INFP</option>
+					<option value="INTP">INTP</option>
+					
+					<option value="ESTP">ESTP</option>
+					<option value="ESFP">ESFP</option>
+					<option value="ENFP">ENFP</option>
+					<option value="ENTP">ENTP</option>
+					
+					<option value="ESTJ">ESTJ</option>
+					<option value="ESFJ">ESFJ</option>
+					<option value="ENFJ">ENFJ</option>
+					<option value="ENTJ">ENTJ</option>
+				</select>
 			</li>	
 			<li class="register-submit">
 				<input type="submit" value="회원가입" id="submit"/>

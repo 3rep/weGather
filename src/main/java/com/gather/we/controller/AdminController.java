@@ -47,6 +47,7 @@ import com.gather.we.dto.ManagerDTO;
 import com.gather.we.dto.ManagerSettlementDTO;
 import com.gather.we.dto.NormGameDTO;
 import com.gather.we.dto.NormGameDetailDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
@@ -78,7 +79,7 @@ public class AdminController {
 	RegisterService regservice;
 	@Autowired
 	NormalGameService normGameService;
-	
+
 	// 관리자 홈
 	@GetMapping("/")
 	public ModelAndView adminHome() {
@@ -122,11 +123,15 @@ public class AdminController {
 	
 	//(관리자 페이지)회원 리스트
 	@GetMapping("/userList")
-	public ModelAndView loginList() {
+	public ModelAndView loginList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<RegisterDTO> list = regservice.dataAllSelect();
+		vo.setTotalRecord(service.totalRecord(vo));
+		System.out.println(vo.toString());
 		
+		List<RegisterDTO> list = regservice.dataAllSelect(vo);
+		System.out.println(list);
+		mav.addObject("vo", vo);
 		mav.addObject("list", list);
 		mav.setViewName("admin/userList/userList");
 		

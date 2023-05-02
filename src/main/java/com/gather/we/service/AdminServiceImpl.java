@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.gather.we.dao.AdminDAO;
 import com.gather.we.dto.AdminDTO;
 import com.gather.we.dto.ManagerSettlementDTO;
+import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.RegisterDTO;
 import com.gather.we.dto.UserPayDTO;
 
 @Service
@@ -37,6 +39,18 @@ public class AdminServiceImpl implements AdminService {
 	public int waitOk(ManagerSettlementDTO dto) {
 		// TODO Auto-generated method stub
 		return dao.waitOk(dto);
+	}
+
+	@Override
+	public int totalRecord(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.totalRecord(vo);
+	}
+
+	@Override
+	public List<RegisterDTO> pageSelect(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.pageSelect(vo);
 	}
 
 	
