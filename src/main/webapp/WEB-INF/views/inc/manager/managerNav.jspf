@@ -43,7 +43,7 @@
 		<li class="menu">
 			<div class="menu-info">
 					<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-					<span class="menu-title"><a href="/manager/rankgamelist" class="list-link">경기목록</a></span>
+					<span class="menu-title"><a href="${path}/manager/rankgamelist" class="list-link">경기목록</a></span>
 			</div>
 		</li>
 		

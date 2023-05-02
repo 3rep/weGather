@@ -1,5 +1,7 @@
 package com.gather.we.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,13 +40,12 @@ public class UserPayController {
 	@Autowired
 	ParticipateService participateService;
 	
-	// 로그인기능 완료되면 세션에서 받아오는걸로 수정
-	String userid = "man2";
-	
 	// 결제페이지
 	@GetMapping("/payment")
-	public ModelAndView makePayment(int no, String gametype) {
+	public ModelAndView makePayment(int no, String gametype, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		String userid = (String)session.getAttribute("logId");
 		
 		if(gametype.equals("rankgame")) {
 			RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
@@ -65,7 +66,10 @@ public class UserPayController {
 	
 	// 결제(DB)
 	@PostMapping("/paymentOk")
-	public String makePaymentOk(int no, String gametype, String payment_no, String payer_name, int paid_amount, int paid_at, String success) {
+	public String makePaymentOk(int no, String gametype, String payment_no, String payer_name, int paid_amount, 
+			int paid_at, String success, HttpSession session) {
+		
+		String userid = (String)session.getAttribute("logId");
 		
 		try {
 			UserPayDTO userPayDTO = new UserPayDTO();
@@ -90,13 +94,13 @@ public class UserPayController {
 				// 랭크경기참여 테이블에 데이터 저장
 				int rParticipateResult = participateService.rParticipateInsert(rParticipateDTO);
 				
-				// 랭크경기 테이블에 현재인원수 업데이트
+				// 랭크경기 테이블에 현재 인원수 업데이트
 				int currPeopleCountResult = rankGameService.currPeopleCount(no);
 				
 			    if(rParticipateResult<=0) {
 			    	throw new Exception("랭크경기 참여내역 저장을 실패하였습니다.");	    	
 			    } else if(currPeopleCountResult<=0) {
-			    	throw new Exception("랭크경기 현재인원수 업데이트를 실패하였습니다.");    	
+			    	throw new Exception("�랭크경기 현재인원수 업데이트를 실패하였습니다.");    	
 			    }
 			} else if(gametype.equals("normgame")) {
 			// 경기유형이 일반경기인 경우
@@ -108,7 +112,7 @@ public class UserPayController {
 				// 일반경기참여 테이블에 데이터 저장
 				int nParticipateResult = participateService.nParticipateInsert(nParticipateDTO);
 				
-				// 일반경기 테이블에 현재인원수 업데이트
+				// 일반경기 테이블에 현재 인원수 업데이트
 				int currPeopleCountResult = normalGameService.currPeopleCount(no);
 				
 			    if(nParticipateResult<=0) {
@@ -122,7 +126,7 @@ public class UserPayController {
 			    e.printStackTrace();
 		}
 		
-		// 결제번호와 경기유형을 json으로 저장하여 뷰페이지에 전달
+		// 결제번호와 경기유형을 json으로 저장하여 뷰페이지에 전달 
 		JsonObject jsonObj = new JsonObject();
 		jsonObj.addProperty("payment_no", payment_no);
 		jsonObj.addProperty("gametype", gametype);
@@ -135,7 +139,7 @@ public class UserPayController {
 	public ModelAndView completePayment(String payment_no, String gametype) {
 		ModelAndView mav = new ModelAndView();
 		
-		// 결제완료 페이지에 보여줄 경기정보와 결제금액을 DB에서 받아오기
+		// 결제완료 페이지에 보여줄 경기정보와 결제금액을 db에서 받아오기
 		UserPayDoneDTO payDoneInfo = null;
 		
 		if(gametype.equals("rankgame")) {

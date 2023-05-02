@@ -25,6 +25,7 @@
 <link href="${path}/static/style/admin/managerList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerDetail.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/managerRecent.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/admin/revenue/revenue.css" rel="stylesheet" type="text/css" />
 
 </head>
 <script>
@@ -52,7 +53,7 @@
 <!-- 관리자페이지 네비게이션 바 -->
 <nav id="admin-nav">
 	<!-- 사이트 로고 -->
-	<img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo">
+	<a><img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo"></a>
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
 		<!-- 회원관리 메뉴 -->
@@ -116,6 +117,12 @@
 						<span class="menu-title">종목목록</span>
 					</a>
 				</li>
+				<li class="page">
+					<a href="/admin/sport/new" class="page-link">	
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">종목등록</span>
+					</a>
+				</li>
 			</ul>
 		</li>
 		<!-- 경기관리 메뉴 -->
@@ -139,6 +146,12 @@
 					<a href="/admin/normgame/normgamelist" class="page-link">		
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
 						<span class="menu-title">일반경기목록</span>
+					</a>
+				</li>
+				<li class="page">
+					<a href="/admin/game/new" class="page-link">		
+						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">경기등록</span>
 					</a>
 				</li>
 			</ul>
@@ -167,15 +180,9 @@
 					</a>
 				</li>
 				<li class="page">
-					<a href="/admin/expense/managerpay" class="page-link">
+					<a href="/admin/managerfee" class="page-link">
 						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus_circle_icon" class="minus_circle_icon"/>
 						<span class="menu-title">매니저비</span>
-					</a>
-				</li>
-				<li class="page">
-					<a href="/admin/totalaccount" class="page-link">
-						<img src="${path}/static/img/admin/minus_circle_icon.png" alt="minus circle icon" class="minus_circle_icon"/>
-						<span class="menu-title">통계</span>
 					</a>
 				</li>
 			</ul>

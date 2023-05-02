@@ -41,7 +41,7 @@
         	</tr>
 		</c:forEach>
 	</table>
-	<a href="${path}/admin/rankgame/new" class="btn-black new-game">경기 등록</a>
+	<a href="${path}/admin/game/new" class="btn-black new-game">경기 등록</a>
 </div>
 </body>
 </html>

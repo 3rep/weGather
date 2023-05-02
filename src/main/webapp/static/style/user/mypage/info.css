@@ -27,27 +27,54 @@
 	 
 }
 #infoUl>li{
-	margin: 12px;
+	margin: 10px;
 	height: 50px;
+}
+#infoUl>li>input{
+	height: 40px;
+	background: #F8F8F9;
+    border: none;
+    width: 500px;
+}
+#infoUl>#infoGender{
+	line-height: 40px;
+}
+#infoUl>#infoGender>input{
+	width: 15px;
+	height: 12px;
+}
+#infoUl>#infoTel input{
+	width: 150px;
+	background: white;
+	padding-left: 12px;
+	height: 35px;
+	border-radius: 15px;
+}
+#infoUl>#infoTel>#tel1{
+	height: 35px;
+	width: 100px;
+    border: 0px;
+    border-radius: 15px;
 }
 #infoUl>li:nth-child(2n+1){
 	flex: 1 1 20%;
 	text-align: center;
     line-height: 50px;
     font-weight: 600;
-    background: #C3D8FE;
+    background: #EEEFFB; /*#C3D8FE;*/
     border-radius: 15px;
 }
 #infoUl>li:nth-child(2n){
 	flex: 1 1 70%;
-	background: aliceblue;
-	padding-top: 10px;
-    padding-left: 15px;
+	background: #F8F8F9; /*aliceblue*/
+	padding-top: 4px;
+    padding-left: 25px;
     border-radius: 15px;
 }
 
+/* submit버튼 스타일 */
 #infoBtn{
-	background: #3C6CC4;
+	background: #49496E;
 	height: 45px;
 	width: 200px;
 	border-radius: 50px;

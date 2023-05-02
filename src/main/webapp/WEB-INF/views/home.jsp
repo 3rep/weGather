@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/views/inc/user/header.jspf" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 	<!-- 메인화면 contents부분 -->
 	<!-- 배경에 이미지(A) 깔고 
@@ -16,11 +17,14 @@
 	
 
 	<div id="container" class="main-container"> <!-- css우선순위: id가 css보다 우선적용 -->
-		<img class="img" src="static/img/imgMain/tennis.jpg" alt="volley"/>
+		<!-- <div class="rank-visual" > -->
+		
+		<img class="img" src="static/img/imgMain/football.jpg" alt="football"/> 
+		
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
-				<span>We gather,&emsp;</span><br/>
-				<span>&emsp; together !</span><br/>
+				<span>We gather &emsp;</span><br/>
+				<span>&emsp; together </span><br/>
 				<span id="featSpan">feat. sport</span><br/>
 				<br/>
 				<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='login'">회원</button>
@@ -28,8 +32,19 @@
 			</div>
 		</div>
 		<div class="item" id="info">
+			
+			<!-- <img class="infoImg" src="static/img/imgMain/info.png" alt="info"/> -->
+			
 			<div class="infoTxt">
-				사이트 소개글
+				<span class="first">경기신청 버튼하나로 끝</span><br/>
+				<span class="second">We gather, Just do it!</span> 
+				<div class="jb-division-line"></div>
+				<div class="third">
+				인원모집 및 예약 서비스 <br/>
+				랭크 시스템<br/>
+				매니저 지원 서비스<br/>
+				맞춤형 스포츠 추천
+				</div>
 			</div>
 		</div>
 	</div>

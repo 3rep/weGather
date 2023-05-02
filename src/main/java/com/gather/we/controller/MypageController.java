@@ -27,6 +27,7 @@ import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.service.MypageService;
 
 
@@ -35,51 +36,67 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
-	
+
 	@GetMapping("/mypage/applyList") 
-	public ModelAndView applyList(HttpSession session) {
+	public ModelAndView applyList(HttpSession session, PagingVO vo) {
 		
 		ModelAndView mav = new ModelAndView();
-		//userid가 logId인지 확인
-		String logId = (String)session.getAttribute("logId");
-		MypageUserDTO dto = service.getUserinfo(logId);
 		
-		List<MypageApplyListDTO> list = service.allgameList(logId);
+		//userid�� logId���� Ȯ��
+		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.allTotalRecord(logId));
+		
+		List<MypageApplyListDTO> list = service.allgameList(vo);
+		
 		Date now = new Date();
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/applyList");		
 			
 		return mav;
 	}
 	
 	@GetMapping("/mypage/rankList")
-	public ModelAndView rankList(HttpSession session) {
+	public ModelAndView rankList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		
-		List<MypageApplyListDTO> list = service.rankgameList(logId);
+		List<MypageApplyListDTO> list = service.rankgameList(vo);
+		
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
 	@GetMapping("/mypage/normList")
-	public ModelAndView normList(HttpSession session) {
+	public ModelAndView normList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.normTotalRecord(logId));
 		
-		List<MypageApplyListDTO> list = service.normgameList(logId);
+		List<MypageApplyListDTO> list = service.normgameList(vo);
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
@@ -90,22 +107,37 @@ public class MypageController {
 		String logId = (String)session.getAttribute("logId");
 		
 		List<MypageRankDTO> list = service.rankResult(logId);
+
+		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		//	-> try-catch문 쓰자
+		try { //rank가 있는 경우
 		
-		MypageRankDTO dto = new MypageRankDTO();
-		dto.setAvg_all(list.get(0).getAvg_all());
+			MypageRankDTO dto = new MypageRankDTO();
+			//System.out.println("dto->"+dto);
+			dto.setAvg_all(list.get(0).getAvg_all());
 			
-		//System.out.println("list--->: "+ list);
-		//System.out.println("alll: "+dto.getAvg_all());
-		mav.addObject("list", list);
-		mav.addObject("dto", dto);
-		mav.setViewName("user/mypage/rank");
+			//System.out.println("list--->: "+ list);
+			//System.out.println("alll: "+dto.getAvg_all());
+			
+			mav.addObject("list", list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+			
+		}catch(Exception e){ //rank가 없는 경우
+			MypageRankDTO dto = new MypageRankDTO();
+			
+			mav.addObject("list",list);
+			mav.addObject("dto", dto);
+			mav.setViewName("user/mypage/rank");
+		}
+		
 		return mav;
 	}
 	
 	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
-		System.out.println(sportname);
+		//System.out.println(sportname);
 		String logId = (String)session.getAttribute("logId");
 
 		List<MypageRankDTO> list = service.rank(logId, sportname);
@@ -117,7 +149,7 @@ public class MypageController {
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//json타입으로 변환
+		//jsonŸ������ ��ȯ
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
@@ -130,32 +162,19 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/paymentList")
-	public ModelAndView paymentList(HttpSession session) {
+	public ModelAndView paymentList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		//System.out.println(logName);
+		vo.setUsername(logName);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.paymentTotalRecord(logName));
 		
-		List<MypagePaymentDTO> list = service.paymentList(logName);
-		System.out.println("list: "+ list);
-		
-		
-		// unix 타임스탬프를 2023-04-12 형태로 변환하기
-		// 현재 Unix 타임스탬프 (밀리초) 가져오기
-		//long unixTimestamp = System.currentTimeMillis();
-
-		// Unix 타임스탬프를 Date 객체로 변환하기
-		//Date date = new Date(unixTimestamp);
-
-		// SimpleDateFormat을 사용하여 날짜와 시간 형식 지정하기
-		//SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//String formattedDate = formatter.format(date);
-
-		//System.out.println(formattedDate);
-		
-		
-		
+		List<MypagePaymentDTO> list = service.paymentList(vo);
+		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
@@ -201,15 +220,5 @@ public class MypageController {
 		}
 		return entity;
 	}
-	
-	/*
-	 * @PostMapping("mypage/infoEdit") public ModelAndView infoEdit(MypageUserDTO
-	 * dto, HttpSession session) { ModelAndView mav = new ModelAndView();
-	 * dto.setUserid((String)session.getAttribute("logId"));
-	 * System.out.println("여기다 "+dto.getUserid());
-	 * 
-	 * int cnt = service.infoEdit(dto); mav.setViewName("redirect:info"); return
-	 * mav; }
-	 */
 	
 }	

@@ -76,10 +76,10 @@
 		<!-- game_detail_wrap (right) -->
 		<div class="game_detail_wrap right">
 			<!-- 경기 유형 -->
-			<div class="game_type">일반경기</div>
+			<div class="normgame_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
-			<ul class="game_detail">
+			<ul class="normgame_detail">
 				<li class="game_detail_main">
 					<div><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${normGameDetail.gametime}" /></div>
 					<div>${normGameDetail.stadium}</div>
@@ -119,14 +119,21 @@
 			
 			<!-- 참가신청 -->
 			<c:choose>
-				<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
-	            	<button class="btn_norm_apply close">인원마감</button>
+				<c:when test="${logStatus != 'Y'}">
+					<button onclick="location.href='${path}/login'" class="btn_apply_norm">로그인</button>
 				</c:when>
-	         	<c:otherwise>
-	            	<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply_norm">참가신청</button>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
+	            			<button class="btn_apply_norm close">인원마감</button>
+						</c:when>
+	         			<c:otherwise>
+	            			<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply_norm">참가신청</button>
+	            		</c:otherwise>
+					</c:choose>
 	         	</c:otherwise>
 	      	</c:choose>
-	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
+	      	<!-- <button onclick="history.back()" class="btn_back" >뒤로가기</button> -->
 		</div>
 	</div>
 </div>

@@ -17,6 +17,7 @@
 	justify-content: center;
 	padding: 20px 0;
 	background-color: var(--color-blue);
+	border-radius: 20px; 	
 }
 
 .game_type_container.norm { /* 일반 */
@@ -26,7 +27,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px 0;
-	background-color: var(--color-manager-middle-green);
+	background-color: var(--color-norm-green);
+	border-radius: 20px;
 }
 
 /* 경기 유형 설명*/

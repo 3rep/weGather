@@ -151,14 +151,21 @@
 			
 			<!-- 참가신청 -->
 			<c:choose>
-				<c:when test="${rankGameDetail.curr_people==rankGameDetail.max_people}">
-	            	<button class="btn_apply close">인원마감</button>
+				<c:when test="${logStatus != 'Y'}">
+					<button onclick="location.href='${path}/login'" class="btn_apply_rank">로그인</button>
 				</c:when>
-	         	<c:otherwise>
-	            	<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply">참가신청</button>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${rankGameDetail.curr_people==rankGameDetail.max_people}">
+	            			<button class="btn_apply_rank close">인원마감</button>
+						</c:when>
+	         			<c:otherwise>
+	            			<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply_rank">참가신청</button>
+	         			</c:otherwise>
+	      			</c:choose>
 	         	</c:otherwise>
 	      	</c:choose>
-	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
+	      	<!-- <button onclick="history.back()" class="btn_back" >뒤로가기</button> -->
 		</div>
 	</div>
 </div>

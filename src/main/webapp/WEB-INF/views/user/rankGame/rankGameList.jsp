@@ -93,7 +93,7 @@
 				<!-- 경기 지역 -->
 				<div class="game_region">${RankGameDTO.region}</div>
 				<!-- 경기 정보 -->
-				<div class="game_info_container">
+				<div class="game_info_container rank">
 					<!-- 경기 날짜/시간 -->
 					<span class="game_time">
 						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${RankGameDTO.gametime}" /><br/>
@@ -164,7 +164,7 @@
 		            	<div class="game-status imminent"><a href="detail?no=${RankGameDTO.no}" class="game_stadium2">마감임박</a></div>
 		         	</c:when>
 		         	<c:otherwise>
-		            	<div class="game-status open"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">신청가능</a></div>
+		            	<div class="game-status open"><a href="detail?no=${RankGameDTO.no}" class="game_stadium2">신청가능</a></div>
 		         	</c:otherwise>
 		      	</c:choose>
 			</li>

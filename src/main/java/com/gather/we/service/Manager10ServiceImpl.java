@@ -46,9 +46,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInputByRank(String rank) {
+	public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer p_no) {
 		
-		return dao.getAllManagerInputByRank(rank);
+		return dao.getAllManagerInputByRank(rank, p_no);
 	}
 
 
@@ -73,20 +73,16 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllEntry() {
+	public List<Manager10DTO> getAllEntry(Integer p_no) {
 		// TODO Auto-generated method stub
-		return dao.getAllEntry();
+		return dao.getAllEntry(p_no);
 	}
 
 
 
 
 
-	@Override
-	public int totalRecord(ManagerPagingVO vo) {
-		
-		return dao.totalRecord(vo);
-	}
+	
 
 
 
@@ -102,11 +98,67 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 
+	
+
+
+
+
+
 	@Override
-	public List<Manager10DTO> updateRank(String userid, int rank) {
-		
-		return dao.updateRank(userid, rank);
+	public int getTotalRecordByManagerid(String managerid) {
+		return dao.getTotalRecordByManagerid(managerid);
 	}
+
+
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo) {
+		return dao.getAllManagerPast(vo);
+	}
+
+
+
+
+
+	@Override
+	public void deleteRankGame(String managerid, Integer p_no) {
+		
+		 dao.deleteRankGame(managerid, p_no);
+		
+	}
+
+
+	@Override
+	public void updateRank(String userid, int rank, Integer p_no) {
+	 System.out.println(userid + "part" + String.valueOf(rank));
+		dao.updateRank(userid, rank, p_no);
+		
+	}
+
+
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerInputByManagerid(String rank, Integer p_no) {
+		
+		return dao.getAllManagerInputByManagerid(rank, p_no);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 

@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.AdminDTO;
+import com.gather.we.dto.MypageRankDTO;
+import com.gather.we.dto.MypageUserDTO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.service.AdminService;
+import com.gather.we.service.MypageService;
 import com.gather.we.service.RegisterService;
 
 
@@ -29,9 +32,13 @@ public class RegisterController {
 
 	@Autowired
 	AdminService adminservice;
+	
+	@Autowired
+	MypageService mypageservice;
+	
 
-	//로그인 선택 창
 
+	//로그인 선택창
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
 		return "user/register/loginChoose";	
@@ -43,44 +50,74 @@ public class RegisterController {
 		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
 	}
 	
-	//로그인(DB)
-		@PostMapping("/loginOk")
 
-		public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
-			// Session 객체 얻어오기
-			// 매개변수로 HttpServletRequest request -> Session 구하기
-			// 매개변수로 HttpSession session
-			System.out.println("id->"+id);
-			RegisterDTO dto = new RegisterDTO();
-			AdminDTO dtoadmin = new AdminDTO();
-			// dto->null인 경우 선택레코드가 없다. -로그인실패
-			// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
-			ModelAndView mav = new ModelAndView();
+
+	//로그인(DB)
+	@PostMapping("/loginOk")
+	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
+		// Session 객체 얻어오기
+		// 매개변수로 HttpServletRequest request -> Session 구하기
+		// 매개변수로 HttpSession session
+		System.out.println("id->"+id);
+		RegisterDTO dto = new RegisterDTO();
+		
+		AdminDTO dtoadmin = new AdminDTO();
+		// dto->null인 경우 선택레코드가 없다. -로그인실패
+		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+		ModelAndView mav = new ModelAndView();
+		
+		
+		//종합랭크 가져오기
+		MypageRankDTO mpdto = new MypageRankDTO();
+		mpdto.setUserid(id);
+		System.out.println("mpdto:::"+mpdto);
+		System.out.println(mpdto.getUserid());
+
+		List<MypageRankDTO> list = mypageservice.rankResult(mpdto.getUserid());
+		System.out.println("listtt:" + list);
+		
+		try {
+			if(list != null) {
+				session.setAttribute("logRank", list.get(0).getAvg_all());
+				//mav.setViewName("redirect:/userHome");
+				
+			}
+		}catch(Exception e) {
+			//e.printStackTrace();
+			session.setAttribute("logRank", "0");
+			//mav.setViewName("redirect:/userHome");
+		}
+		
+		//사용자 로그인
+		dto = service.loginOk(id, password);
+		System.out.println("dto->"+dto);
+
+		if(dto!=null) {
+			session.setAttribute("logId", dto.getUserid());
+			session.setAttribute("logName", dto.getUsername());
+			session.setAttribute("logStatus", "Y");
+			session.setAttribute("logGender", dto.getGender());
+			session.setAttribute("adminlogStatus", "N");
+			//session.setAttribute("logRank", mpdto.getRank());
+			mav.setViewName("redirect:/userHome");
+		}else {	//관리자 로그인
+			dtoadmin = adminservice.loginAdminOk(id, password);
 			
-			//사용자 로그인
-			dto = service.loginOk(id, password);
-			if(dto!=null) {
-				session.setAttribute("logId", dto.getUserid());
-				session.setAttribute("logName", dto.getUsername());
-				session.setAttribute("logStatus", "Y");
-				session.setAttribute("adminlogStatus", "N");
-				mav.setViewName("redirect:/");
-			}else {	//관리자 로그인
-				dtoadmin = adminservice.loginAdminOk(id, password);
-				if(dtoadmin!=null) {
+			if(dtoadmin!=null) {
 				session.setAttribute("logId", dtoadmin.getAdminid());
 				session.setAttribute("logName", dtoadmin.getAdmin_name());
 				session.setAttribute("logStatus", "Y");
 				session.setAttribute("adminlogStatus", "Y");
 				mav.setViewName("redirect:/admin/userList");
-				}else{//로그인 실패
-					System.out.println("로그인 실패");
-					mav.setViewName("redirect:login");	
-				}
+			}else{//로그인 실패
+				//System.out.println("로그인 실패");
+				mav.addObject("msg", "로그인에 실패하였습니다.");
+				mav.setViewName("user/register/registerOkResult");
 			}
-			
-			return mav;
-		}
+		}		
+		return mav;
+	}
+	
 	//로그인한 경우 화면
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
@@ -91,11 +128,12 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//회원가입 선택 창
+	//회원가입 선택창
 	@GetMapping("/registerChoose")
 	public String registerChoose() {
 		return "user/register/registerChoose";	
 	}
+	
 	//회원가입 폼
 	@GetMapping("/register")
 	public String register() {
@@ -111,6 +149,8 @@ public class RegisterController {
 		int result = service.registerInsert(dto);
 		
 		if(result>0) {//회원가입 성공시 - 로그인폼 이동
+
+			mav.addObject("msg", "회원가입 성공.");
 			mav.setViewName("redirect:login");
 		}else {//회원가입 실패시
 			mav.addObject("msg", "회원등록실패하였습니다.");
@@ -123,7 +163,7 @@ public class RegisterController {
 		@GetMapping("/idCheck")
 		public String idCheck(String userid, Model model) {
 			//조회
-			//아이디의 갯수 구하기 - 0,1
+			//아이디 갯수 구하기 - 0,1
 			int result = service.idCheckCount(userid);
 			
 			//뷰에서 사용하기 위해서 모델에 세팅
@@ -132,7 +172,6 @@ public class RegisterController {
 			
 			return "user/register/idCheck";
 		}
-
 	
 	//회원정보 수정(db)
 	@PostMapping("/userEditOk")
@@ -150,11 +189,11 @@ public class RegisterController {
 	}
 	
 	//로그아웃 - 세션제거
-		@RequestMapping("/logout")
-		public ModelAndView logout(HttpSession session) {
-			session.invalidate();
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/");
-			return mav;
-		}
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 }

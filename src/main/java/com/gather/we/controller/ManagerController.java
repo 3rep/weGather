@@ -29,7 +29,7 @@ public class ManagerController {
 	@Autowired
 	SportService sportservice;
 	
-	//회원가입 폼
+	//ȸ���� ��
 	@GetMapping("/manager")
 	public ModelAndView manager() {
 		
@@ -58,101 +58,116 @@ public class ManagerController {
 		dto.setS_no(Integer.parseInt(request.getParameter("s_no")));
 	//public ModelAndView managerOk(MultipartHttpServletRequest multi, ManagerDTO dto){
 		System.out.println("qwer");
-		// 파일 업로드 구현
+		// ���Ͼ�ε屸��
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)request;
 		
-		// mr에서 MultipartFile객체를 얻어오기
-		MultipartFile file = mr.getFile("prooffile"); //form에 있는 name
+		// mr���� MultipartFile��ü �����
+		MultipartFile file = mr.getFile("prooffile"); //form�� �ִ� name
 		//MultipartFile file = multi.getFile("prooffile");
 		
-		// 파일을 서버에 업로드할 위치의 절대주소
+		// ����� ���� ��ε��� �ġ�� ����ּ�
 		//String path = request.getSession().getServletContext().getRealPath("/uploadfile");
 		String path = request.getSession().getServletContext().getRealPath("/uploadfile");
 		System.out.println("path->" + path);
 		
-		if(file!=null) {//업로드 파일이 있을 경우			
-			String orgFilename = file.getOriginalFilename();// 사용자가 업로드한 파일명
+		if(file!=null) {//��ε� ������ ��� ���			
+			String orgFilename = file.getOriginalFilename();// ����ڰ� ��ε��� ���ϸ�
 			if(orgFilename != null && !orgFilename.equals("")) {
-				// 같은 파일명이 이미 존재하면 rename 수행
+				// ��� ���ϸ��� �̹� ����ϸ� rename ����
 				File f = new File(path, orgFilename);
 				if(f.exists()) {
 					//	abc.gif -> abc (1).gif -> abc (2).gif -> abc (3).gif
 					for(int renameNum=1;;renameNum++) {// 1,2,3,4....
-						// 파일명, 확장자를 나눈다.
-						int point = orgFilename.lastIndexOf(".");// 마지막 .의 위치구하기
-						String orgFile = orgFilename.substring(0, point);// 확장자를 뺀 파일명
-						String orgExt = orgFilename.substring(point+1);// 확장자
+						// ���ϸ�, Ȯ���ڸ� ������.
+						int point = orgFilename.lastIndexOf(".");// ���� .�� �ġ ���ϱ�
+						String orgFile = orgFilename.substring(0, point);// Ȯ���ڸ� �� ���ϸ�
+						String orgExt = orgFilename.substring(point+1);// Ȯ����
 						
-						String newFilename = orgFile+" ("+renameNum+")."+orgExt;//새로만들어진 파일명
+						String newFilename = orgFile+" ("+renameNum+")."+orgExt;//��� ������� ���ϸ�
 						f = new File(path, newFilename);
-						if(!f.exists()) {// 새로 만들 파일이 존재하지 않으면 반복문 중단
+						if(!f.exists()) {// ��� ���� ������ ������� ����� �ݺ��� �ߴ�
 							orgFilename = newFilename;
 							break;
 						}
 					}
 				}
 				
-				// 파일 업로드 수행
+				// ���� ��ε� ����
 				try {
 					file.transferTo(new File(path, orgFilename));
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
 				
-				// 파일명을 DB에 저장하기 위해 dto에 셋팅
+				// ���ϸ�� db�� �����ϱ� ��� dto�� ����
 				dto.setProoffile(orgFilename);
 			}
 		}
 
 		ModelAndView mav = new ModelAndView();
 		try {
-			// 작성된 글 내용을 DB에 저장
+			// �ۼ��� �� ����� db�� ����
 			int result = service.managerInsert(dto);
 
-			// 정상처리되면 종목 목록 페이지로 이동
+			// ���ó���Ǹ� ��� ��� ������� �̵�
 			mav.setViewName("redirect:/loginMan");
 			
 		}catch(Exception e) {
-			// 레코드 추가 에러
+			// ���ڵ� �߰� ����
 			e.printStackTrace();
 			
-			// 파일삭제 
+			// ���� ���
 			fileDelete(path, dto.getProoffile());
 			
-			// DB에 저장된 레코드 삭제
+			// DB�� ����� ���ڵ� ���
 			service.dataDelete(dto.getManagerid());
-			mav.addObject("msg", "종목 등록 실패하였습니다.");
+			mav.addObject("msg", "ȸ�� ��� �����Ͽ���ϴ�.");
 			mav.setViewName("manager/managerOkResult");
 		}
 		return mav;
 	}
-		// 업로드된 파일 삭제
+	//아이디 중복검사 폼
+	@GetMapping("/idCheckMan")
+	public String idCheck(String managerid, Model model) {
+		//조회
+		//아이디 갯수 구하기 - 0,1
+		int result = service.idCheckCount(managerid);
+		
+		//뷰에서 사용하기 위해서 모델에 세팅
+		model.addAttribute("managerid", managerid);
+		model.addAttribute("result", result);
+		
+		return "manager/idCheck";
+	}
+		// ��ε�� ���� ���
 		public void fileDelete(String path, String filename) {
 			File f = new File(path, filename);
 			f.delete();
 		}
 		
-		//로그인폼
+		//�Ŵ��� �α���
 		@GetMapping("/loginMan")
 		public String loginMan() {
 			return "manager/loginMan";	
 		}
 		
-		//로그인(DB)
+		//�Ŵ��� �α���(DB)
 		@PostMapping("/loginManOk")
 		public ModelAndView loginManOk(String managerid, String password, HttpServletRequest request, HttpSession session) {
-			// Session 객체 얻어오기
-			// 매개변수로 HttpServletRequest request -> Session 구하기
-			// 매개변수로 HttpSession session
+			// Session ��ü �����
+			// �Ű������ HttpServletRequest request -> Session ���ϱ�
+			// �Ű������ HttpSession session
 			System.out.println("managerid->"+managerid);
 			ManagerDTO dto = service.loginManOk(managerid, password);
-			// dto->null인 경우 선택레코드가 없다. -로그인실패
-			// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
+			// dto->null�� ��� ���÷��ڵ尡 ���. -�α��� ����
+			// 		null�� �ƴ� ��� ���÷��ڵ� �ִ�. - �α��� ����
 			ModelAndView mav = new ModelAndView();
-			if(dto!=null) {//로그인 성공
+			if(dto!=null) {//�α��� ����
 				session.setAttribute("logId", dto.getManagerid());
 				session.setAttribute("logName", dto.getM_name());
+				session.setAttribute("logS_no", dto.getS_no());
 				session.setAttribute("logStatus", "Y");
+				System.out.println(dto);
 				mav.setViewName("redirect:/manager/rankgamelist");
 			}else{//로그인 실패
 				mav.setViewName("redirect:loginMan");

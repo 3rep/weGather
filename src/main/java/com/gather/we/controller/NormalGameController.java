@@ -34,7 +34,7 @@ public class NormalGameController {
 	@Autowired
 	StadiumInfoService stadiumService;
 	
-	// 종목 목록
+	// ������
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -47,19 +47,19 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// 일반경기 목록
+	// �Ϲݰ�� ���
 	@GetMapping("/normgamelist")
 	public ModelAndView normGameList(NormGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
 		
-		// 지역 필터링 시 DB에서 해당 지역의 경기만 선택하여 가져오기 위해 지역 카테고리를 세부 지역으로 나누어 리스트에 담는다.
-		String region = dto.getRegion();// '대전/세종/충청'
+		// ���� ���͸� �� db���� �ش� ������ ��⸸ �����Ͽ� �������� ���� ���� ī�װ��� ���� �������� ������ ����Ʈ�� ��´�.
+		String region = dto.getRegion();// '����/����/��û'
 		if(region!=null) {
-			List<String> regionList = Arrays.asList(region.split("/"));// ['대전', '세종', '충청']
+			List<String> regionList = Arrays.asList(region.split("/"));// ['����', '����', '��û']
 			dto.setRegionList(regionList);
 		}
 		
-		// DB에서 일반경기 목록 받아오기
+		// DB���� �Ϲݰ�� ��� �޾ƿ���
 		List<NormGameDTO> normGameList = normGameService.normGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -69,12 +69,12 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// 일반경기 세부정보
+	// �Ϲݰ�� ��������
 	@GetMapping("/detail")
 	public ModelAndView normGameDetail(int no) {
 		ModelAndView mav = new ModelAndView();
 		
-		// DB에서 일반경기 세부정보 받아오기
+		// DB���� �Ϲݰ�� �������� �޾ƿ���
 		NormGameDetailDTO normGameDetail = normGameService.normGameDetailSelect(no);
 
 		mav.addObject("normGameDetail", normGameDetail);

@@ -14,7 +14,7 @@
 <div class="container">
 	<h2 id="page-title">회원님의 활동 내역</h2>
 	<div class="userLog_container">
-		<br/>
+		
 		<form method="get" id="searchForm" action="/admin/userLog/${userid}">
 			<select name="searchKey" id="search">
 				<option value="all">모든 게임</option>
@@ -22,7 +22,9 @@
 				<option value="norm_game">일반게임</option>
 			</select>
 			<input type="submit" value="Search"/>
+			
 		</form>
+	
 		<br/>
 		<ul class="userLog">
 				<c:forEach var="UserLogDTO" items="${list}">

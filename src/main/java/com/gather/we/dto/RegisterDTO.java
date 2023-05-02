@@ -20,8 +20,15 @@ public class RegisterDTO {
 	private int temperature;
 	private int active;
 	private String signupdate;
+	private int age;
 	
 	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	@Override
 	public String toString() {
 		return "RegisterDTO [userid=" + userid + ", type=" + type + ", username=" + username + ", password=" + password

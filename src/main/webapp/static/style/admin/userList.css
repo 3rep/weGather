@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
+body{
+	background-color : #f6f6f6;
+}
 .usersList_container{
+	position:relative;
+	right:10%;
+	
 	width:1200px;
 	margin:0 auto;
 	text-align:center;
@@ -9,7 +15,7 @@
 .usersList li{
 
 	float:left; width:10%; height:50px; line-height:40px; 
-	border-bottom:1px solid #ddd; border:1px solid black;
+	border-bottom:2px solid #ddd; 
 	border-radius:3%;
 	
 }
@@ -21,6 +27,19 @@
 	color:#000;
 }
 #id, #pwd, #tel, #name, #date{
-	background-color:#e6f4fa;
+	background-color:#d1d9e2;
 	font-weight:bold;
+}
+.userlist_pagingDiv{
+	position:relative;
+	left:28%;
+}
+.userlist_pagingDiv li{
+	float:left;
+	padding:10px 20px;
+	
+	
+}
+.user_listpagingDiv a:link, .pagingDiv a:hover, .pagingDiv a:visited, .board_list a:link, .board_list a:hover, .board_list a:visited{
+	color:#000;
 }

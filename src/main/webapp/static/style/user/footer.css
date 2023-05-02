@@ -16,7 +16,7 @@ footer {
 
 .foot-sub-container {
 	width: 100%;
-	background: var(--color-dark-yellow);
+	background: var(--color-yellow); /* var(--color-dark-yellow); */
 }
 
 #main-container {
@@ -28,7 +28,7 @@ footer {
 }
 
 #sub-container {
-	background: var(--color-dark-yellow);
+	background: var(--color-yellow); /* var(--color-dark-yellow); */
 	margin: 0 auto;
 	padding: 0 10px;
 	width: 1200px;

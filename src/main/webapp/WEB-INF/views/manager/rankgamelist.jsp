@@ -25,8 +25,8 @@
         <div class="rank-caption">현재 참여 가능한 경기 수 : ${pageMaker.total } 경기</div>
         <div class="rank-wrap">
             <!-- 비주얼 이미지 -->
-            <div class="rank-visual">
-                <img src="${path}/static/img/manager/baseball.jpg" alt="야구 메인 비주얼">
+            <div class="rank-visual" style="background-image: url('${path}/static/img/manager/${sessionScope.logS_no}.jpg');">
+                <%-- <img src="${path}/static/img/manager/${sessionScope.logS_no}.jpg" alt="메인 비주얼"> --%>
             </div>
             <!-- 랭크 리스트 -->
             <div class="rank-list">
@@ -45,8 +45,9 @@
                         </div>
                     </li>
                     </c:forEach>
-                  
+                </ul>
                   <!-- 페이지네이션 -->
+                  	<div class="pagination-container">
                     	<ul class="pagination">
                     		<c:if test="${pageMaker.prev }">
                     			<!-- 이전 페이지 : 시작페이지가 1~10이 아닌 경우 보임 -->
@@ -54,7 +55,7 @@
                     		</c:if>
 	
 							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-                    			<li class="paginate-button ${pageMaker.criteria.pageNum == num ? "active":""}"><a href="${num }">${num }</a></li>
+                    			<li class="paginate-button ${pageMaker.criteria.pageNum == num ? 'active':''}"><a href="${num }">${num }</a></li>
 							</c:forEach>
                     		
                     		<c:if test="${pageMaker.next }">
@@ -62,8 +63,8 @@
                     			<li class="paginate-button next"><a href="${pageMaker.endPage+1 }">Next</a></li>
                     		</c:if>
                     	</ul>
+                    </div>
                     <!--end 페이지네이션 -->
-                </ul>
             </div>
         </div>
     </div>

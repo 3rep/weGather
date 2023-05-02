@@ -3,9 +3,8 @@
 /* 결제 페이지 */
 #payment_container {
 	width: 1100px;
-	margin: 100px auto;
+	margin: 75px auto;
 }
-
 #payment_container .payment_title {
 	text-align: center;
 	font-weight: var(--weight-bold);
@@ -16,11 +15,19 @@
 	display: flex;
 	justify-content: space-between;
 }
-
-#payment_container .payment_section {
-	background-color: var(--color-light-gray);
-	border: 1px solid var(--color-gray);
+/*랭크게임 section*/
+#payment_container .payment_section.rank {       
+	background-color: var(--color-rank-light-blue);
+	/* border: 1px solid var(--color-gray); */
 	padding: 28px;
+	border-radius: 15px;
+}
+/*일반게임 section*/
+#payment_container .payment_section.normal{		
+	background-color: #F4F8F4;
+	/* border: 1px solid var(--color-gray); */
+	padding: 28px;
+	border-radius: 15px;
 }
 
 #payment_container .payment_section.left {
@@ -96,6 +103,7 @@
 	font-weight: var(--weight-bold);
 	background-color: var(--color-gray);
 	padding: 8px 12px;
+	border-radius: 5px;
 }
 
 /* 결제하기 버튼 */
@@ -110,9 +118,11 @@
 /* 결제하기 버튼 - 랭크경기 */
 #payment_container .btn-pay.rank {
 	background-color: var(--color-blue);
+	border-radius: 35px;
 }
 
 /* 결제하기 버튼 - 일반경기 */
 #payment_container .btn-pay.normal {
 	background-color: var(--color-manager-middle-green);
+	border-radius: 35px;
 }

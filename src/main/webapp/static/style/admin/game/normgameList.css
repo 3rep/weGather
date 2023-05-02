@@ -8,15 +8,16 @@
 
 #normlist_container table {
 	width: 100%;
-	border: 1px solid var(--color-black);
 	border-collapse: collapse;
 	text-align: center;
+	background-color: var(--color-white);
+	border-radius: 20px;
 }
 
 #normlist_container th, 
 #normlist_container td {
-	border: 1px solid var(--color-black);
-	padding: 10px;
+	padding: 14px;
+	border-bottom: 2px solid #f3f3f3;
 }
 
 #normlist_container th:nth-of-type(1),
@@ -33,7 +34,7 @@
 }
 
 #normlist_container th:nth-of-type(4) {
-	width: 25%;
+	width: 23%;
 }
 
 #normlist_container th:nth-of-type(5) {
@@ -41,7 +42,7 @@
 }
 
 #normlist_container th:nth-of-type(6) {
-	width: 10%;
+	width: 12%;
 }
 
 #normlist_container .stadium {
