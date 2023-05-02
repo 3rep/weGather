@@ -62,7 +62,7 @@
                 var managerInput = {};
                 managerInput['userid'] = $(this).find('td:eq(0)').text();
                 managerInput['rank'] = $(this).find('select.rank-filter').val();
-                managerInput['p_no'] = $(this).find('input.p_no').val();
+                managerInput['no'] = $(this).find('input.no').val();
                 managerInputList.push(managerInput);
                 
             });
@@ -76,7 +76,7 @@
                 success: function(response) {
                     alert("랭크를 입력했습니다.");
                     console.log(response);
-                    window.location.href = "${path}/manager/managerPast";
+               //     window.location.href = "${path}/manager/managerPast";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert("랭크 입력에 성공했습니다.");

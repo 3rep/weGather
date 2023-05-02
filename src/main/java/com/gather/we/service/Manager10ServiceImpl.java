@@ -46,9 +46,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer p_no) {
+	public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer no) {
 		
-		return dao.getAllManagerInputByRank(rank, p_no);
+		return dao.getAllManagerInputByRank(rank, no);
 	}
 
 
@@ -65,17 +65,17 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInput() {
+	public List<Manager10DTO> getAllManagerInput(Integer no) {
 		// TODO Auto-generated method stub
-		return dao.getAllManagerInput();
+		return dao.getAllManagerInput(no);
 	}
 
 
 
 	@Override
-	public List<Manager10DTO> getAllEntry(Integer p_no) {
+	public List<Manager10DTO> getAllEntry(Integer no) {
 		// TODO Auto-generated method stub
-		return dao.getAllEntry(p_no);
+		return dao.getAllEntry(no);
 	}
 
 
@@ -142,9 +142,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInputByManagerid(String rank, Integer p_no) {
+	public List<Manager10DTO> getAllManagerInputByManagerid(String rank, Integer no) {
 		
-		return dao.getAllManagerInputByManagerid(rank, p_no);
+		return dao.getAllManagerInputByManagerid(rank, no);
 	}
 
 

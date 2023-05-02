@@ -114,6 +114,8 @@ public class ManagerPageController{
 		    System.out.println("list size : "+ service.pageSelect(vo).size());
 		    mav.addObject("vo", vo);
 		    mav.setViewName("/manager/manager10");
+		    
+		    System.out.println("mav: "+ mav);
 		    return mav;
 		}
 	@PostMapping("/manager10")
@@ -123,7 +125,7 @@ public class ManagerPageController{
 	        if (manager10.getManagerid() == null) {
 	            return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 	        }
-	        service.deleteRankGame(manager10.getManagerid(), manager10.getP_no());
+	        service.deleteRankGame(manager10.getManagerid(), manager10.getNo());
 	        return new ResponseEntity<String>("ok", HttpStatus.OK);
 	    } catch (Exception e) {
 	        System.out.println(e.getMessage());
@@ -184,9 +186,9 @@ public class ManagerPageController{
 	}
 
 		
-		 @GetMapping("/managerInput")
+	/*	 @GetMapping("/managerInput")
 		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank,
-				 								 @RequestParam(value = "p_no", required = false) Integer  p_no,
+				 								 @RequestParam(value = "no", required = false) Integer  p_no,
 				 								 HttpSession session) {
 		     ModelAndView mav = new ModelAndView();
 		     String managerid = String.valueOf(session.getAttribute("logId"));
@@ -200,14 +202,36 @@ public class ManagerPageController{
 		     mav.addObject("managerInputList", managerInputList);
 		     mav.setViewName("/manager/managerInput");
 		     return mav;
+		 }*/	
+		
+		 @GetMapping("/managerInput")
+		 public ModelAndView getAllManagerInput(@RequestParam(name = "no", defaultValue = "0") Integer no) {
+		     ModelAndView mav = new ModelAndView();
+
+		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
+		     List<Manager10DTO> managerInputList = service.getAllManagerInput(no);
+		     System.out.println("managerInputList" + managerInputList);
+		 
+		     if (managerInputList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
+		         mav.addObject("error", "데이터가 없습니다.");
+		     } else { // 조회된 데이터가 있는 경우
+		         mav.addObject("managerInputList", managerInputList);
+		     }
+		     
+		     mav.addObject("managerInputList", managerInputList);
+		     mav.addObject("no", no);
+		     mav.setViewName("/manager/managerInput");
+
+		     return mav;
 		 }
+		 
 		
 		 @PostMapping("/managerInput")
 		 @ResponseBody
-		 public ResponseEntity<String> submitRank(@RequestBody List<Manager10DTO> managerInputList) {		    
+		 public ResponseEntity<String> updateRank(@RequestBody List<Manager10DTO> managerInputList) {		    
 		     try {
 		         for (Manager10DTO managerInput : managerInputList) {
-		             service.updateRank(managerInput.getUserid(), managerInput.getRank(), managerInput.getP_no());
+		             service.updateRank(managerInput.getUserid(), managerInput.getRank(), managerInput.getNo());
 		         }
 		     }  catch (Exception e) {
 //		    	 System.out.println(e.getMessage());
@@ -218,21 +242,25 @@ public class ManagerPageController{
 		
 		 
 		 @GetMapping("/entry")
-		 public ModelAndView getAllEntry(@RequestParam(name = "p_no", defaultValue = "0") Integer p_no) {
+		 public ModelAndView getAllEntry(@RequestParam(name = "no", defaultValue = "0") Integer no) {
 		     ModelAndView mav = new ModelAndView();
-
-		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
-		     List<Manager10DTO> managerList = service.getAllEntry(p_no);
-		     System.out.println("managerList" + managerList);
+		     System.out.println("no: "+ no);
 		     
-		     if (managerList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
+		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
+		     List<Manager10DTO> entryList = service.getAllEntry(no);
+		     System.out.println("entryList: " + entryList);
+		     
+		     if (entryList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
 		         mav.addObject("error", "데이터가 없습니다.");
 		     } else { // 조회된 데이터가 있는 경우
-		         mav.addObject("managerList", managerList);
+		         mav.addObject("entryList", entryList);
 		     }
 		     
-		     mav.addObject("managerList", managerList);
-		     mav.addObject("p_no", p_no);
+		     // 반복문, session 에 있는 s_no 정보를 entryList 의 s_no 에 저장
+		     
+		     
+		     mav.addObject("entryList", entryList);
+		     mav.addObject("no", no);
 		     mav.setViewName("/manager/entry");
 
 		     return mav;

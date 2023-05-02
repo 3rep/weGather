@@ -52,7 +52,7 @@
                             
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
-                                <a href="${path}/manager/entry" class="page-link" style="display: flex; flex-direction: column;">
+                                <a href="${path}/manager/entry?no=${manager.no}" class="page-link" style="display: flex; flex-direction: column;">
                                     <button class="grey" >확정</button>
                                     <button class="blue">명단확인</button>
                                 </a>

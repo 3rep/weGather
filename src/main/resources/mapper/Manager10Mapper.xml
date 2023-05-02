@@ -38,7 +38,7 @@
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.managerid = #{managerid} 
-		And rank_game.gametime < sysdate
+		WHERE rank_game.gametime-16 < sysdate and sysdate < rank_game.gametime
 				 
 				 ) 
  				 where rownum<=${onePageRecord*nowPage} order by st_no asc 
@@ -97,18 +97,21 @@
 
 	
 <select id="getAllEntry" resultType="com.gather.we.dto.Manager10DTO">
-       SELECT rp.userid AS userid, rp.rank, rp.no, u.username, u.tel, u.gender
-        FROM r_participate rp
-        JOIN users u ON rp.userid = u.userid
-        WHERE rp.p_no = #{p_no}
+      SELECT rp.no, u.userid, u.username, u.tel, u.gender, rp.rank
+		FROM r_participate rp
+			INNER JOIN users u ON rp.userid = u.userid
+			INNER JOIN rank_game rg ON rp.no = rg.no
+		WHERE rg.no = ${no}
   </select>
 
 
     <select id="getAllManagerInput" resultType="com.gather.we.dto.Manager10DTO">
-        SELECT rp.userid AS userid, rp.rank, rp.p_no, u.username
-        FROM r_participate rp
-        JOIN users u ON rp.userid = u.userid
-        WHERE rp.p_no = #{p_no}
+        SELECT rp.userid AS userid, rp.rank, rp.no, u.username
+       	 FROM r_participate rp
+        	INNER JOIN users u ON rp.userid = u.userid
+        	INNER JOIN rank_game rg ON rp.no = rg.no
+        WHERE rp.no = ${no}
+        	And rg.gametime <![CDATA[<]]> sysdate
     </select>
 	
 	
