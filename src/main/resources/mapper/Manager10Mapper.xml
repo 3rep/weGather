@@ -100,7 +100,7 @@
        SELECT rp.userid AS userid, rp.rank, rp.no, u.username, u.tel, u.gender
         FROM r_participate rp
         JOIN users u ON rp.userid = u.userid
-        WHERE rp.no = #{no}
+        WHERE rp.p_no = #{p_no}
   </select>
 
 

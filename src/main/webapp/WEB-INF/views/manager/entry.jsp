@@ -36,7 +36,7 @@
       </thead>
       <tbody>
   <c:forEach items="${managerList}" var="manager">
-   <c:if test="${manager.getNo() == no}">
+   <c:if test="${manager.getP_no() == p_no}">
     <tr>
       <td><c:out value="${manager.getUserid()}" /></td>
       <td><c:out value="${manager.getUsername()}" /></td>

@@ -73,9 +73,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllEntry(Integer no) {
+	public List<Manager10DTO> getAllEntry(Integer p_no) {
 		// TODO Auto-generated method stub
-		return dao.getAllEntry(no);
+		return dao.getAllEntry(p_no);
 	}
 
 

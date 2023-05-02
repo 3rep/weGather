@@ -214,11 +214,11 @@ public class ManagerPageController{
 		
 		 
 		 @GetMapping("/entry")
-		 public ModelAndView getAllEntry(@RequestParam(name = "no", defaultValue = "0") Integer no) {
+		 public ModelAndView getAllEntry(@RequestParam(name = "p_no", defaultValue = "0") Integer p_no) {
 		     ModelAndView mav = new ModelAndView();
 
 		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
-		     List<Manager10DTO> managerList = service.getAllEntry(no);
+		     List<Manager10DTO> managerList = service.getAllEntry(p_no);
 		     System.out.println("managerList" + managerList);
 		     
 		     if (managerList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
@@ -228,7 +228,7 @@ public class ManagerPageController{
 		     }
 		     
 		     mav.addObject("managerList", managerList);
-		     mav.addObject("no", no);
+		     mav.addObject("p_no", p_no);
 		     mav.setViewName("/manager/entry");
 
 		     return mav;
