@@ -14,8 +14,8 @@
 		.tc.rank img{position:absolute;left:21px;top:4px;}	
 		
 		/*검색,필터*/
-		.search_area form {height:50px;display: flex; align-items: center; margin-bottom:10px;}		
-		.search_area form * {height:40px;background-color:#fff;border:1px solid #e1e1e5;margin:5px 20px 5px 0px;}
+		.search_area .search-form {height:50px;display: flex; align-items: center; margin-bottom:10px;}		
+		.search_area .search-form * {height:40px;background-color:#fff;border:1px solid #e1e1e5;margin:5px 20px 5px 0px;}
 		.search_area form select {width: 110px;}
 		
 		#search-word {width:500px;margin-left: auto;margin-right:0px; margin-left:346px;padding:0px;border-right: 0px;}

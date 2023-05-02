@@ -16,8 +16,8 @@ public class RankBoardServiceImpl implements RankBoardService{
 	private RankBoardDAO rankBoardDAO;	
 	
 	@Override
-	public List<RankBoardDTO> getUserRankList(RankBoardCriteria criteria) {
-		return rankBoardDAO.getListWithPaging(criteria);
+	public List<RankBoardDTO> getUserRankList() {
+		return rankBoardDAO.getListWithPaging();
 	}
 
 	@Override
