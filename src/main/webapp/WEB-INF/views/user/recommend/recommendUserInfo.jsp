@@ -7,12 +7,14 @@
 		var logId = '<%=(String)session.getAttribute("logId")%>';
 
         if(logId=="null"){ 
+        	// 비로그인
         	$(".recommend_user_info.non_login").addClass("active");
         } else {
+        	// 로그인
         	$(".recommend_user_info.login").addClass("active");
         }
 
-        /* 남성 파이차트*/
+        /* pie chart - 남성 */
     	var colorList = ['#FA7577', '#FAD275', '#A9CC8E', '#60A9A7', '#7391AB', '#3098C5', '#F9AC4E', '#FA9461', '#5295B8'];
 
     	var m_labels = [];
@@ -42,19 +44,19 @@
 						display: true,
 						text: '남성',
 						position: 'top',
-						fontSize: 30,
+						fontSize: 28,
 						fontColor: '#111',
 						padding: 20
  	    		        },
-				legend: {
- 					display: true,
- 					position: 'bottom',
-					labels: {
-						fontSize: 20,
-						fontWeight: 800,
-						boxWidth: 20,
-						fontColor: '#111',
-						padding: 15
+					legend: {
+	 					display: true,
+	 					position: 'bottom',
+						labels: {
+							fontSize: 16,
+							fontWeight: 800,
+							boxWidth: 20,
+							fontColor: '#111',
+							padding: 15
 						}
 					},
 				},
@@ -65,7 +67,7 @@
 			});
     	
     		
-    		/* 여성 파이차트*/
+    		/* pie chart - 여성 */
     	
 	    	var w_labels = [];
 	    	var w_data = [];
@@ -94,19 +96,19 @@
 							display: true,
 							text: '여성',
 							position: 'top',
-							fontSize: 30,
+							fontSize: 28,
 							fontColor: '#111',
 							padding: 20
 	 	    		        },
-					legend: {
-	 					display: true,
-	 					position: 'bottom',
-						labels: {
-							fontSize: 20,
-							fontWeight: 800,
-							boxWidth: 20,
-							fontColor: '#111',
-							padding: 15
+						legend: {
+		 					display: true,
+		 					position: 'bottom',
+							labels: {
+								fontSize: 16,
+								fontWeight: 800,
+								boxWidth: 20,
+								fontColor: '#111',
+								padding: 15
 							}
 						},
 					},
@@ -116,7 +118,7 @@
 						}
 				});
 	    	
-	    	/* bar chart */
+	    	/* bar chart - 나이 */
 	    	var age_labels = [];
 	    	var age_data = [];
 	    	var sport_labels = [];
@@ -144,8 +146,8 @@
 						label: sportname,
 	                    data: s[sportname],
 	                    backgroundColor: colorList[index],
-	                    borderColor: '#CBCE91',
-	                    borderWidth: 1
+	                    borderColor: '#ddd',
+	                    borderWidth: 0.5,
 						}
 				age_data.push(data);
 				index++;
@@ -162,9 +164,27 @@
 	        },
 	        options:{
 	                    maintainAspectRatio :false,//그래프의 비율 유지
+	                    title: {
+							display: true,
+							text: '나이',
+							position: 'top',
+							fontSize: 28,
+							fontColor: '#111',
+							padding: 20
+	 	    		        },
+ 						legend: {
+ 		 					display: true,
+ 		 					position: 'bottom',
+ 							labels: {
+ 								fontSize: 16,
+ 								fontWeight: 800,
+ 								boxWidth: 20,
+ 								fontColor: '#111',
+ 								padding: 15
+ 							}
+ 						},
 	                }
 	        });
-
 	});
 </script>
 
@@ -172,11 +192,45 @@
 	<span class="title">스포츠 추천</span>
 </div>
 <div id="recommend_nav">
+	<!-- 로그인 시-->
 	<div class="recommend_user_info login">
+		<div>당신의 나이/성별과 같은 사용자들이 가장 좋아하는 스포츠 입니다</div>
+		<div class="user_info_result">
 		
+			<!-- 사용자의 나이에 따른 통계 -->
+			<ul class="user_age">
+				<li class="category">${userAgeGroup}</li>
+				<c:forEach items="${ageGroup}" var="age" varStatus="status">
+		    		<c:if test="${age==userAgeGroup}">
+		    			<c:set var="ageIndex" value="${status.index}" />
+		    		</c:if>
+				</c:forEach>
+		    	<c:set var="ageResult" value="${ageTopStatistics[ageIndex]}" />
+				<li><span class="sportname">${ageResult.sportname}</span>${ageResult.sport_ratio}%</li>
+			</ul>
+			
+			<!-- 사용자의 성별에 따른 통계 -->
+			<ul class="user_gender">
+				<c:choose>
+					<c:when test="${userGender eq '남성'}">
+						<li class="category">남성</li>
+						<c:set var="genderResult" value="${manStatistics[0]}" />
+					</c:when> 
+					<c:when test="${userGender eq '여성'}">
+						<li class="category">여성</li>
+						<c:set var="genderResult" value="${womanStatistics[0]}" />
+					</c:when>
+				</c:choose>
+				<li><span class="sportname">${genderResult.sportname}</span>${genderResult.sport_ratio}%</li>
+			</ul>
+		</div>
 	</div>
+	
+	<!-- 비로그인 시-->
 	<div class="recommend_user_info non_login">성별과 나이에 따른 스포츠 추천 결과를 확인해보세요</div>
 </div>
+
+<!-- 로그인, 비로그인 공통 -->
 <div id="recommend_container">
 	<div class="title-filter-wrap">
 		<h3>맞춤형 스포츠 추천</h3>
@@ -185,9 +239,12 @@
 	</div>
 	<div class="recommend_content_user_info">
 		<div class="gender_result">
+			<!-- pie chart (남성) -->
 			<canvas id="mChart" width="350px" height="350px"></canvas>
+			<!-- pie chart (여성) -->
 			<canvas id="wChart" width="350px" height="350px"></canvas>
 		</div>
+		<!-- bar chart (나이) -->
 		<div class="age_result"><canvas id="ageChart"></canvas></div>
 	</div>
 </div>

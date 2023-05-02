@@ -6,11 +6,11 @@ import com.gather.we.dto.RecommendDTO;
 
 public interface RecommendDAO {
 	// mbti유형의 스포츠 통계 선택
-	public List<RecommendDTO> sportStatisticsSelect(String mbtiType);
+	public List<RecommendDTO> mbtiStatisticsSelect(String mbtiType);
 	// 성별 스포츠 통계 선택
 	public List<RecommendDTO> genderStatisticsSelect(String gender);
-	// 사용자 mbti 선택
-	public String userMbtiSelect(String userid);
-	// 나이별 스포츠 통계 선택
+	// 하나의 나이 그룹에 대한 스포츠 통계 선택
 	public List<RecommendDTO> ageStatisticsSelect(String age);
+	// 하나의 나이 그룹에서 비율이 가장 높은 스포츠 선택
+	public RecommendDTO ageTopStatisticsSelect(String age);
 }

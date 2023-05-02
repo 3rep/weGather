@@ -8,20 +8,20 @@
 	font-weight: var(--weight-bold);
 	color: var(--color-black);
 	background-color: var(--color-board-blue);
-	border-radius: 8px;
+	border-radius: 12px;
 	margin: 0 auto;
-	line-height: 40px;
+	line-height: 35px;
 	padding: 12px 0;
-}
-
-#recommend_nav .recommend_user_mbti.login.active {
-	display: flex;
-	padding: 12px 100px;
 }
 
 #recommend_nav .recommend_user_mbti.non_login.active {
 	display: flex;
 	flex-direction: column;
+}
+
+#recommend_nav .recommend_user_mbti.login.active {
+	display: flex;
+	padding: 12px 100px;
 }
 
 #recommend_nav .recommend_user_mbti.login li:nth-of-type(1) {
@@ -55,6 +55,8 @@
 	margin-left: 8px;
 	border-radius: 4px;
 }
+
+/* MBTI 선택 결과 - 비로그인 시 */
 
 #recommend_container .mbti_result {
 	width: 100%;
@@ -96,10 +98,20 @@
 	margin-bottom: 20px;
 }
 
+#recommend_container .mbti_result .sport_statistics span {
+	margin-right: 12px;
+	padding: 4px 12px;
+}
+
 #recommend_container .mbti_result .sport_statistics.top {
 	font-weight: var(--weight-bold);
-	color: var(--color-lightest-blue);
 	font-size: var(--font-small);
+}
+
+#recommend_container .mbti_result .sport_statistics.top span:first-child {
+	color: var(--color-white);
+	background-color: var(--color-lightest-blue);
+	border-radius: 20px;
 }
 
 #recommend_container .login-message {
@@ -108,8 +120,10 @@
 }
 
 #recommend_container .login-message a {
-	color: var(--color-light-pink);
+	color: var(--color-pink);
 }
+
+/* MBTI 목록 - 로그인 시 */
 
 #recommend_container .mbti_list {
 	display: flex;
@@ -140,12 +154,6 @@
 	box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
 	-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
-}
-
-#recommend_container .mbti_list .mbti_type {
-	font-size: var(--font-regular);
-	font-weight: var(--weight-bold);
-	margin-bottom: 8px;
 }
 
 #recommend_container .mbti_list .mbti_type {

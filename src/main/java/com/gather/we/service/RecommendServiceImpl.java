@@ -15,8 +15,8 @@ public class RecommendServiceImpl implements RecommendService {
 	@Inject
 	RecommendDAO dao;
 	
-	public List<RecommendDTO> sportStatisticsSelect(String mbtiType) {
-		return dao.sportStatisticsSelect(mbtiType);
+	public List<RecommendDTO> mbtiStatisticsSelect(String mbtiType) {
+		return dao.mbtiStatisticsSelect(mbtiType);
 	}
 
 	@Override
@@ -25,13 +25,13 @@ public class RecommendServiceImpl implements RecommendService {
 	}
 
 	@Override
-	public String userMbtiSelect(String userid) {
-		return dao.userMbtiSelect(userid);
+	public List<RecommendDTO> ageStatisticsSelect(String age) {
+		return dao.ageStatisticsSelect(age);
 	}
 
 	@Override
-	public List<RecommendDTO> ageStatisticsSelect(String age) {
-		return dao.ageStatisticsSelect(age);
+	public RecommendDTO ageTopStatisticsSelect(String age) {
+		return dao.ageTopStatisticsSelect(age);
 	}
 
 }
