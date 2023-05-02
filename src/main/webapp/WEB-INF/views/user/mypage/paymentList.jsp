@@ -5,16 +5,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+	<script>
+	$(function(){
+		//웹에서 날짜 선택시 자동 제출	
+		$("#pmSelectedDate").on("change",function(e){
+			$("#pmSelectFrm").submit();
+		});
+	});
+	</script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="paymentListContent"> 
 		<h3 class="pmlh3">결제내역</h3>
 		<hr/>
-		<div class=pmView>
-			<input type="date" class="pmDate"/>
-		
-		</div>
-		
+		<!-- 날짜 필터링-->
+		<form id="pmSelectFrm" method="get" action="paymentList">
+			<input type="date" name="SelectedDate" id="pmSelectedDate" value="" />
+		</form>
+
 		<!-- 결제내역 테이블 -->
 		<table id="pmTable">
 		    <thead id="pmThead">

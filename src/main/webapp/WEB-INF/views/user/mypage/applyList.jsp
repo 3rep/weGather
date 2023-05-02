@@ -4,11 +4,10 @@
 	<script>
 	$(function(){
 		//웹에서 날짜 선택시 자동 제출	
-		$("#aplSelect").on("change",function(){
-			$("#aplSelect").submit();
+		$("#SelectedDate").on("change",function(e){
+			$("#aplSelectFrm").submit();
 		});
 	});
-	
 	</script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
@@ -18,9 +17,9 @@
 			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전 체</button>
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
-			<!-- 날짜 필터링 : 달력에서 클릭한 값이 DB로 들어감 = DTO에 들어감 : gametime과 비교하는 쿼리문 쓰면 됨 -->
-			<form id="aplSelect" method="post" action="applyList">
-				<input type="date" name="aplSelectedDate" class="aplDate" value="" />
+			<!-- 날짜 필터링-->
+			<form id="aplSelectFrm" method="get" action="applyList">
+				<input type="date" name="SelectedDate" id="SelectedDate" value="" />
 			</form>
 		</div>
 		
@@ -64,8 +63,8 @@
 						
 						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설)
 							경기취소 : g_status=3
-							신청완료, 신청취소 : gametime 이틀전(gt2ago >= now) + g_status=1
-							경기확정 : g_status = 2 + gametime >=now
+							신청완료, 신청취소 : gametime 하루?전(gt1ago >= now) + g_status=1    ?? 하루전인가봉가???
+							경기확정 : g_status = 2 + gametime >=now  
 							경기종료 : g_status= 2+ gametime < now
 						-->
 						
@@ -97,7 +96,7 @@
 						        <c:if test="${list.g_status==2 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gt2ago>now }">	
+						        <c:if test="${list.g_status==1 }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>

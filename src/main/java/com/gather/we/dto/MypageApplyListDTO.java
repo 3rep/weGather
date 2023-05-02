@@ -22,7 +22,7 @@ public class MypageApplyListDTO {
 	private Date gt1ago; //경기날짜 하루전
 	
 	//날짜 필터링
-	private String aplSelectedDate; 
+	private String SelectedDate; 
 	
 	public void setGt1Ago(Date gt2ago) {
 		Calendar cal = Calendar.getInstance();
