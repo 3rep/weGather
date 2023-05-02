@@ -53,8 +53,10 @@
 			<li class="register-li">
 				<input type="text" placeholder="이름을 입력하세요..."name="username" id="username" minlength="2" maxlength="10" />
 			</li>
-      <li class="register-li">나이</li>
-		  <li><input type="text" name="age" id="age"/>
+      		<li>나이</li>
+      		<li class="register-li">
+		 		 <input type="text" name="age" id="age"/>
+		  	</li>
 			<li>연락처</li>
 			<li class="register-li">
 				<select name="tel1" id="tel1">
@@ -88,7 +90,7 @@
 
 	<!-- <form >
 	<br/><br/> -->
-	<img src="static/img/futsal.jpeg" id="register_img"/>
+	<img src="static/img/son.jpg" id="register_img"/>
 
 	<!-- </form> -->
 </div>

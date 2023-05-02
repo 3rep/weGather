@@ -216,8 +216,10 @@ public class AdminController {
 		if(cnt>0) {
 			mav.setViewName("redirect:/admin/managerfee");
 		}else {
+
 			mav.addObject("msg", "회원정보수정 실패하였습니다.");
 			mav.setViewName("redirect:/admin/managerfee");
+
 		}
 
 		return mav;
