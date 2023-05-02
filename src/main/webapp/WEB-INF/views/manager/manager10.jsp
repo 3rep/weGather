@@ -43,11 +43,11 @@
                         </div>
                         <div class="sub-box"> 
                             <c:if test="${manager.g_status == 0}">
-                                <button class="green" style="width: 90px;">승인대기</button>
+                            <button class="green" style="width: 90px;">승인대기</button>
                                 
-                              <form id="post" action="/manager10" method="POST">
-    						<button type="submit" class="red" style="width: 90px;">취소신청</button>
-							</form>
+                       
+  						    <button class="red" type="submit" style="width: 90px;">취소신청</button>
+						
                           	 
                             
                             </c:if>
@@ -112,30 +112,37 @@ $(document).on('click', '.red', function() {
 	  $(this).closest('.box').remove(); // 클릭한 버튼의 가장 가까운 .box 클래스를 가진 상위 요소를 삭제합니다.
 	});
 	
+//	<form id="post" action="/manager10" method="POST">
+//    <button class="red" type="submit" style="width: 90px;">취소신청</button>
+//	</form>
+                          	 
 	
-document.getElementById('delete').addEventListener('submit', function(e) {
-	  e.preventDefault(); // 기존에 정의된 submit 기능을 막습니다.
-
-	  var form = new FormData(this);
-	  form.append('managerid', session.getAttribute('logId'));
-
-	  // ajax 요청을 보냅니다.
-	  var xhr = new XMLHttpRequest();
-	  xhr.open('POST', '${path}/manager/manager10');
-	  xhr.onload = function() {
-	    if (xhr.status === 200) { // 성공적으로 응답 받았을 때
-	      console.log(xhr.responseText); // 서버로부터 받은 응답을 출력합니다.
-	      location.reload(); // 페이지를 새로고침합니다.
-	    } else { // 에러 발생시
-	      console.error(xhr.statusText);
-	    }
-	  };
-	  xhr.onerror = function() { // 에러 발생시
-	    console.error(xhr.statusText);
-	  };
-	  xhr.send(form); // 요청을 보냅니다.
-	});
-
+	
+ // 폼 전송 이벤트 핸들러
+ 
+   $(document).ready(function() {
+    $('.red').click(function(e) {
+        e.preventDefault(); // 버튼 클릭 시 페이지 이동을 방지
+         var manager = { "managerid": managerid, "p_no": p_no }; // 삭제할 매니저 ID와 경기 ID를 객체로 생성
+        $.ajax({
+            type: "POST",
+            url: "${path}/manager/manager10",
+            contentType: "application/json",
+            data: JSON.stringify(manager),
+            dataType: "json",
+            success: function(data) {
+                alert("삭제되었습니다.");
+                // 삭제 완료 후 수행할 작업
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert("삭제에 실패했습니다.");
+                // 삭제 실패 시 수행할 작업
+            }
+        });
+    });
+});
+ 
 //function deleteRankGame(managerid) {
 //    if (confirm('취소하겠습니까?')) {
 //        $.ajax({
