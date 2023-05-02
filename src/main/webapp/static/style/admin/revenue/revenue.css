@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#revenue_container table,
+#expense_container table,
+#managerfee_container table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+	background-color: var(--color-white);
+	border-radius: 20px;
+}
+
+#revenue_container th, 
+#revenue_container td,
+#expense_container th, 
+#expense_container td,
+#managerfee_container th, 
+#managerfee_container td {
+	padding: 14px;
+	border-bottom: 2px solid #f3f3f3;
+}
+
+#managerfee_container #wait {
+	background-color: var(--color-light-gray);
+	border: 1px solid var(--color-gray);
+	padding: 4px 16px;
+	cursor: pointer;
+}
