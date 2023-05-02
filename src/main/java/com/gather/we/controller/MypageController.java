@@ -107,17 +107,18 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String)session.getAttribute("logId");
 		
+		MypageRankDTO dto = new MypageRankDTO();
+		
 		List<MypageRankDTO> list = service.rankResult(logId);
+		//System.out.println("list->"+list);
 
 		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
 		//	-> try-catch문 쓰자
 		try { //rank가 있는 경우
 		
-			MypageRankDTO dto = new MypageRankDTO();
-			System.out.println("dto->"+dto);
 			dto.setAvg_all(list.get(0).getAvg_all());
 			
-			System.out.println("list--->: "+ list);
+			//System.out.println("list--->: "+ list);
 			//System.out.println("alll: "+dto.getAvg_all());
 			
 			mav.addObject("list", list);
@@ -125,7 +126,6 @@ public class MypageController {
 			mav.setViewName("user/mypage/rank");
 			
 		}catch(Exception e){ //rank가 없는 경우
-			MypageRankDTO dto = new MypageRankDTO();
 			
 			mav.addObject("list",list);
 			mav.addObject("dto", dto);

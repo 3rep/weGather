@@ -63,7 +63,7 @@
 						
 						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설)
 							경기취소 : g_status=3
-							신청완료, 신청취소 : gametime 하루?전(gt1ago >= now) + g_status=1    ?? 하루전인가봉가???
+							신청완료, 신청취소 : g_status=1 + gametime 하루전(gt1ago >= now)  < 하루전 안먹어.. 
 							경기확정 : g_status = 2 + gametime >=now  
 							경기종료 : g_status= 2+ gametime < now
 						-->
