@@ -7,9 +7,11 @@
     --color-orange: #FDA238;
     --color-yellow: #FEF7DD;
     --color-dark-yellow: #FCF0C1;
-    --color-blue: #2B3D9B;
+    --color-lightest-blue: #26B6F2;
     --color-light-blue: #448FE4;
+    --color-blue: #2B3D9B;
     --color-board-blue: #F3F5FA; /*게시판 배경 등 기본 바탕색*/
+    --color-light-pink: #F89E9D;
     --color-pink: #ed9392;
     --color-light-gray: #EAE9E9;
     --color-gray: #D2D1D1;

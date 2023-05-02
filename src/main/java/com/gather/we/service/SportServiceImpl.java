@@ -48,4 +48,9 @@ public class SportServiceImpl implements SportService {
 		return dao.sportUpdate(dto);
 	}
 
+	@Override
+	public List<String> sortedSportnameSelect() {
+		return dao.sortedSportnameSelect();
+	}
+
 }
