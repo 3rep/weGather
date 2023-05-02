@@ -7,7 +7,7 @@
 	align-items: center;
 	position: relative;
 	height: 170px;
-	background: url("/static/img/recommend/recommend_header.jpg") no-repeat 50% 35% / cover;
+	background: url("/static/img/recommend/recommend_header.jpeg") no-repeat 50% 25% / cover;
 }
 
 #recommend_header:after { /* 헤더 사진 위에 약간 어두운 색을 덧씌워 header_title 글자가 더 잘 보이도록 함 */
