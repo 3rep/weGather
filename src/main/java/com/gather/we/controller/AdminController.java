@@ -196,7 +196,7 @@ public class AdminController {
 		if(cnt>0) {
 			mav.setViewName("redirect:admin/expense");
 		}else {
-			mav.addObject("msg", "회원정보수정 실패하였습니다.");
+			System.out.println("qwe");
 			mav.setViewName("redirect:admin/expense");
 		}
 
