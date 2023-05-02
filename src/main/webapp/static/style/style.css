@@ -19,8 +19,10 @@
     --color-red: #DD4242;
     --color-rank-blue: #6791E2; /* 랭크게임 border color*/
     --color-rank-light-blue: #F0F2FA; /* 랭크게임 바탕색 */
+    --color-rank-hover: #EAEEFF; /* 랭크게임 경기목록 hover시 바탕색*/
     --color-norm-green: #4DA065; /* 일반게임 border color */
     --color-norm-light-green: #F3F7F4; /* 일반게임 바탕색*/
+    --color-norm-hover: #F0F8F2; /* 일반게임 경기목록 hover시 바탕색*/
     --color-admin-black: #2D2D2D;
     --color-admin-gray: #E6E9EC;
     --color-admin-blue-gray: #D1D9E2;

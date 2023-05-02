@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/*.game_new_wrap.left {
+.game_new_wrap.left {
 	width: 35%;
     margin: 0 20px;
 }
@@ -8,7 +8,8 @@
 .game_new_wrap.left .sport_img {
 	width: 100%;
 	margin-bottom: 30px;
-} */
+	border-radius: 40px;
+} 
 
 .norm_game_new_select li{
 	padding: 3px;
@@ -24,14 +25,14 @@
   /*margin-bottom: 30px;*/
 }
 
-/***** develop이랑 충돌난 부분
+/***** develop이랑 충돌난 부분*/
 .game_new_wrap.left .game_new_select li{
 	font-size: var(--font-micro);
 	font-weight: var(--weight-bold);
 	background-color: var(--color-gray);
 	border: 1px solid var(--color-gray);
 	padding: 16px 0;
-} */
+} 
 
 .gamenew_detail {
 	display: flex;
