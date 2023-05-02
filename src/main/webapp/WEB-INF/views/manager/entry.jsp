@@ -35,14 +35,16 @@
         </tr>
       </thead>
       <tbody>
-  <c:forEach items="${entryList}" var="entry">
+  <c:forEach items="${managerList}" var="manager">
+   <c:if test="${manager.getP_no() == p_no}">
     <tr>
-      <td><c:out value="${entry.getUserid()}" /></td>
-      <td><c:out value="${entry.getUsername()}" /></td>
-      <td><c:out value="${entry.getTel()}" /></td>
-      <td><c:out value="${entry.getGender()}" /></td>
-      <td><c:out value="${entry.getRank()}" /></td>
+      <td><c:out value="${manager.getUserid()}" /></td>
+      <td><c:out value="${manager.getUsername()}" /></td>
+      <td><c:out value="${manager.getTel()}" /></td>
+      <td><c:out value="${manager.getGender()}" /></td>
+      <td><c:out value="${manager.getRank()}" /></td>
     </tr>
+    </c:if>
   </c:forEach>
 </tbody>
     </table>

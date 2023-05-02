@@ -79,14 +79,14 @@ public class RegisterController {
 		try {
 			if(list != null) {
 				session.setAttribute("logRank", list.get(0).getAvg_all());
-				mav.setViewName("redirect:/userHome");
+				//mav.setViewName("redirect:/userHome");
+				
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			session.setAttribute("logRank", "0");
-			mav.setViewName("redirect:/userHome");
+			//mav.setViewName("redirect:/userHome");
 		}
-		
 		
 		//사용자 로그인
 		dto = service.loginOk(id, password);
@@ -96,18 +96,19 @@ public class RegisterController {
 			session.setAttribute("logId", dto.getUserid());
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
+			session.setAttribute("logGender", dto.getGender());
 			session.setAttribute("adminlogStatus", "N");
 			//session.setAttribute("logRank", mpdto.getRank());
 			mav.setViewName("redirect:/userHome");
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
-      
+			
 			if(dtoadmin!=null) {
-        session.setAttribute("logId", dtoadmin.getAdminid());
-        session.setAttribute("logName", dtoadmin.getAdmin_name());
-        session.setAttribute("logStatus", "Y");
-        session.setAttribute("adminlogStatus", "Y");
-			  mav.setViewName("redirect:/admin/userList");
+				session.setAttribute("logId", dtoadmin.getAdminid());
+				session.setAttribute("logName", dtoadmin.getAdmin_name());
+				session.setAttribute("logStatus", "Y");
+				session.setAttribute("adminlogStatus", "Y");
+				mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
 				//System.out.println("로그인 실패");
 				mav.addObject("msg", "로그인에 실패하였습니다.");

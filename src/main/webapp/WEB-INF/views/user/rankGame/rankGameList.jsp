@@ -93,7 +93,7 @@
 				<!-- 경기 지역 -->
 				<div class="game_region">${RankGameDTO.region}</div>
 				<!-- 경기 정보 -->
-				<div class="game_info_container">
+				<div class="game_info_container rank">
 					<!-- 경기 날짜/시간 -->
 					<span class="game_time">
 						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${RankGameDTO.gametime}" /><br/>

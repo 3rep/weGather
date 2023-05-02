@@ -62,7 +62,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #37474f;
+  background: #F040E9; /* #37474f */
   z-index: -1;
   opacity: 0;
   -webkit-transform: scale3d(0.7, 1, 1);
@@ -85,10 +85,10 @@
 }
 .main-container .button--ujarak:hover {
   color: #fff;
-  border-color: #37474f;
+  border-color: #F040E9;
 }
 .main-container .button--ujarak.button--inverted:hover {
-  color: #37474F;
+  color: /* #F040E9; */  #37474F;
   border-color: #fff;
 }
 .main-container .button--ujarak:hover::before {
@@ -112,14 +112,24 @@
 	z-index:0
 }
 
-.main-container .img{
+/* .main-container>.rank-visual{
+	background: url("/static/img/imgMain/soccer.jpg") no-repeat 50% 35% / cover;
 	position: sticky;
-    /* background: #DFD5F5; */
+    background: #DFD5F5;
     width: 100%;
     height: 850px;
     top: 0;
     z-index: 0;
-}
+} */
+
+.main-container .img{
+	position: sticky;
+    background: #DFD5F5;
+    width: 100%;
+    height: 900px;
+    top: 0;
+    z-index: 0;
+} 
 
 .main-container .item{
 	flex-basis: 800px; /*flex item 높이*/
@@ -129,19 +139,19 @@
 
 /* 첫번째div : 로그인, 회원가입창 */
 .main-container #cloudy{
-    background-color: rgba(0, 0, 0, 30%); /*검정색 투명도30%*/
+    background-color: rgba(0, 0, 0, 42%); /*검정색 투명도30%*/
     z-index: 1;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 850px;
+    height: 900px;
     top: 0px;
 }
 
 .main-container .login{
-	background-color: rgba(255, 255, 255, 10%);/*흰색 투명도30%*/
+	/* background-color: rgba(255, 255, 255, 10%); *//*흰색 투명도30%*/
     border-radius: 60px;
     padding: 10px 55px 20px 55px;
     position: relative;
@@ -159,15 +169,51 @@
 
 /* 두번째div : 소개글 */
 .main-container #info{
-	background: #DCF4F9;
+	background: #F6F4F2; /* #DCF4F9; */
     position: relative;
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: center;
     z-index: 5;
 }
+.infoImg{
+	position: relative;
+	z-index:10;
+	width: 200px;
+	height:400px;
+	image-rendering: -moz-crisp-edges; firefox
+	image-rendering: -o-crisp-edges; opera
+	image-rendering: -webkit-optimize-contrast; chrome(비표준)
+	image-rendering: crisp-edges;
+}
 
 .main-container .infoTxt{
-	background: pink;
+	/* background: pink; */
 	position: absolute;
+	margin: 0 500px;
+}
+.infoTxt .first{
+	font-size: 26px;
+}
+.infoTxt .second{
+	font-size: 40px;
+	line-height: 70px;
+}
+/*구분선*/
+.infoTxt .jb-division-line {
+  border-top: 1px solid #444444;
+  margin: 45px auto;
+  width: 300px;        
+}
+.infoTxt .jb-division-line:after {
+    content: "◆";
+    position: relative;
+    top: -14px;
+    left: calc( 4% - 8px );
+}
+
+.infoTxt .third{
+	margin: 40px auto;
+	font-size: 20px;
+	line-height: 45px;
 }

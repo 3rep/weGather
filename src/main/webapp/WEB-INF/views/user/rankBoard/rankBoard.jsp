@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-GsWP7a9Kj6EuHYsXsLK9TC6Z9gGnU6ZL2/KuZrHdPYojIuBm+qn8XoPmOf4NMWPG" crossorigin="anonymous"></script>
+<link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
+<link href="${path}/static/style/user/rankboard/rankBoard.css" rel="stylesheet" type="text/css" />
 <script>	
 	$(function(){
 		// 이전 검색 정보 유지
@@ -33,59 +35,17 @@
 		    $("#search-form").submit();
 		});
 	});
-	
 </script>	
-
-<style>
-/*테이블*/
-	.tc {text-align: center;}
-	#rankboard-container {flex:auto;padding:40px 78px;height:auto;width:1200px;margin:0 auto;}
-	#rankboard-container h1 {font-size:32px;margin: 0 0 57px 0;}
-	.rankboard-table {border-collapse:collapse;border-top: 2px solid #eee;border-spacing:0;width:100%;color: #757575; margin-bottom: 5px;}
-	.rankboard-table th, td {padding:6px 15px;}
-	.rankboard-table thead th {height: 40px;font-size: 12px;font-weight: 300;}
-	.rankboard-table tbody tr {height: 50px;background-color: #fff;border-bottom: 1px solid #fff;}
-	.rankboard-table tbody tr:nth-child(odd) {background-color: #fafafa;}
-	.blue{background-color:#ebf9ff !important;}
-	.tc.rank{position:relative;}
-	.tc .num {position: absolute;left:33px;top:10px;}
-	.tc.rank img{position:absolute;left:21px;top:4px;}	
-	
-/*검색,필터*/
-	.search_area form {height:50px;display: flex; align-items: center; margin-bottom:10px;}		
-	.search_area form * {height:40px;background-color:#fff;border:1px solid #e1e1e5;margin:5px 20px 5px 0px;}
-	.search_area form select {width: 110px;}
-	
-	#search-word {width:500px;margin-left: auto;margin-right:0px; margin-left:346px;padding:0px;border-right: 0px;}
-	#submit-btn {width:60px;font-size:14px;font-family:'Noto Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; color:#000000; font:bold;margin:0; padding:0;border-left: 0px;}
-	.search_area form select {height: 40px;}
-	#sportname {margin-top:5px;margin-left:0px;font-size:16px;font-family:'Noto Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;color:#000000;}
-	
-/* 페이지네이션 */
-	.pagination-container{margin-top:13px;}
-	.pagination-container ul {list-style:none;display:flex;justify-content:center;align-items:center;}
-	.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;}
-	.pagination li.active {background-color:gray;border-color:#F8F9FB;}
-	.pagination li:hover {background-color:#F8F9FB;}
-	.pagination li a {color:black;}
-	.pagination li.active a {color:white;}
-	.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}	
-
-/*비디오*/
-	.video-box{width:100%; height:230px; overflow:hidden; margin:0px; position:relative;opacity: 0.8;}
-	video{width:100%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-</style>
 </head>
 <body>
-	<div class="video-box">
-			<video muted autoplay loop>
-				<source type="video/mp4" src="${path}/static/video/rankBoard/rankboard.mp4">
-			</video>
+	<div class="img-box">
+		<img alt="rankboard" src="${path}/static/img/rankBoard/field.jpg"/>
+		<span class="rankboard_title">랭크보드</span>		
 	</div>
 	<div id="rankboard-container">
 		<div class="search_wrap">
 			<div class="search_area">
-				<form id="search-form" action="/user/rankBoard/rankBoard" method="get">
+				<form id="search-form" action="/rankBoard" method="get">
 					<select id="sportname">
 						<option value="" selected>종목 전체</option>
 						<option value="풋살">풋살</option>
@@ -184,7 +144,7 @@
 		</div>
 	</div>
 	<!-- 페이지네이션 클릭시 페이지이동 -->
-	<form id="actionForm" action="/user/rankBoard/rankBoard" method='get'>
+	<form id="actionForm" action="/rankBoard" method='get'>
 		<!-- 클릭한 href에 들어있는 이동 페이지 번호로 바꿔준다 -->
 		<input id="pageNum" type="hidden" name="pageNum" value="${pageMaker.criteria.pageNum }"> 
 		<input type="hidden" name="amount" value="${pageMaker.criteria.amount }">
