@@ -58,7 +58,7 @@
 		<div class="game_new_wrap left">
 			<!-- 종목 이미지 -->
 			<img src="${path}/uploadfile/sport/${sportDTO.filename}" class="sport_img"/>
-				<ul class="game_new_select">
+				<ul class="norm_game_new_select">
 					<li class ="select sport">
 						스포츠 종목 : ${sportDTO.sportname}
 					</li>

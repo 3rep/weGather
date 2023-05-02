@@ -126,7 +126,7 @@
 	position: sticky;
     background: #DFD5F5;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     top: 0;
     z-index: 0;
 } 
@@ -139,7 +139,7 @@
 
 /* 첫번째div : 로그인, 회원가입창 */
 .main-container #cloudy{
-    background-color: rgba(0, 0, 0, 42%); /*검정색 투명도30%*/
+    background-color: rgba(0, 0, 0, 32%); /*검정색 투명도30%*/
     z-index: 1;
     position: absolute;
     display: flex;
@@ -175,6 +175,7 @@
     justify-content: center;
     align-items: center;
     z-index: 5;
+    top: -90px;
 }
 .infoImg{
 	position: relative;

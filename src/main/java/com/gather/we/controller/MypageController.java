@@ -42,7 +42,7 @@ public class MypageController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//userid�� logId���� Ȯ��
+		//userid가 logId랑 같은지 확인
 		String logId = (String)session.getAttribute("logId");
 		vo.setUserid(logId);
 		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
@@ -149,7 +149,7 @@ public class MypageController {
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//jsonŸ������ ��ȯ
+		//json형태로 뷰로 내보내기
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		

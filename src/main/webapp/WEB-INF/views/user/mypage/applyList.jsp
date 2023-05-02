@@ -54,14 +54,21 @@
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td>${list.stadium }</td> 
 				       
-				        <!--g_status : 2(취소)/1(확정)/0(대기) 
-						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
-						신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
-						경기확정 : g_status=1
-						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 -->
-						
-						<!-- 신청완료, 신청취소, 경기확정은 : 경기상세정보로 페이지 이동!! -->
+				        <!--g_status에 따라 경기상태 변경
 				        
+				        랭크경기 : 2(취소)/1(확정)/0(대기) 
+							경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
+							신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
+							경기확정 : g_status=1 + gametime이 현재날짜를 지나지 않은 경우
+							경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 
+						
+						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설)
+							경기취소 : g_status=3
+							신청완료, 신청취소 : gametime 이틀전(gt2ago >= now) + g_status=1
+							경기확정 : g_status = 2 + gametime >=now
+							경기종료 : g_status= 2+ gametime < now
+						-->
+						
 				        <!-- 신청완료(취소), 경기확정의 경우 경기세부정보페이지로 이동링크 건다. 
 				        		랭크경기, 일반경깅 구분해서 링크달아야해  -->
 					<c:choose>
@@ -90,12 +97,12 @@
 						        <c:if test="${list.g_status==2 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gt1ago>now }">	
+						        <c:if test="${list.g_status==1 && list.gt2ago>now }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+						        <c:if test="${list.g_status==2 && list.gametime>=now }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
 						        	</td>

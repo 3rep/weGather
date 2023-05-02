@@ -11,8 +11,8 @@
 	border-radius: 40px;
 } 
 
-.norm_game_new_select li{
-	padding: 3px;
+.norm_game_new_select .select{
+	/* padding: 3px; */
 }
 
 .game_detail_wrap .select {
@@ -25,12 +25,11 @@
   /*margin-bottom: 30px;*/
 }
 
-/***** develop이랑 충돌난 부분*/
-.game_new_wrap.left .game_new_select li{
+.game_new_wrap.left .norm_game_new_select li{
 	font-size: var(--font-micro);
 	font-weight: var(--weight-bold);
-	background-color: var(--color-gray);
-	border: 1px solid var(--color-gray);
+	/* background-color: var(--color-gray);
+	border: 1px solid var(--color-gray); */
 	padding: 16px 0;
 } 
 
@@ -42,10 +41,8 @@
 	padding: 28px 32px;
 	margin-bottom: 30px;
 	border-radius: 20px;
-  
-    /*** developt이랑 충돌일어난 부분
 	margin: 30px 0;
-	line-height: 1.5em;*/
+	line-height: 1.5em;
 }
 
 .gamenew_info {

@@ -41,12 +41,12 @@
 				        <c:if test="${list.g_status==2 && list.gametime<now }">	
 				        	<td class="aplStatus">경기종료
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gt1ago>now }">	
+				        <c:if test="${list.g_status==1 && list.gt2ago>now }">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 				        	</td>
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+				        <c:if test="${list.g_status==2 && list.gametime>=now }">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
 				        	</td>
