@@ -15,7 +15,8 @@
         }
 
         /* pie chart - 남성 */
-    	var colorList = ['#FA7577', '#FAD275', '#A9CC8E', '#60A9A7', '#7391AB', '#3098C5', '#F9AC4E', '#FA9461', '#5295B8'];
+    	var genderColorList = ['#FA7577', '#FAD275', '#A9CC8E', '#3DA5D2', '#F9AC4E', '#6AB3B1', '#A58FD2', '#DE97C2'];
+    	var ageColorList = ['#F9AC4E', '#A58FD2', '#6AB3B1',  '#DE97C2', '#3DA5D2', '#FA7577', '#FAD275', '#A9CC8E',];
 
     	var m_labels = [];
     	var m_data = [];
@@ -32,7 +33,7 @@
    	    	data : {
    	    		labels : m_labels,
    	    		datasets:[{   
-	    		backgroundColor: colorList,
+	    		backgroundColor: genderColorList,
 	    		borderWidth: 0.5 ,
 	    		borderColor: '#ddd',
 	    		data: m_data   
@@ -84,7 +85,7 @@
 	   	    	data : {
 	   	    		labels : w_labels,
 	   	    		datasets:[{   
-		    		backgroundColor: colorList,
+		    		backgroundColor: genderColorList,
 		    		borderWidth: 0.5 ,
 		    		borderColor: '#ddd',
 		    		data: w_data   
@@ -145,7 +146,7 @@
 				const data = {
 						label: sportname,
 	                    data: s[sportname],
-	                    backgroundColor: colorList[index],
+	                    backgroundColor: ageColorList[index],
 	                    borderColor: '#ddd',
 	                    borderWidth: 0.5,
 						}
