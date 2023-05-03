@@ -40,4 +40,7 @@ public interface MypageDAO {
 	//회원정보수정(DB) 
 	public int infoEdit(MypageUserDTO dto);
 	
+	//경기신청취소(DB)
+	public int gameCancel(MypageApplyListDTO dto);
+	
 }

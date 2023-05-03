@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gather.we.dto.MypageApplyListDTO;
@@ -62,6 +63,27 @@ public class MypageController {
 		return mav;
 	}
 	
+	//경기취소 클릭하면 경기목록에서 삭제 + 결제내역에서 삭제
+	@GetMapping("/mypage/cancel")
+	public ModelAndView gameCancel(HttpSession session, MypageApplyListDTO dto) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		System.out.println(dto.toString());
+
+		int result = service.gameCancel(dto);
+		System.out.println("result->"+result);
+		
+		if(result>0) {//삭제성공 -> 리스트 이동
+			mav.setViewName("redirect:applyList");
+		}else {//삭제실패 -> 리스트로 이동
+			mav.addObject("no",dto.getNo());
+			mav.setViewName("redirect:applyList");
+		}
+		return mav;
+	}
+	
 	@GetMapping("/mypage/rankList")
 	public ModelAndView rankList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -82,6 +104,27 @@ public class MypageController {
 		return mav;
 	}
 	
+	@GetMapping("/mypage/rankCancel")
+	public ModelAndView rankCancel(HttpSession session, MypageApplyListDTO dto) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		System.out.println(dto.toString());
+
+		int result = service.gameCancel(dto);
+		System.out.println("result->"+result);
+		
+		if(result>0) {//삭제성공 -> 리스트 이동
+			mav.setViewName("redirect:rankList");
+		}else {//삭제실패 -> 리스트로 이동
+			mav.addObject("no",dto.getNo());
+			mav.setViewName("redirect:rankList");
+		}
+		return mav;
+	}
+	
+	
 	@GetMapping("/mypage/normList")
 	public ModelAndView normList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -99,6 +142,26 @@ public class MypageController {
 		mav.addObject("now", now);
 		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/normList");
+		return mav;
+	}
+	
+	@GetMapping("/mypage/normkCancel")
+	public ModelAndView normCancel(HttpSession session, MypageApplyListDTO dto) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		dto.setUserid((String)session.getAttribute("logId"));
+		System.out.println(dto.toString());
+
+		int result = service.gameCancel(dto);
+		System.out.println("result->"+result);
+		
+		if(result>0) {//삭제성공 -> 리스트 이동
+			mav.setViewName("redirect:normList");
+		}else {//삭제실패 -> 리스트로 이동
+			mav.addObject("no",dto.getNo());
+			mav.setViewName("redirect:normList");
+		}
 		return mav;
 	}
 	
@@ -134,6 +197,8 @@ public class MypageController {
 		
 		return mav;
 	}
+	
+	
 	
 	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {

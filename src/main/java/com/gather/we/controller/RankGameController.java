@@ -97,7 +97,7 @@ public class RankGameController {
 		
 		mav.addObject("rankGameDetail", rankGameDetail);
 		mav.addObject("userRank", userRank);
-    mav.addObject("isPart", isPart);
+		mav.addObject("isPart", isPart);
 		mav.setViewName("user/rankGame/rankGameDetail");
 		
 		return mav;
