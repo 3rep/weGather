@@ -93,7 +93,10 @@ public class ManagerPageController{
 	//매니저 로그아웃
 	@GetMapping("/logout")
 	public String logout(Model model, HttpSession session) {
-		session.invalidate();
+		session.setAttribute("logId", null);
+		session.setAttribute("logName", null);
+		session.setAttribute("logStatus", "N");
+		session.setAttribute("logS_no", null);
 		return "redirect:/loginMan";
 	}
 	

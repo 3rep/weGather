@@ -32,15 +32,19 @@ public class RecommendController {
 	@GetMapping("/recommend/mbti")
 	public ModelAndView recommendByMbti(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String userid;
 		
-		String userid = (String)session.getAttribute("logId");
-		String adminlogStatus = (String)session.getAttribute("adminlogStatus");
-		
-		if(adminlogStatus.equals("Y")) {
-			userid = "admindummy";
+		try {
+			userid = (String)session.getAttribute("logId");
+			
+			if(userid.equals("admin1")) {
+				userid = "admindummy";
+			}
+		}catch(Exception e) {
+			userid = null;
 		}
 		
-		if(userid!=null) {
+		if(userid != null) {
 			UsersDTO dto = usersService.userInfoInfoSelect(userid);		
 			String userMbti = dto.getMbti();
 			mav.addObject("userMbti", userMbti);
