@@ -17,7 +17,7 @@
 			</tr>
 			<c:forEach var="user_pay" items="${pay}" varStatus="status">
 				<tr>
-					<td>${status.index+1}</td>
+					<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
 					<td><fmt:formatNumber value="${user_pay.paid_amount}" maxFractionDigits="3"/>원</td>
 					<td>경기 참여</td>
 					<td>${user_pay.payer_name}</td>
