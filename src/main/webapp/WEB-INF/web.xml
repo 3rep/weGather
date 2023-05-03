@@ -51,7 +51,14 @@
 	  <jsp-property-group>
 			<url-pattern>/WEB-INF/views/manager/*</url-pattern>
 			<include-prelude>/WEB-INF/views/inc/manager/managerNav.jspf</include-prelude>
-  	</jsp-property-group>
+	</jsp-property-group>
+
+
+	<!-- <jsp-property-group>
+	    <url-pattern>/WEB-INF/views/manager/loginMan.jsp</url-pattern>
+	    <exclude-prelude>/WEB-INF/views/inc/manager/managerNav.jspf</exclude-prelude>
+	</jsp-property-group> -->
+
 
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/user/mypage/*</url-pattern>
