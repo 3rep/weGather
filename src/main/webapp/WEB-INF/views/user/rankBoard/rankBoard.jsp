@@ -142,7 +142,7 @@
 			} else if(list[id].rank_avg >= 1) {
 				return '<span style="color:#AD5600;">브론즈</span>';
 			} else {
-				return '언랭크';
+				return '노랭크';
 			}
 		},
 		searchToText : (e) => {
@@ -174,6 +174,70 @@
 	<div class="img-box">
 		<img alt="rankboard" src="${path}/static/img/rankBoard/field.jpg"/>
 		<span class="rankboard_title">랭크보드</span>		
+	</div>
+	<div class="ranksystem-container">
+		<ul>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-norank">no Rank</p>
+					</div>
+					<div class="rk-system-script">
+						<p>실력이 베일에 싸여 있습니다.<br/>첫 번째 경기 후 레벨을 확인할 수 있습니다.</p>
+					</div>
+				</div>					
+			</li>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-bronze">브론즈</p>
+					</div>
+					<div class="rk-system-script">
+						<p>이제 입문한 사람입니다.<br/> 기초부터 차근차근 배우며 운동의 재미를 알아가요.</p>
+					</div>
+				</div>					
+			</li>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-silver">실버</p>
+					</div>
+					<div class="rk-system-script">
+						<p>기본기를 갈고닦는 단계에요.<br/> 연습이 중요하고, 체력도 키워야 해요.</p>
+					</div>
+				</div>					
+			</li>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-gold">골드</p>
+					</div>
+					<div class="rk-system-script">
+						<p>기본기를 갖췄습니다. 실전 경기로 경험을 쌓고 있어요.<br/> 강한 압박에 침착성을 길러야 합니다.</p>
+					</div>
+				</div>					
+			</li>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-platinum">플래티넘</p>
+					</div>
+					<div class="rk-system-script">
+						<p>높은 확률로 원하는 플레이를 성공해요.<br/> 공격과 수비 모두 안정적이에요.</p>
+					</div>
+				</div>					
+			</li>
+			<li class="rk-system-item">
+				<div class="rk-system-title">
+					<div class="rk-system-name">
+						<p class="text-info-dia">다이아</p>
+					</div>
+					<div class="rk-system-script">
+						<p>빠른 흐름 속에서도 여유롭게 플레이를 이끌어요.<br/> 고등학교 이상 또는 대학, 프로 선수 경력이 있습니다.</p>
+					</div>
+				</div>					
+			</li>
+		</ul>
 	</div>
 	<div id="rankboard-container">
 		<div class="search_wrap">
