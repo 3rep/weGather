@@ -3,16 +3,21 @@ package com.gather.we.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.RParticipateDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
 import com.gather.we.dto.SportDTO;
+import com.gather.we.service.ParticipateService;
 import com.gather.we.service.RankGameService;
 import com.gather.we.service.SportService;
 
@@ -23,6 +28,8 @@ public class RankGameController {
 	SportService sportService;
 	@Autowired
 	RankGameService rankGameService;
+	@Autowired
+	ParticipateService participateService;
 	
 
 	// 종목 목록
@@ -66,14 +73,25 @@ public class RankGameController {
 	
 	// �옲�겕寃쎄린 �꽭遺��젙蹂�
 	@GetMapping("/detail")
-	public ModelAndView rankGameDetail(int no) {
+	public ModelAndView rankGameDetail(@RequestParam("no") int no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		String userid = (String)session.getAttribute("logId");
 		
 		// DB�뿉�꽌 �옲�겕寃쎄린 �꽭遺��젙蹂� 諛쏆븘�삤湲�
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
-
-
+		
+		Integer userRank = null;
+		if(userid!=null) {
+			// 해당 종목의 사용자 랭크 가져오기
+			userRank = participateService.userRankOfSport(userid, rankGameDetail.getS_no());
+			if(userRank==null) {
+				userRank = 0;
+			}
+		}
+		
 		mav.addObject("rankGameDetail", rankGameDetail);
+		mav.addObject("userRank", userRank);
 		mav.setViewName("user/rankGame/rankGameDetail");
 		
 		return mav;
