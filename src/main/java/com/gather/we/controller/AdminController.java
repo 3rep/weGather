@@ -546,12 +546,21 @@ public class AdminController {
 	
 	// 매니저 승인 요청 목록
 	@GetMapping("/manager/approvelist")
-	public ModelAndView managerApproveList() {
+	public ModelAndView managerApproveList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		// 매니저 계정 승인 요청 목록을 DB에서 조회
-		mav.addObject("list", adminManagerService.approveList());
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+								
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+						
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(adminManagerService.managerApproveTotalRecord());
 		
+		// 매니저 계정 승인 요청 목록을 DB에서 조회
+		mav.addObject("list", adminManagerService.approveList(vo));
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/allManager/managerApproveList");
 		
 		return mav;

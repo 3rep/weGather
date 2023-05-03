@@ -8,7 +8,7 @@ import com.gather.we.dto.RankGameDTO;
 
 public interface AdminManagerService {
 	// 매니저 승인 요청 목록
-	public List<ManagerDTO> approveList();
+	public List<ManagerDTO> approveList(PagingVO vo);
 	// 매니저 승인 요청 상세
 	public ManagerDTO approveDetail(String managerid);
 	// 매니저 요청 승인
@@ -23,4 +23,6 @@ public interface AdminManagerService {
 	public ManagerDTO managerDetail(String managerid);
 	// 등록된 매니저 계정 총레코드수
 	public int managerTotalRecord();
+	// 매니저 계정 승인요청에 대한 총레코드수
+	public int managerApproveTotalRecord();
 }

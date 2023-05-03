@@ -17,8 +17,8 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	AdminManagerDAO dao;
 
 	@Override
-	public List<ManagerDTO> approveList() {
-		return dao.approveList();
+	public List<ManagerDTO> approveList(PagingVO vo) {
+		return dao.approveList(vo);
 	}
 
 	@Override
@@ -54,5 +54,10 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	@Override
 	public int managerTotalRecord() {
 		return dao.managerTotalRecord();
+	}
+
+	@Override
+	public int managerApproveTotalRecord() {
+		return dao.managerApproveTotalRecord();
 	}
 }
