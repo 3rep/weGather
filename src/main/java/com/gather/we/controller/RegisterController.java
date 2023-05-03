@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gather.we.dto.AdminDTO;
@@ -54,7 +55,6 @@ public class RegisterController {
 		// Session 객체 얻어오기
 		// 매개변수로 HttpServletRequest request -> Session 구하기
 		// 매개변수로 HttpSession session
-		System.out.println("id->"+id);
 		RegisterDTO dto = new RegisterDTO();
 		
 		AdminDTO dtoadmin = new AdminDTO();
@@ -64,7 +64,6 @@ public class RegisterController {
 		
 		//사용자 로그인
 		dto = service.loginOk(id, password);
-		System.out.println("dto--->"+dto);
 
 		if(dto!=null) {
 			session.setAttribute("logId", dto.getUserid());
@@ -150,17 +149,17 @@ public class RegisterController {
 	}
 
 	//아이디 중복검사 폼
-		@GetMapping("/idCheck")
-		public String idCheck(String userid, Model model) {
-			//조회
-			//아이디 갯수 구하기 - 0,1
-			int result = service.idCheckCount(userid);
-			
-			//뷰에서 사용하기 위해서 모델에 세팅
-			model.addAttribute("userid", userid);
-			model.addAttribute("result", result);
-			
-			return "user/register/idCheck";
+	@GetMapping("/idCheck")
+	public String idCheck(String userid, Model model) {
+		//조회
+		//아이디 갯수 구하기 - 0,1
+		int result = service.idCheckCount(userid);
+
+		//뷰에서 사용하기 위해서 모델에 세팅
+		model.addAttribute("userid", userid);
+		model.addAttribute("result", result);
+
+		return "user/register/idCheck";
 		}
 	
 	//회원정보 수정(db)
