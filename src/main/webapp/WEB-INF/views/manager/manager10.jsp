@@ -29,13 +29,13 @@
          
         		<div class="half-container box-container">
             	   <c:forEach items="${managerList}" var="manager" varStatus="status">       
-     	
-                   
+     			<input type='hidden' id='no' name='no' value='${manager.getNo()}'/>
+                <input type='hidden' id='managerid' name='managerid' value='${manager.getManagerid()}'/>   
                     <div class="box" >
                         <div>
 	                       <div><b>${manager.stadium}</b></div>
 	                       <div class="locationbox">${manager.location}</div>
-	                      <div>
+	                       <div>
   								<fmt:parseDate var="gametime" value="${manager.gametime}" pattern="yyyy-MM-dd HH:mm:ss" />
  							    <fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${gametime}" />
 						  </div>
@@ -108,66 +108,40 @@
 <script>
 
 
-$(document).on('click', '.red', function() {
-	  $(this).closest('.box').remove(); // 클릭한 버튼의 가장 가까운 .box 클래스를 가진 상위 요소를 삭제합니다.
-	});
-	
-//	<form id="post" action="/manager10" method="POST">
-//    <button class="red" type="submit" style="width: 90px;">취소신청</button>
-//	</form>
-                          	 
-	
-	
- // 폼 전송 이벤트 핸들러
- 
-   $(document).ready(function() {
-    $('.red').click(function(e) {
-        e.preventDefault(); // 버튼 클릭 시 페이지 이동을 방지
-         var managerid = $(this).data('managerid'); // data-managerid 속성 값 읽어오기
-         var no = parseInt($(this).data('no')); // data-no 속성 값 읽어오기
-         var manager = { "managerid": managerid, "no": no }; // 삭제할 매니저 ID와 경기 ID를 객체로 생성
-        $.ajax({
-            type: "POST",
-            url: "${path}/manager/manager10",
-            contentType: "application/json",
-            data: JSON.stringify(manager),
-            dataType: "json",
-            success: function(data) {
-                alert("삭제되었습니다.");
-                // 삭제 완료 후 수행할 작업
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert("삭제에 실패했습니다.");
-                // 삭제 실패 시 수행할 작업
-            }
-        });
-    });
-});
- 
-//function deleteRankGame(managerid) {
-//    if (confirm('취소하겠습니까?')) {
-//        $.ajax({
-//            url: '${path}/manager/manager10',
- //           type: 'DELETE',
- //           contentType: "application/json; charset=utf-8",
- //           data: JSON.stringify({deleteRankGame: managerid}),
- //           dataType : "json",
- //           success: function(response) {
-  //          	console.log(response);
-  //              const box = document.querySelector(`.box1 #box-${managerid}`);
-  //              if (box) {  // 요소가 존재하는 경우에만 parentElement를 참조하도록 수정
- //                   box.parentElement.removeChild(box);
-  //                  alert('취소되었습니다.');
-  //              }
-  //          },
- //           error: function() {
- //               alert('요청 처리에 실패하였습니다.');
- //           }
-//        });
-///    }
-//}
-  
+           $(document).ready(function() {
+           $(document).on('click', '.red', function() {
+            	var managerList = [];
+            		$('.box').each(function() {
+            	var manager = {};
+            		manager['managerid'] = $('#managerid').val();
+            		manager['no'] = $('#no').val();
+            		managerList.push(manager);
+            		
+            	});
+            		console.log(managerList);
+           // 	var index = $(this).closest('.box')
+            		$.ajax({
+            			url: "${path}/manager/manager10",
+            			type: "POST",
+            			contentType: "application/json; charset=utf-8",
+            			data: JSON.stringify(managerList),
+            			dataType: "json",
+            			success: function(response) {
+            			alert("삭제하시겠습니까?.");
+            				console.log(response);
+            	// window.location.href = "${path}/manager/manager10";
+            	},
+            		error: function(jqXHR, textStatus, errorThrown) {
+            			alert("삭제 되었습니다.");
+            	}
+            	});
+            			$(this).closest('.box').remove();
+            	});
+            	});
+
+
+
+
 </script>
  
   
@@ -175,14 +149,5 @@ $(document).on('click', '.red', function() {
   
  
 </html>
-
-
-
-   <!-- .manager = ${manager.managerList} 
-                <c:if test="${manager.managerid == 'messi'}"></c:if> -->
-
-
-
- <!-- manager 컬럼 값이 1일 때만 페이지에 표시됨 -->
 
 
