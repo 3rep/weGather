@@ -30,10 +30,8 @@ public class RankGameController {
 	RankGameService rankGameService;
 	@Autowired
 	ParticipateService participateService;
-	
 
 	// 종목 목록
-
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -46,12 +44,10 @@ public class RankGameController {
 		return mav;
 	}
 	
-	// �옲�겕寃쎄린 紐⑸줉
+	// 랭크경기 목록
 	@GetMapping("/rankgamelist")
 	public ModelAndView rankGameList(RankGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
-
-
 
 		// 지역 필터링 시 DB에서 해당 지역의 경기만 선택하여 가져오기 위해 지역 카테고리를 세부 지역으로 나누어 리스트에 담는다.
 		String region = dto.getRegion();// '대전/세종/충청'
@@ -61,7 +57,7 @@ public class RankGameController {
 			dto.setRegionList(regionList);
 		}
 		
-		// DB�뿉�꽌 �옲�겕寃쎄린 紐⑸줉 諛쏆븘�삤湲�
+		// DB에서 랭크경기 목록 가져오기
 		List<RankGameDTO> rankGameList = rankGameService.rankGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -71,14 +67,22 @@ public class RankGameController {
 		return mav;
 	}
 	
-	// �옲�겕寃쎄린 �꽭遺��젙蹂�
-	@GetMapping("/detail")
+	// 랭크경기 상세페이지
 	public ModelAndView rankGameDetail(@RequestParam("no") int no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String logId = (String) session.getAttribute("logId");
+		int isPart;
 		
-		String userid = (String)session.getAttribute("logId");
+		// 해당 경기에 로그인 사용자가 참가하였는지 여부 (1이면 Yes, 0이면 No)
+		if(logId == null || logId.equals("")) {
+			isPart = 0;
+		} else {
+			isPart = participateService.isRankParticipate(logId, no);
+		}
 		
-		// DB�뿉�꽌 �옲�겕寃쎄린 �꽭遺��젙蹂� 諛쏆븘�삤湲�
+		String userid = logId;
+		
+		// DB에서 랭크경기 상세 정보 가져오기
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
 		
 		Integer userRank = null;
@@ -92,6 +96,7 @@ public class RankGameController {
 		
 		mav.addObject("rankGameDetail", rankGameDetail);
 		mav.addObject("userRank", userRank);
+    mav.addObject("isPart", isPart);
 		mav.setViewName("user/rankGame/rankGameDetail");
 		
 		return mav;

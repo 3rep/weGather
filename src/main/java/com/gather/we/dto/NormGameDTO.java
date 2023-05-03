@@ -22,4 +22,5 @@ public class NormGameDTO {
 	private String gendertype;
 	private int payment;
 	private int g_status;
+	private String writer;
 }

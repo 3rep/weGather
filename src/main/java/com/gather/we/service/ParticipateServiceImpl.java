@@ -24,6 +24,16 @@ public class ParticipateServiceImpl implements ParticipateService {
 	}
 
 	@Override
+	public int isNormParticipate(String userid, int no) {
+		return dao.isNormParticipate(userid, no);
+	}
+
+	@Override
+	public int isRankParticipate(String userid, int no) {
+		return dao.isRankParticipate(userid, no);
+  }
+
+  @Override
 	public Integer userRankOfSport(String userid, int s_no) {
 		return dao.userRankOfSport(userid, s_no);
 	}

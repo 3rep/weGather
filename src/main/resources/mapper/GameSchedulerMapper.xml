@@ -12,7 +12,7 @@
 	</update>
 	<select id="normStatusUpdateListSelect" resultType="com.gather.we.dto.GameSchedulerDTO">
 		select no, curr_people, min_people from norm_game
-		where TO_CHAR(gametime,'YYYYMMDD') = TO_CHAR(sysdate + 2,'YYYYMMDD')
+		where TO_CHAR(gametime,'YYYYMMDD') = TO_CHAR(sysdate + 1,'YYYYMMDD')
 	</select>
 	<update id="normStatusUpdate" parameterType="com.gather.we.dto.GameSchedulerDTO">
 		update norm_game set g_status=${g_status} where no=${no}
