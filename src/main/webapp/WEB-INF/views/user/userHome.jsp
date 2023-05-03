@@ -4,11 +4,12 @@
 	<img class="img" src="static/img/imgMain/tennis2.jpg" alt="football"/>
 	<div class="item" id="cloudy"> <!-- A -->
 		<div class="login"> <!-- B -->
-			<h3> 
-				환영합니다. <br/>
-				${logName }님<br/> 
-				경기를 즐겨보세요
-			</h3>
+			<h3> ${logName }님 </h3>
+			<p>
+				환영합니다.
+				
+			</p>	
+			
 		</div>
 	</div>
 	<div class="item" id="info">
