@@ -120,7 +120,7 @@
 			<!-- 참가신청 -->
 			<c:choose>
 				<c:when test="${logStatus != 'Y'}">
-					<button onclick="location.href='${path}/login'" class="btn_apply_norm">로그인</button>
+					<button onclick="location.href='${path}/login'" class="btn_apply_norm_login">로그인</button>
 				</c:when>
 				<c:otherwise>
 					<c:choose>

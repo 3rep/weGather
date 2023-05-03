@@ -34,6 +34,11 @@ public class RecommendController {
 		ModelAndView mav = new ModelAndView();
 		
 		String userid = (String)session.getAttribute("logId");
+		String adminlogStatus = (String)session.getAttribute("adminlogStatus");
+		
+		if(adminlogStatus.equals("Y")) {
+			userid = "admindummy";
+		}
 		
 		if(userid!=null) {
 			UsersDTO dto = usersService.userInfoInfoSelect(userid);		

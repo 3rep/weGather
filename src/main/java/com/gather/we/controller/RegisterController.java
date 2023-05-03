@@ -70,6 +70,7 @@ public class RegisterController {
 			session.setAttribute("logId", dto.getUserid());
 			session.setAttribute("logName", dto.getUsername());
 			session.setAttribute("logStatus", "Y");
+			session.setAttribute("type", dto.getType());
 			session.setAttribute("logGender", dto.getGender());
 			session.setAttribute("adminlogStatus", "N");
 			
@@ -96,6 +97,7 @@ public class RegisterController {
 				session.setAttribute("logId", dtoadmin.getAdminid());
 				session.setAttribute("logName", dtoadmin.getAdmin_name());
 				session.setAttribute("logStatus", "Y");
+				session.setAttribute("type", dtoadmin.getType());
 				session.setAttribute("adminlogStatus", "Y");
 				mav.setViewName("redirect:/admin/userList");
 			}else{//로그인 실패
@@ -185,6 +187,7 @@ public class RegisterController {
 		session.setAttribute("logName", null);
 		session.setAttribute("logStatus", "N");
 		session.setAttribute("logGender", null);
+		session.setAttribute("type", null);
 		session.setAttribute("adminlogStatus", "N");
 		
 		mav.setViewName("redirect:/");

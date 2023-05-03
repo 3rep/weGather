@@ -117,7 +117,29 @@
 	border-radius: 40px;
 }
 
+.btn_apply_rank_login {
+	width: 100%;
+	height: 70px;
+	color: var(--color-white);
+	font-size: var(--font-small);
+	background-color: var(--color-blue);
+	font-weight: var(--weight-bold);
+	border: none;
+	border-radius: 40px;
+}
+
 .btn_apply_norm {
+	width: 100%;
+	height: 70px;
+	color: var(--color-white);
+	font-size: var(--font-small);
+	background-color: var(--color-norm-green);
+	font-weight: var(--weight-bold);
+	border: none;
+	border-radius: 40px;
+}
+
+.btn_apply_norm_login {
 	width: 100%;
 	height: 70px;
 	color: var(--color-white);
