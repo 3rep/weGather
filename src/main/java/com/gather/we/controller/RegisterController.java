@@ -36,8 +36,6 @@ public class RegisterController {
 	@Autowired
 	MypageService mypageservice;
 	
-
-
 	//로그인 선택창
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
@@ -47,11 +45,9 @@ public class RegisterController {
 	//로그인폼
 	@GetMapping("/login")
 	public String login() {
-		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
+		return "user/register/login";
 	}
 	
-
-
 	//로그인(DB)
 	@PostMapping("/loginOk")
 	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
@@ -183,8 +179,14 @@ public class RegisterController {
 	//로그아웃 - 세션제거
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
-		session.invalidate();
 		ModelAndView mav = new ModelAndView();
+		
+		session.setAttribute("logId", null);
+		session.setAttribute("logName", null);
+		session.setAttribute("logStatus", "N");
+		session.setAttribute("logGender", null);
+		session.setAttribute("adminlogStatus", "N");
+		
 		mav.setViewName("redirect:/");
 		return mav;
 	}

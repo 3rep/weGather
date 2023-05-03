@@ -29,7 +29,7 @@
 }
 
 #recommend_nav {
-	background-color: var(--color-light-pink);
+	/* background-color: var(--color-lighter-pink); */
 	color: var(--color-white);
 	text-align: center;
 	padding: 14px 0;
@@ -43,7 +43,7 @@
 #recommend_container .title-filter-wrap {
 	display: flex;
 	align-items: center;
-	margin-left: 100px;
+	/* margin-left: 100px; */
 	margin-bottom: 36px;
 }
 

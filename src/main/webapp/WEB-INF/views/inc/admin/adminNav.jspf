@@ -53,7 +53,7 @@
 <!-- 관리자페이지 네비게이션 바 -->
 <nav id="admin-nav">
 	<!-- 사이트 로고 -->
-	<a><img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo"></a>
+	<a href="${path}/"><img src="${path}/static/img/admin/logo_white.png" alt="Logo" id="logo"></a>
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
 		<!-- 회원관리 메뉴 -->
@@ -195,7 +195,7 @@
 			<img src="${path}/static/img/admin/user_icon.png" alt="user icon" class="user_icon"/>
 			<span class="adminid">관리자</span>
 		</div>
-		<a href="#">
+		<a href="${path}/logout">
 			<img src="${path}/static/img/admin/logout_icon.png" alt="logout icon" class="logout_icon"/>
 		</a>
 	</div>
