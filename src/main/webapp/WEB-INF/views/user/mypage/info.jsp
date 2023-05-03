@@ -66,24 +66,24 @@
 					<select name="mbti" id="mbti" >
 						<!-- <option value="">=== 선택 ===</option> -->
 						<optgroup label="I">
-							<option value="ISTJ" <c:if test="${dto.mbti==ISTJ}">selected</c:if>>ISTJ</option>
-							<option value="ISFJ" <c:if test="${dto.mbti==ISFJ}">selected</c:if>>ISFJ</option>
-							<option value="INTJ" <c:if test="${dto.mbti==INTJ}">selected</c:if>>INTJ</option>
-							<option value="INFJ" <c:if test="${dto.mbti==INFJ}">selected</c:if>>INFJ</option>
-							<option value="ISTP" <c:if test="${dto.mbti==ISTP}">selected</c:if>>ISTP</option>
-							<option value="ISFP" <c:if test="${dto.mbti==ISFP}">selected</c:if>>ISFP</option>
-							<option value="INTP" <c:if test="${dto.mbti==INTP}">selected</c:if>>INTP</option>
-							<option value="INFP" <c:if test="${dto.mbti==INFP}">selected</c:if>>INFP</option>
+							<option value="ISTJ" <c:if test="${dto.mbti=='ISTJ'}">selected</c:if>>ISTJ</option>
+							<option value="ISFJ" <c:if test="${dto.mbti=='ISFJ'}">selected</c:if>>ISFJ</option>
+							<option value="INTJ" <c:if test="${dto.mbti=='INTJ'}">selected</c:if>>INTJ</option>
+							<option value="INFJ" <c:if test="${dto.mbti=='INFJ'}">selected</c:if>>INFJ</option>
+							<option value="ISTP" <c:if test="${dto.mbti=='ISTP'}">selected</c:if>>ISTP</option>
+							<option value="ISFP" <c:if test="${dto.mbti=='ISFP'}">selected</c:if>>ISFP</option>
+							<option value="INTP" <c:if test="${dto.mbti=='INTP'}">selected</c:if>>INTP</option>
+							<option value="INFP" <c:if test="${dto.mbti=='INFP'}">selected</c:if>>INFP</option>
 						</optgroup>
 						<optgroup label="E">
-							<option value="ESTP" <c:if test="${dto.mbti==ESTP}">selected</c:if>>ESTP</option>
-							<option value="ESFP" <c:if test="${dto.mbti==ESFP}">selected</c:if>>ESFP</option>
-							<option value="ENTP" <c:if test="${dto.mbti==ENTP}">selected</c:if>>ENTP</option>
-							<option value="ENFP" <c:if test="${dto.mbti==ENFP}">selected</c:if>>ENFP</option>
-							<option value="ESTJ" <c:if test="${dto.mbti==ESTJ}">selected</c:if>>ESTJ</option>
-							<option value="ESFJ" <c:if test="${dto.mbti==ESFJ}">selected</c:if>>ESFJ</option>
-							<option value="ENTJ" <c:if test="${dto.mbti==ENTJ}">selected</c:if>>ENFJ</option>
-							<option value="ENFJ" <c:if test="${dto.mbti==ENFJ}">selected</c:if>>ENFJ</option>
+							<option value="ESTP" <c:if test="${dto.mbti=='ESTP'}">selected</c:if>>ESTP</option>
+							<option value="ESFP" <c:if test="${dto.mbti=='ESFP'}">selected</c:if>>ESFP</option>
+							<option value="ENTP" <c:if test="${dto.mbti=='ENTP'}">selected</c:if>>ENTP</option>
+							<option value="ENFP" <c:if test="${dto.mbti=='ENFP'}">selected</c:if>>ENFP</option>
+							<option value="ESTJ" <c:if test="${dto.mbti=='ESTJ'}">selected</c:if>>ESTJ</option>
+							<option value="ESFJ" <c:if test="${dto.mbti=='ESFJ'}">selected</c:if>>ESFJ</option>
+							<option value="ENTJ" <c:if test="${dto.mbti=='ENTJ'}">selected</c:if>>ENFJ</option>
+							<option value="ENFJ" <c:if test="${dto.mbti=='ENFJ'}">selected</c:if>>ENFJ</option>
 						</optgroup>	
 					</select>
 				</li>

@@ -73,11 +73,11 @@
 }
 .register-li> #tel1{
 	width: 113px;
-    height: 37px;
+    height: 40px;
     margin-left: 10px;
     margin-top: 2px;
     background: white;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 15px;
     text-align: center;
 }
