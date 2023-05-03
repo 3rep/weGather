@@ -20,9 +20,9 @@
 	border-bottom: 2px solid #f3f3f3;
 }
 
-#normlist_container th:nth-of-type(1),
-#normlist_container th:nth-of-type(7) {
+#normlist_container th:nth-of-type(1) {
 	width: 8%;
+	border-radius: 20px 0 0 0;
 }
 
 #normlist_container th:nth-of-type(2) {
@@ -43,6 +43,16 @@
 
 #normlist_container th:nth-of-type(6) {
 	width: 12%;
+}
+
+#normlist_container th:nth-of-type(7) {
+	width: 8%;
+	border-radius: 0 20px 0 0;
+}
+
+#normlist_container th {
+	background: #d1d9e2;
+	font-weight: var(--weight-bold);
 }
 
 #normlist_container .stadium {

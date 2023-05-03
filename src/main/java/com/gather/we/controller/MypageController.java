@@ -145,7 +145,6 @@ public class MypageController {
 		//System.out.println("list111-> "+list );
 		
 		Collections.reverse(list);
-		System.out.println("list222:: "+list);
 		
 		int n = list.size();
 		//System.out.println("n->"+n);

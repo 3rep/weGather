@@ -101,7 +101,6 @@
 					</span>
 					<div class="game_info">
 						<!-- 구장 이름 -->
-						<!-- 신청마감-->
 						<a href="detail?no=${RankGameDTO.no}" class="game_stadium">${RankGameDTO.stadium}</a>
 						<!-- 경기 조건 -->
 						<div class="game_conditions">

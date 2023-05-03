@@ -127,17 +127,23 @@ public class AdminController {
 	public ModelAndView loginList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+				
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드 수 세팅
 		vo.setTotalRecord(service.totalRecord(vo));
-		System.out.println(vo.toString());
 		
 		List<RegisterDTO> list = regservice.dataAllSelect(vo);
-		System.out.println(list);
 		mav.addObject("vo", vo);
 		mav.addObject("list", list);
 		mav.setViewName("admin/userList/userList");
 		
 		return mav;
 	}
+	
 	//(관리자 페이지)회원정보 수정폼
 	@GetMapping("/userEdit/{userid}")
 	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
@@ -168,14 +174,25 @@ public class AdminController {
 		mav.setViewName("admin/userList/userLog");
 		return mav;
 	}
+	
 	//(관리자) 수입내역
 	@GetMapping("/revenue")
-	public ModelAndView revenue() {
+	public ModelAndView revenue(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<UserPayDTO> pay = service.revenue();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+						
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+				
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.revenueTotalRecord(vo));
+		
+		List<UserPayDTO> pay = service.revenue(vo);
 		
 		mav.addObject("pay", pay);
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/revenue/revenue");
 		
 		return mav;
@@ -183,12 +200,22 @@ public class AdminController {
 	
 	//(관리자) 지출내역
 	@GetMapping("/expense")
-	public ModelAndView expense() {
+	public ModelAndView expense(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<AdminManagerSettlementDTO> expense = service.expense();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.expenseTotalRecord(vo));
+		
+		List<AdminManagerSettlementDTO> expense = service.expense(vo);
 		
 		mav.addObject("expense", expense);
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/revenue/expense");
 		
 		return mav;
@@ -196,12 +223,22 @@ public class AdminController {
 	
 	//(관리자) 매니저비
 	@GetMapping("/managerfee")
-	public ModelAndView managerFee() {
+	public ModelAndView managerFee(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<AdminManagerSettlementDTO> managerFee = service.managerFee();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+								
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+						
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.managerFeeTotalRecord(vo));
+		
+		List<AdminManagerSettlementDTO> managerFee = service.managerFee(vo);
 		
 		mav.addObject("managerFee", managerFee);
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/revenue/managerFee");
 		
 		return mav;
@@ -210,7 +247,6 @@ public class AdminController {
 	// (관리자) 매니저 지급 완료
 	@PostMapping("/waitOk")
 	public ModelAndView waitOk(AdminManagerSettlementDTO dto) {
-		System.out.println(dto.toString());
 		
 		// 지급일 셋팅
 		Date datetime = new Date();
