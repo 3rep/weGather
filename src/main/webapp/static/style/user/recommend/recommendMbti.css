@@ -17,12 +17,14 @@
 #recommend_nav .recommend_user_mbti.non_login.active {
 	display: flex;
 	flex-direction: column;
+	padding: 20px 100px;
+	border: 7px solid var(--color-lighter-pink);
 }
 
 #recommend_nav .recommend_user_mbti.login.active {
 	display: flex;
 	padding: 20px 100px;
-	border: 9px solid var(--color-lighter-pink);
+	border: 7px solid var(--color-lighter-pink);
 }
 
 #recommend_nav .recommend_user_mbti.login li:nth-of-type(1) {
@@ -30,7 +32,7 @@
 }
 
 #recommend_nav .recommend_user_mbti.login li:nth-of-type(3) {
-	background-color: var(--color-lightest-blue);
+	background-color: var(--color-lightest-pink);
 	padding: 0 14px;
 	border-radius: 20px;
 	color: var(--color-white);
@@ -54,7 +56,10 @@
 
 #recommend_nav .mbti_select {
 	margin-left: 8px;
-	border-radius: 4px;
+    border-radius: 4px;
+    width: 95px;
+    height: 35px;
+    text-align: center;
 }
 
 /* MBTI 선택 결과 - 비로그인 시 */
@@ -64,11 +69,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--color-board-blue);
+	background-color: #FCFBFB;
 	border-radius: 12px;
-	border: 1px solid var(--color-gray);
+	/* border: 1px solid var(--color-gray); */
 	padding: 40px 0;
 	margin-bottom: 60px;
+	box-shadow: 0 0 15px #E4CECE;
 }
 
 #recommend_container .mbti_result .mbti {

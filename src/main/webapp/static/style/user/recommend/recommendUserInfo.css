@@ -50,25 +50,15 @@
 
 #recommend_nav .recommend_user_info.login.active {
 	display: block;
-	border: 9px solid var(--color-lighter-pink);
+	border: 7px solid var(--color-lighter-pink);
 }
 
 #recommend_nav .recommend_user_info.non_login.active {
 	display: block;
+	border: 7px solid var(--color-lighter-pink);
 }
 
 #recommend_container .recommend_content_user_info {
-	/* width: 1200px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: var(--color-board-blue);
-	border-radius: 12px;
-	border: 1px solid var(--color-gray);
-	padding: 40px 0;
-	margin: 0 auto; */
-	
-	
     width: 1200px;
     display: flex;
     flex-direction: column;
