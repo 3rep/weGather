@@ -24,4 +24,7 @@
  	<update id="waitOk">
 		update m_settlement set d_status=1, datetime=#{datetime} where managerid=#{managerid}
 	</update>
+	<select id="totalRecord" resultType="int">
+		select count(userid) totalRecord from users
+	</select>
 </mapper>

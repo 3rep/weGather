@@ -14,11 +14,10 @@
 			<li class="logManFrm">비밀번호</li>
 			<li class="logManFrm"><input type="password" name="password" id="logMan_password"/></li>
 			<li id="logMan_LOGIN"><input type="submit" value="LOGIN" /></li>
+			<li id="logMan_register"><a href="manager">회원가입</a></li>
 		</ul>
 	</form>
-	<div id="logMan_register">
-		<a href="manager">회원가입</a>
-	</div>
+	
 	<div>
 		<img src="static/img/manager.jpg" id="loginMan_img">
 	</div>

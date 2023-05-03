@@ -64,6 +64,7 @@
     
 }
 #log_LOGIN>input{
+	width: 100%;
 	background: none;
 	border: none;
 	color: white;
@@ -79,6 +80,8 @@
     border: 2px solid #324DAA;
 }
 #logFrm #log_register a{
+	width: 100%;
+	display: inline-block;
 	color: #324DAA;
     font-weight: 600;
 }

@@ -6,4 +6,8 @@
  	<select id="participantInfoSelect" resultType="com.gather.we.dto.UsersDTO">
 		select username, email, tel, address from users where userid=#{userid}
 	</select>
+ 	<select id="userInfoInfoSelect" resultType="com.gather.we.dto.UsersDTO">
+		select type, username, password email, tel, age, address, gender, mbti, signupdate from users where userid=#{userid}
+	</select>
 </mapper>
+

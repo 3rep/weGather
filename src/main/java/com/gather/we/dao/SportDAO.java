@@ -16,4 +16,6 @@ public interface SportDAO {
 	public SportDTO sportOneSelect(int s_no);
 	// 종목 수정
 	public int sportUpdate(SportDTO dto);
+	// 종목이름 이름순 선택
+	public List<String> sortedSportnameSelect();
 }

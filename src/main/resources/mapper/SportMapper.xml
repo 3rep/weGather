@@ -24,4 +24,7 @@
 		update rank_game set sportname=#{sportname}, sportdesc=#{sportdesc}, filename=#{filename}
 		where s_no=${s_no}
 	</update>
+	<select id="sortedSportnameSelect" resultType="string">
+		select sportname from sport order by sportname
+	</select>
 </mapper>

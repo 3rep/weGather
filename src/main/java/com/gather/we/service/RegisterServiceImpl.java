@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.RegisterDAO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RegisterDTO;
 import com.gather.we.dto.UserLogDTO;
 
@@ -33,9 +34,9 @@ public class RegisterServiceImpl implements RegisterService{
 	}
 
 	@Override
-	public List<RegisterDTO> dataAllSelect() {
+	public List<RegisterDTO> dataAllSelect(PagingVO vo) {
 		// TODO Auto-generated method stub
-		return dao.dataAllSelect();
+		return dao.dataAllSelect(vo);
 	}
 
 	@Override

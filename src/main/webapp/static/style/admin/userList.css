@@ -30,3 +30,16 @@ body{
 	background-color:#d1d9e2;
 	font-weight:bold;
 }
+.userlist_pagingDiv{
+	position:relative;
+	left:28%;
+}
+.userlist_pagingDiv li{
+	float:left;
+	padding:10px 20px;
+	
+	
+}
+.user_listpagingDiv a:link, .pagingDiv a:hover, .pagingDiv a:visited, .board_list a:link, .board_list a:hover, .board_list a:visited{
+	color:#000;
+}
