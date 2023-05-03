@@ -16,7 +16,7 @@ public interface Manager10DAO {
 	 
 	 public List<Manager10DTO> getAllManagerPast();
 	 
-	 public List<Manager10DTO> getAllManagerInput(Integer no);
+	 public List<Manager10DTO> getAllManagerInput(String managerid);
 	 
 	 public List<Manager10DTO> getAllEntry(Integer no);
 	  
@@ -31,7 +31,7 @@ public interface Manager10DAO {
 	 
    	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo);
    	 
-	 public List<Manager10DTO> getAllManagerPast(String managerid);
+ //   public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo, String managerid, Integer No);
 	
 	 public void updateRank(@Param("userid") String userid, @Param("rank") int rank, @Param("no") Integer no);
 	 
@@ -40,7 +40,7 @@ public interface Manager10DAO {
 	 public void updateRankGame(@Param("managerid") String managerid, @Param("no") Integer no);
 	 
 	 
-	 
+	 public int getTotalRecordByManagerid10(String managerid);
 	
 	
 	}

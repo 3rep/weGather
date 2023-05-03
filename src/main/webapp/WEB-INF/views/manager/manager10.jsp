@@ -127,12 +127,12 @@
             			data: JSON.stringify(managerList),
             			dataType: "json",
             			success: function(response) {
-            			alert("삭제하시겠습니까?.");
+            			alert("취소하시겠습니까.?");
             				console.log(response);
             	// window.location.href = "${path}/manager/manager10";
             	},
             		error: function(jqXHR, textStatus, errorThrown) {
-            			alert("삭제 되었습니다.");
+            			alert("취소 완료되었습니다.");
             	}
             	});
             			$(this).closest('.box').remove();

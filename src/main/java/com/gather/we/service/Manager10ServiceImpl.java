@@ -35,11 +35,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 	}
 
 
-	@Override
-	public List<Manager10DTO> getAllManagerPast(String managerid) {
-		
-		return dao.getAllManagerPast(managerid);
-	}
+	
 
 	
 
@@ -56,18 +52,14 @@ public class Manager10ServiceImpl implements Manager10Service {
 	
 
 
-	@Override
-	public List<Manager10DTO> getAllManagerPast() {
-		// TODO Auto-generated method stub
-		return dao.getAllManagerPast();
-	}
+	
 
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInput(Integer no) {
+	public List<Manager10DTO> getAllManagerInput(String managerid) {
 		// TODO Auto-generated method stub
-		return dao.getAllManagerInput(no);
+		return dao.getAllManagerInput(managerid);
 	}
 
 
@@ -91,13 +83,6 @@ public class Manager10ServiceImpl implements Manager10Service {
 	}
 
 
-
-
-
-	@Override
-	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo) {
-		return dao.getAllManagerPast(vo);
-	}
 
 
 
@@ -138,30 +123,42 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 
+//	@Override
+//	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo) {
+		
+//		return dao.getAllManagerPast(vo);
+//	}
+
+
+
+
+
+	@Override
+	public List<Manager10DTO> getAllManagerPast(ManagerPagingVO vo) {
+		
+		return dao.getAllManagerPast(vo);
+	}
+
+
+
+
+
+	@Override
+	public int getTotalRecordByManagerid10(String managerid) {
+		
+		return dao.getTotalRecordByManagerid10(managerid);
+	}
+
+
+
+
+
 	
-
-
-
-
-
-
-
+	}
 
 
 
 
 
 	
-
-
-
-
-
-	
-
-
-
-
-
-}
 

@@ -3,32 +3,67 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gather.we.dao.Manager10DAO">
-	 <select id="getTotalRecordByManagerid" resultType="int">
-	     SELECT COUNT(rank_game.st_no)  
-	     FROM rank_game 
-	     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
-	     WHERE rank_game.managerid = #{managerid}
-	     And rank_game.gametime <![CDATA[>]]> sysdate
-	</select>
 
-	<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
-		select * from 
+<!--  	<select id="getAllManager10" resultType="com.gather.we.dto.Manager10DTO">
+  
+    SELECT stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid, rank_game.manager
+    FROM rank_game  
+    JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+   
+</select> -->
+
+
+ 
+  <select id="getTotalRecordByManagerid" resultType="int">
+    
+     SELECT COUNT(rank_game.st_no)  
+     FROM rank_game 
+     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
+     WHERE rank_game.managerid = #{managerid}
+     And rank_game.gametime <![CDATA[>]]> sysdate
+    
+</select>
+
+<select id="getTotalRecordByManagerid10" resultType="int">
+    
+     SELECT COUNT(rank_game.st_no)  
+     FROM rank_game 
+     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
+     WHERE rank_game.managerid = #{managerid}
+     And rank_game.gametime <![CDATA[<]]> sysdate
+    
+</select>
+
+
+
+<select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
+		 
+	 select * from 
  			(select * from 
  				( 
-				SELECT rank_game.st_no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, 
-				rank_game.managerid, rank_game.manager
-				FROM rank_game  
-				JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
-				WHERE rank_game.managerid = #{managerid} and rank_game.gametime <![CDATA[<]]> sysdate
-				 ) 
- 				 where rownum <![CDATA[<=]]> ${onePageRecord*nowPage} order by st_no asc 
- 			)
+		SELECT rank_game.st_no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
+		FROM rank_game  
+		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
+		WHERE rank_game.managerid = #{managerid} 
+	<!--  	AND rank_game.no = ${no}-->
+		AND rank_game.gametime <![CDATA[<]]> sysdate
+				
+		order by rank_game.no desc
+				 ) <![CDATA[ 
+ 				 WHERE rownum<=${onePageRecord*nowPage} order by st_no asc 
+ 				]]>
+ 				 )
  		<choose>
 		  <when test="nowPage!=totalPage"> 		
- 			 	where rownum <![CDATA[<=]]> ${onePageRecord} order by st_no desc
+ 	   		 	<![CDATA[ 
+ 			 	where rownum<=${onePageRecord} order by st_no desc
+ 			 	]]>
+ 		 
  		  </when>
  		  <when test="nowPage==totalPage">	
- 		 		where rownum <![CDATA[<=]]> ${onePageRecord} order by st_no desc
+ 			   <![CDATA[ 
+ 		 		where rownum<=${onePageRecord} order by st_no desc
+ 		 		]]>
  	  	  </when>
  		</choose>  
 	</select>
@@ -82,7 +117,7 @@
        	 FROM r_participate rp
         	INNER JOIN users u ON rp.userid = u.userid
         	INNER JOIN rank_game rg ON rp.no = rg.no
-        WHERE rp.no = ${no}
+        WHERE rg.managerid = #{managerid}
         	And rg.gametime <![CDATA[<]]> sysdate
     </select>
 	
