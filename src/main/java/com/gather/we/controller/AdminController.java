@@ -434,12 +434,20 @@ public class AdminController {
 	
 	// 랭크경기 목록
 	@GetMapping("/rankgame/rankgamelist")
-	public ModelAndView rankGameList() {
+	public ModelAndView rankGameList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		List<AdminRankGameDTO> rankGameList = rankGameService.adminRankGameAllSelect();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+				
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
 		
-		mav.addObject("rankGameList", rankGameList);
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(rankGameService.totalRecord());
+		
+		mav.addObject("rankGameList", rankGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
 		mav.setViewName("admin/rankGame/rankGameList");
 		
 		return mav;
@@ -447,12 +455,21 @@ public class AdminController {
 	
 	// 일반경기 목록
 	@GetMapping("/normgame/normgamelist")
-	public ModelAndView normGameList() {
+	public ModelAndView normGameList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
-
-		List<NormGameDetailDTO> normGameList = normGameService.normGameDetailAllSelect();
-
-		mav.addObject("normGameList", normGameList);
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+		
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(normGameService.totalRecord());
+		
+		// DB조회
+		mav.addObject("normGameList", normGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
 		mav.setViewName("admin/normGame/normGameList");
 
 		return mav;
@@ -572,12 +589,21 @@ public class AdminController {
 	
 	// 매니저 승인 요청 목록
 	@GetMapping("/manager/approvelist")
-	public ModelAndView managerApproveList() {
+	public ModelAndView managerApproveList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		// 매니저 계정 승인 요청 목록을 DB에서 조회
-		mav.addObject("list", adminManagerService.approveList());
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+								
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+						
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(adminManagerService.managerApproveTotalRecord());
 		
+		// 매니저 계정 승인 요청 목록을 DB에서 조회
+		mav.addObject("list", adminManagerService.approveList(vo));
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/allManager/managerApproveList");
 		
 		return mav;
@@ -622,9 +648,19 @@ public class AdminController {
 	
 	// 매니저 목록 조회
 	@GetMapping("/manager/managerlist")
-	public ModelAndView managerList() {
+	public ModelAndView managerList(PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
-		List<ManagerDTO> olist = adminManagerService.managerList();
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+						
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+				
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(adminManagerService.managerTotalRecord());
+		
+		List<ManagerDTO> olist = adminManagerService.managerList(vo);
 		List<ManagerDTO> nlist = new ArrayList<ManagerDTO>();
 		
 		try {
@@ -645,7 +681,7 @@ public class AdminController {
 		}
 		
 		mav.addObject("list", nlist);
-		
+		mav.addObject("vo", vo);
 		mav.setViewName("admin/allManager/managerList");
 		
 		return mav;

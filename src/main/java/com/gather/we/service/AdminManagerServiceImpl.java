@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.AdminManagerDAO;
 import com.gather.we.dto.ManagerDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RankGameDTO;
 
 @Service
@@ -16,8 +17,8 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	AdminManagerDAO dao;
 
 	@Override
-	public List<ManagerDTO> approveList() {
-		return dao.approveList();
+	public List<ManagerDTO> approveList(PagingVO vo) {
+		return dao.approveList(vo);
 	}
 
 	@Override
@@ -36,8 +37,8 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	}
 
 	@Override
-	public List<ManagerDTO> managerList() {
-		return dao.managerList();
+	public List<ManagerDTO> managerList(PagingVO vo) {
+		return dao.managerList(vo);
 	}
 
 	@Override
@@ -48,5 +49,15 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 	@Override
 	public ManagerDTO managerDetail(String managerid) {
 		return dao.managerDetail(managerid);
+	}
+
+	@Override
+	public int managerTotalRecord() {
+		return dao.managerTotalRecord();
+	}
+
+	@Override
+	public int managerApproveTotalRecord() {
+		return dao.managerApproveTotalRecord();
 	}
 }

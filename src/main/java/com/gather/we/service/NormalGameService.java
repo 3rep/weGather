@@ -5,6 +5,7 @@ import java.util.List;
 import com.gather.we.dto.NormGameDTO;
 import com.gather.we.dto.NormGameDetailDTO;
 import com.gather.we.dto.NormGameListDTO;
+import com.gather.we.dto.PagingVO;
 
 public interface NormalGameService {
 	// 일반경기 목록 선택
@@ -23,4 +24,8 @@ public interface NormalGameService {
 	public int normGameCountUp(int no);
 	// 일반경기 현재인원수 업데이트
 	public int currPeopleCount(int no);
+	// 해당 페이지 일반경기 레코드 불러오기
+	public List<NormGameDetailDTO> pageSelect(PagingVO vo);
+	// 총레코드수
+	public int totalRecord();
 }
