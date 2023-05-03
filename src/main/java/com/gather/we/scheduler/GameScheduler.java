@@ -40,8 +40,8 @@ public class GameScheduler {
 	
 	@Scheduled(cron = "0 0 0 1/1 * ?")
 	public void autoNormGameStatusUpdate() throws Exception {
-		// 경기일정의 이틀 전 0시에 해당 경기의 참여신청을 마감한다.
-		// 오늘이 4월 22일 이라면 경기일정이 4월 24일인 경기목록을 가져와서 경기상태를 업데이트 한다.
+		// 경기일정의 하루 전 0시에 해당 경기의 참여신청을 마감한다.
+		// 오늘이 4월 22일 이라면 경기일정이 4월 23일인 경기목록을 가져와서 경기상태를 업데이트 한다.
 		// 경기상태: 0(미개설), 1(대기), 2(확정), 3(취소)
 
 		List<GameSchedulerDTO> list = service.normStatusUpdateListSelect();
