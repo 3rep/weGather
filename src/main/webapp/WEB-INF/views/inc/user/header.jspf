@@ -41,10 +41,6 @@
 <link rel="stylesheet" href="${path}/static/style/user/recommend/recommendCommon.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/recommend/recommendMbti.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/recommend/recommendUserInfo.css" type="text/css" />
-
-
-
-
 </head>
 
 <body>
@@ -61,7 +57,10 @@
 	    		
 	        		<c:if test="${logStatus!='Y' }">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="${path}/loginChoose">로그인 · 회원가입</a>
+		          			<a class="nav-link" href="${path}/login"><img src="${path}/static/img/imgMain/usericon.png" class="subNavImgUser"/>&ensp;회원</a>
+		        		</li>
+		        		<li class="nav-item">
+		          			<a class="nav-link" href="${path}/loginMan"><img src="${path}/static/img/imgMain/cardicon.png" class="subNavImgMng"/>&ensp;매니저</a>
 		        		</li>
 		        	</c:if>
 		        			

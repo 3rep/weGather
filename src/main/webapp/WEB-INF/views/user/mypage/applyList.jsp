@@ -55,13 +55,13 @@
 				       
 				        <!--g_status에 따라 경기상태 변경
 				        
-				        랭크경기 : 2(취소)/1(확정)/0(대기) 
+				        랭크경기 : 2(취소)/1(확정)/0(대기) 	// 0에서 이틀전에 1,2로 바뀜
 							경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
 							신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
 							경기확정 : g_status=1 + gametime이 현재날짜를 지나지 않은 경우
 							경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 
 						
-						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설)
+						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설) 	// 1에서 하루전에 2,3으로 바뀜
 							경기취소 : g_status=3
 							신청완료, 신청취소 : g_status=1 + gametime 하루전(gt1ago >= now)  < 하루전 안먹어.. 
 							경기확정 : g_status = 2 + gametime >=now  
@@ -78,7 +78,7 @@
 						        <c:if test="${list.g_status==1 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==0 && list.gt2ago>now }">	
+						        <c:if test="${list.g_status==0 }">	<!-- list.g_status==0 && list.gt2ago>now -->
 						        	<td class="aplLink">
 						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
@@ -96,7 +96,7 @@
 						        <c:if test="${list.g_status==2 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==1 }">	
+						        <c:if test="${list.g_status==1}">	<!-- && list.gt1ago>now -->
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
