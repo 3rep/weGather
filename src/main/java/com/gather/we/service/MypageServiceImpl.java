@@ -83,4 +83,9 @@ public class MypageServiceImpl implements MypageService {
 	public int paymentTotalRecord(String username) {
 		return dao.paymentTotalRecord(username);
 	}
+
+	@Override
+	public int gameCancel(MypageApplyListDTO dto) {
+		return dao.gameCancel(dto);
+	}
 }
