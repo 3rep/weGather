@@ -9,7 +9,7 @@
 		FROM rank_game r
 			INNER join stadium_info s on r.st_no = s.st_no
 			INNER join sport sp on r.s_no = sp.s_no 
-		WHERE r.gametime-16 > sysdate and sysdate < r.gametime-9
+		WHERE r.gametime >= sysdate + 9 AND r.gametime <= sysdate + 16
 			AND r.managerid is null
 		ORDER BY r.gametime
 		]]>
@@ -31,7 +31,7 @@
 		  FROM rank_game r
 		  	INNER JOIN stadium_info s ON r.st_no = s.st_no
 		    INNER JOIN sport sp ON r.s_no = sp.s_no 
-		  WHERE r.gametime - 16 <![CDATA[>]]> sysdate AND sysdate <![CDATA[<]]> r.gametime - 9
+		  where r.gametime <![CDATA[>=]]> sysdate + 9 AND r.gametime <![CDATA[<=]]> sysdate + 16
 		    AND r.managerid IS NULL
 		    AND r.s_no = ${logS_no}
 		  ORDER BY r.gametime
@@ -46,7 +46,7 @@
 		FROM rank_game r
 			INNER JOIN stadium_info s ON r.st_no = s.st_no
 			INNER JOIN sport sp ON r.s_no = sp.s_no 
-		WHERE r.gametime-16 <![CDATA[>]]> sysdate AND sysdate <![CDATA[<]]> r.gametime-9
+		where r.gametime <![CDATA[>=]]> sysdate + 9 AND r.gametime <![CDATA[<=]]> sysdate + 16
 		AND r.managerid IS NULL
 		AND r.s_no = ${logS_no}
 	</select>

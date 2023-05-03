@@ -68,6 +68,7 @@ public class RankGameController {
 	}
 	
 	// 랭크경기 상세페이지
+	@GetMapping("/detail")
 	public ModelAndView rankGameDetail(@RequestParam("no") int no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String) session.getAttribute("logId");
