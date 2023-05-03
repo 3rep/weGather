@@ -12,15 +12,17 @@ import com.gather.we.dto.UserPayDTO;
 public interface AdminService {
 	public AdminDTO loginAdminOk(String adminid, String password);
 	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô³ï¿½ï¿½ï¿½
-	public List<UserPayDTO> revenue();
-
-	//ÃÑ·¹ÄÚµå¼ö
+	public List<UserPayDTO> revenue(PagingVO vo);
+	public int revenueTotalRecord(PagingVO vo);
+	//ï¿½Ñ·ï¿½ï¿½Úµï¿½ï¿½
 	public int totalRecord(PagingVO vo);
-	//ÇØ´çÆäÀÌÁö ¼±ÅÃ
+	//ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List<RegisterDTO> pageSelect(PagingVO vo);
 
-	public List<AdminManagerSettlementDTO> expense();
-	public List<AdminManagerSettlementDTO> managerFee();
+	public List<AdminManagerSettlementDTO> expense(PagingVO vo);
+	public int expenseTotalRecord(PagingVO vo);
+	public List<AdminManagerSettlementDTO> managerFee(PagingVO vo);
+	public int managerFeeTotalRecord(PagingVO vo);
 	public int waitOk(AdminManagerSettlementDTO dto);
 
 }

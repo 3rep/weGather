@@ -24,18 +24,18 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<UserPayDTO> revenue() {
-		return dao.revenue();
+	public List<UserPayDTO> revenue(PagingVO vo) {
+		return dao.revenue(vo);
 	}
 
 	@Override
-	public List<AdminManagerSettlementDTO> expense() {
-		return dao.expense();
+	public List<AdminManagerSettlementDTO> expense(PagingVO vo) {
+		return dao.expense(vo);
 	}
 	
 	@Override
-	public List<AdminManagerSettlementDTO> managerFee() {
-		return dao.managerFee();
+	public List<AdminManagerSettlementDTO> managerFee(PagingVO vo) {
+		return dao.managerFee(vo);
 	}
 
 	@Override
@@ -46,14 +46,27 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int totalRecord(PagingVO vo) {
-		// TODO Auto-generated method stub
 		return dao.totalRecord(vo);
 	}
 
 	@Override
 	public List<RegisterDTO> pageSelect(PagingVO vo) {
-		// TODO Auto-generated method stub
 		return dao.pageSelect(vo);
+	}
+
+	@Override
+	public int revenueTotalRecord(PagingVO vo) {
+		return dao.revenueTotalRecord(vo);
+	}
+
+	@Override
+	public int expenseTotalRecord(PagingVO vo) {
+		return dao.expenseTotalRecord(vo);
+	}
+
+	@Override
+	public int managerFeeTotalRecord(PagingVO vo) {
+		return dao.managerFeeTotalRecord(vo);
 	}
 
 }

@@ -135,7 +135,6 @@ public class RegisterController {
 	
 	@RequestMapping(value="/registerOk", method=RequestMethod.POST)
 	public ModelAndView registerOk(RegisterDTO dto) {
-		System.out.println(dto.toString());
 		
 		ModelAndView mav = new ModelAndView();
 		//회원가입

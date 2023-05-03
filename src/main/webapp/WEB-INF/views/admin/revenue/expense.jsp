@@ -17,7 +17,7 @@
 			<c:forEach var="m_settlement" items="${expense}" varStatus="status">
 				<tr>
 					<td>${status.index+1}</td>
-					<td>${m_settlement.amount}</td>
+					<td><fmt:formatNumber value="${m_settlement.amount}" maxFractionDigits="3"/>원</td>
 					<td>매니저 수당</td>
 					<td>${m_settlement.m_name} 매니저 [지급계좌: ${m_settlement.m_account}]</td>
 					<td>
@@ -29,6 +29,33 @@
 				<tr>
 			</c:forEach>
 		</table>
+		
+		<!-- 페이징 -->
+		<div class="pagingDiv">
+		<ul>
+			<!-- 이전페이지 -->
+			<c:if test="${vo.nowPage>1}">
+				<li><a href="expense?nowPage=${vo.nowPage-1}">이전</a></li>
+			</c:if>
+			<!-- 페이지번호 -->
+			<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
+				<c:if test="${pageNum<=vo.totalPage}">
+					<li>
+					<c:if test="${vo.nowPage==pageNum }"><b></c:if>
+					<a href="expense?nowPage=${pageNum}">${pageNum}</a>
+					<c:if test="${vo.nowPage==pageNum }"></b></c:if>
+					</li>
+				</c:if>
+				<c:if test="${pageNum>vo.totalPage}">
+					<li style="visibility:hidden;">${pageNum}</li>
+				</c:if>
+			</c:forEach>
+			<!-- 다음페이지 -->
+			<c:if test="${vo.nowPage<vo.totalPage}">
+				<li><a href="expense?nowPage=${vo.nowPage+1}">다음</a></li>
+			</c:if>
+		</ul>
+		</div>
 	</div>
 </div>
 </body>
