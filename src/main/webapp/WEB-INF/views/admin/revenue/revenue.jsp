@@ -29,6 +29,7 @@
 					Long ptLong = (Long)pageContext.getAttribute("paidTime");
 					Date ptDate = new Date(ptLong*1000);
 					pageContext.setAttribute("ptDate", ptDate );
+
 					%>
 				
 					<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->

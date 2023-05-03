@@ -87,6 +87,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
+
 		if(adminlogStatus.equals("Y")) {
 			mav.setViewName("redirect:/admin/userList");
 		}else {
@@ -94,7 +95,7 @@ public class AdminController {
 		}
 		return mav;
 	}
-	
+
 	//(관리자 페이지)회원 리스트
 	@GetMapping("/userList")
 	public ModelAndView loginList(HttpSession session, PagingVO vo) {

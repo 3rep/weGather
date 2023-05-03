@@ -214,7 +214,7 @@
 	            					<button class="btn_apply_rank close">인원마감</button>
 								</c:when>
 	         					<c:otherwise>
-	            					<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply_rank">참가신청</button>
+	            					<button class="btn_apply_rank">참가신청</button>
 	         					</c:otherwise>
 	      					</c:choose>
 						  </c:otherwise>
