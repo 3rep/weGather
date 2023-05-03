@@ -27,6 +27,18 @@
 	border: 2px solid var(--color-norm-green);
 }
 
+.gamenew_guide {
+	text-align: center;
+	margin-bottom: 24px;
+	padding: 10px 0;
+	background: var(--color-white);
+	border-radius: 20px;
+	line-height: 2em;
+	color: black;
+	border: 2px solid var(--color-norm-green);
+	font-size: var(--font-regular);
+}
+
 .gamenew_detail_main {
 	font-weight: var(--weight-bold);
 	font-size: var(--font-small);

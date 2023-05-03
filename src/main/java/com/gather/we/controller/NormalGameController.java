@@ -76,9 +76,14 @@ public class NormalGameController {
 	public ModelAndView normGameDetail(HttpSession session, int no) {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String) session.getAttribute("logId");
+		int isPart;
 		
 		// 해당 경기에 로그인 사용자가 참가하였는지 여부 (1이면 Yes, 0이면 No)
-		int isPart = participateService.isNormParticipate(logId, no);
+		if(logId == null || logId.equals("")) {
+			isPart = 0;
+		}else {
+			isPart = participateService.isNormParticipate(logId, no);
+		}
 		
 		// 일반경기 상세 정보 (DB)
 		NormGameDetailDTO normGameDetail = normGameService.normGameDetailSelect(no);

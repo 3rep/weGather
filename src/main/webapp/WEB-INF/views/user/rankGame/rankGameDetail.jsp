@@ -161,7 +161,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:choose>
-								<c:when test="${rankGameDetail.curr_people==rankGameDetail.max_people}">
+								<c:when test="${rankGameDetail.curr_people >= rankGameDetail.max_people}">
 	            					<button class="btn_apply_rank close">인원마감</button>
 								</c:when>
 	         					<c:otherwise>

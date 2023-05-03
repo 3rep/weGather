@@ -70,9 +70,14 @@ public class RankGameController {
 	public ModelAndView rankGameDetail(HttpSession session, int no) {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String) session.getAttribute("logId");
+		int isPart;
 		
 		// 해당 경기에 로그인 사용자가 참가하였는지 여부 (1이면 Yes, 0이면 No)
-		int isPart = participateService.isRankParticipate(logId, no);
+		if(logId == null || logId.equals("")) {
+			isPart = 0;
+		} else {
+			isPart = participateService.isRankParticipate(logId, no);
+		}
 		
 		// DB에서 랭크경기 상세 정보 가져오기
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);

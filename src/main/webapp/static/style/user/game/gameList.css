@@ -172,3 +172,14 @@
 .game_stadium2:hover, .game_stadium2:visited, .game_stadium2:link {
 	color: var(--color-white);
 }
+
+.game_stadium3 {
+	text-decoration: none;
+    outline: none;
+    color: var(--color-white);
+	font-weight: var(--weight-bold);
+}
+
+.game_stadium3:hover, .game_stadium3:visited, .game_stadium3:link {
+	color: var(--color-dark-gray);
+}

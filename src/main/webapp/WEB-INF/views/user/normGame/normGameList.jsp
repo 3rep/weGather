@@ -9,8 +9,8 @@
 </div>
 <div class="game_nav norm_game_nav">종목선택 > <b>경기목록</b> > 경기상세정보</div>
 <div class="game_container">
-	<h4 class="game_notice">※ 일반경기 참여 신청은 경기 시작 이틀 전까지 가능합니다.</h4>
-	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 신청 마감시간은 2023-04-23 23:59</div>
+	<h4 class="game_notice">※ 일반경기 참여 신청은 경기 시작 하루 전까지 가능합니다.</h4>
+	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 신청 마감시간은 2023-04-24 23:59</div>
 	
 	<!-- 필터 -->
 	<form method="get" action="normgamelist" id="filterForm">
@@ -90,12 +90,9 @@
 					</span>
 					<div class="game_info">
 						<!-- 구장 이름 -->
-						<c:if test="${isClose || (NormGameDTO.curr_people >= NormGameDTO.max_people)}">
-							<span class="game_stadium">${NormGameDTO.stadium}</span>
-						</c:if>
-						<c:if test="${!isClose && (NormGameDTO.curr_people < NormGameDTO.max_people)}">
-							<a href="detail?no=${NormGameDTO.no}" class="game_stadium">${NormGameDTO.stadium}</a>
-						</c:if>
+						<a href="detail?no=${NormGameDTO.no}" class="game_stadium">${NormGameDTO.stadium}
+						<c:if test="${NormGameDTO.writer == logId}"> (개설)</c:if>
+						</a>
 						<!-- 경기 조건 -->
 						<div class="game_conditions">
 							<!-- 성별 유형 -->
@@ -118,7 +115,7 @@
 				<!-- 경기 신청 가능 상태 -->
 				<c:choose>
 					<c:when test="${isClose || (NormGameDTO.curr_people >= NormGameDTO.max_people)}">
-		            	<div class="game-status close"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">신청마감</a></div>
+		            	<div class="game-status close"><a href="detail?no=${NormGameDTO.no}" class="game_stadium3">신청마감</a></div>
 		         	</c:when>
 		         	<c:when test="${isImminent}">
 		            	<div class="game-status imminent"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">마감임박</a></div>

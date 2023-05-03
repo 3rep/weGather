@@ -129,7 +129,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:choose>
-								<c:when test="${normGameDetail.curr_people >= normkGameDetail.max_people}">
+								<c:when test="${normGameDetail.curr_people >= normGameDetail.max_people}">
 	            					<button class="btn_apply_norm close">인원마감</button>
 								</c:when>
 	         					<c:otherwise>
