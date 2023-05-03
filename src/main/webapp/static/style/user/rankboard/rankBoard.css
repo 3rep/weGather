@@ -26,7 +26,7 @@
 		/* 페이지네이션 */
 		.pagination-container{margin-top:13px;}
 		.pagination-container ul {list-style:none;display:flex;justify-content:center;align-items:center;}
-		.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;}
+		.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;cursor:pointer;}
 		.pagination li.active {background-color:gray;border-color:#F8F9FB;}
 		.pagination li:hover {background-color:#F8F9FB;}
 		.pagination li a {color:black;}
