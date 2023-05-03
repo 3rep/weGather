@@ -36,11 +36,6 @@ public class RegisterController {
 	@Autowired
 	MypageService mypageservice;
 	
-	//로그인 선택창
-	@GetMapping("/loginChoose")
-	public String loginChoose() {
-		return "user/register/loginChoose";	
-	}
 	
 	//로그인폼
 	@GetMapping("/login")
@@ -109,7 +104,7 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//로그인한 경우 화면
+	//로그인한 경우 로고 누를떄 뜨는 메인화면
 	@GetMapping("/userHome")
 	public ModelAndView userHome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();

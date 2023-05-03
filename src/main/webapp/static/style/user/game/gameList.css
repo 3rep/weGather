@@ -151,9 +151,10 @@
 
 .game-status.close { /* 경기 상태 - 마감 */
 	font-weight: var(--weight-bold);
-	border: 1px solid var(--color-dark-gray);
-	color: var(--color-dark-gray);
+	/* border: 1px solid darkgray; */
+	color: #949494;
 	font-size: 18px;
+	background: #E6E6E6;
 }
 
 .game-status.imminent { /* 경기 상태 - 마감임박 */
@@ -189,5 +190,5 @@
 }
 
 .game_stadium3:hover, .game_stadium3:visited, .game_stadium3:link {
-	color: var(--color-dark-gray);
+	color: #949494;
 }

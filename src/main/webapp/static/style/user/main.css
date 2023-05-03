@@ -139,7 +139,7 @@
 
 /* 첫번째div : 로그인, 회원가입창 */
 .main-container #cloudy{
-    background-color: rgba(0, 0, 0, 32%); /*검정색 투명도30%*/
+    background-color: rgba(0, 0, 0, 15%); /*검정색 투명도30%*/
     z-index: 1;
     position: absolute;
     display: flex;
