@@ -12,4 +12,10 @@
  		insert into n_participate(p_no, userid, no, payment_no)
  		values(normpart_sq.nextval, #{userid}, ${no}, #{payment_no})
  	</insert>
+ 	
+ 	<select id="userRankOfSport" resultType="int">
+		select floor(avg(rank)) from r_participate p
+		inner join rank_game r on p.no=r.no
+		where userid=#{userid} and s_no=${s_no}
+	</select>
 </mapper>
