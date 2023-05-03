@@ -19,15 +19,11 @@
      FROM rank_game 
      JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
      WHERE rank_game.managerid = #{managerid}
-     And rank_game.gametime <![CDATA[<]]> sysdate
+     And rank_game.gametime <![CDATA[>]]> sysdate
     
 </select>
 
-<delete id="deleteRankGame">
-    DELETE FROM rank_game
-    WHERE managerid = #{managerid}
-    AND no= ${no} 
-</delete>
+
 
 <select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
 	<![CDATA[	 
@@ -71,7 +67,9 @@
     from rank_game
     join stadium_info on stadium_info.st_no = rank_game.st_no 
     WHERE rank_game.managerid = #{managerid}
- 	order by rank_game.no desc				
+    And rank_game.gametime <![CDATA[>]]> sysdate
+ 	order by rank_game.no desc		
+ 	
  			
  			 ) <![CDATA[
  				 where rownum<=${onePageRecord*nowPage} order by no asc 
@@ -114,6 +112,20 @@
         	And rg.gametime <![CDATA[<]]> sysdate
     </select>
 	
+	
+<delete id="deleteMSettlement">
+    DELETE FROM m_settlement
+    WHERE managerid = #{managerid} 
+    AND no = ${no}
+</delete>
+	
+<update id="updateRankGame">
+    UPDATE rank_game
+    SET managerid = null
+    WHERE managerid = #{managerid}
+    AND no = ${no}
+</update>
+  	
 	
 	
 	

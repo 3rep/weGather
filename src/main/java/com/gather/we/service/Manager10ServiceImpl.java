@@ -79,30 +79,11 @@ public class Manager10ServiceImpl implements Manager10Service {
 	}
 
 
-
-
-
-	
-
-
-
-
-
 	@Override
 	public List<Manager10DTO> pageSelect(ManagerPagingVO vo) {
 		
 		return dao.pageSelect(vo);
 	}
-
-
-
-
-
-	
-
-
-
-
 
 	@Override
 	public int getTotalRecordByManagerid(String managerid) {
@@ -123,12 +104,18 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public void deleteRankGame(String managerid, Integer no) {
+	public void updateRankGame(String managerid, Integer no) {
 		
-		 dao.deleteRankGame(managerid, no);
+		 dao.updateRankGame(managerid, no);
 		
 	}
 
+	@Override
+	public void deleteMSettlement(String managerid, Integer no) {
+		dao.deleteMSettlement(managerid, no);
+		
+	}
+	
 
 	@Override
 	public void updateRank(String userid, int rank, Integer no) {
@@ -146,6 +133,12 @@ public class Manager10ServiceImpl implements Manager10Service {
 		
 		return dao.getAllManagerInputByManagerid(rank, no);
 	}
+
+
+
+
+
+	
 
 
 

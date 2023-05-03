@@ -118,9 +118,9 @@ public class ManagerPageController{
 		    System.out.println("mav: "+ mav);
 		    return mav;
 		}
-	@PostMapping("/manager10")
+/*	@PostMapping("/manager10")
 	@ResponseBody
-	public ResponseEntity<String> deleteRankGame(@RequestBody Manager10DTO manager) {
+	public ResponseEntity<String> deleteRankGame(@RequestBody List<Manager10DTO> managerList) {
 	    try {
 	        if (manager.getManagerid() == null) {
 	            return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
@@ -132,9 +132,31 @@ public class ManagerPageController{
 	        // Exception 처리
 	    }
 	    return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
-	}
+	}*/
 	
-	 
+	@PostMapping("/manager10")
+	@ResponseBody
+	public ResponseEntity<String> updateRankGame(@RequestBody List<Manager10DTO> managerList) {		    
+	    try {
+	        for (Manager10DTO manager : managerList) {
+	            Integer no = Integer.valueOf(manager.getNo());
+	            String managerid = manager.getManagerid();
+	            if (managerid != null && no != null) {
+	                // rank_game 테이블에서 managerid를 null로 업데이트
+	            	service.deleteMSettlement(managerid, no);
+	            	service.updateRankGame(managerid, no);
+	                // m_settlement 테이블에서 해당 정보 삭제
+	                System.out.println("managerid=" + managerid + ", no=" + no);
+	            }
+	        }
+	        return new ResponseEntity<String>("ok", HttpStatus.OK);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println("manager delete fail");
+	        return new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
+		
 	
 //	fileDelete(path, dto.getFilename());
 	

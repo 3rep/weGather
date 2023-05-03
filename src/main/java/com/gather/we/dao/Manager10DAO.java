@@ -35,7 +35,11 @@ public interface Manager10DAO {
 	
 	 public void updateRank(@Param("userid") String userid, @Param("rank") int rank, @Param("no") Integer no);
 	 
-	 public void deleteRankGame(String managerid, Integer no);
+	 public void deleteMSettlement(@Param("managerid") String managerid, @Param("no") Integer no);
+	 
+	 public void updateRankGame(@Param("managerid") String managerid, @Param("no") Integer no);
+	 
+	 
 	 
 	
 	
