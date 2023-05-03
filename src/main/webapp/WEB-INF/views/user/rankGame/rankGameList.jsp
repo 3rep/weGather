@@ -10,7 +10,7 @@
 <div class="game_nav">종목선택 > <b>경기목록</b> > 경기상세정보</div>
 <div class="game_container">
 	<h4 class="game_notice">※ 랭크경기 참여 신청은 경기 일정의 이틀 전까지 가능합니다.</h4>
-	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 참여 신청 마감일은 2023-04-22 23:59입니다.</div>
+	<div class="game_notice_ex">예) 2023-04-25 17:00 경기의 참여 신청 마감일은 2023-04-23 17:00입니다.</div>
 	<!-- 필터 -->
 	<form method="get" action="rankgamelist" id="filterForm">
 		<input type="hidden" name="s_no" value="${s_no}"/>
@@ -101,7 +101,15 @@
 					</span>
 					<div class="game_info">
 						<!-- 구장 이름 -->
-						<a href="detail?no=${RankGameDTO.no}" class="game_stadium">${RankGameDTO.stadium}</a>
+						<c:choose>
+							<c:when test="${isClose}">
+								<span class="game_stadium">${RankGameDTO.stadium}</span>
+							</c:when>
+							<c:otherwise>
+								<a href="detail?no=${RankGameDTO.no}" class="game_stadium">${RankGameDTO.stadium}</a>
+							</c:otherwise>
+						</c:choose>
+						
 						<!-- 경기 조건 -->
 						<div class="game_conditions">
 							<!-- 성별 유형 -->
@@ -151,7 +159,7 @@
 				<!-- 경기 신청 가능 상태 -->
 				<c:choose>
 					<c:when test="${isClose || (RankGameDTO.curr_people >= RankGameDTO.max_people)}">
-		            	<div class="game-status close"><a href="detail?no=${RankGameDTO.no}" class="game_stadium3">신청마감</a></div>
+		            	<div class="game-status close"><span>신청마감</span></div>
 		         	</c:when>
 		         	<c:when test="${isImminent}">
 		            	<div class="game-status imminent"><a href="detail?no=${RankGameDTO.no}" class="game_stadium2">마감임박</a></div>

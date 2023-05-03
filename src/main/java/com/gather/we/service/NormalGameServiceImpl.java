@@ -66,5 +66,10 @@ public class NormalGameServiceImpl implements NormalGameService {
 	public int totalRecord() {
 		return dao.totalRecord();
 	}
+
+	@Override
+	public int normGameDetailUpdate(NormGameDetailDTO dto) {
+		return dao.normGameDetailUpdate(dto);
+	}
   
 }
