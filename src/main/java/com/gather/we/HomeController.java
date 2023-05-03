@@ -12,5 +12,9 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
-	
+	//메인test
+	@GetMapping("/home22")
+	public String loginChoose() {
+		return "/home22";	
+	}
 }

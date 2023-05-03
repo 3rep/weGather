@@ -7,6 +7,23 @@
 		$("#SelectedDate").on("change",function(e){
 			$("#aplSelectFrm").submit();
 		});
+		
+		//신청취소 클릭시 이벤트
+		/* $("#cancel").click(function(){
+			event.preventDefault();
+			
+			var answer;
+			answer = confirm("경기신청을 취소하시겠습니까?")
+			if(answer == true){
+				location.href = "#";
+				return true;
+			}else{
+				return false;
+			}
+		}); */
+		
+		
+		
 	});
 	</script>
 	<!-- 오른쪽 내용칸 -->
@@ -80,7 +97,8 @@
 						        </c:if>
 						        <c:if test="${list.g_status==0 }">	<!-- list.g_status==0 && list.gt2ago>now -->
 						        	<td class="aplLink">
-						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
+						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료</a><br/>
+						        		<a href="/mypage/cancel?no=${list.no}" onclick="return confirm('신청경기를 취소하시겠습니까?');">경기취소</a>
 						        	</td>
 						        </c:if>
 						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
@@ -98,7 +116,9 @@
 						        </c:if>
 						        <c:if test="${list.g_status==1}">	<!-- && list.gt1ago>now -->
 						        	<td class="aplLink">
-						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
+						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료</a><br/>
+						        		<a href="/mypage/cancel?no=${list.no}" onclick="return confirm('신청경기를 취소하시겠습니까?');">경기취소</a>
+						        		<!-- <input type="button" value="경기취소" id="cancel"/> -->
 						        	</td>
 						        </c:if>
 						        <c:if test="${list.g_status==2 && list.gametime>=now }">	
@@ -124,9 +144,9 @@
 			<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
 				<c:if test="${pageNum<=vo.totalPage}">
 					<li>
-					<c:if test="${vo.nowPage==pageNum }"><b></c:if>
+					<c:if test="${vo.nowPage==pageNum }"></c:if>
 					<a href="applyList?nowPage=${pageNum}">${pageNum}</a>
-					<c:if test="${vo.nowPage==pageNum }"></b></c:if>
+					<c:if test="${vo.nowPage==pageNum }"></c:if>
 					</li>
 				</c:if>
 			</c:forEach>

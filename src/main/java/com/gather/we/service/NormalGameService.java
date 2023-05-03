@@ -16,6 +16,8 @@ public interface NormalGameService {
 	public List<NormGameDetailDTO> normGameDetailAllSelect();
 	// 일반경기 등록 (DB)
 	public int normGameInsert(NormGameDTO dto);
+	// 일반경기 수정 (DB)
+	public int normGameDetailUpdate(NormGameDetailDTO dto);
 	// 미개설 일반경기 정보 불러오기
 	public List<NormGameDetailDTO> newNormGameList(int st_no);
 	// 일반경기 사용자 개설 (DB)

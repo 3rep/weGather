@@ -149,8 +149,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 200px;
-	height: 200px;
+	width: 240px;
+	height: 240px;
 	background-color: var(--color-white);
 	border-radius: 12px;
 	margin-bottom: 40px;
