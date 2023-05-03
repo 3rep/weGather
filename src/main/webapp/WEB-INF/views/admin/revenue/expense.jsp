@@ -16,7 +16,7 @@
 			</tr>
 			<c:forEach var="m_settlement" items="${expense}" varStatus="status">
 				<tr>
-					<td>${status.index+1}</td>
+					<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
 					<td><fmt:formatNumber value="${m_settlement.amount}" maxFractionDigits="3"/>원</td>
 					<td>매니저 수당</td>
 					<td>${m_settlement.m_name} 매니저 [지급계좌: ${m_settlement.m_account}]</td>

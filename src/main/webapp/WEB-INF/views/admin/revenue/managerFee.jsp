@@ -31,7 +31,7 @@
 			</tr>
 			<c:forEach var="m_settlement" items="${managerFee}" varStatus="status">
 				<tr>
-					<td>${status.index+1}</td>
+					<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
 					<td><fmt:formatNumber value="${m_settlement.amount}" maxFractionDigits="3"/>원</td>
 					<td>${m_settlement.no}</td>
 					<td>${m_settlement.managerid}</td>

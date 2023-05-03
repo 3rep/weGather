@@ -10,20 +10,20 @@
 	<select id="revenue" resultType="com.gather.we.dto.UserPayDTO">
  		select * from
  			(select * from
- 				(select to_number(substr(payment_no, 6)) no, payment_no, payer_name, paid_amount, paid_at, success from user_pay)
+ 				(select payment_no, payer_name, paid_amount, paid_at, success from user_pay order by payment_no desc)
  				<![CDATA[
-		    	where rownum<=${nowPage*onePageRecord} order by no asc
+		    	where rownum<=${nowPage*onePageRecord} order by payment_no asc
 		    	]]>
 	    		)
 	    		<choose>
 	    		<when test="nowPage!=totalPage">
 	    	<![CDATA[
-	    	where rownum<=${onePageRecord} order by no desc
+	    	where rownum<=${onePageRecord} order by payment_no desc
 	    	]]>
 	    	</when>
 	    	<when test="nowPage==totalPage">
 	    	<![CDATA[
-	    	where rownum<=${lastPageRecord} order by no desc
+	    	where rownum<=${lastPageRecord} order by payment_no desc
 	    	]]>
 	    	</when>
 	    	</choose>
@@ -38,7 +38,7 @@
 		 		(select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account
 		 		from m_settlement s
 		 		join manager m on s.managerid=m.managerid
-		 		where d_status=1)
+		 		where d_status=1 order by s.no desc)
 		 		<![CDATA[
 		    	where rownum<=${nowPage*onePageRecord} order by no asc
 		    	]]>
@@ -68,7 +68,7 @@
 		 	(select * from	
 		 		(select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account 
 		 		from m_settlement s
-		 		join manager m on s.managerid=m.managerid)
+		 		join manager m on s.managerid=m.managerid order by s.no desc)
 		 		<![CDATA[
 		    	where rownum<=${nowPage*onePageRecord} order by no asc
 		    	]]>
