@@ -208,7 +208,7 @@ public class ManagerPageController{
 		    mav.addObject("vo", vo);
 		    mav.setViewName("/manager/managerPast");
 	    return mav;
-	}
+		}
 
 		
 	/*	 @GetMapping("/managerInput")
