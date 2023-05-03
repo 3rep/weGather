@@ -34,8 +34,15 @@
 <link rel="stylesheet" href="${path}/static/style/user/game/gameList.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameDetail.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/game/gameNew.css" type="text/css" />
+
 <link rel="stylesheet" href="${path}/static/style/user/payment/payment.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/user/payment/paymentDone.css" type="text/css" />
+
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendCommon.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendMbti.css" type="text/css" />
+<link rel="stylesheet" href="${path}/static/style/user/recommend/recommendUserInfo.css" type="text/css" />
+
+
 
 
 </head>
@@ -54,7 +61,7 @@
 	    		
 	        		<c:if test="${logStatus!='Y' }">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="${path}/">로그인 | 회원가입</a>
+		          			<a class="nav-link" href="${path}/loginChoose">로그인 · 회원가입</a>
 		        		</li>
 		        	</c:if>
 		        			
@@ -123,7 +130,7 @@
 	          			<a class="nav-link" href="${path}/rankBoard">랭크보드</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="#">취미추천</a>
+	          			<a class="nav-link" href="${path}/recommend/mbti">스포츠추천</a>
 	        		</li>
 	        		<!-- <li class="nav-item">
 	          			<a class="nav-link" href="#">마이페이지</a>

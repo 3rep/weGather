@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -115,45 +116,59 @@ public class ManagerPageController{
 		    mav.setViewName("/manager/manager10");
 		    return mav;
 		}
-	
-	
-
-	@DeleteMapping("/manager10")
+	@PostMapping("/manager10")
 	@ResponseBody
-	public  ResponseEntity<String> deleteRankGame(@RequestParam("_method") String method, @RequestParam("managerid") String managerid) {
-		System.out.println("managerid의 값은 " + managerid + "입니다.");
-		if (!method.equals("DELETE")) {
-	        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Invalid method");
-		}
-		try {
-	        service.deleteRankGame(managerid);
-	        System.out.println("Deleted manager with ID: " + managerid);
-	        return ResponseEntity.ok("ok");
+	public ResponseEntity<String> deleteRankGame(@RequestBody Manager10DTO manager10) {
+	    try {
+	        if (manager10.getManagerid() == null) {
+	            return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+	        }
+	        service.deleteRankGame(manager10.getManagerid(), manager10.getP_no());
+	        return new ResponseEntity<String>("ok", HttpStatus.OK);
 	    } catch (Exception e) {
 	        System.out.println(e.getMessage());
 	        // Exception 처리
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-	    // 삭제 후 리다이렉트
+	    }
+	    return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 	}
-	//	 return new  ResponseEntity<String>("success", HttpStatus.OK);
-		}
-//	@PostMapping("/manager10")
+//	fileDelete(path, dto.getFilename());
+	
+	// DB에 저장된 레코드 삭제
+//	sportService.sportDelete(dto.getS_no());	
+	
+
+//	@DeleteMapping("/manager10")
 //	@ResponseBody
-//	public ResponseEntity<String> deleteManager(@RequestBody List<Manager10DTO> manager10List) {
-//		    try {
-//	        for (Manager10DTO manager10 : manager10List) {
-//	 //           if((manager10.getManagerid() == null || manager10.getManagerid().isEmpty())){
-	    //            manager10.setManagerid(""); //초기화
-	    //        }
-//	            service.deleteRankGame(manager10.getManagerid());
-//	            System.out.println("manager10"+manager10);
-//	        }
+//	public ResponseEntity<String> deleteRankGame(@PathVariable String managerid) {
+//	    try {
+//	        service.deleteRankGame(managerid);
+//	        System.out.println("Deleted manager with ID: " + managerid);
+//	        return ResponseEntity.ok("ok");
 //	    } catch (Exception e) {
-//	        System.out.println(e.getMessage());
-//	        // Exception 처리
+////	        System.out.println(e.getMessage());
+//	        e.printStackTrace();
+//	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 //	    }
-//	    return new ResponseEntity<String>("ok", HttpStatus.OK);
 //	}
+	
+	
+/*	@PostMapping("/manager10")
+	@ResponseBody
+	public ResponseEntity<String> deleteRankGame(@RequestBody List<Manager10DTO> manager10List) {
+		    try {
+	        for (Manager10DTO manager10 : manager10List) {
+	            if((manager10.getManagerid() == null || manager10.getManagerid().isEmpty())){
+	                manager10.setManagerid(""); //초기화
+	            }
+	            service.deleteRankGame(manager10.getManagerid());
+	            System.out.println("manager10"+manager10);
+	        }
+	    } catch (Exception e) {
+	        System.out.println(e.getMessage());
+	        // Exception 처리
+	    }
+	    return new ResponseEntity<String>("ok", HttpStatus.OK);
+	}*/
 	
 	
 		@GetMapping("/managerPast")
@@ -171,7 +186,7 @@ public class ManagerPageController{
 		
 		 @GetMapping("/managerInput")
 		 public ModelAndView managerInputManager2(@RequestParam(value = "rank", required = false) String rank,
-				 								 @RequestParam(value = "p_no", required = false) Integer p_no,
+				 								 @RequestParam(value = "p_no", required = false) Integer  p_no,
 				 								 HttpSession session) {
 		     ModelAndView mav = new ModelAndView();
 		     String managerid = String.valueOf(session.getAttribute("logId"));
@@ -203,11 +218,23 @@ public class ManagerPageController{
 		
 		 
 		 @GetMapping("/entry")
-		 public ModelAndView EntryManager2() {
-			    ModelAndView mav = new ModelAndView();
-			    List<Manager10DTO> entryList = service.getAllEntry();
-			    mav.addObject("entryList", entryList);
-			    mav.setViewName("/manager/entry");
-			    return mav;
-			}
-}
+		 public ModelAndView getAllEntry(@RequestParam(name = "p_no", defaultValue = "0") Integer p_no) {
+		     ModelAndView mav = new ModelAndView();
+
+		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
+		     List<Manager10DTO> managerList = service.getAllEntry(p_no);
+		     System.out.println("managerList" + managerList);
+		     
+		     if (managerList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
+		         mav.addObject("error", "데이터가 없습니다.");
+		     } else { // 조회된 데이터가 있는 경우
+		         mav.addObject("managerList", managerList);
+		     }
+		     
+		     mav.addObject("managerList", managerList);
+		     mav.addObject("p_no", p_no);
+		     mav.setViewName("/manager/entry");
+
+		     return mav;
+		 }
+		 }

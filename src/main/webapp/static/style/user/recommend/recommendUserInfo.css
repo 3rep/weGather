@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+#recommend_nav .recommend_user_info {
+	display: none;
+	justify-content: space-between;
+	width: 1000px;
+	font-size: var(--font-micro);
+	font-weight: var(--weight-bold);
+	color: var(--color-black);
+	background-color: var(--color-board-blue);
+	border-radius: 12px;
+	margin: 0 auto;
+	line-height: 40px;
+	padding: 12px 0;
+}
+
+#recommend_nav .user_info_result {	
+	width: 600px;
+	display: flex;
+	margin: 0 auto;
+	line-height: 30px;
+	margin-top: 4px;
+}
+
+#recommend_nav .user_age {
+	width: 300px;
+	border-right: 1px solid var(--color-gray);
+	padding: 0 20px;
+	margin: 0;
+}
+
+#recommend_nav .user_gender {
+	width: 300px;
+	padding: 0 20px;
+	margin: 0;
+}
+
+#recommend_nav .category {	
+	font-size: var(--font-small);
+	margin-bottom: 4px;
+}
+
+#recommend_nav .sportname {	
+	color: var(--color-white);
+	background-color: var(--color-lightest-blue);
+	border-radius: 20px;
+	padding: 2px 10px;
+	margin-right: 8px;
+}
+
+#recommend_nav .recommend_user_info.login.active {
+	display: block;
+}
+
+#recommend_nav .recommend_user_info.non_login.active {
+	display: block;
+}
+
+#recommend_container .recommend_content_user_info {
+	width: 1000px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-board-blue);
+	border-radius: 12px;
+	border: 1px solid var(--color-gray);
+	padding: 40px 0;
+	margin: 0 auto;
+}
+
+#recommend_container .gender_result {
+	display: flex;
+}
+
+#recommend_container #mChart,
+#recommend_container #wChart {
+	padding: 40px;
+}
+
+#recommend_container .age_result {
+	width: 900px;
+	height: 500px;
+	margin-top: 50px;
+	margin-bottom: 60px;
+}

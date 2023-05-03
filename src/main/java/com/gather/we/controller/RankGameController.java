@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gather.we.dto.RParticipateDTO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
@@ -66,8 +68,7 @@ public class RankGameController {
 	}
 	
 	// 랭크경기 상세페이지
-	@GetMapping("/detail")
-	public ModelAndView rankGameDetail(HttpSession session, int no) {
+	public ModelAndView rankGameDetail(@RequestParam("no") int no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String) session.getAttribute("logId");
 		int isPart;
@@ -79,11 +80,23 @@ public class RankGameController {
 			isPart = participateService.isRankParticipate(logId, no);
 		}
 		
+		String userid = logId;
+		
 		// DB에서 랭크경기 상세 정보 가져오기
 		RankGameDetailDTO rankGameDetail = rankGameService.rankGameDetailSelect(no);
-
+		
+		Integer userRank = null;
+		if(userid!=null) {
+			// 해당 종목의 사용자 랭크 가져오기
+			userRank = participateService.userRankOfSport(userid, rankGameDetail.getS_no());
+			if(userRank==null) {
+				userRank = 0;
+			}
+		}
+		
 		mav.addObject("rankGameDetail", rankGameDetail);
-		mav.addObject("isPart", isPart);
+		mav.addObject("userRank", userRank);
+    mav.addObject("isPart", isPart);
 		mav.setViewName("user/rankGame/rankGameDetail");
 		
 		return mav;

@@ -4,11 +4,10 @@
 	<script>
 	$(function(){
 		//웹에서 날짜 선택시 자동 제출	
-		$("#aplSelect").on("change",function(){
-			$("#aplSelect").submit();
+		$("#SelectedDate").on("change",function(e){
+			$("#aplSelectFrm").submit();
 		});
 	});
-	
 	</script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
@@ -18,9 +17,9 @@
 			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전 체</button>
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
-			<!-- 날짜 필터링 : 달력에서 클릭한 값이 DB로 들어감 = DTO에 들어감 : gametime과 비교하는 쿼리문 쓰면 됨 -->
-			<form id="aplSelect" method="post" action="applyList">
-				<input type="date" name="aplSelectedDate" class="aplDate" value="" />
+			<!-- 날짜 필터링-->
+			<form id="aplSelectFrm" method="get" action="applyList">
+				<input type="date" name="SelectedDate" id="SelectedDate" value="" />
 			</form>
 		</div>
 		
@@ -54,14 +53,21 @@
 				        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.gametime }"/></td>
 				        <td>${list.stadium }</td> 
 				       
-				        <!--g_status : 2(취소)/1(확정)/0(대기) 
-						경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
-						신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
-						경기확정 : g_status=1
-						경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 -->
-						
-						<!-- 신청완료, 신청취소, 경기확정은 : 경기상세정보로 페이지 이동!! -->
+				        <!--g_status에 따라 경기상태 변경
 				        
+				        랭크경기 : 2(취소)/1(확정)/0(대기) 
+							경기취소 = 랭크경기에서 인원이 안차서 취소될떄 : g_status=2 
+							신청완료, 신청취소 : gametime 이틀전까지 + g_status=0 
+							경기확정 : g_status=1 + gametime이 현재날짜를 지나지 않은 경우
+							경기종료 : g_status=1 + gametime이 현재날짜를 지난경우 
+						
+						일반경기 : 3(취소)/2(확정)/1(개설 및 대기)/0(미개설)
+							경기취소 : g_status=3
+							신청완료, 신청취소 : g_status=1 + gametime 하루전(gt1ago >= now)  < 하루전 안먹어.. 
+							경기확정 : g_status = 2 + gametime >=now  
+							경기종료 : g_status= 2+ gametime < now
+						-->
+						
 				        <!-- 신청완료(취소), 경기확정의 경우 경기세부정보페이지로 이동링크 건다. 
 				        		랭크경기, 일반경깅 구분해서 링크달아야해  -->
 					<c:choose>
@@ -90,12 +96,12 @@
 						        <c:if test="${list.g_status==2 && list.gametime<now }">	
 						        	<td class="aplStatus">경기종료
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gt1ago>now }">	
+						        <c:if test="${list.g_status==1 }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 						        	</td>
 						        </c:if>
-						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+						        <c:if test="${list.g_status==2 && list.gametime>=now }">	
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
 						        	</td>

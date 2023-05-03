@@ -17,15 +17,22 @@ public class PagingVO {
 	private String managerid;
 	private String adminid;
 	
+	 
+	
 	// 검색에 필요한 변수들
 	private String searchKey;
 	private String searchWord;
+	private String SelectedDate; //마이페이지 날짜필터 변수
+	
+	
 	
 	@Override
 	public String toString() {
 		return "PagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord=" + totalRecord
 				+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", onePageNumCount="
-				+ onePageNumCount + ", startPageNum=" + startPageNum + ", searchKey=" + searchKey + ", searchWord=" + searchWord + "]";
+				+ onePageNumCount + ", startPageNum=" + startPageNum + ", userid=" + userid + ", username=" + username
+				+ ", managerid=" + managerid + ", adminid=" + adminid + ", searchKey=" + searchKey + ", searchWord="
+				+ searchWord + ", SelectedDate=" + SelectedDate + "]";
 	}
 	public int getNowPage() {
 		return nowPage;
@@ -122,4 +129,12 @@ public class PagingVO {
 	public void setAdminid(String adminid) {
 		this.adminid = adminid;
 	}
+	
+	public String getSelectedDate() {
+		return SelectedDate;
+	}
+	public void setSelectedDate(String selectedDate) {
+		SelectedDate = selectedDate;
+	}
+	
 }
