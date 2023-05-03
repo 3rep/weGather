@@ -15,7 +15,7 @@
     <!-- Google api -->
     <link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" /> 
     <!-- 18행 src안의 key= 뒤에 구글맵 key값 입력하시면 됩니다! -->
-	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQMNqbPbdbF5WTC6z-bdBcWxEMSmWTW9k"></script>
+	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
     <!-- //Google api -->
 </head>
 <body>
