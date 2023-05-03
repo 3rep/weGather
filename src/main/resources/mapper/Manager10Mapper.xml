@@ -23,10 +23,20 @@
     
 </select>
 
+<select id="getTotalRecordByManagerid10" resultType="int">
+    
+     SELECT COUNT(rank_game.st_no)  
+     FROM rank_game 
+     JOIN stadium_info ON stadium_info.st_no = rank_game.st_no 
+     WHERE rank_game.managerid = #{managerid}
+     And rank_game.gametime <![CDATA[<]]> sysdate
+    
+</select>
+
 
 
 <select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
-	<![CDATA[	 
+		 
 	 select * from 
  			(select * from 
  				( 
@@ -34,26 +44,28 @@
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.managerid = #{managerid} 
-		WHERE rank_game.gametime-16 < sysdate and sysdate < rank_game.gametime
-				 
-				 ) 
- 				 where rownum<=${onePageRecord*nowPage} order by st_no asc 
- 				
+	<!--  	AND rank_game.no = ${no}-->
+		AND rank_game.gametime <![CDATA[<]]> sysdate
+				
+		order by rank_game.no desc
+				 ) <![CDATA[ 
+ 				 WHERE rownum<=${onePageRecord*nowPage} order by st_no asc 
+ 				]]>
  				 )
  		<choose>
 		  <when test="nowPage!=totalPage"> 		
- 	   		 	
+ 	   		 	<![CDATA[ 
  			 	where rownum<=${onePageRecord} order by st_no desc
- 			 	
+ 			 	]]>
  		 
  		  </when>
  		  <when test="nowPage==totalPage">	
- 			   
+ 			   <![CDATA[ 
  		 		where rownum<=${onePageRecord} order by st_no desc
- 		 		
+ 		 		]]>
  	  	  </when>
  		</choose>  
-		]]>
+		
 	</select>
 
 
@@ -108,7 +120,7 @@
        	 FROM r_participate rp
         	INNER JOIN users u ON rp.userid = u.userid
         	INNER JOIN rank_game rg ON rp.no = rg.no
-        WHERE rp.no = ${no}
+        WHERE rg.managerid = #{managerid}
         	And rg.gametime <![CDATA[<]]> sysdate
     </select>
 	

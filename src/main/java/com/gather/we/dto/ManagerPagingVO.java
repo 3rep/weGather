@@ -18,6 +18,7 @@ public class ManagerPagingVO {
 	private int onePageNumCount=10;
 	private String managerid;
 	//
+	private Integer no;
 	//검색에 필요한 변수들
 	
 	//private String rank_game;
@@ -35,12 +36,17 @@ public class ManagerPagingVO {
 	}
 
 
+
+
 @Override
 	public String toString() {
 		return "ManagerPagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord="
 				+ totalRecord + ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", startPageNum="
-				+ startPageNum + ", onePageNumCount=" + onePageNumCount + ", managerid=" + managerid + "]";
+				+ startPageNum + ", onePageNumCount=" + onePageNumCount + ", managerid=" + managerid + ", no=" + no
+				+ "]";
 	}
+
+
 
 
 public void setNowPage(int nowPage) {
@@ -115,6 +121,16 @@ public String getManagerid() {
 
 public void setManagerid(String managerid) {
 	this.managerid = managerid;
+}
+
+
+public Integer getNo() {
+	return no;
+}
+
+
+public void setNo(Integer no) {
+	this.no = no;
 }
 
 
