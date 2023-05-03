@@ -38,7 +38,7 @@
     border: none;
     border-radius: 10px;
     font-size: 19px;
-    background: rgba(70, 90, 126, 0.4);
+    background: #EBF0FD;
 }
 #log_password{
 	width:300px;
@@ -50,7 +50,7 @@
     border-radius: 10px;
     margin-left: -100px;
     font-size: 19px;
-    background: rgba(70, 90, 126, 0.4);
+    background: #EBF0FD;
 }
 #log_LOGIN{
 	float: left;

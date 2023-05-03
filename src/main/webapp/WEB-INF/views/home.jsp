@@ -19,7 +19,7 @@
 	<div id="container" class="main-container"> <!-- css우선순위: id가 css보다 우선적용 -->
 		<!-- <div class="rank-visual" > -->
 		
-		<img class="img" src="static/img/imgMain/football.jpg" alt="football"/> 
+		<img class="img" src="static/img/imgMain/tennis2.jpg" alt="football"/> 
 		
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->

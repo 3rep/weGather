@@ -7,8 +7,9 @@
 
 .game_new_wrap.left .sport_img {
 	width: 100%;
-   	margin-bottom: 30px;
-}
+  margin-bottom: 30px;
+	border-radius: 40px;
+} 
 
 .game_new_wrap.left .norm_game_new_select li{
 	font-size: var(--font-micro);
