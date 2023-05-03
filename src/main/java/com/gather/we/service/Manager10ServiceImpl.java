@@ -123,17 +123,17 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public void deleteRankGame(String managerid, Integer p_no) {
+	public void deleteRankGame(String managerid, Integer no) {
 		
-		 dao.deleteRankGame(managerid, p_no);
+		 dao.deleteRankGame(managerid, no);
 		
 	}
 
 
 	@Override
-	public void updateRank(String userid, int rank, Integer p_no) {
-	 System.out.println(userid + "part" + String.valueOf(rank));
-		dao.updateRank(userid, rank, p_no);
+	public void updateRank(String userid, int rank, Integer no) {
+	 System.out.println(userid + "part" + Integer.valueOf(rank));
+		dao.updateRank(userid, rank, no);
 		
 	}
 

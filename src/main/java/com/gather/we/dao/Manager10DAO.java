@@ -3,6 +3,8 @@ package com.gather.we.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.gather.we.dto.Manager10DTO;
 import com.gather.we.dto.ManagerPagingVO;
 
@@ -31,9 +33,9 @@ public interface Manager10DAO {
    	 
 	 public List<Manager10DTO> getAllManagerPast(String managerid);
 	
-	 public void updateRank(String userid, int rank, Integer p_no);
+	 public void updateRank(@Param("userid") String userid, @Param("rank") int rank, @Param("no") Integer no);
 	 
-	 public void deleteRankGame(String managerid, Integer p_no);
+	 public void deleteRankGame(String managerid, Integer no);
 	 
 	
 	

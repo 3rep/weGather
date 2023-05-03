@@ -26,7 +26,7 @@
 <delete id="deleteRankGame">
     DELETE FROM rank_game
     WHERE managerid = #{managerid}
-    AND p_no= ${p_no} 
+    AND no= ${no} 
 </delete>
 
 <select id="getAllManagerPast" resultType="com.gather.we.dto.Manager10DTO">
@@ -121,9 +121,9 @@
 	
    <update id="updateRank">
  	 UPDATE r_participate
-  	SET rank = ${param2}
-  	WHERE userid = #{param1}
-  	AND p_no= #{p_no} 
+  	SET rank = ${rank}
+  	WHERE userid = #{userid}
+  	AND no= ${no} 
 </update>
 
 	

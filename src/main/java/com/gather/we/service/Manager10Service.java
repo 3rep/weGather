@@ -5,6 +5,7 @@ package com.gather.we.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.gather.we.dto.Manager10DTO;
@@ -37,9 +38,9 @@ public interface Manager10Service {
 
 	
 
-	public void deleteRankGame(String managerid, Integer p_no);
+	public void deleteRankGame(String managerid, Integer no);
 
-	public void updateRank(String userid, int rank, Integer p_no);
+	public void updateRank(@Param("userid") String userid, @Param("rank") int rank, @Param("no") Integer no);
 
 	
 	 

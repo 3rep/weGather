@@ -26,19 +26,21 @@ public class Manager10DTO {
 	   
 	    private Integer no;
 	    
-	    
+	    private Integer P_no;
 	    
 	    
 	    
 		
 		
 	
+		
 		@Override
 		public String toString() {
 			return "Manager10DTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
 					+ ", g_status=" + g_status + ", managerid=" + managerid + ", manager=" + manager + ", id=" + id
 					+ ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
-					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", no=" + no + "]";
+					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", no=" + no + ", P_no="
+					+ P_no + "]";
 		}
 		public String getStadium() {
 			return stadium;
@@ -130,6 +132,12 @@ public class Manager10DTO {
 		}
 		public void setNo(Integer no) {
 			this.no = no;
+		}
+		public Integer getP_no() {
+			return P_no;
+		}
+		public void setP_no(Integer p_no) {
+			P_no = p_no;
 		}
 		
 		

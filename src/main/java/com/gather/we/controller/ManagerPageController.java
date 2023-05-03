@@ -120,12 +120,12 @@ public class ManagerPageController{
 		}
 	@PostMapping("/manager10")
 	@ResponseBody
-	public ResponseEntity<String> deleteRankGame(@RequestBody Manager10DTO manager10) {
+	public ResponseEntity<String> deleteRankGame(@RequestBody Manager10DTO manager) {
 	    try {
-	        if (manager10.getManagerid() == null) {
+	        if (manager.getManagerid() == null) {
 	            return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 	        }
-	        service.deleteRankGame(manager10.getManagerid(), manager10.getNo());
+	        service.deleteRankGame(manager.getManagerid(), manager.getNo());
 	        return new ResponseEntity<String>("ok", HttpStatus.OK);
 	    } catch (Exception e) {
 	        System.out.println(e.getMessage());
@@ -133,6 +133,9 @@ public class ManagerPageController{
 	    }
 	    return new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 	}
+	
+	 
+	
 //	fileDelete(path, dto.getFilename());
 	
 	// DB에 저장된 레코드 삭제
@@ -210,7 +213,7 @@ public class ManagerPageController{
 
 		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
 		     List<Manager10DTO> managerInputList = service.getAllManagerInput(no);
-		     System.out.println("managerInputList" + managerInputList);
+		 //    System.out.println("managerInputList" + managerInputList);
 		 
 		     if (managerInputList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
 		         mav.addObject("error", "데이터가 없습니다.");
@@ -231,11 +234,13 @@ public class ManagerPageController{
 		 public ResponseEntity<String> updateRank(@RequestBody List<Manager10DTO> managerInputList) {		    
 		     try {
 		         for (Manager10DTO managerInput : managerInputList) {
+		        	 Integer no = Integer.valueOf(managerInput.getNo());
 		             service.updateRank(managerInput.getUserid(), managerInput.getRank(), managerInput.getNo());
 		         }
+		         return new ResponseEntity<String>("ok", HttpStatus.OK);
 		     }  catch (Exception e) {
-//		    	 System.out.println(e.getMessage());
-//		         System.out.println("manager rank input fail");
+		    	 e.printStackTrace();
+		    	 System.out.println("manager rank input fail");
 		     }
 		     return new ResponseEntity<String>("ok", HttpStatus.OK);
 		 }
