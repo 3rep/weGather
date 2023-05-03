@@ -56,6 +56,8 @@ public class GameScheduler {
 				// DB에 경기상태 업데이트
 				int result = service.normStatusUpdate(dto);
 				System.out.println(result);
+			}else if(dto.getG_status() == 0) {
+				dto.setG_status(3); // 경기날짜의 하루 전까지 경기 개설이 이루어지지 않아 자동 취소
 			}
 		}
 	}
