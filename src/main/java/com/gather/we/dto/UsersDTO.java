@@ -12,9 +12,9 @@ public class UsersDTO {
 	private String password;
 	private String email;
 	private String tel;
+	private int age;
 	private String address;
 	private String gender;
 	private String mbti;
-	private int rank;
 	private Date signupdate;
 }

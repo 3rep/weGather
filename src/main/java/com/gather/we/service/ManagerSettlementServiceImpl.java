@@ -26,13 +26,15 @@ public class ManagerSettlementServiceImpl implements ManagerSettlementService {
 	}
 
 	@Override
-	public int getTotalCompletedAmount(String logId){
-		return dao.selectCompletedAmount(logId);
+	public Integer getTotalCompletedAmount(String logId){
+		Integer completedAmount = dao.selectCompletedAmount(logId);
+		return completedAmount != null ? completedAmount : 0;
 	}
 
 	@Override
-	public int getTotalInprogressAmount(String logId){
-		return dao.selectInprogressAmount(logId);
+	public Integer getTotalInprogressAmount(String logId){
+		Integer inprogressAmount = dao.selectInprogressAmount(logId);
+		return inprogressAmount != null ? inprogressAmount : 0;
 	}
 
 }

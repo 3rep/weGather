@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+	<script>
+	$(function(){
+		//웹에서 날짜 선택시 자동 제출	
+		$("#SelectedDate").on("change",function(e){
+			$("#aplSelectFrm").submit();
+		});
+	});
+	</script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="applyListContent"> 
 		<h3 class="aplh3">신청경기</h3>
@@ -10,9 +17,10 @@
 			<button class="applyListBtn" id="all" onclick="location.href='applyList'">전 체</button>
 			<button class="applyListBtn" id="rank" onclick="location.href='rankList'">랭킹전</button>
 			<button class="applyListBtn" id="norm" onclick="location.href='normList'">일반전</button>	
-			<form id="aplSelect" method="get" action="applyList">
-				<input type="date" name="aplSelectedDate" class="aplDate" />
-			</form>	
+			<!-- 날짜 필터링-->
+			<form id="aplSelectFrm" method="get" action="normList">
+				<input type="date" name="SelectedDate" id="SelectedDate" value="" />
+			</form>
 		</div>
 			
 		<!-- 테이블 -------------------------------------------------------->
@@ -41,12 +49,12 @@
 				        <c:if test="${list.g_status==2 && list.gametime<now }">	
 				        	<td class="aplStatus">경기종료
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gt1ago>now }">	
+				        <c:if test="${list.g_status==1}">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
 				        	</td>
 				        </c:if>
-				        <c:if test="${list.g_status==1 && list.gametime>=now }">	
+				        <c:if test="${list.g_status==2 && list.gametime>=now }">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">경기확정</a>
 				        	</td>

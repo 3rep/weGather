@@ -10,6 +10,7 @@ import com.gather.we.dao.NormalGameDAO;
 import com.gather.we.dto.NormGameDTO;
 import com.gather.we.dto.NormGameDetailDTO;
 import com.gather.we.dto.NormGameListDTO;
+import com.gather.we.dto.PagingVO;
 
 @Service
 public class NormalGameServiceImpl implements NormalGameService {
@@ -54,6 +55,16 @@ public class NormalGameServiceImpl implements NormalGameService {
   @Override
 	public int currPeopleCount(int no) {
 		return dao.currPeopleCount(no);
+	}
+
+	@Override
+	public List<NormGameDetailDTO> pageSelect(PagingVO vo) {
+		return dao.pageSelect(vo);
+	}
+
+	@Override
+	public int totalRecord() {
+		return dao.totalRecord();
 	}
   
 }

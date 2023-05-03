@@ -52,7 +52,7 @@
                             
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
-                                <a href="${path}/manager/entry" class="page-link" style="display: flex; flex-direction: column;">
+                                <a href="${path}/manager/entry?no=${manager.no}" class="page-link" style="display: flex; flex-direction: column;">
                                     <button class="grey" >확정</button>
                                     <button class="blue">명단확인</button>
                                 </a>
@@ -123,7 +123,9 @@ $(document).on('click', '.red', function() {
    $(document).ready(function() {
     $('.red').click(function(e) {
         e.preventDefault(); // 버튼 클릭 시 페이지 이동을 방지
-         var manager = { "managerid": managerid, "p_no": p_no }; // 삭제할 매니저 ID와 경기 ID를 객체로 생성
+         var managerid = $(this).data('managerid'); // data-managerid 속성 값 읽어오기
+         var no = parseInt($(this).data('no')); // data-no 속성 값 읽어오기
+         var manager = { "managerid": managerid, "no": no }; // 삭제할 매니저 ID와 경기 ID를 객체로 생성
         $.ajax({
             type: "POST",
             url: "${path}/manager/manager10",

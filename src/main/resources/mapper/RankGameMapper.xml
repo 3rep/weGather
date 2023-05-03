@@ -57,4 +57,31 @@
 		inner join stadium_info st on r.st_no = st.st_no
 		order by no desc
 	</select>
+	
+	<select id="pageSelect" resultType="com.gather.we.dto.AdminRankGameDTO">
+		select * from
+				(select * from
+			    	(select s.sportname, st.stadium, r.gametime, r.no, r.g_status, r.managerid, r.usetime
+						from rank_game r, sport s, stadium_info st where r.s_no = s.s_no and r.st_no = st.st_no order by r.no desc)
+			    	<![CDATA[
+			    	where rownum<=${nowPage*onePageRecord} order by no asc
+			    	]]>
+		    		)
+		    		<choose>
+		    		<when test="nowPage!=totalPage">
+		    	<![CDATA[
+		    	where rownum<=${onePageRecord} order by no desc
+		    	]]>
+		    	</when>
+		    	<when test="nowPage==totalPage">
+		    	<![CDATA[
+		    	where rownum<=${lastPageRecord} order by no desc
+		    	]]>
+		    	</when>
+		    	</choose>
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(no) from rank_game
+	</select>
 </mapper>

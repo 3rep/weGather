@@ -15,7 +15,7 @@ public interface ManagerSettlementDAO {
 	
 	public int getTotalCount(@Param("mscriteria") MSettlementCriteria mscriteria, @Param("logId") String logId);//전체 정산내역 개수
 	
-	public int selectCompletedAmount(String logId);//정산내역-완료 합계
-
-	public int selectInprogressAmount(String logId);//정산내역-처리중 합계
+	public Integer selectCompletedAmount(String logId);//정산내역-완료 합계
+	
+	public Integer selectInprogressAmount(String logId);//정산내역-처리중 합계
 }
