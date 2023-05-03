@@ -3,11 +3,11 @@
 #recommend_nav .recommend_user_mbti {
 	display: none;
 	justify-content: space-between;
-	width: 1000px;
+	width: 1200px;
 	font-size: var(--font-micro);
 	font-weight: var(--weight-bold);
 	color: var(--color-black);
-	background-color: var(--color-board-blue);
+	/* background-color: var(--color-board-blue); */
 	border-radius: 12px;
 	margin: 0 auto;
 	line-height: 35px;
@@ -21,7 +21,8 @@
 
 #recommend_nav .recommend_user_mbti.login.active {
 	display: flex;
-	padding: 12px 100px;
+	padding: 20px 100px;
+	border: 9px solid var(--color-lighter-pink);
 }
 
 #recommend_nav .recommend_user_mbti.login li:nth-of-type(1) {
@@ -37,7 +38,7 @@
 
 #recommend_container .recommend_content_mbti {
 	display: none;
-	width: 1000px;
+	width: 1200px;
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
@@ -127,13 +128,14 @@
 
 #recommend_container .mbti_list {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	background-color: var(--color-board-blue);
-	border-radius: 12px;
-	border: 1px solid var(--color-gray);
-	padding: 40px;
-	padding-bottom: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #F9F4F4;
+    border-radius: 12px;
+    /* border: 1px solid var(--color-gray); */
+    padding: 40px;
+    padding-bottom: 0;
+    box-shadow: 0 0 15px #E4CECE;
 }
 
 #recommend_container .mbti_list .mbti_item {
@@ -150,7 +152,7 @@
 }
 
 #recommend_container .mbti_list .mbti_item.active {
-	border: 12px solid var(--color-light-pink);
+	border: 8px solid #F48A89;
 	box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
 	-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.3);
