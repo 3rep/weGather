@@ -35,6 +35,35 @@
 			}
 		})
 	}
+	
+	$(function(){
+		$(".btn_apply_norm").click(function(){
+			let genderType = "${normGameDetail.gendertype}";
+			let logGender = "${logGender}";
+			
+			if(genderType == "남녀모두") {
+				location.href='/payment?gametype=normgame&no=${normGameDetail.no}';
+			}
+			
+			if(genderType == "남자만") {
+				if(logGender == "남성") {
+					location.href='/payment?gametype=normgame&no=${normGameDetail.no}';
+				}else {
+					alert("남성만 신청할 수 있습니다.");
+					return false;
+				}
+			}
+			
+			if(genderType == "여자만") {
+				if(logGender == "여성") {
+					location.href='/payment?gametype=normgame&no=${normGameDetail.no}';
+				}else {
+					alert("여성만 신청할 수 있습니다.");
+					return false;
+				}
+			}
+		});
+	});
 </script>
 
 <div class="game_header norm_game_header">
@@ -125,15 +154,15 @@
 				<c:otherwise>
 					<c:choose>
 						<c:when test="${isPart == 1 }">
-							<button class="btn_apply_norm close">신청완료</button>
+							<button class="btn_apply_norm_close">신청완료</button>
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${normGameDetail.curr_people >= normGameDetail.max_people}">
-	            					<button class="btn_apply_norm close">인원마감</button>
+	            					<button class="btn_apply_norm_close">인원마감</button>
 								</c:when>
 	         					<c:otherwise>
-	            					<button onclick="location.href='/payment?gametype=normgame&no=${normGameDetail.no}'" class="btn_apply_norm">참가신청</button>
+	            					<button class="btn_apply_norm">참가신청</button>
 	            				</c:otherwise>
 							</c:choose>
 						</c:otherwise>

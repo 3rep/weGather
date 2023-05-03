@@ -71,8 +71,32 @@
 	$(function(){
 		$(".btn_apply_rank").click(function(){
 			const isMeet = checkReqRank();
+			let genderType = "${rankGameDetail.gendertype}";
+			let logGender = "${logGender}";
+			
 			if(isMeet){// true
-				location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'; // 결제페이지로 이동
+				if(genderType == "남녀모두") {
+					location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'; // 결제페이지로 이동
+				}
+				
+				if(genderType == "남자만") {
+					if(logGender == "남성") {
+						location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}';
+					}else {
+						alert("남성만 신청할 수 있습니다.");
+						return false;
+					}
+				}
+				
+				if(genderType == "여자만") {
+					if(logGender == "여성") {
+						location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}';
+					}else {
+						alert("여성만 신청할 수 있습니다.");
+						return false;
+					}
+				}
+				
 			} else {//false
 				const logName = '<%=(String)session.getAttribute("logName")%>';
 				alert("요구랭크를 충족하지 못했습니다. 해당 경기의 요구랭크는 '" + convertRankIntoStr(${rankGameDetail.req_rank})
@@ -80,8 +104,6 @@
 			}
 		});
 	});
-	
-
 	
 </script>
 
@@ -206,12 +228,12 @@
 				<c:otherwise>
 					<c:choose>
 						<c:when test="${isPart == 1 }">
-							<button class="btn_apply_rank close">신청완료</button>
+							<button class="btn_apply_rank_close">신청완료</button>
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${rankGameDetail.curr_people >= rankGameDetail.max_people}">
-	            					<button class="btn_apply_rank close">인원마감</button>
+	            					<button class="btn_apply_rank_close">인원마감</button>
 								</c:when>
 	         					<c:otherwise>
 	            					<button class="btn_apply_rank">참가신청</button>
