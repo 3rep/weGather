@@ -132,15 +132,15 @@
 		},
 		tierData : (id, list) => {
 			if(list[id].rank_avg >= 5) {
-				return '다이아';  
+				return '<span style="color:#3682F4;">다이아</span>';  
 			} else if(list[id].rank_avg >= 4) {
-				return '플래티넘';
+				return '<span style="color:#20D874;">플래티넘</span>';
 			} else if(list[id].rank_avg >= 3) {
-				return '골드';
+				return '<span style="color:#EC9A00;">골드</span>';
 			} else if(list[id].rank_avg >= 2) {
-				return '실버';
+				return '<span style="color:#A4A8AD;">실버</span>';
 			} else if(list[id].rank_avg >= 1) {
-				return '브론즈';
+				return '<span style="color:#AD5600;">브론즈</span>';
 			} else {
 				return '언랭크';
 			}
@@ -229,9 +229,9 @@
 						<td>${ranklist.userid }</td>
 						<td class="tc">${ranklist.sportname }</td>
 						<td class="tc">${ranklist.rank_avg }</td>
-						<td class="tc">
+					<%-- 	<td class="tc">
 							<c:choose>
-								<c:when test="${ranklist.rank_avg ge 5}">
+								<c:when  class="dia" test="${ranklist.rank_avg ge 5}">
 									다이아
 								</c:when>
 								<c:when test="${ranklist.rank_avg ge 4}">
@@ -250,7 +250,7 @@
 									언랭
 								</c:otherwise>
 							</c:choose>
-						</td>
+						</td> --%>
 					</tr>
 				</c:forEach>
 				</tbody>
