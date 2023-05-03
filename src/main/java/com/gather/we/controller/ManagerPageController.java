@@ -208,7 +208,7 @@ public class ManagerPageController{
 		 ModelAndView mav = new ModelAndView();
 		 
 	     String managerid = String.valueOf(session.getAttribute("logId"));
-	     vo.setTotalRecord(service.getTotalRecordByManagerid10(managerid));
+	     vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
 	     vo.setManagerid(managerid);
 	 //    vo.getAllManagerPast(vo, managerid, no);
 	  //   vo.pageSelect(vo);
