@@ -9,7 +9,7 @@
 		
 		/* 랭크경기 리스트 */
         .rank-wrap {display:flex;flex-direction: row; margin-left: 90px;}
-        .rank-visual {margin-right:74px;margin-left:-21px;width:410px;height:783px;overflow:hidden;}
+        .rank-visual {margin-top:0px;margin-right:74px;margin-left:-21px;width:472px;height:886px;overflow:hidden; background-size: cover; background-position: center; background-repeat: no-repeat;}
         .rank-list ul {margin:0;padding:0;}
         .rank-item {position:relative;margin-bottom:57px;padding:37px 40px 30px;width:472px;min-height:170px;background-color: #F8F9FB;border:1px solid #D1D9E2;}
         .rank-list .rank-item:last-child {margin-bottom:0;}
@@ -42,12 +42,13 @@
         #rank-map-dim .rank-map-popup {width: 50%;height: 70%;}
         
         /* 페이지네이션 */ 
-        ul.pagination {list-style:none;display:flex;justify-content:center;align-items: center;}
-		ul.pagination li {margin:0 5px; border:1px solid #ccc;padding:5px 10px;}
-		ul.pagination li.active {background-color:black;border-color:#F8F9FB;}
-		ul.pagination li:hover{background-color:#F8F9FB;}
-		ul.pagination li a {color:black;}
-		ul.pagination li.active a {color:white;}
-		ul.pagination li:hover a {color:black; font-weight:bold;text-decoration:underline;}
-	
+	  	.pagination-container{margin-top:13px;}
+		.pagination-container ul {list-style:none;display:flex;justify-content:center;align-items:center;}
+		.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;}
+		.pagination li.active {background-color:gray;border-color:#F8F9FB;}
+		.pagination li:hover {background-color:#F8F9FB;}
+		.pagination li a {color:black;}
+		.pagination li.active a {color:white;}
+		.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}	
+		
 }

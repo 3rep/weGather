@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.AdminDAO;
 import com.gather.we.dto.AdminDTO;
+import com.gather.we.dto.AdminManagerSettlementDTO;
+import com.gather.we.dto.ManagerSettlementDTO;
+import com.gather.we.dto.PagingVO;
+import com.gather.we.dto.RegisterDTO;
 import com.gather.we.dto.UserPayDTO;
 
 @Service
@@ -16,19 +20,40 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public AdminDTO loginAdminOk(String adminid, String password) {
-		// TODO Auto-generated method stub
 		return dao.loginAdminOk(adminid, password);
 	}
 
 	@Override
 	public List<UserPayDTO> revenue() {
-	
 		return dao.revenue();
 	}
 
 	@Override
-	public List<UserPayDTO> expense() {
-		// TODO Auto-generated method stub
+	public List<AdminManagerSettlementDTO> expense() {
 		return dao.expense();
 	}
+	
+	@Override
+	public List<AdminManagerSettlementDTO> managerFee() {
+		return dao.managerFee();
+	}
+
+	@Override
+	public int waitOk(AdminManagerSettlementDTO dto) {
+		return dao.waitOk(dto);
+	}
+
+
+	@Override
+	public int totalRecord(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.totalRecord(vo);
+	}
+
+	@Override
+	public List<RegisterDTO> pageSelect(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.pageSelect(vo);
+	}
+
 }

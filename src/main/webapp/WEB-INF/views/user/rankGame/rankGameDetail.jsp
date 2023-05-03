@@ -34,6 +34,55 @@
 			}
 		})
 	}
+	
+	// 경기 요구랭크 충족 여부 확인
+	function checkReqRank() {
+		<c:if test="${userRank < rankGameDetail.req_rank}">
+			return false
+		</c:if>
+		return true
+	}
+	
+	// 랭크를 숫자에서 문자열로 변환
+	function convertRankIntoStr(rank) {
+		let convertedRank;
+		switch (rank) {
+			case 1:
+			convertedRank="브론즈";
+		    break;
+			case 2:
+			convertedRank="실버";
+		    break;
+			case 3:
+			convertedRank="골드";
+		    break;
+			case 4:
+			convertedRank="플래티넘";
+		    break;
+			case 5:
+			convertedRank="다이아";
+		    break;
+		default:
+			convertedRank="no Rank";
+		}
+		return convertedRank;
+	}
+	
+	$(function(){
+		$(".btn_apply_rank").click(function(){
+			const isMeet = checkReqRank();
+			if(isMeet){// true
+				location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'; // 결제페이지로 이동
+			} else {//false
+				const logName = '<%=(String)session.getAttribute("logName")%>';
+				alert("요구랭크를 충족하지 못했습니다. 해당 경기의 요구랭크는 '" + convertRankIntoStr(${rankGameDetail.req_rank})
+						+ "'이고 현재 ${logName}님의 ${rankGameDetail.sportname} 랭크는 '" + convertRankIntoStr(${userRank}) + "'입니다.");
+			}
+		});
+	});
+	
+
+	
 </script>
 
 <div class="game_header rank_game_header">
@@ -152,20 +201,27 @@
 			<!-- 참가신청 -->
 			<c:choose>
 				<c:when test="${logStatus != 'Y'}">
-					<button onclick="location.href='${path}/login'" class="btn_apply_norm">로그인</button>
+					<button onclick="location.href='${path}/login'" class="btn_apply_rank">로그인</button>
 				</c:when>
 				<c:otherwise>
 					<c:choose>
-						<c:when test="${rankGameDetail.curr_people==rankGameDetail.max_people}">
-	            			<button class="btn_apply_rank close">인원마감</button>
+						<c:when test="${isPart == 1 }">
+							<button class="btn_apply_rank close">신청완료</button>
 						</c:when>
-	         			<c:otherwise>
-	            			<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply_rank">참가신청</button>
-	         			</c:otherwise>
-	      			</c:choose>
-	         	</c:otherwise>
-	      	</c:choose>
-	      	<button onclick="history.back()" class="btn_back" >뒤로가기</button>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${rankGameDetail.curr_people >= rankGameDetail.max_people}">
+	            					<button class="btn_apply_rank close">인원마감</button>
+								</c:when>
+	         					<c:otherwise>
+	            					<button onclick="location.href='/payment?gametype=rankgame&no=${rankGameDetail.no}'" class="btn_apply_rank">참가신청</button>
+	         					</c:otherwise>
+	      					</c:choose>
+						  </c:otherwise>
+					  </c:choose>
+	       </c:otherwise>
+        </c:choose>
+	      <!-- <button onclick="history.back()" class="btn_back" >뒤로가기</button> -->
 		</div>
 	</div>
 </div>

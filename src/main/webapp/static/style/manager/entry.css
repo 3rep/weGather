@@ -3,12 +3,14 @@
  /* CSS 스타일링 */
   #container {
     margin: 0 auto; /* 가운데 정렬 */
-    width: 700px; /* 너비 줄이기 */
+    width: 800px; /* 너비 줄이기 */
     position:absolute;
-    top:300px;
+    top:150px;
     left:350px;
     background-color: #FFFFFF;
     stroke: #D1D9E2;
+     text-align: center;
+     height:800px;
   }
   table {
     border-collapse: separate;
@@ -18,20 +20,24 @@
     border-radius: 10px;
     overflow: hidden;
     background-color: #FFFFFF;
+     text-align: center;
+     height:800px;
   }
   td, th {
     border: 1px solid black;
     border-color: rgba(0, 0, 0, 0.3); 
     padding: 5px;
-    text-align: left; 
+    
   background-color: #FFFFFF;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+     text-align: center;
   }
   td:first-child, th:first-child {
     border-left: none;
     background-color: #FFFFFF;
+    
   }
   td:last-child, th:last-child {
     border-right: none;

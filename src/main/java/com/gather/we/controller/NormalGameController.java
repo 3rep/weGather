@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +22,7 @@ import com.gather.we.dto.NormGameListDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
 import com.gather.we.service.NormalGameService;
+import com.gather.we.service.ParticipateService;
 import com.gather.we.service.SportService;
 import com.gather.we.service.StadiumInfoService;
 
@@ -33,8 +35,10 @@ public class NormalGameController {
 	NormalGameService normGameService;
 	@Autowired
 	StadiumInfoService stadiumService;
+	@Autowired
+	ParticipateService participateService;
 	
-	// Á¾¸ñ¸ñ·Ï
+	// ì¢…ëª©ë³´ê¸°
 	@GetMapping("/sportlist")
 	public ModelAndView sportList() {
 		ModelAndView mav = new ModelAndView();
@@ -47,19 +51,17 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// ÀÏ¹İ°æ±â ¸ñ·Ï
+	// ì¼ë°˜ê²½ê¸° ëª©ë¡
 	@GetMapping("/normgamelist")
 	public ModelAndView normGameList(NormGameListDTO dto) { 
 		ModelAndView mav = new ModelAndView();
 		
-		// Áö¿ª ÇÊÅÍ¸µ ½Ã db¿¡¼­ ÇØ´ç Áö¿ªÀÇ °æ±â¸¸ ¼±ÅÃÇÏ¿© °¡Á®¿À±â À§ÇØ Áö¿ª Ä«Å×°í¸®¸¦ ¼¼ºÎ Áö¿ªÀ¸·Î ³ª´©¾î ¸®½ºÆ®¿¡ ´ã´Â´Ù.
-		String region = dto.getRegion();// '´ëÀü/¼¼Á¾/ÃæÃ»'
+		String region = dto.getRegion();
 		if(region!=null) {
-			List<String> regionList = Arrays.asList(region.split("/"));// ['´ëÀü', '¼¼Á¾', 'ÃæÃ»']
+			List<String> regionList = Arrays.asList(region.split("/"));
 			dto.setRegionList(regionList);
 		}
 		
-		// DB¿¡¼­ ÀÏ¹İ°æ±â ¸ñ·Ï ¹Ş¾Æ¿À±â
 		List<NormGameDTO> normGameList = normGameService.normGameListSelect(dto);
 
 		mav.addObject("s_no", dto.getS_no());
@@ -69,15 +71,25 @@ public class NormalGameController {
 		return mav;
 	}
 	
-	// ÀÏ¹İ°æ±â ¼¼ºÎÁ¤º¸
+	// ì¼ë°˜ê²½ê¸° ìƒì„¸í˜ì´ì§€
 	@GetMapping("/detail")
-	public ModelAndView normGameDetail(int no) {
+	public ModelAndView normGameDetail(HttpSession session, int no) {
 		ModelAndView mav = new ModelAndView();
+		String logId = (String) session.getAttribute("logId");
+		int isPart;
 		
-		// DB¿¡¼­ ÀÏ¹İ°æ±â ¼¼ºÎÁ¤º¸ ¹Ş¾Æ¿À±â
+		// í•´ë‹¹ ê²½ê¸°ì— ë¡œê·¸ì¸ ì‚¬ìš©ìê°€ ì°¸ê°€í•˜ì˜€ëŠ”ì§€ ì—¬ë¶€ (1ì´ë©´ Yes, 0ì´ë©´ No)
+		if(logId == null || logId.equals("")) {
+			isPart = 0;
+		}else {
+			isPart = participateService.isNormParticipate(logId, no);
+		}
+		
+		// ì¼ë°˜ê²½ê¸° ìƒì„¸ ì •ë³´ (DB)
 		NormGameDetailDTO normGameDetail = normGameService.normGameDetailSelect(no);
 
 		mav.addObject("normGameDetail", normGameDetail);
+		mav.addObject("isPart", isPart);
 		mav.setViewName("user/normGame/normGameDetail");
 		
 		return mav;
@@ -135,16 +147,27 @@ public class NormalGameController {
 	public ResponseEntity<String> normGameNewDetailOk(NormGameDTO dto, HttpServletRequest request){
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
+		HttpSession session = request.getSession();
+		
+		String logStatus = (String) session.getAttribute("logStatus");
+		String logId = null;
+		if(logStatus == "Y") {
+			 logId = (String) session.getAttribute("logId");
+		}
+		
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		try {
+			if(logStatus == "Y") {
+				dto.setWriter(logId);
+			}else {
+				throw new Exception();
+			}
+			
 			// ì‚¬ìš©ìê°€ ì‘ì„±í•œ ì •ë³´ë¥¼ DBì— ì €ì¥
 			normGameService.normGameUpdate(dto);
 			
-			// ê²½ê¸° ì°¸ì—¬ì ìˆ˜ +1
-			normGameService.normGameCountUp(dto.getNo());
-			
 			// ì¼ë°˜ê²½ê¸° ëª©ë¡ìœ¼ë¡œ ì´ë™
-			String body = "<script> alert('ì¼ë°˜ê²½ê¸°ë¥¼ ê°œì„¤í•˜ì˜€ìŠµë‹ˆë‹¤.'); location.href='/normgame/normgamelist?s_no="+dto.getS_no()+"';</script>";
+			String body = "<script> alert('ì¼ë°˜ê²½ê¸°ë¥¼ ê°œì„¤í•˜ì˜€ìŠµë‹ˆë‹¤. ëª©ë¡ì—ì„œ í™•ì¸ í›„ ì°¸ê°€ì‹ ì²­í•˜ì„¸ìš”.'); location.href='/normgame/normgamelist?s_no="+dto.getS_no()+"';</script>";
 			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
 		}catch(Exception e) {
 			// ì¼ë°˜ê²½ê¸° ë“±ë¡ ì‹¤íŒ¨

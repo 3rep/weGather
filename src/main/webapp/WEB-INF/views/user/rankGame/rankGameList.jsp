@@ -93,7 +93,7 @@
 				<!-- 경기 지역 -->
 				<div class="game_region">${RankGameDTO.region}</div>
 				<!-- 경기 정보 -->
-				<div class="game_info_container">
+				<div class="game_info_container rank">
 					<!-- 경기 날짜/시간 -->
 					<span class="game_time">
 						<fmt:formatDate pattern="yyyy-MM-dd (E) HH:mm" value="${RankGameDTO.gametime}" /><br/>
@@ -102,13 +102,7 @@
 					<div class="game_info">
 						<!-- 구장 이름 -->
 						<!-- 신청마감-->
-						<c:if test="${isClose || RankGameDTO.curr_people >= RankGameDTO.max_people}">
-							<span class="game_stadium">${RankGameDTO.stadium}</span>
-						</c:if> 
-						<!-- 신청가능-->
-						<c:if test="${!isClose && RankGameDTO.curr_people < RankGameDTO.max_people}">
-							<a href="detail?no=${RankGameDTO.no}" class="game_stadium">${RankGameDTO.stadium}</a>
-						</c:if>
+						<a href="detail?no=${RankGameDTO.no}" class="game_stadium">${RankGameDTO.stadium}</a>
 						<!-- 경기 조건 -->
 						<div class="game_conditions">
 							<!-- 성별 유형 -->
@@ -158,13 +152,13 @@
 				<!-- 경기 신청 가능 상태 -->
 				<c:choose>
 					<c:when test="${isClose || (RankGameDTO.curr_people >= RankGameDTO.max_people)}">
-		            	<div class="game-status close">신청마감</div>
+		            	<div class="game-status close"><a href="detail?no=${RankGameDTO.no}" class="game_stadium3">신청마감</a></div>
 		         	</c:when>
 		         	<c:when test="${isImminent}">
 		            	<div class="game-status imminent"><a href="detail?no=${RankGameDTO.no}" class="game_stadium2">마감임박</a></div>
 		         	</c:when>
 		         	<c:otherwise>
-		            	<div class="game-status open"><a href="detail?no=${NormGameDTO.no}" class="game_stadium2">신청가능</a></div>
+		            	<div class="game-status open"><a href="detail?no=${RankGameDTO.no}" class="game_stadium2">신청가능</a></div>
 		         	</c:otherwise>
 		      	</c:choose>
 			</li>

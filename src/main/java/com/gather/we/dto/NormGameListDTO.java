@@ -14,6 +14,7 @@ public class NormGameListDTO {
 	private int min_people;
 	private int max_people;
 	private int curr_people;
+	private String writer;
 	private String gendertype;
 	private String stadium;
 	private String region;

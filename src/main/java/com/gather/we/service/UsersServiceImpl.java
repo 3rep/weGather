@@ -16,4 +16,9 @@ public class UsersServiceImpl implements UsersService {
 	public UsersDTO participantInfoSelect(String userid) {
 		return dao.participantInfoSelect(userid);
 	}
+
+	@Override
+	public UsersDTO userInfoInfoSelect(String userid) {
+		return dao.userInfoInfoSelect(userid);
+	}
 }

@@ -15,21 +15,19 @@
 	text-align: right;
 }
 /*날짜 필터*/
-.pmView{
-	text-align: left;
-	margin-bottom: 3px;
+#pmSelectedDate{
+    text-align: center;
+    height: 37px;
+    width: 220px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 10px 0;
 }
 
-.pmDate{
-	margin-top: 20px;
-	margin-bottom: 5px;
-	text-align: center;
-}
-}
 /*----table-----------*/
 #pmTable{
-	height: 900px;
-    overflow-y: scroll;
+	height: 600px;
+    /* overflow-y: scroll; */
     display: inline-block;
 }
 #pmTable td, 
@@ -55,4 +53,21 @@
 	font-weight: 500;
 	font-style: italic;
 }
+#paymentListContent .pagingDiv {
+	display: flex;
+	justify-content: center;
+}
 
+#paymentListContent .pagingDiv li{
+	float:left;
+	display: flex;
+	padding: 3px 5px;
+	margin: 0 12px;
+	font-size: var(--font-micro);
+}
+
+#paymentListContent .pagingDiv a:link,
+#paymentListContent .pagingDiv a:hover,
+#paymentListContent .pagingDiv a:visited {
+	color: var(--color-black);
+}

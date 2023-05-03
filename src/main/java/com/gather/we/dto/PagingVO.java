@@ -12,15 +12,27 @@ public class PagingVO {
 	private int onePageNumCount = 5; // 페이지 목록에 표시할 페이지 갯수
 	private int startPageNum = 1;
 	
+	private String userid;
+	private String username;
+	private String managerid;
+	private String adminid;
+	
+	 
+	
 	// 검색에 필요한 변수들
 	private String searchKey;
 	private String searchWord;
+	private String SelectedDate; //마이페이지 날짜필터 변수
+	
+	
 	
 	@Override
 	public String toString() {
 		return "PagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord=" + totalRecord
 				+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", onePageNumCount="
-				+ onePageNumCount + ", startPageNum=" + startPageNum + ", searchKey=" + searchKey + ", searchWord=" + searchWord + "]";
+				+ onePageNumCount + ", startPageNum=" + startPageNum + ", userid=" + userid + ", username=" + username
+				+ ", managerid=" + managerid + ", adminid=" + adminid + ", searchKey=" + searchKey + ", searchWord="
+				+ searchWord + ", SelectedDate=" + SelectedDate + "]";
 	}
 	public int getNowPage() {
 		return nowPage;
@@ -92,6 +104,37 @@ public class PagingVO {
 	}
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getManagerid() {
+		return managerid;
+	}
+	public void setManagerid(String managerid) {
+		this.managerid = managerid;
+	}
+	public String getAdminid() {
+		return adminid;
+	}
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
+	}
+	
+	public String getSelectedDate() {
+		return SelectedDate;
+	}
+	public void setSelectedDate(String selectedDate) {
+		SelectedDate = selectedDate;
 	}
 	
 }

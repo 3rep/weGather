@@ -9,9 +9,22 @@
 	</select>
 	<select id="revenue" resultType="com.gather.we.dto.UserPayDTO">
  		select payment_no, payer_name, paid_amount, paid_at, success from user_pay
- 		
  	</select>
- 	<select id="expense" resultType="com.gather.we.dto.ManagerSettlementDTO">
- 		select no, managerid, to_char(datetime, 'YYYY-MM-DD')datetime, d_status, amount from m_settlement
+ 	<select id="expense" resultType="com.gather.we.dto.AdminManagerSettlementDTO">
+ 		select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account
+ 		from m_settlement s
+ 		join manager m on s.managerid=m.managerid
+ 		where d_status=1
  	</select>
+ 	<select id="managerFee" resultType="com.gather.we.dto.AdminManagerSettlementDTO">
+ 		select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account 
+ 		from m_settlement s
+ 		join manager m on s.managerid=m.managerid
+ 	</select>
+ 	<update id="waitOk">
+		update m_settlement set d_status=1, datetime=#{datetime} where managerid=#{managerid}
+	</update>
+	<select id="totalRecord" resultType="int">
+		select count(userid) totalRecord from users
+	</select>
 </mapper>

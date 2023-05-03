@@ -37,6 +37,11 @@
 	}
 
 	$(function(){
+		
+		if($('.gamenew_info').length > 0) {
+			  $('.gamenew_guide').remove();
+			}
+		
 		$("#region").change(function(){
 			if($(this).val() == "서울"){
 				$(".select.stadium").remove();
@@ -149,14 +154,14 @@
 	<div class="game_detail_container">
 	
 		<!-- game_detail_wrap (left) -->
-		<div class="game_detail_wrap left">
+		<div class="game_new_wrap left">
 			<!-- 종목 이미지 -->
 			<img src="${path}/uploadfile/sport/${sportDTO.filename}" class="sport_img"/>
 			
 			<!-- 지역과 구장 선택 -->
 			<form method="get" action="new">
 				<input type="hidden" name="s_no" value="${sportDTO.s_no}"/>
-				<ul>
+				<ul class="norm_game_new_select">
 					<li class = "select sport">
 						스포츠 종목 : ${sportDTO.sportname}
 					</li>
@@ -199,16 +204,20 @@
 		<!-- game_detail_wrap (right) -->
 		<div class="game_detail_wrap right">
 			<!-- 경기 유형 -->
-			<div class="game_type">일반경기</div>
+			<div class="normgame_type">일반경기</div>
 			
 			<!-- 경기 상세 정보 -->
-			<ul class="gamenew_detail">
+			<ul class="normgame_detail">
+				<li class="gamenew_guide">
+					지역과 경기장을 선택하여 주세요.
+				</li>
 				<c:forEach var="gameDTO" items="${newNormGameList}" varStatus="status">
 					<c:if test="${gameDTO.s_no == sportDTO.s_no }">
 						<li class="gamenew_info">
 							<a href="newdetail?no=${gameDTO.no}&s_no=${sportDTO.s_no}"><span class="gamenew_detail_main">${status.count}. 시작시간 (<fmt:formatDate pattern="yy년 MM월 dd일 E요일 HH:mm" value="${gameDTO.gametime}" />)</span></a><br/>
 							<span class="gamenew_detail_sub">이용시간 (${gameDTO.usetime}) | 결제금액 (<fmt:formatNumber value="${gameDTO.payment}" maxFractionDigits="3"/>원)</span>
 						</li>
+						
 					</c:if>
 				</c:forEach>
 				
@@ -223,7 +232,6 @@
 					</c:if>
 				</li>
 			</ul>
-			<button onclick="location.href='${path}/normgame/normgamelist?s_no=${sportDTO.s_no}'" class="btn_back" >뒤로가기</button>
 		</div>
 	</div>
 </div>

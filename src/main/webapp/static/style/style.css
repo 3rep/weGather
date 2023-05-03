@@ -7,16 +7,24 @@
     --color-orange: #FDA238;
     --color-yellow: #FEF7DD;
     --color-dark-yellow: #FCF0C1;
-    --color-blue: #162888;
+    --color-lightest-blue: #26B6F2;
     --color-light-blue: #448FE4;
+    --color-blue: #2B3D9B;
     --color-board-blue: #F3F5FA; /*게시판 배경 등 기본 바탕색*/
+    --color-light-pink: #F89E9D;
     --color-pink: #ed9392;
     --color-light-gray: #EAE9E9;
     --color-gray: #D2D1D1;
     --color-dark-gray: #484848;
     --color-line-gray: #f3f3f3;
     --color-black: #000000;
-    --color-red: #CB1E1E;
+    --color-red: #DD4242;
+    --color-rank-blue: #6791E2; /* 랭크게임 border color*/
+    --color-rank-light-blue: #F0F2FA; /* 랭크게임 바탕색 */
+    --color-rank-hover: #EAEEFF; /* 랭크게임 경기목록 hover시 바탕색*/
+    --color-norm-green: #4DA065; /* 일반게임 border color */
+    --color-norm-light-green: #F3F7F4; /* 일반게임 바탕색*/
+    --color-norm-hover: #F0F8F2; /* 일반게임 경기목록 hover시 바탕색*/
     --color-admin-black: #2D2D2D;
     --color-admin-gray: #E6E9EC;
     --color-admin-blue-gray: #D1D9E2;

@@ -15,16 +15,16 @@
 </style>
 </head>
  <body>
-  	<h1 style="font-size: 30px; position:relative; left:90px; top:50px;">신청한 경기 내역</h1>
+  	<h1 style="font-size: 30px; position:relative; left:90px; top:30px; height:150px;">신청한 경기 내역</h1>
   		
   		 <div class= "box1">
   		 
-  		  <div>신청한 경기 수: ${vo.totalRecord }</div>
+  		  <div><h3>신청한 경기 수: ${vo.totalRecord }</h3></div>
 		 <div></div> </div>
 		
  		   <div class="container">
         		<div class="half-container image-container">
-            		<img src="/static/img/manager/soccer1.jpg">
+            		<img src="${path}/static/img/manager/soccer1.jpg" style=" position:relative; left:20px; top:10px; height:50%;">
         		</div>
          
         		<div class="half-container box-container">
@@ -43,8 +43,13 @@
                         </div>
                         <div class="sub-box"> 
                             <c:if test="${manager.g_status == 0}">
-                                <button class="green" style="width: 90px;">승인대기</button>
-                                <button onclick="deleteManager()" class="red" style="width: 90px;">취소신청</button>
+                            <button class="green" style="width: 90px;">승인대기</button>
+                                
+                       
+  						    <button class="red" type="submit" style="width: 90px;">취소신청</button>
+						
+                          	 
+                            
                             </c:if>
                             <c:if test="${manager.g_status == 1}">
                                 <a href="${path}/manager/entry" class="page-link" style="display: flex; flex-direction: column;">
@@ -64,7 +69,7 @@
 				<li class="active">prev</li>
 			</c:if>
 			<c:if test="${vo.nowPage>1}">
-				<li><a href="/manager/manager10/${managerid}?nowPage=${vo.nowPage-1 }">prev</a></li>
+				<li><a href="${path }/manager/manager10/${managerid}?nowPage=${vo.nowPage-1 }">prev</a></li>
 			</c:if>
 			<c:forEach var="p" begin="${vo.startPageNum}" end="${vo.startPageNum+vo.onePageNumCount-1 }">
 				<c:if test="${ p<=vo.totalPage}"> <!-- 표시항 페이지 번호 총페이지 수보다 작거나 같을 때 페이지 번호를 출력한다.  -->
@@ -73,7 +78,7 @@
    						 <li class="active" style="background:#ddd;">${p}</li>
 					</c:if>
 					   <c:if test="${p!=vo.nowPage }">
-						   <li>	<a href="/manager/manager10?nowPage=${p }">${p }</a></li>
+						   <li>	<a href="${path }/manager/manager10?nowPage=${p }">${p }</a></li>
 					   </c:if>
 					
 				</c:if>
@@ -82,7 +87,7 @@
 			
 			<!--다음 페이지-->
 			<c:if test="${vo.nowPage<vo.totalPage }"><!-- 다음페이지가 있을 때 -->
-				<li><a href="/manager/manager10?nowPage=${vo.nowPage + 1 }">next</a></li>
+				<li><a href="${path }/manager/manager10?nowPage=${vo.nowPage + 1 }">next</a></li>
 			</c:if>
 			<c:if test="${vo.nowPage==vo.totalPage }">
 				<li class="active">next</li>
@@ -103,16 +108,63 @@
 <script>
 
 
-
-
-  function deleteManager() {
-    if (confirm("취소하시겠습니까?")) {
-      alert("취소되었습니다.");
-      // 여기에 취소 처리를 위한 로직을 추가할 수 있습니다.
-    }
-  }
-  
-  
+$(document).on('click', '.red', function() {
+	  $(this).closest('.box').remove(); // 클릭한 버튼의 가장 가까운 .box 클래스를 가진 상위 요소를 삭제합니다.
+	});
+	
+//	<form id="post" action="/manager10" method="POST">
+//    <button class="red" type="submit" style="width: 90px;">취소신청</button>
+//	</form>
+                          	 
+	
+	
+ // 폼 전송 이벤트 핸들러
+ 
+   $(document).ready(function() {
+    $('.red').click(function(e) {
+        e.preventDefault(); // 버튼 클릭 시 페이지 이동을 방지
+         var manager = { "managerid": managerid, "p_no": p_no }; // 삭제할 매니저 ID와 경기 ID를 객체로 생성
+        $.ajax({
+            type: "POST",
+            url: "${path}/manager/manager10",
+            contentType: "application/json",
+            data: JSON.stringify(manager),
+            dataType: "json",
+            success: function(data) {
+                alert("삭제되었습니다.");
+                // 삭제 완료 후 수행할 작업
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert("삭제에 실패했습니다.");
+                // 삭제 실패 시 수행할 작업
+            }
+        });
+    });
+});
+ 
+//function deleteRankGame(managerid) {
+//    if (confirm('취소하겠습니까?')) {
+//        $.ajax({
+//            url: '${path}/manager/manager10',
+ //           type: 'DELETE',
+ //           contentType: "application/json; charset=utf-8",
+ //           data: JSON.stringify({deleteRankGame: managerid}),
+ //           dataType : "json",
+ //           success: function(response) {
+  //          	console.log(response);
+  //              const box = document.querySelector(`.box1 #box-${managerid}`);
+  //              if (box) {  // 요소가 존재하는 경우에만 parentElement를 참조하도록 수정
+ //                   box.parentElement.removeChild(box);
+  //                  alert('취소되었습니다.');
+  //              }
+  //          },
+ //           error: function() {
+ //               alert('요청 처리에 실패하였습니다.');
+ //           }
+//        });
+///    }
+//}
   
 </script>
  

@@ -27,6 +27,7 @@ import com.gather.we.dto.MypageApplyListDTO;
 import com.gather.we.dto.MypagePaymentDTO;
 import com.gather.we.dto.MypageRankDTO;
 import com.gather.we.dto.MypageUserDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.service.MypageService;
 
 
@@ -35,51 +36,68 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
-	
+
 	@GetMapping("/mypage/applyList") 
-	public ModelAndView applyList(HttpSession session) {
+	public ModelAndView applyList(HttpSession session, PagingVO vo) {
 		
+		//System.out.println(vo.toString());
 		ModelAndView mav = new ModelAndView();
 		
-		//userid�� logId���� Ȯ��
+		//userid가 logId랑 같은지 확인
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.allTotalRecord(logId));
 		
-		List<MypageApplyListDTO> list = service.allgameList(logId);
+		List<MypageApplyListDTO> list = service.allgameList(vo);
+		//System.out.println("list->"+list);
 		Date now = new Date();
 		
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/applyList");		
 			
 		return mav;
 	}
 	
 	@GetMapping("/mypage/rankList")
-	public ModelAndView rankList(HttpSession session) {
+	public ModelAndView rankList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
-		
-		List<MypageApplyListDTO> list = service.rankgameList(logId);
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.allTotalRecord(logId));
+
+		List<MypageApplyListDTO> list = service.rankgameList(vo);
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/rankList");
 		return mav;
 	}
 	
 	@GetMapping("/mypage/normList")
-	public ModelAndView normList(HttpSession session) {
+	public ModelAndView normList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		String logId = (String)session.getAttribute("logId");
+		vo.setUserid(logId);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.normTotalRecord(logId));
 		
-		List<MypageApplyListDTO> list = service.normgameList(logId);
+		List<MypageApplyListDTO> list = service.normgameList(vo);
 		Date now = new Date();
 
 		mav.addObject("list", list);
 		mav.addObject("now", now);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/normList");
 		return mav;
 	}
@@ -89,13 +107,15 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String)session.getAttribute("logId");
 		
+		MypageRankDTO dto = new MypageRankDTO();
+		
 		List<MypageRankDTO> list = service.rankResult(logId);
+		//System.out.println("list->"+list);
 
 		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
+		//	-> try-catch문 쓰자
 		try { //rank가 있는 경우
 		
-			MypageRankDTO dto = new MypageRankDTO();
-			//System.out.println("dto->"+dto);
 			dto.setAvg_all(list.get(0).getAvg_all());
 			
 			//System.out.println("list--->: "+ list);
@@ -106,7 +126,6 @@ public class MypageController {
 			mav.setViewName("user/mypage/rank");
 			
 		}catch(Exception e){ //rank가 없는 경우
-			MypageRankDTO dto = new MypageRankDTO();
 			
 			mav.addObject("list",list);
 			mav.addObject("dto", dto);
@@ -119,7 +138,7 @@ public class MypageController {
 	@PostMapping(value="/mypage/rankMain", produces="application/text;charset=UTF-8") 
 	public String rankMain(HttpSession session, String sportname) {
 		
-		System.out.println(sportname);
+		//System.out.println(sportname);
 		String logId = (String)session.getAttribute("logId");
 
 		List<MypageRankDTO> list = service.rank(logId, sportname);
@@ -131,7 +150,7 @@ public class MypageController {
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//jsonŸ������ ��ȯ
+		//json형태로 뷰로 내보내기
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		
@@ -144,15 +163,19 @@ public class MypageController {
 	}
 	
 	@GetMapping("/mypage/paymentList")
-	public ModelAndView paymentList(HttpSession session) {
+	public ModelAndView paymentList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
-		//System.out.println(logName);
+		vo.setUsername(logName);
+		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageNumCount(5); // 표시할 페이지 수
+		vo.setTotalRecord(service.paymentTotalRecord(logName));
 		
-		List<MypagePaymentDTO> list = service.paymentList(logName);
-		System.out.println("list: "+ list);
+		List<MypagePaymentDTO> list = service.paymentList(vo);
+		//System.out.println("list: "+ list);
 		
 		mav.addObject("list", list);
+		mav.addObject("vo", vo);
 		mav.setViewName("user/mypage/paymentList");
 		return mav;
 	}
