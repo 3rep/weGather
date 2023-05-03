@@ -36,14 +36,14 @@
 			<!-- <img class="infoImg" src="static/img/imgMain/info.png" alt="info"/> -->
 			
 			<div class="infoTxt">
-				<span class="first">경기신청 버튼하나로 끝</span><br/>
+				<span class="first">신청, 경기시작 </span><br/>
 				<span class="second">We gather, Just do it!</span> 
 				<div class="jb-division-line"></div>
 				<div class="third">
-				인원모집 및 예약 서비스 <br/>
-				랭크 시스템<br/>
-				매니저 지원 서비스<br/>
-				맞춤형 스포츠 추천
+					인원모집 및 예약 서비스 <br/>
+					랭크 시스템<br/>
+					매니저 지원 서비스<br/>
+					맞춤형 스포츠 추천
 				</div>
 			</div>
 		</div>
