@@ -16,7 +16,7 @@
 			
 			if($(this).val() == "rank") {
 				$("#rankgameForm").removeAttr("action");
-				$("#rankgameForm").attr("action", "ranknewOk"); // 랭크경기 DB 등록
+				$("#rankgameForm").attr("action", "/admin/rankgame/ranknewOk"); // 랭크경기 DB 등록
 				$(".item.st_no").after('<li class="item min_people"><label for="min_people">경기충족인원</label><input type="text" name="min_people" id="min_people"/>명</li>');
 				$(".item.min_people").after('<li class="item max_people"><label for="max_people">경기최대인원</label><input type="text" name="max_people" id="max_people"/>명</li>');
 				$(".item.max_people").after('<li class="item gendertype"><label for="gendertype">성별유형</label><select name="gendertype" id="gendertype"><option value="남녀모두">남녀모두</option><option value="남자만">남자만</option><option value="여자만">여자만</option></select></li>');
@@ -68,7 +68,7 @@
 </script>
 <div class="container" id="rank_new_container">
 	<h2 id="page-title">경기 등록</h2>
-	<form method="post" id="rankgameForm" action="ranknewOk">
+	<form method="post" id="rankgameForm" action="/admin/rankgame/ranknewOk">
 		<ul class="items">
 			<li class="item gametype">
 				<label>경기유형</label>
