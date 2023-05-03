@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-GsWP7a9Kj6EuHYsXsLK9TC6Z9gGnU6ZL2/KuZrHdPYojIuBm+qn8XoPmOf4NMWPG" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <link href="${path}/static/style/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/user/rankboard/rankBoard.css" rel="stylesheet" type="text/css" />
 <script>	
@@ -33,8 +33,141 @@
 		});
 		$("#sportname").on("change", function() {
 		    $("#search-form").submit();
-		});
 	});
+	// 함수 초기화
+	rankBoardCtrl.init();
+	
+	});
+	
+	var listData = []
+		, totalCnt
+		, limit = 10
+		, currPage = 1
+		, maxPage
+	;
+	
+	const rankBoardCtrl = {
+		init : () => {
+			rankBoardCtrl.evthandler();
+			rankBoardCtrl.getList();
+		},
+		evthandler : () => {
+			// 페이지네이션 버튼 이벤트
+			$(document).on('click', '.paginate-button', function() {
+				rankBoardCtrl.renderTableRow($(this).data('id'), listData);
+			});
+			// 검색 이벤트
+			$(document).on('click', '#submit-btn', function() {
+				rankBoardCtrl.searchToText();
+			});
+			// 종목검색 이벤트
+			$(document).on('change', '#sportname', function(e) {
+				rankBoardCtrl.searchToSelect(e);
+			});
+		},
+		getList : () => {
+			$.ajax({
+	            type : "GET",
+	            url : "/user/rankBoard/list",
+	            dataType: 'json',
+	            success : function(res){
+	            	console.log(res)
+	
+	            	listData = res;
+	            	totalCnt = res.length;
+	            	maxPage = Math.ceil(res.length / limit);
+	            	
+	            	// 버튼 생성
+	            	rankBoardCtrl.renderPaginationButton();
+	            	// 리스트 생성
+	            	rankBoardCtrl.renderTableRow(currPage, listData);
+	            },
+	            error : function(XMLHttpRequest, textStatus, errorThrown){
+	            	console.log(XMLHttpRequest);
+	                alert("실패.");
+	            }
+	        });
+		},
+		// 페이지네이션 버튼 생성
+		renderPaginationButton : () => {
+			// 버튼 리스트 초기화
+		  	while ($('.pagination li').length) { $('.pagination').empty(); }
+		 	// 화면에 최대 5개의 페이지 버튼 생성
+		    for (let id = currPage; id < currPage + 5 && id <= maxPage; id++) {
+		    	$('.pagination').append('<li class="paginate-button" data-id="'+id+'">'+id+'</li>');
+		    }
+		 	
+		},
+		renderTableRow : (page, list) => {
+			var table = $('.rankboard-table tbody');
+			// 목록 리스트 초기화
+			while ($('.rankboard-table tbody tr').length) { table.empty(); }
+			// 글의 최대 개수를 넘지 않는 선에서, 화면에 최대 10개의 글 생성
+			for (let id = (page - 1) * 10; id < page * 10 && id <= totalCnt - 1; id++) {
+				table.append(rankBoardCtrl.makeContent(id, list));
+			}
+		},
+		makeContent : (id, list) => {
+			return '<tr '+ rankBoardCtrl.tableRowCtrl(id, list) +'>'
+				   + ''+ rankBoardCtrl.rankData(id, list) +''
+				   + '<td>'+list[id].userid+'</td>'
+				   + '<td class="tc">'+list[id].sportname+'</td>'
+				   + '<td class="tc">'+list[id].rank_avg+'</td>'
+				   + '<td class="tc">'+rankBoardCtrl.tierData(id, list)+'</td>'
+				   + '</tr>';
+		},
+		tableRowCtrl : (id, list) => {
+			return list[id].rnum < 4 ? 'class="blue"' : '';
+		},
+		rankData : (id, list) => {
+			if(list[id].rnum === 1) {
+				return '<td class="tc rank"><img alt="1등" src="${path}/static/img/rankBoard/1st.png"/><span class="num">'+ list[id].rnum +'</span></td>';  
+			} else if(list[id].rnum === 2) {
+				return '<td class="tc rank"><img alt="2등" src="${path}/static/img/rankBoard/2st.png"/><span class="num">'+ list[id].rnum +'</span></td>';
+			} else if(list[id].rnum === 3) {
+				return '<td class="tc rank"><img alt="3등" src="${path}/static/img/rankBoard/3st.png"/><span class="num">'+ list[id].rnum +'</span></td>';
+			} else {
+				return '<td class="tc">'+ list[id].rnum +'</td>';
+			}
+		},
+		tierData : (id, list) => {
+			if(list[id].rank_avg >= 5) {
+				return '다이아';  
+			} else if(list[id].rank_avg >= 4) {
+				return '플래티넘';
+			} else if(list[id].rank_avg >= 3) {
+				return '골드';
+			} else if(list[id].rank_avg >= 2) {
+				return '실버';
+			} else if(list[id].rank_avg >= 1) {
+				return '브론즈';
+			} else {
+				return '언랭크';
+			}
+		},
+		searchToText : (e) => {
+			const value = document.querySelector('input[name="keyword"]').value
+				, data = listData.filter((v, i) => v.userid.startsWith(value)) 
+			totalCnt = data.length;
+			maxPage = Math.ceil(totalCnt / limit);
+			if(value) {
+				rankBoardCtrl.renderPaginationButton();
+				rankBoardCtrl.renderTableRow(1, data);
+			} else {
+				rankBoardCtrl.renderPaginationButton();
+				rankBoardCtrl.renderTableRow(1, listData);
+			}
+		},
+		searchToSelect : (e) => {
+			const value = e.target.value
+				, data = listData.filter((v, i) => v.sportname.startsWith(value)) 
+			totalCnt = data.length;
+			maxPage = Math.ceil(totalCnt / limit);
+			
+			rankBoardCtrl.renderPaginationButton();
+			rankBoardCtrl.renderTableRow(1, data);
+		}
+	}	
 </script>	
 </head>
 <body>
@@ -45,7 +178,7 @@
 	<div id="rankboard-container">
 		<div class="search_wrap">
 			<div class="search_area">
-				<form id="search-form" action="/rankBoard" method="get">
+				<div class="search-form">
 					<select id="sportname">
 						<option value="" selected>종목 전체</option>
 						<option value="풋살">풋살</option>
@@ -54,8 +187,8 @@
 						<option value="농구">농구</option>
 					</select>
 					<input id="search-word" type="text" name="keyword" placeholder="  아이디 랭킹검색">
-					<button id="submit-btn" type="submit">검색</button>
-				</form>
+					<button id="submit-btn" type="button">검색</button>
+				</div>
 			</div>
 		</div>
 		<div>
@@ -144,7 +277,7 @@
 		</div>
 	</div>
 	<!-- 페이지네이션 클릭시 페이지이동 -->
-	<form id="actionForm" action="/rankBoard" method='get'>
+	<form id="actionForm" action="/user/rankBoard/rankBoard" method='get'>
 		<!-- 클릭한 href에 들어있는 이동 페이지 번호로 바꿔준다 -->
 		<input id="pageNum" type="hidden" name="pageNum" value="${pageMaker.criteria.pageNum }"> 
 		<input type="hidden" name="amount" value="${pageMaker.criteria.amount }">

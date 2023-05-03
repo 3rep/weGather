@@ -127,7 +127,7 @@
 	          			<a class="nav-link" href="${path}/normgame/sportlist">일반경기</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="${path}/rankBoard">랭크보드</a>
+	          			<a class="nav-link" href="${path}/user/rankBoard/rankBoard">랭크보드</a>
 	        		</li>
 	        		<li class="nav-item">
 	          			<a class="nav-link" href="${path}/recommend/mbti">스포츠추천</a>
