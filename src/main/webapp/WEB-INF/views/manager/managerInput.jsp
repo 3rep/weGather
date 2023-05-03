@@ -29,6 +29,7 @@
       </thead>
       <tbody>
         <c:forEach items="${managerInputList}" var="managerInput">
+        <input type='hidden' id='no' name='no' value='${managerInput.getNo()}'/>
           <tr>
             <td><c:out value="${managerInput.getUserid()}" /></td>
             <td><c:out value="${managerInput.getUsername()}" /></td>
@@ -43,12 +44,13 @@
               </select>
             </td>
           </tr>
+         
         </c:forEach>
       </tbody>
     </table>
-  <a href="${path}/manager/managerPast" class="page-link">
+   <a href="${path}/manager/managerPast" class="page-link">
     <button class="submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>
-	<button class="back-button">취소</button></a>
+	<button class="back-button">취소</button></a> 
   </div>
 
 </body>
@@ -62,7 +64,7 @@
                 var managerInput = {};
                 managerInput['userid'] = $(this).find('td:eq(0)').text();
                 managerInput['rank'] = $(this).find('select.rank-filter').val();
-                managerInput['p_no'] = $(this).find('input.p_no').val();
+                managerInput['no'] = $('#no').val();
                 managerInputList.push(managerInput);
                 
             });
@@ -76,7 +78,7 @@
                 success: function(response) {
                     alert("랭크를 입력했습니다.");
                     console.log(response);
-                    window.location.href = "${path}/manager/managerPast";
+               //     window.location.href = "${path}/manager/managerPast";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert("랭크 입력에 성공했습니다.");

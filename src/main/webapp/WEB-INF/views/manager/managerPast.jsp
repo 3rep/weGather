@@ -54,7 +54,7 @@
        	 <div class="sub-container-right" style="width: 40%;">
        	
         	
-     	    <a href="${path}/manager/managerInput" class="page-link">	
+     	    <a href="${path}/manager/managerInput?no=${manager.no}" class="page-link">	
      	   <button id="rank-btn" class="btn-green" data-no="${manager.managerid}">사용자 랭크 입력</button></a></button>
      	   
         
