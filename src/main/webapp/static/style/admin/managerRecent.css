@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #container-oneManager3 {
-	background: var(--color-admin-gray);
+	background: #f6f6f6;
 	border-radius: 20px;
 	padding: 0 20px;
 	display: flex;
@@ -22,6 +22,7 @@
 	flex-direction: column;
 	align-self: center;
 	justify-content: center;
+	border-radius: 20px;
 }
 
 #container-oneManager3 h3 {

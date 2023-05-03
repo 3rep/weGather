@@ -16,7 +16,6 @@
 <link href="${path}/static/style/admin/game/rankgameList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game/rankgameNew.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/game/normgameList.css" rel="stylesheet" type="text/css" />
-<link href="${path}/static/style/admin/game.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/userList.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/userLog.css" rel="stylesheet" type="text/css" />
 <link href="${path}/static/style/admin/userEdit.css" rel="stylesheet" type="text/css" />
