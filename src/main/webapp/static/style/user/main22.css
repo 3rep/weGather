@@ -1,6 +1,6 @@
 @charset "EUC-KR";
 
-/* ë²„íŠ¼ ìŠ¤íƒ€ì¼ ë¼ì´ë¸ŒëŸ¬ë¦¬*/
+/* ¹öÆ° ½ºÅ¸ÀÏ ¶óÀÌºê·¯¸®*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
 @font-face {
   font-weight: normal;
@@ -9,7 +9,7 @@
   src: url("../fonts/codropsicons/codropsicons.eot");
   src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
 }
-/*----- ë²„íŠ¼ ìŠ¤íƒ€ì¼--------------*/
+/*----- ¹öÆ° ½ºÅ¸ÀÏ--------------*/
 .main-container .button {
   float: left;
   min-width: 150px;
@@ -96,10 +96,10 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/*--- ë²„íŠ¼ ìŠ¤íƒ€ì¼ end --------------------*/
+/*--- ¹öÆ° ½ºÅ¸ÀÏ end --------------------*/
 
 
-/* ì „ì²´ ë°°ê²½ì´ë¯¸ì§€ ìœ„ì—ì„œ ì›€ì§ì´ëŠ” container */
+/* ÀüÃ¼ ¹è°æÀÌ¹ÌÁö À§¿¡¼­ ¿òÁ÷ÀÌ´Â container */
 .main-container{
 	background: #ddd;
 	display: flex;
@@ -126,32 +126,32 @@
 	position: sticky;
     background: #DFD5F5;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     top: 0;
     z-index: 0;
 } 
 
 .main-container .item{
-	flex-basis: 800px; /*flex item ë†’ì´*/
+	/* flex-basis: 800px; */ /*flex item ³ôÀÌ*/
 	text-align : center;
 	
 }
 
-/* ì²«ë²ˆì§¸div : ë¡œê·¸ì¸, íšŒì›ê°€ì…ì°½ */
+/* Ã¹¹øÂ°div : ·Î±×ÀÎ, È¸¿ø°¡ÀÔÃ¢ */
 .main-container #cloudy{
-    background-color: rgba(0, 0, 0, 15%); /*ê²€ì •ìƒ‰ íˆ¬ëª…ë„30%*/
+    background-color: rgba(0, 0, 0, 15%); /*°ËÁ¤»ö Åõ¸íµµ30%*/
     z-index: 1;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     top: 0px;
 }
 
 .main-container .login{
-	/* background-color: rgba(255, 255, 255, 10%); *//*í°ìƒ‰ íˆ¬ëª…ë„30%*/
+	/* background-color: rgba(255, 255, 255, 10%); *//*Èò»ö Åõ¸íµµ30%*/
     border-radius: 60px;
     padding: 10px 55px 20px 55px;
     position: relative;
@@ -167,7 +167,7 @@
 	font-size: var(--font-regular);
 }
 
-/* ë‘ë²ˆì§¸div : ì†Œê°œê¸€ */
+/* µÎ¹øÂ°div : ¼Ò°³±Û */
 .main-container #info{
 	background: #F6F4F2; /* #DCF4F9; */
     position: relative;
@@ -176,6 +176,7 @@
     align-items: center;
     z-index: 5;
     top: 0;
+    height:100vh;
 }
 .infoImg{
 	position: relative;
@@ -184,7 +185,7 @@
 	height:400px;
 	image-rendering: -moz-crisp-edges; firefox
 	image-rendering: -o-crisp-edges; opera
-	image-rendering: -webkit-optimize-contrast; chrome(ë¹„í‘œì¤€)
+	image-rendering: -webkit-optimize-contrast; chrome(ºñÇ¥ÁØ)
 	image-rendering: crisp-edges;
 }
 
@@ -200,14 +201,14 @@
 	font-size: 40px;
 	line-height: 70px;
 }
-/*êµ¬ë¶„ì„ */
+/*±¸ºĞ¼±*/
 .infoTxt .jb-division-line {
   border-top: 1px solid #444444;
   margin: 45px auto;
   width: 300px;        
 }
 .infoTxt .jb-division-line:after {
-    content: "â—†";
+    content: "¡ß";
     position: relative;
     top: -14px;
     left: calc( 4% - 8px );
