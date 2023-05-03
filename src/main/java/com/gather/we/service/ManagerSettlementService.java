@@ -10,7 +10,7 @@ public interface ManagerSettlementService {
 	
 	public int getTotalCount(MSettlementCriteria mscriteria, String logId);//정산내역 레코드 수
 	
-	public int getTotalCompletedAmount(String logId);//정산내역-완료 합계
+	public Integer getTotalCompletedAmount(String logId);//정산내역-완료 합계
 	
-	public int getTotalInprogressAmount(String logId);// 정산내역-처리중 합계
+	public Integer getTotalInprogressAmount(String logId);// 정산내역-처리중 합계
 }

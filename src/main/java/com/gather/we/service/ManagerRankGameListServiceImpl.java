@@ -18,18 +18,22 @@ public class ManagerRankGameListServiceImpl implements ManagerRankGameListServic
 	
 	
 	@Override
-	public List<ManagerRankGameListDTO> rankGameListAllSelect(MRankGameListCriteria criteria) {
-		return dao.getListWithPaging(criteria);
+	public List<ManagerRankGameListDTO> rankGameListAllSelect(MRankGameListCriteria criteria, Integer logS_no) {
+		return dao.getListWithPaging(criteria, logS_no);
 	}
 
 	@Override
 	public int updateApply(ManagerRankGameDTO rankGameDTO) throws Exception {
-		return dao.updateApply(rankGameDTO);
+		int succCnt = dao.updateApply(rankGameDTO);
+		if (succCnt > 0) {
+			succCnt += dao.insertApply(rankGameDTO);
+		}
+		return succCnt;
 	}
 
 	@Override
-	public int getTotalCount(MRankGameListCriteria criteria) {
-		return dao.getTotalCount(criteria);
+	public int getTotalCount(Integer logS_no) {
+		return dao.getTotalCount(logS_no);
 	}
 
 	
