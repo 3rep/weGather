@@ -31,8 +31,8 @@
 	<form method="post" id="registerForm">
 		<ul id="register-ul">
 			<br/>
-			<li>
-				<input type="radio" name="type" value="user" checked/> 사용자
+			<li class="register-li-type">
+				<input type="radio" name="type" id="type" value="user" checked/> 사용자
 			</li>
 			<li>아이디</li>
 			<li class="register-li">
