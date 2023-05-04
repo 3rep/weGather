@@ -162,7 +162,8 @@ public class ManagerController {
 			// dto->null�� ��� ���÷��ڵ尡 ���. -�α��� ����
 			// 		null�� �ƴ� ��� ���÷��ڵ� �ִ�. - �α��� ����
 			ModelAndView mav = new ModelAndView();
-			if(dto!=null) {//�α��� ����
+			System.out.println(dto);
+			if(dto!=null && dto.getActive()== 1) {//�α��� ����
 				session.setAttribute("logId", dto.getManagerid());
 				session.setAttribute("logName", dto.getM_name());
 				session.setAttribute("logS_no", dto.getS_no());
@@ -170,7 +171,8 @@ public class ManagerController {
 				System.out.println(dto);
 				mav.setViewName("redirect:/manager/rankgamelist");
 			}else{//로그인 실패
-				mav.setViewName("redirect:loginMan");
+				mav.addObject("msg", "매니저 승인대기중입니다.");
+				mav.setViewName("manager/loginFailResult");
 				System.out.println(managerid);
 				System.out.println(password);
 			}

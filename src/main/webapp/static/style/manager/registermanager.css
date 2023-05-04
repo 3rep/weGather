@@ -154,9 +154,9 @@ form{
 #manager_img{
 	float: left;
     position: absolute;
-    width: 600px;
-    height: 500px;
-    margin-left: 50px;
-    margin-top: 172px;
+    width: 580px;
+    height: 700px;
+    margin-left: 55px;
+    margin-top: 55px;
     border-radius:10px;
 }
