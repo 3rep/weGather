@@ -109,7 +109,7 @@
 }
 
 .section-main{
-	scroll-snap-align: center;
+	scroll-snap-align: start;
 	background: #ddd;
 	display: flex;
 	flex-direction: column;
