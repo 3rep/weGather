@@ -7,7 +7,7 @@ import com.gather.we.dto.RankBoardDTO;
 
 public interface RankBoardService {
 
-	public List<RankBoardDTO> getUserRankList(RankBoardCriteria criteria);
+	public List<RankBoardDTO> getUserRankList();
 	
 	public int getTotalCount(RankBoardCriteria criteria);
 }

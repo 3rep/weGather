@@ -74,7 +74,7 @@ form{
 }
 #registerManForm>#registerMan-ul .registerMan-li{
 	margin-bottom: 3px;
-    background: #F0F1F1;
+    background: #F1F5F5;
     height: 45px;
     border-radius: 15px;
 }
@@ -89,7 +89,7 @@ form{
     height: 40px;
     margin-top: 2px;
     border: none;
-    background: #F0F1F1;
+    background: #F1F5F5;
     padding-left: 10px;
     border-radius: 15px;
 }
@@ -102,7 +102,7 @@ form{
 #registerMan-ul>li>#m_account{
 	width: 500px;
     height: 40px;
-    background: #F0F1F1;
+    background: #F1F5F5; /* #F0F1F1; */
     line-height: 40px;
     margin-top: 2px;
     border: none;
@@ -123,7 +123,7 @@ form{
 .registerMan-li #tel3{
 	width: 150px;
     height: 37px;
-    background: #F0F1F1;
+    background: #F1F5F5;
     border: none;
     border-radius: 10px;
     text-align: center;
@@ -135,12 +135,12 @@ form{
     height: 45px;
     text-align: center;
     margin-top: 0px;
-    background: #F0F1F1;
+    background: #F1F5F5;
 }
 
 #registerMan-ul>li>#submit{
     width: 180px;
-    background: #534D46;
+    background: #716051; /* #534D46; */
     height: 50px;
     line-height: 45px;
     margin-left: 30px;

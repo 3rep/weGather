@@ -36,8 +36,6 @@ public class RegisterController {
 	@Autowired
 	MypageService mypageservice;
 	
-
-
 	//로그인 선택창
 	@GetMapping("/loginChoose")
 	public String loginChoose() {
@@ -47,11 +45,9 @@ public class RegisterController {
 	//로그인폼
 	@GetMapping("/login")
 	public String login() {
-		return "user/register/login";	//	/WEB-INF/views/register/loginForm.jsp
+		return "user/register/login";
 	}
 	
-
-
 	//로그인(DB)
 	@PostMapping("/loginOk")
 	public ModelAndView loginOk(String id, String password,HttpServletRequest request, HttpSession session) {
@@ -66,31 +62,9 @@ public class RegisterController {
 		// 		null이 아닌 경우 선택레코드 있다. - 로그인 성공
 		ModelAndView mav = new ModelAndView();
 		
-		
-		//종합랭크 가져오기
-		MypageRankDTO mpdto = new MypageRankDTO();
-		mpdto.setUserid(id);
-		System.out.println("mpdto:::"+mpdto);
-		System.out.println(mpdto.getUserid());
-
-		List<MypageRankDTO> list = mypageservice.rankResult(mpdto.getUserid());
-		System.out.println("listtt:" + list);
-		
-		try {
-			if(list != null) {
-				session.setAttribute("logRank", list.get(0).getAvg_all());
-				//mav.setViewName("redirect:/userHome");
-				
-			}
-		}catch(Exception e) {
-			//e.printStackTrace();
-			session.setAttribute("logRank", "0");
-			//mav.setViewName("redirect:/userHome");
-		}
-		
 		//사용자 로그인
 		dto = service.loginOk(id, password);
-		System.out.println("dto->"+dto);
+		System.out.println("dto--->"+dto);
 
 		if(dto!=null) {
 			session.setAttribute("logId", dto.getUserid());
@@ -98,8 +72,23 @@ public class RegisterController {
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logGender", dto.getGender());
 			session.setAttribute("adminlogStatus", "N");
-			//session.setAttribute("logRank", mpdto.getRank());
+			
+			//종합랭크 가져오기
+			List<MypageRankDTO> list = mypageservice.rankResult((String)session.getAttribute("logId"));
+			//System.out.println("listtt:" + list);
+			
+			try {
+				if(list != null) {
+					session.setAttribute("logRank", list.get(0).getAvg_all());
+					mav.setViewName("redirect:/userHome");
+				}
+			}catch(Exception e) {
+				//e.printStackTrace();
+				session.setAttribute("logRank", "0");
+				mav.setViewName("redirect:/userHome");
+			}
 			mav.setViewName("redirect:/userHome");
+			
 		}else {	//관리자 로그인
 			dtoadmin = adminservice.loginAdminOk(id, password);
 			
@@ -142,7 +131,6 @@ public class RegisterController {
 	
 	@RequestMapping(value="/registerOk", method=RequestMethod.POST)
 	public ModelAndView registerOk(RegisterDTO dto) {
-		System.out.println(dto.toString());
 		
 		ModelAndView mav = new ModelAndView();
 		//회원가입
@@ -191,8 +179,14 @@ public class RegisterController {
 	//로그아웃 - 세션제거
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session) {
-		session.invalidate();
 		ModelAndView mav = new ModelAndView();
+		
+		session.setAttribute("logId", null);
+		session.setAttribute("logName", null);
+		session.setAttribute("logStatus", "N");
+		session.setAttribute("logGender", null);
+		session.setAttribute("adminlogStatus", "N");
+		
 		mav.setViewName("redirect:/");
 		return mav;
 	}

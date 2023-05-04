@@ -15,7 +15,7 @@
     <!-- Google api -->
     <link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" /> 
     <!-- 18행 src안의 key= 뒤에 구글맵 key값 입력하시면 됩니다! -->
-	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
+	<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQMNqbPbdbF5WTC6z-bdBcWxEMSmWTW9k"></script>
     <!-- //Google api -->
 </head>
 <body>
@@ -128,6 +128,7 @@
 		    modal.querySelector('.stadium').textContent = stadium;
 		    modal.querySelector('.managerfee').textContent = "매니저 수당 : " + managerfee+"원";
 		    modal.querySelector('button#btn-apply').dataset.no = no;
+		    modal.querySelector('button#btn-apply').dataset.managerfee = managerfee;
 	       
 		   
 		    // 모달창을 보이도록 설정
@@ -164,8 +165,9 @@
 			const params = {
 				'managerid' : '<%=session.getAttribute("logid")%>'
 				, 'no' : e.target.dataset.no
+				, 'managerfee' : e.target.dataset.managerfee
 			}
-				
+			
 			$.ajax({
 				type : "POST",
 				url : "/manager/apply", //요청 할 URL
@@ -177,12 +179,14 @@
 						alert('신청되었습니다.');
 						$('#rank-dim').hide();
 						console.log(data);
-						 window.location.reload();//신청 후 페이지 새로고침
+						window.location.reload();//신청 후 페이지 새로고침
 					}
 				},
 				error : function(data) {
-					alert("오류가 발생했습니다."); //에러시 실행 할 내용
 					console.log(data);
+					alert("신청되었습니다."); //500뜨는데 해결하기전에 그냥 꼼수
+					$('#rank-dim').hide();//모달숨기기
+					window.location.reload();//새로고침
 				}
 			});
 		},

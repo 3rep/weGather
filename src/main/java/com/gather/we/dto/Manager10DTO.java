@@ -15,7 +15,7 @@ public class Manager10DTO {
 	    private Integer rank;
 	    private int s_no;
 	    private String userid;
-	    private int tel;
+	    private String tel;
 	   
 	    
 	   
@@ -23,22 +23,24 @@ public class Manager10DTO {
 	   
 		
 		
-	    private Integer p_no;
+	   
 	    private Integer no;
 	    
-	    
+	    private Integer P_no;
 	    
 	    
 	    
 		
+		
+	
 		
 		@Override
 		public String toString() {
 			return "Manager10DTO [stadium=" + stadium + ", location=" + location + ", gametime=" + gametime
 					+ ", g_status=" + g_status + ", managerid=" + managerid + ", manager=" + manager + ", id=" + id
 					+ ", username=" + username + ", gender=" + gender + ", rank=" + rank + ", s_no=" + s_no
-					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", p_no=" + p_no + ", no="
-					+ no + "]";
+					+ ", userid=" + userid + ", tel=" + tel + ", rankFilter=" + rankFilter + ", no=" + no + ", P_no="
+					+ P_no + "]";
 		}
 		public String getStadium() {
 			return stadium;
@@ -107,10 +109,10 @@ public class Manager10DTO {
 		public void setUserid(String userid) {
 			this.userid = userid;
 		}
-		public int getTel() {
+		public String getTel() {
 			return tel;
 		}
-		public void setTel(int tel) {
+		public void setTel(String tel) {
 			this.tel = tel;
 		}
 		public String getRankFilter() {
@@ -125,18 +127,19 @@ public class Manager10DTO {
 		public void setManagerid(String managerid) {
 			this.managerid = managerid;
 		}
-		public Integer getP_no() {
-			return p_no;
-		}
-		public void setP_no(Integer p_no) {
-			this.p_no = p_no;
-		}
 		public Integer getNo() {
 			return no;
 		}
 		public void setNo(Integer no) {
 			this.no = no;
 		}
+		public Integer getP_no() {
+			return P_no;
+		}
+		public void setP_no(Integer p_no) {
+			P_no = p_no;
+		}
+		
 		
 	    
 	    

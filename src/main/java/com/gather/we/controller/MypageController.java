@@ -40,9 +40,10 @@ public class MypageController {
 	@GetMapping("/mypage/applyList") 
 	public ModelAndView applyList(HttpSession session, PagingVO vo) {
 		
+		//System.out.println(vo.toString());
 		ModelAndView mav = new ModelAndView();
 		
-		//userid�� logId���� Ȯ��
+		//userid가 logId랑 같은지 확인
 		String logId = (String)session.getAttribute("logId");
 		vo.setUserid(logId);
 		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
@@ -50,7 +51,7 @@ public class MypageController {
 		vo.setTotalRecord(service.allTotalRecord(logId));
 		
 		List<MypageApplyListDTO> list = service.allgameList(vo);
-		
+		//System.out.println("list->"+list);
 		Date now = new Date();
 		
 		mav.addObject("list", list);
@@ -69,9 +70,9 @@ public class MypageController {
 		vo.setUserid(logId);
 		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
 		vo.setOnePageNumCount(5); // 표시할 페이지 수
-		
+		vo.setTotalRecord(service.allTotalRecord(logId));
+
 		List<MypageApplyListDTO> list = service.rankgameList(vo);
-		
 		Date now = new Date();
 
 		mav.addObject("list", list);
@@ -106,14 +107,15 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		String logId = (String)session.getAttribute("logId");
 		
+		MypageRankDTO dto = new MypageRankDTO();
+		
 		List<MypageRankDTO> list = service.rankResult(logId);
+		//System.out.println("list->"+list);
 
 		//no Rank인 경우, list에 담긴 값이 없어 list.get(0)하면 에러발생
 		//	-> try-catch문 쓰자
 		try { //rank가 있는 경우
 		
-			MypageRankDTO dto = new MypageRankDTO();
-			//System.out.println("dto->"+dto);
 			dto.setAvg_all(list.get(0).getAvg_all());
 			
 			//System.out.println("list--->: "+ list);
@@ -124,7 +126,6 @@ public class MypageController {
 			mav.setViewName("user/mypage/rank");
 			
 		}catch(Exception e){ //rank가 없는 경우
-			MypageRankDTO dto = new MypageRankDTO();
 			
 			mav.addObject("list",list);
 			mav.addObject("dto", dto);
@@ -144,12 +145,11 @@ public class MypageController {
 		//System.out.println("list111-> "+list );
 		
 		Collections.reverse(list);
-		System.out.println("list222:: "+list);
 		
 		int n = list.size();
 		//System.out.println("n->"+n);
 		
-		//jsonŸ������ ��ȯ
+		//json형태로 뷰로 내보내기
 		ObjectMapper mapper = new ObjectMapper(); 
 		String json ="";
 		

@@ -3,6 +3,7 @@ package com.gather.we.dao;
 import java.util.List;
 
 import com.gather.we.dto.AdminRankGameDTO;
+import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.RankGameDetailDTO;
 import com.gather.we.dto.RankGameListDTO;
@@ -22,5 +23,9 @@ public interface RankGameDAO {
 	public int currPeopleCount(int no);
 	// 관리자 랭크게임 목록 전체선택
 	public List<AdminRankGameDTO> adminRankGameAllSelect();
+	// 관리자 랭크게임 해당 페이지 레코드 선택
+	public List<AdminRankGameDTO> pageSelect(PagingVO vo);
+	// 랭크게임 총레코드 수
+	public int totalRecord();
 }
 

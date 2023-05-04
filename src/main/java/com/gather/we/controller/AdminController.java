@@ -83,45 +83,68 @@ public class AdminController {
 
 	// 관리자 홈
 	@GetMapping("/")
-	public ModelAndView adminHome() {
+	public ModelAndView adminHome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		mav.setViewName("redirect:userList");
-		
+
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("redirect:/admin/userList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 
-  
 	//(관리자 페이지)회원 리스트
 	@GetMapping("/userList")
-	public ModelAndView loginList(PagingVO vo) {
+	public ModelAndView loginList(HttpSession session, PagingVO vo) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+				
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드 수 세팅
 		vo.setTotalRecord(service.totalRecord(vo));
-		System.out.println(vo.toString());
 		
 		List<RegisterDTO> list = regservice.dataAllSelect(vo);
-		System.out.println(list);
 		mav.addObject("vo", vo);
 		mav.addObject("list", list);
-		mav.setViewName("admin/userList/userList");
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/userList/userList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
+	
 	//(관리자 페이지)회원정보 수정폼
 	@GetMapping("/userEdit/{userid}")
-	public ModelAndView loginEdit(@PathVariable("userid") String userid) {
+	public ModelAndView loginEdit(@PathVariable("userid") String userid, HttpSession session) {
 		RegisterDTO dto = regservice.registerEdit(userid);
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+		
 		mav.addObject("dto", dto);
-		mav.setViewName("admin/userList/userEdit");
+		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/userList/userEdit");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	//(관리자 페이지)회원활동내역
 	@GetMapping("/userLog/{userid}")
-	public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey) {
+	public ModelAndView userLog(@PathVariable("userid") String userid, String searchKey, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		//UserLogDTO dto = regservice.userLogSelect(userid);
 		List<UserLogDTO> list = regservice.userLogSelect(userid);
 		List<UserLogDTO> listNorm = regservice.userLogNormSelect(userid);
@@ -135,53 +158,102 @@ public class AdminController {
 		}else if(searchKey.equals("norm_game")) {
 			mav.addObject("listNorm", listNorm);
 		}
-		mav.setViewName("admin/userList/userLog");
+		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/userList/userLog");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
+	
 	//(관리자) 수입내역
 	@GetMapping("/revenue")
-	public ModelAndView revenue() {
+	public ModelAndView revenue(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		List<UserPayDTO> pay = service.revenue();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+						
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+				
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.revenueTotalRecord(vo));
+		
+		List<UserPayDTO> pay = service.revenue(vo);
 		
 		mav.addObject("pay", pay);
-		mav.setViewName("admin/revenue/revenue");
+		mav.addObject("vo", vo);
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/revenue/revenue");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	//(관리자) 지출내역
 	@GetMapping("/expense")
-	public ModelAndView expense() {
+	public ModelAndView expense(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		List<AdminManagerSettlementDTO> expense = service.expense();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.expenseTotalRecord(vo));
+		
+		List<AdminManagerSettlementDTO> expense = service.expense(vo);
 		
 		mav.addObject("expense", expense);
-		mav.setViewName("admin/revenue/expense");
+		mav.addObject("vo", vo);
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/revenue/expense");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	//(관리자) 매니저비
 	@GetMapping("/managerfee")
-	public ModelAndView managerFee() {
+	public ModelAndView managerFee(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		List<AdminManagerSettlementDTO> managerFee = service.managerFee();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+								
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+						
+		// 총레코드 수 세팅
+		vo.setTotalRecord(service.managerFeeTotalRecord(vo));
+		
+		List<AdminManagerSettlementDTO> managerFee = service.managerFee(vo);
 		
 		mav.addObject("managerFee", managerFee);
-		mav.setViewName("admin/revenue/managerFee");
+		mav.addObject("vo", vo);
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/revenue/managerFee");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// (관리자) 매니저 지급 완료
 	@PostMapping("/waitOk")
 	public ModelAndView waitOk(AdminManagerSettlementDTO dto) {
-		System.out.println(dto.toString());
-		
 		// 지급일 셋팅
 		Date datetime = new Date();
 		dto.setDatetime(datetime);
@@ -191,10 +263,8 @@ public class AdminController {
 		if(cnt>0) {
 			mav.setViewName("redirect:/admin/managerfee");
 		}else {
-
 			mav.addObject("msg", "회원정보수정 실패하였습니다.");
 			mav.setViewName("redirect:/admin/managerfee");
-
 		}
 
 		return mav;
@@ -202,23 +272,33 @@ public class AdminController {
 	
 	// 종목 목록
 	@GetMapping("/sport/sportlist")
-	public ModelAndView sportList() {
+	public ModelAndView sportList(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+		
 		List<SportDTO> sportList = sportService.sportAllSelect();
 		
 		mav.addObject("sportList", sportList);
-		mav.setViewName("admin/sport/sportList");
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/sport/sportList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// 종목 등록
 	@GetMapping("/sport/new")
-	public ModelAndView sportNew() {
+	public ModelAndView sportNew(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		mav.setViewName("admin/sport/sportNew");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/sport/sportNew");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -311,14 +391,19 @@ public class AdminController {
 	
 	// 종목 수정
 	@GetMapping("/sport/edit")
-	public ModelAndView sportNew(int s_no) {
+	public ModelAndView sportNew(int s_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		SportDTO sportInfo = sportService.sportOneSelect(s_no);
 		
 		mav.addObject("sportInfo", sportInfo);
-		mav.setViewName("admin/sport/sportEdit");
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/sport/sportEdit");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -404,42 +489,74 @@ public class AdminController {
 	
 	// 랭크경기 목록
 	@GetMapping("/rankgame/rankgamelist")
-	public ModelAndView rankGameList() {
+	public ModelAndView rankGameList(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
-		List<AdminRankGameDTO> rankGameList = rankGameService.adminRankGameAllSelect();
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+				
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
 		
-		mav.addObject("rankGameList", rankGameList);
-		mav.setViewName("admin/rankGame/rankGameList");
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(rankGameService.totalRecord());
 		
+		mav.addObject("rankGameList", rankGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
+		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/rankGame/rankGameList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// 일반경기 목록
 	@GetMapping("/normgame/normgamelist")
-	public ModelAndView normGameList() {
+	public ModelAndView normGameList(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-
-		List<NormGameDetailDTO> normGameList = normGameService.normGameDetailAllSelect();
-
-		mav.addObject("normGameList", normGameList);
-		mav.setViewName("admin/normGame/normGameList");
-
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+		
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+		
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(normGameService.totalRecord());
+		
+		// DB조회
+		mav.addObject("normGameList", normGameService.pageSelect(vo)); // 해당페이지 레코드 선택하기
+		mav.addObject("vo", vo); // view페이지로 페이지정보를 세팅
+		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/normGame/normGameList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// 경기 등록
 	@GetMapping("/game/new")
-	public ModelAndView rankGameNew() {
+	public ModelAndView rankGameNew(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		List<SportDTO> sportList = sportService.sportAllSelect();
 		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
 		
 		mav.addObject("sportList", sportList);
 		mav.addObject("stadiumInfoList", stadiumInfoList);
-		mav.setViewName("admin/rankGame/rankGameNew");
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/rankGame/rankGameNew");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -495,8 +612,9 @@ public class AdminController {
 	
 	// 랭크경기 수정
 	@GetMapping("/rankgame/edit")
-	public ModelAndView rankGameList(int no) {
+	public ModelAndView rankGameList(int no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		List<SportDTO> sportList = sportService.sportAllSelect();
 		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
@@ -510,8 +628,12 @@ public class AdminController {
 		mav.addObject("sportList", sportList);
 		mav.addObject("stadiumInfoList", stadiumInfoList);		
 		mav.addObject("rankgameInfo", rankgameInfo);
-		mav.setViewName("admin/rankGame/rankGameEdit");
 		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/rankGame/rankGameEdit");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -542,26 +664,44 @@ public class AdminController {
 	
 	// 매니저 승인 요청 목록
 	@GetMapping("/manager/approvelist")
-	public ModelAndView managerApproveList() {
+	public ModelAndView managerApproveList(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+								
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+						
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(adminManagerService.managerApproveTotalRecord());
 		
 		// 매니저 계정 승인 요청 목록을 DB에서 조회
-		mav.addObject("list", adminManagerService.approveList());
+		mav.addObject("list", adminManagerService.approveList(vo));
+		mav.addObject("vo", vo);
 		
-		mav.setViewName("admin/allManager/managerApproveList");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/allManager/managerApproveList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// 매니저 승인 요청 상세 페이지
 	@GetMapping("/manager/approvedetail")
-	public ModelAndView managerApproveDetail(String managerid) {
+	public ModelAndView managerApproveDetail(String managerid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		mav.addObject("dto", adminManagerService.approveDetail(managerid));
 		
-		mav.setViewName("admin/allManager/managerApproveDetail");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/allManager/managerApproveDetail");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -592,9 +732,20 @@ public class AdminController {
 	
 	// 매니저 목록 조회
 	@GetMapping("/manager/managerlist")
-	public ModelAndView managerList() {
+	public ModelAndView managerList(PagingVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		List<ManagerDTO> olist = adminManagerService.managerList();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+		
+		// 한 페이지에 표시할 레코드수
+		vo.setOnePageRecord(10);
+						
+		// 페이지 목록에 표시할 페이지 갯수
+		vo.setOnePageNumCount(5);
+				
+		// 총레코드수를 구하여 PagingVO에 세팅
+		vo.setTotalRecord(adminManagerService.managerTotalRecord());
+		
+		List<ManagerDTO> olist = adminManagerService.managerList(vo);
 		List<ManagerDTO> nlist = new ArrayList<ManagerDTO>();
 		
 		try {
@@ -615,21 +766,29 @@ public class AdminController {
 		}
 		
 		mav.addObject("list", nlist);
+		mav.addObject("vo", vo);
 		
-		mav.setViewName("admin/allManager/managerList");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/allManager/managerList");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
 	// 매니저 상세 페이지
 	@GetMapping("/manager/managerdetail")
-	public ModelAndView managerDetail(String managerid) {
+	public ModelAndView managerDetail(String managerid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		mav.addObject("dto", adminManagerService.managerDetail(managerid));
 		
-		mav.setViewName("admin/allManager/managerDetail");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/allManager/managerDetail");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 	
@@ -647,8 +806,9 @@ public class AdminController {
 	
 	// 매니저 활동 내역
 	@PostMapping("/manager/recentOk")
-	public ModelAndView managerRecent(String managerid) {
+	public ModelAndView managerRecent(String managerid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		List<StadiumInfoDTO> stadium = new ArrayList<StadiumInfoDTO>();
 		
@@ -672,13 +832,14 @@ public class AdminController {
 		}
 		
 		mav.addObject("dto", dto);
-		
 		mav.addObject("recent", recent);
-		
 		mav.addObject("stadium", stadium);
 		
-		mav.setViewName("admin/allManager/managerRecent");
-		
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/allManager/managerRecent");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
 		return mav;
 	}
 }

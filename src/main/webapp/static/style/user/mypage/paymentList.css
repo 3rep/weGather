@@ -15,21 +15,19 @@
 	text-align: right;
 }
 /*날짜 필터*/
-.pmView{
-	text-align: left;
-	margin-bottom: 3px;
+#pmSelectedDate{
+    text-align: center;
+    height: 37px;
+    width: 220px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 10px 0;
 }
 
-.pmDate{
-	margin-top: 20px;
-	margin-bottom: 5px;
-	text-align: center;
-}
-}
 /*----table-----------*/
 #pmTable{
 	height: 600px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     display: inline-block;
 }
 #pmTable td, 

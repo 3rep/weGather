@@ -7,8 +7,9 @@
 
 .game_new_wrap.left .sport_img {
 	width: 100%;
-   	margin-bottom: 30px;
-}
+  margin-bottom: 30px;
+	border-radius: 40px;
+} 
 
 .game_new_wrap.left .norm_game_new_select li{
 	font-size: var(--font-micro);
@@ -25,6 +26,18 @@
 	border-radius: 20px;
 	line-height: 2em;
 	border: 2px solid var(--color-norm-green);
+}
+
+.gamenew_guide {
+	text-align: center;
+	margin-bottom: 24px;
+	padding: 10px 0;
+	background: var(--color-white);
+	border-radius: 20px;
+	line-height: 2em;
+	color: black;
+	border: 2px solid var(--color-norm-green);
+	font-size: var(--font-regular);
 }
 
 .gamenew_detail_main {

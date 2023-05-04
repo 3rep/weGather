@@ -40,7 +40,7 @@ header {
 }
 
 .navbar-brand { /* 로고 margin */
-	margin: 15px 10px 10px;
+	margin: 5px 10px 15px;
 }
 
 #mainNav li {
@@ -57,6 +57,14 @@ header {
 
 #subNav a.nav-link {
 	padding-bottom: 10px;
+}
+#subNav .subNavImgUser{
+	width: 20px;
+	height: 20px;
+}
+#subNav .subNavImgMng{
+	width: 25px;
+	height: 25px;
 }
 
 /* 메인 메뉴 텍스트 색상 */

@@ -26,6 +26,7 @@ public interface MypageDAO {
 	public List<MypageApplyListDTO> normgameList(PagingVO vo);
 	//일반 총레코드수
 	public int normTotalRecord(String userid);
+	
 	//rank 정보 가져오기
 	public List<MypageRankDTO> rank(String userid, String sportname);
 	//rank 결과요약 가져오기

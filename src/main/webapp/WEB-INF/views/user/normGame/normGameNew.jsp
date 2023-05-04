@@ -37,6 +37,11 @@
 	}
 
 	$(function(){
+		
+		if($('.gamenew_info').length > 0) {
+			  $('.gamenew_guide').remove();
+			}
+		
 		$("#region").change(function(){
 			if($(this).val() == "서울"){
 				$(".select.stadium").remove();
@@ -203,12 +208,16 @@
 			
 			<!-- 경기 상세 정보 -->
 			<ul class="normgame_detail">
+				<li class="gamenew_guide">
+					지역과 경기장을 선택하여 주세요.
+				</li>
 				<c:forEach var="gameDTO" items="${newNormGameList}" varStatus="status">
 					<c:if test="${gameDTO.s_no == sportDTO.s_no }">
 						<li class="gamenew_info">
 							<a href="newdetail?no=${gameDTO.no}&s_no=${sportDTO.s_no}"><span class="gamenew_detail_main">${status.count}. 시작시간 (<fmt:formatDate pattern="yy년 MM월 dd일 E요일 HH:mm" value="${gameDTO.gametime}" />)</span></a><br/>
 							<span class="gamenew_detail_sub">이용시간 (${gameDTO.usetime}) | 결제금액 (<fmt:formatNumber value="${gameDTO.payment}" maxFractionDigits="3"/>원)</span>
 						</li>
+						
 					</c:if>
 				</c:forEach>
 				
@@ -223,7 +232,6 @@
 					</c:if>
 				</li>
 			</ul>
-			<%-- <button onclick="location.href='${path}/normgame/normgamelist?s_no=${sportDTO.s_no}'" class="btn_back" >뒤로가기</button> --%>
 		</div>
 	</div>
 </div>

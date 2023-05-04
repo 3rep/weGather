@@ -31,6 +31,12 @@
 	height: 50px;
 }
 #infoUl>li>input{
+	    height: 40px;
+    background: #F8F8F9;
+    border: none;
+    width: 560px;
+    border-radius: 15px;
+    padding-left: 10px;
 	height: 40px;
 	background: #F8F8F9;
     border: none;
@@ -38,6 +44,7 @@
 }
 #infoUl>#infoGender{
 	line-height: 40px;
+	padding-left: 30px;
 }
 #infoUl>#infoGender>input{
 	width: 15px;
@@ -45,16 +52,18 @@
 }
 #infoUl>#infoTel input{
 	width: 150px;
-	background: white;
+	/* background: white; */
 	padding-left: 12px;
 	height: 35px;
 	border-radius: 15px;
+	text-align: center;
 }
 #infoUl>#infoTel>#tel1{
-	height: 35px;
+	height: 44px;
 	width: 100px;
-    border: 0px;
+    border: 1px solid #ddd;
     border-radius: 15px;
+    text-align: center;
 }
 #infoUl>li:nth-child(2n+1){
 	flex: 1 1 20%;
@@ -70,6 +79,16 @@
 	padding-top: 4px;
     padding-left: 25px;
     border-radius: 15px;
+}
+#infoUl #mbti{
+	width: 528px;
+    height: 40px;
+    background: #F8F8F9;
+    line-height: 40px;
+    margin-top: 2px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 15px;	
 }
 
 /* submit버튼 스타일 */

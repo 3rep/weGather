@@ -17,7 +17,7 @@
 	<select id="dataAllSelect" resultType="com.gather.we.dto.RegisterDTO">
 		select * from 
 			(select * from
-		 		(select userid, email, username, tel, to_char(signupdate, 'YYYY-MM-DD') signupdate from users
+		 		(select userid, email, username, tel, gender, age, to_char(signupdate, 'YYYY-MM-DD') signupdate from users
 		 		order by userid desc
 		 		)
  				<![CDATA[
