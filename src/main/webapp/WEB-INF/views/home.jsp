@@ -24,8 +24,8 @@
 		
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
-				<span>We gather &emsp;</span><br/>
-				<span>&emsp; together </span><br/>
+				<span>We Gather &emsp;</span><br/>
+				<span>&emsp; Together </span><br/>
 				<span id="featSpan">feat. sport</span><br/>
 				<br/>
 				<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='/userHome_unlogin'">시작하기</button>
