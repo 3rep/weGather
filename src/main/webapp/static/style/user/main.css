@@ -1,14 +1,14 @@
 @charset "EUC-KR";
 
 /*스크롤바 없애기*/
-/* body{
+body{
  -ms-overflow-style: none;
  }
  
 ::-webkit-scrollbar {
   display: none;
 }
- */
+
 /* 버튼 스타일 라이브러리*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
 @font-face {
@@ -114,11 +114,11 @@
 	width: 100%;
 	height: 100vh;
 	overflow: auto;
-	/* scroll-snap-type: y mandatory; */
+	scroll-snap-type: y mandatory;
 }
 
 .section-main{
-	/* scroll-snap-align: start; */
+	scroll-snap-align: start;
 	background: #ddd;
 	display: flex;
 	flex-direction: column;
@@ -178,7 +178,7 @@
 
 /* 사이트 소개 */
 #section-info {
-	/* scroll-snap-align: start; */
+	scroll-snap-align: start;
 	/* background-color: lightgray; */
 	padding: 50px 0;
 	height: 100vh;
@@ -294,7 +294,7 @@
 
 /* 경기 소개 */
 #section-game {
-	/* scroll-snap-align: start; */
+	scroll-snap-align: start;
 	display: flex;
 	height: 100vh;
 	justify-content: space-between;
