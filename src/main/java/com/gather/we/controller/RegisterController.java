@@ -104,15 +104,15 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//로그인한 경우 로고 누를떄 뜨는 메인화면
-	@GetMapping("/userHome")
-	public ModelAndView userHome(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		String logName = (String)session.getAttribute("logName");
-		mav.addObject(logName);
-		mav.setViewName("user/userHome");
-		return mav;
-	}
+//	//로그인한 경우 로고 누를떄 뜨는 메인화면
+//	@GetMapping("/userHome")
+//	public ModelAndView userHome(HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//		String logName = (String)session.getAttribute("logName");
+//		mav.addObject(logName);
+//		mav.setViewName("user/userHome");
+//		return mav;
+//	}
 	
 	//회원가입 선택창
 	@GetMapping("/registerChoose")
@@ -185,7 +185,7 @@ public class RegisterController {
 		session.setAttribute("type", null);
 		session.setAttribute("adminlogStatus", "N");
 		
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/userHome_unlogin");
 		return mav;
 	}
 }

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="${path}/static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/header.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/footer.css" type="text/css"/>
-<link rel="stylesheet" href="${path}/static/style/user/main.css" type="text/css"/>
+<link rel="stylesheet" href="${path}/static/style/user/userHome.css" type="text/css"/>
 
 <link rel="stylesheet" href="${path}/static/style/register/login.css" type="text/css" />
 <link rel="stylesheet" href="${path}/static/style/register/register.css" type="text/css" />
