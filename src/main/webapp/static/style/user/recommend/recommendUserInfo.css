@@ -19,7 +19,7 @@
 	display: flex;
 	margin: 0 auto;
 	line-height: 30px;
-	margin-top: 4px;
+	margin-top: 10px;
 }
 
 #recommend_nav .user_age {
@@ -50,12 +50,14 @@
 
 #recommend_nav .recommend_user_info.login.active {
 	display: block;
-	border: 7px solid var(--color-lighter-pink);
+	border-bottom: 2px solid var(--color-lighter-pink);
+	border-radius: 0;
 }
 
 #recommend_nav .recommend_user_info.non_login.active {
 	display: block;
-	border: 7px solid var(--color-lighter-pink);
+	border-bottom: 2px solid var(--color-lighter-pink);
+	border-radius: 0;
 }
 
 #recommend_container .recommend_content_user_info {

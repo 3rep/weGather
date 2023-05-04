@@ -1,21 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We Gather, Just do it</title>
 <link rel="stylesheet" href="${path}/static/style/style.css" type="text/css"/>
 <link rel="stylesheet" href="${path}/static/style/user/main.css" type="text/css"/>
-
-	<!-- 메인화면 contents부분 -->
-	<!-- 배경에 이미지(A) 깔고 
-	그 위에 
-		1. 로고 + 회원가입, 로그인 버튼?  있는 화면 : 백그라운드 연하게
-			> 불투명 백그라운드(B) + 내용들어있는 div(C)
-		2. 회원가입화면 바로 밑에 붙여서 소개 div(D)
-	
-		하나의 container에 넣어서 flex 적용시킨다.
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+	$(function(){
 		
-		맨 뒤 바탕사진(A)은 스크롤할때 1씩 간다면,
-		그 위에 1,2div는 5씩 이동해야함
-	-->
+		/* $("#top").click(function(){
+			  window.scrollTo({top : 0, behavior: 'smooth'}); 
+			}); */
+		
+		 
+		$("#top").click(function(){
+		    var htmloffset = $('html').offset();
+		    $('html, body').animate( { scrollTop : 0 }, 400 );
+		    return false;
+		}); 
+		
+	});
 	
+</script>
+</head>
+<body>
 <div class="container" id="main-container">
 	<section id="container" class="section-main"> <!-- css우선순위: id가 css보다 우선적용 -->
 		<!-- <div class="rank-visual" > -->
@@ -86,7 +98,7 @@
 	
 	<!-- 경기 소개 -->
 	<section id="section-game">
-		<img src="" class="game-img" />
+		<img src="static/img/imgMain/referee.jpg" class="game-img" />
 		<div class="game-wrap">
 			<div class="game rank">
 				<span class="title">
@@ -99,7 +111,7 @@
 				랭크가 매겨지는 경기입니다.<br/>
 				게임 후 나의 랭킹과 순위를 확인해보세요!
 				</span>
-				<a href="#">둘러보기????</a>
+				<a class="home_alink rank" href="${path}/rankgame/sportlist">랭크경기 둘러보기</a>
 			</div>
 			<div class="game norm">
 				<span class="title">
@@ -112,16 +124,16 @@
 				자유롭게 진행, 참여하는 경기입니다.<br/>
 				원하는 시간, 장소에 원하는 사람들과 경기를 즐기세요!
 				</span>
-				<a href="#">둘러보기????</a>
+				<a class="home_alink norm" href="${path}/normgame/sportlist">일반경기 둘러보기</a>
 			</div>
 		</div>
-		<img src="" class="game-img" />
+		<img src="static/img/imgMain/volleyball.jpg" class="game-img" />
 	</section>
 	
 	<!-- 스포츠추천, 랭크보드 -->
 	<section id="section-others">
 		<div class="item-wrap">
-			<img src="" class="item-img" />
+			<img src="static/img/imgMain/ranking.jpg" class="item-img" />
 			<div class="item">
 				<span class="title">랭크보드</span>
 				<span class="desc">
@@ -130,7 +142,7 @@
 				평점과 랭크는 누적된 평균 랭크 점수에 따라 부여됩니다.<br/>
 				나의 순위와 랭크를 확인하고 다른 사용자들과 비교해보세요!<br/>
 				</span>
-				<a href="#">둘러보기?</a>
+				<a class="home_alink" href="${path}/user/rankBoard/rankBoard">랭크보드 둘러보기</a>
 			</div>
 		</div>
 		<div class="item-wrap">
@@ -141,29 +153,13 @@
 				MBTI, 나이, 성별 별로 사용자들이 참여하는 스포츠를 통계로 나타냅니다.<br/>
 				나와 비슷한 사용자들이 좋아하는 스포츠를 확인하고 새로운 스포츠를 즐겨보세요!
 				</span>
-				<a href="#">둘러보기?</a>
+				<a class="home_alink" href="${path}/recommend/mbti">스포츠추천 둘러보기</a>
 			</div>
-			<img src="" class="item-img" />
+			<img src="static/img/imgMain/recommend.jpg" class="item-img" />
 		</div>
 	</section>
-</div>		
-		<!-- <div class="item" id="info"> -->
 		
-			
-			<!-- <img class="infoImg" src="static/img/imgMain/info.png" alt="info"/> -->
-			<!--  
-			<div class="infoTxt">
-				<span class="first">신청, 경기시작 </span><br/>
-				<span class="second">We gather, Just do it!</span> 
-				<div class="jb-division-line"></div>
-				<div class="third">
-					인원모집 및 예약 서비스 <br/>
-					랭크 시스템<br/>
-					매니저 지원 서비스<br/>
-					맞춤형 스포츠 추천
-				</div>
-			</div>
-		</div>
-		-->
-
-	
+<a style="display:scroll;position:fixed;bottom:15px;right:20px;font-size:20px; cursor:pointer" id="top" title=”top">TOP</a>	
+</div>
+</body>
+</html>	
