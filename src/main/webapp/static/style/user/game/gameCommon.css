@@ -16,7 +16,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px 0;
-	background-color: var(--color-blue);
+	/*background-color: var(--color-blue);*/
+	
 	border-radius: 20px; 	
 }
 
@@ -27,7 +28,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px 0;
-	background-color: var(--color-norm-green);
+	/*background-color: var(--color-norm-green);*/
 	border-radius: 20px;
 }
 
@@ -36,5 +37,19 @@
 	text-align: center;
 	font-size: var(--font-regular);
 	font-weight: var(--weight-bold);
-	color: var(--color-white);
+	color: var(--color-black);
+}
+.game_type_desc>img{
+	width:35px;
+	height:30px;
+}
+.normgame_type_desc>img{
+	width:35px;
+	height:30px;
+}
+.normgame_type_desc {
+	text-align: center;
+	font-size: var(--font-regular);
+	font-weight: var(--weight-bold);
+	color: var(--color-black);
 }
