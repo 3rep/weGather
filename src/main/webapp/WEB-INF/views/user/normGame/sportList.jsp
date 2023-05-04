@@ -7,7 +7,11 @@
 <div class="norm_game_nav"><b>종목선택</b> > 경기목록 > 경기상세정보</div>
 <div class="game_container">
 	<div class="game_type_container norm">
-		<span class="normgame_type_desc"><img src="/static/img/imgMain/quoteLeft.png"/>일반경기는 매니저 없이 사용자가 자유롭게 개설할 수 있습니다.<img src="/static/img/imgMain/quoteRight.png"/></span>
+		<span class="normgame_type_desc">
+			<img src="/static/img/imgMain/quoteLeft.png"/> &emsp;
+			일반경기는 매니저 없이 사용자가 자유롭게 개설할 수 있습니다. &emsp;
+			<img src="/static/img/imgMain/quoteRight.png"/>
+		</span>
 	</div>
 	<ul class="sport_list">
 		<c:forEach var="sportDTO" items="${sportList}">

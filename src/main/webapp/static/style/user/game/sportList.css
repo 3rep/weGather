@@ -4,14 +4,14 @@
 .sport_list {
 	display: flex;
 	flex-wrap: wrap;
-	width: 1020px;
+	width: 1200px;
 	margin: 10px auto; /* 0 auto;*/
 }
 
 .sport_item {
 	position: relative;
-	width: 300px;
-	height: 300px;
+	width: 360px;
+	height: 360px;
 	margin: 20px;
 	color: var(--color-white);
 	cursor: pointer;
