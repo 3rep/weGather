@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container" id="usersList_container">
 	<h2 id="page-title">회원목록</h2>
-	<h4>※회원 아이디 선택 시 회원 정보수정, 회원 이름 선택 시 회원 활동내역 페이지 이동</h4>
+	<h4>※회원 아이디 선택 시 회원 정보, 회원 이름 선택 시 회원 활동내역 페이지 이동</h4>
 	<table>
 		<tr>
 			<th>회원 아이디</th>
