@@ -14,42 +14,59 @@
 
 </style>
   
- <body>
- <h1 style="font-size: 30px; position:relative; left:90px; top:50px; height:100px;">참가명단 확인</h1>
-  <div id="container">
-
-    <table>
-      <thead>
-        <tr>
-          <th colspan="5">참가명단</th>
-        </tr>
-        <tr>
-          <th colspan="5">종목</th>
-        </tr>
-        <tr>
-          <th>아이디</th>
-          <th>이름</th>
-          <th>연락처</th>
-          <th>성별</th>
-          <th>랭크</th>
-        </tr>
-      </thead>
-      <tbody>
-  <c:forEach items="${entryList}" var="item">
-   <c:if test="${item.getNo() == no}">
-    <tr>
-      <td><c:out value="${item.getUserid()}" /></td>
-      <td><c:out value="${item.getUsername()}" /></td>
-      <td><c:out value="${item.getTel()}" /></td>
-      <td><c:out value="${item.getGender()}" /></td>
-      <td><c:out value="${item.getRank()}" /></td>
-    </tr>
-    </c:if>
-  </c:forEach>
-</tbody>
-    </table>
-     <a href="${path}/manager/manager10" class="page-link">	
-    <button class="back-button">뒤로가기</button></a>
+<body>
+<div id="entry-container">
+	<h1>참가명단 확인</h1>
+	<div class="entry-wrap">
+	    <table>
+			<thead>
+		        <tr>
+		          <th>아이디</th>
+		          <th>이름</th>
+		          <th>연락처</th>
+		          <th>성별</th>
+		          <th>랭크</th>
+		        </tr>
+			</thead>
+	      	<tbody>
+				<c:forEach items="${entryList}" var="item">
+					<c:if test="${item.getNo() == no}">
+					    <tr>
+							<td><c:out value="${item.getUserid()}" /></td>
+							<td><c:out value="${item.getUsername()}" /></td>
+							<td><c:out value="${item.getTel()}" /></td>
+							<td><c:out value="${item.getGender()}" /></td>
+							
+							<c:set var="rank" value="${item.getRank()}"/>
+							<td>
+								<c:choose>
+									<c:when test="${rank==1}">
+						            	브론즈
+									</c:when>
+						         	<c:when test="${rank==2}">
+						            	실버
+						         	</c:when>
+						         	<c:when test="${rank==3}">
+						            	골드
+									</c:when>
+						         	<c:when test="${rank==4}">
+						            	플래티넘
+						         	</c:when>
+						         	<c:when test="${rank==5}">
+						            	다이아
+									</c:when>
+						         	<c:otherwise>
+						            	no Rank
+						         	</c:otherwise>
+						      	</c:choose>
+							</td>
+					    </tr>
+				    </c:if>
+			  </c:forEach>
+			</tbody>
+		</table>
+    	<button class="btn" onclick="location.href='${path}/manager/manager10'">이전경기목록</button> 
+  	</div>
   </div>
 </body>
 
