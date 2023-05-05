@@ -12,9 +12,9 @@
 		<property name="username" value="admin"></property>
 		<property name="password" value="Wegather1234"></property>
 	</bean>
+  
 
 	<!-- dataSource객체를 이용하여 SqlSessionFactory객체를 생성한다. -->
-
 	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>

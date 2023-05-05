@@ -15,7 +15,7 @@
 </script>
 	<!-- 오른쪽 내용칸 -->
 	<div id="infoContent"> 
-		<h3 class="infoh3">결제내역</h3>
+		<h3 class="infoh3">내정보수정</h3>
 		<hr/>
 		<!--회원정보수정 폼-->
 		<form method="post" id="infoEditForm" action="infoEdit"> 

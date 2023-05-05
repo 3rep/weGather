@@ -47,7 +47,7 @@ public class MypageController {
 		//userid가 logId랑 같은지 확인
 		String logId = (String)session.getAttribute("logId");
 		vo.setUserid(logId);
-		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageRecord(8); // 한 페이지에 출력될 레코드 수
 		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		vo.setTotalRecord(service.allTotalRecord(logId));
 		
@@ -90,7 +90,7 @@ public class MypageController {
 		
 		String logId = (String)session.getAttribute("logId");
 		vo.setUserid(logId);
-		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageRecord(8); // 한 페이지에 출력될 레코드 수
 		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		vo.setTotalRecord(service.allTotalRecord(logId));
 
@@ -131,7 +131,7 @@ public class MypageController {
 		
 		String logId = (String)session.getAttribute("logId");
 		vo.setUserid(logId);
-		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageRecord(8); // 한 페이지에 출력될 레코드 수
 		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		vo.setTotalRecord(service.normTotalRecord(logId));
 		
@@ -231,7 +231,7 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 		String logName = (String)session.getAttribute("logName");
 		vo.setUsername(logName);
-		vo.setOnePageRecord(5); // 한 페이지에 출력될 레코드 수
+		vo.setOnePageRecord(8); // 한 페이지에 출력될 레코드 수
 		vo.setOnePageNumCount(5); // 표시할 페이지 수
 		vo.setTotalRecord(service.paymentTotalRecord(logName));
 		

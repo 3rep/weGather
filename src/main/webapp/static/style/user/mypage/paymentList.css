@@ -18,7 +18,7 @@
 #pmSelectedDate{
     text-align: center;
     height: 37px;
-    width: 220px;
+    width: 163px;
     border-radius: 5px;
     border: 1px solid gray;
     margin: 10px 0;
@@ -29,6 +29,7 @@
 	height: 600px;
     /* overflow-y: scroll; */
     display: inline-block;
+    height: 800px;
 }
 #pmTable td, 
 #pmTable th{

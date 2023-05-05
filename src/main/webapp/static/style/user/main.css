@@ -1,13 +1,15 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /*스크롤바 없애기*/
 body{
- -ms-overflow-style: none;
+	-ms-overflow-style: none;  /*엣지 스크롤없애기*/
+	overflow-x: hidden;
  }
  
-::-webkit-scrollbar {
-  display: none;
-}
+::-webkit-scrollbar { /*크롬, 사파리 스크롤 없애기*/
+	display: none; 
+} 
+
 
 /* 버튼 스타일 라이브러리*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
@@ -110,15 +112,12 @@ body{
 /*--- 버튼 스타일 end --------------------*/
 
 /* 전체 배경이미지 위에서 움직이는 container */
-#main-container{
-	width: 100%;
-	height: 100vh;
+/* #home-scroll-container{
 	overflow: auto;
 	scroll-snap-type: y mandatory;
-}
+} */
 
 .section-main{
-	scroll-snap-align: start;
 	background: #ddd;
 	display: flex;
 	flex-direction: column;
@@ -178,7 +177,6 @@ body{
 
 /* 사이트 소개 */
 #section-info {
-	scroll-snap-align: start;
 	/* background-color: lightgray; */
 	padding: 50px 0;
 	height: 100vh;
@@ -190,7 +188,7 @@ body{
 	font-size: var(--font-medium);
 	
 	text-align: center;
-	margin: 0 auto 75px;
+	margin: 0 auto 70px;
 	/* margin: 0 0px 75px 580px; */
 }
 
@@ -204,8 +202,8 @@ body{
 
 #section-info .info-img {
 	width: 540px;
-	background: url("/static/img/imgMain/tennis.jpg") no-repeat 25% 95% / cover;
-	height: 700px;
+	background: url("/static/img/imgMain/play.jpg") no-repeat 25% 95% / cover;
+	height: 730px;
 	border-radius: 20px;
 }
 
@@ -294,18 +292,17 @@ body{
 
 /* 경기 소개 */
 #section-game {
-	scroll-snap-align: start;
 	display: flex;
 	height: 100vh;
 	justify-content: space-between;
-	background: #EBF2FF;
+	background: #EFFAFE; /* #F0F7FF; */
 }
 
 #section-game .game-img {
 	width: 33%;
 	height: 100%;
 	background-color: #b3e1b0;
-	object-fit: cover;
+	object-fit: fill;
 }
 
 #section-game .game-wrap{
@@ -369,7 +366,7 @@ body{
 #section-others {
 	scroll-snap-align: start;
 	height: 100vh;
-	background: #FFF5F5;
+	background: #FFFBFE; /* #FFF5F5; */
 }
 
 #section-others .item-wrap {
@@ -393,7 +390,7 @@ body{
 #section-others .item-img {
 	width: 50%;
 	height: 100%;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	background-color: pink;
 }
 
@@ -406,6 +403,7 @@ body{
 	/* background-color: lightblue; */
 	margin: 0 auto;
 }
+ 
 .home_alink{
 	margin:10px;	
 }
@@ -423,4 +421,15 @@ body{
 	color: var(--color-dark-gray);
 	text-decoration: underline;
     text-underline-position: from-font;
+} 
+
+.home-top{
+	/* display: scroll; */
+	position: fixed;
+	bottom: 15px;
+	right: 20px;
+	font-size: 20px; 
+	cursor:pointer;
+	text-decoration: overline;
+    text-decoration-style: wavy;
 }

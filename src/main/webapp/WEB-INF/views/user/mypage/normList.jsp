@@ -52,7 +52,7 @@
 				        <c:if test="${list.g_status==1}">	
 				        	<td class="aplLink">
 				        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료</a><br/>
-				        		<a href="/mypage/normCancel?no=${list.no}" onclick="return confirm('신청경기를 취소하시겠습니까?');">경기취소</a>
+				        		<a href="/mypage/normCancel?no=${list.no}" onclick="return confirm('신청경기를 취소하시겠습니까?');">[경기취소]</a>
 				        		
 				        	</td>
 				        </c:if>
