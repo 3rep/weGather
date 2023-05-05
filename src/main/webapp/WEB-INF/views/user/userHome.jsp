@@ -6,7 +6,7 @@
 
 	<%
 		String logStatus = (String)session.getAttribute("logStatus");
-		System.out.println(logStatus);		
+		//System.out.println(logStatus);		
 		pageContext.setAttribute("logStatus", logStatus);
 	%>
 	
