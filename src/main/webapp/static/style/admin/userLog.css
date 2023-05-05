@@ -1,29 +1,55 @@
 @charset "UTF-8";
 
-.userLog_container{
-	width:1200px;
-	margin:0 auto;
-
+#userLog_container {
+	width:1000px;
+	display: flex;
+	flex-direction: column;
 }
 
-#searchForm{
-	position:relative;
-	left:83%;
+#userLog_container #searchForm {
+	align-self: end;
 }
-#search{
-	width:120px;
-	height:30px;
-}
-.userLog_List_btn{
-	width :110px;
+
+#userLog_container #search{
+	width:150px;
 	height:40px;
-	background-color:#ddd;
-	text-align:center;
-	border-radius:10%;
-	position:relative;
-	left:4%;
+	margin-right: 4px;
+	border-radius: 6px;
+	border: 1px solid gray;
 }
-.userLog_List_btn a:link, .userLog_List_btn a:visited, .userLog_List_btn a:hover{
+
+#userLog_container .btn-submit {
+	width:90px;
+	height:40px;
+	border-radius: 6px;
+	outline: none;
+	border: 1px solid gray;
+}
+
+#userLog_container .list-group-item {
+	width: 1000px;
+	border-radius: 16px;
+	border-bottom: 2px solid #f3f3f3;
+	background-color: var(--color-white);
+	padding: 18px;
+	padding-bottom: 0;
+}
+
+#userLog_container .userlog1 {
+	font-size: var(--font-micro);
+	font-weight: var(--weight-bold);
+	margin-bottom: 8px;
+}
+
+#userLog_container .userlog2 {
+	margin-bottom: 4px;
+}
+
+#userLog_container .userLog_List_btn{
+	margin-top: 20px;
+	align-self: end;
+}
+#userLog_container .userLog_List_btn a:link, .userLog_List_btn a:visited, .userLog_List_btn a:hover{
 	text-decoration:none;
 	color:#000;
 	
