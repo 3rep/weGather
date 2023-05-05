@@ -42,9 +42,7 @@
 			<span>&emsp; Together </span><br/>
 			<span id="featSpan">feat. sport</span><br/>
 			<br/>
-			<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='/userHome_unlogin'">시작하기</button>
-			<!-- <button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='login'">회원</button>
-         		<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='loginMan'">매니저</button> -->
+			<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='/userHome'">시작하기</button>
 		</div>
 	</div>
 </section>
@@ -100,7 +98,7 @@
 
 <!-- 경기 소개 -->
 <section id="section-game">
-	<img src="static/img/imgMain/referee.jpg" class="game-img" />
+	<img src="static/img/imgMain/trophy.jpg" class="game-img" />
 	<div class="game-wrap">
 		<div class="game rank">
 			<span class="title">
@@ -129,7 +127,7 @@
 			<a class="home_alink norm" href="${path}/normgame/sportlist">일반경기 둘러보기</a>
 		</div>
 	</div>
-	<img src="static/img/imgMain/volleyball.jpg" class="game-img" />
+	<img src="static/img/imgMain/norm.jpg" class="game-img" />
 </section>
 
 <!-- 스포츠추천, 랭크보드 -->

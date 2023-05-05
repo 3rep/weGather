@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /*스크롤바 없애기*/
 body{
@@ -188,7 +188,7 @@ body{
 	font-size: var(--font-medium);
 	
 	text-align: center;
-	margin: 0 auto 75px;
+	margin: 0 auto 70px;
 	/* margin: 0 0px 75px 580px; */
 }
 
@@ -202,8 +202,8 @@ body{
 
 #section-info .info-img {
 	width: 540px;
-	background: url("/static/img/imgMain/tennis.jpg") no-repeat 25% 95% / cover;
-	height: 700px;
+	background: url("/static/img/imgMain/play.jpg") no-repeat 25% 95% / cover;
+	height: 730px;
 	border-radius: 20px;
 }
 
@@ -302,7 +302,7 @@ body{
 	width: 33%;
 	height: 100%;
 	background-color: #b3e1b0;
-	object-fit: cover;
+	object-fit: fill;
 }
 
 #section-game .game-wrap{
@@ -390,7 +390,7 @@ body{
 #section-others .item-img {
 	width: 50%;
 	height: 100%;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	background-color: pink;
 }
 
