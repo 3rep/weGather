@@ -12,16 +12,16 @@
 	
 	<!-- 로그인한 경우 -->
 	<c:if test="${logStatus == 'Y'}">
-		<img class="img" src="static/img/imgMain/football.jpg" alt="stadium"/>
+		<img class="img" src="static/img/imgMain/baseball.jpg" alt="stadium"/>
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
-				<img src="/static/img/imgMain/quoteLeft.png" style="width:50px; height:50px; filter: invert(1);"/>
+				<img src="/static/img/imgMain/quoteLeft.png" class="login-quote"/>
 				<h3 class="userHomeH3"> ${logName }님 </h3>
 				<p class="userHomeP">
-				환영합니다.<br/>
+				환영합니다!<br/>
 				<!-- 경기를 시작해볼까요? -->
 				</p>
-				<img src="/static/img/imgMain/quoteRight.png" style="width:50px; height:50px; filter: invert(1);"/>
+				<img src="/static/img/imgMain/quoteRight.png" class="login-quote"/>
 	
 			</div>
 		</div>
@@ -44,14 +44,17 @@
 
 	<div class="item" id="info">
 		<div class="infoTxt">
-			<span class="first">신청, 경기시작</span><br/>
-			<span class="second">We gather, Just do it!</span> 
+			<span class="title">신청, 경기시작</span><br/>
+			<span class="subTitle">We gather, Just do it!</span> 
 			<div class="jb-division-line"></div>
-			<div class="third">
+			<div class="contents">
 				인원모집 및 예약 서비스 <br/>
 				랭크 시스템<br/>
 				매니저 지원 서비스<br/>
 				맞춤형 스포츠 추천
+			</div>
+			<div class="goToHome">
+				<a href="/">WEGATHER 소개보기</a>
 			</div>
 		</div>
 	</div>
