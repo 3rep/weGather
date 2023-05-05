@@ -155,7 +155,7 @@
 			</span>
 			<a class="home_alink" href="${path}/recommend/mbti">스포츠추천 둘러보기</a>
 		</div>
-		<img src="static/img/imgMain/recommend.jpg" class="item-img" />
+		<img src="static/img/imgMain/stretch.jpg" class="item-img" />
 	</div>
 </section>
 <a id="top" class="home-top" title=”top">TOP</a>	

@@ -12,7 +12,7 @@
 	
 	<!-- 로그인한 경우 -->
 	<c:if test="${logStatus == 'Y'}">
-		<img class="img" src="static/img/imgMain/baseball.jpg" alt="stadium"/>
+		<img class="img" src="static/img/imgMain/football.jpg" alt="stadium"/>
 		<div class="item" id="cloudy"> <!-- A -->
 			<div class="login"> <!-- B -->
 				<img src="/static/img/imgMain/quoteLeft.png" class="login-quote"/>
