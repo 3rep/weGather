@@ -11,7 +11,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
 	$(function(){
-		
 		//top으로 이동 
 		$("#top").click(function(){
 		    var htmloffset = $('html').offset();
@@ -19,16 +18,23 @@
 		    return false;
 		}); 
 		
+		//snap 효과 주기
+		var element = document.getElementById("#section-info");
+		function scroll(){
+		element.scrollIntoView(
+				{behavior: "smooth", block: "start", inline: "nearest"}
+				);
+		} 
+		
 	});
 	
 </script>
 </head>
 <body>
-<div id="home-scroll-container">
-<section id="container" class="section-main"> <!-- css우선순위: id가 css보다 우선적용 -->
+<section id="container" class="section-main"> 
 	<!-- <div class="rank-visual" > -->
 	
-	<img class="img" src="static/img/imgMain/stadium.jpg" alt="football"/> 
+	<img class="img" src="static/img/imgMain/stadium.jpg" alt="stadium"/> 
 	
 	<div class="item" id="cloudy"> <!-- A -->
 		<div class="login"> <!-- B -->
@@ -155,6 +161,5 @@
 	</div>
 </section>
 <a id="top" class="home-top" title=”top">TOP</a>	
-</div>
 </body>
 </html>	
