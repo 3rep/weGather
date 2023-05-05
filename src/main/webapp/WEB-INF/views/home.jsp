@@ -55,7 +55,7 @@
 		<img src="/static/img/imgMain/quoteRight.png" style="width:50px; height:50px;"/>
 	</div>
 	<div class="section-content">
-		<div class="info-img">이미지</div>
+		<div class="info-img"></div>
 		<div class="info">
 			<div class="info-title-wrap">
 				<span class="title">경기신청 버튼하나로 끝</span>
