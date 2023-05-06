@@ -48,6 +48,7 @@
 	font-size: 20px;
 	text-align: center;
 	line-height: 60px;
+	margin-top: 15px; 
 }
 .norm_game_nav>b{
 	font-size:25px;
@@ -59,7 +60,5 @@
 	font-size: 20px;
 	text-align: center;
 	line-height: 60px;
-}
-.norm_game_nav {
-	/*background-color: var(--color-norm-green);*/
+	margin-top: 15px;
 }
