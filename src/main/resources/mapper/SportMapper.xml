@@ -5,7 +5,8 @@
 <mapper namespace="com.gather.we.dao.SportDAO">
 
 	<select id="dataSelect" resultType="com.gather.we.dto.SportDTO">
-		select s_no, sportname from sport 
+		select s_no, sportname from sport order by s_no
+
 	</select>
 	<insert id="sportInsert" parameterType="com.gather.we.dto.SportDTO">
  		insert into sport(s_no, sportname, sportdesc, filename)

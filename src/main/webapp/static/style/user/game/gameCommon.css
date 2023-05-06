@@ -5,8 +5,8 @@
 /* 경기페이지 내용 컨테이너 */
 .game_container {
 	width: 1200px;
-	margin: 50px auto;
-	height: 1250px;
+	margin: 40px auto;
+	min-height: 1200px;
 }
 
 /* 경기 유형 설명 컨테이너*/
