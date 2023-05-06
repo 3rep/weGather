@@ -140,8 +140,8 @@
 			          		<ul class="dropdown-menu">
 					            <li><a class="dropdown-item" href="#">공지사항</a></li>
 					            <li><a class="dropdown-item" href="#">건의사항</a></li>
-					            <li><a class="dropdown-item" href="#">자유게시판</a></li>
-					            <li><a class="dropdown-item" href="#">후기게시판</a></li>
+					            <!-- <li><a class="dropdown-item" href="#">자유게시판</a></li>
+					            <li><a class="dropdown-item" href="#">후기게시판</a></li> -->
 			         		</ul>
         			</li>
 	      		</ul>
