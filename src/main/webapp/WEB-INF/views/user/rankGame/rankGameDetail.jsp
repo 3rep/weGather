@@ -122,7 +122,7 @@
 			<ul>
 				<!-- 경기 조건 -->
 				<li class="game_condition">
-					<img src="${path}/static/img/game/rank.png" />
+					<img src="${path}/static/img/game/rank.png" class="icon" />
 					<!-- 요구랭크 -->
 					<span>
 						<c:set var="rank" value="${rankGameDetail.req_rank}"/>
@@ -147,11 +147,15 @@
 				         	</c:otherwise>
 				      	</c:choose>
 					</span>
+					<a href="/user/rankBoard/rankBoard" class="rank-info-wrap">
+						<img src="${path}/static/img/game/info.png" class="icon-info" />
+						<span class="rank-info">랭크 정보</span>
+					</a>
 				</li>
 				
 				<!-- 성별 유형 -->
 				<li class="game_condition">
-					<img src="${path}/static/img/game/gender.png" />
+					<img src="${path}/static/img/game/gender.png" class="icon" />
 					<span>${rankGameDetail.gendertype}</span>
 				</li>
 				
@@ -159,7 +163,7 @@
 				<!-- 한 팀당 인원수를 구하기 위해 min_people을 2로 나누고 정수로 변환한다. -->
 				<fmt:parseNumber var="oneTeamNumber" integerOnly="true" value="${rankGameDetail.min_people/2}" />
 				<li class="game_condition">
-					<img src="${path}/static/img/game/vs.png" />
+					<img src="${path}/static/img/game/vs.png" class="icon" />
 					<span>${oneTeamNumber} vs ${oneTeamNumber}</span>
 				</li>
 				
@@ -167,7 +171,7 @@
 				<!-- 팀의 수를 구하기 위해 max_people을 한 팀당 인원수로 나누고 정수로 변환한다. -->
 				<fmt:parseNumber var="teamCount" integerOnly="true" value="${rankGameDetail.max_people/oneTeamNumber}" />
 				<li class="game_condition">
-					<img src="${path}/static/img/game/running.png" />
+					<img src="${path}/static/img/game/running.png" class="icon" />
 					<span>${teamCount}파전</span>
 				</li>
 			</ul>
