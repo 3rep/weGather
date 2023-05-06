@@ -40,9 +40,13 @@
 		
         //value확인하기
         $("#expFilter").click(function(){
-	       	var valueById = $("#datepicker").val();
+        	var valueById = $("#datepicker").val();
 	       	var valueById2 = $("#datepicker2").val();
-	       	
+        	
+	       	if(valueById > valueById2){
+	       		alert("종료일은 시작일 이후 일자만 선택 가능합니다.");
+	       		return false;
+	       	}
 	       	alert("1번 value값->"+valueById + ", 2번 value값->"+valueById2);
         });
         
