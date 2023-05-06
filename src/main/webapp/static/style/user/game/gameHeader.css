@@ -43,22 +43,26 @@
 }
 .game_nav {
 	height: 60px;
-	/*background-color: var(--color-blue);*/
+	background-color: var(--color-light-gray);
 	color: var(--color-blue);
 	font-size: 20px;
 	text-align: center;
 	line-height: 60px;
-	margin-top: 15px; 
+	margin: 15px auto 0 auto;
+	width: 58vw;
+	border-radius: 20px;
 }
 .norm_game_nav>b{
 	font-size:25px;
 }
 .norm_game_nav{
 	height: 60px;
-	/*background-color: var(--color-blue);*/
+	background-color: var(--color-light-gray);
 	color: var(--color-norm-green);
 	font-size: 20px;
 	text-align: center;
 	line-height: 60px;
-	margin-top: 15px;
+	margin: 15px auto 0 auto;
+	width: 58vw;
+	border-radius: 20px;
 }
