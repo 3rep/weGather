@@ -201,6 +201,8 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
+		//System.out.println(vo.toString());
+		
 		// 한 페이지에 표시할 레코드수
 		vo.setOnePageRecord(10);
 
@@ -210,13 +212,18 @@ public class AdminController {
 		// 총레코드 수 세팅
 		vo.setTotalRecord(service.expenseTotalRecord(vo));
 		
+		//지출내역 list 
+		//	vo에 날짜 필터 변수도 담겨있음 
 		List<AdminManagerSettlementDTO> expense = service.expense(vo);
+		//지출합계 결과
+		int ExpSum = service.expenseResult(vo);
 		
 		mav.addObject("expense", expense);
 		mav.addObject("vo", vo);
+		mav.addObject("ExpSum", ExpSum);
 		
 		if(adminlogStatus.equals("Y")) {
-			mav.setViewName("admin/revenue/expense");
+			mav.setViewName("admin/revenue/expense22");
 		}else {
 			mav.setViewName("redirect:/login");
 		}

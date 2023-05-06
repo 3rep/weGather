@@ -38,7 +38,11 @@
 		 		(select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account
 		 		from m_settlement s
 		 		join manager m on s.managerid=m.managerid
-		 		where d_status=1 order by s.no desc)
+		 		where d_status=1 
+		 		<if test="datepicker != null and datepicker !=''">
+					and s.datetime <![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd') and s.datetime-1 <![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd')
+				</if>
+		 			order by s.no desc)
 		 		<![CDATA[
 		    	where rownum<=${nowPage*onePageRecord} order by no asc
 		    	]]>
@@ -61,7 +65,16 @@
 			(select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account
  			from m_settlement s
  			join manager m on s.managerid=m.managerid
- 			where d_status=1)
+ 			where d_status=1 
+ 			)
+	</select>
+	<select id="expenseResult" resultType="int">
+		select sum(s.amount) from m_settlement s
+ 		join manager m on s.managerid=m.managerid
+ 		where d_status=1 
+ 		<if test="datepicker != null and datepicker !=''">
+			and s.datetime <![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd') and s.datetime-1 <![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd')
+		</if>
 	</select>
  	<select id="managerFee" resultType="com.gather.we.dto.AdminManagerSettlementDTO">
 		 select * from		

@@ -69,4 +69,9 @@ public class AdminServiceImpl implements AdminService {
 		return dao.managerFeeTotalRecord(vo);
 	}
 
+	@Override
+	public int expenseResult(PagingVO vo) {
+		return dao.expenseResult(vo);
+	}
+
 }
