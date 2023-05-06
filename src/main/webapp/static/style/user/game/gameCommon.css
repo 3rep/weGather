@@ -6,7 +6,7 @@
 .game_container {
 	width: 1200px;
 	margin: 40px auto;
-	height: 1200px;
+	min-height: 1200px;
 }
 
 /* 경기 유형 설명 컨테이너*/
