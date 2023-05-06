@@ -46,99 +46,113 @@
 			if($(this).val() == "서울"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'서울\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 			
 			if($(this).val() == "경기"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'경기\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 			
 			if($(this).val() == "대구"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'대구\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "경북"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'경북\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "광주"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'광주\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "전라"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'전라\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "제주"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'제주\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "부산"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'부산\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "울산"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'울산\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "경남"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'경남\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 			
 			if($(this).val() == "대전"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'대전\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 			
 			if($(this).val() == "세종"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'세종\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "충청"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'충청\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 
 			if($(this).val() == "강원"){
 				$(".select.stadium").remove();
 				$(".select.region").after('<li class="select stadium">구장선택 : <select name="st_no" id="stadium"><c:forEach var="newDTO" items="${stadiumList}">'+
+						'<c:if test="${newDTO.s_no == sportDTO.s_no }">'+
 						'<c:if test="${newDTO.region == \'강원\'}"><option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>'+
-						'</c:if></c:forEach></select></li>');
+						'</c:if></c:if></c:forEach></select></li>');
 			}
 		});
 		
@@ -186,8 +200,10 @@
 					<li class="select stadium">
 						구장선택 : <select name="st_no" id="stadium">
 										<c:forEach var="newDTO" items="${stadiumList}">
-											<c:if test="${newDTO.region eq stadiumDTO.region}">
-												<option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>
+											<c:if test="${newDTO.s_no == sportDTO.s_no }">
+												<c:if test="${newDTO.region eq stadiumDTO.region}">
+													<option value="${newDTO.st_no}" <c:if test="${newDTO.st_no == stadiumDTO.st_no}">selected</c:if>>${newDTO.stadium}</option>
+												</c:if>
 											</c:if>
 										</c:forEach>
 									</select>

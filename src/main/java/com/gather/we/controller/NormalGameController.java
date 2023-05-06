@@ -21,6 +21,7 @@ import com.gather.we.dto.NormGameDetailDTO;
 import com.gather.we.dto.NormGameListDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
+import com.gather.we.dto.StadiumInfoDTO2;
 import com.gather.we.service.NormalGameService;
 import com.gather.we.service.ParticipateService;
 import com.gather.we.service.SportService;
@@ -98,7 +99,7 @@ public class NormalGameController {
 	
 	// 일반경기 개설 페이지
 	@GetMapping("/new")
-	public ModelAndView normGameNew(int s_no, StadiumInfoDTO dto) {
+	public ModelAndView normGameNew(int s_no, StadiumInfoDTO2 dto) {
 		ModelAndView mav = new ModelAndView();
 		
 		int st_no = dto.getSt_no();
@@ -116,7 +117,7 @@ public class NormalGameController {
 		}
 		
 		// 존재하는 구장 정보 받아오기
-		List<StadiumInfoDTO> stadiumList = stadiumService.stadiumInfoAllSelect();
+		List<StadiumInfoDTO2> stadiumList = stadiumService.stadiumInfoAllSelect2();
 		
 		// 스포츠 종목 정보 받아오기
 		SportDTO sportDTO =  sportService.sportOneSelect(s_no);

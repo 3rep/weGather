@@ -93,12 +93,12 @@
 						<c:choose>
 							<c:when test="${isClose}">
 								<span class="game_stadium">${NormGameDTO.stadium}
-									<c:if test="${NormGameDTO.writer == logId}"> (개설)</c:if>
+									<c:if test="${NormGameDTO.writer != null}"><c:if test="${NormGameDTO.writer == logId}"> (개설)</c:if></c:if>
 								</span>
 							</c:when>
 							<c:otherwise>
 								<a href="detail?no=${NormGameDTO.no}" class="game_stadium">${NormGameDTO.stadium}
-									<c:if test="${NormGameDTO.writer == logId}"> (개설)</c:if>
+									<c:if test="${NormGameDTO.writer != null }"><c:if test="${NormGameDTO.writer == logId}"> (개설)</c:if></c:if>
 								</a>
 							</c:otherwise>
 						</c:choose>

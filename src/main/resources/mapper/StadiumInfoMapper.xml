@@ -11,4 +11,8 @@
 		select st_no, stadium, location, region, idletime from stadium_info
 		where st_no=${st_no}
 	</select>
+	
+	<select id="stadiumInfoAllSelect2" resultType="com.gather.we.dto.StadiumInfoDTO2">
+		select st_no, stadium, location, region, idletime, s_no from stadium_info
+	</select>
 </mapper>

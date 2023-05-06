@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.we.dao.StadiumInfoDAO;
 import com.gather.we.dto.StadiumInfoDTO;
+import com.gather.we.dto.StadiumInfoDTO2;
 
 @Service
 public class StadiumInfoServiceImpl implements StadiumInfoService {
@@ -22,6 +23,11 @@ public class StadiumInfoServiceImpl implements StadiumInfoService {
 	@Override
 	public StadiumInfoDTO stadiumInfoOneSelect(int st_no) {
 		return dao.stadiumInfoOneSelect(st_no);
+	}
+
+	@Override
+	public List<StadiumInfoDTO2> stadiumInfoAllSelect2() {
+		return dao.stadiumInfoAllSelect2();
 	}
 	
 }
