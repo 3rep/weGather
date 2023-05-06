@@ -17,15 +17,6 @@
 		    $('html, body').animate( { scrollTop : 0 }, 400 );
 		    return false;
 		}); 
-		
-		//snap 효과 주기
-		var element = document.getElementById("#section-info");
-		function scroll(){
-		element.scrollIntoView(
-				{behavior: "smooth", block: "start", inline: "nearest"}
-				);
-		} 
-		
 	});
 	
 </script>

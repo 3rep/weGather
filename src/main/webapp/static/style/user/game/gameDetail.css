@@ -95,12 +95,12 @@
 	margin-bottom: 26px;
 	padding: 0 20px 10px;
 	line-height: 50px;
-
 }
 
 .game_detail_sub {
 	font-size: var(--font-small);
 	margin-bottom: 14px;
+	margin-left: 20px;
 }
 
 .game_detail_label {

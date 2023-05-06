@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 /*스크롤바 없애기*/
-/* body{
-	-ms-overflow-style: none;  엣지 스크롤없애기
+body{
+	-ms-overflow-style: none;  /*엣지 스크롤없애기*/
 	overflow-x: hidden;
  }
  
-::-webkit-scrollbar { 크롬, 사파리 스크롤 없애기
+::-webkit-scrollbar { /*크롬, 사파리 스크롤 없애기*/
 	display: none; 
-}  */`
+} 
 
 
 /* 버튼 스타일 라이브러리*/
@@ -371,7 +371,7 @@
 /* 스포츠추천, 랭크보드 */
 #section-others {
 	scroll-snap-align: start;
-	height: 150vh;
+	height: 100vh;
 	background: #FFFBFE; /* #FFF5F5; */
 }
 
