@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gather.we.dao.NoticeBoardDAO">
+	<select id="getList" resultType="com.gather.we.dto.NoticeBoardDTO">
+		select no,adminid,title,content,writedate from notice_board where no<![CDATA[>]]>0 ORDER BY no desc
+	</select>
+	
+	<!-- 게시글 상세페이지 -->
+	<select id="read" resultType="com.gather.we.dto.NoticeBoardDTO">
+		select no,adminid,title,content,writedate from notice_board where no=#{no}
+	</select>
+	
+	<!-- 게시글 조회, 페이징 -->
+	<select id="getListWithPaging" resultType="com.gather.we.dto.NoticeBoardDTO">
+		SELECT no,adminid,title,content,writedate
+		FROM(
+			SELECT rownum rnum,no,adminid,title,content,writedate
+			FROM notice_board
+			WHERE 1=1
+				AND no>0
+				<if test="keyword != null and keyword !=''">
+					AND title LIKE '%' || #{keyword} || '%'
+				</if>
+				AND rownum <![CDATA[<=]]> ${pageNum * amount}
+			ORDER BY no DESC
+		)WHERE rnum <![CDATA[>]]> ${(pageNum - 1) * amount }
+		ORDER BY no DESC
+	</select>
+	
+	<!-- 게시글 전체 수 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT count(*)
+		FROM notice_board
+		WHERE 1=1
+			AND no>0
+		<if test="keyword != null and keyword !=''">
+			AND title LIKE '%' || #{keyword} || '%'
+		</if>
+		ORDER BY no DESC	
+	</select>
+	
+	<!-- 게시글 생성 -->
+	<insert id="insert">
+		INSERT INTO notice_board(no,adminid,title,content)
+		VALUES(notice_sq.nextval, #{adminid}, #{title}, #{content})
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		DELETE FROM notice_board 
+		WHERE no = #{no}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="modify" parameterType="com.gather.we.dto.NoticeBoardDTO">
+		UPDATE notice_board
+		SET	adminid = #{adminid},
+			title = #{title},
+			content = #{content},
+			writedate = sysdate
+		WHERE no = #{no}
+	</update>
+</mapper>
