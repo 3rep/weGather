@@ -182,13 +182,20 @@ public class AdminController {
 		// 총레코드 수 세팅
 		vo.setTotalRecord(service.revenueTotalRecord(vo));
 		
+		//전체 수입내역 리스트
 		List<UserPayDTO> pay = service.revenue(vo);
+		//날짜 선택된 수입내역 리스트
+		List<UserPayDTO> selectedList = service.selectedRevenueList(vo);
+		//수입 총액
+		int ReSum = service.revenueResult(vo);
 		
 		mav.addObject("pay", pay);
 		mav.addObject("vo", vo);
+		mav.addObject("selectedList", selectedList);
+		mav.addObject("ReSum", ReSum);
 		
 		if(adminlogStatus.equals("Y")) {
-			mav.setViewName("admin/revenue/revenue");
+			mav.setViewName("admin/revenue/revenue22");
 		}else {
 			mav.setViewName("redirect:/login");
 		}
@@ -215,7 +222,7 @@ public class AdminController {
 		//지출내역 list 
 		//	vo에 날짜 필터 변수도 담겨있음 
 		List<AdminManagerSettlementDTO> expense = service.expense(vo);
-		//지출합계 결과
+		//지출총액
 		int ExpSum = service.expenseResult(vo);
 		
 		mav.addObject("expense", expense);

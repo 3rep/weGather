@@ -1,7 +1,7 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -39,7 +39,7 @@
 	
 		
         //value확인하기
-        $("#expFilter").click(function(){
+        $("#reFilter").click(function(){
         	var valueById = $("#datepicker").val();
 	       	var valueById2 = $("#datepicker2").val();
         	
@@ -61,16 +61,16 @@
 </style>
 
 <div class="container">
-	<h2 id="page-title">지출 내역</h2>
+	<h2 id="page-title">수입 내역</h2>
 	
-	<div class="expense_stats" style="width:1000px; height:30px; background:#ddd;">
-		<form id="expSelectFrm" method="get" action="expense">
+	<div class="revenue_stats" style="width:1000px; height:30px; background:#ddd;">
+		<form id="reSelectFrm" method="get" action="revenue">
 			From: <input type="text" id="datepicker" name="datepicker" placeholder="날짜를 선택하세요"/>
 	    	To: <input type="text" id="datepicker2" name="datepicker2" placeholder="날짜를 선택하세요"/>
-	    	<input type="submit" id="expFilter" value="확인하기"/>
+	    	<input type="submit" id="reFilter" value="확인하기"/>
 		</form>
-		<div class="expent_Result" style="background:green; width: 300px; height: 50px;">
-			지출 총액 : ${ExpSum }
+		<div class="revenue_Result" style="background:green; width: 300px; height: 50px;">
+			수입총액 : ${ReSum }
 	
 	
 		</div>
@@ -79,29 +79,64 @@
 	
 	
 	
-	<div id="expense_container">
+	
+	
+	<div id="revenue_container">
 		<table>
-			<tr class="expense">
+			<tr class="revenue">
 				<th id="">번호</th>
-				<th id="amount">금액</th>
-				<th id="">지출목록</th>
-				<th id="">지출상세</th>
-				<th id="datetime">날짜</th>
+				<th id="paid_amount">금액</th>
+				<th id="">수입목록</th>
+				<th id="payer_name">입금자</th>
+				<th id="payment_no">결제번호</th>
+				<th id="paid_at">결제일</th>
 			</tr>
-			<c:forEach var="m_settlement" items="${expense}" varStatus="status">
-				<tr>
-					<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
-					<td><fmt:formatNumber value="${m_settlement.amount}" maxFractionDigits="3"/>원</td>
-					<td>매니저 수당</td>
-					<td>${m_settlement.m_name} 매니저 [지급계좌: ${m_settlement.m_account}]</td>
-					<td>
-						<c:if test="${m_settlement.datetime==null}">
-							<span>-</span>
-						</c:if>
-						<fmt:formatDate pattern="yyyy-MM-dd" value="${m_settlement.datetime}" />
-					</td>
-				<tr>
-			</c:forEach>
+			
+			<!-- 날짜 input값이 없을떄 -->
+			<c:if test="">
+				<c:forEach var="user_pay" items="${pay}" varStatus="status">
+					<tr>
+						<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
+						<td><fmt:formatNumber value="${user_pay.paid_amount}" maxFractionDigits="3"/>원</td>
+						<td>경기 참여</td>
+						<td>${user_pay.payer_name}</td>
+						<td>${user_pay.payment_no}</td>
+						
+						<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
+				    	<c:set var="paidTime" value="${user_pay.paid_at}" />
+						<%
+						Long ptLong = (Long)pageContext.getAttribute("paidTime");
+						Date ptDate = new Date(ptLong*1000);
+						pageContext.setAttribute("ptDate", ptDate );
+						%>
+						<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->
+				    	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ptDate}"/></td>
+					</tr>
+				</c:forEach>
+			</c:if>
+			
+			<!-- 날짜 input값이 있을때 -->
+			<c:if test="">
+				<c:forEach var="user_pay" items="${selectedList}" varStatus="status">
+					<tr>
+						<td>${(vo.nowPage-1)*(vo.onePageRecord)+ status.count}</td>
+						<td><fmt:formatNumber value="${user_pay.paid_amount}" maxFractionDigits="3"/>원</td>
+						<td>경기 참여</td>
+						<td>${user_pay.payer_name}</td>
+						<td>${user_pay.payment_no}</td>
+						
+						<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
+				    	<c:set var="paidTime" value="${user_pay.paid_at}" />
+						<%
+						Long ptLong = (Long)pageContext.getAttribute("paidTime");
+						Date ptDate = new Date(ptLong*1000);
+						pageContext.setAttribute("ptDate", ptDate );
+						%>
+						<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->
+				    	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ptDate}"/></td>
+					</tr>
+				</c:forEach>
+			</c:if>
 		</table>
 		
 		<!-- 페이징 -->
@@ -109,14 +144,14 @@
 		<ul>
 			<!-- 이전페이지 -->
 			<c:if test="${vo.nowPage>1}">
-				<li><a href="expense?nowPage=${vo.nowPage-1}">이전</a></li>
+				<li><a href="revenue?nowPage=${vo.nowPage-1}">이전</a></li>
 			</c:if>
 			<!-- 페이지번호 -->
 			<c:forEach var="pageNum" begin="${vo.startPageNum}" end="${vo.startPageNum+(vo.onePageNumCount-1)}" step="1">
 				<c:if test="${pageNum<=vo.totalPage}">
 					<li>
 					<c:if test="${vo.nowPage==pageNum }"><b></c:if>
-					<a href="expense?nowPage=${pageNum}">${pageNum}</a>
+					<a href="revenue?nowPage=${pageNum}">${pageNum}</a>
 					<c:if test="${vo.nowPage==pageNum }"></b></c:if>
 					</li>
 				</c:if>
@@ -126,7 +161,7 @@
 			</c:forEach>
 			<!-- 다음페이지 -->
 			<c:if test="${vo.nowPage<vo.totalPage}">
-				<li><a href="expense?nowPage=${vo.nowPage+1}">다음</a></li>
+				<li><a href="revenue?nowPage=${vo.nowPage+1}">다음</a></li>
 			</c:if>
 		</ul>
 		</div>

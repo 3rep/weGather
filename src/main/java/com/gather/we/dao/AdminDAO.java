@@ -25,7 +25,10 @@ public interface AdminDAO {
 	public int managerFeeTotalRecord(PagingVO vo);
 	public int waitOk(AdminManagerSettlementDTO dto);
 	
-	
-	//지출내역 날짜필터 결과 합계 금액
+	//지정한 날짜에 해당하는 수입내역 리스트 뽑기
+	public List<UserPayDTO> selectedRevenueList(PagingVO vo);
+	//지정한 날짜에 해당하는 수입총액
+	public int revenueResult(PagingVO vo);
+	//지정한 날짜에 해당하는 지촐총액
 	public int expenseResult(PagingVO vo);
 }
