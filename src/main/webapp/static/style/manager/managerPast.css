@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 #past-container {
+	margin-left:340px;
 	flex: auto;
 	padding: 76px 78px;
 	height: 100vh;
@@ -124,8 +125,8 @@
 .pagingDiv ul li:last-child span {
 
 }
-.active{
-	 display: block; 
+#past-container .active{
+	display: block; 
   padding: 5px 10px;
   color: #333;
   background-color: #fff;

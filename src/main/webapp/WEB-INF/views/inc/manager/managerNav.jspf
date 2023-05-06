@@ -17,7 +17,7 @@
 		$(".menu").click(function(){
 			$(this).next().toggleClass('active');
 			$(this).find('.menu-title').toggleClass('active');
-			$(this).children('.check').toggleClass('active');
+			$(this).children('.chevron_down_icon').toggleClass('active');
 		});
 		
 		let url = window.location.pathname; // 현재 페이지의 경로이름 url에 저장
@@ -27,46 +27,57 @@
 				$(this).toggleClass('active'); //하위메뉴 활성화
 				$(this).closest('.sub-menu-container').toggleClass('active');
 				$(this).closest('.sub-menu-container').prev().find('.menu-title').toggleClass('active');
-				$(this).closest('.sub-menu-container').prev().children('.check').toggleClass('active');
+				$(this).closest('.sub-menu-container').prev().children('.chevron_down_icon').toggleClass('active');
 			}
 		});
 	});
 </script>
 <body>
-<!-- 매니저 네이게이션 바 -->
+<!-- 매니저페이지 네비게이션 바 -->
 <nav id="manager-nav">
 	<!-- 사이트 로고 -->
-	<a href="${path}/userHome"><img src="${path}/static/img/manager/logo_white.png" alt="Logo" id="logo"></a>
+	<a href="${path}/"><img src="${path}/static/img/manager/logo_white.png" alt="Logo" id="logo"></a>
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
-		<!-- 경기목록 -->
-		<li class="menu">
-			<div class="menu-info">
-					<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-					<span class="menu-title"><a href="${path}/manager/rankgamelist" class="list-link">경기목록</a></span>
-			</div>
-		</li>
-		
-		<!-- 활동내역 -->
+		<!-- 경기목록 메뉴 -->
 		<li class="menu">
 			<div class="menu-info">		
-				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-				<span class="menu-title"> 활동내역</span>
+				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon icon" class="hexagon_icon"/>
+				<span class="menu-title">경기목록</span>
 			</div>
-			<img src="${path}/static/img/manager/check.png" alt="check" class="check"/>
+			<img src="${path}/static/img/manager/chevron.png" alt="chevron down icon" class="chevron_down_icon"/>
+		</li>
+		<!-- 경기목록 서브메뉴 -->
+		<li class="sub-menu-container">
+			<ul class="sub-menu">
+				<li class="page">
+					<a href="${path}/manager/rankgamelist" class="page-link">		
+						<img src="${path}/static/img/manager/circle.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">랭크경기목록</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<!-- 활동내역 메뉴 -->
+		<li class="menu">
+			<div class="menu-info">		
+				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon icon" class="hexagon_icon"/>
+				<span class="menu-title">매니저관리</span>
+			</div>
+			<img src="${path}/static/img/manager/chevron.png" alt="chevron down icon" class="chevron_down_icon"/>
 		</li>
 		<!-- 활동내역 서브메뉴 -->
 		<li class="sub-menu-container">
 			<ul class="sub-menu">
 				<li class="page">
-					<a href="/manager/manager10" class="page-link">	
-						<img src="${path}/static/img/manager/circle.png" alt="circle" class="circle"/>
-						<span class="menu-title">신청한경기내역</span>
+					<a href="${path}/manager/manager10" class="page-link">	
+						<img src="${path}/static/img/manager/circle.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">신청 경기내역</span>
 					</a>
 				</li>
 				<li class="page">
-					<a href="/manager/managerPast" class="page-link">	
-						<img src="${path}/static/img/manager/circle.png" alt="circle" class="circle"/>
+					<a href="${path}/manager/managerPast" class="page-link">	
+						<img src="${path}/static/img/manager/circle.png" alt="minus circle icon" class="minus_circle_icon"/>
 						<span class="menu-title">이전 경기내역</span>
 					</a>
 				</li>
@@ -74,21 +85,32 @@
 		</li>
 		<!-- 정산내역 메뉴 -->
 		<li class="menu">
-			<div class="menu-info">
-					<img src="${path}/static/img/manager/hexagon.png" alt="hexagon" class="hexagon"/>
-					<span class="menu-title"><a href="/manager/settlement" class="list-link">정산내역</a></span>
+			<div class="menu-info">		
+				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon icon" class="hexagon_icon"/>
+				<span class="menu-title">정산내역</span>
 			</div>
+			<img src="${path}/static/img/manager/chevron.png" alt="chevron down icon" class="chevron_down_icon"/>
+		</li>
+		<!-- 정산내역 서브메뉴 -->
+		<li class="sub-menu-container">
+			<ul class="sub-menu">
+				<li class="page">
+					<a href="${path}/manager/settlement" class="page-link">		
+						<img src="${path}/static/img/manager/circle.png" alt="minus circle icon" class="minus_circle_icon"/>
+						<span class="menu-title">정산내역</span>
+					</a>
+				</li>
+			</ul>
 		</li>
 	</ul>
-	
 	<!-- 매니저 정보 -->
 	<div class="manager-info-container">
 		<div class="manager-info">
-			<img src="${path}/static/img/manager/manager.png" alt="manager" class="manager"/>
+			<img src="${path}/static/img/manager/manager.png" alt="user icon" class="user_icon"/>
 			<span class="managerid">${logName } 매니저님</span>
 		</div>
-		<a href="/manager/logout">
-			<img src="${path}/static/img/manager/logout.png" alt="logout" class="logout"/>
+		<a href="${path}/manager/logout">
+			<img src="${path}/static/img/manager/logout.png" alt="logout icon" class="logout_icon"/>
 		</a>
 	</div>
 </nav>

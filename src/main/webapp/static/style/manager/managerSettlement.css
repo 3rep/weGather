@@ -1,6 +1,6 @@
 @charset "UTF-8";
 		/* 정산내역테이블 */
-		#settlement-container {flex:auto;padding:76px 78px;height:100vh;overflow-y:auto;}
+		#settlement-container {margin-left:260px;flex:auto;padding:76px 78px;height:100vh;overflow-y:auto;}
 		#settlement-container h1 {font-size:32px;margin: 0 0 57px 0;}
 		#settlement-container table {border-collapse:separate;border-spacing:0;width:100%;background-color:#F8F9FB;}
 		#settlement-container th, td {padding:6px 15px;}

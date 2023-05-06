@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 #entry-container {
+	margin-left:340px;
 	flex: auto;
 	padding: 76px 78px;
 	height: 100vh;

@@ -1,6 +1,6 @@
 @charset "UTF-8";
         /* 컨텐츠 컨테이너 */
-        #rank-container {flex:auto;padding:76px 78px;height:100vh;overflow-y:auto;}
+        #rank-container {margin-left:260px;flex:auto;padding:76px 78px;height:100vh;overflow-y:auto;}
         #rank-container h1 {font-size:32px;margin:0 0 57px 80px;}
         
         /* 현재 참여 가능한 경기 수 */
