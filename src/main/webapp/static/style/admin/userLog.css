@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 #userLog_container {
-	width:1000px;
 	display: flex;
 	flex-direction: column;
 }
@@ -27,7 +26,6 @@
 }
 
 #userLog_container .list-group-item {
-	width: 1000px;
 	border-radius: 16px;
 	border-bottom: 2px solid #f3f3f3;
 	background-color: var(--color-white);
