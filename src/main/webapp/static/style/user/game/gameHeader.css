@@ -43,7 +43,7 @@
 }
 .game_nav {
 	height: 60px;
-	background-color: var(--color-light-gray);
+	background-color: #F1F2F4; /* #EDEFF2; */
 	color: var(--color-blue);
 	font-size: 20px;
 	text-align: center;
@@ -57,7 +57,7 @@
 }
 .norm_game_nav{
 	height: 60px;
-	background-color: var(--color-light-gray);
+	background-color: #F0F2F0;
 	color: var(--color-norm-green);
 	font-size: 20px;
 	text-align: center;

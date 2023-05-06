@@ -38,9 +38,9 @@
 	
 	<div class="item" id="cloudy"> <!-- A -->
 		<div class="login"> <!-- B -->
-			<span>We Gather &emsp;</span><br/>
-			<span>&emsp; Together </span><br/>
-			<span id="featSpan">feat. sport</span><br/>
+			<span class="WG">We Gather &emsp;</span><br/>
+			<span class="T">&emsp; Together </span><br/>
+			<span id="featSpan">feat. sport</span><br/> 
 			<br/>
 			<button class="button button--ujarak button--border-medium button--round-s button--text-upper" onclick="location.href='/userHome'">시작하기</button>
 		</div>
@@ -161,6 +161,6 @@
 		<img src="static/img/imgMain/stretch.jpg" class="item-img" />
 	</div>
 </section>
-<a id="top" class="home-top" title=”top">TOP</a>	
+<a id="top" class="home-top" title="top">TOP</a>	
 </body>
 </html>	

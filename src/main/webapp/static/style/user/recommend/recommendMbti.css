@@ -18,7 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 20px 100px;
-	border-bottom: 3px solid var(--color-lighter-pink);
+	border-bottom: 2px solid var(--color-lighter-pink);
 	border-radius: 0;
 	/* margin-top: 30px; */
 	
@@ -27,7 +27,7 @@
 #recommend_nav .recommend_user_mbti.login.active {
 	display: flex;
 	padding: 20px 100px;
-	border-bottom: 3px solid var(--color-lighter-pink);
+	border-bottom: 2px solid var(--color-lighter-pink);
 	border-radius: 0;
 	margin-top: 30px;
 }
