@@ -166,12 +166,19 @@
     color: floralwhite;
 }
 
-.section-main .login span{
+.section-main .login .WG{
+	font-size: var(--font-large);
+	font-style: italic;
+	font-weight: 600;
+}
+.section-main .login .T{
 	font-size: var(--font-large);
 	font-style: italic;
 	font-weight: 600;
 }
 #featSpan{
+	font-style: italic;
+	font-weight: 600;
 	font-size: var(--font-regular);
 }
 
