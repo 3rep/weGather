@@ -30,7 +30,7 @@
 		.search_area .search-form * {height:40px;background-color:#fff;border:1px solid #e1e1e5;margin:5px 20px 5px 0px;}
 		.search_area form select {width: 110px;}
 		
-		#search-word {width:500px;margin-left: auto;margin-right:0px; margin-left:346px;padding:0px;border-right: 0px;}
+		#search-word {width:500px;margin-left: auto;margin-right:0px;padding:0px;border-right: 0px;}
 		#submit-btn {width:60px;font-size:14px;font-family:'Noto Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; color:#000000; font:bold;margin:0; padding:0;border-left: 0px;}
 		.search_area form select {height: 40px;}
 		#sportname {margin-top:5px;margin-left:0px;font-size:16px;font-family:'Noto Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;color:#000000;}
