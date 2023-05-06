@@ -22,7 +22,6 @@
 				<!-- 경기를 시작해볼까요? -->
 				</p>
 				<img src="/static/img/imgMain/quoteRight.png" class="login-quote"/>
-	
 			</div>
 		</div>
 	</c:if> 	
@@ -54,7 +53,7 @@
 				맞춤형 스포츠 추천
 			</div>
 			<div class="goToHome">
-				<a href="/">WEGATHER 소개보기</a>
+				<a href="/">WE GATHER 소개보기</a>
 			</div>
 		</div>
 	</div>
