@@ -26,7 +26,7 @@
 		#submit-btn {position:absolute;left:1184px;top:9px;width:60px;font-size:18px;font-family:'Noto Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; color:#000000; font:bold;margin:0; padding:0;border-left: 0px;}
 		#search-btn select {position:absolute; height:40px; left:590px; top:9px; border-color:#e1e1e5;}
 		/* 페이지네이션 */
-		.pagination-container{position:relative; margin-top:30px;}
+		.pagination-container{position:relative; margin-top:30px;margin-bottom:100px;}
 		.pagination-container ul {position:absolute; left:570px; list-style:none;display:flex;justify-content:center;align-items:center;}
 		.pagination li {margin:0 5px;border:1px solid #ccc;padding:5px 10px;cursor:pointer;}
 		.pagination li.active {background-color:gray;border-color:#F8F9FB;}
@@ -35,6 +35,7 @@
 		.pagination li.active a {color:white;}
 		.pagination li:hover a {color:black;font-weight:bold;text-decoration:underline;}
 		.enrol-box {position:absolute; left:1184px; border:1px solid; height:36px; padding:5px; border-color:#e1e1e5; color:black;}
+		.enrol-box:hover {background-color:gray; color:white; font-weight:bold; }
 </style>
 </head>
 <body>

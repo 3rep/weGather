@@ -6,18 +6,24 @@ import com.gather.we.dto.NoticeBoardCriteria;
 import com.gather.we.dto.NoticeBoardDTO;
 
 public interface NoticeBoardDAO {
+	//게시글 등록
+	public void enroll(NoticeBoardDTO dto);
 	
+	//게시글 목록
 	public List<NoticeBoardDTO> getList();
 	
-	public List<NoticeBoardDTO> getListWithPaging(NoticeBoardCriteria criteria);// 글목록
+	//게시글 목록(페이징 적용)
+	public List<NoticeBoardDTO> getListPaging(NoticeBoardCriteria cri);
+		
+	//게시글 조회
+	public NoticeBoardDTO getPage(int no);
 	
-	public int getTotalCount(NoticeBoardCriteria criteria);// 전체글 수
+	//게시글 수정
+	public int modify(NoticeBoardDTO dto);
 	
-	public NoticeBoardDTO read(int no);//게 시글 상세조회
+	//게시글 삭제
+	public int delete(int no);
 	
-	public void insert(NoticeBoardDTO dto);// 게시글 생성
-	
-	public int delete(int no);// 게시글 삭제
-	
-	public void modify(NoticeBoardDTO dto);// 게시글 수정
+	//게시글 총 개수
+	public int getTotal(NoticeBoardCriteria cri);
 }

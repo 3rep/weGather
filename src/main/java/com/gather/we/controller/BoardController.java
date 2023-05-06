@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gather.we.dto.NoticeBoardCriteria;
@@ -27,36 +26,80 @@ public class BoardController {
 	@Autowired
 	private NoticeBoardService noticeservice;
 	
+	//공지사항 목록(페이징)
 	@GetMapping("/noticeBoard")
-	public String noticeBoard(Model model,NoticeBoardCriteria criteria){
-		model.addAttribute("list", noticeservice.getList(criteria));
-		int total = noticeservice.getTotalCount(criteria);
-		model.addAttribute("pageMaker", new NoticeBoardPageDTO(criteria,total));
+	public String noticeBoard(Model model,NoticeBoardCriteria cri, HttpSession session){
+		boolean canEnrol = false;
+		if(session.getAttribute("adminlogStatus") != null && session.getAttribute("adminlogStatus")=="Y"){
+			canEnrol = true;
+		}
+		model.addAttribute("canEnrol", canEnrol);
+		model.addAttribute("list", noticeservice.getListPaging(cri));
+		int total = noticeservice.getTotal(cri);
+		NoticeBoardPageDTO page = new NoticeBoardPageDTO(cri, total);
+		model.addAttribute("pageMaker", page);
 		return "user/board/noticeBoard";
 	}
-	
-	@GetMapping("/noticeBoard/detail")
-	public String noticeBoarddetail(@RequestParam("no") int no, Model model) {
-		model.addAttribute("board",noticeservice.read(no));
-		return "user/board/noticeBoardDetail";
+	//공지사항 조회
+	@GetMapping("/noticeBoard/get")
+	public String noticeBoardGet(int no, Model model, HttpSession session) {
+		boolean canEdit=false;
+		if(session.getAttribute("logId")!= null && noticeservice.getPage(no).getAdminid().equals(session.getAttribute("logId"))) {
+			canEdit=true;
+		}
+		model.addAttribute("pageInfo", noticeservice.getPage(no));
+		model.addAttribute("canEdit", canEdit);
+		return "user/board/noticeBoardGet";
 	}
 	
-	
-	@GetMapping("/modify")
-	public String noticeBoardModify(@RequestParam("no") int no, Model model) {
-		model.addAttribute("board",noticeservice.read(no));
+	//공지사항 등록페이지
+	@GetMapping("/noticeBoard/enroll")
+	public String noticeBoardEnroll() {
+		return "user/board/noticeBoardEnroll";
+	}
+
+	//공지사항 등록
+	@PostMapping("/noticeBoard/enroll")
+	public String noticeBoardEnrollPOST(NoticeBoardDTO dto, RedirectAttributes rttr, HttpSession session) {
+		String logId = (String) session.getAttribute("logId");
+		dto.setAdminid(logId);
+		noticeservice.enroll(dto);
+		rttr.addFlashAttribute("result", "enrol success");
+		return "redirect:/board/noticeBoard";
+	}
+
+	//공지사항 수정페이지 이동
+	@GetMapping("/noticeBoard/modify")
+	public String noticeBoardModifyGET(int no, Model model) {
+		model.addAttribute("pageInfo", noticeservice.getPage(no));
 		return "user/board/noticeBoardModify";
 	}
-	@PostMapping("/modify")
-	public String noticeBoardModifyPost(NoticeBoardDTO dto) {
+
+	//공지사항 글 수정
+	@PostMapping("noticeBoard/modify")
+	public String noticeBoardModifyPOST(NoticeBoardDTO dto, RedirectAttributes rttr, HttpSession session) {
+		String logId = (String) session.getAttribute("logId");
+		dto.setAdminid(logId);
 		noticeservice.modify(dto);
-		return "redirect:/board/view?no=" + dto.getNo();
+		rttr.addFlashAttribute("result", "modify success");
+		return "redirect:/board/noticeBoard";
 	}
+
+	// 공지사항 글 삭제
+	@PostMapping("/noticeBoard/delete")
+	public String noticeBoardDeletePOST(int no, RedirectAttributes rttr) {
+		noticeservice.delete(no);
+		rttr.addFlashAttribute("result", "delete success");
+		return "redirect:/board/noticeBoard";
+	}
+	
+	
 	
 	
 	//건의사항
 	@Autowired
 	private RequestBoardService requestservice;
+	
 	//건의사항 목록(페이징적용)
 	@GetMapping("/requestBoard")
 	public String requestBoard(Model model, RequestBoardCriteria cri) {

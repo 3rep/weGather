@@ -15,34 +15,45 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	@Autowired
 	private NoticeBoardDAO dao;
 	
+	//게시글 등록
 	@Override
-	public List<NoticeBoardDTO> getList(NoticeBoardCriteria criteria) {
-		return dao.getListWithPaging(criteria);
+	public void enroll(NoticeBoardDTO dto) {
+		dao.enroll(dto);
 	}
-
+		
+	//게시글 목록
 	@Override
-	public int getTotalCount(NoticeBoardCriteria criteria) {
-		return dao.getTotalCount(criteria);
+	public List<NoticeBoardDTO> getList() {
+		return dao.getList();
 	}
 	
+	//게시글 목록(페이징 적용)
 	@Override
-	public NoticeBoardDTO read(int no) {
-		return dao.read(no);
+	public List<NoticeBoardDTO> getListPaging(NoticeBoardCriteria cri) {
+		return dao.getListPaging(cri);
 	}
-
+		
+	//게시글 조회
 	@Override
-	public void register(NoticeBoardDTO dto) {
-		dao.insert(dto);
+	public NoticeBoardDTO getPage(int no) {
+		return dao.getPage(no);
 	}
-
+		
+	//게시글 수정
+	@Override
+	public int modify(NoticeBoardDTO dto) {
+		return dao.modify(dto);
+	}
+		
+	//게시글 삭제
 	@Override
 	public int delete(int no) {
 		return dao.delete(no);
 	}
 
 	@Override
-	public void modify(NoticeBoardDTO dto) {
-		dao.modify(dto);
+	public int getTotal(NoticeBoardCriteria cri) {
+		return dao.getTotal(cri);
 	}
 
 }
