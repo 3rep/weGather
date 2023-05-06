@@ -11,49 +11,34 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-  <style>
-<style type="text/css">
-.input_wrap{
-	padding: 5px 20px;
-}
-label{
-    display: block;
-    margin: 10px 0;
-    font-size: 20px;	
-}
-input{
-	padding: 5px;
-    font-size: 17px;
-}
-textarea{
-	width: 800px;
-    height: 200px;
-    font-size: 15px;
-    padding: 10px;
-}
-.btn{
-  	display: inline-block;
-    font-size: 22px;
-    padding: 6px 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    font-weight: 600;
-    width: 140px;
-    height: 41px;
-    line-height: 39px;
-    text-align : center;
-    margin-left : 30px;
-    cursor : pointer;
-}
-.btn_wrap{
-	padding-left : 80px;
-	margin-top : 50px;
-}
+<style>
+	#modifyForm {
+			width: 1237px;
+			margin: 50px auto;
+			padding: 40px;
+			padding-bottom:60px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			font-size: 18px;
+			color: #333;
+		}
+	.text-box{margin-top:5px; margin-right:30px; margin-bottom:30px; padding:0;}
+	.text-box h2{margin:0; padding:0;}
+	.input_wrap input, .input_wrap textarea{margin-bottom:10px; padding:20px; border:1px #e6e6e6 solid; width:100%;}
+	.input_wrap textarea{min-height: 500px;}
+	.btn{float:right;margin-bottom: 10px; margin-left:10px;}
+	.btn:hover {font-weight: bold; color:white;}
+	#modify_btn{background-color:#00B4FC;}
+	#cancel_btn{background-color:#FFBDBD;}
+	#list_btn{background-color:#e6e6e6;}
 </style>
 </head>
 <body>
-<h1>수정 페이지</h1>
 	<form id="modifyForm" action="/board/requestBoard/modify" method="post">
+	<div class=text-box>
+		<h2>건의사항 글수정</h2>
+	</div>
 	<div class="input_wrap">
 		<label>번호</label>
 		<input name="no" readonly="readonly" value='<c:out value="${pageInfo.no}"/>' >
@@ -66,14 +51,10 @@ textarea{
 		<label>내용</label>
 		<textarea rows="3" name="content"><c:out value="${pageInfo.content}"/></textarea>
 	</div>
-	<div class="input_wrap">
-		<label>작성일</label>
-		<input name="writedate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.writedate}"/>' >
-	</div>		
 	<div class="btn_wrap">
-		<a class="btn" id="list_btn">목록 페이지</a> 
 		<a class="btn" id="modify_btn">수정 완료</a>
 		<a class="btn" id="cancel_btn">수정 취소</a>
+		<a class="btn" id="list_btn">목록</a> 
 	</div>
 	</form>
 	<form id="infoForm" action="/board/requestBoard/modify" method="get">

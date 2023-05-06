@@ -69,7 +69,7 @@
 <body>
 	<div class="detail-container">
 		<div class=text-box>
-			<h2>건의사항 글수정</h2>
+			<h2>공지사항 글수정</h2>
 		</div>
 	    	<table class="board-detail">
 	    		<colgroup>
@@ -88,8 +88,8 @@
 						<td colspan="3">${pageInfo.title }</td>
 					</tr>
 					<tr>
-						<th>작성자</th>
-						<td colspan="1">${pageInfo.userid}</td>
+						<th>관리자</th>
+						<td colspan="1">${pageInfo.adminid}</td>
 						<th>작성일</th>
 						<td colspan="1"><fmt:formatDate pattern = "yyyy-MM-dd HH:mm:ss" value ="${pageInfo.writedate }"/></td>
 					</tr>
@@ -107,7 +107,7 @@
 				</c:if>
 			</div>
 	</div>
-	<form id="infoForm" action="/board/requestboard/modify" method="get">
+	<form id="infoForm" action="/board/noticeBoard/modify" method="get">
 		<input type="hidden" id="no" name="no" value='<c:out value="${pageInfo.no}"/>'>
 	</form>
 <script>
@@ -115,17 +115,17 @@
 	
 	$("#list_btn").on("click", function(e){
 		form.find("#no").remove();
-		form.attr("action", "/board/requestBoard");
+		form.attr("action", "/board/noticeBoard");
 		form.submit();
 	});
 	
 	$("#modify_btn").on("click", function(e){
-		form.attr("action", "/board/requestBoard/modify");
+		form.attr("action", "/board/noticeBoard/modify");
 		form.submit();
 	});	
 	
 	$("#delete_btn").on("click", function(e){
-		form.attr("action", "/board/requestBoard/delete");
+		form.attr("action", "/board/noticeBoard/delete");
 		form.attr("method","post");
 		form.submit();
 	})

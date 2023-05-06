@@ -34,16 +34,16 @@
 <body>
 	<div class="detail-container">
 		<div class=text-box>
-			<h2>건의사항 글쓰기</h2>
+			<h2>공지사항 글쓰기</h2>
 		</div>
-	<form action="/board/requestBoard/enroll" method="post">
+	<form action="/board/noticeBoard/enroll" method="post">
 		<div class="input-group">
 			<input name="title" placeholder=" 제목을 입력해주세요.">
 		</div>
 		<div class="input-group">	
 			<textarea rows="3" name="content" placeholder=" 내용을 입력해주세요."></textarea>
 		</div>
-		<input type="hidden" name="userid" values="<%=session.getAttribute("logId") %>">
+		<input type="hidden" name="adminid" values="<%=session.getAttribute("logId") %>">
 		<button class="btn">등록</button>
 	</form>
 	</div>
