@@ -12,7 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public ModelAndView home() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect:/welcome");
+		
+		return mav;
+	}
+	
+	@GetMapping("/welcome")
+	public String welcome() {
+		
 		return "home";
 	}
 	

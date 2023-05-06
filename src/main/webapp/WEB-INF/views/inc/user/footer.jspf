@@ -3,7 +3,7 @@
 <footer>
 <div class="foot-main-container">
 	<div class="container-lg" id="main-container">
-		<div class="d-flex justify-content-lg-center mt-3">
+		<div class="d-flex justify-content-lg-center">
 			<div class="flex-item align-self-center" id="foot-box1">
 				<div class="foot-table">
       				<div class="foot-table-row">
