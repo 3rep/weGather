@@ -184,12 +184,10 @@ body{
 
 
 #section-info .section-title {
-	width: 1400px;
 	font-size: var(--font-medium);
-	
 	text-align: center;
-	margin: 0 auto 70px;
-	/* margin: 0 0px 75px 580px; */
+	margin-bottom: 30px;
+
 }
 
 #section-info .section-content {

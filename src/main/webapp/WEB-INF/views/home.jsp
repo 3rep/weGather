@@ -49,18 +49,21 @@
 
 <!-- 사이트 소개 -->
 <section id="section-info">
-	<div class="section-title">
-		<img src="/static/img/imgMain/quoteLeft.png" style="width:50px; height:50px;"/>
-		&emsp;&emsp; WE GATHER, JUST DO IT &emsp;&emsp;
-		<img src="/static/img/imgMain/quoteRight.png" style="width:50px; height:50px;"/>
-	</div>
 	<div class="section-content">
 		<div class="info-img"></div>
 		<div class="info">
-			<div class="info-title-wrap">
-				<span class="title">경기신청 버튼하나로 끝</span>
-				<span class="desc">오직 경기신청만! 나머지는 wegather가 준비합니다.</span>
+			<div>
+				<div class="section-title">
+					<img src="/static/img/imgMain/quoteLeft.png" style="width:50px; height:50px;"/>
+					&emsp;&emsp; WE GATHER, JUST DO IT &emsp;&emsp;
+					<img src="/static/img/imgMain/quoteRight.png" style="width:50px; height:50px;"/>
+				</div>
+				<div class="info-title-wrap">
+					<span class="title">경기신청 버튼하나로 끝</span>
+					<span class="desc">오직 경기신청만! 나머지는 wegather가 준비합니다.</span>
+				</div>
 			</div>
+			
 			<div class="info-items">
 				<div class="item-wrap left">
 					<div class="info-item">
