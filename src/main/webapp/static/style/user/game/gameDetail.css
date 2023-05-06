@@ -37,13 +37,28 @@
 	border: 0;
 }
 
-.game_condition img {
+.game_condition .icon {
 	width: 86px;
 	border: 1px solid black;
 	padding: 14px;
 	border: 0;
 	/* border-radius: 18px; */
 	margin-right: 16px;
+}
+
+.game_condition .rank-info-wrap {
+	padding-bottom: 4px;
+	margin-left: 12px;
+}
+
+.game_condition .icon-info {
+	width: 20px;
+}
+
+.game_condition .rank-info {
+	font-size: var(--font-micro);
+	font-weight: 500;
+	color: var(--color-black);
 }
 
 /* game_detail_wrap (right) */
