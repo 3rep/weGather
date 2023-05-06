@@ -371,7 +371,7 @@
 /* 스포츠추천, 랭크보드 */
 #section-others {
 	scroll-snap-align: start;
-	height: 150vh;
+	height: 100vh;
 	background: #FFFBFE; /* #FFF5F5; */
 }
 
