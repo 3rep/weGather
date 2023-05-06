@@ -27,6 +27,7 @@
 
 </script>
 <div class="manager_container">
+	<br/>
 	<h1>&nbsp;&nbsp;매니저 회원가입</h1>
 	<br/>
 	<form method="post" id="registerManForm" enctype="multipart/form-data" action="managerOk">
@@ -89,7 +90,7 @@
 	</form>
 	
 	<form >
-		<img src="static/img/manager.jpg" id="manager_img" >
+		<img src="static/img/manager/refree3.jpg" id="manager_img" >
 	</form>
 	 
 </div>

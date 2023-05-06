@@ -49,9 +49,11 @@
 				        <c:if test="${list.g_status==1 && list.gametime<now }">	
 				        	<td class="aplStatus">경기종료
 				        </c:if>
-				        <c:if test="${list.g_status==0 && (list.gt2ago>now) }">	
+				        <c:if test="${list.g_status==0 }">	
 				        	<td class="aplLink">
-				        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료(취소)</a>
+				        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료</a><br/>
+				        		<a href="/mypage/rankCancel?no=${list.no}" onclick="return confirm('신청경기를 취소하시겠습니까?');">[경기취소]</a>
+				        		
 				        	</td>
 				        </c:if>
 				        <c:if test="${list.g_status==1 && list.gametime>=now }">	

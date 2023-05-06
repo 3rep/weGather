@@ -32,4 +32,3 @@
 			<li><a href="info" style="color:#484848">내정보수정</a></li> <!-- mypage/${userid}/info  POST로 보내야해-->
 		</div>
 	</ul>
-	

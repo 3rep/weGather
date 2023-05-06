@@ -39,11 +39,16 @@
  	<select id="newNormGameList" resultType="com.gather.we.dto.NormGameDetailDTO">
  		select n.no, n.s_no, n.st_no, n.gametime, n.usetime, n.payment, s.sportname, s.filename, st.stadium, st.location, st.region
  		from norm_game n, sport s, stadium_info st
- 		where n.s_no = s.s_no and n.st_no = st.st_no and n.st_no = ${param1} and n.g_status = 0
+ 		where n.s_no = s.s_no and n.st_no = st.st_no and n.st_no = ${param1} and n.g_status = 0 and <![CDATA[sysdate <= n.gametime-2]]>
  	</select>
  	
  	<update id="normGameUpdate" parameterType="com.gather.we.dto.NormGameDTO">
  		update norm_game set min_people=${min_people}, max_people=${max_people}, gendertype=#{gendertype}, g_status=1, writer=#{writer}
+		where no=${no}
+ 	</update>
+ 	
+ 	<update id="normGameDetailUpdate" parameterType="com.gather.we.dto.NormGameDetailDTO">
+ 		update norm_game set s_no=${s_no}, st_no=${st_no}, gametime=#{gametime}, usetime=#{usetime}, min_people=${min_people}, max_people=${max_people}, gendertype=#{gendertype}, g_status=${g_status}
 		where no=${no}
  	</update>
  	

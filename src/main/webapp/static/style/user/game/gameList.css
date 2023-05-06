@@ -14,7 +14,7 @@
 }
 
 #filterForm {
-	width: 1000px;
+	width: 1100px;
 	margin: 0 auto 30px;
 	position: relative;
 }
@@ -57,12 +57,12 @@
 .game_list {
 	display: flex;
 	flex-direction: column;
-	width: 1000px;
+	width: 1100px;
 	margin: 0 auto;
 }
 
 .game_item {
-	height: 90px;
+	height: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -73,7 +73,7 @@
 .game_region {
 	height: 100%;
 	flex-basis: 10%;
-	line-height: 90px;
+	line-height: 96px;
 	/* background-color: var(--color-light-gray); */
 	font-weight: var(--weight-bold);
 	border: 2px solid var(--color-gray); 
@@ -86,7 +86,7 @@
 	flex-basis: 75%;
 	display: flex;
 	align-items: center;
-	border: 2px solid var(--color-rank-blue); 
+	border: 1px solid var(--color-rank-blue); 
 	margin: 0 16px;
 	border-radius: 10px;
 }
@@ -111,11 +111,14 @@
 	
 }
 
-
+.game_info{
+	margin: 0 auto;
+}
 .game_time {
 	width: 220px;
 	padding: 0 24px;
 	font-weight: var(--weight-bold);
+	margin: 0 20px;
 }
 
 .game_stadium {
@@ -144,7 +147,7 @@
 
 .game-status {
 	height: 100%;
-	line-height: 90px;
+	line-height: 98px;
 	flex-basis: 15%;
 	border-radius: 10px;
 }
@@ -158,17 +161,19 @@
 }
 
 .game-status.imminent { /* 경기 상태 - 마감임박 */
-	background-color: var(--color-red);
+	background-color: #FFE4E4;
 	color: var(--color-white);
 	font-weight: var(--weight-bold);
 	font-size: 18px;
+	border: 2px solid #DF8787;
 }
 
 .game-status.open { /* 경기 상태 - 신청가능 */
-	background-color: var(--color-blue);
+	background-color: #DAE7FF;
 	color: var(--color-white);
 	font-weight: var(--weight-bold);
 	font-size: 18px;
+	border: 2px solid #4F81E3;
 }
 
 .game_stadium2 {
@@ -179,7 +184,7 @@
 }
 
 .game_stadium2:hover, .game_stadium2:visited, .game_stadium2:link {
-	color: var(--color-white);
+	color: #3B3232;
 }
 
 .game_stadium3 {

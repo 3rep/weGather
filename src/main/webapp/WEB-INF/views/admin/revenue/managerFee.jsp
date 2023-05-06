@@ -47,6 +47,8 @@
 							<c:if test="${m_settlement.d_status==0}">
 								<input type="submit" value="지급" id="wait" />
 								<input type="hidden" value="${m_settlement.managerid}" name="managerid"/>
+								<input type="hidden" value="${m_settlement.no}" name="no"/>
+								
 							</c:if>
 							<c:if test="${m_settlement.d_status==1}">
 								<li>지급완료</li>

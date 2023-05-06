@@ -6,9 +6,11 @@
 	<select id="getUserinfo" resultType="com.gather.we.dto.MypageUserDTO">
 		select userid, type, username, password, email, age, tel, address, gender, mbti, signupdate from users where userid=#{param1}
 	</select> 
+	
 	<select id="getUsername" resultType="String">
 		select username from users where userid=#{param1}
 	</select>
+	
 	<select id="allgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
 		select * from
 			(select * from
@@ -46,6 +48,7 @@
 			    	</when>
 			    	</choose>
 	</select>
+	
 	<select id="allTotalRecord" resultType="int">
 		select count(no) from
 			(select participate.userid, game.no, game.s_no, game.st_no, game.gametime, game.g_status, s.sportname, si.stadium
@@ -63,6 +66,7 @@
 					on si.st_no = game.st_no
 					order by game.gametime desc)
 	</select>
+	
 	<select id="rankgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
 		select * from	
 			(select * from	
@@ -94,6 +98,7 @@
 			    	</when>
 			    	</choose>
 	</select>
+	
 	<select id="rankTotalRecord" resultType="int">
 	select count(no) from
 		(select rp.userid, rg.no, s.sportname, rg.gametime, si.stadium, rg.g_status, rg.gametime-2 gt2ago from r_participate rp
@@ -105,6 +110,7 @@
 		on rg.s_no = s.s_no
 		order by rg.gametime desc)
 	</select>
+	
 	<select id="normgameList" resultType="com.gather.we.dto.MypageApplyListDTO">
 		select * from	
 			(select * from
@@ -136,6 +142,7 @@
 			    	</when>
 			    	</choose>
 	</select>
+	
 	<select id="normTotalRecord" resultType="int">
 		select count(no) from
 			(select np.userid, ng.no, s.sportname, ng.gametime, si.stadium, ng.g_status, ng.gametime-2 gt2ago from norm_game ng
@@ -147,6 +154,7 @@
 			on s.s_no = ng.s_no
 			order by ng.gametime desc)
 	</select>
+	
 	<select id="rank" resultType="com.gather.we.dto.MypageRankDTO">
 		select rp.userid, rg.no, rg.gametime, rp.rank, rg.g_status, s.sportname, 
 		floor(avg(rp.rank) over(partition by s.sportname)) avg_sn, 
@@ -158,6 +166,7 @@
 		join sport s 
 		on s.s_no = rg.s_no and sportname=#{param2}
 	</select>
+	
 	<select id="rankResult" resultType="com.gather.we.dto.MypageRankDTO">
 		select distinct rp.userid, s.sportname, 
 		floor(avg(rp.rank) over(partition by s.sportname)) avg_sn, 
@@ -168,6 +177,7 @@
 		join sport s 
 		on s.s_no = rg.s_no
 	</select>
+	
 	<select id="paymentList" resultType="com.gather.we.dto.MypagePaymentDTO">
 		select * from
 			(select * from
@@ -204,6 +214,7 @@
 			    	</when>
 			    	</choose>
 	</select>
+	
 	<select id="paymentTotalRecord" resultType="int">
 		select count(payment_no) from
 			(select parti.no, parti.userid, u.username, to_char(game.gametime, 'yyyy-MM-dd HH24:MI') gametime, up.payment_no, up.paid_at, up.paid_amount, up.success
@@ -220,8 +231,27 @@
 			on game.no=parti.no
 			order by game.gametime desc)
 	</select>
+	
 	<update id="infoEdit">
 		update users set password=#{password}, email=#{email}, tel=#{tel}, address=#{address}, mbti=#{mbti}
 		where userid=#{userid}
 	</update>
+	
+	<delete id="gameCancel">
+		<choose>
+			<when test="no gt 1000"> 
+			delete from 
+			    (select * from user_pay up
+			    join r_participate rp on rp.payment_no = up.payment_no
+			    where rp.userid=#{userid} and rp.no=#{no})
+			</when>
+			<when test="no lt 1000">
+			delete from 
+			    (select * from user_pay up
+			    join n_participate np on np.payment_no = up.payment_no
+			    where np.userid=#{userid} and np.no=#{no})
+			</when>
+		</choose>
+	</delete>
+	
 </mapper>

@@ -135,10 +135,11 @@
 }
 #logMan_img{
 	position:relative;
-	top:80%;
-	right:25%;
-	width:600px;
-	height:400px;
+	top:35px;
+	right:s5%;
+	width:650px;
+	height:450px;
+	border-radius:10px;
 }
 
 

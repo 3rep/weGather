@@ -662,6 +662,58 @@ public class AdminController {
 		return entity;
 	}
 	
+	// 일반경기 수정
+	@GetMapping("/normgame/edit")
+	public ModelAndView normGameList(int no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
+
+		List<SportDTO> sportList = sportService.sportAllSelect();
+		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
+		NormGameDetailDTO normgameInfo = normGameService.normGameDetailSelect(no);
+
+		// gametime의 데이터 타입을 Date -> String으로 변환
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		String gametimeStr = df.format(normgameInfo.getGametime());
+
+		mav.addObject("gametimeStr", gametimeStr);
+		mav.addObject("sportList", sportList);
+		mav.addObject("stadiumInfoList", stadiumInfoList);		
+		mav.addObject("normgameInfo", normgameInfo);
+
+		if(adminlogStatus.equals("Y")) {
+			mav.setViewName("admin/normGame/normGameEdit");
+		}else {
+			mav.setViewName("redirect:/login");
+		}
+		return mav;
+	}
+	
+	// 랭크경기 수정(DB)
+	@PostMapping("/normgame/editOk")
+	public ResponseEntity<String> normgameEditOk(NormGameDetailDTO dto, HttpServletRequest request){
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		try {
+			// 수정된 내용을 DB에 업데이트
+			normGameService.normGameDetailUpdate(dto);
+
+			// 랭크경기 목록으로 이동
+			String body = "<script> location.href='/admin/normgame/normgamelist';</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		}catch(Exception e) {
+			// 랭크경기 수정 실패
+			e.printStackTrace();
+			String body = "<script>";
+			body += "alert('일반경기 수정을 실패하였습니다.');";
+			body += "history.go(-1);";
+			body += "</script>";
+			entity = new ResponseEntity<String>(body, headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+		
 	// 매니저 승인 요청 목록
 	@GetMapping("/manager/approvelist")
 	public ModelAndView managerApproveList(PagingVO vo, HttpSession session) {

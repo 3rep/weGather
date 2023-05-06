@@ -19,6 +19,6 @@
 	</form>
 	
 	<div>
-		<img src="static/img/manager.jpg" id="loginMan_img">
+		<img src="static/img/manager/refree2.jpg" id="logMan_img">
 	</div>
 </div>
