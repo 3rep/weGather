@@ -41,28 +41,28 @@
 	 select * from 
  			(select * from 
  				( 
-		SELECT rank_game.st_no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
+		SELECT rank_game.no, rank_game.st_no, stadium_info.stadium, stadium_info.location, rank_game.gametime, rank_game.g_status, rank_game.managerid	, rank_game.manager
 		FROM rank_game  
 		JOIN stadium_info ON stadium_info.st_no = rank_game.st_no
 		WHERE rank_game.managerid = #{managerid} 
 	<!--  	AND rank_game.no = ${no}-->
-		AND rank_game.gametime <![CDATA[<]]> sysdate
+		AND gametime <![CDATA[<]]> sysdate
 				
 		order by rank_game.no desc
 				 ) <![CDATA[ 
- 				 WHERE rownum<=${onePageRecord*nowPage} order by st_no asc 
+ 				 WHERE rownum<=${onePageRecord*nowPage} order by gametime desc 
  				]]>
  				 )
  		<choose>
 		  <when test="nowPage!=totalPage"> 		
  	   		 	<![CDATA[ 
- 			 	where rownum<=${onePageRecord} order by st_no desc
+ 			 	where rownum<=${onePageRecord} order by gametime desc
  			 	]]>
  		 
  		  </when>
  		  <when test="nowPage==totalPage">	
  			   <![CDATA[ 
- 		 		where rownum<=${onePageRecord} order by st_no desc
+ 		 		where rownum<=${onePageRecord} order by gametime desc
  		 		]]>
  	  	  </when>
  		</choose>  
@@ -78,22 +78,22 @@
 			    join stadium_info on stadium_info.st_no = rank_game.st_no 
 			    WHERE rank_game.managerid = #{managerid}
 			    And rank_game.gametime <![CDATA[>]]> sysdate
-			 	order by rank_game.no desc		
+			 	order by gametime desc		
  			
 	 			 ) <![CDATA[
- 				 where rownum<=${onePageRecord*nowPage} order by no asc 
+ 				 where rownum<=${onePageRecord*nowPage} order by gametime desc 
  				 ]]>
  				 )
  		<choose>
 		  <when test="nowPage!=totalPage"> 		
  	   		 	<![CDATA[
- 			 	where rownum<=${onePageRecord} order by no desc
+ 			 	where rownum<=${onePageRecord} order by gametime desc
  			 	]]>
  		 
  		  </when>
  		  <when test="nowPage==totalPage">	
  			   <![CDATA[
- 		 		where rownum<=${onePageRecord} order by no desc
+ 		 		where rownum<=${onePageRecord} order by gametime desc
  		 		]]>
  	  	  </when>
  		</choose>  
@@ -113,14 +113,15 @@
 
 
     <select id="getAllManagerInput" resultType="com.gather.we.dto.Manager10DTO">
-        SELECT rp.userid AS userid, rp.rank, rp.no, u.username
+        SELECT  rp.no, u.username, rp.rank, u.userid
        	 FROM r_participate rp
         	INNER JOIN users u ON rp.userid = u.userid
         	INNER JOIN rank_game rg ON rp.no = rg.no
-        WHERE rg.managerid = #{managerid}
-        	And rg.gametime <![CDATA[<]]> sysdate
+        WHERE rg.no = ${no}
+       
+        	
     </select>
-	
+	<!--  SELECT rp.userid, rp.rank, rp.no, u.username  And rg.gametime <![CDATA[<]]> sysdate-->
 	
 <delete id="deleteMSettlement">
     DELETE FROM m_settlement

@@ -17,7 +17,7 @@ public interface Manager10Service {
 	 public List<Manager10DTO> getAllManager10();
 	
 	 	 
-	 public List<Manager10DTO> getAllManagerInput(String managerid);
+	 public List<Manager10DTO> getAllManagerInput(Integer no);
 	
 	 public List<Manager10DTO> getAllEntry(Integer no);
 	 
@@ -29,7 +29,7 @@ public interface Manager10Service {
 	 
 	 public List<Manager10DTO> getAllManager10By(String managerid);
 	 
-	 public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer no);
+	 
 	 
 	 public int getTotalRecordByManagerid(String managerid);
 	 
@@ -44,8 +44,9 @@ public interface Manager10Service {
 
 	public void deleteMSettlement(@Param("managerid") String managerid, @Param("no") Integer no);
 	
-	public void updateRank(@Param("userid") String userid, @Param("rank") int rank, @Param("no") Integer no);
-
+	public void updateRank(@Param("userid") String userid, @Param("rank") Integer rank, @Param("no") Integer no);
+	
+	public List<Manager10DTO> getAllManagerInputByRank(Integer rank, Integer no);
 
 	public int getTotalRecordByManagerid10(String managerid);
 

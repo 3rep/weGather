@@ -31,7 +31,7 @@
 			        <div class="location">${manager.location}</div>
 		        </div>
 		       	<div>
-					<button id="rank-btn" class="" data-no="${manager.managerid}" onclick="location.href='${path}/manager/managerInput?no=${manager.managerid}'">참가자 랭크 입력</button>
+					<button id="rank-btn" class="" onclick="location.href='${path}/manager/managerInput?no=${manager.no}'">참가자 랭크 입력</button>
 		       	</div>
 			</li>
 	     </c:forEach>
@@ -79,20 +79,20 @@
 
 <script>
 //저장된 텍스트가 있으면 불러오기
- const rankBtn = document.getElementById('rank-btn');
+//const rankBtn = document.getElementById('rank-btn');
 
   // 저장된 텍스트가 있으면 불러오기
-  const storedText = localStorage.getItem('rankBtnText');
-  if (storedText) {
-    rankBtn.textContent = storedText;
-  }
+//  const storedText = localStorage.getItem('rankBtnText');
+//  if (storedText) {
+ //   rankBtn.textContent = storedText;
+ // }
 
   // 버튼 클릭시 텍스트 변경하고 저장
-  rankBtn.addEventListener('click', () => {
-    const newText = '수정하기';
-    rankBtn.textContent = newText;
-    localStorage.setItem('rankBtnText', newText);
-  });
+ // rankBtn.addEventListener('click', () => {
+//    const newText = '수정하기';
+ //   rankBtn.textContent = newText;
+//    localStorage.setItem('rankBtnText', newText);
+//  });
   </script>
   
 
