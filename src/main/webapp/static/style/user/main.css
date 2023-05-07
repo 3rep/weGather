@@ -328,7 +328,7 @@ body{
 }  */
 #section-game .game.rank{
 	width: 500px;
-	height: 300px;
+	height: 350px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -353,6 +353,7 @@ body{
 	font-size: 24px;
 	font-weight: var(--weight-bold);
 	margin-right: 340px;
+	margin-top: 20px;
 }
 #section-game .game.norm .title{
 	font-size: 24px;
@@ -367,6 +368,13 @@ body{
 	/* text-align: center; */
 }
 
+#section-game .game .manager_desc {
+	display: flex;
+	font-size: 14px;
+	margin: 0 20px 10px;
+	line-height: 20px;
+	/* text-align: center; */
+}
 
 /* 스포츠추천, 랭크보드 */
 #section-others {
@@ -416,6 +424,7 @@ body{
 
 .home_alink.rank{
 	margin-right: 313px;	
+	margin-bottom: 20px;
 }
 .home_alink.norm{
 	margin-left: 313px;	

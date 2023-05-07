@@ -105,6 +105,11 @@
 			랭크가 매겨지는 경기입니다.<br/>
 			게임 후 나의 랭킹과 순위를 확인해보세요!
 			</span>
+			<p class="manager_desc">
+			※ 매니저란?<br/>
+			참가자들이 즐겁게 운동할 수 있도록 경기 운영을 담당합니다.<br/>
+			경기 후에는 경기 내용을 바탕으로 참가자들에게 랭크를 부여합니다.
+			</p>
 			<a class="home_alink rank" href="${path}/rankgame/sportlist">랭크경기 둘러보기</a>
 		</div>
 		<div class="game norm">

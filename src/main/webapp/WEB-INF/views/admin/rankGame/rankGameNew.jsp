@@ -17,7 +17,7 @@
 			if($(this).val() == "rank") {
 				$("#rankgameForm").removeAttr("action");
 				$("#rankgameForm").attr("action", "/admin/rankgame/ranknewOk"); // 랭크경기 DB 등록
-				$(".item.st_no").after('<li class="item min_people"><label for="min_people">경기충족인원</label><input type="text" name="min_people" id="min_people"/>명</li>');
+				$(".item.gametime").after('<li class="item min_people"><label for="min_people">경기충족인원</label><input type="text" name="min_people" id="min_people"/>명</li>');
 				$(".item.min_people").after('<li class="item max_people"><label for="max_people">경기최대인원</label><input type="text" name="max_people" id="max_people"/>명</li>');
 				$(".item.max_people").after('<li class="item gendertype"><label for="gendertype">성별유형</label><select name="gendertype" id="gendertype"><option value="남녀모두">남녀모두</option><option value="남자만">남자만</option><option value="여자만">여자만</option></select></li>');
 				$(".item.gendertype").after('<li class="item req_rank"><label for="req_rank">요구랭크</label><select name="req_rank" id="req_rank"><option value="0">모든랭크</option><option value="1">BRONZE</option><option value="2">SILVER</option><option value="3">GOLD</option><option value="4">PLATINUM</option><option value="5">DIAMOND</option></select></li>');
@@ -86,14 +86,6 @@
 					</c:forEach>
 				</select>
 			</li>
-			<li class="item gametime">
-				<label for="gametime">날짜/시간</label>
-				<input type="datetime-local" name="gametime" id="gametime"/>
-			</li>
-			<li class="item usetime">
-				<label for="usetime">이용시간</label>
-				<input type="text" name="usetime" id="usetime" placeholder=" 예) 1시간 30분"/>
-			</li>
 			<li class="item st_no">
 				<label for="st_no">구장</label>
 				<select name="st_no" id="stadium">
@@ -101,6 +93,14 @@
 						<option value="${StadiumInfoDTO.st_no}">${StadiumInfoDTO.stadium}, ${StadiumInfoDTO.location} / ${StadiumInfoDTO.idletime}</option>
 					</c:forEach>
 				</select>
+			</li>
+			<li class="item usetime">
+				<label for="usetime">이용시간</label>
+				<input type="text" name="usetime" id="usetime" placeholder=" 예) 1시간 30분"/>
+			</li>
+			<li class="item gametime">
+				<label for="gametime">날짜/시간</label>
+				<input type="datetime-local" name="gametime" id="gametime"/>
 			</li>
 			<li class="item min_people">
 				<label for="min_people">경기충족인원</label>
