@@ -24,6 +24,7 @@
 					    INNER JOIN m_settlement ms ON rg.no = ms.no
 				      WHERE 1=1
 				      	AND rg.managerid = #{logId}
+				      	AND rg.gametime <![CDATA[<]]>sysdate
 				      <if test="mscriteria.keyword != null and mscriteria.keyword != ''"> 
 				        AND s.stadium LIKE '%' || #{mscriteria.keyword} || '%'			<!-- 키워드 검색 조건 -->
 					  </if>
@@ -50,6 +51,7 @@
 			INNER JOIN m_settlement ms ON rg.no = ms.no
 		WHERE 1=1
 			AND rg.managerid = #{logId} 
+			AND rg.gametime <![CDATA[<]]>sysdate
 		<if test="mscriteria.keyword != null and mscriteria.keyword !=''">
 			AND s.stadium LIKE '%'||#{mscriteria.keyword}||'%'
 		</if>
@@ -66,6 +68,7 @@
 	        INNER JOIN m_settlement ms ON rg.no = ms.no
 	    WHERE ms.d_status = 1 
 	    	AND rg.managerid = #{logId}	
+	    	AND rg.gametime <![CDATA[<]]>sysdate
 	</select>
 	
 	<!-- 정산내역-처리중합계 -->
@@ -75,6 +78,7 @@
 	        INNER JOIN stadium_info s ON rg.st_no = s.st_no
 	        INNER JOIN m_settlement ms ON rg.no = ms.no
 	    WHERE ms.d_status = 0
-	    	AND rg.managerid = #{logId} 
+	    	AND rg.managerid = #{logId}
+	    	AND rg.gametime <![CDATA[<]]>sysdate 
 	</select>
 </mapper>
