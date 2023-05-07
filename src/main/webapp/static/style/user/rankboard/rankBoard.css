@@ -12,6 +12,7 @@
 		.tc.rank{position:relative;}
 		.tc .num {position: absolute;left:40px;top:10px;}
 		.tc.rank img{position:absolute;left:29px;top:4px;}
+		.rk-system-name{margin-bottom:10px;}
 		
 	
 		.ranksystem-container {flex:auto;padding:40px 78px;height:auto;width:1400px;margin:0 auto; padding-bottom: 0px;}
