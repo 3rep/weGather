@@ -27,7 +27,7 @@
 		</c:forEach>
 		
 		// m_labels에서 해당 종목 인덱스를 찾고 m_data에 데이터를 넣는다.
-		<c:forEach items="${womanStatistics}" var="sport">
+		<c:forEach items="${manStatistics}" var="sport">
 			var idx = m_labels.indexOf("${sport.sportname}");
 			m_data[idx] = "${sport.sport_ratio}";
 		</c:forEach>
