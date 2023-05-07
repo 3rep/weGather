@@ -131,7 +131,7 @@
 	
 <update id="updateRankGame">
     UPDATE rank_game
-    SET managerid = null
+    SET managerid = null, manager=0
     WHERE managerid = #{managerid}
     AND no = ${no}
 </update>
