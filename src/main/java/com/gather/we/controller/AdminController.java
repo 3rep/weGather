@@ -182,6 +182,7 @@ public class AdminController {
 		// 총레코드 수 세팅
 		vo.setTotalRecord(service.revenueTotalRecord(vo));
 		
+		//전체 수입내역 리스트
 		List<UserPayDTO> pay = service.revenue(vo);
 		
 		mav.addObject("pay", pay);

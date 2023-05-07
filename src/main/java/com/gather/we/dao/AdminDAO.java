@@ -24,5 +24,5 @@ public interface AdminDAO {
 	public List<AdminManagerSettlementDTO> managerFee(PagingVO vo);
 	public int managerFeeTotalRecord(PagingVO vo);
 	public int waitOk(AdminManagerSettlementDTO dto);
-
+	
 }

@@ -23,7 +23,8 @@ public class PagingVO {
 	private String searchKey;
 	private String searchWord;
 	private String SelectedDate; //마이페이지 날짜필터 변수
-	
+	private String datepicker; //지출내역 날짜필터 시작일
+	private String datepicker2; //지출내역 날짜필터 종료일
 	
 	
 	@Override
@@ -32,8 +33,10 @@ public class PagingVO {
 				+ ", totalPage=" + totalPage + ", lastPageRecord=" + lastPageRecord + ", onePageNumCount="
 				+ onePageNumCount + ", startPageNum=" + startPageNum + ", userid=" + userid + ", username=" + username
 				+ ", managerid=" + managerid + ", adminid=" + adminid + ", searchKey=" + searchKey + ", searchWord="
-				+ searchWord + ", SelectedDate=" + SelectedDate + "]";
+				+ searchWord + ", SelectedDate=" + SelectedDate + ", datepicker=" + datepicker + ", datepicker2="
+				+ datepicker2 + "]";
 	}
+	
 	public int getNowPage() {
 		return nowPage;
 	}
@@ -136,5 +139,22 @@ public class PagingVO {
 	public void setSelectedDate(String selectedDate) {
 		SelectedDate = selectedDate;
 	}
+
+	public String getDatepicker() {
+		return datepicker;
+	}
+
+	public void setDatepicker(String datepicker) {
+		this.datepicker = datepicker;
+	}
+
+	public String getDatepicker2() {
+		return datepicker2;
+	}
+
+	public void setDatepicker2(String datepicker2) {
+		this.datepicker2 = datepicker2;
+	}
+	
 	
 }

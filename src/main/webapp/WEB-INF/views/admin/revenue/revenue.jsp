@@ -22,8 +22,8 @@
 					<td>경기 참여</td>
 					<td>${user_pay.payer_name}</td>
 					<td>${user_pay.payment_no}</td>
+					
 					<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
-			    	
 			    	<c:set var="paidTime" value="${user_pay.paid_at}" />
 					<%
 					Long ptLong = (Long)pageContext.getAttribute("paidTime");
@@ -31,7 +31,6 @@
 					pageContext.setAttribute("ptDate", ptDate );
 
 					%>
-				
 					<!-- 자바에서 받은 date타입 값을 fmt이용하여 2023-04-12형태로 변환 -->
 			    	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${ptDate}"/></td>
 				</tr>
