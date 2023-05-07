@@ -2,6 +2,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<script>
+	// 스포츠 추천 팝업창
+	
+    // 쿠키 설정하기    
+    function setCookie(name, value, expiredays) {
+    	var today = new Date();
+    	today.setDate(today.getDate() + expiredays);
+    	document.cookie = name + '=' + value + ';path=/;expires=' + today.toGMTString() + ';'
+    }
+
+    // 팝업창 닫기
+    function closePopup() {
+        // '오늘 하루 보지 않기' 버튼이 클릭되어 있으면 쿠키 설정
+    	if($(".close-today").hasClass("checked") === true){
+            setCookie("popupClose","Y",1);
+        }
+        
+        // 팝업창 숨기기
+        $(".popup-recommend").hide();
+    }
+    
+    function moveToRecommend() {
+    	closePopup();
+    	location.href='/recommend/mbti';
+    }
+  
+    $(function(){    	
+    	// '오늘 하루 보지 않기' 버튼 클릭시 checked 클래스 추가
+    	$('.close-today').click(function(){
+    		  $(this).toggleClass('checked');
+    	});
+    	
+     	// 저장된 쿠키 가져오기
+        var cookie = document.cookie;
+
+        if (cookie.indexOf('popupClose=Y') < 0) { // 쿠키가 없으면
+        	$(".popup-recommend").addClass("active");// 팝업창 띄우기
+        } else {
+        	$(".popup-recommend").removeClass("active");// 팝업창 숨기기
+        }
+        // 닫기 버튼 클릭하면 팝업창 닫기함수 호출
+        $(".close").click(function(){
+        	closePopup();
+        });
+    });
+</script>
+
 <div id="container" class="main-container">
 
 	<%
@@ -55,6 +102,21 @@
 			<div class="goToHome">
 				<a href="/">WE GATHER 소개보기</a>
 			</div>
+		</div>
+	</div>
+	
+	<div class="popup-recommend">
+		<div class="title">나에게 맞는<br/><b>스포츠 추천</b> 결과가<br/>궁금하다면?</div>
+		<ul class="hashtags">
+			<li class="hashtag">#MBTI</li>
+			<li class="hashtag">#성별</li>
+			<li class="hashtag">#나이</li>
+		</ul>
+		<img src="${path}/static/img/imgMain/character.png" class="img-character" />
+		<button class="move" onclick="moveToRecommend()">지금 확인하기</button>
+		<div class="btns">
+			<div class="close-today"><img src="${path}/static/img/imgMain/check.png" class="img-check" />오늘 하루 보지 않기</div>
+			<div class="close">닫기</div>
 		</div>
 	</div>
 	

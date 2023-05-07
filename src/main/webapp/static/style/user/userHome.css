@@ -226,9 +226,9 @@
 	z-index:10;
 	width: 200px;
 	height:400px;
-	image-rendering: -moz-crisp-edges; firefox
-	image-rendering: -o-crisp-edges; opera
-	image-rendering: -webkit-optimize-contrast; chrome(비표준)
+	image-rendering: -moz-crisp-edges; /*firefox*/
+	image-rendering: -o-crisp-edges; /*opera*/
+	image-rendering: -webkit-optimize-contrast; /*chrome(비표준)*/
 	image-rendering: crisp-edges;
 }
 
@@ -236,4 +236,87 @@
 	/* background: pink; */
 	position: absolute;
 	margin: 0 500px;
+}
+
+/* 스포츠 추천 팝업창 */
+.main-container .popup-recommend {
+	background: url("/static/img/imgMain/pink-bg.jpg") no-repeat 55% 35% / cover;
+	width: 400px;
+	position: absolute;
+	top: 60px;
+	left: 350px;
+	z-index: 99;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	display: none;
+}
+
+.main-container .popup-recommend.active {
+	display: flex;
+}
+
+.main-container .popup-recommend .title {
+	font-size: var(--font-regular);
+	text-align: center;
+	margin: 20px 0 6px;
+
+}
+
+.main-container .popup-recommend .hashtags {
+	display: flex;
+	font-size: var(--font-micro);
+	margin-bottom: 40px;
+	font-weight: var(--weight-bold);
+}
+.main-container .popup-recommend .hashtag {
+	margin-right: 8px;
+}
+
+.main-container .popup-recommend .img-character {
+	width: 130px;
+}
+
+.main-container .popup-recommend .move {
+	background-color: var(--color-black);
+	color: var(--color-white);
+	font-weight: var(--weight-bold);
+	margin: 40px 0 30px;
+	border-radius: 40px;
+	padding: 12px 64px;
+}
+
+.main-container .popup-recommend .btns {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 18px 20px;
+	border-top: 1px solid gray;
+	background-color: var(--color-white);
+}
+
+.main-container .popup-recommend .btns .close-today {
+	display: flex;
+	align-items: center;
+	color: #808080;
+	cursor: pointer;
+}
+
+.main-container .popup-recommend .btns .close-today.checked {
+	color: var(--color-black);
+}
+
+.main-container .popup-recommend .btns .close-today.checked  .img-check{
+	filter: none;
+}
+
+.main-container .popup-recommend .btns .img-check{
+	width: 20px;
+	filter: invert(85%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(99%) contrast(99%);
+	margin-right: 4px;
+}
+
+.main-container .popup-recommend .btns .close{
+	cursor: pointer;
 }
