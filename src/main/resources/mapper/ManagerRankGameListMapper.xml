@@ -17,7 +17,8 @@
 	
 	<update id="updateApply">
 		UPDATE rank_game 
-		set managerid = #{managerid}
+		set
+		managerid = #{managerid},manager=1	
 		WHERE 1=1
 		AND no = #{no} 
 	</update>
