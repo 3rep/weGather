@@ -39,7 +39,7 @@
 .container-mypage-all .img img{
 	width: 45%;
 	margin-bottom: 5px;
-	padding: 25px;
+	/* padding: 25px; */
 	background: #FFFDF8; 
 	border-radius: 30px;
 }
