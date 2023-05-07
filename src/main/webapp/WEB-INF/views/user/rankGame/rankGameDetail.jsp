@@ -147,7 +147,7 @@
 				         	</c:otherwise>
 				      	</c:choose>
 					</span>
-					<a href="/user/rankBoard/rankBoard" class="rank-info-wrap">
+					<a href="/board/rankBoard" class="rank-info-wrap">
 						<img src="${path}/static/img/game/info.png" class="icon-info" />
 						<span class="rank-info">랭크 정보</span>
 					</a>
