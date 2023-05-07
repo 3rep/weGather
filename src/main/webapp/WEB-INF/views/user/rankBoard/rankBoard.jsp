@@ -246,9 +246,10 @@
 					<select id="sportname">
 						<option value="" selected>종목 전체</option>
 						<option value="풋살">풋살</option>
-						<option value="축구">축구</option>
-						<option value="야구">야구</option>
 						<option value="농구">농구</option>
+						<option value="야구">야구</option>
+						<option value="테니스">테니스</option>
+						<option value="배드민턴">배드민턴</option>
 					</select>
 					<input id="search-word" type="text" name="keyword" placeholder="  아이디 랭킹검색">
 					<button id="submit-btn" type="button">검색</button>
