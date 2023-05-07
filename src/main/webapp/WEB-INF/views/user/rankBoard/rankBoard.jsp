@@ -68,7 +68,7 @@
 		getList : () => {
 			$.ajax({
 	            type : "GET",
-	            url : "/user/rankBoard/list",
+	            url : "/board/list",
 	            dataType: 'json',
 	            success : function(res){
 	            	console.log(res)
@@ -293,28 +293,6 @@
 						<td>${ranklist.userid }</td>
 						<td class="tc">${ranklist.sportname }</td>
 						<td class="tc">${ranklist.rank_avg }</td>
-					<%-- 	<td class="tc">
-							<c:choose>
-								<c:when  class="dia" test="${ranklist.rank_avg ge 5}">
-									다이아
-								</c:when>
-								<c:when test="${ranklist.rank_avg ge 4}">
-									플레티넘
-								</c:when>
-								<c:when test="${ranklist.rank_avg ge 3}">
-									골드
-								</c:when>
-								<c:when test="${ranklist.rank_avg ge 2}">
-									실버
-								</c:when>
-								<c:when test="${ranklist.rank_avg ge 1}">
-									브론즈
-								</c:when>
-								<c:otherwise>
-									언랭
-								</c:otherwise>
-							</c:choose>
-						</td> --%>
 					</tr>
 				</c:forEach>
 				</tbody>
@@ -341,7 +319,7 @@
 		</div>
 	</div>
 	<!-- 페이지네이션 클릭시 페이지이동 -->
-	<form id="actionForm" action="/user/rankBoard/rankBoard" method='get'>
+	<form id="actionForm" action="/board/rankBoard" method='get'>
 		<!-- 클릭한 href에 들어있는 이동 페이지 번호로 바꿔준다 -->
 		<input id="pageNum" type="hidden" name="pageNum" value="${pageMaker.criteria.pageNum }"> 
 		<input type="hidden" name="amount" value="${pageMaker.criteria.amount }">
