@@ -22,7 +22,28 @@
     <!-- 랭크 경기 목록 -->
     <div id="rank-container">
         <h1>랭크 경기 목록</h1>
-        <div class="rank-caption">현재 참여 가능한 경기 수 : ${pageMaker.total } 경기</div>
+        <div class="filter-wrap">
+	        <div class="rank-caption">현재 참여 가능한 경기 수 : ${pageMaker.total } 경기</div>
+	        <div class="filter-container">
+	        	<select id="region-filter">
+	        		<option value="">모든 지역</option>
+	        		<option value="서울">서울</option>
+	        		<option value="경기">경기</option>
+	        		<option value="인천">인천</option>
+	        		<option value="강원">강원</option>
+	        		<option value="대전">대전</option>
+	        		<option value="세종">세종</option>
+	        		<option value="충청">충청</option>
+	        		<option value="대구">대구</option>
+	        		<option value="부산">부산</option>
+	        		<option value="울산">울산</option>
+	        		<option value="경남">경남</option>
+	        		<option value="광주">광주</option>
+	        		<option value="전라">전라</option>
+	        		<option value="제주">제주</option>
+	        	</select>
+	        </div>
+        </div>
         <div class="rank-wrap">
             <!-- 비주얼 이미지 -->
             <div class="rank-visual" style="background-image: url('${path}/static/img/manager/${sessionScope.logS_no}.jpg');">
@@ -32,7 +53,7 @@
             <div class="rank-list">
                 <ul>
                 	<c:forEach var="rankgame" items="${gamelist }">
-                    <li class="rank-item">
+                    <li class="rank-item" data-region="${rankgame.region }">
                         <strong>${rankgame.sportname} (${rankgame.region })</strong>
                         <p><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${rankgame.gametime }"/><br/>${rankgame.stadium}</p>
                         <span>매니저 수당 : ${rankgame.managerfee}원</span>
@@ -209,5 +230,18 @@
 			$('#rank-map-dim').show();	// 모달 호출
 		}
 	}
+	//지역 필터링
+	$(document).ready(function() {
+		  $("#region-filter").on("change", function() {
+		    var selectedRegion = $(this).val();
+		    if (selectedRegion === "") {
+		      $(".rank-item").show();
+		    } else {
+		      $(".rank-item").hide();
+		      $(".rank-item[data-region='" + selectedRegion + "']").show();
+		    }
+		  });
+		});
+	
 </script>
 </html>

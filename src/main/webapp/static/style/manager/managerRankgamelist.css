@@ -4,8 +4,7 @@
         #rank-container h1 {font-size:32px;margin:0 0 57px 80px;}
         
         /* 현재 참여 가능한 경기 수 */
-        .rank-caption {margin-bottom:18px;font-size: 18px; margin-left: 90px;}
-        .rank-caption strong {margin-left:15px;font-weight:500;font-size:20px;}
+        .rank-caption {display:inline-block; font-weight:bold; margin-bottom:18px;font-size: 20px; margin-left: 79px;}
 		
 		/* 랭크경기 리스트 */
         .rank-wrap {display:flex;flex-direction: row; margin-left: 90px;}
@@ -21,6 +20,11 @@
         .rank-item-btn button + button {margin-top:13px;}
         .rank-item-btn .btn-location {color:#5F6D7E;border:1px solid #D1D9E2;background-color:#E6E9EC;}
         .rank-item-btn .btn-apply {color:#F8F9FB;border:0;background-color:#656363;}
+		
+		/* 지역 필터 */
+		.filter-wrap{width:734px; margin-bottom:10px;}
+		.filter-container{display:inline-block; float:right;}
+		.filter-container select {font-size:18px; padding:7px; text-align:center;background-color: #F8F9FB;border:1px solid #D1D9E2;border-radius:6px;}
 		
 		/* 신청하기 모달 */
         #rank-dim {position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(45, 45, 45, 0.3);}

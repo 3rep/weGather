@@ -101,7 +101,7 @@
                     			<li class="paginate-button next"><a href="${pageMaker.endPage+1 }">Next</a></li>
                     		</c:if>
                     	</ul>
-						<a class="enrol-box" href="/board/requestBoard/enroll">글쓰기</a>
+						<a class="enrol-box" href="<%= session.getAttribute("logId")==null?"/login":"/board/requestBoard/enroll"%>">글쓰기</a>
                     </div>
                     <!--end 페이지네이션 -->
 		</div>
