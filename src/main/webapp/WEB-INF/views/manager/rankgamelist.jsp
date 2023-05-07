@@ -56,7 +56,7 @@
                     <li class="rank-item" data-region="${rankgame.region }">
                         <strong>${rankgame.sportname} (${rankgame.region })</strong>
                         <p><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${rankgame.gametime }"/><br/>${rankgame.stadium}</p>
-                        <span>매니저 수당 : ${rankgame.managerfee}원</span>
+                        <span>매니저 수당 : <fmt:formatNumber value="${rankgame.managerfee}" maxFractionDigits="3"/> 원</span>
                         <div class="rank-item-btn">
                             <button type="button" class="btn-location" data-location="${rankgame.location}">위치보기</button>
                             <button type="button" class="btn-apply" data-sportname=

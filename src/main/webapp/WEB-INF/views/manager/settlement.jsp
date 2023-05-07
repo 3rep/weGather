@@ -48,9 +48,9 @@
 			<table class=settlement-sum>
 				<tr>
 					<th>정산완료금액</th>
-					<td>${completedamount }원</td>
+					<td><fmt:formatNumber value="${completedamount }" maxFractionDigits="3"/> 원</td>
 					<th>정산예정금액</th>
-					<td>${inprogressamount }원</td>
+					<td><fmt:formatNumber value="${inprogressamount }" maxFractionDigits="3"/> 원</td>
 				</tr>
 			</table>
 		</div>                  
@@ -77,7 +77,7 @@
 						      		<c:when test="${settlement.d_status == 1 }">완료</c:when>
 						      	</c:choose>
 						      </td>
-						      <td id="td-amount">${settlement.amount }원</td>
+						      <td id="td-amount"><fmt:formatNumber value="${settlement.amount }" maxFractionDigits="3"/> 원</td>
 						    </tr>
 				     </tbody>
 			     </c:forEach>

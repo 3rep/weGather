@@ -213,7 +213,7 @@
 				</li>
 				<li class="game_detail_sub">
 					<span class="game_detail_label">참가비 |</span>
-					<span>${rankGameDetail.payment}</span>원	
+					<span><fmt:formatNumber value="${rankGameDetail.payment}" maxFractionDigits="3"/></span>원
 				</li>
 				
 				<!-- 위치정보 -->
