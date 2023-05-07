@@ -15,15 +15,21 @@
         }
 
         /* pie chart - 남성 */
-    	var genderColorList = ['#FA7577', '#FAD275', '#A9CC8E', '#3DA5D2', '#F9AC4E', '#6AB3B1', '#A58FD2', '#DE97C2'];
-    	var ageColorList = ['#F9AC4E', '#A58FD2', '#6AB3B1',  '#DE97C2', '#3DA5D2', '#FA7577', '#FAD275', '#A9CC8E',];
+    	var colorList = ['#9480B3', '#D189A8', '#F68EA1', '#FBAD8C', '#FFCB77', '#D0CB88', '#A1C181'];
 
     	var m_labels = [];
     	var m_data = [];
-    	
-    	<c:forEach items="${manStatistics}" var="sport">
-    		m_labels.push("${sport.sportname}");
-    		m_data.push("${sport.sport_ratio}");
+		
+		// 종목리스트를 받아와서 m_labels에 넣고, m_data에 초기값 0을 준다.
+    	<c:forEach items="${sportnameList}" var="sportname">
+    		m_labels.push("${sportname}");
+    		m_data.push(0);
+		</c:forEach>
+		
+		// m_labels에서 해당 종목 인덱스를 찾고 m_data에 데이터를 넣는다.
+		<c:forEach items="${womanStatistics}" var="sport">
+			var idx = m_labels.indexOf("${sport.sportname}");
+			m_data[idx] = "${sport.sport_ratio}";
 		</c:forEach>
 		
     	let mChart= $('#mChart');
@@ -33,7 +39,7 @@
    	    	data : {
    	    		labels : m_labels,
    	    		datasets:[{   
-	    		backgroundColor: genderColorList,
+	    		backgroundColor: colorList,
 	    		borderWidth: 0.5 ,
 	    		borderColor: '#ddd',
 	    		data: m_data   
@@ -69,13 +75,19 @@
     	
     		
     		/* pie chart - 여성 */
-    	
 	    	var w_labels = [];
 	    	var w_data = [];
 	    	
-	    	<c:forEach items="${womanStatistics}" var="sport">
-	    		w_labels.push("${sport.sportname}");
-	    		w_data.push("${sport.sport_ratio}");
+	    	// 종목리스트를 받아와서 w_labels에 넣고, w_data에 초기값 0을 준다.
+	    	<c:forEach items="${sportnameList}" var="sportname">
+	    		w_labels.push("${sportname}");
+	    		w_data.push(0);
+			</c:forEach>
+			
+			// w_labels에서 해당 종목 인덱스를 찾고 w_data에 데이터를 넣는다.
+			<c:forEach items="${womanStatistics}" var="sport">
+				var idx = w_labels.indexOf("${sport.sportname}");
+				w_data[idx] = "${sport.sport_ratio}";
 			</c:forEach>
 			
 			let wChart= $('#wChart');
@@ -85,7 +97,7 @@
 	   	    	data : {
 	   	    		labels : w_labels,
 	   	    		datasets:[{   
-		    		backgroundColor: genderColorList,
+		    		backgroundColor: colorList,
 		    		borderWidth: 0.5 ,
 		    		borderColor: '#ddd',
 		    		data: w_data   
@@ -123,7 +135,7 @@
 	    	var age_labels = [];
 	    	var age_data = [];
 	    	var sport_labels = [];
-	    	var s = {};
+	    	var chart_data = {};
 	    	
 	    	<c:forEach items="${ageGroup}" var="age">
 	    		age_labels.push("${age}");
@@ -131,13 +143,12 @@
 			
 			<c:forEach items="${sportnameList}" var="sportname">
 				sport_labels.push("${sportname}");
-				s["${sportname}"] = [];
-				
+				chart_data["${sportname}"] = [];
 			</c:forEach>
 			
 			<c:forEach items="${ageStatistics}" var="statistics">
 				<c:forEach items="${statistics}" var="sport" varStatus="status">
-					s["${sport.sportname}"].push("${sport.sport_ratio}");
+				chart_data["${sport.sportname}"].push("${sport.sport_ratio}");
 				</c:forEach>
 			</c:forEach>
 			
@@ -145,8 +156,8 @@
 			for(var sportname of sport_labels) {
 				const data = {
 						label: sportname,
-	                    data: s[sportname],
-	                    backgroundColor: ageColorList[index],
+	                    data: chart_data[sportname],
+	                    backgroundColor: colorList[index],
 	                    borderColor: '#ddd',
 	                    borderWidth: 0.5,
 						}
