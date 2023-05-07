@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +113,7 @@
 				   + ''+ rankBoardCtrl.rankData(id, list) +''
 				   + '<td>'+list[id].userid+'</td>'
 				   + '<td class="tc">'+list[id].sportname+'</td>'
-				   + '<td class="tc">'+list[id].rank_avg+'</td>'
+				   + '<td class="tc">'+Number(list[id].rank_avg).toFixed(2)+'</td>'
 				   + '<td class="tc">'+rankBoardCtrl.tierData(id, list)+'</td>'
 				   + '</tr>';
 		},

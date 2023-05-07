@@ -147,7 +147,7 @@
 		    modal.querySelector('.sportname').textContent = sportname;
 		    modal.querySelector('.gametime').textContent = gametime;
 		    modal.querySelector('.stadium').textContent = stadium;
-		    modal.querySelector('.managerfee').textContent = "매니저 수당 : " + managerfee+"원";
+		    modal.querySelector('.managerfee').textContent = "매니저 수당 : " + Number(managerfee).toLocaleString()+"원";
 		    modal.querySelector('button#btn-apply').dataset.no = no;
 		    modal.querySelector('button#btn-apply').dataset.managerfee = managerfee;
 	       
