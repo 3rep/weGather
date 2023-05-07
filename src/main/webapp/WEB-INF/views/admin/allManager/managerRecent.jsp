@@ -16,7 +16,7 @@
 							${stadium[status.index].location}
 						</div>
 						<div class="little_item">
-							<span>매니저비 : ${rDTO.managerfee} 원</span>
+							<span>매니저비 : <fmt:formatNumber value="${rDTO.managerfee}" maxFractionDigits="3"/> 원</span>
 						</div>
 					</div>
 				</div>

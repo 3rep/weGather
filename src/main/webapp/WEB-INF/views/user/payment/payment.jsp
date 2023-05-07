@@ -163,11 +163,11 @@
 				<li class="title">결제 상세</li>
 				<li class="payment_info">
 					<span class="payment_label">경기 참가비</span>
-					<span class="amount">${gameDetail.payment}원</span>
+					<span class="amount"><fmt:formatNumber value="${gameDetail.payment}" maxFractionDigits="3"/>원</span>
 				</li>
 				<li class="payment_info total_amount">
 					<span class="payment_label">총 결제금액</span>
-					<span class="amount total_amount">${gameDetail.payment}원</span>
+					<span class="amount total_amount"><fmt:formatNumber value="${gameDetail.payment}" maxFractionDigits="3"/>원</span>
 				</li>
 			</ul>
 			

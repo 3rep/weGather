@@ -21,7 +21,7 @@
 				<td><a href="edit?no=${normGame.no}" class="stadium">${normGame.stadium}</a></td>
 				<td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${normGame.gametime}" /></td>
 				<td>${normGame.usetime}</td>
-				<td>${normGame.payment} 원</td>
+				<td><fmt:formatNumber value="${normGame.payment}" maxFractionDigits="3"/> 원</td>
 				<td>
 					<c:set var="status" value="${normGame.g_status}"/>
 					<c:choose>

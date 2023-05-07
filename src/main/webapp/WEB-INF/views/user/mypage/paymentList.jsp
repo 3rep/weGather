@@ -38,7 +38,7 @@
 			    	<tr id="pmTbTr">
 				    	<td >${list.payment_no }</td>
 				    	<td >${list.gametime }</td>
-				    	<td >${list.paid_amount }</td>
+				    	<td ><fmt:formatNumber value="${list.paid_amount }" maxFractionDigits="3"/></td>
 				    	
 				    	<!---- unix타입스탬프 -> 2023-04-12형태로 변환하기 ----->
 				    	<c:set var="paidTime" value="${list.paid_at}" />
