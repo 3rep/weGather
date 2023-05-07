@@ -64,17 +64,18 @@
 	background-color: #F8F9FB;
 	border-collapse:separate;
 	border-spacing:0;
+	font-size: 18px;
 }
 
 #rank-input-container th {
 	background-color: #656363;
 	color: var(--color-white);
-	padding: 12px;
+	padding: 17px;
 }
 
 #rank-input-container td {
 	background-color: #F8F9FB;
-	padding: 10px 12px;
+	padding: 18px 12px;
 	text-align: center;
 	border-right:1px solid #c6c9cc;
 	border-bottom: 1px solid #c6c9cc;
@@ -99,6 +100,11 @@
 
 #rank-input-container tr:last-child td:last-child {
 	border-bottom-right-radius:6px;
+}
+.rank-input-wrap .rank-filter{
+    height: 33px;
+    width: 97px;
+    font-size: 16px;
 }
 
 #rank-input-container .btns {
