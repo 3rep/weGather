@@ -32,7 +32,7 @@
 			</div>
 			<div class="rank-wrap">
 				<span class="rank-name">실버</span>
-				<span>기본기를 어느 정도 인지하고 사용하는 사용자. 그렇지만, 안정적으로 플레이하기 위해서는 수많은 노력이 필요한 단계입니다.고</span>
+				<span>기본기를 어느 정도 인지하고 사용하는 사용자. 그렇지만, 안정적으로 플레이하기 위해서는 수많은 노력이 필요한 단계입니다.</span>
 			</div>
 			<div class="rank-wrap">
 				<span class="rank-name">브론즈</span>
@@ -59,12 +59,13 @@
 		      </thead>
 		      <tbody>
 		        <c:forEach items="${managerInputList}" var="managerInput">
-		        <input type='hidden' id='no' name='no' value='${managerInput.getNo()}'/>
 		          <tr>
 		            <td><c:out value="${managerInput.getUserid()}" /></td>
 		            <td><c:out value="${managerInput.getUsername()}" /></td>
+		             <input type="hidden" name="no" value="${managerInput.getNo()}" />
 		            <td>
-		              <select class="rank-filter">
+		              <select class="rank-filter" name="rank">
+		              
 		                <option value="0">노랭크</option>
 		                <option value="1" ${managerInput.getRank() == 1 ? 'selected' : ''}>브론즈</option>
 		                <option value="2" ${managerInput.getRank() == 2 ? 'selected' : ''}>실버</option>
@@ -72,6 +73,7 @@
 		                <option value="4" ${managerInput.getRank() == 4 ? 'selected' : ''}>플래티넘</option>
 		                <option value="5" ${managerInput.getRank() == 5 ? 'selected' : ''}>다이아</option>
 		              </select>
+		             
 		            </td>
 		          </tr>
 		        </c:forEach>
@@ -79,8 +81,9 @@
 		    </table>
 	    
 		    <div class="btns">
+		     	<a href="${path }/manager/managerPast">
 		    	<button class="btn cancel" onclick="location.href='${path}/manager/managerPast'">취소</button>    
-		    	<button class="btn submit submit-button" onclick="alert('랭크를 입력했습니다.')">입력</button>    
+		    	<button class="btn btn-submit" onclick="alert('랭크를 입력했습니다.')" >입력</button>   </a> 
 		    </div>
 		</div>
 	</div>
@@ -90,13 +93,13 @@
     
   
     $(document).ready(function() {
-        $('.submit-button').click(function() {
+        $('.btn-submit').click(function() {
             var managerInputList = [];
             $('tbody tr').each(function() {
                 var managerInput = {};
                 managerInput['userid'] = $(this).find('td:eq(0)').text();
                 managerInput['rank'] = $(this).find('select.rank-filter').val();
-                managerInput['no'] = $('#no').val();
+                managerInput['no'] = $(this).find('input[name=no]').val();
                 managerInputList.push(managerInput);
                 
             });
@@ -113,7 +116,10 @@
                //     window.location.href = "${path}/manager/managerPast";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert("랭크 입력에 성공했습니다.");
+                	console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                   // alert("랭크를 입력했습니다.");
                 }
             });
         });

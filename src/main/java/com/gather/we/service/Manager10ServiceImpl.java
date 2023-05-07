@@ -42,7 +42,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInputByRank(String rank, Integer no) {
+	public List<Manager10DTO> getAllManagerInputByRank(Integer rank, Integer no) {
 		
 		return dao.getAllManagerInputByRank(rank, no);
 	}
@@ -57,9 +57,9 @@ public class Manager10ServiceImpl implements Manager10Service {
 
 
 	@Override
-	public List<Manager10DTO> getAllManagerInput(String managerid) {
+	public List<Manager10DTO> getAllManagerInput(Integer no) {
 		// TODO Auto-generated method stub
-		return dao.getAllManagerInput(managerid);
+		return dao.getAllManagerInput(no);
 	}
 
 
@@ -103,7 +103,7 @@ public class Manager10ServiceImpl implements Manager10Service {
 	
 
 	@Override
-	public void updateRank(String userid, int rank, Integer no) {
+	public void updateRank(String userid, Integer rank, Integer no) {
 	 System.out.println(userid + "part" + Integer.valueOf(rank));
 		dao.updateRank(userid, rank, no);
 		

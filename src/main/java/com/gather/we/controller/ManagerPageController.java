@@ -211,7 +211,7 @@ public class ManagerPageController{
 		 ModelAndView mav = new ModelAndView();
 		 
 	     String managerid = String.valueOf(session.getAttribute("logId"));
-	     vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
+	     vo.setTotalRecord(service.getTotalRecordByManagerid10(managerid));
 	     vo.setManagerid(managerid);
 	 //    vo.getAllManagerPast(vo, managerid, no);
 	  //   vo.pageSelect(vo);
@@ -272,11 +272,11 @@ public class ManagerPageController{
 		 }*/	
 		
 		 @GetMapping("/managerInput")
-		 public ModelAndView getAllManagerInput(@RequestParam(name = "no", defaultValue = "0") String managerid) {
+		 public ModelAndView getAllManagerInput(@RequestParam(name = "no", defaultValue = "0") Integer no) {
 		     ModelAndView mav = new ModelAndView();
-		     
+		     System.out.println("no: "+ no);
 		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
-		     List<Manager10DTO> managerInputList = service.getAllManagerInput(managerid);
+		     List<Manager10DTO> managerInputList = service.getAllManagerInput(no);
 		     System.out.println("managerInputList" + managerInputList);
 		 
 		     if (managerInputList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
@@ -285,21 +285,45 @@ public class ManagerPageController{
 		         mav.addObject("managerInputList", managerInputList);
 		     }
 		     
-		     mav.addObject("managerInputList", managerInputList);
-		     mav.addObject("managerid", managerid);
+		    mav.addObject("managerInputList", managerInputList);
+		     mav.addObject("no", no);
 		     mav.setViewName("/manager/managerInput");
 
 		     return mav;
 		 }
-		 
 		
+		 /* 
 		 @PostMapping("/managerInput")
 		 @ResponseBody
-		 public ResponseEntity<String> updateRank(@RequestBody List<Manager10DTO> managerInputList) {		    
+		 public ResponseEntity<String> updateRank(@RequestBody List<Manager10DTO> managerList) {
 		     try {
-		         for (Manager10DTO managerInput : managerInputList) {
-		        	 Integer no = Integer.valueOf(managerInput.getNo());
-		             service.updateRank(managerInput.getUserid(), managerInput.getRank(), managerInput.getNo());
+		         for (int i = 0; i < managerList.size(); i++) {
+		             Manager10DTO userid = managerList.get(i);
+		             Manager10DTO rank = managerList.get(i);
+		             service.updateRank(userid, rank, no);
+		         }
+		         return new ResponseEntity<String>("ok", HttpStatus.OK);
+		     } catch (Exception e) {
+		         e.printStackTrace();
+		         System.out.println("manager rank input fail");
+		     }
+		     return new ResponseEntity<String>("ok", HttpStatus.OK);
+		 }
+		*/
+		 @PostMapping("/managerInput")
+		 @ResponseBody
+		 public ResponseEntity<String> updateRank(@RequestBody List<Manager10DTO> ManagerInputList) {	
+			 
+		     try {
+		         for (Manager10DTO ManagerInput : ManagerInputList) {
+		        	 
+		        	 Integer no = Integer.valueOf(ManagerInput.getNo());
+		        	 if (no != null) {
+		        		   // null이 아닌 경우에만 처리
+		        		   no = Integer.valueOf(no); // Integer 객체로 변환
+		             service.updateRank(ManagerInput.getUserid(), ManagerInput.getRank(), ManagerInput.getNo());
+		             System.out.println("no: "+ no);
+		        	 }
 		         }
 		         return new ResponseEntity<String>("ok", HttpStatus.OK);
 		     }  catch (Exception e) {
