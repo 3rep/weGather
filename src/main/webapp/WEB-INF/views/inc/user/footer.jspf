@@ -10,7 +10,7 @@
         				<div class="foot-table-cell">
 								<ul id="foot-content1">
 									<li>
-										<a class="foot-link" href="${path}/">Home</a>
+										<a class="foot-link" href="${path}/userHome">Home</a>
 									</li>
 									<li>
 										<a class="foot-link" href="${path}/rankgame/sportlist">랭크경기</a>
@@ -36,10 +36,10 @@
 		    <div class="flex-item align-self-center" id="foot-box3">
 		    	<ul id="foot-content3">
 					<li>
-	          			<a class="foot-link" href="#">공지사항</a>
+	          			<a class="foot-link" href="${path}/board/noticeBoard">공지사항</a>
 	        		</li>
 	        		<li>
-	          			<a class="foot-link" href="#">건의사항</a>
+	          			<a class="foot-link" href="${path}/board/requestBoard">건의사항</a>
 	        		</li>
 				</ul>
 		    </div>
@@ -55,7 +55,7 @@
 					Team : Together (Multicampus Team 4th)
 				</li>
 				<li>
-					대표전화 : 02-0000-0000
+					대표전화 : 1544-9001
 				</li>
 			</ul>
 		</div>
