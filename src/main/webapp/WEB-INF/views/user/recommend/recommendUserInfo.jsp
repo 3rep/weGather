@@ -239,7 +239,7 @@
 	</div>
 	
 	<!-- 비로그인 시-->
-	<div class="recommend_user_info non_login">성별과 나이에 따른 스포츠 추천 결과를 확인해보세요</div>
+	<div class="recommend_user_info non_login"><a href="/login">로그인</a>하시면 본인의 성별과 나이에 따른 추천 결과를 확인할 수 있습니다</div>
 </div>
 
 <!-- 로그인, 비로그인 공통 -->

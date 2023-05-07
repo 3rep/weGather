@@ -89,7 +89,7 @@
 		<div class="mbti_result">
 			<c:set var="defaultResult" value="${mbtiStatistics.get('ISTP')}" />
 			<div class="mbti">ISTP</div>
-			<div class="message">당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 [${defaultResult[0].sportname}]입니다</div>
+			<div class="message">당신의 MBTI와 같은 사용자들이 가장 좋아하는 취미는 <span style="font-size: 21px;">"${defaultResult[0].sportname}"</span> 입니다</div>
 			<c:forEach var="sport" items="${defaultResult}" varStatus="status">
 				<div class="sport_statistics <c:if test="${status.index==0}">top</c:if>"><span>${sport.sportname}</span><span>${sport.sport_ratio}</span></div>
 			</c:forEach>

@@ -48,9 +48,9 @@
 	<!--  	AND rank_game.no = ${no}-->
 		AND gametime <![CDATA[<]]> sysdate
 				
-		order by rank_game.no desc
+		order by rank_game.gametime desc
 				 ) <![CDATA[ 
- 				 WHERE rownum<=${onePageRecord*nowPage} order by gametime desc 
+ 				 WHERE rownum<=${onePageRecord*nowPage} order by gametime asc 
  				]]>
  				 )
  		<choose>
@@ -81,7 +81,7 @@
 			 	order by gametime desc		
  			
 	 			 ) <![CDATA[
- 				 where rownum<=${onePageRecord*nowPage} order by gametime desc 
+ 				 where rownum<=${onePageRecord*nowPage} order by gametime asc
  				 ]]>
  				 )
  		<choose>

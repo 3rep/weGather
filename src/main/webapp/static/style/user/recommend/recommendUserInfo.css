@@ -60,6 +60,11 @@
 	border-radius: 0;
 }
 
+#recommend_nav .recommend_user_info.non_login.active a {
+	color: var(--color-pink);
+	font-size: var(--font-small);
+}
+
 #recommend_container .recommend_content_user_info {
     width: 1200px;
     display: flex;
