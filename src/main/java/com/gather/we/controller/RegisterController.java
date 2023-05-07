@@ -174,6 +174,7 @@ public class RegisterController {
 		session.setAttribute("logGender", null);
 		session.setAttribute("type", null);
 		session.setAttribute("adminlogStatus", "N");
+		session.setAttribute("logS_no", null);
 		
 		mav.setViewName("redirect:/userHome");
 		return mav;

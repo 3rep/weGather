@@ -6,6 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <div class="loginMan_container">
+	<a href="${path}/userHome"><img src="static/img/logo/logo 4.png" id="logoManager"></a>
 	<h1>매니저 로그인</h1>
 	<form method="post" action="loginManOk" id="logManFrm">
 		<ul>

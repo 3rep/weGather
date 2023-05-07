@@ -136,11 +136,14 @@
 #logMan_img{
 	position:relative;
 	top:35px;
-	right:s5%;
-	width:650px;
-	height:450px;
+	right:25%;
+	width:530px;
+	height:330px;
 	border-radius:10px;
 }
 
-
+#logoManager {
+	width: 250px;
+	margin-bottom: 30px;
+}
 

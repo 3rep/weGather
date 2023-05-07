@@ -36,7 +36,7 @@
 <!-- 매니저페이지 네비게이션 바 -->
 <nav id="manager-nav">
 	<!-- 사이트 로고 -->
-	<a href="${path}/"><img src="${path}/static/img/manager/logo_white.png" alt="Logo" id="logo"></a>
+	<a href="${path}/userHome"><img src="${path}/static/img/manager/logo_white.png" alt="Logo" id="logo"></a>
 	<!-- 네비게이션 메뉴 -->
 	<ul class="menu-container">
 		<!-- 경기목록 메뉴 -->
