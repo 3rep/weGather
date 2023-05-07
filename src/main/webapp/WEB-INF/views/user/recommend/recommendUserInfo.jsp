@@ -252,9 +252,9 @@
 	<div class="recommend_content_user_info">
 		<div class="gender_result">
 			<!-- pie chart (남성) -->
-			<canvas id="mChart" width="350px" height="350px"></canvas>
+			<canvas id="mChart" width="450px" height="450px"></canvas>
 			<!-- pie chart (여성) -->
-			<canvas id="wChart" width="350px" height="350px"></canvas>
+			<canvas id="wChart" width="450px" height="450px"></canvas>
 		</div>
 		<!-- bar chart (나이) -->
 		<div class="age_result"><canvas id="ageChart"></canvas></div>
