@@ -20,16 +20,14 @@
 	display: flex;
 	flex-direction: column;
 	margin-right: 36px;
-	background-color: #DFEFDC;
-	padding: 12px;
+	background-color: #B5CAB6;
 	border-radius: 6px;
-	border: 1px solid #c6c9cc;
 }
 
 #rank-input-container .rank-valuation .title {
 	font-size: var(--font-small);
 	font-weight: var(--weight-bold);
-	margin-bottom: 18px;
+	margin: 14px 0;
 	text-align: center;
 }
 
@@ -37,18 +35,22 @@
 	width: 400px;
 	display: flex;
 	flex-direction: column;
-	background-color: #FFFFFF;
-	border: 1px solid #c6c9cc;
-	border-radius: 6px;
-	padding: 8px 16px;
-	margin-bottom: 8px;
+	background-color: #fff;
+	border: 2px solid #babdc0;
+	border-top: none;
+	padding: 12px 16px;
+}
+
+#rank-input-container .rank-valuation .rank-wrap:last-child {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
 
 #rank-input-container .rank-valuation .rank-wrap .rank-name{
 	font-weight: var(--weight-bold);
 	font-size: var(--font-micro);
 	text-align: center;
-	border-bottom: 8px;
+	margin-bottom: 8px;
 }
 
 #rank-input-container .rank-input-wrap {
