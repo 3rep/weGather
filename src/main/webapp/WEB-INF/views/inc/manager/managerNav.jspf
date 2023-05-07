@@ -62,7 +62,7 @@
 		<li class="menu">
 			<div class="menu-info">		
 				<img src="${path}/static/img/manager/hexagon.png" alt="hexagon icon" class="hexagon_icon"/>
-				<span class="menu-title">매니저관리</span>
+				<span class="menu-title">활동내역</span>
 			</div>
 			<img src="${path}/static/img/manager/chevron.png" alt="chevron down icon" class="chevron_down_icon"/>
 		</li>

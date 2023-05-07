@@ -16,14 +16,16 @@ import com.gather.we.dto.RankBoardPageDTO;
 import com.gather.we.service.RankBoardService;
 
 @Controller
-@RequestMapping("/user/rankBoard/*")
+@RequestMapping("/board/*")
 public class RankBoardController {
 	
 	@Autowired
 	private RankBoardService service;
 	
 	@GetMapping("/rankBoard")
-	public void rankBoard(RankBoardCriteria criteria,Model model) {}
+	public String rankBoard(RankBoardCriteria criteria,Model model) {
+		return "/user/rankBoard/rankBoard";
+	}
 	
 	@GetMapping("/list")
 	@ResponseBody
