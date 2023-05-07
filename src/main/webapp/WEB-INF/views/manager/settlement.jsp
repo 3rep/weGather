@@ -70,11 +70,11 @@
 						    <tr>
 						      <td id="td-num">${(pageMaker.mscriteria.pageNum-1) * pageMaker.mscriteria.amount + status.count }</td>
 						      <td>${settlement.stadium }</td>
-						      <td><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${settlement.gametime }"/></td>
+						      <td id="td-time"><fmt:formatDate pattern="yyyy년 MM월 dd일 E요일 HH:mm" value="${settlement.gametime }"/></td>
 						      <td id="td-dstatus">
 						      	<c:choose>
 						      		<c:when test="${settlement.d_status == 0 }">처리중</c:when>
-						      		<c:when test="${settlement.d_status == 1 }">완료</c:when>
+						      		<c:when test="${settlement.d_status == 1 }">입금완료</c:when>
 						      	</c:choose>
 						      </td>
 						      <td id="td-amount"><fmt:formatNumber value="${settlement.amount }" maxFractionDigits="3"/> 원</td>
