@@ -32,66 +32,13 @@
 		select count(payment_no) from
 			(select payment_no, payer_name, paid_amount, paid_at, success from user_pay)
 	</select>
-	<select id="selectedRevenueList" resultType="com.gather.we.dto.UserPayDTO">
-		select * from
-		 	(select * from	(
-				select payment_no, payer_name, paid_amount, paid_at, success,
-				to_date(substr(TO_CHAR(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8)) 
-				from user_pay 
-				<if test="datepicker != null and datepicker !=''">
-					where to_date(substr(TO_CHAR(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8)) 
-						<![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd')
-					and to_date(substr(TO_CHAR(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8)) 
-						<![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd')
-				</if>	
-					order by payment_no desc)
-				<![CDATA[
-		    	where rownum<=${nowPage*onePageRecord} order by payment_no asc
-		    	]]>
-	    		)
-	    		<choose>
-	    		<when test="nowPage!=totalPage">
-	    	<![CDATA[
-	    	where rownum<=${onePageRecord} order by payment_no desc
-	    	]]>
-	    	</when>
-	    	<when test="nowPage==totalPage">
-	    	<![CDATA[
-	    	where rownum<=${lastPageRecord} order by payment_no desc
-	    	]]>
-	    	</when>
-	    	</choose>
-	</select>
-	<select id="revenueResult" resultType="int">
-		select sum(paid_amount) from (
-			select payment_no, payer_name, paid_amount, paid_at, success,
-			to_date(substr(to_char(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8))
-			from user_pay 
-			<if test="datepicker != null and datepicker !=''">
-			where to_date(substr(TO_CHAR(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8)) 
-				<![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd')
-			and to_date(substr(TO_char(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8)) 
-				<![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd'))
-			</if>
-	
-	
-	
-		select sum(paid_amount) from (
-			select payment_no, payer_name, paid_amount, paid_at, success,
-			to_date(substr(TO_CHAR(paid_at / (60 * 60 * 24) + TO_DATE('19700101090000', 'YYYYMMDDHH24MISS'), 'YYYYMMDDHH24MISS') , 1, 8))
-			from user_pay 
-	</select>
  	<select id="expense" resultType="com.gather.we.dto.AdminManagerSettlementDTO">
 		 select * from
 		 	(select * from	
 		 		(select s.no, s.managerid, s.datetime, s.d_status, s.amount, m.m_name, m.m_account
 		 		from m_settlement s
 		 		join manager m on s.managerid=m.managerid
-		 		where d_status=1 
-		 		<if test="datepicker != null and datepicker !=''">
-					and s.datetime <![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd') and s.datetime-1 <![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd')
-				</if>
-		 			order by s.no desc)
+		 		where d_status=1 order by s.no desc)
 		 		<![CDATA[
 		    	where rownum<=${nowPage*onePageRecord} order by no asc
 		    	]]>
@@ -116,14 +63,6 @@
  			join manager m on s.managerid=m.managerid
  			where d_status=1 
  			)
-	</select>
-	<select id="expenseResult" resultType="int">
-		select sum(s.amount) from m_settlement s
- 		join manager m on s.managerid=m.managerid
- 		where d_status=1 
- 		<if test="datepicker != null and datepicker !=''">
-			and s.datetime <![CDATA[ >= ]]> to_date(#{datepicker},'yyyy-MM-dd') and s.datetime-1 <![CDATA[ <= ]]> to_date(#{datepicker2},'yyyy-MM-dd')
-		</if>
 	</select>
  	<select id="managerFee" resultType="com.gather.we.dto.AdminManagerSettlementDTO">
 		 select * from		

@@ -69,20 +69,5 @@ public class AdminServiceImpl implements AdminService {
 		return dao.managerFeeTotalRecord(vo);
 	}
 
-	@Override
-	public List<UserPayDTO> selectedRevenueList(PagingVO vo) {
-		return dao.selectedRevenueList(vo);
-	}
-	
-	@Override
-	public int revenueResult(PagingVO vo) {
-		return dao.revenueResult(vo);
-	}
-	
-	@Override
-		public int expenseResult(PagingVO vo) {
-			return dao.expenseResult(vo);
-	}
-
 	
 }

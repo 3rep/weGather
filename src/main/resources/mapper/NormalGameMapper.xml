@@ -6,7 +6,7 @@
 	<select id="normGameListSelect" resultType="com.gather.we.dto.NormGameListDTO">
 		select n.no, s.stadium, s.region, n.gametime, n.usetime, n.min_people, n.max_people, n.curr_people, n.gendertype, n.writer
 		from norm_game n join stadium_info s on n.st_no=s.st_no 
-		where s_no=${s_no} and (<![CDATA[gametime-16 <= sysdate and sysdate <= gametime]]>) and (<![CDATA[1 <= n.g_status and n.g_status <= 2]]>)
+		where n.s_no=${s_no} and (<![CDATA[gametime-16 <= sysdate and sysdate <= gametime]]>) and (<![CDATA[1 <= n.g_status and n.g_status <= 2]]>)
 		<if test="regionList!=null and regionList[0]!='all'">
 			and s.region in
 			<foreach item="region" index="index" collection="regionList" open="(" separator="," close=")">
