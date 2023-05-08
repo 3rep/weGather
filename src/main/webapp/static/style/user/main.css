@@ -166,11 +166,41 @@ body{
     color: floralwhite;
 }
 
+/* 시작페이지 첫화면 텍스트 타이핑효과 주기*/
+/* span 태그 하니까 animation typing이 안먹어서 p태그로 변경하시면 됩니다.*/
+/*.section-main .login .WG{
+	font-size: var(--font-large);
+	font-style: italic;
+	font-weight: 600;
+	border-right: 3px solid white;
+ 	animation: blink .5s infinite, typing 2s steps(22);
+ 	width: 0;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px;
+}
+@keyframes blink{
+	50%{
+		border-color: transparent;
+	}
+}
+@keyframes typing{
+	from{
+		width: 0;
+	}
+	to{
+		width: 533px; 
+	}
+} */
+
 .section-main .login .WG{
 	font-size: var(--font-large);
 	font-style: italic;
 	font-weight: 600;
-}
+}  
+
 .section-main .login .T{
 	font-size: var(--font-large);
 	font-style: italic;
@@ -193,7 +223,7 @@ body{
 #section-info .section-title {
 	font-size: var(--font-medium);
 	text-align: center;
-	margin-bottom: 90px;
+	margin-bottom: 77px;
 
 }
 

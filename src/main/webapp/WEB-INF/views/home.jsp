@@ -29,7 +29,7 @@
 	
 	<div class="item" id="cloudy"> <!-- A -->
 		<div class="login"> <!-- B -->
-			<span class="WG">We Gather &emsp;</span><br/>
+			<span class="WG">We Gather&emsp;</span><br/>
 			<span class="T">&emsp; Together </span><br/>
 			<span id="featSpan">feat. sport</span><br/> 
 			<br/>
