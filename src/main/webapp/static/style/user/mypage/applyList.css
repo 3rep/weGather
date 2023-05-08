@@ -109,6 +109,18 @@
 .aplLink a:visited{
 	color: var(--color-dark-gray);
 }
+.aplLink .linkToGame{
+    padding: 5px;
+    background: blanchedalmond;
+    border-radius: 5px;
+}
+.aplLink .aplCancel{
+	background: powderblue;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+
 .aplStatus{
  	font-style: italic;
  }
