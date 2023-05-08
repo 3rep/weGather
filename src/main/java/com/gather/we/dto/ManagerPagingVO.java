@@ -1,8 +1,5 @@
 package com.gather.we.dto;
 
-import lombok.Data;
-
-
 public class ManagerPagingVO {
 	//PagingVO-> ManagerPagingVO로 파일이름변경(devlop에도 같은 이름 파일 있어서)
 	//private static final int onePageNumCount = 0;
@@ -13,9 +10,8 @@ public class ManagerPagingVO {
 	private int totalPage;//총 페이지 수
 	//마지막 페이지에 남아 있는 레코드 수. 
 	private int lastPageRecord;
-//	private int onPageNumCount=3; //한페이지 당 페이지 개수
 	private int startPageNum = 1;
-	private int onePageNumCount=10;
+	private int onePageNumCount=10; //한페이지 당 페이지 개수
 	private String managerid;
 	//
 	private Integer no;

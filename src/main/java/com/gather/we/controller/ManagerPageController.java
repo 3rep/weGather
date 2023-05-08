@@ -111,14 +111,13 @@ public class ManagerPageController{
 			ModelAndView mav = new ModelAndView();
 			
 			String managerid = String.valueOf(session.getAttribute("logId"));
+			vo.setOnePageRecord(4);
 		    vo.setTotalRecord(service.getTotalRecordByManagerid(managerid));
 		  	vo.setManagerid(managerid);
 		    mav.addObject("managerList", service.pageSelect(vo));
-		    System.out.println("list size : "+ service.pageSelect(vo).size());
 		    mav.addObject("vo", vo);
 		    mav.setViewName("/manager/manager10");
 		    
-		    System.out.println("mav: "+ mav);
 		    return mav;
 		}
 
@@ -135,7 +134,6 @@ public class ManagerPageController{
 	            	service.deleteMSettlement(managerid, no);
 	            	service.updateRankGame(managerid, no);
 	                // m_settlement 테이블에서 해당 정보 삭제
-	                System.out.println("managerid=" + managerid + ", no=" + no);
 	            }
 	        }
 	        return new ResponseEntity<String>("ok", HttpStatus.OK);
@@ -211,11 +209,11 @@ public class ManagerPageController{
 		 ModelAndView mav = new ModelAndView();
 		 
 	     String managerid = String.valueOf(session.getAttribute("logId"));
+	     vo.setOnePageRecord(6);
 	     vo.setTotalRecord(service.getTotalRecordByManagerid10(managerid));
 	     vo.setManagerid(managerid);
 	 //    vo.getAllManagerPast(vo, managerid, no);
 	  //   vo.pageSelect(vo);
-			System.out.println("-"+vo.toString());
 			
 		    mav.addObject("managerList", service.getAllManagerPast(vo));
 		    mav.addObject("vo", vo);
@@ -274,10 +272,9 @@ public class ManagerPageController{
 		 @GetMapping("/managerInput")
 		 public ModelAndView getAllManagerInput(@RequestParam(name = "no", defaultValue = "0") Integer no) {
 		     ModelAndView mav = new ModelAndView();
-		     System.out.println("no: "+ no);
+		     
 		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
 		     List<Manager10DTO> managerInputList = service.getAllManagerInput(no);
-		     System.out.println("managerInputList" + managerInputList);
 		 
 		     if (managerInputList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
 		         mav.addObject("error", "데이터가 없습니다.");
@@ -322,7 +319,7 @@ public class ManagerPageController{
 		        		   // null이 아닌 경우에만 처리
 		        		   no = Integer.valueOf(no); // Integer 객체로 변환
 		             service.updateRank(ManagerInput.getUserid(), ManagerInput.getRank(), ManagerInput.getNo());
-		             System.out.println("no: "+ no);
+		             
 		        	 }
 		         }
 		         return new ResponseEntity<String>("ok", HttpStatus.OK);
@@ -337,11 +334,9 @@ public class ManagerPageController{
 		 @GetMapping("/entry")
 		 public ModelAndView getAllEntry(@RequestParam(name = "no", defaultValue = "0") Integer no) {
 		     ModelAndView mav = new ModelAndView();
-		     System.out.println("no: "+ no);
 		     
 		     // 1. 해당 경기에 참여한 회원 정보를 가져옵니다.
 		     List<Manager10DTO> entryList = service.getAllEntry(no);
-		     System.out.println("entryList: " + entryList);
 		     
 		     if (entryList.isEmpty()) { // 데이터베이스 조회 결과가 비어있을 경우
 		         mav.addObject("error", "데이터가 없습니다.");

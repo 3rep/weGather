@@ -62,7 +62,7 @@
  		  </when>
  		  <when test="nowPage==totalPage">	
  			   <![CDATA[ 
- 		 		where rownum<=${onePageRecord} order by gametime desc
+ 		 		where rownum<=${lastPageRecord} order by gametime desc
  		 		]]>
  	  	  </when>
  		</choose>  
@@ -93,7 +93,7 @@
  		  </when>
  		  <when test="nowPage==totalPage">	
  			   <![CDATA[
- 		 		where rownum<=${onePageRecord} order by gametime desc
+ 		 		where rownum<=${lastPageRecord} order by gametime desc
  		 		]]>
  	  	  </when>
  		</choose>  
