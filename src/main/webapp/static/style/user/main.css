@@ -2,12 +2,12 @@
 
 /*스크롤바 없애기*/
 body{
-	-ms-overflow-style: none;  /*엣지 스크롤없애기*/
-	overflow-x: hidden;
+	/* -ms-overflow-style: none;  엣지 스크롤없애기
+	overflow-x: hidden; */
  }
  
-::-webkit-scrollbar { /*크롬, 사파리 스크롤 없애기*/
-	display: none; 
+/* ::-webkit-scrollbar { 크롬, 사파리 스크롤 없애기
+	display: none;  */
 } 
 
 
