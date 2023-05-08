@@ -20,7 +20,12 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>
+				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/root-context.xml
+				/WEB-INF/spring/appServlet/mvc-context.xml
+			</param-value>
+
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -31,15 +36,48 @@
 	</servlet-mapping>
 	
 	<!-- include -->
-	<!-- 
 	<jsp-config>
 		<jsp-property-group>
-			<url-pattern>/WEB-INF/views/*</url-pattern>
-			<include-prelude>/WEB-INF/views/inc/header.jspf</include-prelude>
-			<include-coda>/WEB-INF/views/inc/footer.jspf</include-coda>
+			<url-pattern>/WEB-INF/views/user/*</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/user/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/inc/user/footer.jspf</include-coda>
 		</jsp-property-group>
+		
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/admin/*</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/admin/adminNav.jspf</include-prelude>
+		</jsp-property-group>
+
+	  	<jsp-property-group>
+			<url-pattern>/WEB-INF/views/manager/entry.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/manager10.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/managerInput.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/managerOkResult.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/managerPast.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/managerSample.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/rankgamelist.jsp</url-pattern>
+			<url-pattern>/WEB-INF/views/manager/settlement.jsp</url-pattern>
+			<include-prelude>/WEB-INF/views/inc/manager/managerNav.jspf</include-prelude>
+		</jsp-property-group>
+
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/user/mypage/*</url-pattern>
+			<include-prelude>/WEB-INF/views/user/mypage/allPage.jsp</include-prelude>
+		</jsp-property-group>
+		
 	</jsp-config>
-	 -->
+	 
+	  <!-- HTTP Method Filter -->
+ <filter>
+    <filter-name>httpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>httpMethodFilter</filter-name>
+    <url-pattern>/manager10</url-pattern>
+ </filter-mapping>
+ 
+	 
 	 
 	<!-- POST방식 접속에 대한 한글 인코딩(UTF-8) -->
 	<filter>
@@ -60,5 +98,5 @@
 		<filter-name>SpringEncodeFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 </web-app>
