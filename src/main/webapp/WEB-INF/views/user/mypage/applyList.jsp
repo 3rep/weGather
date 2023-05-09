@@ -82,7 +82,7 @@
 						        	<td class="aplLink">
 						        		<a href="/rankgame/detail?no=${list.no }" class="linkToGame">신청완료</a>
 						        		<div style="height: 10px;"></div>
-						        		<a href="/mypage/cancel?no=${list.no}" class="aplCancel" onclick="return confirm('신청경기를 취소하시겠습니까?');">경기취소</a>
+						        		<a href="/mypage/cancel?no=${list.no}" class="aplCancel" onclick="return confirm('신청경기를 취소하시겠습니까?');">취소하기</a>
 						        	</td>
 						        </c:if>
 						        <c:if test="${list.g_status==1 && list.gametime>=now }">	
@@ -102,7 +102,7 @@
 						        	<td class="aplLink">
 						        		<a href="/normgame/detail?no=${list.no }" class="linkToGame">신청완료</a>
 						        		<div style="height: 10px;"></div>
-						        		<a href="/mypage/cancel?no=${list.no}" class="aplCancel" onclick="return confirm('신청경기를 취소하시겠습니까?');">경기취소</a>
+						        		<a href="/mypage/cancel?no=${list.no}" class="aplCancel" onclick="return confirm('신청경기를 취소하시겠습니까?');">취소하기</a>
 						        		<!-- <input type="button" value="경기취소" id="cancel"/> -->
 						        	</td>
 						        </c:if>
