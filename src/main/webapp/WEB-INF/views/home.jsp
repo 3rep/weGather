@@ -141,7 +141,7 @@
 			평점과 랭크는 누적된 평균 랭크 점수에 따라 부여됩니다.<br/>
 			나의 순위와 랭크를 확인하고 다른 사용자들과 비교해보세요!<br/>
 			</span>
-			<a class="home_alink" href="${path}/user/rankBoard/rankBoard">랭크보드 둘러보기</a>
+			<a class="home_alink" href="${path}/board/rankBoard">랭크보드 둘러보기</a>
 		</div>
 	</div>
 	<div class="item-wrap">
