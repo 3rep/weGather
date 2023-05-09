@@ -40,8 +40,14 @@
 	border-radius: 20px 0 0 0;
 }
 
-#revenue_container th:nth-of-type(8),
-#expense_container th:nth-of-type(8),
+#revenue_container th:nth-of-type(6) {
+	border-radius: 0 20px 0 0;
+}
+
+#expense_container th:nth-of-type(5) {
+	border-radius: 0 20px 0 0;
+}
+
 #managerfee_container th:nth-of-type(8) {
 	border-radius: 0 20px 0 0;
 }
