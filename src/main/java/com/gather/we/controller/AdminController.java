@@ -52,7 +52,7 @@ import com.gather.we.dto.PagingVO;
 import com.gather.we.dto.RankGameDTO;
 import com.gather.we.dto.SportDTO;
 import com.gather.we.dto.StadiumInfoDTO;
-
+import com.gather.we.dto.StadiumInfoDTO2;
 import com.gather.we.dto.UserLogDTO;
 import com.gather.we.dto.UserPayDTO;
 import com.gather.we.service.AdminManagerService;
@@ -548,7 +548,7 @@ public class AdminController {
 		String adminlogStatus = (String) session.getAttribute("adminlogStatus");
 		
 		List<SportDTO> sportList = sportService.sportAllSelect();
-		List<StadiumInfoDTO> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect();
+		List<StadiumInfoDTO2> stadiumInfoList = stadiumInfoService.stadiumInfoAllSelect2();
 		
 		mav.addObject("sportList", sportList);
 		mav.addObject("stadiumInfoList", stadiumInfoList);
